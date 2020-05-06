@@ -768,7 +768,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
             if (xmlKey.Symbol != null)
             {
-                Geometry geom = (Geometry)this.Resources[xmlKey.Symbol];
+                Geometry geom = (Geometry)Application.Current.Resources[xmlKey.Symbol];
                 if (geom != null)
                     newKey.SymbolGeometry = geom;
                 else
