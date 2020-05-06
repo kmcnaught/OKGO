@@ -218,7 +218,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <SplashScreen Include="Resources\Icons\OptikeyProSplash.png">
+    <SplashScreen Include="Resources\Icons\EyeMineSplash.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </SplashScreen>
     <Resource Include="EyeMine.ico" />

@@ -56,7 +56,7 @@ namespace JuliusSweetland.OptiKey.EyeMine
             Action runApp = () =>
             {
 
-                splashScreen = new SplashScreen("/Resources/Icons/OptikeyProSplash.png");
+                splashScreen = new SplashScreen("/Resources/Icons/EyeMineSplash.png");
                 splashScreen.Show(false);
 
                 var application = new App();
