@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Forms;
@@ -1569,6 +1570,17 @@ namespace JuliusSweetland.OptiKey.Services
                 persist
                     ? new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition)
                     : new ApplySizeAndPositionDelegate(ApplySizeAndPosition), appBarBoundsInPx);
+        }
+
+        public void LogTimeAfterLoading(Stopwatch sw)
+        {
+            window.Dispatcher.BeginInvoke(
+                DispatcherPriority.Loaded,
+                new Action(() =>
+                {
+                    sw.Stop();
+                    Log.Info("Loading took " + sw.ElapsedMilliseconds + " ms");
+                }));
         }
 
         private void UnRegisterAppBar()

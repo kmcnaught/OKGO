@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
+using System.Diagnostics;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 
@@ -28,5 +29,6 @@ namespace JuliusSweetland.OptiKey.Services
         void Shrink(ShrinkFromDirections direction, double amountInPx);
         void OverridePersistedState(bool inPersistNewState, string inWindowState, string inPosition, string inDockSize, string inWidth, string inHeight, string inHorizontalOffset, string inVerticalOffset);
         void RestorePersistedState();
+        void LogTimeAfterLoading(Stopwatch sw);
     }
 }

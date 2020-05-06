@@ -1,11 +1,13 @@
 // Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using System.Xml.Serialization;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -2105,7 +2107,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.NumericAndSymbols1Keyboard:
                     Log.Info("Changing keyboard to NumericAndSymbols1.");
+
+                    Stopwatch sw = new Stopwatch();
+                    sw.Start();
+
                     Keyboard = new NumericAndSymbols1();
+
+                    mainWindowManipulationService.LogTimeAfterLoading(sw);
                     break;
 
                 case FunctionKeys.NumericAndSymbols2Keyboard:
