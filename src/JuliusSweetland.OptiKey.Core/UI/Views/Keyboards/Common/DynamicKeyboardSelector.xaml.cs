@@ -55,9 +55,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             { 
                 Key newKey = new Key();
                 newKey.SharedSizeGroup = "SingleKey";
-                newKey.SymbolGeometry = (Geometry)this.Resources["MenuIcon"];
-                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.MENU;
-                newKey.Value = KeyValues.MenuKeyboardKey;
+                newKey.SymbolGeometry = (Geometry)this.Resources["QuitIcon"];
+                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.QUIT;
+                newKey.Value = KeyValues.QuitKey;
                 this.AddKey(newKey, this.mRows - 1, this.mCols - 1);
             }
 
