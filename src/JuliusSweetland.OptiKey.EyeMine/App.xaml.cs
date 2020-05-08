@@ -45,6 +45,10 @@ namespace JuliusSweetland.OptiKey.EyeMine
     {
         private static SplashScreen splashScreen;
 
+        private IKeyStateService keyStateService;
+        private IAudioService audioService;
+        private IDictionaryService dictionaryService;
+        private IWindowManipulationService mainWindowManipulationService;
         #region Main
         [STAThread]
         public static void Main()
@@ -130,15 +134,15 @@ namespace JuliusSweetland.OptiKey.EyeMine
 
                 //Create services
                 var errorNotifyingServices = new List<INotifyErrors>();
-                IAudioService audioService = new AudioService();
+                audioService = new AudioService();
 
-                IDictionaryService dictionaryService = new DictionaryService(Settings.Default.SuggestionMethod);
+                dictionaryService = new DictionaryService(Settings.Default.SuggestionMethod);
                 IPublishService publishService = new PublishService();
                 ISuggestionStateService suggestionService = new SuggestionStateService();
                 ICalibrationService calibrationService = CreateCalibrationService();
                 ICapturingStateManager capturingStateManager = new CapturingStateManager(audioService);
                 ILastMouseActionStateManager lastMouseActionStateManager = new LastMouseActionStateManager();
-                IKeyStateService keyStateService = new KeyStateService(suggestionService, capturingStateManager,
+                keyStateService = new KeyStateService(suggestionService, capturingStateManager,
                     lastMouseActionStateManager, calibrationService, fireKeySelectionEvent);
                 IInputService inputService = CreateInputService(keyStateService, dictionaryService, audioService,
                     calibrationService, capturingStateManager, errorNotifyingServices);
@@ -154,7 +158,7 @@ namespace JuliusSweetland.OptiKey.EyeMine
 
                 //Compose UI
                 var mainWindow = new MainWindow(audioService, dictionaryService, inputService, keyStateService);
-                IWindowManipulationService mainWindowManipulationService =
+                mainWindowManipulationService =
                     CreateMainWindowManipulationService(mainWindow);
                 errorNotifyingServices.Add(mainWindowManipulationService);
                 mainWindow.WindowManipulationService = mainWindowManipulationService;
