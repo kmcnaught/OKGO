@@ -35,6 +35,7 @@ using presage;
 using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using WindowsRecipes.TaskbarSingleInstance;
+using JuliusSweetland.OptiKey.EyeMine.UI.Windows;
 using Prism.Commands;
 using Application = System.Windows.Application;
 
@@ -55,7 +56,7 @@ namespace JuliusSweetland.OptiKey.EyeMine
         private IWindowManipulationService mainWindowManipulationService;
 
         // Handle to management window whilst open
-        private ManagementWindow managementWindow;
+        private ManagementWindowEyeMine managementWindow;
 
         #region Main
         [STAThread]
@@ -252,7 +253,7 @@ namespace JuliusSweetland.OptiKey.EyeMine
 
             if (managementWindow == null)
             {
-                managementWindow = new ManagementWindow(audioService,
+                managementWindow = new ManagementWindowEyeMine(audioService,
                     dictionaryService, mainWindowManipulationService);
 
                 EventHandler closeHandler = null;
