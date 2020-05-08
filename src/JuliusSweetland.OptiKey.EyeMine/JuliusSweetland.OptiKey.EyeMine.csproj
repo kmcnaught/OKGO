@@ -196,6 +196,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UI\Views\ManagementView.xaml.cs">
+      <DependentUpon>ManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\DictionaryView.xaml.cs">
+      <DependentUpon>DictionaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\OtherView.xaml.cs">
+      <DependentUpon>OtherView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\PointingAndSelectingView.xaml.cs">
+      <DependentUpon>PointingAndSelectingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\VisualsView.xaml.cs">
+      <DependentUpon>VisualsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Windows\ManagementWindowEyeMine.xaml.cs">
       <DependentUpon>ManagementWindowEyeMine.xaml</DependentUpon>
     </Compile>
@@ -210,6 +228,30 @@
     <Page Include="Resources\Icons\KeySymbolsEyeMine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\ManagementView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\AboutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\DictionaryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\OtherView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\PointingAndSelectingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\VisualsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Windows\ManagementWindowEyeMine.xaml">
       <Generator>MSBuild:Compile</Generator>
