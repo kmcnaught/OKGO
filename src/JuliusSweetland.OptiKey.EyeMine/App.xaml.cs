@@ -291,8 +291,6 @@ namespace JuliusSweetland.OptiKey.EyeMine
 
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.VERSION_DESCRIPTION, DiagnosticInfo.AssemblyVersion));
                 message.AppendLine("");
-                //message.AppendLine(string.Format(OptiKey.Properties.Resources.KEYBOARD_AND_DICTIONARY_LANGUAGE_DESCRIPTION, Settings.Default.KeyboardAndDictionaryLanguage.ToDescription()));
-                //message.AppendLine(string.Format(OptiKey.Properties.Resources.UI_LANGUAGE_DESCRIPTION, Settings.Default.UiLanguage.ToDescription()));
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.POINTING_SOURCE_DESCRIPTION, Settings.Default.PointsSource.ToDescription()));
                 message.AppendLine("");
 
@@ -333,10 +331,7 @@ namespace JuliusSweetland.OptiKey.EyeMine
                 }
 
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.POINT_SELECTION_DESCRIPTION, pointSelectionSb));
-                //message.AppendLine("");
-                //message.AppendLine(OptiKey.Properties.Resources.MANAGEMENT_CONSOLE_DESCRIPTION);
-                //message.AppendLine(OptiKey.Properties.Resources.WEBSITE_DESCRIPTION);
-
+                
                 inputService.RequestSuspend();
                 audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
                 mainViewModel.RaiseToastNotification(
