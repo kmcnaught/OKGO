@@ -15,6 +15,7 @@ namespace JuliusSweetland.OptiKey.Enums
         EnglishCanada,
         EnglishUK,
         EnglishUS,
+        EnglishMinecraft,
         FinnishFinland,
         FrenchCanada,
         FrenchFrance,
@@ -53,6 +54,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.DutchNetherlands: return Resources.DUTCH_NETHERLANDS;
                 case Languages.EnglishCanada: return Resources.ENGLISH_CANADA;
                 case Languages.EnglishUK: return Resources.ENGLISH_UK;
+                case Languages.EnglishMinecraft: return Resources.ENGLISH_UK;
                 case Languages.EnglishUS: return Resources.ENGLISH_US;
                 case Languages.FinnishFinland: return Resources.FINNISH_FINLAND;
                 case Languages.FrenchCanada: return Resources.FRENCH_CANADA;
@@ -91,6 +93,7 @@ namespace JuliusSweetland.OptiKey.Enums
                 case Languages.DanishDenmark: return CultureInfo.GetCultureInfo("da-DK");
                 case Languages.DutchBelgium: return CultureInfo.GetCultureInfo("nl-BE");
                 case Languages.DutchNetherlands: return CultureInfo.GetCultureInfo("nl-NL");
+                case Languages.EnglishMinecraft: return CultureInfo.GetCultureInfo("en-GB");
                 case Languages.EnglishUS: return CultureInfo.GetCultureInfo("en-US");
                 case Languages.EnglishUK: return CultureInfo.GetCultureInfo("en-GB");
                 case Languages.EnglishCanada: return CultureInfo.GetCultureInfo("en-CA");
