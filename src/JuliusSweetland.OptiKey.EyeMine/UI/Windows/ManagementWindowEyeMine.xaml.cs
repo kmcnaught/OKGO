@@ -8,11 +8,11 @@ using MahApps.Metro.Controls;
 namespace JuliusSweetland.OptiKey.EyeMine.UI.Windows
 {
     /// <summary>
-    /// Interaction logic for ManagementWindow.xaml
+    /// Interaction logic for ManagementWindowEyeMine.xaml
     /// </summary>
-    public partial class ManagementWindow : MetroWindow
+    public partial class ManagementWindowEyeMine : MetroWindow
     {
-        public ManagementWindow(
+        public ManagementWindowEyeMine(
             IAudioService audioService,
             IDictionaryService dictionaryService,
             IWindowManipulationService windowManipulationService)

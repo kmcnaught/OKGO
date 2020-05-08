@@ -196,8 +196,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UI\Windows\ManagementWindow.xaml.cs">
-      <DependentUpon>ManagementWindow.xaml</DependentUpon>
+    <Compile Include="UI\Windows\ManagementWindowEyeMine.xaml.cs">
+      <DependentUpon>ManagementWindowEyeMine.xaml</DependentUpon>
     </Compile>
     <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -211,7 +211,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Windows\ManagementWindow.xaml">
+    <Page Include="UI\Windows\ManagementWindowEyeMine.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

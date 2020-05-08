@@ -1,7 +1,7 @@
 ﻿<!--
 Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 -->
-<mahapps:MetroWindow x:Class="JuliusSweetland.OptiKey.EyeMine.UI.Windows.ManagementWindow"
+<mahapps:MetroWindow x:Class="JuliusSweetland.OptiKey.EyeMine.UI.Windows.ManagementWindowEyeMine"
                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                      xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
