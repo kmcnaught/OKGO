@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
@@ -34,6 +35,7 @@ using presage;
 using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using WindowsRecipes.TaskbarSingleInstance;
+using Prism.Commands;
 using Application = System.Windows.Application;
 
 namespace JuliusSweetland.OptiKey.EyeMine
@@ -45,10 +47,16 @@ namespace JuliusSweetland.OptiKey.EyeMine
     {
         private static SplashScreen splashScreen;
 
+        private ICommand managementWindowRequestCommand;
+
         private IKeyStateService keyStateService;
         private IAudioService audioService;
         private IDictionaryService dictionaryService;
         private IWindowManipulationService mainWindowManipulationService;
+
+        // Handle to management window whilst open
+        private ManagementWindow managementWindow;
+
         #region Main
         [STAThread]
         public static void Main()
@@ -224,6 +232,46 @@ namespace JuliusSweetland.OptiKey.EyeMine
                 Log.Error("Error starting up application", ex);
                 throw;
             }
+
+            // Set up any mocks to replace core UIs etc
+            // use reflection to inject a mock instance
+            managementWindowRequestCommand = new DelegateCommand(RequestManagementWindow);
+
+            typeof(MainWindow)
+                .GetField("managementWindowRequestCommand", BindingFlags.Instance | BindingFlags.NonPublic)
+                .SetValue(MainWindow, managementWindowRequestCommand);
+                
+
+        }
+
+        private void RequestManagementWindow()
+        {
+            Log.Info("RequestManagementWindow called.");
+            
+            var restoreModifierStates = keyStateService.ReleaseModifiers(Log);
+
+            if (managementWindow == null)
+            {
+                managementWindow = new ManagementWindow(audioService,
+                    dictionaryService, mainWindowManipulationService);
+
+                EventHandler closeHandler = null;
+                closeHandler = (sender, e) =>
+                {
+                    managementWindow.Closed -= closeHandler;
+                    managementWindow = null;
+                };
+                managementWindow.Closed += closeHandler;
+
+                Log.Info("Showing Management Window (non-modal)");
+                managementWindow.Show();
+            }
+            else
+            {
+                managementWindow.Focus();
+            }
+
+            Log.Info("RequestManagementWindow complete.");
         }
         #endregion
 
