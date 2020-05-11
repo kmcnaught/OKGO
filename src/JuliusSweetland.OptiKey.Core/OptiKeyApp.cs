@@ -251,9 +251,8 @@ namespace JuliusSweetland.OptiKey
                 {
                     try
                     {
-                        string ApplicationDataSubPath = @"OptiKey\OptiKey";
-                        var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
-                        var database = Path.Combine(path, @"Presage\database.db");
+                        var path = DiagnosticInfo.GetAppDataPath(@"Presage");
+                        var database = Path.Combine(path, @"database.db");
                         if (!File.Exists(database))
                         {
                             try
@@ -1015,9 +1014,7 @@ namespace JuliusSweetland.OptiKey
 
         protected static string GetDefaultUserKeyboardFolder()
         {
-            const string applicationDataSubPath = @"OptiKey\OptiKey\Keyboards\";
-
-            var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), applicationDataSubPath);
+            var applicationDataPath = DiagnosticInfo.GetAppDataPath(@"Keyboards");
 
             // If directory doesn't exist, assume that this is the first run. So, move dynamic keyboards from installation package to target path
             if (!Directory.Exists(applicationDataPath))
@@ -1047,9 +1044,7 @@ namespace JuliusSweetland.OptiKey
 
         protected static string GetDefaultPluginsFolder()
         {
-            const string applicationDataSubPath = @"OptiKey\OptiKey\Plugins\";
-
-            var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), applicationDataSubPath);
+            var applicationDataPath = DiagnosticInfo.GetAppDataPath(@"Plugins");
 
             // If directory doesn't exist, assume that this is the first run. So, move plugins from installation package to target path
             if (!Directory.Exists(applicationDataPath))
@@ -1084,7 +1079,8 @@ namespace JuliusSweetland.OptiKey
                 if (Settings.Default.CommuniKateStagedForDeletion)
                 {
                     Log.Info("Deleting previously unpacked CommuniKate pageset.");
-                    string ApplicationDataSubPath = @"OptiKey\OptiKey\CommuniKate\";
+                    var ApplicationDataSubPath = DiagnosticInfo.GetAppDataPath(@"Keyboards");
+
                     var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
                     if (Directory.Exists(path))
                     {

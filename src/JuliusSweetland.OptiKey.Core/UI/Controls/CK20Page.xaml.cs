@@ -14,6 +14,7 @@ using Microsoft.Win32;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Extensions;
+using JuliusSweetland.OptiKey.Static;
 using log4net;
 
 namespace JuliusSweetland.OptiKey.UI.Controls
@@ -24,7 +25,6 @@ namespace JuliusSweetland.OptiKey.UI.Controls
     public partial class CK20Page : UserControl
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private const string ApplicationDataSubPath = @"OptiKey\OptiKey\CommuniKate\";
 
         #region OBF Definition
 
@@ -672,8 +672,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
 
         private static string CKpath()
         {
-            var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
-            return applicationDataPath;
+            return DiagnosticInfo.GetAppDataPath(@"CommuniKate");
         }
 
         private static Color dec2hex(string dec)

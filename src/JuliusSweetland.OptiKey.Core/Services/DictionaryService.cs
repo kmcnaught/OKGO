@@ -13,6 +13,7 @@ using System.Reactive;
 using System.Text;
 using System.Threading;
 using System.Windows;
+using JuliusSweetland.OptiKey.Static;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -20,7 +21,6 @@ namespace JuliusSweetland.OptiKey.Services
     {
         #region Constants
 
-        private const string ApplicationDataSubPath = @"OptiKey\OptiKey\Dictionaries\";
         private const string OriginalDictionariesSubPath = @"Dictionaries\";
         private const string DictionaryFileType = ".dic";
 
@@ -195,7 +195,7 @@ namespace JuliusSweetland.OptiKey.Services
 
         private static string GetUserDictionaryPath(string fileName)
         {
-            var applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ApplicationDataSubPath);
+            var applicationDataPath = DiagnosticInfo.GetAppDataPath(@"Dictionaries");
             Directory.CreateDirectory(applicationDataPath);			//Does nothing if already exists
             return Path.Combine(applicationDataPath, fileName);
         }

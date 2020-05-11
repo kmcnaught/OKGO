@@ -12,6 +12,7 @@ using JuliusSweetland.OptiKey.Native.Common.Enums;
 using JuliusSweetland.OptiKey.Native.Common.Structs;
 using Microsoft.Win32;
 using JuliusSweetland.OptiKey.Properties;
+using System.IO;
 
 namespace JuliusSweetland.OptiKey.Static
 {
@@ -78,6 +79,15 @@ namespace JuliusSweetland.OptiKey.Static
         public static string OperatingSystemBitness
         {
             get { return Environment.Is64BitOperatingSystem ? "64-Bit" : "32-Bit"; }
+        }
+
+        public static string AppDataDirectoryName { get; set; } = @"OptiKey\OptiKey";
+        
+        public static string GetAppDataPath(string subPath)
+        {
+            // Path for sub directory, e.g. %APPDATA%/Optikey/Optikey/subPath
+            string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            return Path.Combine(appData, AppDataDirectoryName, subPath);
         }
 
         public static string OperatingSystemVersion
