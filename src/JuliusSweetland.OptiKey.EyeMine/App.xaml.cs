@@ -108,6 +108,13 @@ namespace JuliusSweetland.OptiKey.EyeMine
         {
             try
             {
+                DiagnosticInfo.AppDataDirectoryName = @"SpecialEffect\EyeMineV2";
+
+                // Swap out the AppData directory being used
+                /*typeof(DiagnosticInfo)
+                    .GetProperty("AppDataDirectoryName")
+                    .SetValue(null, @"SpecialEffect\EyeMine");
+                    */
                 Log.Info("Boot strapping the services and UI.");
 
                 // We manually close this because automatic closure steals focus from the 
