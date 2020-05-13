@@ -1,0 +1,98 @@
+<!--
+Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+-->
+<Keyboard> 
+	<BorderThickness>1,30,1,1</BorderThickness>
+   <HideFromKeyboardMenu>True</HideFromKeyboardMenu>
+   <Name>Minecraft 8x2</Name>
+   <SymbolMargin>20</SymbolMargin>
+   <Grid>
+      <Rows>2</Rows>
+      <Cols>8</Cols>
+   </Grid>
+   <Keys>
+	  <DynamicKey Col="0" Row="0">
+        <Symbol>MinecraftPickBlock</Symbol>
+     	<Action>NumPad2</Action>
+         <Label>Pick\nBlock</Label>
+         </DynamicKey>	  
+	  <DynamicKey Col="0" Row="1">	
+		 <Symbol>ArrowPointingToLeftIcon</Symbol>
+		 <ChangeKeyboard BackReturnsHere="False">2_MC_8_2_1.xml</ChangeKeyboard>
+         </DynamicKey>
+	  
+	  
+	  <DynamicKey Col="1" Row="0">	  
+		<Action>NumPad4</Action>
+         <Label>Prev\nitem</Label>
+		 <Symbol>MinecraftPrev</Symbol>
+         </DynamicKey>
+	  
+	<DynamicKey Col="1" Row="1">
+		 <Symbol>MouseRightDownUpIcon</Symbol>	 
+		 <Action>NumPad1</Action>
+         <Label>Toggle\nuse item</Label>
+         </DynamicKey>
+	
+	
+	  <DynamicKey Col="2" Row="0">
+		<Action>NumPad5</Action>
+         <Label>Next\nitem</Label>
+		 <Symbol>MinecraftNext</Symbol>
+         </DynamicKey>
+	  <DynamicKey Col="2" Row="1">
+		 <Symbol>MouseRightClickIcon</Symbol>	 
+		 <Action>NumPad0</Action>
+         <Label>Use\nitem</Label>
+         </DynamicKey>
+	  <DynamicKey Col="3" Row="0" Width="2">
+		 <Symbol>MinecraftLookWithCursor</Symbol>	
+		 <Text>y</Text>
+         <Label>Look\nwith\nGaze</Label>
+         <SharedSizeGroup>Look</SharedSizeGroup>
+    </DynamicKey> 
+	  
+	  <DynamicKey Col="3" Row="1" Width="2">
+         <Label>Toggle\nwalking</Label>
+		 <Symbol>MinecraftWalk</Symbol>
+         <Text>h</Text>
+         <SharedSizeGroup>Walk</SharedSizeGroup>
+      </DynamicKey>
+	  
+	  <DynamicKey Col="5" Row="0">
+         <Label>Careful\nwalk</Label>
+		 <Symbol>MinecraftMoveLegacy</Symbol>
+         <Text>b</Text>
+         </DynamicKey>
+
+	  <DynamicKey Col="5" Row="1">
+         <Label>Toggle\nsneak</Label>
+		 <Symbol>MinecraftSneak</Symbol>
+         <Text>z</Text>
+         </DynamicKey>	 	 
+	
+	 <DynamicKey Col="6" Row="0">
+         <Label>Mine x1</Label>
+		 <Symbol>MinecraftMineOnce</Symbol>
+         <Text>n</Text>
+         </DynamicKey>
+      <DynamicKey Col="6" Row="1">
+			<Label>Swap mine\nand place</Label>
+			<Symbol>MinecraftSwapMinePlace</Symbol>
+			<Action>F10</Action>
+            </DynamicKey>
+	 
+    <DynamicKey Col="7" Row="0">
+			<Label>Auto\nPillar</Label>
+			<Index>1</Index>
+			<Symbol>MinecraftPlaceBlock</Symbol>
+			<Text>l</Text>
+			</DynamicKey>
+ 
+    <DynamicKey Col="7" Row="1">
+      <ChangeKeyboard BackReturnsHere="False">2_MC_8_2_inv.xml</ChangeKeyboard>
+      <Symbol>ArrowPointingToRightIcon</Symbol>
+      </DynamicKey>	  
+    
+	</Keys>
+</Keyboard>

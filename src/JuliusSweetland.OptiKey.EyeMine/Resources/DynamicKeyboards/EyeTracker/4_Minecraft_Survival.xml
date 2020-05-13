@@ -1,0 +1,149 @@
+<!--
+Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+-->
+<Keyboard>
+    <Name>Minecraft\nSurvival</Name>
+    <SymbolMargin>10</SymbolMargin>
+    <BorderThickness>1,1,1,1</BorderThickness>
+    <Grid>
+        <Rows>3</Rows>
+        <Cols>10</Cols>
+    </Grid>
+    <Keys>
+        <DynamicKey Col="0" Row="0">
+            <Label>Open\ninventory</Label>
+            <Text>e</Text>
+        </DynamicKey>
+        <DynamicKey Col="0" Row="1">
+            <Label>Open\nchest</Label>
+            <Text>[</Text>
+        </DynamicKey>
+        <DynamicKey Col="0" Row="2">
+            <Label>Open\ncrafting table</Label>
+            <Text>]</Text>
+        </DynamicKey>
+        <DynamicKey Col="1" Row="0">
+            <Label>Place\ninput</Label>
+            <Symbol>MinecraftInventoryBlank</Symbol>
+            <Text>r</Text>
+        </DynamicKey>
+        <DynamicKey Col="2" Row="0">
+            <Label>Place\ninput</Label>
+            <Symbol>MinecraftInventoryTopMid</Symbol>
+            <Text>t</Text>
+        </DynamicKey>
+        <DynamicKey Col="3" Row="0">
+            <Label>Place\ninput</Label>
+            <Symbol>MinecraftInventoryTopRight</Symbol>
+            <Text>y</Text>
+        </DynamicKey>
+        <DynamicKey Col="1" Row="1">
+            <Label>Place\ninput</Label>
+            <Symbol>MinecraftInventoryBlank</Symbol>
+            <Text>f</Text>
+        </DynamicKey>
+        <DynamicKey Col="2" Row="1">
+            <Label>Place\ninput</Label>
+            <Symbol>MinecraftInventoryMidMid</Symbol>
+            <Text>g</Text>
+        </DynamicKey>
+        <DynamicKey Col="3" Row="1">
+            <Label>Place\ninput</Label>
+            <Symbol>MinecraftInventoryMidRight</Symbol>
+            <Text>h</Text>
+        </DynamicKey>
+        <DynamicKey Col="1" Row="2">
+            <Label>Place\ninput</Label>
+            <Symbol>MinecraftInventoryBlank</Symbol>
+            <Text>v</Text>
+        </DynamicKey>
+        <DynamicKey Col="2" Row="2">
+            <Label>Place\ninput</Label>
+            <Symbol>MinecraftInventoryBlank</Symbol>
+            <Text>b</Text>
+        </DynamicKey>
+        <DynamicKey Col="3" Row="2">
+            <Label>Place\ninput</Label>
+            <Symbol>MinecraftInventoryBlank</Symbol>
+            <Text>n</Text>
+        </DynamicKey>
+        <DynamicKey Col="4" Row="0">
+            <Label>Hover\nitem</Label>
+            <Symbol>MouseMoveToIcon</Symbol>
+            <Action>MouseMoveTo</Action>
+        </DynamicKey>
+        <DynamicKey Col="4" Row="1">
+            <Label>Take\noutput</Label>
+            <Symbol>MinecraftInventoryOut</Symbol>
+            <Text>u</Text>
+        </DynamicKey>
+        <DynamicKey Col="4" Row="2">
+            <Label>Left\nclick</Label>
+            <Symbol>MouseLeftClickWithMouseIcon</Symbol>
+            <Action>MouseMoveAndLeftClick</Action>
+        </DynamicKey>
+        <DynamicKey Col="5" Row="0">
+            <Label>1</Label>
+            <Text>1</Text>
+        </DynamicKey>
+        <DynamicKey Col="6" Row="0">
+            <Label>2</Label>
+            <Text>2</Text>
+        </DynamicKey>
+        <DynamicKey Col="7" Row="0">
+            <Label>3</Label>
+            <Text>3</Text>
+        </DynamicKey>
+        <DynamicKey Col="5" Row="1">
+            <Label>4</Label>
+            <Text>4</Text>
+        </DynamicKey>
+        <DynamicKey Col="6" Row="1">
+            <Label>5</Label>
+            <Text>5</Text>
+        </DynamicKey>
+        <DynamicKey Col="7" Row="1">
+            <Label>6</Label>
+            <Text>6</Text>
+        </DynamicKey>
+        <DynamicKey Col="5" Row="2">
+            <Label>7</Label>
+            <Text>7</Text>
+        </DynamicKey>
+        <DynamicKey Col="6" Row="2">
+            <Label>8</Label>
+            <Text>8</Text>
+        </DynamicKey>
+        <DynamicKey Col="7" Row="2">
+            <Label>9</Label>
+            <Text>9</Text>
+        </DynamicKey>
+        <DynamicKey Col="9" Row="0">
+            <Label>ESC</Label>
+            <Symbol>MinecraftEscButton</Symbol>
+            <Action>Escape</Action>
+        </DynamicKey>
+        <DynamicKey Col="9" Row="1">
+            <Label>Magnify</Label>
+            <Symbol>MouseMagnifierIcon</Symbol>
+            <Action>MouseMagnifier</Action>
+        </DynamicKey>
+        <DynamicKey Col="9" Row="2">
+            <Label>Back</Label>
+            <Symbol>BackIcon</Symbol>
+            <Action>BackFromKeyboard</Action>
+        </DynamicKey>
+        <DynamicKey Col="8" Row="0">
+            <Label>Scroll up</Label>
+            <Symbol>MouseScrollToTopIcon</Symbol>
+            <Action>MouseScrollToTop</Action>
+        </DynamicKey>
+        <DynamicKey Col="8" Row="1">
+            <Label>Scroll down</Label>
+            <Symbol>MouseScrollToBottomIcon</Symbol>
+            <Action>MouseScrollToBottom</Action>
+        </DynamicKey>
+        <DynamicKey Col="8" Row="2">
+            </DynamicKey>
+    </Keys>
+</Keyboard>

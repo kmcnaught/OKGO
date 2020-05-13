@@ -1,0 +1,195 @@
+<!--
+Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+-->
+<Keyboard>
+   <Name>Minecraft\nAdvanced</Name>
+   <SymbolMargin>20</SymbolMargin>
+   <Grid>
+      <Rows>7</Rows>
+      <Cols>9</Cols>
+   </Grid>
+   <InitialKeyStates>
+     <KeyLockedDown>MouseMagnifier</KeyLockedDown>   
+   </InitialKeyStates>
+	<Keys>
+		<DynamicKey Col="0" Height="1" Row="0" Width="2">
+			<Label>Building</Label>
+			<Index>0</Index>
+			<Text />
+			</DynamicKey>
+		<DynamicKey Col="2" Height="1" Row="0" Width="4">
+			<Label>Navigating</Label>
+			<Index>1</Index>
+			<Text />
+			</DynamicKey>
+		<DynamicKey Col="6" Height="1" Row="0" Width="1">
+			<Label />
+			<Index>2</Index>
+			<Text />
+			</DynamicKey>
+		<DynamicKey Col="7" Height="1" Row="0" Width="1">
+			<Label>Mining</Label>
+			<Index>3</Index>
+			<Text />
+			</DynamicKey>
+		<DynamicKey Col="8" Height="1" Row="0" Width="1">
+			<Label />
+			<Index>4</Index>
+			<Text />
+			</DynamicKey>
+		<DynamicKey Col="0" Height="2" Row="1" Width="1">
+			<Label>Prev\nitem</Label>
+			<Index>5</Index>
+			<Symbol>MinecraftPrev</Symbol>
+			<Action>NumPad4</Action>
+			</DynamicKey>
+		<DynamicKey Col="1" Height="2" Row="1" Width="1">
+			<Label>Next\nitem</Label>
+			<Index>6</Index>
+			<Symbol>MinecraftNext</Symbol>
+			<Action>NumPad5</Action>
+			</DynamicKey>
+		<DynamicKey Col="2" Height="2" Row="1" Width="1">
+			<Label>Fly</Label>
+			<Index>7</Index>
+			<Symbol>MinecraftFly</Symbol>
+			<Text>,</Text>
+			</DynamicKey>
+        <DynamicKey Col="3" Height="2" Row="1" Width="2">
+		 <Symbol>MinecraftLookWithCursor</Symbol>	
+		 <Text>y</Text>
+         <Label>Look\nwith\nGaze</Label>
+         <Index>8</Index>
+        </DynamicKey> 	 
+		<DynamicKey Col="5" Height="2" Row="1" Width="1">
+			<Label>Toggle\nauto-jump</Label>
+			<Index>9</Index>
+			<Symbol>MinecraftAutoJump</Symbol>
+			<Text>j</Text>
+			</DynamicKey>
+		<DynamicKey Col="6" Height="2" Row="1" Width="1">
+			<Label>Toggle\nattack</Label>
+			<Index>10</Index>
+			<Symbol>MinecraftAttackContinuous</Symbol>
+			<Text>r</Text>
+			</DynamicKey>
+		<DynamicKey Col="7" Height="2" Row="1" Width="1">
+			<Label>Mine\none block</Label>
+			<Index>11</Index>
+			<Symbol>MinecraftMineOnce</Symbol>
+			<Text>n</Text>
+			</DynamicKey>
+		<DynamicKey Col="8" Height="2" Row="1" Width="1">
+			<Label>Esc</Label>
+			<Index>12</Index>
+			<Symbol>MinecraftEscButton</Symbol>
+			<Action>Escape</Action>
+			</DynamicKey>
+		<DynamicKey Col="0" Height="2" Row="3" Width="1">
+			<Label>Use\nItem</Label>
+			<Index>13</Index>
+			<Symbol>MouseRightClickIcon</Symbol>
+			<Action>NumPad0</Action>
+			</DynamicKey>
+		<DynamicKey Col="1" Height="2" Row="3" Width="1">
+			<Label>Toggle\nuse</Label>
+			<Index>14</Index>
+			<Symbol>MouseRightDownUpIcon</Symbol>
+			<Action>NumPad1</Action>
+			</DynamicKey>
+		<DynamicKey Col="2" Height="2" Row="3" Width="1">
+			<Label>Fly\nUp</Label>
+			<Index>15</Index>
+			<Symbol>MinecraftFlyUp</Symbol>
+			<Text>.</Text>
+			</DynamicKey>
+		<DynamicKey Col="3" Height="2" Row="3" Width="1">
+			<Label>Walk</Label>
+			<Index>16</Index>
+			<Symbol>MinecraftWalk</Symbol>
+			<Text>h</Text>
+			</DynamicKey>
+		<DynamicKey Col="4" Height="2" Row="3" Width="1">
+			<Label>Careful\nwalk</Label>
+			<Index>17</Index>
+			<Symbol>MinecraftMoveLegacy</Symbol>
+			<Text>b</Text>
+			</DynamicKey>
+		<DynamicKey Col="5" Height="2" Row="3" Width="1">
+			<Label>Sneak</Label>
+			<Index>18</Index>
+			<Symbol>MinecraftSneak</Symbol>
+			<Text>z</Text>
+			</DynamicKey>
+		<DynamicKey Col="6" Height="2" Row="3" Width="1">
+			<Label>Swap mine\nand place</Label>
+			<Index>19</Index>
+			<Symbol>MinecraftSwapMinePlace</Symbol>
+			<Action>F10</Action>
+			</DynamicKey>
+		<DynamicKey Col="7" Height="2" Row="3" Width="1">
+			<Label>Toggle\nmining</Label>
+			<Index>20</Index>
+			<Symbol>MinecraftMineContinuous</Symbol>
+			<Text>m</Text>
+			</DynamicKey>
+		<DynamicKey Col="8" Height="2" Row="3" Width="1">
+			<Label>Inventory\netc...</Label>
+			<Index>21</Index>
+			<ChangeKeyboard BackReturnsHere="True">3_InventoryKeyboard</ChangeKeyboard>
+			</DynamicKey>
+		<DynamicKey Col="0" Height="2" Row="5" Width="1">
+			<Label>Auto\nPillar</Label>
+			<Index>22</Index>
+			<Symbol>MinecraftPlaceBlock</Symbol>
+			<Text>l</Text>
+			</DynamicKey>
+		<DynamicKey Col="1" Height="2" Row="5" Width="1">
+			<Label>Pick\nBlock</Label>
+			<Index>23</Index>
+			<Symbol>MinecraftPickBlock</Symbol>
+			<Action>NumPad2</Action>
+			</DynamicKey>
+		<DynamicKey Col="2" Height="2" Row="5" Width="1">
+			<Label>Auto\nFly</Label>
+			<Index>24</Index>
+			<Symbol>MinecraftAutoFly</Symbol>
+			<Text>g</Text>
+			</DynamicKey>
+		<DynamicKey Col="3" Height="2" Row="5" Width="1">
+			<Label>Night\nVision</Label>
+			<Index>25</Index>
+			<Symbol>MinecraftNightVision</Symbol>
+			<Action>F12</Action>
+			</DynamicKey>
+		<DynamicKey Col="4" Height="2" Row="5" Width="1">
+			<Label>Chat...</Label>
+			<Index>26</Index>
+			<Symbol>ChatIcon</Symbol>
+			<ChangeKeyboard BackReturnsHere="True">3_ChatKeyboard</ChangeKeyboard>
+			</DynamicKey>
+		<DynamicKey Col="5" Height="2" Row="5" Width="1">
+			<Label>Toggle\nSwim</Label>
+			<Index>27</Index>
+			<Symbol>MinecraftSwim</Symbol>
+			<Text>v</Text>
+			</DynamicKey>
+		<DynamicKey Col="6" Height="2" Row="5" Width="1">
+			<Label>Left\nclick</Label>
+			<Index>28</Index>
+			<Symbol>MouseLeftClickWithMouseIcon</Symbol>
+			<Action>MouseMoveAndLeftClick</Action>
+			</DynamicKey>
+		<DynamicKey Col="7" Height="2" Row="5" Width="1">
+			<Label>Ride/\nDismount</Label>
+			<Index>29</Index>
+			<Text>c</Text>
+			</DynamicKey>
+		<DynamicKey Col="8" Height="2" Row="5" Width="1">
+			<Label>Back</Label>
+			<Index>30</Index>
+			<Symbol>BackIcon</Symbol>
+			<Action>BackFromKeyboard</Action>
+			</DynamicKey>
+	</Keys>
+</Keyboard>

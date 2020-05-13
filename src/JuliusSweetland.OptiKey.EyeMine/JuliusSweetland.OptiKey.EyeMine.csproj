@@ -267,6 +267,87 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\0_MC_5_1_1_intro.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\0_MC_5_1_2_intro.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\1_MC_5_1_1_advanced.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\1_MC_5_1_2_advanced.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\1_MC_5_1_build1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\1_MC_5_1_build2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\1_MC_5_1_misc.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\2_MC_8_2_1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\2_MC_8_2_2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\2_MC_8_2_inv.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\3_ChatKeyboard.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\3_InventoryKeyboard.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\3_MainKeyboard.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\4_Minecraft_Survival.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\Mouse\0_MC_5_1_1_intro.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\Mouse\0_MC_5_1_2_intro.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\Mouse\1_MC_5_1_1_advanced.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\Mouse\1_MC_5_1_2_advanced.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\Mouse\1_MC_5_1_build1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\Mouse\1_MC_5_1_build2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\Mouse\1_MC_5_1_misc.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\Mouse\2_MC_8_2_1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\Mouse\2_MC_8_2_2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\Mouse\2_MC_8_2_inv.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\Mouse\3_ChatKeyboard.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\Mouse\3_InventoryKeyboard.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\DynamicKeyboards\Mouse\3_MainKeyboard.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <SplashScreen Include="Resources\Icons\EyeMineSplash.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </SplashScreen>
@@ -279,46 +360,6 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\BigHackerKeyboard.xml">
-      <Link>Resources\DynamicKeyboards\BigHackerKeyboard.xml</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml">
-      <Link>Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml">
-      <Link>Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Bottom.xml">
-      <Link>Resources\DynamicKeyboards\Samples\Demo_Bottom.xml</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Gamepad.xml">
-      <Link>Resources\DynamicKeyboards\Samples\Demo_Gamepad.xml</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Left.xml">
-      <Link>Resources\DynamicKeyboards\Samples\Demo_Left.xml</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\FullQwerty.xml">
-      <Link>Resources\DynamicKeyboards\Samples\FullQwerty.xml</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\FullSymbol.xml">
-      <Link>Resources\DynamicKeyboards\Samples\FullSymbol.xml</Link>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\B612-licence-epl-v10.html">
       <Link>Resources\Fonts\B612-licence-epl-v10.html</Link>
     </Content>

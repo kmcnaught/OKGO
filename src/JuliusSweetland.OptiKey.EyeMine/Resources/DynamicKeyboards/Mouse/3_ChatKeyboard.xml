@@ -1,0 +1,190 @@
+<!--
+Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+-->
+<Keyboard>
+   <ShowOutputPanel>True</ShowOutputPanel>
+   <Name>Minecraft 10x3 chat</Name>
+   <SymbolMargin>20</SymbolMargin>
+   <Grid>
+      <Rows>3</Rows>
+      <Cols>22</Cols>
+   </Grid>
+   <InitialKeyStates>
+     <KeyUp>MouseMagneticCursor</KeyUp>
+   </InitialKeyStates>
+   <HideFromKeyboardMenu>True</HideFromKeyboardMenu>
+
+	<Keys>
+		<DynamicKey Col="0" Height="1" Row="0" Width="2">
+			<Label>q</Label>
+			<Index>0</Index>
+			<Text>q</Text>
+			</DynamicKey>
+		<DynamicKey Col="2" Height="1" Row="0" Width="2">
+			<Label>w</Label>
+			<Index>1</Index>
+			<Text>w</Text>
+			</DynamicKey>
+		<DynamicKey Col="4" Height="1" Row="0" Width="2">
+			<Label>e</Label>
+			<Index>2</Index>
+			<Text>e</Text>
+			</DynamicKey>
+		<DynamicKey Col="6" Height="1" Row="0" Width="2">
+			<Label>r</Label>
+			<Index>3</Index>
+			<Text>r</Text>
+			</DynamicKey>
+		<DynamicKey Col="8" Height="1" Row="0" Width="2">
+			<Label>t</Label>
+			<Index>4</Index>
+			<Text>t</Text>
+			</DynamicKey>
+		<DynamicKey Col="10" Height="1" Row="0" Width="2">
+			<Label>y</Label>
+			<Index>5</Index>
+			<Text>y</Text>
+			</DynamicKey>
+		<DynamicKey Col="12" Height="1" Row="0" Width="2">
+			<Label>u</Label>
+			<Index>6</Index>
+			<Text>u</Text>
+			</DynamicKey>
+		<DynamicKey Col="14" Height="1" Row="0" Width="2">
+			<Label>i</Label>
+			<Index>7</Index>
+			<Text>i</Text>
+			</DynamicKey>
+		<DynamicKey Col="16" Height="1" Row="0" Width="2">
+			<Label>o</Label>
+			<Index>8</Index>
+			<Text>o</Text>
+			</DynamicKey>
+		<DynamicKey Col="18" Height="1" Row="0" Width="2">
+			<Label>p</Label>
+			<Index>9</Index>
+			<Text>p</Text>
+			</DynamicKey>
+		<DynamicKey Col="20" Height="1" Row="0" Width="2">
+			<Label>Open\nChat</Label>
+			<Index>10</Index>
+			<Symbol>ChatIcon</Symbol>
+			<Action>End</Action>
+			</DynamicKey>
+		<DynamicKey Col="0" Height="1" Row="1" Width="2">
+			<Label>a</Label>
+			<Index>11</Index>
+			<Text>a</Text>
+			</DynamicKey>
+		<DynamicKey Col="2" Height="1" Row="1" Width="2">
+			<Label>s</Label>
+			<Index>12</Index>
+			<Text>s</Text>
+			</DynamicKey>
+		<DynamicKey Col="4" Height="1" Row="1" Width="2">
+			<Label>d</Label>
+			<Index>13</Index>
+			<Text>d</Text>
+			</DynamicKey>
+		<DynamicKey Col="6" Height="1" Row="1" Width="2">
+			<Label>f</Label>
+			<Index>14</Index>
+			<Text>f</Text>
+			</DynamicKey>
+		<DynamicKey Col="8" Height="1" Row="1" Width="2">
+			<Label>g</Label>
+			<Index>15</Index>
+			<Text>g</Text>
+			</DynamicKey>
+		<DynamicKey Col="10" Height="1" Row="1" Width="2">
+			<Label>h</Label>
+			<Index>16</Index>
+			<Text>h</Text>
+			</DynamicKey>
+		<DynamicKey Col="12" Height="1" Row="1" Width="2">
+			<Label>j</Label>
+			<Index>17</Index>
+			<Text>j</Text>
+			</DynamicKey>
+		<DynamicKey Col="14" Height="1" Row="1" Width="2">
+			<Label>k</Label>
+			<Index>18</Index>
+			<Text>k</Text>
+			</DynamicKey>
+		<DynamicKey Col="16" Height="1" Row="1" Width="2">
+			<Label>l</Label>
+			<Index>19</Index>
+			<Text>l</Text>
+			</DynamicKey>
+		<DynamicKey Col="18" Height="1" Row="1" Width="2">
+			<Label>Delete</Label>
+			<Index>20</Index>
+			<Symbol>BackOneIcon</Symbol>
+			<Action>BackOne</Action>
+			</DynamicKey>
+		<DynamicKey Col="20" Height="1" Row="1" Width="2">
+			<Label>Delete\nWord</Label>
+			<Index>21</Index>
+			<Symbol>BackManyIcon</Symbol>
+			<Action>BackMany</Action>
+			</DynamicKey>
+		<DynamicKey Col="0" Height="1" Row="2" Width="1">
+			<Label />
+			<Index>22</Index>
+			<Text />
+			</DynamicKey>
+		<DynamicKey Col="1" Height="1" Row="2" Width="2">
+			<Label>z</Label>
+			<Index>23</Index>
+			<Text>z</Text>
+			</DynamicKey>
+		<DynamicKey Col="3" Height="1" Row="2" Width="2">
+			<Label>x</Label>
+			<Index>24</Index>
+			<Text>x</Text>
+			</DynamicKey>
+		<DynamicKey Col="5" Height="1" Row="2" Width="2">
+			<Label>c</Label>
+			<Index>25</Index>
+			<Text>c</Text>
+			</DynamicKey>
+		<DynamicKey Col="7" Height="1" Row="2" Width="2">
+			<Label>v</Label>
+			<Index>26</Index>
+			<Text>v</Text>
+			</DynamicKey>
+		<DynamicKey Col="9" Height="1" Row="2" Width="2">
+			<Label>b</Label>
+			<Index>27</Index>
+			<Text>b</Text>
+			</DynamicKey>
+		<DynamicKey Col="11" Height="1" Row="2" Width="2">
+			<Label>n</Label>
+			<Index>28</Index>
+			<Text>n</Text>
+			</DynamicKey>
+		<DynamicKey Col="13" Height="1" Row="2" Width="2">
+			<Label>m</Label>
+			<Index>29</Index>
+			<Text>m</Text>
+			</DynamicKey>
+		<DynamicKey Col="15" Height="1" Row="2" Width="2">
+			<Label>space</Label>
+			<Index>30</Index>
+			<Symbol>SpaceIcon</Symbol>
+			<Text> </Text>
+			</DynamicKey>
+		<DynamicKey Col="17" Height="1" Row="2" Width="3">
+			<Label>Enter</Label>
+			<Index>31</Index>
+			<Text>
+</Text>
+			</DynamicKey>
+		<DynamicKey Col="20" Height="1" Row="2" Width="2">
+			<Label>Back</Label>
+			<Index>32</Index>
+			<Symbol>BackIcon</Symbol>
+			<Action>BackFromKeyboard</Action>
+			</DynamicKey>
+	</Keys>
+</Keyboard>
