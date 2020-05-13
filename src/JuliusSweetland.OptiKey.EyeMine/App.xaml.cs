@@ -252,15 +252,30 @@ namespace JuliusSweetland.OptiKey.EyeMine
 
         }
 
+        protected new static string GetDefaultUserKeyboardFolder()
+        {
+            var applicationDataPath = DiagnosticInfo.GetAppDataPath(@"Keyboards");
+
+            // If directory doesn't exist, assume that this is the first run. So, move dynamic keyboards from installation package to target path
+            if (!Directory.Exists(applicationDataPath))
+            {
+                Directory.CreateDirectory(applicationDataPath);
+                foreach (string dynamicKeyboard in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\DynamicKeyboards",
+                    "*MC*.xml", SearchOption.AllDirectories))
+                {
+
+                    File.Copy(dynamicKeyboard, Path.Combine(applicationDataPath, Path.GetFileName(dynamicKeyboard)), true);
+                }
+            }
+
+            return applicationDataPath;
+        }
+
         private void ValidateDynamicKeyboardLocationEyeMine()
         {
             string defaultDir = GetDefaultUserKeyboardFolder();
-            string eyeTracker = "EyeTracker";
-            string mouse = "Mouse";
-
-            if (string.IsNullOrEmpty(Settings.Default.DynamicKeyboardsLocation) ||
-                string.Equals(Settings.Default.DynamicKeyboardsLocation, defaultDir) ||
-                
+            
+            if (string.IsNullOrEmpty(Settings.Default.DynamicKeyboardsLocation))
             {
                 // First time we set to APPDATA location, user may move through settings later
                 Settings.Default.DynamicKeyboardsLocation = GetDefaultUserKeyboardFolder();
