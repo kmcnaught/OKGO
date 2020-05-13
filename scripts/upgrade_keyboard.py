@@ -43,14 +43,26 @@ def items_for_upgrade():
     # value: the sibling element the attrib will live in
     sideways_attribs["BackReturnsHere"] = "ChangeKeyboard" 
 
-    return swaps, promote_attribs, sideways_attribs
+    # # # # # # # # # # # # # # # # # # # # # 
+    # List of elements to remove completely #
+    # # # # # # # # # # # # # # # # # # # # # 
+    remove_elems = []
+    remove_elems.append("Index")
+
+    # # # # # # # # # # # # # # # # # # # # 
+    # List of elements to remove if empty #
+    # # # # # # # # # # # # # # # # # # # #  
+    remove_empty_elems = []
+    remove_empty_elems.append("Text")    
+
+    return swaps, promote_attribs, sideways_attribs, remove_elems, remove_empty_elems
 
 
 def upgrade_file(fname_in, fname_out, verbose):
 
     tree = ET.parse(fname_in)
 
-    swaps, promote_attribs, sideways_attribs = items_for_upgrade()
+    swaps, promote_attribs, sideways_attribs, remove_elems, remove_empty_elems = items_for_upgrade()
 
     # Rename elements
     for elem in tree.getroot().getiterator():    
@@ -101,6 +113,20 @@ def upgrade_file(fname_in, fname_out, verbose):
 
             # remove child element
             parent.remove(child)
+
+    # Remove elements   
+    for elem in remove_elems:
+        parents = tree.findall(".//{}/..".format(elem))            
+        for parent in parents:
+            child = parent.find(elem)            
+            parent.remove(child)  
+    
+    for elem in remove_empty_elems:
+        parents = tree.findall(".//{}/..".format(elem))            
+        for parent in parents:
+            child = parent.find(elem)  
+            if child.text is None:                
+                parent.remove(child)  
 
     # Save out modified tree
     tree.write(fname_out)
