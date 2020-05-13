@@ -250,6 +250,19 @@ namespace JuliusSweetland.OptiKey.EyeMine
 
         }
 
+        private static string GetRelativePath(string filename, string folder)
+        {
+            Uri pathUri = new Uri(filename);
+
+            char separator = Path.DirectorySeparatorChar;
+            if (!folder.EndsWith(separator.ToString()))
+            {
+                folder += separator;
+            }
+            Uri folderUri = new Uri(folder);
+            return Uri.UnescapeDataString(folderUri.MakeRelativeUri(pathUri).ToString().Replace('/', separator));
+        }
+
         protected new static string GetDefaultUserKeyboardFolder()
         {
             var applicationDataPath = DiagnosticInfo.GetAppDataPath(@"Keyboards");
@@ -258,11 +271,14 @@ namespace JuliusSweetland.OptiKey.EyeMine
             if (!Directory.Exists(applicationDataPath))
             {
                 Directory.CreateDirectory(applicationDataPath);
-                foreach (string dynamicKeyboard in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\DynamicKeyboards",
-                    "*MC*.xml", SearchOption.AllDirectories))
+                String baseSourceDir = AppDomain.CurrentDomain.BaseDirectory + @"\Resources\DynamicKeyboards";
+                foreach (string dynamicKeyboard in Directory.GetFiles(baseSourceDir,"*MC*.xml", SearchOption.AllDirectories))
                 {
+                    // Copy folder hierarchy
+                    string relativePath = Path.GetDirectoryName(GetRelativePath(dynamicKeyboard, baseSourceDir));
+                    Directory.CreateDirectory(Path.Combine(applicationDataPath, relativePath));
 
-                    File.Copy(dynamicKeyboard, Path.Combine(applicationDataPath, Path.GetFileName(dynamicKeyboard)), true);
+                    File.Copy(dynamicKeyboard, Path.Combine(applicationDataPath, relativePath, Path.GetFileName(dynamicKeyboard)), true);
                 }
             }
 
