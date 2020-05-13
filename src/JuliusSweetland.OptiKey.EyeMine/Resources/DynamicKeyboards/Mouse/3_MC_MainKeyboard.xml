@@ -136,7 +136,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 		<DynamicKey Col="8" Height="2" Row="3" Width="1">
 			<Label>Inventory\netc...</Label>
 			<Index>21</Index>
-			<ChangeKeyboard BackReturnsHere="True">3_InventoryKeyboard</ChangeKeyboard>
+			<ChangeKeyboard BackReturnsHere="True">3_MC_InventoryKeyboard</ChangeKeyboard>
 			</DynamicKey>
 		<DynamicKey Col="0" Height="2" Row="5" Width="1">
 			<Label>Auto\nPillar</Label>
@@ -166,7 +166,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 			<Label>Chat...</Label>
 			<Index>26</Index>
 			<Symbol>ChatIcon</Symbol>
-			<ChangeKeyboard BackReturnsHere="True">3_ChatKeyboard</ChangeKeyboard>
+			<ChangeKeyboard BackReturnsHere="True">3_MC_ChatKeyboard</ChangeKeyboard>
 			</DynamicKey>
 		<DynamicKey Col="5" Height="2" Row="5" Width="1">
 			<Label>Toggle\nSwim</Label>

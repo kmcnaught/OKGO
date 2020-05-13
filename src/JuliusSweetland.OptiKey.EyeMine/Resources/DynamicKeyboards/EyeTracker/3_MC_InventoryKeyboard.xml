@@ -122,7 +122,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 			<Label>ABC</Label>
 			<Index>19</Index>
 			<Symbol>AlphaIcon</Symbol>
-            <ChangeKeyboard BackReturnsHere="True">3_ChatKeyboard</ChangeKeyboard>
+            <ChangeKeyboard BackReturnsHere="True">3_MC_ChatKeyboard</ChangeKeyboard>
             </DynamicKey>
 		<DynamicKey Col="0" Height="1" Row="2" Width="1">
 			<Label>Drop\nitem</Label>

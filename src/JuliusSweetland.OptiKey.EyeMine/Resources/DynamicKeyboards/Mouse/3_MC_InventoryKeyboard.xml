@@ -58,7 +58,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 		<DynamicKey Col="7" Height="1" Row="1" Width="1">
 			<Label>ABC</Label>
 			<Symbol>AlphaIcon</Symbol>
-            <ChangeKeyboard BackReturnsHere="True">3_ChatKeyboard</ChangeKeyboard>
+            <ChangeKeyboard BackReturnsHere="True">3_MC_ChatKeyboard</ChangeKeyboard>
             </DynamicKey>
 		<DynamicKey Col="0" Height="1" Row="1" Width="1">
 			<Label>Throw\nitem</Label>
