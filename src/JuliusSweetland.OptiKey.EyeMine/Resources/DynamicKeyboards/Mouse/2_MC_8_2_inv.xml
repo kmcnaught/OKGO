@@ -13,65 +13,53 @@
 	<Keys>
 		<DynamicKey Col="0" Height="1" Row="0" Width="1">
 			<Label>1</Label>
-			<Index>0</Index>
 			<Text>1</Text>
 			</DynamicKey>
 		<DynamicKey Col="1" Height="1" Row="0" Width="1">
 			<Label>2</Label>
-			<Index>1</Index>
 			<Text>2</Text>
 			</DynamicKey>
 		<DynamicKey Col="2" Height="1" Row="0" Width="1">
 			<Label>3</Label>
-			<Index>2</Index>
 			<Text>3</Text>
 			</DynamicKey>
 		<DynamicKey Col="3" Height="1" Row="0" Width="1">
 			<Label>4</Label>
-			<Index>3</Index>
 			<Text>4</Text>
 			</DynamicKey>
 		<DynamicKey Col="4" Height="1" Row="0" Width="1">
 			<Label>5</Label>
-			<Index>4</Index>
 			<Text>5</Text>
 			</DynamicKey>
 		<DynamicKey Col="5" Height="1" Row="0" Width="1">
 			<Label>6</Label>
-			<Index>5</Index>
 			<Text>6</Text>
 			</DynamicKey>
 		<DynamicKey Col="6" Height="1" Row="0" Width="1">
 			<Label>7</Label>
-			<Index>6</Index>
 			<Text>7</Text>
 			</DynamicKey>
 		<DynamicKey Col="7" Height="1" Row="0" Width="1">
 			<Label>Esc</Label>
             <Symbol>MinecraftEscButton</Symbol>
-			<Index>7</Index>
 			<Action>Escape</Action>
 			</DynamicKey>
 		<DynamicKey Col="0" Height="1" Row="1" Width="1">
 			<Label />
-			<Index>8</Index>
 			<Symbol>ArrowPointingToLeftIcon</Symbol>
 			<ChangeKeyboard BackReturnsHere="False">2_MC_8_2_2.xml</ChangeKeyboard>
 			</DynamicKey>
 		<DynamicKey Col="1" Height="1" Row="1" Width="1">
 			<Label>Open\ninventory</Label>
-			<Index>9</Index>
 			<Text>e</Text>
 			</DynamicKey>
 		<DynamicKey Col="2" Height="1" Row="1" Width="1">
 			<Label>Prev\ntab</Label>
-			<Index>10</Index>
 			<Symbol>MinecraftTabPrev</Symbol>
 			<Action>ArrowLeft</Action>
 			</DynamicKey>
 		<DynamicKey Col="3" Height="1" Row="1" Width="1">
 			<Label>Next\ntab</Label>
-			<Index>11</Index>
 			<Symbol>MinecraftTabNext</Symbol>
 			<Action>ArrowRight</Action>
 			</DynamicKey>
@@ -79,7 +67,6 @@
         
 		<DynamicKey Col="4" Height="1" Row="1" Width="1">
 			<Label>Scroll\ndown</Label>
-			<Index>14</Index>
       <Symbol>MouseScrollToBottomIcon</Symbol>
 			<Action>F9</Action>
 			</DynamicKey>

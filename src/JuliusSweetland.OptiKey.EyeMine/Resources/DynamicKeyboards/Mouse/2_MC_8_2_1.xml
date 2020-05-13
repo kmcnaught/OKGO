@@ -59,7 +59,6 @@
          </DynamicKey>
    <DynamicKey Col="5" Row="1">
 			<Label>Ride/\nDismount</Label>
-			<Index>0</Index>
 			<Text>c</Text>
             </DynamicKey>
 	  

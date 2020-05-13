@@ -82,7 +82,6 @@
 	 
     <DynamicKey Col="7" Row="0">
 			<Label>Auto\nPillar</Label>
-			<Index>1</Index>
 			<Symbol>MinecraftPlaceBlock</Symbol>
 			<Text>l</Text>
 			</DynamicKey>
