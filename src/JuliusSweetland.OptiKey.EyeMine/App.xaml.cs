@@ -137,7 +137,7 @@ namespace JuliusSweetland.OptiKey.EyeMine
 
                 CleanupAndPrepareCommuniKateInitialState();
 
-                ValidateDynamicKeyboardLocation();
+                ValidateDynamicKeyboardLocationEyeMine();
 
                 // Handle plugins. Validate if directory exists and is accessible and pre-load all plugins, building a in-memory list of available ones.
                 ValidatePluginsLocation();
@@ -250,6 +250,21 @@ namespace JuliusSweetland.OptiKey.EyeMine
                 .SetValue(MainWindow, managementWindowRequestCommand);
                 
 
+        }
+
+        private void ValidateDynamicKeyboardLocationEyeMine()
+        {
+            string defaultDir = GetDefaultUserKeyboardFolder();
+            string eyeTracker = "EyeTracker";
+            string mouse = "Mouse";
+
+            if (string.IsNullOrEmpty(Settings.Default.DynamicKeyboardsLocation) ||
+                string.Equals(Settings.Default.DynamicKeyboardsLocation, defaultDir) ||
+                
+            {
+                // First time we set to APPDATA location, user may move through settings later
+                Settings.Default.DynamicKeyboardsLocation = GetDefaultUserKeyboardFolder();
+            }
         }
 
         private void RequestManagementWindow()

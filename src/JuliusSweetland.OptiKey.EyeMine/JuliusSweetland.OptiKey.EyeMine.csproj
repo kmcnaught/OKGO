@@ -297,16 +297,16 @@
     <Content Include="Resources\DynamicKeyboards\EyeTracker\2_MC_8_2_inv.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\3_ChatKeyboard.xml">
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\3_MC_ChatKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\3_InventoryKeyboard.xml">
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\3_MC_InventoryKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\3_MainKeyboard.xml">
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\3_MC_MainKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\4_Minecraft_Survival.xml">
+    <Content Include="Resources\DynamicKeyboards\EyeTracker\4_MC_Survival.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\DynamicKeyboards\Mouse\0_MC_5_1_1_intro.xml">
@@ -339,13 +339,13 @@
     <Content Include="Resources\DynamicKeyboards\Mouse\2_MC_8_2_inv.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Mouse\3_ChatKeyboard.xml">
+    <Content Include="Resources\DynamicKeyboards\Mouse\3_MC_ChatKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Mouse\3_InventoryKeyboard.xml">
+    <Content Include="Resources\DynamicKeyboards\Mouse\3_MC_InventoryKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Mouse\3_MainKeyboard.xml">
+    <Content Include="Resources\DynamicKeyboards\Mouse\3_MC_MainKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <SplashScreen Include="Resources\Icons\EyeMineSplash.png">
