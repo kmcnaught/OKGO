@@ -1,6 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
-
-namespace JuliusSweetland.OptiKey.EyeMine.Properties {
+﻿namespace JuliusSweetland.OptiKey.EyeMine.Properties {
 
     class Settings : JuliusSweetland.OptiKey.Properties.Settings
     {
