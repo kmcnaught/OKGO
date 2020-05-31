@@ -326,7 +326,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Opacity" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
-                                            StringFormat="{}{0:N1} %"
+                                            StringFormat="{}{0:N1}"
                                             Minimum="0.1" Maximum="1" Interval="0.1"
                                             Value="{Binding MainWindowOpacity, Mode=TwoWay}" />
 
