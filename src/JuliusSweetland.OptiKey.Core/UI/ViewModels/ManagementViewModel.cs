@@ -65,7 +65,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public OtherViewModel OtherViewModel { get; private set; }
         public PointingAndSelectingViewModel PointingAndSelectingViewModel { get; private set; }
         public SoundsViewModel SoundsViewModel { get; private set; }
-        public VisualsViewModel VisualsViewModel { get; private set; }
+        public VisualsViewModel VisualsViewModel { get; protected set; }
         public FeaturesViewModel FeaturesViewModel { get; private set; }
         public WordsViewModel WordsViewModel { get; private set; }
         
