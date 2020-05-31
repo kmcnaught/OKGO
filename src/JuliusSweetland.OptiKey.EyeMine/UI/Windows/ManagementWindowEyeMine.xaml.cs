@@ -20,7 +20,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.Windows
             InitializeComponent();
 
             //Instantiate ManagementViewModel and set as DataContext of ManagementView
-            var managementViewModel = new ManagementViewModel(audioService, dictionaryService, windowManipulationService);
+            var managementViewModel = new ManagementViewModelEyeMine(audioService, dictionaryService, windowManipulationService);
             this.ManagementView.DataContext = managementViewModel;
         }
     }

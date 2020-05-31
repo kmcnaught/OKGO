@@ -196,6 +196,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UI\ViewModels\ManagementViewModelEyeMine.cs" />
+    <Compile Include="UI\ViewModels\Management\VisualsViewModelEyeMine.cs" />
     <Compile Include="UI\Views\ManagementView.xaml.cs">
       <DependentUpon>ManagementView.xaml</DependentUpon>
     </Compile>
