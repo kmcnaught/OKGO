@@ -1,4 +1,6 @@
-﻿namespace JuliusSweetland.OptiKey.EyeMine.Properties {
+﻿using System;
+
+namespace JuliusSweetland.OptiKey.EyeMine.Properties {
 
     class Settings : JuliusSweetland.OptiKey.Properties.Settings
     {
@@ -9,7 +11,8 @@
             InitialiseWithDerivedSettings(defaultInstance);            
         }
 
-
+        // If Settings.Default is requested from an instance of this object, return a cast version
+        public new static Settings Default => (Settings)OptiKey.Properties.Settings.Default;
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
