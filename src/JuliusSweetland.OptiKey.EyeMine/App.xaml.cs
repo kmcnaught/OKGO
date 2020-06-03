@@ -33,6 +33,7 @@ using presage;
 using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using WindowsRecipes.TaskbarSingleInstance;
+using JuliusSweetland.OptiKey.EyeMine.Enums;
 using JuliusSweetland.OptiKey.EyeMine.UI.Windows;
 using Prism.Commands;
 using Application = System.Windows.Application;
@@ -180,6 +181,10 @@ namespace JuliusSweetland.OptiKey.EyeMine
                 //Subscribing to the on closing events.
                 mainWindow.Closing += dictionaryService.OnAppClosing;
 
+                // Before the main view model loads the default keyboards, reconcile our own keyboard settings with Optikey's 
+                // knowledge of settings
+                this.SetupKeyboardSettings();
+
                 mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
@@ -246,9 +251,38 @@ namespace JuliusSweetland.OptiKey.EyeMine
             typeof(MainWindow)
                 .GetField("managementWindowRequestCommand", BindingFlags.Instance | BindingFlags.NonPublic)
                 .SetValue(MainWindow, managementWindowRequestCommand);
-                
+
 
         }
+
+        private void SetupKeyboardSettings()
+        {
+            // Set all of Optikey's internal settings for default keyboard based on our own logic
+
+            switch (Settings.Default.EyeMineStartupKeyboard)
+            {
+                case StartupKeyboardOptions.EyeMineAllKeyboards:
+                    Settings.Default.StartupKeyboard = Keyboards.DynamicKeyboard;
+                    
+                    // Pick the appropriate path for source-specific keyboards
+                    string baseFolder = GetDefaultUserKeyboardFolder();
+                    string subFolder = Settings.Default.PointsSource == PointsSources.MousePosition ? "Mouse" : "EyeTracker";
+                    Settings.Default.DynamicKeyboardsLocation = Path.Combine(baseFolder, subFolder);
+
+                    break;
+
+                case StartupKeyboardOptions.CustomKeyboardsFolder:
+                    Settings.Default.StartupKeyboard = Keyboards.DynamicKeyboard;
+                    Settings.Default.DynamicKeyboardsLocation = Settings.Default.OwnDynamicKeyboardsLocation;
+                    break;
+
+                case StartupKeyboardOptions.CustomKeyboardFile:
+                    Settings.Default.StartupKeyboard = Keyboards.CustomKeyboardFile;
+                    // Settings.Default.StartupKeyboardFile already stores the file
+                    break;
+            }
+        }
+    
 
         private static string GetRelativePath(string filename, string folder)
         {

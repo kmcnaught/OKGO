@@ -37,6 +37,24 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
             }
         }
 
+        // We'll internally use the existing DynamicKeyboardsLocation setting to pick the installed keyboards,
+        // so we want an additional setting to remember user's own custom location
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public string OwnDynamicKeyboardsLocation
+        {
+            get
+            {
+                return ((string)(this["OwnDynamicKeyboardsLocation"]));
+            }
+            set
+            {
+                this["OwnDynamicKeyboardsLocation"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("EnglishMinecraft")]
@@ -194,21 +212,6 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
             }
         }
 
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string DefaultDynamicKeyboardsLocation
-        {
-            get
-            {
-                return ((string)(this["DefaultDynamicKeyboardsLocation"]));
-            }
-            set
-            {
-                this["DefaultDynamicKeyboardsLocation"] = value;
-            }
-        }
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
