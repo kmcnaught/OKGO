@@ -23,6 +23,22 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("EyeMineAllKeyboards")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::JuliusSweetland.OptiKey.EyeMine.Enums.StartupKeyboardOptions EyeMineStartupKeyboard
+        {
+            get
+            {
+                return ((global::JuliusSweetland.OptiKey.EyeMine.Enums.StartupKeyboardOptions)(this["EyeMineStartupKeyboard"]));
+            }
+            set
+            {
+                this["EyeMineStartupKeyboard"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("EnglishMinecraft")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::JuliusSweetland.OptiKey.Enums.Languages KeyboardAndDictionaryLanguage
