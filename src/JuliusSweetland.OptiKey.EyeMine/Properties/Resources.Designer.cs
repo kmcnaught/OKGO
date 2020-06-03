@@ -59,5 +59,41 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Single dynamic keyboard file.
+        /// </summary>
+        internal static string CUSTOM_KEYBOARD_FILE {
+            get {
+                return ResourceManager.GetString("CUSTOM_KEYBOARD_FILE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom folder containing dynamic keyboards.
+        /// </summary>
+        internal static string CUSTOM_KEYBOARDS_FOLDER {
+            get {
+                return ResourceManager.GetString("CUSTOM_KEYBOARDS_FOLDER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selection of built-in Minecraft Keyboards.
+        /// </summary>
+        internal static string EYEMINE_ALL_KEYBOARDS {
+            get {
+                return ResourceManager.GetString("EYEMINE_ALL_KEYBOARDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specific EyeMine keyboard.
+        /// </summary>
+        internal static string EYEMINE_SINGLE_KEYBOARD {
+            get {
+                return ResourceManager.GetString("EYEMINE_SINGLE_KEYBOARD", resourceCulture);
+            }
+        }
     }
 }

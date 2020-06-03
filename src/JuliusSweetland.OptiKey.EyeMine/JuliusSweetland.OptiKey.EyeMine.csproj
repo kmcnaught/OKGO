@@ -196,6 +196,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\StartupKeyboardOptions.cs" />
     <Compile Include="UI\ViewModels\ManagementViewModelEyeMine.cs" />
     <Compile Include="UI\ViewModels\Management\VisualsViewModelEyeMine.cs" />
     <Compile Include="UI\Views\ManagementView.xaml.cs">
@@ -926,6 +927,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="..\JuliusSweetland.OptiKey.Core\Resources\CommuniKate\pageset.obz">
       <Link>Resources\CommuniKate\pageset.obz</Link>
