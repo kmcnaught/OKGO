@@ -14,13 +14,16 @@ namespace JuliusSweetland.OptiKey.Services
         Rect WindowBounds { get; }
         WindowStates WindowState { get; }
 
+        void ChangeState(WindowStates state, DockEdges dockPosition);
         void Expand(ExpandToDirections direction, double amountInPx);
         double GetOpacity();
+        bool GetPersistedState();
         void Hide();
         void IncrementOrDecrementOpacity(bool increment);
         void Maximise();
         void Minimise();
         void Move(MoveToDirections direction, double? amountInPx);
+        void PersistSizeAndPosition();
         void ResizeDockToCollapsed();
         void ResizeDockToFull();
         void Restore();
@@ -30,5 +33,7 @@ namespace JuliusSweetland.OptiKey.Services
         void OverridePersistedState(bool inPersistNewState, string inWindowState, string inPosition, string inDockSize, string inWidth, string inHeight, string inHorizontalOffset, string inVerticalOffset);
         void RestorePersistedState();
         void LogTimeAfterLoading(Stopwatch sw);
+        void DisableResize();
+        void SetResizeState();
     }
 }
