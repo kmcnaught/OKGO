@@ -1,4 +1,5 @@
 ﻿using System;
+using JuliusSweetland.OptiKey.Enums;
 
 namespace JuliusSweetland.OptiKey.EyeMine.Properties {
 
@@ -9,6 +10,12 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         {
             Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
             InitialiseWithDerivedSettings(defaultInstance);            
+        }
+
+        public override AppType GetApp()
+        {
+            // FIXME: HACK
+            return AppType.Pro;
         }
 
         // If Settings.Default is requested from an instance of this object, return a cast version
