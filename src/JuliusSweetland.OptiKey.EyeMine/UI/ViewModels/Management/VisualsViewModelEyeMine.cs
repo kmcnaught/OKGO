@@ -11,6 +11,9 @@ using MahApps.Metro.Controls;
 using Prism.Mvvm;
 using FontStretches = JuliusSweetland.OptiKey.Enums.FontStretches;
 using FontWeights = JuliusSweetland.OptiKey.Enums.FontWeights;
+using ResourcesCore = JuliusSweetland.OptiKey.Properties.Resources;
+using ResourcesEyeMine = JuliusSweetland.OptiKey.Properties.Resources;
+using Settings = JuliusSweetland.OptiKey.EyeMine.Properties.Settings;
 
 namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
 {
@@ -53,10 +56,10 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
             {
                 return new List<KeyValuePair<string, Enums.DockEdges>>
                 {
-                    new KeyValuePair<string, Enums.DockEdges>("TOP"/*FIXME:Resources.TOP*/, Enums.DockEdges.Top),
-                    new KeyValuePair<string, Enums.DockEdges>("BOTTOM"/*FIXME:Resources.BOTTOM*/, Enums.DockEdges.Bottom),
-                    //new KeyValuePair<string, Enums.DockEdges>(Resources.LEFT, Enums.DockEdges.Left),
-                    //new KeyValuePair<string, Enums.DockEdges>(Resources.RIGHT, Enums.DockEdges.Right),
+                    new KeyValuePair<string, Enums.DockEdges>(ResourcesCore.TOP, Enums.DockEdges.Top),
+                    new KeyValuePair<string, Enums.DockEdges>(ResourcesCore.BOTTOM, Enums.DockEdges.Bottom),
+                    new KeyValuePair<string, Enums.DockEdges>(ResourcesCore.LEFT, Enums.DockEdges.Left),
+                    new KeyValuePair<string, Enums.DockEdges>(ResourcesCore.RIGHT, Enums.DockEdges.Right),
                 };
             }
         }
