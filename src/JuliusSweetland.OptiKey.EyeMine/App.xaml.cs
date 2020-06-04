@@ -217,8 +217,8 @@ namespace JuliusSweetland.OptiKey.EyeMine
                 {
                     mainWindowManipulationService.SizeAndPositionInitialised -=
                         sizeAndPositionInitialised; //Ensure this handler only triggers once
-                    //FIXME: add as resource OptiKey.Properties.Resources.EYEMINE_DESCRIPTION
-                    await ShowSplashScreenEyeMine(inputService, audioService, mainViewModel, "EyeMine V2");
+                    
+                    await ShowSplashScreenEyeMine(inputService, audioService, mainViewModel, OptiKey.EyeMine.Properties.Resources.EYEMINE_DESCRIPTION);
                     await mainViewModel.RaiseAnyPendingErrorToastNotifications();
                     await AttemptToStartMaryTTSService(inputService, audioService, mainViewModel);
                     await AlertIfPresageBitnessOrBootstrapOrVersionFailure(presageInstallationProblem, inputService,

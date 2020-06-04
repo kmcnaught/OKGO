@@ -88,6 +88,15 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to EyeMine V2.
+        /// </summary>
+        public static string EYEMINE_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("EYEMINE_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Specific EyeMine keyboard.
         /// </summary>
         public static string EYEMINE_SINGLE_KEYBOARD {

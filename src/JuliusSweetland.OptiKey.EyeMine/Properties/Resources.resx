@@ -129,4 +129,7 @@
   <data name="EYEMINE_SINGLE_KEYBOARD" xml:space="preserve">
     <value>Specific EyeMine keyboard</value>
   </data>
+  <data name="EYEMINE_DESCRIPTION" xml:space="preserve">
+    <value>EyeMine V2</value>
+  </data>
 </root>
