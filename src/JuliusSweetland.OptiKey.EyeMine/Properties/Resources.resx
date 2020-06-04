@@ -141,6 +141,12 @@
   <data name="COPY_KEYBOARDS" xml:space="preserve">
     <value>Create copy of built-in keyboards</value>
   </data>
+  <data name="ERROR_COPYING" xml:space="preserve">
+    <value>Error copying keyboards</value>
+  </data>
+  <data name="ERROR_COPYING_DETAILS" xml:space="preserve">
+    <value>One or more keyboards may not have copied correctly.</value>
+  </data>
   <data name="SELECT_DYNAMIC_FOLDER_INSTRUCTIONS" xml:space="preserve">
     <value>Select folder containing own dynamic XML keyboards</value>
   </data>

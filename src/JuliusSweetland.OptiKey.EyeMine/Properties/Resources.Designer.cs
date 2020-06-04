@@ -88,6 +88,24 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error copying keyboards.
+        /// </summary>
+        public static string ERROR_COPYING {
+            get {
+                return ResourceManager.GetString("ERROR_COPYING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One or more keyboards may not have copied correctly..
+        /// </summary>
+        public static string ERROR_COPYING_DETAILS {
+            get {
+                return ResourceManager.GetString("ERROR_COPYING_DETAILS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selection of built-in Minecraft Keyboards.
         /// </summary>
         public static string EYEMINE_ALL_KEYBOARDS {

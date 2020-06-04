@@ -3,10 +3,13 @@ using System.Windows.Controls;
 using System.Windows;
 using Microsoft.Win32;
 using System;
+using System.Configuration;
 using System.Windows.Forms;
 using JuliusSweetland.OptiKey.Properties;
 using System.IO;
 using JuliusSweetland.OptiKey.Static;
+using log4net;
+using MessageBox = System.Windows.MessageBox;
 
 namespace JuliusSweetland.OptiKey.EyeMine.UI.Views.Management
 {
@@ -15,6 +18,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.Views.Management
     /// </summary>
     public partial class VisualsView : System.Windows.Controls.UserControl
     {
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public VisualsView()
         {
@@ -63,16 +67,67 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.Views.Management
                 string inputFolder = App.GetKeyboardsFolderForInputSource(); // %APPDATA% path
                 string outputFolder = folderBrowser.SelectedPath;
 
-                // make a subdir there
-                outputFolder = Path.Combine(outputFolder, "EyeMineKeyboards");
-                if (!Directory.Exists(outputFolder))
-                    Directory.CreateDirectory(outputFolder);
+                try
+                {
+                    // make a subdir 
+                    outputFolder = Path.Combine(outputFolder, "EyeMineKeyboards");
+                    if (!Directory.Exists(outputFolder))
+                        Directory.CreateDirectory(outputFolder);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        OptiKey.EyeMine.Properties.Resources.ERROR_COPYING_DETAILS + "\n\n" + ex.ToString(),
+                        OptiKey.EyeMine.Properties.Resources.ERROR_COPYING,
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+                    return;
+                }
+
+
+                int successes = 0;
+                int failures = 0;
 
                 // copy files across
                 foreach (string dynamicKeyboard in Directory.GetFiles(inputFolder, "*.xml"))
                 {
-                    File.Copy(dynamicKeyboard, Path.Combine(outputFolder, Path.GetFileName(dynamicKeyboard)), true);
+                    try
+                    {
+                        File.Copy(dynamicKeyboard, Path.Combine(outputFolder, Path.GetFileName(dynamicKeyboard)),
+                            false);
+                        ++successes;
+                    }
+
+                    catch (Exception ex)
+                    {
+                        Log.ErrorFormat("Error copying file {0}", dynamicKeyboard);
+                        Log.Error(ex.ToString());
+                        ++failures;
+                    }
                 }
+
+                string msgText, msgCaption;
+                MessageBoxImage msgImage;
+                if (failures == 0)
+                {
+                    msgCaption = "Files copied successfully";
+                    msgText = String.Format("{0} files copied to {1}", successes, outputFolder);
+                    msgImage = MessageBoxImage.Information;
+                }
+                else
+                {
+                    msgCaption = "Error copying files";
+                    msgText = String.Format("{0}/{1} files successfully copied {2}", successes, successes+failures, outputFolder);
+                    msgText += "\n\nThis may be because of folder permissions, or files existing already";
+                    msgText += "\n\nSee logs for more information";
+                    msgImage = MessageBoxImage.Warning;
+                } 
+
+                MessageBox.Show(
+                    msgText,
+                    msgCaption,
+                    MessageBoxButton.OK,
+                    msgImage);
 
                 // update settings
                 txtKeyboardsLocation.Text = outputFolder;
