@@ -6,6 +6,7 @@ using System;
 using System.Windows.Forms;
 using JuliusSweetland.OptiKey.Properties;
 using System.IO;
+using JuliusSweetland.OptiKey.Static;
 
 namespace JuliusSweetland.OptiKey.EyeMine.UI.Views.Management
 {
@@ -40,10 +41,42 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.Views.Management
             }
         }
         
-        private void ResetKeyboardsFolder(object sender, System.Windows.RoutedEventArgs e)
+        private void CopyKeyboards(object sender, System.Windows.RoutedEventArgs e)
         {
-            // FIXME: Need to test this, was DefaultDynamicKeyboardsLocation in EyeMine
-            txtKeyboardsLocation.Text = Settings.Default.DynamicKeyboardsLocation;
+            // Copy the builtin keyboards to the user's choice of directory
+
+            // Ask user to select a directory
+            string origPath = txtKeyboardsLocation.Text;
+            if (String.IsNullOrEmpty(origPath) ||
+                !Directory.Exists(origPath))
+            {
+                origPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                
+            }
+
+            FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
+            folderBrowser.Description = Properties.Resources.SELECT_FOLDER_FOR_COPY;
+            folderBrowser.SelectedPath = origPath;
+
+            if (folderBrowser.ShowDialog() == DialogResult.OK)
+            {
+                string inputFolder = App.GetKeyboardsFolderForInputSource(); // %APPDATA% path
+                string outputFolder = folderBrowser.SelectedPath;
+
+                // make a subdir there
+                outputFolder = Path.Combine(outputFolder, "EyeMineKeyboards");
+                if (!Directory.Exists(outputFolder))
+                    Directory.CreateDirectory(outputFolder);
+
+                // copy files across
+                foreach (string dynamicKeyboard in Directory.GetFiles(inputFolder, "*.xml"))
+                {
+                    File.Copy(dynamicKeyboard, Path.Combine(outputFolder, Path.GetFileName(dynamicKeyboard)), true);
+                }
+
+                // update settings
+                txtKeyboardsLocation.Text = outputFolder;
+            }
         }
  
         private void FindStartupKeyboardFile(object sender, System.Windows.RoutedEventArgs e)

@@ -61,6 +61,15 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create copy of built-in keyboards.
+        /// </summary>
+        public static string COPY_KEYBOARDS {
+            get {
+                return ResourceManager.GetString("COPY_KEYBOARDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Single dynamic keyboard file.
         /// </summary>
         public static string CUSTOM_KEYBOARD_FILE {
@@ -115,7 +124,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;Select folder containing own dynamic XML keyboards&quot;.
+        ///   Looks up a localized string similar to Select folder containing own dynamic XML keyboards.
         /// </summary>
         public static string SELECT_DYNAMIC_FOLDER_INSTRUCTIONS {
             get {
@@ -124,11 +133,20 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select folder.
+        ///   Looks up a localized string similar to Select different folder.
         /// </summary>
         public static string SELECT_FOLDER {
             get {
                 return ResourceManager.GetString("SELECT_FOLDER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select destination folder.
+        /// </summary>
+        public static string SELECT_FOLDER_FOR_COPY {
+            get {
+                return ResourceManager.GetString("SELECT_FOLDER_FOR_COPY", resourceCulture);
             }
         }
         

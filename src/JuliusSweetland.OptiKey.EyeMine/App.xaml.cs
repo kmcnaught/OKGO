@@ -260,6 +260,13 @@ namespace JuliusSweetland.OptiKey.EyeMine
             return OptiKeyApp.GetDefaultUserKeyboardFolder();
         }
 
+        public static string GetKeyboardsFolderForInputSource()
+        {
+            string baseFolder = GetDefaultUserKeyboardFolder();
+            string subFolder = Settings.Default.PointsSource == PointsSources.MousePosition ? "Mouse" : "EyeTracker";
+            return Path.Combine(baseFolder, subFolder);
+        }
+
         private void SetupKeyboardSettings()
         {
             // Set all of Optikey's internal settings for default keyboard based on our own logic
@@ -270,9 +277,7 @@ namespace JuliusSweetland.OptiKey.EyeMine
                     Settings.Default.StartupKeyboard = Keyboards.DynamicKeyboard;
                     
                     // Pick the appropriate path for source-specific keyboards
-                    string baseFolder = GetDefaultUserKeyboardFolder();
-                    string subFolder = Settings.Default.PointsSource == PointsSources.MousePosition ? "Mouse" : "EyeTracker";
-                    Settings.Default.DynamicKeyboardsLocation = Path.Combine(baseFolder, subFolder);
+                    Settings.Default.DynamicKeyboardsLocation = App.GetKeyboardsFolderForInputSource();
 
                     break;
 

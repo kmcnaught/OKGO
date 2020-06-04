@@ -11,6 +11,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              xmlns:resxEm="clr-namespace:JuliusSweetland.OptiKey.EyeMine.Properties"
              xmlns:valueConvertersEm="clr-namespace:JuliusSweetland.OptiKey.EyeMine.UI.ValueConverters"
              xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters;assembly=OptiKey"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
@@ -177,10 +178,10 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                     </TextBlock>
 
                     <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-                        <Button Click="ResetKeyboardsFolder" MinWidth="100" Margin="5,5,5,5" 
+                        <Button Click="CopyKeyboards" MinWidth="100" Margin="5,5,5,5" 
                                 VerticalAlignment="Center"  
                                 HorizontalAlignment="Right">
-                            <x:Static Member="resxEm:Resources.RESET_DYNAMIC_KEYBOARD"/>
+                            <x:Static Member="resxEm:Resources.COPY_KEYBOARDS"/>
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                                     <Setter Property="Visibility" Value="Collapsed" />
@@ -204,6 +205,9 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding StartupKeyboardOption}" Value="CustomKeyboardsFolder">
                                             <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding CustomDynamicKeyboardsLocation}" Value="{x:Static sys:String.Empty}">
+                                            <Setter Property="Visibility" Value="Collapsed" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
