@@ -159,16 +159,14 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
                 return base.ChangesRequireRestart ||
                        Settings.Default.StartupKeyboard != StartupKeyboard
                        || Settings.Default.StartupKeyboardFile != StartupKeyboardFile
-                       || Settings.Default.CustomDynamicKeyboardsLocation != CustomDynamicKeyboardsLocation
-                       || Settings.Default.StartupKeyboard != StartupKeyboard;
-
-
+                       || Settings.Default.StartupKeyboard != StartupKeyboard
+                       || Settings.Default.OwnDynamicKeyboardsLocation != CustomDynamicKeyboardsLocation;
             }
         }
 
         private void Load()
         {
-            CustomDynamicKeyboardsLocation = Settings.Default.CustomDynamicKeyboardsLocation;
+            CustomDynamicKeyboardsLocation = Settings.Default.OwnDynamicKeyboardsLocation;
             
             DockPosition = Settings.Default.MainWindowDockPosition;
             MainWindowState = Settings.Default.MainWindowState;
@@ -188,9 +186,10 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
             base.ApplyChanges();
 
             // Plus own stuff as appropriate
-            Settings.Default.CustomDynamicKeyboardsLocation = CustomDynamicKeyboardsLocation;
-            Settings.Default.BorderThickness = new Thickness(LeftBorder, TopBorder, RightBorder, BottomBorder);
+            Settings.Default.OwnDynamicKeyboardsLocation = CustomDynamicKeyboardsLocation;
+            // the actual CustomDynamicKeyboardsLocation will get appropriately propagated at next startup
 
+            Settings.Default.BorderThickness = new Thickness(LeftBorder, TopBorder, RightBorder, BottomBorder);
             Settings.Default.EyeMineStartupKeyboard = StartupKeyboardOption;
         }
 
