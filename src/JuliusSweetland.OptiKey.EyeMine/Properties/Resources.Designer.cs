@@ -22,7 +22,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("JuliusSweetland.OptiKey.EyeMine.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Single dynamic keyboard file.
         /// </summary>
-        internal static string CUSTOM_KEYBOARD_FILE {
+        public static string CUSTOM_KEYBOARD_FILE {
             get {
                 return ResourceManager.GetString("CUSTOM_KEYBOARD_FILE", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Custom folder containing dynamic keyboards.
         /// </summary>
-        internal static string CUSTOM_KEYBOARDS_FOLDER {
+        public static string CUSTOM_KEYBOARDS_FOLDER {
             get {
                 return ResourceManager.GetString("CUSTOM_KEYBOARDS_FOLDER", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Selection of built-in Minecraft Keyboards.
         /// </summary>
-        internal static string EYEMINE_ALL_KEYBOARDS {
+        public static string EYEMINE_ALL_KEYBOARDS {
             get {
                 return ResourceManager.GetString("EYEMINE_ALL_KEYBOARDS", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Specific EyeMine keyboard.
         /// </summary>
-        internal static string EYEMINE_SINGLE_KEYBOARD {
+        public static string EYEMINE_SINGLE_KEYBOARD {
             get {
                 return ResourceManager.GetString("EYEMINE_SINGLE_KEYBOARD", resourceCulture);
             }
