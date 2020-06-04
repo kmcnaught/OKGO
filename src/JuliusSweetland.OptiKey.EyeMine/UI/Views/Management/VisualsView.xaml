@@ -9,8 +9,54 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties;assembly=OptiKey"
              xmlns:resxEm="clr-namespace:JuliusSweetland.OptiKey.EyeMine.Properties"
+             xmlns:valueConvertersEm="clr-namespace:JuliusSweetland.OptiKey.EyeMine.UI.ValueConverters"
+             xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters;assembly=OptiKey"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/OptiKey;component/Resources/Icons/KeySymbols.xaml" />
+                <ResourceDictionary>
+                    <valueConverters:EnabledIfNotOverridden x:Key="EnabledIfNotOverridden" />
+                    <valueConverters:InvertedBoolToVisibilityConverter x:Key="InvertedBoolToVisibilityConverter" />
+                    <valueConvertersEm:StringOrEmptyLabel x:Key="StringOrEmptyLabel"/>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <!-- hide position-related props if size&position can't be changed, disable if this is temporary -->
+            <Style x:Key="VisibilityOfPositionProperties"
+                   TargetType="{x:Type FrameworkElement}">
+                <Setter Property="Visibility" Value="Visible" />
+                <Setter Property="IsEnabled" Value="False" />
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding MaximisedApp}" Value="True">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding PersistedWindowState}" Value="True">
+                        <Setter Property="IsEnabled" Value="True" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MainWindowState}" Value="Maximised">
+                        <Setter Property="IsEnabled" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MainWindowState}" Value="Minimised">
+                        <Setter Property="IsEnabled" Value="False" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            <!-- as above, but collapse if not docked -->
+            <Style x:Key="VisibilityOfDockProperties"
+                   TargetType="{x:Type FrameworkElement}"
+                   BasedOn="{StaticResource VisibilityOfPositionProperties}">
+                <Setter Property="Visibility" Value="Collapsed" />
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding MainWindowState}" Value="Docked">
+                        <Setter Property="Visibility" Value="Visible" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
 
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
         <Grid>
@@ -64,7 +110,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 
                     <TextBlock Name="txtStartupKeyboardLocation"
                                Grid.Row="1" Grid.Column="1" 
-                               Text="{Binding StartupKeyboardFile, Mode=TwoWay}" 
+                               Text="{Binding StartupKeyboardFile, Converter={StaticResource StringOrEmptyLabel}, Mode=TwoWay}" 
                                HorizontalAlignment="Left" 
                                VerticalAlignment="Center"
                                Margin="5" >
@@ -114,7 +160,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 
                     <TextBlock Grid.Row="1" Grid.Column="1" 
                                Name="txtKeyboardsLocation"
-                               Text="{Binding CustomDynamicKeyboardsLocation, Mode=TwoWay}" 
+                               Text="{Binding CustomDynamicKeyboardsLocation, Converter={StaticResource StringOrEmptyLabel}, Mode=TwoWay}" 
                                HorizontalAlignment="Left" 
                                VerticalAlignment="Center"
                                Margin="5" >

@@ -138,4 +138,7 @@
   <data name="EYEMINE_DESCRIPTION" xml:space="preserve">
     <value>EyeMine V2</value>
   </data>
+  <data name="STRING_NOT_SET" xml:space="preserve">
+    <value>[none set]</value>
+  </data>
 </root>

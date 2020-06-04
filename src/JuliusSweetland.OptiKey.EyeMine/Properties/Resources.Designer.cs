@@ -122,5 +122,14 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
                 return ResourceManager.GetString("SELECT_FOLDER", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [none set].
+        /// </summary>
+        public static string STRING_NOT_SET {
+            get {
+                return ResourceManager.GetString("STRING_NOT_SET", resourceCulture);
+            }
+        }
     }
 }
