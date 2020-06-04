@@ -130,7 +130,8 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <Button Click="FindKeyboardsFolder" MinWidth="100" Margin="5,5,5,5" 
                                 VerticalAlignment="Center"  
                                 HorizontalAlignment="Right">
-                            <x:Static Member="resx:Resources.VARIOUS"/>
+                            <x:Static Member="resxEm:Resources.SELECT_FOLDER"/>
+                            
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                                     <Setter Property="Visibility" Value="Collapsed" />
@@ -145,7 +146,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <Button Click="ResetKeyboardsFolder" MinWidth="100" Margin="5,5,5,5" 
                                 VerticalAlignment="Center"  
                                 HorizontalAlignment="Right">
-                            <x:Static Member="resx:Resources.VARIOUS"/>
+                            <x:Static Member="resxEm:Resources.RESET_DYNAMIC_KEYBOARD"/>
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                                     <Setter Property="Visibility" Value="Collapsed" />

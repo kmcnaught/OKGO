@@ -104,5 +104,23 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
                 return ResourceManager.GetString("EYEMINE_SINGLE_KEYBOARD", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset to default location.
+        /// </summary>
+        public static string RESET_DYNAMIC_KEYBOARD {
+            get {
+                return ResourceManager.GetString("RESET_DYNAMIC_KEYBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select folder.
+        /// </summary>
+        public static string SELECT_FOLDER {
+            get {
+                return ResourceManager.GetString("SELECT_FOLDER", resourceCulture);
+            }
+        }
     }
 }
