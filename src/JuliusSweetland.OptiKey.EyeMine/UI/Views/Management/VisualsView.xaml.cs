@@ -53,8 +53,11 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.Views.Management
                 Filter = "XML keyboard definition (*.xml)|*.xml"
             };
 
-            // If there's already a valid path set, start there, otherwise try the
-            // dynamic keyboards location
+            // Start location, in priority order: 
+            // - Location of existing custom file
+            // - Location of existing custom directory
+            // - Location of built-in files
+
             if (File.Exists(txtStartupKeyboardLocation.Text))
             {
                 openFileDialog.InitialDirectory = Path.GetDirectoryName(txtStartupKeyboardLocation.Text);
@@ -62,6 +65,10 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.Views.Management
             else if (Directory.Exists(txtKeyboardsLocation.Text))
             {
                 openFileDialog.InitialDirectory = txtKeyboardsLocation.Text;
+            }
+            else
+            {
+                openFileDialog.InitialDirectory = App.GetBuiltInKeyboardsFolder();
             }
 
             if (openFileDialog.ShowDialog() == true)

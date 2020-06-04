@@ -255,6 +255,11 @@ namespace JuliusSweetland.OptiKey.EyeMine
 
         }
 
+        public static string GetBuiltInKeyboardsFolder()
+        {
+            return OptiKeyApp.GetDefaultUserKeyboardFolder();
+        }
+
         private void SetupKeyboardSettings()
         {
             // Set all of Optikey's internal settings for default keyboard based on our own logic
