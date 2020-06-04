@@ -62,23 +62,25 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </TextBlock.Style>
                     </TextBlock>
 
-                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                        <TextBlock Name="txtStartupKeyboardLocation"
-                                   Text="{Binding StartupKeyboardFile, Mode=TwoWay}" 
-                                   HorizontalAlignment="Left" 
-                                   VerticalAlignment="Center"
-                                   Margin="5" >
-                            <TextBlock.Style>
-                                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                    <Setter Property="Visibility" Value="Collapsed" />
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding StartupKeyboardOption}" Value="CustomKeyboardFile">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
+                    <TextBlock Name="txtStartupKeyboardLocation"
+                               Grid.Row="1" Grid.Column="1" 
+                               Text="{Binding StartupKeyboardFile, Mode=TwoWay}" 
+                               HorizontalAlignment="Left" 
+                               VerticalAlignment="Center"
+                               Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding StartupKeyboardOption}" Value="CustomKeyboardFile">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
                         <Button Click="FindStartupKeyboardFile" MinWidth="100" Margin="5,5,5,5" 
                                 VerticalAlignment="Center"  
                                 HorizontalAlignment="Right">
@@ -96,7 +98,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </Button>
                     </StackPanel>
 
-                    <TextBlock Grid.Row="12" Grid.Column="0" Text="{x:Static resx:Resources.DYNAMIC_KEYBOARDS_LOCATION_LABEL}" 
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.DYNAMIC_KEYBOARDS_LOCATION_LABEL}" 
                                VerticalAlignment="Center" Margin="5" >
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -110,28 +112,29 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         </TextBlock.Style>
                     </TextBlock>
 
-                    <StackPanel Grid.Row="12" Grid.Column="1" Orientation="Horizontal">
-                        <TextBlock Name="txtKeyboardsLocation"
-                                   Text="{Binding CustomDynamicKeyboardsLocation, Mode=TwoWay}" 
-                                   HorizontalAlignment="Left" 
-                                   VerticalAlignment="Center"
-                                   Margin="5" >
-                            <TextBlock.Style>
-                                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                    <Setter Property="Visibility" Value="Collapsed" />
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding StartupKeyboardOption}" Value="CustomKeyboardsFolder">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
-                        <Button Click="FindKeyboardsFolder" MinWidth="100" Margin="5,5,5,5" 
+                    <TextBlock Grid.Row="1" Grid.Column="1" 
+                               Name="txtKeyboardsLocation"
+                               Text="{Binding CustomDynamicKeyboardsLocation, Mode=TwoWay}" 
+                               HorizontalAlignment="Left" 
+                               VerticalAlignment="Center"
+                               Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding StartupKeyboardOption}" Value="CustomKeyboardsFolder">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                        <Button Click="ResetKeyboardsFolder" MinWidth="100" Margin="5,5,5,5" 
                                 VerticalAlignment="Center"  
                                 HorizontalAlignment="Right">
-                            <x:Static Member="resxEm:Resources.SELECT_FOLDER"/>
-                            
+                            <x:Static Member="resxEm:Resources.RESET_DYNAMIC_KEYBOARD"/>
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                                     <Setter Property="Visibility" Value="Collapsed" />
@@ -143,10 +146,12 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                 </Style>
                             </Button.Style>
                         </Button>
-                        <Button Click="ResetKeyboardsFolder" MinWidth="100" Margin="5,5,5,5" 
+
+                        <Button Click="FindKeyboardsFolder" MinWidth="100" Margin="5,5,5,5" 
                                 VerticalAlignment="Center"  
                                 HorizontalAlignment="Right">
-                            <x:Static Member="resxEm:Resources.RESET_DYNAMIC_KEYBOARD"/>
+                            <x:Static Member="resxEm:Resources.SELECT_FOLDER"/>
+                            
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                                     <Setter Property="Visibility" Value="Collapsed" />
