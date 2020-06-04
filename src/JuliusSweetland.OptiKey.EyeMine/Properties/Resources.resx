@@ -138,6 +138,9 @@
   <data name="EYEMINE_DESCRIPTION" xml:space="preserve">
     <value>EyeMine V2</value>
   </data>
+  <data name="SELECT_DYNAMIC_FOLDER_INSTRUCTIONS" xml:space="preserve">
+    <value>"Select folder containing own dynamic XML keyboards"</value>
+  </data>
   <data name="STRING_NOT_SET" xml:space="preserve">
     <value>[none set]</value>
   </data>

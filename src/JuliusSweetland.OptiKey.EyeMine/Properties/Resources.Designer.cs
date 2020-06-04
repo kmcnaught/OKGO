@@ -115,6 +115,15 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;Select folder containing own dynamic XML keyboards&quot;.
+        /// </summary>
+        public static string SELECT_DYNAMIC_FOLDER_INSTRUCTIONS {
+            get {
+                return ResourceManager.GetString("SELECT_DYNAMIC_FOLDER_INSTRUCTIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select folder.
         /// </summary>
         public static string SELECT_FOLDER {

@@ -22,9 +22,16 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.Views.Management
 
         private void FindKeyboardsFolder(object sender, System.Windows.RoutedEventArgs e)
         {
+            string origPath = txtKeyboardsLocation.Text;
+            if (String.IsNullOrEmpty(origPath) ||
+                !Directory.Exists(origPath))
+            {
+                origPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            }
+
             FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
-            folderBrowser.Description = "Select folder containing dynamic keyboards";
-            folderBrowser.SelectedPath = txtKeyboardsLocation.Text;
+            folderBrowser.Description = Properties.Resources.SELECT_DYNAMIC_FOLDER_INSTRUCTIONS;
+            folderBrowser.SelectedPath = origPath;
 
             if (folderBrowser.ShowDialog() == DialogResult.OK)
             {
