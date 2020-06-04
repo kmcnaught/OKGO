@@ -44,6 +44,13 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
 
         #region Properties
 
+	    private Enums.StartupKeyboardOptions startupKeyboardOption;
+        public Enums.StartupKeyboardOptions StartupKeyboardOption
+        {
+            get { return startupKeyboardOption; }
+            set { SetProperty(ref startupKeyboardOption, value); }
+        }
+
         private double leftBorder;
         public double LeftBorder
         {
@@ -152,7 +159,9 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
                 return base.ChangesRequireRestart ||
                        Settings.Default.StartupKeyboard != StartupKeyboard
                        || Settings.Default.StartupKeyboardFile != StartupKeyboardFile
-                       || Settings.Default.CustomDynamicKeyboardsLocation != CustomDynamicKeyboardsLocation;
+                       || Settings.Default.CustomDynamicKeyboardsLocation != CustomDynamicKeyboardsLocation
+                       || Settings.Default.StartupKeyboard != StartupKeyboard;
+
 
             }
         }
@@ -170,28 +179,19 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
             RightBorder = border.Right;
             TopBorder = border.Top;
             BottomBorder = border.Bottom;
+
+            StartupKeyboardOption = Settings.Default.EyeMineStartupKeyboard;
         }
 
-        public new void ApplyChanges()
+        public void ApplyChanges()
         {
             base.ApplyChanges();
 
             // Plus own stuff as appropriate
-
             Settings.Default.CustomDynamicKeyboardsLocation = CustomDynamicKeyboardsLocation;
             Settings.Default.BorderThickness = new Thickness(LeftBorder, TopBorder, RightBorder, BottomBorder);
 
-            // Changes to window state, these methods will save the new values also
-            if (Settings.Default.MainWindowState != MainWindowState ||
-                Settings.Default.MainWindowDockPosition != DockPosition ||
-                Settings.Default.MainWindowFullDockThicknessAsPercentageOfScreen.IsCloseTo(MainWindowFullDockThicknessAsPercentageOfScreen))
-            {
-                // this also saves the changes
-                // AGH FIXME: needs PR to OptiKey..
-                //windowManipulationService.ChangeState(MainWindowState, DockPosition);
-            }
-            windowManipulationService.SetOpacity(MainWindowOpacity);
-
+            Settings.Default.EyeMineStartupKeyboard = StartupKeyboardOption;
         }
 
         #endregion
