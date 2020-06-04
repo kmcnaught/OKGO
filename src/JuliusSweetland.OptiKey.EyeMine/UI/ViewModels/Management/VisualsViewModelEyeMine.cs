@@ -159,7 +159,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
                 return base.ChangesRequireRestart ||
                        Settings.Default.StartupKeyboard != StartupKeyboard
                        || Settings.Default.StartupKeyboardFile != StartupKeyboardFile
-                       || Settings.Default.StartupKeyboard != StartupKeyboard
+                       || StartupKeyboardOption != Settings.Default.EyeMineStartupKeyboard
                        || Settings.Default.OwnDynamicKeyboardsLocation != CustomDynamicKeyboardsLocation;
             }
         }
