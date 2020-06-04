@@ -44,16 +44,33 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
 
         #region Properties
 
-        public Enums.StartupKeyboardOptions StartupKeyboardOption { get; set; }
-        public double LeftBorder { get; set; }
-        public double RightBorder { get; set; }
-        public double TopBorder { get; set; }
-        public double BottomBorder { get; set; }
-        public EnumsCore.DockEdges DockPosition { get; set; }
-        public EnumsCore.WindowStates MainWindowState { get; set; }
-        public double MainWindowOpacity { get; set; }
-        public string CustomDynamicKeyboardsLocation { get; set; }
+        private double leftBorder;
+        public double LeftBorder
+        {
+            get { return leftBorder; }
+            set { SetProperty(ref leftBorder, value); }
+        }
 
+        private double rightBorder;
+        public double RightBorder
+        {
+            get { return rightBorder; }
+            set { SetProperty(ref rightBorder, value); }
+        }
+
+        private double topBorder;
+        public double TopBorder
+        {
+            get { return topBorder; }
+            set { SetProperty(ref topBorder, value); }
+        }
+
+        private double bottomBorder;
+        public double BottomBorder
+        {
+            get { return bottomBorder; }
+            set { SetProperty(ref bottomBorder, value); }
+        }
 
         public List<KeyValuePair<string, Enums.StartupKeyboardOptions>> StartupOptionsList
         {
@@ -94,6 +111,34 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
 
                 };
             }
+        }
+
+        private EnumsCore.DockEdges dockPosition;
+        public EnumsCore.DockEdges DockPosition
+        {
+            get { return dockPosition; }
+            set { SetProperty(ref dockPosition, value); }
+        }
+
+        private EnumsCore.WindowStates mainWindowState;
+        public EnumsCore.WindowStates MainWindowState
+        {
+            get { return mainWindowState; }
+            set { SetProperty(ref mainWindowState, value); }
+        }
+
+        private double mainWindowOpacity;
+        public double MainWindowOpacity
+        {
+            get { return mainWindowOpacity; }
+            set { SetProperty(ref mainWindowOpacity, value); }
+        }
+
+        private string customDynamicKeyboardsLocation;
+        public string CustomDynamicKeyboardsLocation
+        {
+            get { return customDynamicKeyboardsLocation; }
+            set { SetProperty(ref customDynamicKeyboardsLocation, value); }
         }
 
         #endregion
