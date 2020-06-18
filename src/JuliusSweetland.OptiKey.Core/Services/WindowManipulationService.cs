@@ -16,6 +16,7 @@ using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using log4net;
+using MahApps.Metro.Controls;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -216,9 +217,16 @@ namespace JuliusSweetland.OptiKey.Services
             var windowState = getWindowState();
             switch (windowState)
             {
-                case WindowStates.Docked:
+                
                 case WindowStates.Floating:
                     window.ResizeMode = ResizeMode.CanResizeWithGrip;
+                    break;
+
+                case WindowStates.Docked:
+                    if (getDockSize() == DockSizes.Full)
+                        window.ResizeMode = ResizeMode.CanResizeWithGrip;
+                    else
+                        window.ResizeMode = ResizeMode.NoResize;
                     break;
 
                 case WindowStates.Maximised:
@@ -1127,6 +1135,7 @@ namespace JuliusSweetland.OptiKey.Services
                 if (changeCurrentState)
                 {
                     saveWindowState(WindowStates.Floating);
+                    CoerceSavedStateAndApply();
                     Restore();
                 }
             }
@@ -1159,11 +1168,19 @@ namespace JuliusSweetland.OptiKey.Services
                     saveCollapsedDockThicknessAsPercentageOfFullDockThickness(collapsedDockThicknessAsPercentageOfFullDockThickness);
                 }
                 Rect floatingSizeAndPosition = getFloatingSizeAndPosition();
+
+                // If position extends beyond the screen bounds, force back in
+                Rect screenRect = new Rect(new Point(screenBoundsInDp.Left, screenBoundsInDp.Top),
+                                           new Size(screenBoundsInDp.Width, screenBoundsInDp.Height));
+                Rect intersection = Rect.Intersect(floatingSizeAndPosition, screenRect);
+                if (!intersection.IsCloseTo(floatingSizeAndPosition))
+                {
+                    floatingSizeAndPosition = intersection;
+                    saveFloatingSizeAndPosition(intersection);
+                }
+
+                // If we still can't validate size/position, revert to default 
                 if (floatingSizeAndPosition == default(Rect) ||
-                    floatingSizeAndPosition.Left < screenBoundsInDp.Left ||
-                    floatingSizeAndPosition.Right > screenBoundsInDp.Right ||
-                    floatingSizeAndPosition.Top < screenBoundsInDp.Top ||
-                    floatingSizeAndPosition.Bottom > screenBoundsInDp.Bottom ||
                     floatingSizeAndPosition.Width < (screenBoundsInDp.Width * (MIN_FLOATING_WIDTH_AS_PERCENTAGE_OF_SCREEN / 100)) ||
                     floatingSizeAndPosition.Height < (screenBoundsInDp.Height * (MIN_FLOATING_HEIGHT_AS_PERCENTAGE_OF_SCREEN / 100)))
                 {
