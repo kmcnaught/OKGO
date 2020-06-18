@@ -92,55 +92,6 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
             }
         }
 
-
-        public List<KeyValuePair<string, EnumsCore.DockEdges>> DockPositions
-        {
-            get
-            {
-                return new List<KeyValuePair<string, EnumsCore.DockEdges>>
-                {
-                    new KeyValuePair<string, EnumsCore.DockEdges>(ResourcesCore.TOP, EnumsCore.DockEdges.Top),
-                    new KeyValuePair<string, EnumsCore.DockEdges>(ResourcesCore.BOTTOM, EnumsCore.DockEdges.Bottom),
-                    new KeyValuePair<string, EnumsCore.DockEdges>(ResourcesCore.LEFT, EnumsCore.DockEdges.Left),
-                    new KeyValuePair<string, EnumsCore.DockEdges>(ResourcesCore.RIGHT, EnumsCore.DockEdges.Right),
-                };
-            }
-        }
-
-        public List<KeyValuePair<string, EnumsCore.WindowStates>> MainWindowStates
-        {
-            get
-            {
-                return new List<KeyValuePair<string, EnumsCore.WindowStates>>
-                {
-                    new KeyValuePair<string, EnumsCore.WindowStates>("Floating", EnumsCore.WindowStates.Floating),
-                    new KeyValuePair<string, EnumsCore.WindowStates>("Docked", EnumsCore.WindowStates.Docked),
-
-                };
-            }
-        }
-
-        private EnumsCore.DockEdges dockPosition;
-        public EnumsCore.DockEdges DockPosition
-        {
-            get { return dockPosition; }
-            set { SetProperty(ref dockPosition, value); }
-        }
-
-        private EnumsCore.WindowStates mainWindowState;
-        public EnumsCore.WindowStates MainWindowState
-        {
-            get { return mainWindowState; }
-            set { SetProperty(ref mainWindowState, value); }
-        }
-
-        private double mainWindowOpacity;
-        public double MainWindowOpacity
-        {
-            get { return mainWindowOpacity; }
-            set { SetProperty(ref mainWindowOpacity, value); }
-        }
-
         private string customDynamicKeyboardsLocation;
         public string CustomDynamicKeyboardsLocation
         {
@@ -170,7 +121,6 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
             
             DockPosition = Settings.Default.MainWindowDockPosition;
             MainWindowState = Settings.Default.MainWindowState;
-            MainWindowOpacity = Settings.Default.MainWindowOpacity;
 
             var border = Settings.Default.BorderThickness;
             LeftBorder = border.Left;
