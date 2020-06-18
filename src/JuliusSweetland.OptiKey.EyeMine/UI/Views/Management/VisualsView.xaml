@@ -366,13 +366,13 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                               DisplayMemberPath="Key"
                               SelectedValuePath="Value"
                               SelectedValue="{Binding Theme, Mode=TwoWay}" />
-                    
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Opacity" 
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.OPACITY_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
                     <controls:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
-                                            StringFormat="{}{0:N1}"
-                                            Minimum="0.1" Maximum="1" Interval="0.1"
-                                            Value="{Binding MainWindowOpacity, Mode=TwoWay}" />
+                                            StringFormat="{}{0:N1} %"
+                                            Minimum="10" Maximum="100" Interval="10"
+                                            Value="{Binding Opacity, Mode=TwoWay}" />
 
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.SCRATCHPAD_NUMBER_OF_LINES_LABEL}" 
                                VerticalAlignment="Center" Margin="5" />
