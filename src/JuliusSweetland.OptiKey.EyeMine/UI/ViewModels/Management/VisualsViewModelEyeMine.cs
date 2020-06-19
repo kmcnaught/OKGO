@@ -131,7 +131,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.ViewModels.Management
             StartupKeyboardOption = Settings.Default.EyeMineStartupKeyboard;
         }
 
-        public void ApplyChanges()
+        public new void ApplyChanges()
         {
             base.ApplyChanges();
 

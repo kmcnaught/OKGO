@@ -59,7 +59,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("EnglishMinecraft")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.Languages KeyboardAndDictionaryLanguage
+        public new global::JuliusSweetland.OptiKey.Enums.Languages KeyboardAndDictionaryLanguage
         {
             get
             {
@@ -76,7 +76,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool PointsMousePositionHideCursor
+        public new bool PointsMousePositionHideCursor
         {
             get
             {
@@ -92,7 +92,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("TobiiEyeX")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.PointsSources PointsSource
+        public new global::JuliusSweetland.OptiKey.Enums.PointsSources PointsSource
         {
             get
             {
@@ -113,7 +113,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("32")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double MainWindowFullDockThicknessAsPercentageOfScreen
+        public new double MainWindowFullDockThicknessAsPercentageOfScreen
         {
             get
             {
@@ -129,7 +129,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Bottom")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.DockEdges MainWindowDockPosition
+        public new global::JuliusSweetland.OptiKey.Enums.DockEdges MainWindowDockPosition
         {
             get
             {
@@ -148,7 +148,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("DynamicKeyboard")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.Keyboards StartupKeyboard
+        public new global::JuliusSweetland.OptiKey.Enums.Keyboards StartupKeyboard
         {
             get
             {
@@ -165,7 +165,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Title")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public global::JuliusSweetland.OptiKey.Enums.Case KeyCase
+        public new global::JuliusSweetland.OptiKey.Enums.Case KeyCase
         {
             get
             {
@@ -182,7 +182,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool KeySelectionTriggerFixationCompleteTimesByIndividualKey
+        public new bool KeySelectionTriggerFixationCompleteTimesByIndividualKey
         {
             get
             {
@@ -217,7 +217,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string DynamicKeyboardsLocation
+        public new string DynamicKeyboardsLocation
         {
             get
             {
@@ -251,7 +251,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string MouseDownSoundFile
+        public new string MouseDownSoundFile
         {
             get
             {
@@ -267,7 +267,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string MouseUpSoundFile
+        public new string MouseUpSoundFile
         {
             get
             {
@@ -284,7 +284,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string MouseClickSoundFile
+        public new string MouseClickSoundFile
         {
             get
             {
@@ -300,7 +300,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string MouseDoubleClickSoundFile
+        public new string MouseDoubleClickSoundFile
         {
             get
             {
@@ -316,7 +316,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public string MouseScrollSoundFile
+        public new string MouseScrollSoundFile
         {
             get
             {
