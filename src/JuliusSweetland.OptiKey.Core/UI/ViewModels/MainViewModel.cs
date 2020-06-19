@@ -329,10 +329,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     case Enums.Keyboards.CustomKeyboardFile:
                         SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
-                            windowManipulationService, () =>
-                            {
-                                Keyboard = new Menu(() => Keyboard = new Alpha1());
-                            });
+                            windowManipulationService, () => { });
                         break;
 
                     default:
