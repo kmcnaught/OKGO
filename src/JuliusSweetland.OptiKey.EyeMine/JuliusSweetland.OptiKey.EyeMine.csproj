@@ -309,10 +309,7 @@
     </Content>
     <Content Include="Resources\DynamicKeyboards\EyeTracker\3_MC_MainKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\4_MC_Survival.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Content>    
     <Content Include="Resources\DynamicKeyboards\Mouse\0_MC_5_1_1_intro.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
