@@ -1,5 +1,6 @@
 <Keyboard>
    <ShowOutputPanel>True</ShowOutputPanel>
+   <SymbolMargin>10</SymbolMargin>
    <Name>Minecraft 10x3 chat</Name>
    <Grid>
       <Rows>3</Rows>
