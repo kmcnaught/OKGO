@@ -1,0 +1,123 @@
+<!--
+Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+-->
+<Keyboard>
+  <Name>Minecraft\nBuilder</Name>  
+  <SymbolMargin>20</SymbolMargin>
+  <Grid>
+    <Rows>3</Rows>
+    <Cols>8</Cols>
+  </Grid>
+  <Content>
+    <DynamicKey>
+      <Label>Prev\nitem</Label>
+      <Symbol>MinecraftPrev</Symbol>
+      <Action>NumPad4</Action>
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Fly</Label>      
+      <Symbol>MinecraftFly</Symbol>
+      <Text>,</Text>            
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Use\nItem</Label>
+      <Symbol>MouseRightClickIcon</Symbol>
+      <Action>NumPad0</Action>
+    </DynamicKey>
+    <DynamicKey Width="2">
+      <Label>Look\nwith gaze</Label>
+      <Symbol>MinecraftLookWithCursor</Symbol>
+      <Action>MouseMagneticCursor</Action>      
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Mine x1</Label>
+      <Symbol>MinecraftMineOnce</Symbol>
+      <Text>n</Text>
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Toggle\nauto jump</Label>
+      <Symbol>MinecraftAutoJump</Symbol>
+      <Text>j</Text>
+    </DynamicKey>
+    <DynamicKey>
+      <!-- empty key to pad auto-layout -->      
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Next\nitem</Label>
+      <Symbol>MinecraftNext</Symbol>
+      <Action>NumPad5</Action>
+    </DynamicKey>
+    <DynamicKey>      
+      <Label>Fly\nUp</Label>
+      <Symbol>MinecraftFlyUp</Symbol>
+      <Text>.</Text>  
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Dwell\nbuilding</Label>
+      <Action>NumPad3</Action>
+      <Symbol>DwellBuild</Symbol>
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Walk</Label>
+      <Symbol>MinecraftWalk</Symbol>
+      <Text>h</Text>
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Careful\nWalk</Label>
+      <Symbol>MinecraftMoveLegacy</Symbol>
+      <Text>b</Text>
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Dwell\nmining</Label>
+      <Action>NumPad6</Action>
+      <Symbol>DwellMine</Symbol>
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Toggle\nsneak</Label>
+      <Symbol>MinecraftSneak</Symbol>
+      <Text>z</Text>
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Inventory\netc...</Label>
+      <ChangeKeyboard BackReturnsHere="true">3_InventoryKeyboard</ChangeKeyboard>      
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Pick\nBlock</Label>
+      <Symbol>MinecraftPickBlock</Symbol>
+      <Action>NumPad2</Action>      
+    </DynamicKey>
+    <DynamicKey>      
+      <Label>Fly\nDown</Label>
+      <Symbol>MinecraftFlyDown</Symbol>
+      <Text>'</Text>  
+    </DynamicKey>
+    <DynamicKey>      
+      <Label>Toggle\nuse item</Label>
+      <Symbol>MouseRightDownUpIcon</Symbol>
+      <Action>NumPad1</Action>      
+    </DynamicKey>
+    <DynamicKey>      
+      <Label>Auto\nPillar</Label>
+      <Symbol>MinecraftPlaceBlock</Symbol>
+      <Text>l</Text>
+    </DynamicKey>
+    <DynamicKey>
+      <Text>p</Text>
+      <Label>Ironsights</Label>
+      <Symbol>Ironsights</Symbol>      
+    </DynamicKey>
+    <DynamicKey>
+      <!-- empty key to pad auto-layout -->      
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Swap\nmine/place</Label>
+      <Symbol>MinecraftSwapMinePlace</Symbol>
+      <Action>F10</Action>      
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Back</Label>
+      <Symbol>BackIcon</Symbol>
+      <Action>BackFromKeyboard</Action>      
+    </DynamicKey>
+  </Content>
+</Keyboard>
