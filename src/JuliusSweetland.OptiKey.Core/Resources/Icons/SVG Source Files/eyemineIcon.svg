@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="276.89511"
+   height="276.89511"
+   viewBox="0 0 73.261833 73.261833"
+   version="1.1"
+   id="svg6011"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="eyemineIcon.svg">
+  <defs
+     id="defs6005" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="111.93568"
+     inkscape:cy="133.03691"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1137"
+     inkscape:window-x="2728"
+     inkscape:window-y="387"
+     inkscape:window-maximized="1"
+     units="px" />
+  <metadata
+     id="metadata6008">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-69.202425,-112.20241)">
+    <circle
+       r="33.860538"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:5.54075909;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       id="circle5984"
+       cx="105.83334"
+       cy="148.83333" />
+    <path
+       inkscape:connector-curvature="0"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.40773124;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       d="m 105.83334,122.98252 a 25.850761,25.850761 0 0 0 -25.850606,25.85062 25.850761,25.850761 0 0 0 25.850606,25.85113 25.850761,25.850761 0 0 0 25.85064,-25.85113 25.850761,25.850761 0 0 0 -25.85064,-25.85062 z m -5.07203,8.51886 h 14.00275 v 2.80034 h 5.6007 v 5.60121 h 2.80086 v 14.00225 h -2.80086 v 2.80035 h -2.80035 v -2.80035 h -2.80035 v -8.40155 h -2.80085 v 2.80034 h -2.80035 v 2.80086 h -2.80035 v 2.80035 h -2.80035 v 2.80035 h -2.80085 v 2.80034 h -2.800352 v 2.80086 H 95.16061 v 2.80035 h -5.601203 v -5.60121 h 2.800879 v -2.80034 h 2.800324 v -2.80035 h 2.800348 v -2.80035 h 2.800352 v -2.80086 h 2.80085 v -2.80034 h 2.80035 v -2.80035 h 2.80035 v -2.80035 h -8.40155 v -2.80086 h -2.800352 v -2.80035 h 2.800352 z"
+       id="circle5986" />
+  </g>
+</svg>

@@ -38,7 +38,7 @@
     <StartupObject>JuliusSweetland.OptiKey.EyeMine.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>EyeMine.ico</ApplicationIcon>
+    <ApplicationIcon>EyeMineV2.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -358,7 +358,7 @@
     <SplashScreen Include="Resources\Icons\EyeMineSplash.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </SplashScreen>
-    <Resource Include="EyeMine.ico" />
+    <Resource Include="EyeMineV2.ico" />
     <None Include="..\JuliusSweetland.OptiKey.Core\app.manifest">
       <Link>app.manifest</Link>
     </None>
