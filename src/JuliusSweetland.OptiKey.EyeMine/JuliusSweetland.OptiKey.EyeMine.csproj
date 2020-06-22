@@ -271,88 +271,88 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\0_MC_5_1_1_intro.xml">
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\0_MC_5_1_1_intro.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\0_MC_5_1_2_intro.xml">
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\0_MC_5_1_2_intro.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\1_MC_5_1_1_advanced.xml">
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\1_MC_5_1_1_advanced.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\1_MC_5_1_2_advanced.xml">
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\1_MC_5_1_2_advanced.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\1_MC_5_1_build1.xml">
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\1_MC_5_1_build1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\1_MC_5_1_build2.xml">
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\1_MC_5_1_build2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\1_MC_5_1_misc.xml">
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\1_MC_5_1_misc.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\2_MC_8_2_1.xml">
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\2_MC_8_2_1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\2_MC_8_2_2.xml">
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\2_MC_8_2_2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\2_MC_8_2_inv.xml">
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\2_MC_8_2_inv.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\3_MC_ChatKeyboard.xml">
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\3_MC_ChatKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\3_MC_InventoryKeyboard.xml">
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\3_MC_InventoryKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\3_MC_MainKeyboard.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>    
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\Bonus Keyboards\MinecraftBuild.xml">
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\3_MC_MainKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\EyeTracker\Bonus Keyboards\MinecraftDebug.xml">
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\Bonus Keyboards\MinecraftBuild.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Mouse\0_MC_5_1_1_intro.xml">
+    <Content Include="Resources\EyeMineKeyboards\EyeTracker\Bonus Keyboards\MinecraftDebug.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Mouse\0_MC_5_1_2_intro.xml">
+    <Content Include="Resources\EyeMineKeyboards\Mouse\0_MC_5_1_1_intro.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Mouse\1_MC_5_1_1_advanced.xml">
+    <Content Include="Resources\EyeMineKeyboards\Mouse\0_MC_5_1_2_intro.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Mouse\1_MC_5_1_2_advanced.xml">
+    <Content Include="Resources\EyeMineKeyboards\Mouse\1_MC_5_1_1_advanced.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Mouse\1_MC_5_1_build1.xml">
+    <Content Include="Resources\EyeMineKeyboards\Mouse\1_MC_5_1_2_advanced.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Mouse\1_MC_5_1_build2.xml">
+    <Content Include="Resources\EyeMineKeyboards\Mouse\1_MC_5_1_build1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Mouse\1_MC_5_1_misc.xml">
+    <Content Include="Resources\EyeMineKeyboards\Mouse\1_MC_5_1_build2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Mouse\2_MC_8_2_1.xml">
+    <Content Include="Resources\EyeMineKeyboards\Mouse\1_MC_5_1_misc.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Mouse\2_MC_8_2_2.xml">
+    <Content Include="Resources\EyeMineKeyboards\Mouse\2_MC_8_2_1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Mouse\2_MC_8_2_inv.xml">
+    <Content Include="Resources\EyeMineKeyboards\Mouse\2_MC_8_2_2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Mouse\3_MC_ChatKeyboard.xml">
+    <Content Include="Resources\EyeMineKeyboards\Mouse\2_MC_8_2_inv.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Mouse\3_MC_InventoryKeyboard.xml">
+    <Content Include="Resources\EyeMineKeyboards\Mouse\3_MC_ChatKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\DynamicKeyboards\Mouse\3_MC_MainKeyboard.xml">
+    <Content Include="Resources\EyeMineKeyboards\Mouse\3_MC_InventoryKeyboard.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\EyeMineKeyboards\Mouse\3_MC_MainKeyboard.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <SplashScreen Include="Resources\Icons\EyeMineSplash.png">
