@@ -642,6 +642,30 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.Plugin:
                     RunPlugin_Legacy(singleKeyValue.String);
                     break;
+
+                case FunctionKeys.DynamicKeyboard: // Case where Dynamic keyboard selector requested for a specific location
+                {
+                    Log.Info("Changing keyboard to DynamicKeyboard.");
+                    Log.InfoFormat("directory is {0}", singleKeyValue.String);
+                    string directory = singleKeyValue.String;
+
+                    Action reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                    Action backAction = () =>
+                    {
+                        Keyboard = currentKeyboard;
+
+                        reinstateModifiers();
+
+                        // Clear the scratchpad when leaving keyboard
+                        // (proper scratchpad functionality not supported in dynamic keyboards presently)
+                        keyboardOutputService.ProcessFunctionKey(FunctionKeys.ClearScratchpad);
+                    };
+
+                    int pageIndex = 0;
+                    Keyboard = new DynamicKeyboardSelector(backAction, pageIndex, directory);
+                }
+                    break;
+
             }
         }
 
@@ -970,9 +994,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Action backAction;
                         var currentKeyboard2 = Keyboard;
                         int pageIndex = 0;
+                        string directory = Settings.Default.DynamicKeyboardsLocation;
                         if (Keyboard is DynamicKeyboardSelector)
                         {
                             var kb = Keyboard as DynamicKeyboardSelector;
+                            directory = kb.Directory;
                             backAction = kb.BackAction;
                             pageIndex = kb.PageIndex - 1;
                         }
@@ -984,7 +1010,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 Keyboard = currentKeyboard2;
                             };
                         }
-                        Keyboard = new DynamicKeyboardSelector(backAction, pageIndex);
+                        Keyboard = new DynamicKeyboardSelector(backAction, pageIndex, directory);
                     }
                     break;
 
@@ -995,9 +1021,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         Action backAction;
                         var currentKeyboard2 = Keyboard;
                         int pageIndex = 0;
+                        string directory = Settings.Default.DynamicKeyboardsLocation;
                         if (Keyboard is DynamicKeyboardSelector)
                         {
                             var kb = Keyboard as DynamicKeyboardSelector;
+                            directory = kb.Directory;
                             backAction = kb.BackAction;
                             pageIndex = kb.PageIndex + 1;
                         }
@@ -1009,7 +1037,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 Keyboard = currentKeyboard2;
                             };
                         }
-                        Keyboard = new DynamicKeyboardSelector(backAction, pageIndex);
+                        Keyboard = new DynamicKeyboardSelector(backAction, pageIndex, directory);
                     }
                     break;
 

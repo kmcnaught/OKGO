@@ -3,10 +3,12 @@ using JuliusSweetland.OptiKey.UI.Controls;
 using JuliusSweetland.OptiKey.Models;
 using System.Windows.Controls;
 using System;
+using System.IO;
 using System.Linq;
 using System.Windows.Media;
 using System.Reflection;
-
+using System.Windows;
+using JuliusSweetland.OptiKey.Enums;
 using log4net;
 using JuliusSweetland.OptiKey.Properties;
 
@@ -32,13 +34,13 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
         #endregion
 
-        public DynamicKeyboardSelector(int pageIndex)
+        public DynamicKeyboardSelector(int pageIndex, string keyboardsPath=null)
         {
             InitializeComponent();
             this.pageIndex = pageIndex;
 
             // Populate model
-            folder = new DynamicKeyboardFolder();
+            folder = new DynamicKeyboardFolder(keyboardsPath);
             
             // Setup grid
             for (int i = 0; i < this.mRows; i++)
@@ -51,13 +53,23 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 MainGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-            // Add back key, bottom right
+            // Add back/quit key, bottom right
+            if (keyboardsPath == Settings.Default.DynamicKeyboardsLocation)
             { 
                 Key newKey = new Key();
                 newKey.SharedSizeGroup = "SingleKey";
                 newKey.SymbolGeometry = (Geometry)this.Resources["QuitIcon"];
                 newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.QUIT;
                 newKey.Value = KeyValues.QuitKey;
+                this.AddKey(newKey, this.mRows - 1, this.mCols - 1);
+            }
+            else
+            {
+                Key newKey = new Key();
+                newKey.SharedSizeGroup = "SingleKey";
+                newKey.SymbolGeometry = (Geometry)this.Resources["BackIcon"];
+                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.BACK;
+                newKey.Value = KeyValues.BackFromKeyboardKey;
                 this.AddKey(newKey, this.mRows - 1, this.mCols - 1);
             }
 
@@ -87,8 +99,16 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     if (i < nKBs)
                     {
                         KeyboardInfo kbInfo = folder.keyboards.ElementAt(firstKB + i);
-                        // Add key to link to keyboard
-                        this.AddKeyboardKey(kbInfo, r, c);
+                        if (kbInfo.isDirectory)
+                        {
+                            this.AddDirectoryKey(kbInfo, r, c);
+                        }
+
+                        else
+                        {
+                            // Add key to link to keyboard
+                            this.AddKeyboardKey(kbInfo, r, c);
+                        }
                     }
                     else
                     {
@@ -155,6 +175,17 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             Grid.SetColumnSpan(key, colspan);
             Grid.SetRowSpan(key, rowspan);
 
+        }
+
+
+        private void AddDirectoryKey(KeyboardInfo info, int row, int col)
+        {
+            Key lKey = new Key();
+            lKey.Value = new KeyValue(FunctionKeys.DynamicKeyboard, info.fullPath);
+            lKey.Text = String.Format("[{0}]", new DirectoryInfo(info.fullPath).Name);
+            lKey.SharedSizeGroup = "DirectoryKey";
+
+            this.AddKey(lKey, row, col);
         }
 
         private void AddKeyboardKey(KeyboardInfo info, int row, int col)

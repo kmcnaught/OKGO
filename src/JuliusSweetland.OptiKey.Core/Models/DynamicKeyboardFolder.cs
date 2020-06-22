@@ -17,6 +17,7 @@ namespace JuliusSweetland.OptiKey.Models
         public string keyboardName;
         public string symbolString;
         public bool isHidden; // default false
+        public bool isDirectory; // default false
 
         public override string ToString()
         {
@@ -38,12 +39,16 @@ namespace JuliusSweetland.OptiKey.Models
 
         public List<KeyboardInfo> keyboards;
         
-        public DynamicKeyboardFolder()
+        public DynamicKeyboardFolder(String filePath)
         {
-            // Find all possible xml files
-            string filePath = Settings.Default.DynamicKeyboardsLocation;
+            if (String.IsNullOrEmpty(filePath))
+            {
+                filePath = Settings.Default.DynamicKeyboardsLocation;
+            }
+            
             keyboards = new List<KeyboardInfo>();
 
+            // Find all possible xml files
             if (Directory.Exists(filePath))
             {
                 string[] fileArray = Directory.GetFiles(filePath, "*.xml");
@@ -52,10 +57,9 @@ namespace JuliusSweetland.OptiKey.Models
 
                 // Read in keyboard name, symbol, hidden state from each file
                 // Note that ordering is currently undefined
-                foreach (string fileName in fileArray)
+                foreach (string fullName in fileArray)
                 {
-                    string keyboardPath = Path.Combine(filePath, fileName);
-                    KeyboardInfo info = GetKeyboardInfo(keyboardPath);
+                    KeyboardInfo info = GetKeyboardInfo(fullName);
                     if (null != info.fullPath)
                     {
                         if (!info.isHidden)
@@ -69,6 +73,19 @@ namespace JuliusSweetland.OptiKey.Models
                         }
                     }
                 }
+
+                // Look for any subdirs 
+                string[] folderArray = Directory.GetDirectories(filePath);
+                foreach (string fullPath in folderArray)
+                {
+                    KeyboardInfo info = GetKeyboardInfo(fullPath);
+                    string folderName = new DirectoryInfo(fullPath).Name;
+                    if (null != info.fullPath && !folderName.StartsWith("."))
+                    {
+                        keyboards.Add(info);
+                        Log.InfoFormat("Found keyboard folder: {0}", info.fullPath);
+                    }
+                }
             }
         }
 
@@ -79,6 +96,12 @@ namespace JuliusSweetland.OptiKey.Models
         {
             KeyboardInfo info = new KeyboardInfo();
             info.fullPath = keyboardPath;
+
+            if (Directory.Exists(keyboardPath) && !keyboardPath.StartsWith("."))
+            {
+                info.isDirectory = true;
+                return info;
+            }
             
             try
             {
