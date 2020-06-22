@@ -1,5 +1,6 @@
 <Keyboard>
    <Name>Minecraft 10x3 inventory</Name>
+   <SymbolMargin>35</SymbolMargin>
    <Grid>
       <Rows>2</Rows>
       <Cols>10</Cols>
