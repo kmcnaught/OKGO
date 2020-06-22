@@ -313,8 +313,8 @@ namespace JuliusSweetland.OptiKey.EyeMine
             if (!Directory.Exists(applicationDataPath))
             {
                 Directory.CreateDirectory(applicationDataPath);
-                String baseSourceDir = AppDomain.CurrentDomain.BaseDirectory + @"\Resources\DynamicKeyboards";
-                foreach (string dynamicKeyboard in Directory.GetFiles(baseSourceDir,"*MC*.xml", SearchOption.AllDirectories))
+                String baseSourceDir = AppDomain.CurrentDomain.BaseDirectory + @"\Resources\EyeMineKeyboards";
+                foreach (string dynamicKeyboard in Directory.GetFiles(baseSourceDir,"*.xml", SearchOption.AllDirectories))
                 {
                     // Copy folder hierarchy
                     string relativePath = Path.GetDirectoryName(GetRelativePath(dynamicKeyboard, baseSourceDir));
