@@ -1,155 +1,155 @@
 <Keyboard>
-   <Name>Minecraft\nAdvanced</Name>
-   <Grid>
-      <Rows>7</Rows>
-      <Cols>9</Cols>
-   </Grid>
-   <InitialKeyStates>
-     <KeyLockedDown>MouseMagnifier</KeyLockedDown>   
-   </InitialKeyStates>
-	<Keys>
-		<DynamicKey Col="0" Height="1" Row="0" Width="2">
+	<Name>Minecraft\nAdvanced</Name>
+	<Grid>
+		<Rows>7</Rows>
+		<Cols>9</Cols>
+	</Grid>
+	<InitialKeyStates>
+		<KeyLockedDown>MouseMagnifier</KeyLockedDown>
+	</InitialKeyStates>
+	<Content>
+		<DynamicKey Width="2">
 			<Label>Building</Label>
-			</DynamicKey>
-		<DynamicKey Col="2" Height="1" Row="0" Width="4">
+		</DynamicKey>
+		<DynamicKey Width="4">
 			<Label>Navigating</Label>
-			</DynamicKey>
-		<DynamicKey Col="6" Height="1" Row="0" Width="1">
-			<Label />
-			</DynamicKey>
-		<DynamicKey Col="7" Height="1" Row="0" Width="1">
+		</DynamicKey>
+		<DynamicKey>
+			<!-- empty key to pad auto-layout -->
+		</DynamicKey>
+		<DynamicKey>
 			<Label>Mining</Label>
-			</DynamicKey>
-		<DynamicKey Col="8" Height="1" Row="0" Width="1">
-			<Label />
-			</DynamicKey>
-		<DynamicKey Col="0" Height="2" Row="1" Width="1">
+		</DynamicKey>
+		<DynamicKey>
+			<!-- empty key to pad auto-layout -->
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Prev\nitem</Label>
 			<Symbol>MinecraftPrev</Symbol>
 			<Action>NumPad4</Action>
-			</DynamicKey>
-		<DynamicKey Col="1" Height="2" Row="1" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Next\nitem</Label>
 			<Symbol>MinecraftNext</Symbol>
 			<Action>NumPad5</Action>
-			</DynamicKey>
-		<DynamicKey Col="2" Height="2" Row="1" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Fly</Label>
 			<Symbol>MinecraftFly</Symbol>
 			<Text>,</Text>
-			</DynamicKey>
-		<DynamicKey Col="3" Height="2" Row="1" Width="2">
+		</DynamicKey>
+		<DynamicKey Height="2" Width="2">
 			<Label>Look\nwith gaze</Label>
 			<Symbol>MinecraftLookWithCursor</Symbol>
 			<Action>MouseMagneticCursor</Action>
-			</DynamicKey>
-		<DynamicKey Col="5" Height="2" Row="1" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Toggle\nauto-jump</Label>
 			<Symbol>MinecraftAutoJump</Symbol>
 			<Text>j</Text>
-			</DynamicKey>
-		<DynamicKey Col="6" Height="2" Row="1" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Toggle\nattack</Label>
 			<Symbol>MinecraftAttackContinuous</Symbol>
 			<Text>r</Text>
-			</DynamicKey>
-		<DynamicKey Col="7" Height="2" Row="1" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Mine\none block</Label>
 			<Symbol>MinecraftMineOnce</Symbol>
 			<Text>n</Text>
-			</DynamicKey>
-		<DynamicKey Col="8" Height="2" Row="1" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Esc</Label>
 			<Symbol>MinecraftEscButton</Symbol>
 			<Action>Escape</Action>
-			</DynamicKey>
-		<DynamicKey Col="0" Height="2" Row="3" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Use\nItem</Label>
 			<Symbol>MouseRightClickIcon</Symbol>
 			<Action>NumPad0</Action>
-			</DynamicKey>
-		<DynamicKey Col="1" Height="2" Row="3" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Toggle\nuse</Label>
 			<Symbol>MouseRightDownUpIcon</Symbol>
 			<Action>NumPad1</Action>
-			</DynamicKey>
-		<DynamicKey Col="2" Height="2" Row="3" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Fly\nUp</Label>
 			<Symbol>MinecraftFlyUp</Symbol>
 			<Text>.</Text>
-			</DynamicKey>
-		<DynamicKey Col="3" Height="2" Row="3" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Walk</Label>
 			<Symbol>MinecraftWalk</Symbol>
 			<Text>h</Text>
-			</DynamicKey>
-		<DynamicKey Col="4" Height="2" Row="3" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Careful\nwalk</Label>
 			<Symbol>MinecraftMoveLegacy</Symbol>
 			<Text>b</Text>
-			</DynamicKey>
-		<DynamicKey Col="5" Height="2" Row="3" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Sneak</Label>
 			<Symbol>MinecraftSneak</Symbol>
 			<Text>z</Text>
-			</DynamicKey>
-		<DynamicKey Col="6" Height="2" Row="3" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Swap mine\nand place</Label>
 			<Symbol>MinecraftSwapMinePlace</Symbol>
 			<Action>F10</Action>
-			</DynamicKey>
-		<DynamicKey Col="7" Height="2" Row="3" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Toggle\nmining</Label>
 			<Symbol>MinecraftMineContinuous</Symbol>
 			<Text>m</Text>
-			</DynamicKey>
-		<DynamicKey Col="8" Height="2" Row="3" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Inventory\netc...</Label>
 			<ChangeKeyboard BackReturnsHere="True">3_MC_InventoryKeyboard</ChangeKeyboard>
-			</DynamicKey>
-		<DynamicKey Col="0" Height="2" Row="5" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Auto\nPillar</Label>
 			<Symbol>MinecraftPlaceBlock</Symbol>
 			<Text>l</Text>
-			</DynamicKey>
-		<DynamicKey Col="1" Height="2" Row="5" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Pick\nBlock</Label>
 			<Symbol>MinecraftPickBlock</Symbol>
 			<Action>NumPad2</Action>
-			</DynamicKey>
-		<DynamicKey Col="2" Height="2" Row="5" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Auto\nFly</Label>
 			<Symbol>MinecraftAutoFly</Symbol>
 			<Text>g</Text>
-			</DynamicKey>
-		<DynamicKey Col="3" Height="2" Row="5" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Night\nVision</Label>
 			<Symbol>MinecraftNightVision</Symbol>
 			<Action>F12</Action>
-			</DynamicKey>
-		<DynamicKey Col="4" Height="2" Row="5" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Chat...</Label>
 			<Symbol>ChatIcon</Symbol>
 			<ChangeKeyboard BackReturnsHere="True">3_MC_ChatKeyboard</ChangeKeyboard>
-			</DynamicKey>
-		<DynamicKey Col="5" Height="2" Row="5" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Toggle\nSwim</Label>
 			<Symbol>MinecraftSwim</Symbol>
 			<Text>v</Text>
-			</DynamicKey>
-		<DynamicKey Col="6" Height="2" Row="5" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Left\nclick</Label>
 			<Symbol>MouseLeftClickWithMouseIcon</Symbol>
 			<Action>MouseMoveAndLeftClick</Action>
-			</DynamicKey>
-		<DynamicKey Col="7" Height="2" Row="5" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Ride/\nDismount</Label>
 			<Text>c</Text>
-			</DynamicKey>
-		<DynamicKey Col="8" Height="2" Row="5" Width="1">
+		</DynamicKey>
+		<DynamicKey Height="2">
 			<Label>Back</Label>
 			<Symbol>BackIcon</Symbol>
 			<Action>BackFromKeyboard</Action>
-			</DynamicKey>
-	</Keys>
+		</DynamicKey>
+	</Content>
 </Keyboard>

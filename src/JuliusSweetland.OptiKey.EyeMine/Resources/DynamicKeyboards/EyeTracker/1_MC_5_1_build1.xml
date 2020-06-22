@@ -5,31 +5,31 @@
 		<Rows>1</Rows>
 		<Cols>5</Cols>
 	</Grid>
-	<Keys>
-		<DynamicKey Col="0" Height="1" Row="0" Width="1">
+	<Content>
+		<DynamicKey>
 			<Label>Careful\nwalk</Label>
 			<Symbol>MinecraftMoveLegacy</Symbol>
 			<Text>b</Text>
-			</DynamicKey>
-		<DynamicKey Col="1" Height="1" Row="0" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>Prev\nitem</Label>
 			<Symbol>MinecraftPrev</Symbol>
 			<Action>NumPad4</Action>
-			</DynamicKey>
-		<DynamicKey Col="2" Height="1" Row="0" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>Use\nItem</Label>
 			<Symbol>MouseRightClickIcon</Symbol>
 			<Action>NumPad0</Action>
-			</DynamicKey>
-		<DynamicKey Col="3" Height="1" Row="0" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>Next\nItem</Label>
 			<Symbol>MinecraftNext</Symbol>
 			<Action>NumPad5</Action>
-			</DynamicKey>
-		<DynamicKey Col="4" Height="1" Row="0" Width="1">
-			<Label />
+		</DynamicKey>
+		<DynamicKey>
+			<Label/>
 			<Symbol>ArrowPointingToRightIcon</Symbol>
 			<ChangeKeyboard BackReturnsHere="False">1_MC_5_1_build2.xml</ChangeKeyboard>
-			</DynamicKey>
-	</Keys>
+		</DynamicKey>
+	</Content>
 </Keyboard>

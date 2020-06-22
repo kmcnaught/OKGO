@@ -5,31 +5,31 @@
 		<Rows>1</Rows>
 		<Cols>5</Cols>
 	</Grid>
-	<Keys>
-		<DynamicKey Col="0" Height="1" Row="0" Width="1">
-			<Label />
+	<Content>
+		<DynamicKey>
+			<Label/>
 			<Symbol>ArrowPointingToLeftIcon</Symbol>
 			<ChangeKeyboard BackReturnsHere="False">1_MC_5_1_build1.xml</ChangeKeyboard>
-			</DynamicKey>
-		<DynamicKey Col="1" Height="1" Row="0" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>Sneak</Label>
 			<Symbol>MinecraftSneak</Symbol>
 			<Text>z</Text>
-			</DynamicKey>
-		<DynamicKey Col="2" Height="1" Row="0" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>Pick\nBlock</Label>
 			<Symbol>MinecraftPickBlock</Symbol>
 			<Action>NumPad2</Action>
-			</DynamicKey>
-		<DynamicKey Col="3" Height="1" Row="0" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>Mine\nonce</Label>
 			<Symbol>MinecraftMineOnce</Symbol>
 			<Text>n</Text>
-			</DynamicKey>
-		<DynamicKey Col="4" Height="1" Row="0" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>Back</Label>
 			<Symbol>BackIcon</Symbol>
 			<Action>BackFromKeyboard</Action>
-			</DynamicKey>
-	</Keys>
+		</DynamicKey>
+	</Content>
 </Keyboard>

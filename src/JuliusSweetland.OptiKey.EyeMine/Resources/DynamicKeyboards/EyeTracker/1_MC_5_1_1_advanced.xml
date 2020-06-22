@@ -5,30 +5,30 @@
       <Rows>1</Rows>
       <Cols>5</Cols>
    </Grid>
-   <Keys>
-       <DynamicKey Col="0" Row="0">
+   <Content>
+      <DynamicKey>
          <Symbol>MinecraftAutoFly</Symbol>
          <Label>Fly</Label>
          <Text>g</Text>
-         </DynamicKey>
-	   <DynamicKey Col="1" Row="0">
+      </DynamicKey>
+      <DynamicKey>
          <Label>Walk</Label>
-		 <Symbol>MinecraftWalk</Symbol>
+         <Symbol>MinecraftWalk</Symbol>
          <Text>h</Text>
-         </DynamicKey>
-	  <DynamicKey Col="2" Row="0">
-		 <Symbol>MinecraftLookWithCursor</Symbol>	 
-		 <Action>MouseMagneticCursor</Action>
+      </DynamicKey>
+      <DynamicKey>
+         <Symbol>MinecraftLookWithCursor</Symbol>
+         <Action>MouseMagneticCursor</Action>
          <Label>Look\nwith\nGaze</Label>
-         </DynamicKey>
-	  <DynamicKey Col="3" Row="0">
-		 <Text>r</Text>
-		 <Label>Attack</Label>
-		 <Symbol>MinecraftAttackContinuous</Symbol>
-         </DynamicKey>	
-	  <DynamicKey Col="4" Row="0">
-		<Symbol>ArrowPointingToRightIcon</Symbol>
-		<ChangeKeyboard BackReturnsHere="False">1_MC_5_1_2_advanced.xml</ChangeKeyboard>
-		 </DynamicKey>	  
-   </Keys>
+      </DynamicKey>
+      <DynamicKey>
+         <Text>r</Text>
+         <Label>Attack</Label>
+         <Symbol>MinecraftAttackContinuous</Symbol>
+      </DynamicKey>
+      <DynamicKey>
+         <Symbol>ArrowPointingToRightIcon</Symbol>
+         <ChangeKeyboard BackReturnsHere="False">1_MC_5_1_2_advanced.xml</ChangeKeyboard>
+      </DynamicKey>
+   </Content>
 </Keyboard>

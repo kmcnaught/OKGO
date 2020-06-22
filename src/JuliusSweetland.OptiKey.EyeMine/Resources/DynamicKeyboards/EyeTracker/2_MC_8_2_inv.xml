@@ -1,85 +1,85 @@
 <Keyboard>
 	<BorderThickness>1,30,1,1</BorderThickness>
-   <HideFromKeyboardMenu>True</HideFromKeyboardMenu>
-   <InitialKeyStates>
-     <KeyUp>MouseMagneticCursor</KeyUp>
-     <KeyLockedDown>MouseMagnifier</KeyLockedDown>   
-   </InitialKeyStates>
-   <Grid>
-    <Rows>2</Rows>
-    <Cols>8</Cols>
-    </Grid>
-	<Keys>
-		<DynamicKey Col="0" Height="1" Row="0" Width="1">
+	<HideFromKeyboardMenu>True</HideFromKeyboardMenu>
+	<InitialKeyStates>
+		<KeyUp>MouseMagneticCursor</KeyUp>
+		<KeyLockedDown>MouseMagnifier</KeyLockedDown>
+	</InitialKeyStates>
+	<Grid>
+		<Rows>2</Rows>
+		<Cols>8</Cols>
+	</Grid>
+	<Content>
+		<DynamicKey>
 			<Label>1</Label>
 			<Text>1</Text>
-			</DynamicKey>
-		<DynamicKey Col="1" Height="1" Row="0" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>2</Label>
 			<Text>2</Text>
-			</DynamicKey>
-		<DynamicKey Col="2" Height="1" Row="0" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>3</Label>
 			<Text>3</Text>
-			</DynamicKey>
-		<DynamicKey Col="3" Height="1" Row="0" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>4</Label>
 			<Text>4</Text>
-			</DynamicKey>
-		<DynamicKey Col="4" Height="1" Row="0" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>5</Label>
 			<Text>5</Text>
-			</DynamicKey>
-		<DynamicKey Col="5" Height="1" Row="0" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>6</Label>
 			<Text>6</Text>
-			</DynamicKey>
-		<DynamicKey Col="6" Height="1" Row="0" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>7</Label>
 			<Text>7</Text>
-			</DynamicKey>
-		<DynamicKey Col="7" Height="1" Row="0" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>Esc</Label>
-            <Symbol>MinecraftEscButton</Symbol>
+			<Symbol>MinecraftEscButton</Symbol>
 			<Action>Escape</Action>
-			</DynamicKey>
-		<DynamicKey Col="0" Height="1" Row="1" Width="1">
-			<Label />
+		</DynamicKey>
+		<DynamicKey>
+			<Label/>
 			<Symbol>ArrowPointingToLeftIcon</Symbol>
 			<ChangeKeyboard BackReturnsHere="False">2_MC_8_2_2.xml</ChangeKeyboard>
-			</DynamicKey>
-		<DynamicKey Col="1" Height="1" Row="1" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>Open\ninventory</Label>
 			<Text>e</Text>
-			</DynamicKey>
-		<DynamicKey Col="2" Height="1" Row="1" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>Prev\ntab</Label>
 			<Symbol>MinecraftTabPrev</Symbol>
 			<Action>ArrowLeft</Action>
-			</DynamicKey>
-		<DynamicKey Col="3" Height="1" Row="1" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>Next\ntab</Label>
 			<Symbol>MinecraftTabNext</Symbol>
 			<Action>ArrowRight</Action>
-			</DynamicKey>
-		<DynamicKey Col="4" Height="1" Row="1" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>Mouse\nright</Label>
 			<Action>F7</Action>
-            <Symbol>MinecraftHoverRight</Symbol>            
-			</DynamicKey>
-		<DynamicKey Col="5" Height="1" Row="1" Width="1">
+			<Symbol>MinecraftHoverRight</Symbol>
+		</DynamicKey>
+		<DynamicKey>
 			<Label>Mouse\ndown</Label>
-            <Symbol>MinecraftHoverDown</Symbol>
+			<Symbol>MinecraftHoverDown</Symbol>
 			<Action>F6</Action>
-			</DynamicKey>
-		<DynamicKey Col="6" Height="1" Row="1" Width="1">
+		</DynamicKey>
+		<DynamicKey>
 			<Label>Scroll\ndown</Label>
-            <Symbol>MouseScrollToBottomIcon</Symbol>
+			<Symbol>MouseScrollToBottomIcon</Symbol>
 			<Action>MouseScrollToBottom</Action>
-			</DynamicKey>
-        <DynamicKey Col="7" Row="1">
-            <Symbol>BackIcon</Symbol>
+		</DynamicKey>
+		<DynamicKey>
+			<Symbol>BackIcon</Symbol>
 			<Action>BackFromKeyboard</Action>
-            </DynamicKey>
-	</Keys>
+		</DynamicKey>
+	</Content>
 </Keyboard>

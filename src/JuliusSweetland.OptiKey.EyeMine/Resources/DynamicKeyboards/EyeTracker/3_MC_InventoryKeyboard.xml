@@ -9,145 +9,145 @@
      <KeyUp>MouseMagneticCursor</KeyUp>
      <KeyLockedDown>MouseMagnifier</KeyLockedDown>   
    </InitialKeyStates>
-	<Keys>
-		<DynamicKey Col="0" Height="1" Row="0" Width="1">
+	<Content>
+		<DynamicKey>
 			<Label>1</Label>
 			<Text>1</Text>
 			</DynamicKey>
-		<DynamicKey Col="1" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>2</Label>
 			<Text>2</Text>
 			</DynamicKey>
-		<DynamicKey Col="2" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>3</Label>
 			<Text>3</Text>
 			</DynamicKey>
-		<DynamicKey Col="3" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>4</Label>
 			<Text>4</Text>
 			</DynamicKey>
-		<DynamicKey Col="4" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>5</Label>
 			<Text>5</Text>
 			</DynamicKey>
-		<DynamicKey Col="5" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>6</Label>
 			<Text>6</Text>
 			</DynamicKey>
-		<DynamicKey Col="6" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>7</Label>
 			<Text>7</Text>
 			</DynamicKey>
-		<DynamicKey Col="7" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>8</Label>
 			<Text>8</Text>
 			</DynamicKey>
-		<DynamicKey Col="8" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>9</Label>
 			<Text>9</Text>
 			</DynamicKey>
-		<DynamicKey Col="9" Height="1" Row="0" Width="1">
+		<DynamicKey>
 			<Label>Esc</Label>
 			<Symbol>MinecraftEscButton</Symbol>
 			<Action>Escape</Action>
 			</DynamicKey>
-		<DynamicKey Col="0" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Open\nInventory</Label>
 			<Text>e</Text>
 			</DynamicKey>
-		<DynamicKey Col="1" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Building</Label>
 			<Symbol>MinecraftTabBlocks</Symbol>
 			<Action>NumPad0</Action>
 			</DynamicKey>
-		<DynamicKey Col="2" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Decoration</Label>
 			<Symbol>MinecraftTabFlower</Symbol>
 			<Action>NumPad1</Action>
 			</DynamicKey>
-		<DynamicKey Col="3" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Redstone</Label>
 			<Symbol>MinecraftTabGem</Symbol>
 			<Action>NumPad2</Action>
 			</DynamicKey>
-		<DynamicKey Col="4" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Transport</Label>
 			<Symbol>MinecraftTabLadder</Symbol>
 			<Action>NumPad3</Action>
 			</DynamicKey>
-		<DynamicKey Col="5" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Misc</Label>
 			<Symbol>MinecraftTabBucket</Symbol>
 			<Action>NumPad4</Action>
 			</DynamicKey>
-		<DynamicKey Col="6" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Hover\nright</Label>
 			<Symbol>MinecraftHoverRight</Symbol>
 			<Action>F7</Action>
 			</DynamicKey>
-		<DynamicKey Col="7" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Hover</Label>
 			<Symbol>MouseMoveToIcon</Symbol>
 			<Action>MouseMoveTo</Action>
 			</DynamicKey>
-		<DynamicKey Col="8" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>Search</Label>
             <Symbol>MinecraftTabSearch</Symbol>            
 			<Action>ArrowDown</Action>
 			</DynamicKey>
-		<DynamicKey Col="9" Height="1" Row="1" Width="1">
+		<DynamicKey>
 			<Label>ABC</Label>
 			<Symbol>AlphaIcon</Symbol>
             <ChangeKeyboard BackReturnsHere="True">3_MC_ChatKeyboard</ChangeKeyboard>
             </DynamicKey>
-		<DynamicKey Col="0" Height="1" Row="2" Width="1">
+		<DynamicKey>
 			<Label>Drop\nitem</Label>
 			<Text>q</Text>
 			</DynamicKey>
-		<DynamicKey Col="1" Height="1" Row="2" Width="1">
+		<DynamicKey>
 			<Label>Foodstuffs</Label>
 			<Symbol>MinecraftTabApple</Symbol>
 			<Action>NumPad5</Action>
 			</DynamicKey>
-		<DynamicKey Col="2" Height="1" Row="2" Width="1">
+		<DynamicKey>
 			<Label>Tools</Label>
 			<Symbol>MinecraftTabAxe</Symbol>
 			<Action>NumPad6</Action>
 			</DynamicKey>
-		<DynamicKey Col="3" Height="1" Row="2" Width="1">
+		<DynamicKey>
 			<Label>Combat</Label>
 			<Symbol>MinecraftTabSword</Symbol>
 			<Action>NumPad7</Action>
 			</DynamicKey>
-		<DynamicKey Col="4" Height="1" Row="2" Width="1">
+		<DynamicKey>
 			<Label>Brewing</Label>
 			<Symbol>MinecraftTabPotion</Symbol>
 			<Action>NumPad8</Action>
 			</DynamicKey>
-		<DynamicKey Col="5" Height="1" Row="2" Width="1">
+		<DynamicKey>
 			<Label>Materials</Label>
 			<Symbol>MinecraftTabStick</Symbol>
 			<Action>NumPad9</Action>
 			</DynamicKey>
-		<DynamicKey Col="6" Height="1" Row="2" Width="1">
+		<DynamicKey>
 			<Label>Hover\ndown</Label>
 			<Symbol>MinecraftHoverDown</Symbol>
 			<Action>F6</Action>
 			</DynamicKey>
-		<DynamicKey Col="7" Height="1" Row="2" Width="1">
+		<DynamicKey>
 			<Label>Left\nclick</Label>
 			<Symbol>MouseLeftClickWithMouseIcon</Symbol>
 			<Action>MouseMoveAndLeftClick</Action>
 			</DynamicKey>
-		<DynamicKey Col="8" Height="1" Row="2" Width="1">
+		<DynamicKey>
 			<Label>Scroll\nDown</Label>
 			<Symbol>MouseScrollToBottomIcon</Symbol>
 			<Action>MouseScrollToBottom</Action>
 			</DynamicKey>
-		<DynamicKey Col="9" Height="1" Row="2" Width="1">
+		<DynamicKey>
 			<Label>Back</Label>
 			<Symbol>BackIcon</Symbol>
 			<Action>BackFromKeyboard</Action>
 			</DynamicKey>
-	</Keys>
+	</Content>
 </Keyboard>
