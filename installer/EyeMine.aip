@@ -7,12 +7,12 @@
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="ARPNOREPAIR" MultiBuildValue="DefaultBuild:1"/>
-    <ROW Property="ARPPRODUCTICON" Value="Mouse.exe" Type="8"/>
+    <ROW Property="ARPPRODUCTICON" Value="EyeMineV2.exe" Type="8"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="SpecialEffect"/>
     <ROW Property="ProductCode" Value="1033:{D4995926-0559-40BC-A596-02850F5369C2} 2057:{2894DAF2-23B0-431D-9EC7-BE353D6EE61A} " Type="16"/>
-    <ROW Property="ProductLanguage" Value="2057"/>
-    <ROW Property="ProductName" Value="EyeMine"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="EyeMineV2"/>
     <ROW Property="ProductVersion" Value="2.1.0" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
@@ -649,7 +649,7 @@
     <ROW Feature_="MainFeature" Component_="Demo_Bottom.xml"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
-    <ROW Name="Mouse.exe" SourcePath="..\src\JuliusSweetland.OptiKey.Mouse\Mouse.ico" Index="0"/>
+    <ROW Name="EyeMineV2.exe" SourcePath="..\src\JuliusSweetland.OptiKey.EyeMine\EyeMineV2.ico" Index="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
     <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
