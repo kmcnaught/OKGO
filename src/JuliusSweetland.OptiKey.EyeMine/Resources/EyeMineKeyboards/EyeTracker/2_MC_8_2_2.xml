@@ -49,8 +49,8 @@
             <ChangeKeyboard BackReturnsHere="False">2_MC_8_2_1.xml</ChangeKeyboard>
         </DynamicKey>
         <DynamicKey>
-            <Symbol>MouseRightDownUpIcon</Symbol>
-            <Action>NumPad1</Action>
+            <Symbol>DwellBuild</Symbol>
+            <Action>NumPad6</Action>
             <Label>Toggle\nuse item</Label>
         </DynamicKey>
         <DynamicKey>

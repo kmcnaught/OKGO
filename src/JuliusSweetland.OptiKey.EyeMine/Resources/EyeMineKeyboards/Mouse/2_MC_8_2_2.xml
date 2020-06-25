@@ -26,8 +26,8 @@
          </DynamicKey>
 	  
 	<DynamicKey Col="1" Row="1">
-		 <Symbol>MouseRightDownUpIcon</Symbol>	 
-		 <Action>NumPad1</Action>
+		 <Symbol>DwellBuild</Symbol>	 
+		 <Action>NumPad6</Action>
          <Label>Toggle\nuse item</Label>
          </DynamicKey>
 	

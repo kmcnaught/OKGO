@@ -71,8 +71,8 @@
 		</DynamicKey>
 		<DynamicKey Height="2">
 			<Label>Toggle\nuse</Label>
-			<Symbol>MouseRightDownUpIcon</Symbol>
-			<Action>NumPad1</Action>
+			<Symbol>DwellBuild</Symbol>
+			<Action>NumPad6</Action>
 		</DynamicKey>
 		<DynamicKey Height="2">
 			<Label>Fly\nUp</Label>
