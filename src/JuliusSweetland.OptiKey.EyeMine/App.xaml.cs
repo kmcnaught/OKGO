@@ -136,15 +136,6 @@ namespace JuliusSweetland.OptiKey.EyeMine
 
                 ValidateDynamicKeyboardLocationEyeMine();
 
-                // Handle plugins. Validate if directory exists and is accessible and pre-load all plugins, building a in-memory list of available ones.
-                ValidatePluginsLocation();
-                if (Settings.Default.EnablePlugins)
-                {
-                    PluginEngine.LoadAvailablePlugins();
-                }
-
-                var presageInstallationProblem = PresageInstallationProblemsDetected();
-
                 //Create services
                 var errorNotifyingServices = new List<INotifyErrors>();
                 audioService = new AudioService();
@@ -219,8 +210,6 @@ namespace JuliusSweetland.OptiKey.EyeMine
                     await ShowSplashScreenEyeMine(inputService, audioService, mainViewModel, OptiKey.EyeMine.Properties.Resources.EYEMINE_DESCRIPTION);
                     await mainViewModel.RaiseAnyPendingErrorToastNotifications();
                     await AttemptToStartMaryTTSService(inputService, audioService, mainViewModel);
-                    await AlertIfPresageBitnessOrBootstrapOrVersionFailure(presageInstallationProblem, inputService,
-                        audioService, mainViewModel);
 
                     inputService.RequestResume(); //Start the input service
 
