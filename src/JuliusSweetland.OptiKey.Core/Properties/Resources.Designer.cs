@@ -19,7 +19,7 @@ namespace JuliusSweetland.OptiKey.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -906,9 +906,9 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bad news - Optikey has tripped over its feet and has to close down.
+        ///   Looks up a localized string similar to Bad news - EyeMine has tripped over its feet and has to close down.
         ///
-        ///An email with details of what happened would be very helpful: crash@optikey.org
+        ///An email with details of what happened would be very helpful: eyemine@specialeffect.org.uk
         ///
         ///Sorry for the inconvenience..
         /// </summary>
@@ -6241,8 +6241,8 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("TOP", resourceCulture);
             }
         }
-
-	/// <summary>
+        
+        /// <summary>
         ///   Looks up a localized string similar to Translate.
         /// </summary>
         public static string TRANSLATE {
@@ -6259,7 +6259,6 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("TRANSLATION_TARGET_LANGUAGE_LABEL", resourceCulture);
             }
         }
-        
         
         /// <summary>
         ///   Looks up a localized string similar to Trigger button/key pressed again.
