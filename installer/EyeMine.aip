@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="17.1.2" Modules="enterprise" RootPath="C:\code\OptiKey\installer" Language="en" Id="{1E2C8DE8-977A-46EE-B696-F34D94C1ADEC}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="16.0" version="17.1.2" Modules="enterprise" RootPath="." Language="en" Id="{1E2C8DE8-977A-46EE-B696-F34D94C1ADEC}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
