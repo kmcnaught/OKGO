@@ -29,6 +29,9 @@ namespace JuliusSweetland.OptiKey.Static
         {
             get
             {
+                // Note: if we ever stop lock-step-versioning, we'd want this to return the version of the *calling app*, rather than 
+                // the *core library*. In this case you'd want GetEntryAssembly instead:
+                // System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString()
                 return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             }
         }
