@@ -383,7 +383,8 @@ namespace JuliusSweetland.OptiKey.EyeMine
 
                 var message = new StringBuilder();
 
-                message.AppendLine(string.Format(OptiKey.Properties.Resources.VERSION_DESCRIPTION, DiagnosticInfo.AssemblyVersion));
+                string eyeMineVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                message.AppendLine(string.Format(OptiKey.Properties.Resources.VERSION_DESCRIPTION, eyeMineVersion));
                 message.AppendLine("");
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.POINTING_SOURCE_DESCRIPTION, Settings.Default.PointsSource.ToDescription()));
                 message.AppendLine("");
