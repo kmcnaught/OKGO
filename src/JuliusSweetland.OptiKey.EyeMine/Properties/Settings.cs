@@ -21,6 +21,24 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         // If Settings.Default is requested from an instance of this object, return a cast version
         public new static Settings Default => (Settings)OptiKey.Properties.Settings.Default;
 
+
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public new bool EnablePlugins
+        {
+            get
+            {
+                return false;
+            }
+            set
+            {
+                this["EnablePlugins"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("EyeMineAllKeyboards")]
