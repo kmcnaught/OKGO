@@ -51,7 +51,7 @@
         <DynamicKey>
             <Symbol>DwellBuild</Symbol>
             <Action>NumPad6</Action>
-            <Label>Toggle\nuse item</Label>
+            <Label>Dwell\nbuilding</Label>
         </DynamicKey>
         <DynamicKey>
             <Symbol>MouseRightClickIcon</Symbol>

@@ -70,7 +70,7 @@
 			<Action>NumPad0</Action>
 			</DynamicKey>
 		<DynamicKey Col="1" Height="2" Row="3" Width="1">
-			<Label>Toggle\nuse</Label>
+		    <Label>Dwell\nbuilding</Label>
 			<Symbol>DwellBuild</Symbol>
 			<Action>NumPad6</Action>
 			</DynamicKey>
