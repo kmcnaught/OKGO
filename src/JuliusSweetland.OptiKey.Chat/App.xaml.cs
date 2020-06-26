@@ -135,6 +135,7 @@ namespace JuliusSweetland.OptiKey.Chat
                 IInputService inputService = CreateInputService(keyStateService, dictionaryService, audioService,
                     calibrationService, capturingStateManager, errorNotifyingServices);
                 IKeyboardOutputService keyboardOutputService = new KeyboardOutputService(keyStateService, suggestionService, publishService, dictionaryService, fireKeySelectionEvent);
+                IControllerOutputService controllerOutputService = new NullControllerOutputService(keyStateService);
                 IMouseOutputService mouseOutputService = new MouseOutputService(publishService);
                 errorNotifyingServices.Add(audioService);
                 errorNotifyingServices.Add(dictionaryService);
@@ -155,8 +156,8 @@ namespace JuliusSweetland.OptiKey.Chat
                 mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
-                    inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService,
-                    errorNotifyingServices);
+                    inputService, keyboardOutputService, controllerOutputService, mouseOutputService,
+                    mainWindowManipulationService, errorNotifyingServices);
 
                 mainWindow.SetMainViewModel(mainViewModel);
 

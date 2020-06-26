@@ -19,6 +19,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         protected Mock<IDictionaryService> DictionaryService { get; private set; }
         protected Mock<IInputService> InputService { get; private set; }
         protected Mock<IKeyboardOutputService> KeyboardOutputService { get; private set; }
+        protected Mock<IControllerOutputService> ControllerOutputService { get; private set; }
         protected Mock<IKeyStateService> KeyStateService { get; private set; }
         protected Mock<ILastMouseActionStateManager> LastMouseActionStateManager { get; private set; }
         protected Mock<IWindowManipulationService> MainWindowManipulationService { get; private set; }
@@ -48,13 +49,14 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
             MouseOutputService = new Mock<IMouseOutputService>();
             SuggestionService = new Mock<ISuggestionStateService>();
             ErrorNotifyingServices = new List<INotifyErrors>();
+            ControllerOutputService = new Mock<IControllerOutputService>();
 
             if (ShouldConstruct)
             {
                 MainViewModel = new MainViewModel(AudioService.Object, CalibrationService.Object, DictionaryService.Object,
                     KeyStateService.Object, SuggestionService.Object, CapturingStateManager.Object, LastMouseActionStateManager.Object,
-                    InputService.Object, KeyboardOutputService.Object, MouseOutputService.Object, MainWindowManipulationService.Object,
-                    ErrorNotifyingServices);
+                    InputService.Object, KeyboardOutputService.Object, ControllerOutputService.Object, MouseOutputService.Object, 
+                    MainWindowManipulationService.Object, ErrorNotifyingServices);
 
                 MainViewModel.KeySelection += (s, e) => IsKeySelectionEventHandlerCalled = true;
                 MainViewModel.PointSelection += (s, e) => IsPointSelectionEventHandlerCalled = true;
