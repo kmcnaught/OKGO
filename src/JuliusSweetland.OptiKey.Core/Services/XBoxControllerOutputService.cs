@@ -59,14 +59,13 @@ namespace JuliusSweetland.OptiKey.Services
                 Xbox360Button xboxButton = button.ToViGemButton();
 
                 if (type == KeyPressKeyValue.KeyPressType.Press)
-                    controller.SetButtonState(xboxButton, false);
-                else if (type == KeyPressKeyValue.KeyPressType.Release)
                     controller.SetButtonState(xboxButton, true);
+                else if (type == KeyPressKeyValue.KeyPressType.Release)
+                    controller.SetButtonState(xboxButton, false);
                 else
                 {
                     controller.SetButtonState(xboxButton, true);
-                    // FIXME: async!
-                    System.Threading.Thread.Sleep(50);
+                    await Task.Delay(50);
                     controller.SetButtonState(xboxButton, false);
                 }
 

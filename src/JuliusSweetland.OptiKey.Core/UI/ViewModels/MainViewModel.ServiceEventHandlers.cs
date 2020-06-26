@@ -2571,6 +2571,40 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             }
                         }
                     }
+                    else if (keyCommand.Name == KeyCommands.ButtonDown)
+                    {
+                        Log.InfoFormat("CommandList: Key down on [{0}] key", keyCommand.KeyValue.String);
+                        await controllerOutputService.ProcessKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
+                        keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
+                    }
+                    else if (keyCommand.Name == KeyCommands.ButtonToggle)
+                    {
+                        if (keyStateService.KeyDownStates[keyCommand.KeyValue].Value != KeyDownStates.Up)
+                        {
+                            Log.InfoFormat("CommandList: Toggle button up on [{0}]", keyCommand.KeyValue.String);
+                            //FIXME: reinstate more keyup logic from ... await KeyUpProcessing(singleKeyValue, keyCommand.KeyValue);
+                            await controllerOutputService.ProcessKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Release);
+                            keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.Up;
+                        }
+                        else
+                        {
+                            Log.InfoFormat("CommandList: Toggle button down on [{0}]", keyCommand.KeyValue.String);
+                            await controllerOutputService.ProcessKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
+                            keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
+                        }
+                    }
+                    else if (keyCommand.Name == KeyCommands.ButtonUp)
+                    {
+                        Log.InfoFormat("CommandList: Button up on [{0}]", keyCommand.KeyValue.String);
+                                                keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
+
+                        await controllerOutputService.ProcessKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Release);
+
+                        //FIXME: reinstate the logic from: await KeyUpProcessing(singleKeyValue, keyCommand.KeyValue);
+
+                        //the KeyUp value could be a KeyGroup so add any matches from KeyValueByGroup
+                        // FIXME: reinstate KeyValueByGroup functionality once I've learned how it works
+                    }
                     else if (keyCommand.Name == KeyCommands.Text)
                     {
                         Log.InfoFormat("CommandList: Text of [{0}]", keyCommand.KeyValue.String);

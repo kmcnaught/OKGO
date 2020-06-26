@@ -144,7 +144,7 @@ namespace JuliusSweetland.OptiKey.Pro
                     calibrationService, capturingStateManager, errorNotifyingServices);
                 IKeyboardOutputService keyboardOutputService = new KeyboardOutputService(keyStateService,
                     suggestionService, publishService, dictionaryService, fireKeySelectionEvent);
-                IControllerOutputService controllerOutputService = new NullControllerOutputService(keyStateService);
+                IControllerOutputService controllerOutputService = new XBoxControllerOutputService(keyStateService);
                 IMouseOutputService mouseOutputService = new MouseOutputService(publishService);
                 errorNotifyingServices.Add(audioService);
                 errorNotifyingServices.Add(dictionaryService);
