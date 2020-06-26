@@ -209,6 +209,7 @@
     <Compile Include="Enums\AppType.cs" />
     <Compile Include="Enums\KeyboardLayouts.cs" />
     <Compile Include="Enums\KeyCommands.cs" />
+    <Compile Include="Enums\XboxButtons.cs" />
     <Compile Include="Enums\LookToScrollBounds.cs" />
     <Compile Include="Enums\LookToScrollModes.cs" />
     <Compile Include="Enums\LookToScrollSpeeds.cs" />
@@ -346,6 +347,9 @@
     <Compile Include="Services\Audio\SoundPlayerEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\IControllerOutputService.cs" />
+    <Compile Include="Services\NullControllerOutputService.cs" />
+    <Compile Include="Services\XBoxControllerOutputService.cs" />
     <Compile Include="Services\PluginEngine\PluginEngine.cs" />
     <Compile Include="Services\Suggestions\IManagedSuggestions.cs" />
     <Compile Include="Services\Suggestions\BasicAutoComplete.cs" />
