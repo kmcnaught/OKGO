@@ -217,9 +217,6 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                                         <DataTrigger Binding="{Binding StartupKeyboardOption}" Value="CustomKeyboardsFolder">
                                             <Setter Property="Visibility" Value="Visible" />
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding CustomDynamicKeyboardsLocation}" Value="{x:Static sys:String.Empty}">
-                                            <Setter Property="Visibility" Value="Collapsed" />
-                                        </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Button.Style>

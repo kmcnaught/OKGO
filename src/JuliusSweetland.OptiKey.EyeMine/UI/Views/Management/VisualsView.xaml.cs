@@ -89,11 +89,15 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.Views.Management
                 int failures = 0;
 
                 // copy files across
-                foreach (string dynamicKeyboard in Directory.GetFiles(inputFolder, "*.xml"))
+                foreach (string dynamicKeyboard in Directory.GetFiles(inputFolder, "*.xml", SearchOption.AllDirectories))
                 {
                     try
                     {
-                        File.Copy(dynamicKeyboard, Path.Combine(outputFolder, Path.GetFileName(dynamicKeyboard)),
+                        // Copy folder hierarchy
+                        string relativePath = Path.GetDirectoryName(GetRelativePath(dynamicKeyboard, inputFolder));
+                        Directory.CreateDirectory(Path.Combine(outputFolder, relativePath));
+
+                        File.Copy(dynamicKeyboard, Path.Combine(outputFolder, relativePath, Path.GetFileName(dynamicKeyboard)),
                             false);
                         ++successes;
                     }
@@ -133,7 +137,21 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.Views.Management
                 txtKeyboardsLocation.Text = outputFolder;
             }
         }
- 
+
+        // FIXME: dupe method, extract elsewhere
+        private static string GetRelativePath(string filename, string folder)
+        {
+            Uri pathUri = new Uri(filename);
+
+            char separator = Path.DirectorySeparatorChar;
+            if (!folder.EndsWith(separator.ToString()))
+            {
+                folder += separator;
+            }
+            Uri folderUri = new Uri(folder);
+            return Uri.UnescapeDataString(folderUri.MakeRelativeUri(pathUri).ToString().Replace('/', separator));
+        }
+
         private void FindStartupKeyboardFile(object sender, System.Windows.RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog

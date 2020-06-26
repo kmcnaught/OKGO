@@ -151,7 +151,7 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select different folder.
+        ///   Looks up a localized string similar to Select an existing folder.
         /// </summary>
         public static string SELECT_FOLDER {
             get {

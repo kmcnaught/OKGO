@@ -130,7 +130,7 @@
     <value>Specific EyeMine keyboard</value>
   </data>
   <data name="SELECT_FOLDER" xml:space="preserve">
-    <value>Select different folder</value>
+    <value>Select an existing folder</value>
   </data>
   <data name="RESET_DYNAMIC_KEYBOARD" xml:space="preserve">
     <value>Reset to default location</value>
