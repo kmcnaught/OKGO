@@ -209,6 +209,7 @@
     <Compile Include="Enums\AppType.cs" />
     <Compile Include="Enums\KeyboardLayouts.cs" />
     <Compile Include="Enums\KeyCommands.cs" />
+    <Compile Include="Enums\XboxAxes.cs" />
     <Compile Include="Enums\XboxButtons.cs" />
     <Compile Include="Enums\LookToScrollBounds.cs" />
     <Compile Include="Enums\LookToScrollModes.cs" />

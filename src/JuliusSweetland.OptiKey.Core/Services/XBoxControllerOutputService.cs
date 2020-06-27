@@ -77,7 +77,20 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        
+
+        public async Task ProcessJoystick(string key, float amount)
+        {
+            XboxAxes axisEnum;
+            if (Enum.TryParse(key, true, out axisEnum))
+            {
+                // amount is in range [-1.0, +1.0] and needs scaling to 
+                // (signed) short range
+                Xbox360Axis axis = axisEnum.ToViGemAxis();
+                controller.SetAxisValue(axis, (short)(Int16.MaxValue*amount));
+            }
+        }
+
+
         #endregion
 
         #region Methods - private

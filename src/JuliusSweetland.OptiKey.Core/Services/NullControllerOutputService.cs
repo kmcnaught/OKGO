@@ -46,11 +46,16 @@ namespace JuliusSweetland.OptiKey.Services
             Log.ErrorFormat("ProcessKeyPress ({0}, {1}) called with no controller output service set up", inKey, type);
         }
 
-        
+        public async Task ProcessJoystick(string key, float amount)
+        {
+            Log.ErrorFormat("ProcessJoystick ({0}, {1}) called with no controller output service set up", key, amount);
+        }
+
+
         #endregion
 
         #region Methods - private
-        
+
         #endregion
     }
 }

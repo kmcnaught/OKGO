@@ -10,5 +10,7 @@ namespace JuliusSweetland.OptiKey.Services
     public interface IControllerOutputService : INotifyPropertyChanged
     {
         Task ProcessKeyPress(string key, KeyPressKeyValue.KeyPressType type);
+
+        Task ProcessJoystick(string key, float amount);
     }
 }

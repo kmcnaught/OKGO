@@ -896,7 +896,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
             else
             {
-                mouseOutputService.ScrollWheelAbsolute(dx, -dy);
+                // currently dx, dy ~ -10, -20, -30
+                float fDx = (float)dx;
+                float fDy = (float)dy;
+
+                fDx /= 30;
+                fDy /= 30;
+
+                //Log.InfoFormat("Scrolling: ({0}, {1})", dx, dy);
+                //mouseOutputService.ScrollWheelAbsolute(dx, -dy);
+
+                controllerOutputService.ProcessJoystick("RightJoystickAxisX", fDx);
+                controllerOutputService.ProcessJoystick("RightJoystickAxisY", -fDy);
             }
 
             reinstateModifiers();
