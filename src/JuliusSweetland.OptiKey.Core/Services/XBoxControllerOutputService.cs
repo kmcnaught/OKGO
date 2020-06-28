@@ -104,6 +104,8 @@ namespace JuliusSweetland.OptiKey.Services
                 // amount is in range [-1.0, +1.0] and needs scaling to 
                 // (signed) short range
                 Xbox360Axis axis = axisEnum.ToViGemAxis();
+                amount = Math.Min(1.0f, amount);
+                amount = Math.Max(-1.0f, amount);
                 controller.SetAxisValue(axis, (short)(Int16.MaxValue*amount));
             }
         }
