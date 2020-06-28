@@ -25,7 +25,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private IntPtr windowJoystickBoundsTarget = IntPtr.Zero;
 
         private DateTime? joystickLastUpdate = null;
-        private Vector joystickLeftoverScrollAmount = new Vector();
 
         #region ILookToScrollOverlayViewModel Members
 
@@ -66,7 +65,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             if (keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value.IsDownOrLockedDown())
             {
                 Log.Info("Look to scroll is now active.");
-                joystickLeftoverScrollAmount = new Vector();
 
                 if (keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value.IsDownOrLockedDown())
                 {
