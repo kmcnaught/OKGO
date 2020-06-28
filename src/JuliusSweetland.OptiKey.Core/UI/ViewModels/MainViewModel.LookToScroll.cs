@@ -25,7 +25,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         
         private Point pointJoystickBoundsTarget = new Point();
         private IntPtr windowJoystickBoundsTarget = IntPtr.Zero;
-        private Rect rectJoystickBoundsTarget = Rect.Empty;
 
         private DateTime? joystickLastUpdate = null;
         private Vector joystickLeftoverScrollAmount = new Vector();
@@ -74,7 +73,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 if (keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value.IsDownOrLockedDown())
                 {
                     Log.Info("Re-using previous bounds target.");
-                    TakeActionsUponLookToScrollStarted();
                 }
                 else
                 {
@@ -94,7 +92,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             choosingJoystickBoundsTarget = true;
             pointJoystickBoundsTarget = new Point();
             windowJoystickBoundsTarget = IntPtr.Zero;
-            rectJoystickBoundsTarget = Rect.Empty;
 
             Action<bool> callback = success => 
             {
@@ -111,18 +108,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value = KeyDownStates.Up;
                 }
 
-                TakeActionsUponLookToScrollStarted();
-
                 choosingJoystickBoundsTarget = false;
             };
 
             ChoosePointLookToScrollBoundsTarget(callback);
-        }
-
-        private void ChooseScreenLookToScrollBoundsTarget(Action<bool> callback)
-        {
-            Log.Info("Will use entire usable portion of the screen as the scroll bounds.");
-            callback(true); // Always successful.
         }
 
         private void ChoosePointLookToScrollBoundsTarget(Action<bool> callback)
@@ -159,128 +148,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 ResetAndCleanupAfterMouseAction();
                 callback(point.HasValue);
             }, suppressMagnification: true);
-        }
-
-        private void ChooseWindowLookToScrollBoundsTarget(Action<bool> callback)
-        {
-            Log.Info("Choosing a window to use as the scroll bounds.");
-
-            SetupFinalClickAction(point =>
-            {
-                if (point.HasValue)
-                {
-                    Log.InfoFormat("User chose point: {0}.", point.Value);
-
-                    if (IsPointInsideMainWindow(point.Value))
-                    {
-                        Log.Warn("Can't choose OptiKey main window as the target!");
-                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                    }
-                    else
-                    {
-                        IntPtr hWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(point.Value);
-
-                        if (hWnd == IntPtr.Zero)
-                        {
-                            Log.Warn("Could not find a window at the chosen point!");
-                            audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                        }
-                        else
-                        {
-                            Log.InfoFormat("Selected window with HWND = {0} as the target.", hWnd);
-                            windowJoystickBoundsTarget = hWnd;
-                        }
-                    }
-                }
-
-                ResetAndCleanupAfterMouseAction();
-                callback(windowJoystickBoundsTarget != IntPtr.Zero);
-            }, suppressMagnification: true);
-        }
-
-        private void ChooseSubwindowLookToScrollBoundsTarget(Action<bool> callback)
-        {
-            Log.Info("Choosing a rectangular region of a window to use as the scroll bounds.");
-
-            Action finishUp = () =>
-            {
-                ResetAndCleanupAfterMouseAction();
-                callback(windowJoystickBoundsTarget != IntPtr.Zero && !rectJoystickBoundsTarget.IsEmpty);
-            };
-
-            SetupFinalClickAction(firstCorner =>
-            {
-                if (firstCorner.HasValue)
-                {
-                    Log.InfoFormat("User chose {0} as the first corner.", firstCorner.Value);
-
-                    IntPtr firstHWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(firstCorner.Value);
-
-                    if (firstHWnd == IntPtr.Zero)
-                    {
-                        Log.Warn("No window was found at the first corner.");
-                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                        finishUp();
-                    }
-                    else
-                    {
-                        Log.InfoFormat("Window {0} found at the first corner.", firstHWnd);
-
-                        SetupFinalClickAction(secondCorner =>
-                        {
-                            if (secondCorner.HasValue)
-                            {
-                                Log.InfoFormat("User chose {0} as the second corner.", secondCorner.Value);
-
-                                IntPtr secondHWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(secondCorner.Value);
-                                var rect = new Rect(firstCorner.Value, secondCorner.Value);
-
-                                if (secondHWnd == IntPtr.Zero)
-                                {
-                                    Log.Warn("No window was found at the second corner.");
-                                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                                }
-                                else if (secondHWnd != firstHWnd)
-                                {
-                                    Log.WarnFormat("Found a different window at the second corner: {0}.", secondHWnd);
-                                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                                }
-                                else if (!IsRectLargerThanDeadzone(rect))
-                                {
-                                    Log.Warn("The chosen rectangle is not large enough to accomodate the deadzone.");
-                                    audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                                }
-                                else
-                                {
-                                    Rect? windowBounds = GetWindowBounds(firstHWnd);
-                                    if (windowBounds.HasValue)
-                                    {
-                                        // Express the rect relative to the top-left corner of the window so we can deal with possible
-                                        // movement of the window later.
-                                        rect.Offset(-windowBounds.Value.Left, -windowBounds.Value.Top);
-
-                                        Log.InfoFormat("Selected rect {0} of window {1} as the look to scroll target.", rect, firstHWnd);
-
-                                        windowJoystickBoundsTarget = firstHWnd;
-                                        rectJoystickBoundsTarget = rect;
-                                    }
-                                    else
-                                    {
-                                        Log.Warn("Could not retrieve the bounds of the chosen window.");
-                                        audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                                    }
-                                }
-                            }
-
-                            finishUp();
-                        }, suppressMagnification: true);
-                    }
-                }
-                else
-                {
-                    finishUp();
-                }
-            }, finalClickInSeries: false, suppressMagnification: true);
         }
 
         private IntPtr GetHwndForFrontmostWindowAtPoint(Point point)
@@ -338,99 +205,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ShowCursor = false;
 
             return GetHwndForFrontmostWindowAtPoint(point);
-        }
-
-        private void ChooseCustomLookToScrollBoundsTarget(Action<bool> callback)
-        {
-            Log.Info("Choosing a rectangular region of the screen to use as the scroll bounds.");
-
-            Action finishUp = () => 
-            {
-                ResetAndCleanupAfterMouseAction();
-                callback(!rectJoystickBoundsTarget.IsEmpty);
-            };
-
-            SetupFinalClickAction(firstCorner => 
-            {
-                if (firstCorner.HasValue)
-                {
-                    Log.InfoFormat("User chose {0} as the first corner.", firstCorner.Value);
-
-                    SetupFinalClickAction(secondCorner => 
-                    {
-                        if (secondCorner.HasValue)
-                        {
-                            Log.InfoFormat("User chose {0} as the second corner.", secondCorner.Value);
-
-                            var rect = new Rect(firstCorner.Value, secondCorner.Value);
-
-                            if (IsRectLargerThanDeadzone(rect))
-                            {
-                                Log.InfoFormat("Selected rect {0} as the look to scroll target.", rect);
-                                rectJoystickBoundsTarget = rect;
-                            }
-                            else
-                            {
-                                Log.Warn("The chosen rectangle is not large enough to accomodate the deadzone.");
-                                audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
-                            }
-                        }
-
-                        finishUp();
-                    }, suppressMagnification: true);
-                }
-                else
-                {
-                    finishUp();
-                }
-            }, finalClickInSeries: false, suppressMagnification: true);
-        }
-
-        private bool IsRectLargerThanDeadzone(Rect rect)
-        {
-            return (
-                rect.Width > Settings.Default.LookToScrollHorizontalDeadzone &&
-                rect.Height > Settings.Default.LookToScrollVerticalDeadzone
-            );
-        }
-
-        private void TakeActionsUponLookToScrollStarted()
-        {
-            
-        }
-
-        private void CentreMouseInsideLookToScrollDeadzone()
-        {
-            Log.Info("Moving mouse to centre of look to scroll deadzone.");
-
-            Rect? bounds = GetCurrentLookToScrollBoundsRect();
-            if (bounds.HasValue)
-            {
-                Action reinstateModifiers = () => { };
-                if (keyStateService.SimulateKeyStrokes
-                    && Settings.Default.SuppressModifierKeysForAllMouseActions)
-                {
-                    reinstateModifiers = keyStateService.ReleaseModifiers(Log);
-                }
-
-                mouseOutputService.MoveTo(GetCurrentLookToScrollCentrePoint(bounds.Value));
-
-                reinstateModifiers();
-            }
-            else
-            {
-                Log.Warn("Could not get look to scroll bounds rect. Leaving mouse alone.");
-            }
-        }
-
-        private void BringLookToScrollWindowBoundsTargetToFront()
-        {
-            Log.InfoFormat("Bringing look to scroll target window {0} to front.", windowJoystickBoundsTarget);
-
-            if (!PInvoke.SetForegroundWindow(windowJoystickBoundsTarget))
-            {
-                Log.Warn("Could not bring window to front.");
-            }
         }
 
         private void HandleLookToScrollBoundsKeySelected()
