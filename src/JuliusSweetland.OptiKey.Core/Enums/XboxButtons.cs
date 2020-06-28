@@ -23,6 +23,12 @@ namespace JuliusSweetland.OptiKey.Enums
         XboxB,
         XboxX,
         XboxY,
+        XBoxLeftThumbForward,
+        XBoxRightThumbForward,
+        XBoxLeftThumbHalfForward,
+        XBoxRightThumbHalfForward,
+        XBoxLeftThumbNeutral,
+        XBoxRightThumbNeutral,
     }
 
     public static partial class EnumExtensions
@@ -46,7 +52,40 @@ namespace JuliusSweetland.OptiKey.Enums
                 case XboxButtons.XboxB: return Xbox360Button.B;
                 case XboxButtons.XboxX: return Xbox360Button.X;
                 case XboxButtons.XboxY: return Xbox360Button.Y;
-                default: return Xbox360Button.Start;
+                default: return null;
+            }
+        }
+
+        public static Xbox360Axis ToViGemAxis(this XboxButtons button)
+        {
+            switch (button)
+            {
+                case XboxButtons.XBoxLeftThumbForward:
+                case XboxButtons.XBoxLeftThumbHalfForward:
+                case XboxButtons.XBoxLeftThumbNeutral:
+                    return Xbox360Axis.LeftThumbY;
+                case XboxButtons.XBoxRightThumbForward:
+                case XboxButtons.XBoxRightThumbHalfForward:
+                case XboxButtons.XBoxRightThumbNeutral:
+                    return Xbox360Axis.RightThumbY;
+                default: return null;
+            }
+        }
+
+        public static float ToAxisAmount(this XboxButtons button)
+        {
+            switch (button)
+            {
+                case XboxButtons.XBoxLeftThumbForward:
+                case XboxButtons.XBoxRightThumbForward:
+                    return 1.0f;
+                case XboxButtons.XBoxLeftThumbHalfForward:
+                case XboxButtons.XBoxRightThumbHalfForward:
+                    return 0.5f;
+                case XboxButtons.XBoxLeftThumbNeutral:
+                case XboxButtons.XBoxRightThumbNeutral:
+                    return 0.0f;
+                default: return 0.0f;
             }
         }
     }

@@ -57,19 +57,37 @@ namespace JuliusSweetland.OptiKey.Services
             if (Enum.TryParse(inKey, true, out button))
             {
                 Xbox360Button xboxButton = button.ToViGemButton();
-
-                if (type == KeyPressKeyValue.KeyPressType.Press)
-                    controller.SetButtonState(xboxButton, true);
-                else if (type == KeyPressKeyValue.KeyPressType.Release)
-                    controller.SetButtonState(xboxButton, false);
-                else
+                if (xboxButton != null)
                 {
-                    controller.SetButtonState(xboxButton, true);
-                    await Task.Delay(50);
-                    controller.SetButtonState(xboxButton, false);
+                    if (type == KeyPressKeyValue.KeyPressType.Press)
+                        controller.SetButtonState(xboxButton, true);
+                    else if (type == KeyPressKeyValue.KeyPressType.Release)
+                        controller.SetButtonState(xboxButton, false);
+                    else
+                    {
+                        controller.SetButtonState(xboxButton, true);
+                        await Task.Delay(50);
+                        controller.SetButtonState(xboxButton, false);
+                    }
+
+                    return;
                 }
 
-                return;
+                Xbox360Axis axis = button.ToViGemAxis();
+                float amount = button.ToAxisAmount();
+                if (axis != null)
+                {
+                    if (type == KeyPressKeyValue.KeyPressType.Press)
+                        controller.SetAxisValue(axis, (short)(Int16.MaxValue * amount));
+                    else if (type == KeyPressKeyValue.KeyPressType.Release)
+                        controller.SetAxisValue(axis, 0);
+                    else
+                    {
+                        controller.SetAxisValue(axis, (short)(Int16.MaxValue * amount));
+                        await Task.Delay(50);
+                        controller.SetAxisValue(axis, 0);
+                    }
+                }
             }
             else
             {
