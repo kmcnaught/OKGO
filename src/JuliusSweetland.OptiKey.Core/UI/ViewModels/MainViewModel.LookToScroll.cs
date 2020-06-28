@@ -82,6 +82,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             else
             {
                 Log.Info("Look to scroll is no longer active.");
+                controllerOutputService.ProcessJoystick("RightJoystickAxisX", 0);
+                controllerOutputService.ProcessJoystick("RightJoystickAxisY", 0);
             }
         }
 
