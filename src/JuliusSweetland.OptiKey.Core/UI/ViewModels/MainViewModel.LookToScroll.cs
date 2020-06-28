@@ -19,8 +19,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
     partial class MainViewModel : ILookToScrollOverlayViewModel
     {
-        private const int JoystickScaleFactor = 120;
-
         private bool choosingJoystickBoundsTarget = false;
         
         private Point pointJoystickBoundsTarget = new Point();
@@ -325,17 +323,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 Log.DebugFormat("Current look to scroll bounds rect is: {0}.", bounds);
                 Log.DebugFormat("Current look to scroll centre point is: {0}.", centre);
 
-                Vector velocity = CalculateLookToScrollVelocity(position, centre);
-
-                // Convert the velocity from clicks per second to mouse wheel units per second.
-                velocity *= JoystickScaleFactor;
-
-                double interval = (thisUpdate - joystickLastUpdate.Value).TotalSeconds;
-                Vector scrollAmount = velocity * interval;
-
-                // Carry over any unused scrolling from last update.
-                scrollAmount += joystickLeftoverScrollAmount;
-
+                Vector scrollAmount = CalculateLookToScrollVelocity(position, centre);
                 PerformLookToScroll(scrollAmount);
             }
 
@@ -377,7 +365,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             // not while pointing at another window on top of it.
             if (GetHwndForFrontmostWindowAtPoint(position) != windowJoystickBoundsTarget)
             {
-                return false;
+                // this keeps flicking on/off with stadia, not sure why :(
+                //return false;
             }
 
             return bounds.Contains(position);
@@ -464,10 +453,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private Vector CalculateLookToScrollVelocity(Point current, Point centre)
         {
-            Tuple<decimal, decimal> baseSpeedAndAcceleration = GetCurrentBaseSpeedAndAcceleration();
-
-            double baseSpeed = (double)baseSpeedAndAcceleration.Item1;
-            double acceleration = (double)baseSpeedAndAcceleration.Item2;
+            double baseSpeed = 0;
+            double acceleration = 0.02;
 
             var velocity = new Vector { X = 0, Y = 0 };
             velocity.X = CalculateLookToScrollVelocity(
@@ -511,89 +498,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
 
             // Calculate total speed using base speed and distance-based acceleration.
-            double speed = baseSpeed + distance * acceleration;
+            double speed = baseSpeed + Math.Sqrt(distance) * acceleration;
+
+            Log.InfoFormat("current: {0}, centre: {1}, accel: {2}, velocity: {3}", current, centre, acceleration, sign*speed);
 
             // Give the speed the correct direction.
             return sign * speed;
         }
 
-        private Tuple<decimal, decimal> GetCurrentBaseSpeedAndAcceleration()
-        {
-            decimal baseSpeed = 0;
-            decimal acceleration = 0;
-
-            switch (Settings.Default.LookToScrollSpeed)
-            {
-                case LookToScrollSpeeds.Slow:
-                    baseSpeed = Settings.Default.LookToScrollBaseSpeedSlow;
-                    acceleration = Settings.Default.LookToScrollAccelerationSlow;
-                    break;
-
-                case LookToScrollSpeeds.Medium:
-                    baseSpeed = Settings.Default.LookToScrollBaseSpeedMedium;
-                    acceleration = Settings.Default.LookToScrollAccelerationMedium;
-                    break;
-
-                case LookToScrollSpeeds.Fast:
-                    baseSpeed = Settings.Default.LookToScrollBaseSpeedFast;
-                    acceleration = Settings.Default.LookToScrollAccelerationFast;
-                    break;
-            }
-
-            Log.DebugFormat("Current base speed is {0} and acceleration is {1}.", baseSpeed, acceleration);
-
-            return new Tuple<decimal, decimal>(baseSpeed, acceleration);
-        }
-
         private void PerformLookToScroll(Vector scrollAmount)
         {
-            int dx = (int)scrollAmount.X;
-            int dy = (int)scrollAmount.Y;
-
-            // Ensure scroll amount is a multiple of the scroll increment.
-            int increment = Settings.Default.LookToScrollIncrement;
-            if (increment > 1)
-            {
-                // Looks like a no-op, but note the integer division!
-                dx = (dx / increment) * increment;
-                dy = (dy / increment) * increment;
-            }
-
-            // Carry over any unused scroll amount into the next update to make sure we don't lose any due to
-            // the truncation to int or the scroll increment requirement.
-            joystickLeftoverScrollAmount.X = scrollAmount.X - dx;
-            joystickLeftoverScrollAmount.Y = scrollAmount.Y - dy;
-
-            Log.DebugFormat("Storing {0} leftover scroll amount for next update.", joystickLeftoverScrollAmount);
-
             Action reinstateModifiers = () => { };
             if (keyStateService.SimulateKeyStrokes && Settings.Default.SuppressModifierKeysForAllMouseActions)
             {
                 reinstateModifiers = keyStateService.ReleaseModifiers(Log);
             }
 
-            // We've been working in virtual screen coordinates where +Y points down, but with the scroll wheel
-            // +Y represents rotation away from the user, and that's usually considered "up", so we flip dy here.
-            if (Settings.Default.LookToScrollDirectionInverted)
-            {
-                mouseOutputService.ScrollWheelAbsolute(-dx, dy);
-            }
-            else
-            {
-                // currently dx, dy ~ -10, -20, -30
-                float fDx = (float)dx;
-                float fDy = (float)dy;
-
-                fDx /= 30;
-                fDy /= 30;
-
-                //Log.InfoFormat("Scrolling: ({0}, {1})", dx, dy);
-                //mouseOutputService.ScrollWheelAbsolute(dx, -dy);
-
-                controllerOutputService.ProcessJoystick("RightJoystickAxisX", fDx);
-                controllerOutputService.ProcessJoystick("RightJoystickAxisY", -fDy);
-            }
-
+            controllerOutputService.ProcessJoystick("RightJoystickAxisX", (float)scrollAmount.X);
+            controllerOutputService.ProcessJoystick("RightJoystickAxisY", -(float)scrollAmount.Y);
+         
             reinstateModifiers();
         }
 
