@@ -326,6 +326,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 Vector scrollAmount = CalculateLookToScrollVelocity(position, centre);
                 PerformLookToScroll(scrollAmount);
             }
+            else
+            {
+                controllerOutputService.ProcessJoystick("RightJoystickAxisX", 0.0f);
+                controllerOutputService.ProcessJoystick("RightJoystickAxisY", 0.0f);
+            }
 
             UpdateLookToScrollOverlayProperties(active, bounds, centre);
 
@@ -366,7 +371,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             if (GetHwndForFrontmostWindowAtPoint(position) != windowJoystickBoundsTarget)
             {
                 // this keeps flicking on/off with stadia, not sure why :(
-                //return false;
+                return false;
             }
 
             return bounds.Contains(position);
