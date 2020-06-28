@@ -468,46 +468,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             double acceleration = (double)baseSpeedAndAcceleration.Item2;
 
             var velocity = new Vector { X = 0, Y = 0 };
-
-            // Horizontal velocity only applies in horizontal (duh!), cross, and free modes.
-            switch (Settings.Default.LookToScrollMode)
-            {
-                case LookToScrollModes.Horizontal:
-                case LookToScrollModes.Cross:
-                case LookToScrollModes.Free:
-                    velocity.X = CalculateLookToScrollVelocity(
-                        current.X, 
-                        centre.X,
-                        Settings.Default.LookToScrollHorizontalDeadzone, 
-                        baseSpeed, 
-                        acceleration
-                    );
-                    break;
-            }
-
-            // Vertical velocity only applies in vertical (duh!), cross, and free modes.
-            switch (Settings.Default.LookToScrollMode)
-            {
-                case LookToScrollModes.Vertical:
-                case LookToScrollModes.Cross:
-                case LookToScrollModes.Free:
-                    velocity.Y = CalculateLookToScrollVelocity(
-                        current.Y,
-                        centre.Y,
-                        Settings.Default.LookToScrollVerticalDeadzone,
-                        baseSpeed,
-                        acceleration
-                    );
-                    break;
-            }
-
-            // Cross mode is like free mode except it only permits scrolling in one direction at a time.
-            // So, if there'd be non-zero velocity along both axes, zero it out to prevent any scrolling.
-            if (Settings.Default.LookToScrollMode == LookToScrollModes.Cross && velocity.X != 0 && velocity.Y != 0)
-            {
-                velocity.X = velocity.Y = 0;
-            }
-
+            velocity.X = CalculateLookToScrollVelocity(
+                current.X, 
+                centre.X,
+                Settings.Default.LookToScrollHorizontalDeadzone, 
+                baseSpeed, 
+                acceleration
+            );
+    
+            velocity.Y = CalculateLookToScrollVelocity(
+                current.Y,
+                centre.Y,
+                Settings.Default.LookToScrollVerticalDeadzone,
+                baseSpeed,
+                acceleration
+            );
+            
             Log.DebugFormat("Current scrolling velocity is: {0}.", velocity);
 
             return velocity;
