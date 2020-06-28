@@ -510,6 +510,7 @@
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Base\IKeyboard.cs" />
+    <Compile Include="UI\ViewModels\MainViewModel.ScrollUtils.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.LookToScroll.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.ServiceEventHandlers.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
