@@ -347,5 +347,103 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
             }
         }
 
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public new string ErrorSoundFile
+        {
+            get
+            {
+                return ((string)(this["ErrorSoundFile"]));
+            }
+            set
+            {
+                this["ErrorSoundFile"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public new string InfoSoundFile
+        {
+            get
+            {
+                return ((string)(this["InfoSoundFile"]));
+            }
+            set
+            {
+                this["InfoSoundFile"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public new string KeySelectionSoundFile
+        {
+            get
+            {
+                return ((string)(this["KeySelectionSoundFile"]));
+            }
+            set
+            {
+                this["KeySelectionSoundFile"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public new string MultiKeySelectionCaptureEndSoundFile
+        {
+            get
+            {
+                return ((string)(this["MultiKeySelectionCaptureEndSoundFile"]));
+            }
+            set
+            {
+                this["MultiKeySelectionCaptureEndSoundFile"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public new string MultiKeySelectionCaptureStartSoundFile
+        {
+            get
+            {
+                return ((string)(this["MultiKeySelectionCaptureStartSoundFile"]));
+            }
+            set
+            {
+                this["MultiKeySelectionCaptureStartSoundFile"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public new string AttentionSoundFile
+        {
+            get
+            {
+                return ((string)(this["AttentionSoundFile"]));
+            }
+            set
+            {
+                this["AttentionSoundFile"] = value;
+            }
+        }
+
+
     }
 }
