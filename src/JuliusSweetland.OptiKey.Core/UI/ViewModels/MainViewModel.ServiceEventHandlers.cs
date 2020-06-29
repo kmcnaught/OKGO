@@ -52,6 +52,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 
                 leftJoystickInteractionHandler.UpdateLookToScroll(CurrentPositionPoint);
                 rightJoystickInteractionHandler.UpdateLookToScroll(CurrentPositionPoint);
+                legacyJoystickInteractionHandler.UpdateLookToScroll(CurrentPositionPoint);
 
             };
 
@@ -1169,11 +1170,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.LeftJoystick:
-                    ToggleLeftJoystick();
+                    leftJoystickInteractionHandler.ToggleActive();
                     break;
 
                 case FunctionKeys.RightJoystick:
-                    ToggleRightJoystick();
+                    rightJoystickInteractionHandler.ToggleActive();
+                    break;
+
+                case FunctionKeys.LegacyJoystick:
+                    legacyJoystickInteractionHandler.ToggleActive();
                     break;
 
                 case FunctionKeys.LookToScrollBounds:

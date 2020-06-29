@@ -372,6 +372,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         // Initialised in ctr
         public Look2DInteractionHandler leftJoystickInteractionHandler;
         public Look2DInteractionHandler rightJoystickInteractionHandler;
+        public Look2DInteractionHandler legacyJoystickInteractionHandler;
+
         public Look2DInteractionHandler scrollInteractionHandler;
 
         private void ToggleLookToScroll()

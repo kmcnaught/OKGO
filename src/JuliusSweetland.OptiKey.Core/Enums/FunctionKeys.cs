@@ -245,5 +245,6 @@ namespace JuliusSweetland.OptiKey.Enums
         YesQuestionResult,
         LeftJoystick,
         RightJoystick,
+        LegacyJoystick,
     }
 }

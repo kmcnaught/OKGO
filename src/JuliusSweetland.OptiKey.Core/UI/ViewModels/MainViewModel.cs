@@ -119,10 +119,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 controllerOutputService.ProcessJoystick("RightJoystickAxisY", -1.25f*y);
             };
 
+            Action<float, float> legacyJoystickAction = (x, y) =>
+            {
+                Log.InfoFormat("legacyJoystickAction, ({0}, {1})", x, y);
+                controllerOutputService.ProcessJoystick("RightJoystickAxisX", x);
+                controllerOutputService.ProcessJoystick("LeftJoystickAxisY", -2f * y);
+            };
+
             leftJoystickInteractionHandler = new Look2DInteractionHandler(KeyValues.LeftJoystickActiveKey, leftJoystickAction, 
                                                                             keyStateService, this);
             rightJoystickInteractionHandler = new Look2DInteractionHandler(KeyValues.RightJoystickActiveKey, rightJoystickAction,
                                                                             keyStateService, this);
+            legacyJoystickInteractionHandler = new Look2DInteractionHandler(KeyValues.LegacyJoystickActiveKey, legacyJoystickAction,
+                keyStateService, this);
         }
 
         #endregion
