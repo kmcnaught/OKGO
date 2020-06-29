@@ -49,10 +49,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mouseOutputService.MoveTo(CurrentPositionPoint);
                 }
 
-                if (Settings.Default.LookToScrollEnabled)
-                {
-                    joystickInteractionHandler.UpdateLookToScroll(CurrentPositionPoint);
-                }
+                
+                leftJoystickInteractionHandler.UpdateLookToScroll(CurrentPositionPoint);
+                rightJoystickInteractionHandler.UpdateLookToScroll(CurrentPositionPoint);
+
             };
 
             inputServiceSelectionProgressHandler = (o, progress) =>
@@ -1168,6 +1168,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     ToggleLookToScroll();
                     break;
 
+                case FunctionKeys.LeftJoystick:
+                    ToggleLeftJoystick();
+                    break;
+
+                case FunctionKeys.RightJoystick:
+                    ToggleRightJoystick();
+                    break;
+
                 case FunctionKeys.LookToScrollBounds:
                     //FIXME: reinstate for scrolling
                     ////HandleLookToScrollBoundsKeySelected();
@@ -1214,7 +1222,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseDrag:
                     Log.Info("Mouse drag selected.");
                     // FIXME: suspend other 2d handlers too
-                    resumeLookToScroll = joystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(firstFinalPoint =>
                     {
                         if (firstFinalPoint != null)
@@ -1484,7 +1492,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndLeftClick:
                     Log.Info("Mouse move and left click selected.");
-                    resumeLookToScroll = joystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1514,7 +1522,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndLeftDoubleClick:
                     Log.Info("Mouse move and left double click selected.");
-                    resumeLookToScroll = joystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1544,7 +1552,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndMiddleClick:
                     Log.Info("Mouse move and middle click selected.");
-                    resumeLookToScroll = joystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1574,7 +1582,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndRightClick:
                     Log.Info("Mouse move and right click selected.");
-                    resumeLookToScroll = joystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1635,7 +1643,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseMoveAndScrollToBottom:
                     Log.Info("Mouse move and scroll to bottom selected.");
                     //FIXME: more
-                    resumeLookToScroll = joystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1666,7 +1674,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseMoveAndScrollToLeft:
                     Log.Info("Mouse move and scroll to left selected.");
                     //fixme
-                    resumeLookToScroll = joystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1696,7 +1704,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndScrollToRight:
                     Log.Info("Mouse move and scroll to right selected.");
-                    resumeLookToScroll = joystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1726,7 +1734,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndScrollToTop:
                     Log.Info("Mouse move and scroll to top selected.");
-                    resumeLookToScroll = joystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1802,7 +1810,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveTo:
                     Log.Info("Mouse move to selected.");
-                    resumeLookToScroll = joystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)

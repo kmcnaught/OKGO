@@ -242,6 +242,8 @@ namespace JuliusSweetland.OptiKey.Enums
         UkrainianUkraine,
         UrduPakistan,
         WebBrowsingKeyboard,
-        YesQuestionResult
+        YesQuestionResult,
+        LeftJoystick,
+        RightJoystick,
     }
 }

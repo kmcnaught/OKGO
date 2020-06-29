@@ -37,6 +37,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private IKeyStateService keyStateService;
         private MainViewModel mainViewModel;
 
+        private bool active = false;
+
         public Look2DInteractionHandler(KeyValue triggerKeyValue, Action<float, float> updateAction, 
                                         IKeyStateService keyStateService, MainViewModel mainViewModel)
         {
@@ -59,6 +61,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
             else
             {
+                active = false;
+                IsLookToScrollActive = false;
+
                 Log.Info("Look to scroll is no longer active.");
                 updateAction(0.0f, 0.0f);
             }
@@ -74,6 +79,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             Action<bool> callback = success =>
             {
+                if (success)
+                {
+                    active = true;
+                }
                 if (success && Settings.Default.LookToScrollLockDownBoundsKey)
                 {
                     // Lock the bounds key down. This signals that the chosen target should be re-used during
@@ -83,7 +92,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 else if (!success)
                 {
                     // If a target wasn't successfully chosen, de-activate scrolling and release the bounds key.
-                    keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value = KeyDownStates.Up;
+                    keyStateService.KeyDownStates[triggerKeyValue].Value = KeyDownStates.Up;
                     keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value = KeyDownStates.Up;
                 }
 
@@ -132,11 +141,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public void UpdateLookToScroll(Point position)
         {
+            if (!active)
+                return;
+
             var thisUpdate = DateTime.Now;
 
-            bool active = ShouldUpdateLookToScroll(position, out Rect bounds, out Point centre);
+            bool shouldUpdate = ShouldUpdateLookToScroll(position, out Rect bounds, out Point centre);
 
-            if (active)
+            if (shouldUpdate)
             {
                 Log.DebugFormat("Updating look to scroll using position: {0}.", position);
                 Log.DebugFormat("Current look to scroll bounds rect is: {0}.", bounds);
@@ -160,8 +172,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             bounds = Rect.Empty;
             centre = new Point();
 
-            if (!keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value.IsDownOrLockedDown() ||
-                keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown() ||
+            if (keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown() ||
                 mainViewModel.IsPointInsideMainWindow(position) ||
                 choosingBoundsTarget ||
                 !lastUpdate.HasValue)
@@ -186,11 +197,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             // If using a window or portion of it as the bounds target, only scroll while pointing _at_ that window, 
             // not while pointing at another window on top of it.
-            if (mainViewModel.GetHwndForFrontmostWindowAtPoint(position) != windowBoundsTarget)
+            /*if (mainViewModel.GetHwndForFrontmostWindowAtPoint(position) != windowBoundsTarget)
             {
                 // this keeps flicking on/off with stadia, not sure why :(
                 return false;
-            }
+            }*/
 
             return bounds.Contains(position);
         }
@@ -266,15 +277,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void PerformLookToScroll(Vector scrollAmount)
         {
-            Action reinstateModifiers = () => { };
-            if (keyStateService.SimulateKeyStrokes && Settings.Default.SuppressModifierKeysForAllMouseActions)
-            {
-                reinstateModifiers = keyStateService.ReleaseModifiers(Log);
-            }
-
             updateAction((float)scrollAmount.X, (float)scrollAmount.Y);
-            
-            reinstateModifiers();
         }
 
         private void UpdateLookToScrollOverlayProperties(bool active, Rect bounds, Point centre)
@@ -367,13 +370,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
     partial class MainViewModel 
     {
         // Initialised in ctr
-        public Look2DInteractionHandler joystickInteractionHandler;
+        public Look2DInteractionHandler leftJoystickInteractionHandler;
+        public Look2DInteractionHandler rightJoystickInteractionHandler;
+        public Look2DInteractionHandler scrollInteractionHandler;
 
         private void ToggleLookToScroll()
         {
-            joystickInteractionHandler.ToggleActive();
+            //TODO: needs reinstating
+            //scrollInteractionHandler.ToggleActive();
         }
 
-        
+        private void ToggleLeftJoystick()
+        {
+            leftJoystickInteractionHandler.ToggleActive();
+        }
+
+        private void ToggleRightJoystick()
+        {
+            rightJoystickInteractionHandler.ToggleActive();
+        }
     }
 }

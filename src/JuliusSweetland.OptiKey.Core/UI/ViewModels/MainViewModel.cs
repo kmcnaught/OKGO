@@ -106,13 +106,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             AttachKeyboardSupportsMultiKeySelectionListener();
 
             // Initialise any 2D interaction handlers
+            Action<float, float> leftJoystickAction = (x, y) =>
+            {
+                Log.InfoFormat("leftJoystickAction, ({0}, {1})", x, y);
+                controllerOutputService.ProcessJoystick("LeftJoystickAxisX", x);
+                controllerOutputService.ProcessJoystick("LeftJoystickAxisY", -1.75f*y);
+            };
             Action<float, float> rightJoystickAction = (x, y) =>
             {
+                Log.InfoFormat("leftJoystickAction, ({0}, {1})", x, y);
                 controllerOutputService.ProcessJoystick("RightJoystickAxisX", x);
-                controllerOutputService.ProcessJoystick("RightJoystickAxisY", -y);
+                controllerOutputService.ProcessJoystick("RightJoystickAxisY", -1.25f*y);
             };
 
-            joystickInteractionHandler = new Look2DInteractionHandler(KeyValues.LookToScrollActiveKey, rightJoystickAction, keyStateService, this);
+            leftJoystickInteractionHandler = new Look2DInteractionHandler(KeyValues.LeftJoystickActiveKey, leftJoystickAction, 
+                                                                            keyStateService, this);
+            rightJoystickInteractionHandler = new Look2DInteractionHandler(KeyValues.RightJoystickActiveKey, rightJoystickAction,
+                                                                            keyStateService, this);
         }
 
         #endregion
