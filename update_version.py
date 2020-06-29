@@ -74,7 +74,7 @@ def update_assembly_version(filename):
 
 def update_installer_version(filename, new_version):
     # AI has commandline tools for updating version, inc GUID
-    if not safeProcess("AdvancedInstaller.com //edit {} //SetVersion {}".format(filename, new_version)):
+    if not safeProcess("AdvancedInstaller.com /edit {} /SetVersion {}".format(filename, new_version)):
         print("Failed updating version of AI project")
         safeExit()
    
@@ -85,16 +85,16 @@ if not safeProcess('git diff-index --quiet HEAD --'):
     safeExit()
     
 # Update the source files that OptiKey uses
-version_file = 'src/JuliusSweetland.OptiKey/Properties/AssemblyInfo.cs'
+version_file = 'src/JuliusSweetland.OptiKey.EyeMine/Properties/AssemblyInfo.cs'
 new_version = update_assembly_version(version_file)
 
 # Update the version reported in the AI installer project
 installer_file = "installer\EyeMine.aip"
-update_installer_version(installer_file)
+update_installer_version(installer_file, new_version)
 
 # Commit changes
 safeProcess("git add {}".format(version_file))
-safeProcess("git add {}".format(vdproj))
+safeProcess("git add {}".format(installer_file))
 safeProcess('git commit -m "Update version number to ' + new_version + '"')
     
 

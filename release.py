@@ -29,7 +29,8 @@ def safeExit():
 #    safeProcess("git reset --hard head")
 
 def get_version(filename):
-    pattern = re.compile('"ProductVersion" = "8:(\d+(\.\d+)+)"');
+    pattern = re.compile("\[assembly:\s*AssemblyVersion\(\"(\d*.\d*.\d*)\"\)\]")
+
     for line in fileinput.input(filename):
         if re.search(pattern, line): 
             version = pattern.search(line).groups()[0]
@@ -44,14 +45,14 @@ if not safeProcess('git diff-index --quiet HEAD --'):
 # Build main project
 # FYI if you're running this directly in git bash, you need to escape the forward slashes in the options (e.g. //Project)
 eyemine = 'src/JuliusSweetland.OptiKey.EyeMine/JuliusSweetland.OptiKey.EyeMine.csproj'
-build = 'devenv.com OptiKey.sln /Project {} /Build "Release"'.format(eyemine)
+build = 'devenv.com OptiKey.sln /Project {} /Rebuild "Release"'.format(eyemine)
 if not safeProcess(build):
     print("Error building project")
     safeExit()
 
 # Build installer
 installer_file = "installer/EyeMine.aip"
-buildInstall = "AdvancedInstaller.com //rebuild {}".format(installer_file)
+buildInstall = "AdvancedInstaller.com /rebuild {}".format(installer_file)
 if not safeProcess(buildInstall):
     print("Error building installer")
     safeExit()
@@ -62,7 +63,8 @@ if not safeProcess("git checkout src/JuliusSweetland.OptiKey.InstallerActions/In
     safeExit()
 
 # Tag code by version
-version = get_version(vdproj)
+version_file = 'src/JuliusSweetland.OptiKey.EyeMine/Properties/AssemblyInfo.cs'
+version = get_version(version_file)
 safeProcess("git tag release/{}".format(version))
 
 
