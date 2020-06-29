@@ -104,6 +104,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             AttachKeyboardSupportsCollapsedDockListener(mainWindowManipulationService);
             AttachKeyboardSupportsSimulateKeyStrokesListener();
             AttachKeyboardSupportsMultiKeySelectionListener();
+
+            // Initialise any 2D interaction handlers
+            Action<float, float> rightJoystickAction = (x, y) =>
+            {
+                controllerOutputService.ProcessJoystick("RightJoystickAxisX", x);
+                controllerOutputService.ProcessJoystick("RightJoystickAxisY", -y);
+            };
+
+            joystickInteractionHandler = new Look2DInteractionHandler(KeyValues.LookToScrollActiveKey, rightJoystickAction, keyStateService, this);
         }
 
         #endregion
@@ -140,6 +149,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 SetProperty(ref keyboard, value);
                 keyboard?.OnEnter(); // new keyboard
                 Log.InfoFormat("Keyboard changed to {0}", value);
+            }
+        }
+
+        private void DeactivateLookToScrollUponSwitchingKeyboards()
+        {
+            // FIXME: do this for multiple 2d handlers (if appropriate)
+            if (Settings.Default.LookToScrollDeactivateUponSwitchingKeyboards)
+            {
+                keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value = KeyDownStates.Up;
+                Log.Info("Look to scroll is no longer active.");
             }
         }
 

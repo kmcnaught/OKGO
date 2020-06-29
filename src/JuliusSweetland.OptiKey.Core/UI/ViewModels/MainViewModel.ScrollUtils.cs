@@ -20,7 +20,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
     partial class MainViewModel
     {
 
-        private Rect FindLargestGapBetweenScreenAndMainWindow()
+        public Rect FindLargestGapBetweenScreenAndMainWindow()
         {
             Rect screen = GetVirtualScreenBoundsInPixels();
             Rect window = GetMainWindowBoundsInPixels();
@@ -33,7 +33,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             return new Rect[] { above, below, left, right }.OrderByDescending(rect => rect.CalculateArea()).First();
         }
 
-        private Rect GetVirtualScreenBoundsInPixels()
+        public Rect GetVirtualScreenBoundsInPixels()
         {
             return new Rect
             {
@@ -44,23 +44,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             };
         }
 
-        private Rect GetMainWindowBoundsInPixels()
+        public Rect GetMainWindowBoundsInPixels()
         {
             return Graphics.DipsToPixels(mainWindowManipulationService.WindowBounds);
         }
 
-        private bool IsPointInsideMainWindow(Point point)
+        public bool IsPointInsideMainWindow(Point point)
         {
             return GetMainWindowBoundsInPixels().Contains(point);
         }
 
-        private bool IsMainWindowDocked()
+        public bool IsMainWindowDocked()
         {
             return mainWindowManipulationService.WindowState == WindowStates.Docked;
         }
 
 
-        private IntPtr GetHwndForFrontmostWindowAtPoint(Point point)
+        public IntPtr GetHwndForFrontmostWindowAtPoint(Point point)
         {
             IntPtr shellWindow = PInvoke.GetShellWindow();
 
@@ -109,12 +109,64 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             return Static.Windows.GetFrontmostWindow(windows);
         }
 
-        private IntPtr HideCursorAndGetHwndForFrontmostWindowAtPoint(Point point)
+        public IntPtr HideCursorAndGetHwndForFrontmostWindowAtPoint(Point point)
         {
             // Make sure the cursor is hidden or else it may be picked as the front-most "window"!
             ShowCursor = false;
 
             return GetHwndForFrontmostWindowAtPoint(point);
+        }
+
+        private Rect? GetWindowBounds(IntPtr hWnd)
+        {
+            if (!PInvoke.IsWindow(hWnd))
+            {
+                Log.WarnFormat("{0} does not or no longer points to a valid window.", hWnd);
+                return null;
+            }
+
+            RECT rawRect;
+
+            if (PInvoke.DwmGetWindowAttribute(hWnd, DWMWINDOWATTRIBUTE.ExtendedFrameBounds, out rawRect, Marshal.SizeOf<RECT>()) != 0)
+            {
+                Log.WarnFormat("Failed to get bounds of window {0} using DwmGetWindowAttribute. Falling back to GetWindowRect.", hWnd);
+
+                if (!PInvoke.GetWindowRect(hWnd, out rawRect))
+                {
+                    Log.WarnFormat("Failed to get bounds of window {0} using GetWindowRect.", hWnd);
+                    return null;
+                }
+            }
+
+            return new Rect
+            {
+                X = rawRect.Left,
+                Y = rawRect.Top,
+                Width = rawRect.Right - rawRect.Left,
+                Height = rawRect.Bottom - rawRect.Top
+            };
+        }
+
+        private Rect? GetSubwindowBoundsOnScreen(IntPtr hWnd, Rect relativeBounds)
+        {
+            Rect? windowBounds = GetWindowBounds(hWnd);
+            if (windowBounds.HasValue)
+            {
+                // Express the relative bounds in virtual screen-space again now that we know the location of
+                // the window's top-left corner.
+                Rect subwindowBounds = relativeBounds;
+                subwindowBounds.Offset(windowBounds.Value.Left, windowBounds.Value.Top);
+
+                // Make sure the subwindow bounds are fully contained within the window since the window may have 
+                // shrunk since it was chosen.
+                subwindowBounds.Intersect(windowBounds.Value);
+
+                return subwindowBounds;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

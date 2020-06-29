@@ -1,8 +1,10 @@
 ﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Permissions;
 using System.Text.RegularExpressions;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
@@ -13,73 +15,52 @@ using JuliusSweetland.OptiKey.Native.Common.Enums;
 using JuliusSweetland.OptiKey.Native.Common.Static;
 using JuliusSweetland.OptiKey.Native.Common.Structs;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
+using log4net;
+using Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
-    partial class MainViewModel : ILookToScrollOverlayViewModel
+
+    public class Look2DInteractionHandler : BindableBase, ILookToScrollOverlayViewModel
     {
-        private bool choosingJoystickBoundsTarget = false;
-        
-        private Point pointJoystickBoundsTarget = new Point();
-        private IntPtr windowJoystickBoundsTarget = IntPtr.Zero;
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        private DateTime? joystickLastUpdate = null;
+        private bool choosingBoundsTarget = false;
+        private Point pointBoundsTarget = new Point();
+        private IntPtr windowBoundsTarget = IntPtr.Zero;
+        private DateTime? lastUpdate = null;
 
-        #region ILookToScrollOverlayViewModel Members
+        private Action<float, float> updateAction;
+        private KeyValue triggerKeyValue;
+        private IKeyStateService keyStateService;
+        private MainViewModel mainViewModel;
 
-        private bool isLookToScrollActive = false;
-        public bool IsLookToScrollActive
+        public Look2DInteractionHandler(KeyValue triggerKeyValue, Action<float, float> updateAction, 
+                                        IKeyStateService keyStateService, MainViewModel mainViewModel)
         {
-            get { return isLookToScrollActive; }
-            private set { SetProperty(ref isLookToScrollActive, value); }
+            this.triggerKeyValue = triggerKeyValue;
+            this.updateAction = updateAction;
+            this.keyStateService = keyStateService;
+            this.mainViewModel = mainViewModel;
         }
 
-        private Rect activeLookToScrollBounds = Rect.Empty;
-        public Rect ActiveLookToScrollBounds
+        public void ToggleActive()
         {
-            get { return activeLookToScrollBounds; }
-            private set { SetProperty(ref activeLookToScrollBounds, value); }
-        }
+            Log.InfoFormat("{0} key was selected.", this.triggerKeyValue);
 
-        private Rect activeLookToScrollDeadzone = Rect.Empty;
-        public Rect ActiveLookToScrollDeadzone
-        {
-            get { return activeLookToScrollDeadzone; }
-            private set { SetProperty(ref activeLookToScrollDeadzone, value); }
-        }
-
-        private Thickness activeLookToScrollMargins = new Thickness();
-        public Thickness ActiveLookToScrollMargins
-        {
-            get { return activeLookToScrollMargins; }
-            private set { SetProperty(ref activeLookToScrollMargins, value); }
-        }
-
-        #endregion
-
-        private void ToggleLookToScroll()
-        {
-            Log.Info("Look to scroll active key was selected.");
-
-            if (keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value.IsDownOrLockedDown())
+            if (keyStateService.KeyDownStates[this.triggerKeyValue].Value.IsDownOrLockedDown())
             {
                 Log.Info("Look to scroll is now active.");
 
-                if (keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value.IsDownOrLockedDown())
-                {
-                    Log.Info("Re-using previous bounds target.");
-                }
-                else
-                {
-                    ChooseLookToScrollBoundsTarget();
-                }
+                //FIXME: reinstate some way to re-use bounds
+                ChooseLookToScrollBoundsTarget();
             }
             else
             {
                 Log.Info("Look to scroll is no longer active.");
-                controllerOutputService.ProcessJoystick("RightJoystickAxisX", 0);
-                controllerOutputService.ProcessJoystick("RightJoystickAxisY", 0);
+                updateAction(0.0f, 0.0f);
             }
         }
 
@@ -87,11 +68,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Log.Info("Choosing look to scroll bounds target.");
 
-            choosingJoystickBoundsTarget = true;
-            pointJoystickBoundsTarget = new Point();
-            windowJoystickBoundsTarget = IntPtr.Zero;
+            choosingBoundsTarget = true;
+            pointBoundsTarget = new Point();
+            windowBoundsTarget = IntPtr.Zero;
 
-            Action<bool> callback = success => 
+            Action<bool> callback = success =>
             {
                 if (success && Settings.Default.LookToScrollLockDownBoundsKey)
                 {
@@ -106,7 +87,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value = KeyDownStates.Up;
                 }
 
-                choosingJoystickBoundsTarget = false;
+                choosingBoundsTarget = false;
             };
 
             ChoosePointLookToScrollBoundsTarget(callback);
@@ -116,16 +97,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Log.Info("Choosing point on screen to use as the centre point for scrolling.");
 
-            SetupFinalClickAction(point =>
+            mainViewModel.SetupFinalClickAction(point =>
             {
                 if (point.HasValue)
                 {
                     Log.InfoFormat("User chose point: {0}.", point.Value);
-                    pointJoystickBoundsTarget = point.Value;
+                    pointBoundsTarget = point.Value;
 
                     if (Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint)
                     {
-                        IntPtr hWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(point.Value);
+                        IntPtr hWnd = mainViewModel.HideCursorAndGetHwndForFrontmostWindowAtPoint(point.Value);
 
                         if (hWnd == IntPtr.Zero)
                         {
@@ -137,25 +118,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
                         else
                         {
-                            windowJoystickBoundsTarget = hWnd;
+                            windowBoundsTarget = hWnd;
                             Log.InfoFormat("Brought window at the point, {0}, to the front.", hWnd);
                         }
                     }
                 }
 
-                ResetAndCleanupAfterMouseAction();
+                mainViewModel.ResetAndCleanupAfterMouseAction();
                 callback(point.HasValue);
             }, suppressMagnification: true);
         }
 
 
-        private void UpdateLookToScroll(Point position)
+        public void UpdateLookToScroll(Point position)
         {
             var thisUpdate = DateTime.Now;
 
-            Rect bounds;
-            Point centre;
-            bool active = ShouldUpdateLookToScroll(position, out bounds, out centre);
+            bool active = ShouldUpdateLookToScroll(position, out Rect bounds, out Point centre);
 
             if (active)
             {
@@ -168,13 +147,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
             else
             {
-                controllerOutputService.ProcessJoystick("RightJoystickAxisX", 0.0f);
-                controllerOutputService.ProcessJoystick("RightJoystickAxisY", 0.0f);
+                updateAction(0.0f, 0.0f);
             }
 
             UpdateLookToScrollOverlayProperties(active, bounds, centre);
 
-            joystickLastUpdate = thisUpdate;
+            lastUpdate = thisUpdate;
         }
 
         private bool ShouldUpdateLookToScroll(Point position, out Rect bounds, out Point centre)
@@ -184,9 +162,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             if (!keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value.IsDownOrLockedDown() ||
                 keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown() ||
-                IsPointInsideMainWindow(position) ||
-                choosingJoystickBoundsTarget ||
-                !joystickLastUpdate.HasValue)
+                mainViewModel.IsPointInsideMainWindow(position) ||
+                choosingBoundsTarget ||
+                !lastUpdate.HasValue)
             {
                 return false;
             }
@@ -208,7 +186,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             // If using a window or portion of it as the bounds target, only scroll while pointing _at_ that window, 
             // not while pointing at another window on top of it.
-            if (GetHwndForFrontmostWindowAtPoint(position) != windowJoystickBoundsTarget)
+            if (mainViewModel.GetHwndForFrontmostWindowAtPoint(position) != windowBoundsTarget)
             {
                 // this keeps flicking on/off with stadia, not sure why :(
                 return false;
@@ -219,68 +197,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private Rect? GetCurrentLookToScrollBoundsRect()
         {
-            Rect? bounds = IsMainWindowDocked() 
-                ? FindLargestGapBetweenScreenAndMainWindow() 
-                : GetVirtualScreenBoundsInPixels();
+            Rect? bounds = mainViewModel.IsMainWindowDocked()
+                ? mainViewModel.FindLargestGapBetweenScreenAndMainWindow()
+                : mainViewModel.GetVirtualScreenBoundsInPixels();
 
             return bounds;
         }
 
-        private Rect? GetWindowBounds(IntPtr hWnd)
-        {
-            if (!PInvoke.IsWindow(hWnd))
-            {
-                Log.WarnFormat("{0} does not or no longer points to a valid window.", hWnd);
-                return null;
-            }
-
-            RECT rawRect;
-
-            if (PInvoke.DwmGetWindowAttribute(hWnd, DWMWINDOWATTRIBUTE.ExtendedFrameBounds, out rawRect, Marshal.SizeOf<RECT>()) != 0)
-            {
-                Log.WarnFormat("Failed to get bounds of window {0} using DwmGetWindowAttribute. Falling back to GetWindowRect.", hWnd);
-
-                if (!PInvoke.GetWindowRect(hWnd, out rawRect))
-                {
-                    Log.WarnFormat("Failed to get bounds of window {0} using GetWindowRect.", hWnd);
-                    return null;
-                }
-            }
-
-            return new Rect
-            {
-                X = rawRect.Left,
-                Y = rawRect.Top,
-                Width = rawRect.Right - rawRect.Left,
-                Height = rawRect.Bottom - rawRect.Top
-            };
-        }
-
-        private Rect? GetSubwindowBoundsOnScreen(IntPtr hWnd, Rect relativeBounds)
-        {
-            Rect? windowBounds = GetWindowBounds(hWnd);
-            if (windowBounds.HasValue)
-            {
-                // Express the relative bounds in virtual screen-space again now that we know the location of
-                // the window's top-left corner.
-                Rect subwindowBounds = relativeBounds;
-                subwindowBounds.Offset(windowBounds.Value.Left, windowBounds.Value.Top);
-
-                // Make sure the subwindow bounds are fully contained within the window since the window may have 
-                // shrunk since it was chosen.
-                subwindowBounds.Intersect(windowBounds.Value);
-
-                return subwindowBounds;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
         private Point GetCurrentLookToScrollCentrePoint(Rect bounds)
         {
-            return pointJoystickBoundsTarget;
+            return pointBoundsTarget;
         }
 
         private Vector CalculateLookToScrollVelocity(Point current, Point centre)
@@ -290,13 +216,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             var velocity = new Vector { X = 0, Y = 0 };
             velocity.X = CalculateLookToScrollVelocity(
-                current.X, 
+                current.X,
                 centre.X,
-                Settings.Default.LookToScrollHorizontalDeadzone, 
-                baseSpeed, 
+                Settings.Default.LookToScrollHorizontalDeadzone,
+                baseSpeed,
                 acceleration
             );
-    
+
             velocity.Y = CalculateLookToScrollVelocity(
                 current.Y,
                 centre.Y,
@@ -304,17 +230,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 baseSpeed,
                 acceleration
             );
-            
+
             Log.DebugFormat("Current scrolling velocity is: {0}.", velocity);
 
             return velocity;
         }
 
         private double CalculateLookToScrollVelocity(
-            double current, 
-            double centre, 
-            double deadzone, 
-            double baseSpeed, 
+            double current,
+            double centre,
+            double deadzone,
+            double baseSpeed,
             double acceleration)
         {
             // Calculate the direction and distance from the centre to the current value. 
@@ -332,7 +258,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             // Calculate total speed using base speed and distance-based acceleration.
             double speed = baseSpeed + Math.Sqrt(distance) * acceleration;
 
-            Log.InfoFormat("current: {0}, centre: {1}, accel: {2}, velocity: {3}", current, centre, acceleration, sign*speed);
+            Log.InfoFormat("current: {0}, centre: {1}, accel: {2}, velocity: {3}", current, centre, acceleration, sign * speed);
 
             // Give the speed the correct direction.
             return sign * speed;
@@ -346,9 +272,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 reinstateModifiers = keyStateService.ReleaseModifiers(Log);
             }
 
-            controllerOutputService.ProcessJoystick("RightJoystickAxisX", (float)scrollAmount.X);
-            controllerOutputService.ProcessJoystick("RightJoystickAxisY", -(float)scrollAmount.Y);
-         
+            updateAction((float)scrollAmount.X, (float)scrollAmount.Y);
+            
             reinstateModifiers();
         }
 
@@ -371,7 +296,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ActiveLookToScrollMargins = Graphics.PixelsToDips(bounds.CalculateMarginsAround(deadzone));
         }
 
-        private Action SuspendLookToScrollWhileChoosingPointForMouse()
+        public Action SuspendLookToScrollWhileChoosingPointForMouse()
         {
             Action resumeAction = () => { };
 
@@ -409,13 +334,46 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             return resumeAction;
         }
 
-        private void DeactivateLookToScrollUponSwitchingKeyboards()
+        private bool isLookToScrollActive = false;
+        public bool IsLookToScrollActive
         {
-            if (Settings.Default.LookToScrollDeactivateUponSwitchingKeyboards)
-            {
-                keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value = KeyDownStates.Up;
-                Log.Info("Look to scroll is no longer active.");
-            }
+            get { return isLookToScrollActive; }
+            private set { SetProperty(ref isLookToScrollActive, value); }
         }
+
+        private Rect activeLookToScrollBounds = Rect.Empty;
+        public Rect ActiveLookToScrollBounds
+        {
+            get { return activeLookToScrollBounds; }
+            private set { SetProperty(ref activeLookToScrollBounds, value); }
+        }
+
+        private Rect activeLookToScrollDeadzone = Rect.Empty;
+        public Rect ActiveLookToScrollDeadzone
+        {
+            get { return activeLookToScrollDeadzone; }
+            private set { SetProperty(ref activeLookToScrollDeadzone, value); }
+        }
+
+        private Thickness activeLookToScrollMargins = new Thickness();
+        public Thickness ActiveLookToScrollMargins
+        {
+            get { return activeLookToScrollMargins; }
+            private set { SetProperty(ref activeLookToScrollMargins, value); }
+        }
+
+    }
+
+    partial class MainViewModel 
+    {
+        // Initialised in ctr
+        public Look2DInteractionHandler joystickInteractionHandler;
+
+        private void ToggleLookToScroll()
+        {
+            joystickInteractionHandler.ToggleActive();
+        }
+
+        
     }
 }
