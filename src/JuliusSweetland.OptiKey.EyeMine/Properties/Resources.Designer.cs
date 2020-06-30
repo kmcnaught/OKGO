@@ -133,6 +133,15 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Overall sound effect volume.
+        /// </summary>
+        public static string OVERALL_VOLUME {
+            get {
+                return ResourceManager.GetString("OVERALL_VOLUME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset to default location.
         /// </summary>
         public static string RESET_DYNAMIC_KEYBOARD {
@@ -174,6 +183,15 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         public static string STRING_NOT_SET {
             get {
                 return ResourceManager.GetString("STRING_NOT_SET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume.
+        /// </summary>
+        public static string VOLUME {
+            get {
+                return ResourceManager.GetString("VOLUME", resourceCulture);
             }
         }
     }

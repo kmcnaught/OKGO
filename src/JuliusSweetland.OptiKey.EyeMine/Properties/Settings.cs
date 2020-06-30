@@ -445,5 +445,21 @@ namespace JuliusSweetland.OptiKey.EyeMine.Properties {
         }
 
 
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int OverallSoundEffectVolume
+        {
+            get
+            {
+                return ((int)(this["OverallSoundEffectVolume"]));
+            }
+            set
+            {
+                this["OverallSoundEffectVolume"] = value;
+            }
+        }
+
     }
 }
