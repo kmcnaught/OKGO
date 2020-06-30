@@ -29,6 +29,9 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
             <TabItem Header="{x:Static resx:Resources.VISUALS}">
                 <management:VisualsView DataContext="{Binding VisualsViewModel, Mode=OneWay}" />
             </TabItem>
+            <TabItem Header="{x:Static resx:Resources.SOUNDS}">
+                <management:SoundsView DataContext="{Binding SoundsViewModel, Mode=OneWay}" />
+            </TabItem>
             <TabItem Header="{x:Static resx:Resources.POINT_AND_SELECTING}">
                 <management:PointingAndSelectingView DataContext="{Binding PointingAndSelectingViewModel, Mode=OneWay}" />
             </TabItem>
