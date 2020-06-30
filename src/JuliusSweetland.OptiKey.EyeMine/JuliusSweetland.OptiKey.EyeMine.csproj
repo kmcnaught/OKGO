@@ -215,6 +215,9 @@
     <Compile Include="UI\Views\Management\PointingAndSelectingView.xaml.cs">
       <DependentUpon>PointingAndSelectingView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Views\Management\SoundsView.xaml.cs">
+      <DependentUpon>SoundsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Views\Management\VisualsView.xaml.cs">
       <DependentUpon>VisualsView.xaml</DependentUpon>
     </Compile>
@@ -250,6 +253,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Management\PointingAndSelectingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\SoundsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

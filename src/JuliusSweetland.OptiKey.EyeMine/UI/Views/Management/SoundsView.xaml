@@ -1,0 +1,443 @@
+<!--
+Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+-->
+<UserControl x:Class="JuliusSweetland.OptiKey.EyeMine.UI.Views.Management.SoundsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+        
+            <GroupBox Grid.Row="0" Header="{x:Static resx:Resources.SPEECH}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.MARYTTS_ENABLED_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding MaryTTSEnabled, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.VOICE_LABEL}" 
+                               VerticalAlignment="Center" Margin="5">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding MaryTTSEnabled}" Value="True">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>    
+                    </TextBlock>
+                    <ComboBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                              ItemsSource="{Binding SpeechVoices}"
+                              SelectedValue="{Binding SpeechVoice, Mode=TwoWay}">
+                        <ComboBox.Style>
+                            <Style TargetType="{x:Type ComboBox}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding MaryTTSEnabled}" Value="True">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ComboBox.Style>    
+                    </ComboBox>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.MARYTTS_LOCATION_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding MaryTTSEnabled}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Button Click="btnFindMaryTts_Click" MinWidth="100" Margin="0,5,5,5" VerticalAlignment="Center">
+                            <x:Static Member="resx:Resources.MARYTTS_LOCATION_FIND_LABEL"/>
+                        </Button>
+                        <StackPanel.Style>
+                            <Style TargetType="{x:Type StackPanel}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding MaryTTSEnabled}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                    </StackPanel>
+                    <TextBlock Grid.Row="2" Grid.Column="2" Name="txtMaryTtsLocation"
+                               Text="{Binding MaryTTSLocation, Mode=TwoWay}" 
+                               VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding MaryTTSEnabled}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.MARYTTS_VOICE_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" >
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding MaryTTSEnabled}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+                              ItemsSource="{Binding MaryTTSVoices}"
+                              SelectedValue="{Binding MaryTTSVoice, Mode=TwoWay}" >
+                        <ComboBox.Style>
+                            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                                <Setter Property="Visibility" Value="Visible" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding MaryTTSEnabled}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ComboBox.Style>
+                    </ComboBox>
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.VOLUME_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <controls:NumericUpDown Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                                            Minimum="0" Maximum="100" Interval="1"
+                                            Value="{Binding SpeechVolume, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.RATE_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <controls:NumericUpDown Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                                            Minimum="-10" Maximum="10" Interval="1"
+                                            Value="{Binding SpeechRate, Mode=TwoWay}" />
+
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.SPEECH_DELAY_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <controls:NumericUpDown Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+                                            Minimum="0" Maximum="5000" Interval="100"
+                                            Value="{Binding SpeechDelay, Mode=TwoWay}" />
+                </Grid>
+            </GroupBox>
+        
+            <GroupBox Grid.Row="1" Header="{x:Static resx:Resources.SOUND_EFFECTS}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resx:Resources.INFO_SOUND_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <Grid Grid.Row="0" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding GeneralSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding InfoSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="80"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding InfoSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
+                                Command="{Binding InfoSoundPlayCommand}"/>
+                    </Grid>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resx:Resources.ERROR_SOUND_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <Grid Grid.Row="1" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding GeneralSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding ErrorSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="80"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding ErrorSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
+                                Command="{Binding ErrorSoundPlayCommand}"/>
+                    </Grid>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resx:Resources.KEY_SELECTION_SOUND_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <Grid Grid.Row="2" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding GeneralSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding KeySelectionSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="80"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding KeySelectionSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
+                                Command="{Binding KeySelectionSoundPlayCommand}"/>
+                    </Grid>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_STARTING_SOUND_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <Grid Grid.Row="3" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding GeneralSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding MultiKeySelectionCaptureStartSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="80"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding MultiKeySelectionCaptureStartSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
+                                Command="{Binding MultiKeySelectionCaptureStartSoundPlayCommand}"/>
+                    </Grid>
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.MULTI_KEY_SELECTION_ENDING_SOUND_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <Grid Grid.Row="4" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding GeneralSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding MultiKeySelectionCaptureEndSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="80"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding MultiKeySelectionCaptureEndSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
+                                Command="{Binding MultiKeySelectionCaptureEndSoundPlayCommand}"/>
+                    </Grid>
+
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.MOUSE_CLICK_SOUND_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <Grid Grid.Row="5" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding MouseClickSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding MouseClickSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="80"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding MouseClickSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
+                                Command="{Binding MouseClickSoundPlayCommand}"/>
+                    </Grid>
+
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.MOUSE_DOWN_SOUND_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <Grid Grid.Row="6" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding MouseDownSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding MouseDownSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="80"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding MouseDownSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
+                                Command="{Binding MouseDownSoundPlayCommand}"/>
+                    </Grid>
+
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.MOUSE_UP_SOUND_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <Grid Grid.Row="7" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding MouseUpSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding MouseUpSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="80"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding MouseUpSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
+                                Command="{Binding MouseUpSoundPlayCommand}"/>
+                    </Grid>
+
+                    <TextBlock Grid.Row="8" Grid.Column="0" Text="{x:Static resx:Resources.MOUSE_DOUBLE_CLICK_SOUND_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <Grid Grid.Row="8" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding MouseDoubleClickSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding MouseDoubleClickSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="80"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding MouseDoubleClickSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
+                                Command="{Binding MouseDoubleClickSoundPlayCommand}"/>
+                    </Grid>
+
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.MOUSE_SCROLL_SOUND_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <Grid Grid.Row="9" Grid.Column="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding MouseScrollSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding MouseScrollSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="80"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding MouseScrollSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
+                                Command="{Binding MouseScrollSoundPlayCommand}"/>
+                    </Grid>
+
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="{x:Static resx:Resources.ATTENTION_SOUND_LABEL}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <Grid Grid.Row="10" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" 
+                              ItemsSource="{Binding GeneralSoundFiles}"
+                              DisplayMemberPath="Key"
+                              SelectedValuePath="Value"
+                              SelectedValue="{Binding AttentionSoundFile, Mode=TwoWay}" />
+                        <controls:NumericUpDown Grid.Column="1" Width="80"
+                                                TextAlignment="Right"
+                                                Minimum="0" Maximum="100" Interval="1"
+                                                Value="{Binding AttentionSoundVolume, Mode=TwoWay}" />
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Center"
+                                Content="{x:Static resx:Resources.PLAY_SOUND}"
+                                Command="{Binding AttentionSoundPlayCommand}"/>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
