@@ -72,7 +72,7 @@
 		<DynamicKey Height="2">
 			<Label>Dwell\nbuilding</Label>
 			<Symbol>DwellBuild</Symbol>
-			<Action>NumPad6</Action>
+			<Action>NumPad3</Action>
 		</DynamicKey>
 		<DynamicKey Height="2">
 			<Label>Fly\nUp</Label>

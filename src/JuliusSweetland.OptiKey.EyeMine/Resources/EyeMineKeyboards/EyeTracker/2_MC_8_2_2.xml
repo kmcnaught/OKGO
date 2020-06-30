@@ -50,7 +50,7 @@
         </DynamicKey>
         <DynamicKey>
             <Symbol>DwellBuild</Symbol>
-            <Action>NumPad6</Action>
+            <Action>NumPad3</Action>
             <Label>Dwell\nbuilding</Label>
         </DynamicKey>
         <DynamicKey>

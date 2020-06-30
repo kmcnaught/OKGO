@@ -24,7 +24,7 @@
         </DynamicKey>
         <DynamicKey Col="1" Row="1">
             <Symbol>DwellBuild</Symbol>
-            <Action>NumPad6</Action>
+            <Action>NumPad3</Action>
             <Label>Dwell\nbuilding</Label>
         </DynamicKey>
         <DynamicKey Col="2" Row="0">
