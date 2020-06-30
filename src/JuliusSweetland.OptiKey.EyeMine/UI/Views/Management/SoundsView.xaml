@@ -7,7 +7,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-             xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties"
+             xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties;assembly=OptiKey"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
