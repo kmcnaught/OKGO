@@ -10,10 +10,10 @@
     <ROW Property="ARPPRODUCTICON" Value="EyeMineV2.exe" Type="8"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="SpecialEffect"/>
-    <ROW Property="ProductCode" Value="1033:{AD578D87-9DCA-4894-9826-5F130DD0C371} 2057:{AD578D87-9DCA-4894-9826-5F130DD0C371} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{7A4C7F90-D130-4DFC-9A8A-EF4102EF3144} 2057:{7A4C7F90-D130-4DFC-9A8A-EF4102EF3144} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="EyeMineV2"/>
-    <ROW Property="ProductVersion" Value="2.1.2" Type="32"/>
+    <ROW Property="ProductVersion" Value="2.1.3" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{4414256E-3642-4B1E-92A8-45D78F752687}"/>
