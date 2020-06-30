@@ -173,7 +173,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             get { return speechVoice; }
             set { SetProperty(ref speechVoice, value); }
         }
-        
+
+        private int overallVolume;
+        public int OverallSoundEffectVolume
+        {
+            get { return overallVolume; }
+            set { SetProperty(ref overallVolume, value); }
+        }
+
         private int speechVolume;
         public int SpeechVolume
         {
@@ -404,6 +411,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         private void Load()
         {
+            OverallSoundEffectVolume = Settings.Default.OverallSoundEffectVolume;
             SpeechVoice = Settings.Default.SpeechVoice;
             SpeechVolume = Settings.Default.SpeechVolume;
             SpeechRate = Settings.Default.SpeechRate;
@@ -439,6 +447,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             ValidateMaryTTSVoiceSettings();
 
+            Settings.Default.OverallSoundEffectVolume = OverallSoundEffectVolume;
             Settings.Default.SpeechVoice = SpeechVoice;
             Settings.Default.SpeechVolume = SpeechVolume;
             Settings.Default.SpeechRate = SpeechRate;
