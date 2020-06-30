@@ -14,7 +14,7 @@ namespace JuliusSweetland.OptiKey.Enums
         XboxRight,
         XboxStart,
         XboxBack,
-        XboxLeftThumb,
+        XboxLeftThumb, //TODO: is this already 'left thumb fwd' ?
         XboxRightThumb,
         XboxLeftShoulder,
         XboxRightShoulder,
@@ -29,6 +29,8 @@ namespace JuliusSweetland.OptiKey.Enums
         XBoxRightThumbHalfForward,
         XBoxLeftThumbNeutral,
         XBoxRightThumbNeutral,
+        XBoxLeftTrigger, 
+        XBoxRightTrigger,
     }
 
     public static partial class EnumExtensions
@@ -69,6 +71,19 @@ namespace JuliusSweetland.OptiKey.Enums
                 case XboxButtons.XBoxRightThumbNeutral:
                     return Xbox360Axis.RightThumbY;
                 default: return null;
+
+            }
+        }
+
+        public static Xbox360Slider ToViGemSlider(this XboxButtons button)
+        {
+            switch (button)
+            {
+                case XboxButtons.XBoxLeftTrigger:
+                    return Xbox360Slider.LeftTrigger;
+                case XboxButtons.XBoxRightTrigger:
+                    return Xbox360Slider.RightTrigger;
+                default: return null;
             }
         }
 
@@ -78,6 +93,8 @@ namespace JuliusSweetland.OptiKey.Enums
             {
                 case XboxButtons.XBoxLeftThumbForward:
                 case XboxButtons.XBoxRightThumbForward:
+                case XboxButtons.XBoxLeftTrigger:
+                case XboxButtons.XBoxRightTrigger:
                     return 1.0f;
                 case XboxButtons.XBoxLeftThumbHalfForward:
                 case XboxButtons.XBoxRightThumbHalfForward:

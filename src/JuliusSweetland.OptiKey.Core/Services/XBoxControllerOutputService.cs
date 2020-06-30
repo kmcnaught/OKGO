@@ -88,7 +88,24 @@ namespace JuliusSweetland.OptiKey.Services
                         controller.SetAxisValue(axis, 0);
                     }
                 }
+
+                // Triggers are analogue 'sliders', but we'll treat them as buttons
+                Xbox360Slider slider = button.ToViGemSlider();
+                if (slider != null)
+                {
+                    if (type == KeyPressKeyValue.KeyPressType.Press)
+                        controller.SetSliderValue(slider, (byte)(255 * amount));
+                    else if (type == KeyPressKeyValue.KeyPressType.Release)
+                        controller.SetSliderValue(slider, (byte)(0));
+                    else
+                    {
+                        controller.SetSliderValue(slider, (byte)(255 * amount));
+                        await Task.Delay(50);
+                        controller.SetSliderValue(slider, (byte)(0));
+                    }
+                }
             }
+            
             else
             {
                 Log.ErrorFormat("Could not parse xbox button: {0}", inKey);
