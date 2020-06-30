@@ -60,27 +60,25 @@
 			<Label>Building</Label>
 			<Symbol>MinecraftTabBlocks</Symbol>
 			<Action>NumPad0</Action>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Decoration</Label>
 			<Symbol>MinecraftTabFlower</Symbol>
 			<Action>NumPad1</Action>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Redstone</Label>
 			<Symbol>MinecraftTabGem</Symbol>
 			<Action>NumPad2</Action>
-			</DynamicKey>
+		</DynamicKey>		
 		<DynamicKey>
 			<Label>Transport</Label>
 			<Symbol>MinecraftTabLadder</Symbol>
 			<Action>NumPad3</Action>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
-			<Label>Misc</Label>
-			<Symbol>MinecraftTabBucket</Symbol>
-			<Action>NumPad4</Action>
-			</DynamicKey>
+			<!-- empty padding-->
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Hover\nright</Label>
 			<Symbol>MinecraftHoverRight</Symbol>
@@ -95,7 +93,7 @@
 			<Label>Search</Label>
             <Symbol>MinecraftTabSearch</Symbol>            
 			<Action>ArrowDown</Action>
-			</DynamicKey>
+			</DynamicKey>		
 		<DynamicKey>
 			<Label>ABC</Label>
 			<Symbol>AlphaIcon</Symbol>
@@ -106,30 +104,30 @@
 			<Text>q</Text>
 			</DynamicKey>
 		<DynamicKey>
+	      <Label>Misc</Label>
+	      <Symbol>MinecraftTabBucket</Symbol>
+	      <Action>NumPad5</Action>
+	    </DynamicKey>
+		<DynamicKey>
 			<Label>Foodstuffs</Label>
 			<Symbol>MinecraftTabApple</Symbol>
-			<Action>NumPad5</Action>
-			</DynamicKey>
+			<Action>NumPad6</Action>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Tools</Label>
 			<Symbol>MinecraftTabAxe</Symbol>
-			<Action>NumPad6</Action>
-			</DynamicKey>
+			<Action>NumPad7</Action>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Combat</Label>
 			<Symbol>MinecraftTabSword</Symbol>
-			<Action>NumPad7</Action>
-			</DynamicKey>
+			<Action>NumPad8</Action>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Brewing</Label>
 			<Symbol>MinecraftTabPotion</Symbol>
-			<Action>NumPad8</Action>
-			</DynamicKey>
-		<DynamicKey>
-			<Label>Materials</Label>
-			<Symbol>MinecraftTabStick</Symbol>
 			<Action>NumPad9</Action>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Hover\ndown</Label>
 			<Symbol>MinecraftHoverDown</Symbol>
