@@ -145,7 +145,7 @@
 		</DynamicKey>
 		<DynamicKey Height="2">
 			<Label>Ride/\nDismount</Label>
-			<Text>c</Text>
+			<Text>F15</Text>
 		</DynamicKey>
 		<DynamicKey Height="2">
 			<Label>Back</Label>
