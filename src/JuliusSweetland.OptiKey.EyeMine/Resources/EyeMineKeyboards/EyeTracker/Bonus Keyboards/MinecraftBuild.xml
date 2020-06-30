@@ -79,7 +79,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
     </DynamicKey>
     <DynamicKey>
       <Label>Inventory\netc...</Label>
-      <ChangeKeyboard BackReturnsHere="true">3_InventoryKeyboard</ChangeKeyboard>      
+      <ChangeKeyboard BackReturnsHere="true">../3_MC_InventoryKeyboard</ChangeKeyboard>      
     </DynamicKey>
     <DynamicKey>
       <Label>Pick\nBlock</Label>
