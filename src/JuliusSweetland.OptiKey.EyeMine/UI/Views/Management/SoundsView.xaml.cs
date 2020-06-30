@@ -15,35 +15,5 @@ namespace JuliusSweetland.OptiKey.EyeMine.UI.Views.Management
         {
             InitializeComponent();
         }
-
-        private void btnFindMaryTts_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog
-            {
-                FileName = "marytts-server.bat",
-                Filter = "marytts-server|marytts-server.bat"
-            };
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                string fileLocation = null;
-
-                if (openFileDialog.FileName.EndsWith(@"\bin\marytts-server.bat"))
-                {
-                    txtMaryTtsLocation.Text = openFileDialog.FileName;
-                    fileLocation = txtMaryTtsLocation.Text;
-                }
-                else
-                {
-                    txtMaryTtsLocation.Text = Properties.Resources.MARYTTS_LOCATION_ERROR_LABEL;
-                }
-
-                SoundsViewModel viewModel = this.DataContext as SoundsViewModel;
-                if (viewModel != null && !string.IsNullOrWhiteSpace(fileLocation))
-                {
-                    viewModel.MaryTTSLocation = fileLocation;
-                }
-            }
-        }
     }
 }
