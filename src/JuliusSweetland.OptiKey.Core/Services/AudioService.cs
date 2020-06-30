@@ -144,6 +144,10 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void PlaySound(string file, int volume)
         {
+            // Adjust by overall volume
+            volume *= Settings.Default.OverallSoundEffectVolume;
+            volume /= 100;
+
             Log.InfoFormat("Playing sound '{0}' at volume '{1}'", file, volume);
             if (string.IsNullOrEmpty(file)) return;
 
