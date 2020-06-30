@@ -64,7 +64,7 @@
     </DynamicKey>
     <DynamicKey>
       <Label>Ride/\nDismount</Label>
-      <Text>F15</Text>
+      <Action>F15</Action>
     </DynamicKey>
     <DynamicKey>
       <Label>Toggle\nmining</Label>

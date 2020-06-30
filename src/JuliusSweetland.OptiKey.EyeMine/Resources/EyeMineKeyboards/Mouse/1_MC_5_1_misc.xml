@@ -9,7 +9,7 @@
 	<Keys>
 		<DynamicKey Col="0" Height="1" Row="0" Width="1">
 			<Label>Ride/\nDismount</Label>
-			<Text>F15</Text>
+			<Action>F15</Action>
 			</DynamicKey>
 		<DynamicKey Col="1" Height="1" Row="0" Width="1">
 			<Label>Auto\nPillar</Label>
