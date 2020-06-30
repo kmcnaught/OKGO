@@ -1,153 +1,151 @@
 <Keyboard>
-   <ShowOutputPanel>True</ShowOutputPanel>
-   <SymbolMargin>10</SymbolMargin>
-   <Name>Minecraft 10x3 chat</Name>
-   <Grid>
-      <Rows>3</Rows>
-      <Cols>22</Cols>
-   </Grid>
-   <InitialKeyStates>
-     <KeyUp>MouseMagneticCursor</KeyUp>
-   </InitialKeyStates>
-   <HideFromKeyboardMenu>True</HideFromKeyboardMenu>
-
+	<ShowOutputPanel>True</ShowOutputPanel>
+	<SymbolMargin>10</SymbolMargin>
+	<Name>Minecraft 10x3 chat</Name>
+	<Grid>
+		<Rows>3</Rows>
+		<Cols>22</Cols>
+	</Grid>
+	<InitialKeyStates>
+		<KeyUp>MouseMagneticCursor</KeyUp>
+	</InitialKeyStates>
+	<HideFromKeyboardMenu>True</HideFromKeyboardMenu>
 	<Content>
 		<DynamicKey Width="2">
 			<Label>q</Label>
 			<Text>q</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Width="2">
 			<Label>w</Label>
 			<Text>w</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Width="2">
 			<Label>e</Label>
 			<Text>e</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Width="2">
 			<Label>r</Label>
 			<Text>r</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Width="2">
 			<Label>t</Label>
 			<Text>t</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Col="10" Width="2">
 			<Label>y</Label>
 			<Text>y</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Col="12" Width="2">
 			<Label>u</Label>
 			<Text>u</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Col="14" Width="2">
 			<Label>i</Label>
 			<Text>i</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Col="16" Width="2">
 			<Label>o</Label>
 			<Text>o</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Col="18" Width="2">
 			<Label>p</Label>
 			<Text>p</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Col="20" Width="2">
 			<Label>Open\nChat</Label>
 			<Symbol>ChatIcon</Symbol>
 			<Action>End</Action>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Width="2">
 			<Label>a</Label>
 			<Text>a</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Width="2">
 			<Label>s</Label>
 			<Text>s</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Width="2">
 			<Label>d</Label>
 			<Text>d</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Width="2">
 			<Label>f</Label>
 			<Text>f</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Width="2">
 			<Label>g</Label>
 			<Text>g</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Col="10" Width="2">
 			<Label>h</Label>
 			<Text>h</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Col="12" Width="2">
 			<Label>j</Label>
 			<Text>j</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Col="14" Width="2">
 			<Label>k</Label>
 			<Text>k</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Col="16" Width="2">
 			<Label>l</Label>
 			<Text>l</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Col="18" Width="2">
 			<Label>Delete</Label>
 			<Symbol>BackOneIcon</Symbol>
 			<Action>BackOne</Action>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Col="20" Width="2">
 			<Label>Delete\nWord</Label>
 			<Symbol>BackManyIcon</Symbol>
 			<Action>BackMany</Action>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
-			<Label />
-			</DynamicKey>
+			<Label/>
+		</DynamicKey>
 		<DynamicKey Width="2">
 			<Label>z</Label>
 			<Text>z</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Width="2">
 			<Label>x</Label>
 			<Text>x</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Width="2">
 			<Label>c</Label>
 			<Text>c</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Width="2">
 			<Label>v</Label>
 			<Text>v</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Width="2">
 			<Label>b</Label>
 			<Text>b</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Col="11" Width="2">
 			<Label>n</Label>
 			<Text>n</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Col="13" Width="2">
 			<Label>m</Label>
 			<Text>m</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey Col="15" Width="2">
 			<Label>space</Label>
 			<Symbol>SpaceIcon</Symbol>
-			<Text> </Text>
-			</DynamicKey>
+			<Text/>
+		</DynamicKey>
 		<DynamicKey Col="17" Width="3">
 			<Label>Enter</Label>
-			<Text>
-</Text>
-			</DynamicKey>
+			<Text/>
+		</DynamicKey>
 		<DynamicKey Col="20" Width="2">
 			<Label>Back</Label>
 			<Symbol>BackIcon</Symbol>
 			<Action>BackFromKeyboard</Action>
-			</DynamicKey>
+		</DynamicKey>
 	</Content>
 </Keyboard>

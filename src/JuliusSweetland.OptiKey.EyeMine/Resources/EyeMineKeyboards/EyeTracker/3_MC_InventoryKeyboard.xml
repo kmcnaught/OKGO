@@ -1,61 +1,61 @@
 <Keyboard>
-   <Name>Minecraft 10x3 inventory</Name>
-   <SymbolMargin>25</SymbolMargin>
-   <Grid>
-      <Rows>3</Rows>
-      <Cols>10</Cols>
-   </Grid>
-   <HideFromKeyboardMenu>True</HideFromKeyboardMenu>
-   <InitialKeyStates>
-     <KeyUp>MouseMagneticCursor</KeyUp>
-     <KeyLockedDown>MouseMagnifier</KeyLockedDown>   
-   </InitialKeyStates>
+	<Name>Minecraft 10x3 inventory</Name>
+	<SymbolMargin>25</SymbolMargin>
+	<Grid>
+		<Rows>3</Rows>
+		<Cols>10</Cols>
+	</Grid>
+	<HideFromKeyboardMenu>True</HideFromKeyboardMenu>
+	<InitialKeyStates>
+		<KeyUp>MouseMagneticCursor</KeyUp>
+		<KeyLockedDown>MouseMagnifier</KeyLockedDown>
+	</InitialKeyStates>
 	<Content>
 		<DynamicKey>
 			<Label>1</Label>
 			<Text>1</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>2</Label>
 			<Text>2</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>3</Label>
 			<Text>3</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>4</Label>
 			<Text>4</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>5</Label>
 			<Text>5</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>6</Label>
 			<Text>6</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>7</Label>
 			<Text>7</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>8</Label>
 			<Text>8</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>9</Label>
 			<Text>9</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Esc</Label>
 			<Symbol>MinecraftEscButton</Symbol>
 			<Action>Escape</Action>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Open\nInventory</Label>
 			<Text>e</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Building</Label>
 			<Symbol>MinecraftTabBlocks</Symbol>
@@ -70,7 +70,7 @@
 			<Label>Redstone</Label>
 			<Symbol>MinecraftTabGem</Symbol>
 			<Action>NumPad2</Action>
-		</DynamicKey>		
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Transport</Label>
 			<Symbol>MinecraftTabLadder</Symbol>
@@ -83,31 +83,31 @@
 			<Label>Hover\nright</Label>
 			<Symbol>MinecraftHoverRight</Symbol>
 			<Action>F7</Action>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Hover</Label>
 			<Symbol>MouseMoveToIcon</Symbol>
 			<Action>MouseMoveTo</Action>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Search</Label>
-            <Symbol>MinecraftTabSearch</Symbol>            
+			<Symbol>MinecraftTabSearch</Symbol>
 			<Action>ArrowDown</Action>
-			</DynamicKey>		
+		</DynamicKey>
 		<DynamicKey>
 			<Label>ABC</Label>
 			<Symbol>AlphaIcon</Symbol>
-            <ChangeKeyboard BackReturnsHere="True">3_MC_ChatKeyboard</ChangeKeyboard>
-            </DynamicKey>
+			<ChangeKeyboard BackReturnsHere="True">3_MC_ChatKeyboard</ChangeKeyboard>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Drop\nitem</Label>
 			<Text>q</Text>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
-	      <Label>Misc</Label>
-	      <Symbol>MinecraftTabBucket</Symbol>
-	      <Action>NumPad5</Action>
-	    </DynamicKey>
+			<Label>Misc</Label>
+			<Symbol>MinecraftTabBucket</Symbol>
+			<Action>NumPad5</Action>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Foodstuffs</Label>
 			<Symbol>MinecraftTabApple</Symbol>
@@ -132,21 +132,21 @@
 			<Label>Hover\ndown</Label>
 			<Symbol>MinecraftHoverDown</Symbol>
 			<Action>F6</Action>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Left\nclick</Label>
 			<Symbol>MouseLeftClickWithMouseIcon</Symbol>
 			<Action>MouseMoveAndLeftClick</Action>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Scroll\nDown</Label>
 			<Symbol>MouseScrollToBottomIcon</Symbol>
 			<Action>F8</Action>
-			</DynamicKey>
+		</DynamicKey>
 		<DynamicKey>
 			<Label>Back</Label>
 			<Symbol>BackIcon</Symbol>
 			<Action>BackFromKeyboard</Action>
-			</DynamicKey>
+		</DynamicKey>
 	</Content>
 </Keyboard>

@@ -2,7 +2,7 @@
 Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 -->
 <Keyboard>
-  <Name>Minecraft\nBuilder</Name>  
+  <Name>Minecraft\nBuilder</Name>
   <SymbolMargin>20</SymbolMargin>
   <Grid>
     <Rows>3</Rows>
@@ -15,9 +15,9 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
       <Action>NumPad4</Action>
     </DynamicKey>
     <DynamicKey>
-      <Label>Fly</Label>      
+      <Label>Fly</Label>
       <Symbol>MinecraftFly</Symbol>
-      <Text>,</Text>            
+      <Text>,</Text>
     </DynamicKey>
     <DynamicKey>
       <Label>Use\nItem</Label>
@@ -27,7 +27,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
     <DynamicKey Width="2">
       <Label>Look\nwith gaze</Label>
       <Symbol>MinecraftLookWithCursor</Symbol>
-      <Action>MouseMagneticCursor</Action>      
+      <Action>MouseMagneticCursor</Action>
     </DynamicKey>
     <DynamicKey>
       <Label>Mine x1</Label>
@@ -49,10 +49,10 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
       <Symbol>MinecraftNext</Symbol>
       <Action>NumPad5</Action>
     </DynamicKey>
-    <DynamicKey>      
+    <DynamicKey>
       <Label>Fly\nUp</Label>
       <Symbol>MinecraftFlyUp</Symbol>
-      <Text>.</Text>  
+      <Text>.</Text>
     </DynamicKey>
     <DynamicKey>
       <Label>Dwell\nbuilding</Label>
@@ -81,24 +81,24 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
     </DynamicKey>
     <DynamicKey>
       <Label>Inventory\netc...</Label>
-      <ChangeKeyboard BackReturnsHere="true">../3_MC_InventoryKeyboard</ChangeKeyboard>      
+      <ChangeKeyboard BackReturnsHere="true">../3_MC_InventoryKeyboard</ChangeKeyboard>
     </DynamicKey>
     <DynamicKey>
       <Label>Pick\nBlock</Label>
       <Symbol>MinecraftPickBlock</Symbol>
-      <Action>NumPad2</Action>      
+      <Action>NumPad2</Action>
     </DynamicKey>
-    <DynamicKey>      
+    <DynamicKey>
       <Label>Fly\nDown</Label>
       <Symbol>MinecraftFlyDown</Symbol>
-      <Text>'</Text>  
+      <Text>'</Text>
     </DynamicKey>
-    <DynamicKey>      
+    <DynamicKey>
       <Label>Toggle\nuse item</Label>
       <Symbol>MouseRightDownUpIcon</Symbol>
-      <Action>NumPad1</Action>      
+      <Action>NumPad1</Action>
     </DynamicKey>
-    <DynamicKey>      
+    <DynamicKey>
       <Label>Auto\nPillar</Label>
       <Symbol>MinecraftPlaceBlock</Symbol>
       <Text>0</Text>
@@ -106,20 +106,20 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
     <DynamicKey>
       <Text>p</Text>
       <Label>Ironsights</Label>
-      <Symbol>Ironsights</Symbol>      
+      <Symbol>Ironsights</Symbol>
     </DynamicKey>
     <DynamicKey>
-      <!-- empty key to pad auto-layout -->      
+      <!-- empty key to pad auto-layout -->
     </DynamicKey>
     <DynamicKey>
       <Label>Swap\nmine/place</Label>
       <Symbol>MinecraftSwapMinePlace</Symbol>
-      <Action>F10</Action>      
+      <Action>F10</Action>
     </DynamicKey>
     <DynamicKey>
       <Label>Back</Label>
       <Symbol>BackIcon</Symbol>
-      <Action>BackFromKeyboard</Action>      
+      <Action>BackFromKeyboard</Action>
     </DynamicKey>
   </Content>
 </Keyboard>
