@@ -72,7 +72,7 @@
         <DynamicKey Col="7" Row="0">
             <Label>Auto\nPillar</Label>
             <Symbol>MinecraftPlaceBlock</Symbol>
-            <Text>l</Text>
+            <Text>0</Text>
         </DynamicKey>
         <DynamicKey Col="7" Row="1">
             <ChangeKeyboard BackReturnsHere="False">2_MC_8_2_inv.xml</ChangeKeyboard>

@@ -111,7 +111,7 @@
 		<DynamicKey Height="2">
 			<Label>Auto\nPillar</Label>
 			<Symbol>MinecraftPlaceBlock</Symbol>
-			<Text>l</Text>
+			<Text>0</Text>
 		</DynamicKey>
 		<DynamicKey Height="2">
 			<Label>Pick\nBlock</Label>

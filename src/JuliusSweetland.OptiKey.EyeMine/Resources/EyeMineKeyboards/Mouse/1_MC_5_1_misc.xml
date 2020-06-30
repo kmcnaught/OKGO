@@ -14,7 +14,7 @@
 		<DynamicKey Col="1" Height="1" Row="0" Width="1">
 			<Label>Auto\nPillar</Label>
 			<Symbol>MinecraftPlaceBlock</Symbol>
-			<Text>l</Text>
+			<Text>0</Text>
 			</DynamicKey>
 		<DynamicKey Col="2" Height="1" Row="0" Width="1">
 			<Label>Night\nVision</Label>

@@ -42,7 +42,7 @@
         <DynamicKey>
             <Label>Auto\nPillar</Label>
             <Symbol>MinecraftPlaceBlock</Symbol>
-            <Text>l</Text>
+            <Text>0</Text>
         </DynamicKey>
         <DynamicKey>
             <Symbol>ArrowPointingToLeftIcon</Symbol>
