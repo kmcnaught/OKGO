@@ -100,12 +100,12 @@
         <DynamicKey Col="6" Height="1" Row="0" Width="1">
 			<Label>Scroll\nUp</Label>
 			<Symbol>MouseScrollToTopIcon</Symbol>
-			<Action>F8</Action>
+			<Action>F9</Action>
 			</DynamicKey>
 		<DynamicKey Col="6" Height="1" Row="1" Width="1">
 			<Label>Scroll\nDown</Label>
 			<Symbol>MouseScrollToBottomIcon</Symbol>
-			<Action>F9</Action>
+			<Action>F8</Action>
 			</DynamicKey>
 		<DynamicKey Col="9" Height="1" Row="1" Width="1">
 			<Label>Back</Label>
