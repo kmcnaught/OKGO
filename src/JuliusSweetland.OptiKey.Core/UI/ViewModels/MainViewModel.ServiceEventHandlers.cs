@@ -1170,15 +1170,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.LeftJoystick:
-                    leftJoystickInteractionHandler.ToggleActive();
+                    ToggleLeftJoystick();
                     break;
 
                 case FunctionKeys.RightJoystick:
-                    rightJoystickInteractionHandler.ToggleActive();
+                    ToggleRightJoystick();
                     break;
 
                 case FunctionKeys.LegacyJoystick:
-                    legacyJoystickInteractionHandler.ToggleActive();
+                    ToggleLegacyJoystick();
                     break;
 
                 case FunctionKeys.LookToScrollBounds:

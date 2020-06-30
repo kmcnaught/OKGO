@@ -31,6 +31,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Point pointBoundsTarget = new Point();
         private IntPtr windowBoundsTarget = IntPtr.Zero;
         private DateTime? lastUpdate = null;
+        private bool hasTarget = false;
 
         private Action<float, float> updateAction;
         private KeyValue triggerKeyValue;
@@ -38,6 +39,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private MainViewModel mainViewModel;
 
         private bool active = false;
+        // FIXME: need state renaming for different active state
 
         public Look2DInteractionHandler(KeyValue triggerKeyValue, Action<float, float> updateAction, 
                                         IKeyStateService keyStateService, MainViewModel mainViewModel)
@@ -48,25 +50,48 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.mainViewModel = mainViewModel;
         }
 
-        public void ToggleActive()
+        public bool ToggleActive()
         {
             Log.InfoFormat("{0} key was selected.", this.triggerKeyValue);
 
             if (keyStateService.KeyDownStates[this.triggerKeyValue].Value.IsDownOrLockedDown())
             {
-                Log.Info("Look to scroll is now active.");
+                Enable();
+            }
+            else
+            {
+                Disable();
+            }
 
-                //FIXME: reinstate some way to re-use bounds
+            return active;
+        }
+
+        public bool Enable()
+        {
+            Log.InfoFormat("Activating 2D control: {0}", this.triggerKeyValue);
+
+            //FIXME: reinstate some way to re-use bounds
+            if (!hasTarget)
+            {
+                // will set 'active' once complete
                 ChooseLookToScrollBoundsTarget();
             }
             else
             {
-                active = false;
-                IsLookToScrollActive = false;
-
-                Log.Info("Look to scroll is no longer active.");
-                updateAction(0.0f, 0.0f);
+                active = true;
             }
+
+            return active;
+        }
+
+        public void Disable()
+        {
+            active = false;
+            IsLookToScrollActive = false;
+            keyStateService.KeyDownStates[this.triggerKeyValue].Value = KeyDownStates.Up;
+
+            Log.Info("Look to scroll is no longer active.");
+            updateAction(0.0f, 0.0f);
         }
 
         private void ChooseLookToScrollBoundsTarget()
@@ -82,6 +107,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 if (success)
                 {
                     active = true;
+                    hasTarget = true;
                 }
                 if (success && Settings.Default.LookToScrollLockDownBoundsKey)
                 {
@@ -376,6 +402,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public Look2DInteractionHandler scrollInteractionHandler;
 
+
         private void ToggleLookToScroll()
         {
             //TODO: needs reinstating
@@ -384,12 +411,33 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void ToggleLeftJoystick()
         {
-            leftJoystickInteractionHandler.ToggleActive();
+            bool nowActive = leftJoystickInteractionHandler.ToggleActive();
+            //if (nowActive)
+            //{
+                rightJoystickInteractionHandler.Disable();
+                legacyJoystickInteractionHandler.Disable();
+            //}
         }
 
         private void ToggleRightJoystick()
         {
-            rightJoystickInteractionHandler.ToggleActive();
+            bool nowActive = rightJoystickInteractionHandler.ToggleActive();
+            //if (nowActive)
+            //{
+                leftJoystickInteractionHandler.Disable();
+                legacyJoystickInteractionHandler.Disable();
+            //}
         }
+
+        private void ToggleLegacyJoystick()
+        {
+            bool nowActive = legacyJoystickInteractionHandler.ToggleActive();
+            if (nowActive)
+            {
+                rightJoystickInteractionHandler.Disable();
+                leftJoystickInteractionHandler.Disable();
+            }
+        }
+
     }
 }
