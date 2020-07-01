@@ -13,6 +13,7 @@ using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Properties;
 using log4net;
+using Nefarius.ViGEm.Client.Targets.Xbox360;
 using Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.Services
@@ -83,6 +84,15 @@ namespace JuliusSweetland.OptiKey.Services
         #endregion
 
         #region Methods - IKeyboardOutputService
+
+        public void XBoxProcessJoystick(string axis, float amount)
+        {
+            XboxAxes axisEnum;
+            if (Enum.TryParse(axis, true, out axisEnum))
+            {
+                publishService.XBoxProcessJoystick(axisEnum, amount);
+            }
+        }
 
         public void ProcessFunctionKey(FunctionKeys functionKey)
         {
@@ -521,13 +531,29 @@ namespace JuliusSweetland.OptiKey.Services
                     publishService.KeyDownUp(vkCode);
                 return;
             }
-            
+
+            // Is it a controller output?
+            XboxButtons button;
+            if (Enum.TryParse(inKey, true, out button))
+            {
+                if (type == KeyPressKeyValue.KeyPressType.Press)
+                    publishService.XBoxButtonDown(button);
+                else if (type == KeyPressKeyValue.KeyPressType.Release)
+                    publishService.XBoxButtonUp(button);
+                else
+                {
+                    publishService.XBoxButtonDown(button);
+                    await Task.Delay(50);
+                    publishService.XBoxButtonUp(button);
+                }
+                return;
+            }
+
             // Otherwise a vanilla key press
             foreach (var chaKey in inKey)
             {
                 this.PressKey(chaKey, type);
             }
-        
         }
 
         private string CombineStringWithActiveDeadKeys(string input)

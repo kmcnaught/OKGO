@@ -156,7 +156,7 @@ namespace JuliusSweetland.OptiKey.Symbol
                 mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
-                    inputService, keyboardOutputService, controllerOutputService, mouseOutputService,
+                    inputService, keyboardOutputService, mouseOutputService,
                     mainWindowManipulationService, errorNotifyingServices);
 
                 mainWindow.SetMainViewModel(mainViewModel);

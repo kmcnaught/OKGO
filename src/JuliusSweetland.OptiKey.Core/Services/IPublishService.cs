@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System.Windows;
 using WindowsInput.Native;
+using JuliusSweetland.OptiKey.Enums;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -9,6 +10,9 @@ namespace JuliusSweetland.OptiKey.Services
         void KeyDown(VirtualKeyCode virtualKeyCode);
         void KeyUp(VirtualKeyCode virtualKeyCode);
         void KeyDownUp(VirtualKeyCode virtualKeyCode);
+        void XBoxButtonDown(XboxButtons button);
+        void XBoxButtonUp(XboxButtons button);
+        void XBoxProcessJoystick(XboxAxes axisEnum, float amount);
         void LeftMouseButtonClick();
         void LeftMouseButtonDoubleClick();
         void LeftMouseButtonDown();
