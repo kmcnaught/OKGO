@@ -86,12 +86,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public void Disable()
         {
-            active = false;
-            IsLookToScrollActive = false;
-            keyStateService.KeyDownStates[this.triggerKeyValue].Value = KeyDownStates.Up;
+            if (active)
+            {
+                active = false;
+                IsLookToScrollActive = false;
+                keyStateService.KeyDownStates[this.triggerKeyValue].Value = KeyDownStates.Up;
 
-            Log.Info("Look to scroll is no longer active.");
-            updateAction(0.0f, 0.0f);
+                Log.Info("Look to scroll is no longer active.");
+                updateAction(0.0f, 0.0f);
+            }
         }
 
         private void ChooseLookToScrollBoundsTarget()
