@@ -14,7 +14,7 @@ namespace JuliusSweetland.OptiKey.Enums
         XboxRight,
         XboxStart,
         XboxBack,
-        XboxLeftThumb, //TODO: is this already 'left thumb fwd' ?
+        XboxLeftThumb, 
         XboxRightThumb,
         XboxLeftShoulder,
         XboxRightShoulder,
