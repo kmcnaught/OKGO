@@ -2773,6 +2773,101 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
         }
 
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double LeftStickSensitivityX
+        {
+            get
+            {
+                return ((double)(this["LeftStickSensitivityX"]));
+            }
+            set
+            {
+                this["LeftStickSensitivityX"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double LeftStickSensitivityY
+        {
+            get
+            {
+                return ((double)(this["LeftStickSensitivityY"]));
+            }
+            set
+            {
+                this["LeftStickSensitivityY"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double RightStickSensitivityX
+        {
+            get
+            {
+                return ((double)(this["RightStickSensitivityX"]));
+            }
+            set
+            {
+                this["RightStickSensitivityX"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double RightStickSensitivityY
+        {
+            get
+            {
+                return ((double)(this["RightStickSensitivityY"]));
+            }
+            set
+            {
+                this["RightStickSensitivityY"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double LegacyStickSensitivityX
+        {
+            get
+            {
+                return ((double)(this["LegacyStickSensitivityX"]));
+            }
+            set
+            {
+                this["LegacyStickSensitivityX"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double LegacyStickSensitivityY
+        {
+            get
+            {
+                return ((double)(this["LegacyStickSensitivityY"]));
+            }
+            set
+            {
+                this["LegacyStickSensitivityY"] = value;
+            }
+        }
 
         public bool IsOverridden(string propName)
         {

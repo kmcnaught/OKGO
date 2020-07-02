@@ -108,21 +108,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Action<float, float> leftJoystickAction = (x, y) =>
             {
                 Log.InfoFormat("leftJoystickAction, ({0}, {1})", x, y);
-                keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisX", x);
-                keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisY", -1.75f*y);
+                keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisX", (float)Settings.Default.LeftStickSensitivityX * x);
+                keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisY", -(float)Settings.Default.LeftStickSensitivityY * y);
             };
             Action<float, float> rightJoystickAction = (x, y) =>
             {
-                Log.InfoFormat("leftJoystickAction, ({0}, {1})", x, y);
-                keyboardOutputService.XBoxProcessJoystick("RightJoystickAxisX", x);
-                keyboardOutputService.XBoxProcessJoystick("RightJoystickAxisY", -1.5f*y);
+                Log.InfoFormat("rightJoystickAction, ({0}, {1})", x, y);
+                keyboardOutputService.XBoxProcessJoystick("RightJoystickAxisX", (float)Settings.Default.RightStickSensitivityX * x);
+                keyboardOutputService.XBoxProcessJoystick("RightJoystickAxisY", -(float)Settings.Default.RightStickSensitivityY * y);
             };
 
             Action<float, float> legacyJoystickAction = (x, y) =>
             {
                 Log.InfoFormat("legacyJoystickAction, ({0}, {1})", x, y);
-                keyboardOutputService.XBoxProcessJoystick("RightJoystickAxisX", x);
-                keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisY", -2f * y);
+                keyboardOutputService.XBoxProcessJoystick("RightJoystickAxisX", (float)Settings.Default.LegacyStickSensitivityX * x);
+                keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisY", -(float)Settings.Default.LegacyStickSensitivityY * y);
             };
 
             leftJoystickInteractionHandler = new Look2DInteractionHandler(KeyValues.LeftJoystickActiveKey, leftJoystickAction, 
