@@ -1,0 +1,108 @@
+<Keyboard>
+   <Name>Crayta2</Name>
+   <SymbolMargin>10</SymbolMargin>   
+   <BackgroundColor>Transparent</BackgroundColor>
+   <Height>20%</Height>
+   <Position>Top</Position>
+   <BorderThickness>20,20,20,20</BorderThickness>
+   <!-- <Width>80%</Width> -->
+   <BackgroundColor>Transparent</BackgroundColor>
+   <BorderColor>Transparent</BorderColor>
+   <WindowState>Floating</WindowState>
+   <Grid>
+      <Rows>2</Rows>
+      <Cols>7</Cols>
+   </Grid>
+   <Content>   
+      <DynamicKey>
+         <Label>LT\nDelete</Label>
+         <KeyDown>XboxLeftTrigger</KeyDown>
+         <Wait>600</Wait>
+         <KeyUp>XboxLeftTrigger</KeyUp>
+      </DynamicKey>
+      <DynamicKey>
+         <Label>RT\nPlace</Label>
+         <KeyDown>XboxRightTrigger</KeyDown>
+         <Wait>200</Wait>
+         <KeyUp>XboxRightTrigger</KeyUp>
+      </DynamicKey>
+      
+
+      <DynamicKey>
+         <Label>RT\nToggle</Label>
+         <KeyToggle>XboxRightTrigger</KeyToggle>         
+      </DynamicKey>
+
+      <DynamicKey>
+         <Label>RT\n3 secs</Label>
+         <KeyDown>XboxRightTrigger</KeyDown>
+         <Wait>3000</Wait>
+         <KeyUp>XboxRightTrigger</KeyUp>
+      </DynamicKey>
+      
+
+
+      <DynamicKey>
+         <Label>LB\nprevious</Label>
+         <KeyDown>XboxLeftShoulder</KeyDown>
+         <Wait>200</Wait>
+         <KeyUp>XboxLeftShoulder</KeyUp>
+      </DynamicKey>
+      <DynamicKey>
+         <Label>RB\nnext</Label>
+         <KeyDown>XboxRightShoulder</KeyDown>
+         <Wait>200</Wait>
+         <KeyUp>XboxRightShoulder</KeyUp>
+      </DynamicKey>
+
+
+      <DynamicKey>
+         <Label>Preview</Label>
+         <KeyDown>XboxDown</KeyDown>
+         <Wait>1200</Wait>
+         <KeyUp>XboxDown</KeyUp>
+         <ChangeKeyboard BackReturnsHere="True">crayta_play</ChangeKeyboard>
+      </DynamicKey>
+
+
+      <DynamicKey>
+         <Label>Voxel\ntool</Label>
+         <KeyDown>XboxUp</KeyDown>
+         <Wait>200</Wait>
+         <KeyUp>XboxUp</KeyUp>
+      </DynamicKey>
+
+      <DynamicKey>
+         <Label>B</Label>         
+         <KeyDown>XboxB</KeyDown>
+         <Wait>200</Wait>
+         <KeyUp>XboxB</KeyUp>
+      </DynamicKey>
+
+      <DynamicKey>
+         <Label>Left\nStick</Label>
+         <Action>LeftJoystick</Action>
+      </DynamicKey>
+      <DynamicKey>
+         <Label>Legacy\nStick</Label>
+         <Action>LegacyJoystick</Action>
+      </DynamicKey>
+      <DynamicKey>
+         <Label>Right\nStick</Label>
+         <Action>RightJoystick</Action>
+      </DynamicKey>
+
+
+
+      <DynamicKey>
+         <Label>Walk</Label>
+         <KeyToggle>XBoxLeftThumbForward</KeyToggle>
+      </DynamicKey>
+
+
+      <DynamicKey>
+         <Symbol>BackIcon</Symbol>
+         <Action>BackFromKeyboard</Action>
+      </DynamicKey>
+   </Content>
+</Keyboard>
