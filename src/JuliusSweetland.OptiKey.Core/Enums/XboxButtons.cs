@@ -31,6 +31,12 @@ namespace JuliusSweetland.OptiKey.Enums
         XBoxRightThumbNeutral,
         XBoxLeftTrigger, 
         XBoxRightTrigger,
+        XBoxLeftThumbLeft,
+        XBoxLeftThumbRight,
+        XBoxLeftThumbBackward,
+        XBoxRightThumbLeft,
+        XBoxRightThumbRight,
+        XBoxRightThumbBackward,
     }
 
     public static partial class EnumExtensions
@@ -62,14 +68,26 @@ namespace JuliusSweetland.OptiKey.Enums
         {
             switch (button)
             {
+                case XboxButtons.XBoxLeftThumbLeft:
+                case XboxButtons.XBoxLeftThumbRight:
+                    return Xbox360Axis.LeftThumbX;
+
                 case XboxButtons.XBoxLeftThumbForward:
                 case XboxButtons.XBoxLeftThumbHalfForward:
-                case XboxButtons.XBoxLeftThumbNeutral:
-                    return Xbox360Axis.LeftThumbY;
+                case XboxButtons.XBoxLeftThumbNeutral: // WARNING: neutral is only used for Y axis currently, but 
+                case XboxButtons.XBoxLeftThumbBackward: // it might be expected to neutralise both - do we need it?
+                    return Xbox360Axis.LeftThumbY;       // or can we revert to KeyUp/KeyDown/KeyToggle now?
+
+                case XboxButtons.XBoxRightThumbLeft:
+                case XboxButtons.XBoxRightThumbRight:
+                    return Xbox360Axis.RightThumbX;
+
                 case XboxButtons.XBoxRightThumbForward:
                 case XboxButtons.XBoxRightThumbHalfForward:
                 case XboxButtons.XBoxRightThumbNeutral:
+                case XboxButtons.XBoxRightThumbBackward:
                     return Xbox360Axis.RightThumbY;
+
                 default: return null;
 
             }
@@ -93,9 +111,16 @@ namespace JuliusSweetland.OptiKey.Enums
             {
                 case XboxButtons.XBoxLeftThumbForward:
                 case XboxButtons.XBoxRightThumbForward:
+                case XboxButtons.XBoxLeftThumbRight:
+                case XboxButtons.XBoxRightThumbRight:
                 case XboxButtons.XBoxLeftTrigger:
                 case XboxButtons.XBoxRightTrigger:
                     return 1.0f;
+                case XboxButtons.XBoxLeftThumbLeft:
+                case XboxButtons.XBoxLeftThumbBackward:
+                case XboxButtons.XBoxRightThumbLeft:
+                case XboxButtons.XBoxRightThumbBackward:
+                    return -1.0f;
                 case XboxButtons.XBoxLeftThumbHalfForward:
                 case XboxButtons.XBoxRightThumbHalfForward:
                     return 0.5f;
