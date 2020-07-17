@@ -1391,6 +1391,30 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     performLeftClick();
                     break;
 
+                case FunctionKeys.MouseLeftClickAtCentre:
+                    // Get "centre of screen" point
+                    // FIXME: do we need GetTransformFromDevice/GetTransformToDevice here? not sure coordinates
+                    Rect bounds = mainWindowManipulationService.WindowBounds;
+                    var leftClickPoint2 = new Point(bounds.Left + bounds.Width/2, bounds.Top + bounds.Height/2);
+                    
+                    Log.InfoFormat("Mouse left click selected at point ({0},{1}).", leftClickPoint2.X, leftClickPoint2.Y);
+                    Action performLeftClick2 = () =>
+                    {
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                        {
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                        }
+                        mouseOutputService.MoveTo(leftClickPoint2);
+                        audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                        mouseOutputService.LeftButtonClick();
+                        reinstateModifiers();
+                    };
+                    lastMouseActionStateManager.LastMouseAction = () => performLeftClick2();
+                    performLeftClick2();
+                    break;
+
                 case FunctionKeys.MouseLeftDoubleClick:
                     var leftDoubleClickPoint = mouseOutputService.GetCursorPosition();
                     Log.InfoFormat("Mouse left double click selected at point ({0},{1}).", leftDoubleClickPoint.X, leftDoubleClickPoint.Y);

@@ -292,6 +292,7 @@ namespace JuliusSweetland.OptiKey.Models
                 //Mouse actions involving left button if it is already down
                 if ((keyValue == KeyValues.MouseDragKey
                     || keyValue == KeyValues.MouseLeftClickKey
+                    || keyValue == KeyValues.MouseLeftClickAtCentreKey
                     || keyValue == KeyValues.MouseLeftDoubleClickKey
                     || keyValue == KeyValues.MouseMoveAndLeftClickKey
                     || keyValue == KeyValues.MouseMoveAndLeftDoubleClickKey)

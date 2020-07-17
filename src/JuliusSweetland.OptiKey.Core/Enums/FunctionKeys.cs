@@ -112,6 +112,7 @@ namespace JuliusSweetland.OptiKey.Enums
         MouseDrag,
         MouseKeyboard,
         MouseLeftClick,
+        MouseLeftClickAtCentre,
         MouseLeftDoubleClick,
         MouseLeftDownUp,
         MouseMagneticCursor,

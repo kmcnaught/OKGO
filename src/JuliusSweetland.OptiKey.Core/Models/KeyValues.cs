@@ -159,6 +159,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue MouseDragKey = new KeyValue(FunctionKeys.MouseDrag);
         public static readonly KeyValue MouseKeyboardKey = new KeyValue(FunctionKeys.MouseKeyboard);
         public static readonly KeyValue MouseLeftClickKey = new KeyValue(FunctionKeys.MouseLeftClick);
+        public static readonly KeyValue MouseLeftClickAtCentreKey = new KeyValue(FunctionKeys.MouseLeftClickAtCentre);
         public static readonly KeyValue MouseLeftDoubleClickKey = new KeyValue(FunctionKeys.MouseLeftDoubleClick);
         public static readonly KeyValue MouseLeftDownUpKey = new KeyValue(FunctionKeys.MouseLeftDownUp);
         public static readonly KeyValue MouseMagneticCursorKey = new KeyValue(FunctionKeys.MouseMagneticCursor);
