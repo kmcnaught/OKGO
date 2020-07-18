@@ -51,22 +51,22 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 MainGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-            // Add back key, bottom right
+            // Add quit key, bottom right
             { 
                 Key newKey = new Key();
                 newKey.SharedSizeGroup = "SingleKey";
-                newKey.SymbolGeometry = (Geometry)this.Resources["MenuIcon"];
-                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.MENU;
-                newKey.Value = KeyValues.MenuKeyboardKey;
+                newKey.SymbolGeometry = (Geometry)this.Resources["QuitIcon"];
+                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.QUIT;
+                newKey.Value = KeyValues.QuitKey;
                 this.AddKey(newKey, this.mRows - 1, this.mCols - 1);
             }
 
-            // Sleep key for bottom left
+            // Minimise key for bottom left
             {
                 Key newKey = new Key();
-                newKey.SymbolGeometry = (Geometry)this.Resources["SleepIcon"];                
-                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.SLEEP;
-                newKey.Value = KeyValues.SleepKey;
+                newKey.SymbolGeometry = (Geometry)this.Resources["MinimiseIcon"];                
+                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.MINIMISE;
+                newKey.Value = KeyValues.MinimiseKey;
                 this.AddKey(newKey, this.mRows - 1, 0);
             }
 
