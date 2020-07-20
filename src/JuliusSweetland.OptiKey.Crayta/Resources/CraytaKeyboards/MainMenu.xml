@@ -1,0 +1,110 @@
+<Keyboard>
+  <Name>Crayta\nMain Menu</Name>
+  <SymbolMargin>10</SymbolMargin>
+  <BorderThickness>1,1,1,1</BorderThickness>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <BorderColor>Transparent</BorderColor>
+  <WindowState>Floating</WindowState>
+  <Position>Bottom</Position>
+  <Width>100%</Width>
+  <Height>100%</Height>
+  <Grid>
+    <Rows>12</Rows>
+    <Cols>11</Cols>
+  </Grid>
+  <Content>
+    <DynamicKey Row="1" Col="2">
+      <Label>LB</Label>
+      <KeyDown>XboxLeftShoulder</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxLeftShoulder</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="1" Col="8">
+      <Label>RB</Label>
+      <KeyDown>XboxRightShoulder</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxRightShoulder</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="1" Col="1">
+      <Label>LT</Label>
+      <KeyDown>XboxLeftTrigger</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxLeftTrigger</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="1" Col="9">
+      <Label>RT</Label>
+      <KeyDown>XboxRightTrigger</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxRightTrigger</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="9" Col="4">
+      <Label>&lt;&lt;</Label>
+      <KeyDown>XboxRightThumbLeft</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxRightThumbLeft</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="9" Col="5">
+      <Symbol>ArrowPointingToTopIcon</Symbol>
+      <KeyDown>XBoxUp</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XBoxUp</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="9" Col="6">
+      <Label>&gt;&gt;</Label>
+      <KeyDown>XboxRightThumbRight</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxRightThumbRight</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="10" Col="4">
+      <Symbol>ArrowPointingToLeftIcon</Symbol>
+      <KeyDown>XBoxLeft</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XBoxLeft</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="10" Col="5">
+      <Label>Ⓐ</Label>
+      <KeyDown>XboxA</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxA</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="10" Col="6">
+      <Symbol>ArrowPointingToRightIcon</Symbol>
+      <KeyDown>XBoxRight</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XBoxRight</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="11" Col="4">
+      <Action>MouseLeftClickAtCentre</Action>
+      <Label>Click\nanywhere</Label>
+    </DynamicKey>
+    <DynamicKey Row="11" Col="5">
+      <Text>a</Text>
+      <Symbol>ArrowPointingToBottomIcon</Symbol>
+      <KeyDown>XBoxDown</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XBoxDown</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="11" Col="6">
+      <Label>Ⓑ</Label>
+      <KeyDown>XboxB</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxB</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="11" Col="10">
+      <Symbol>BackIcon</Symbol>
+      <Action>BackFromKeyboard</Action>
+    </DynamicKey>
+    <DynamicKey Row="10" Col="0">
+      <KeyDown>XboxStart</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxStart</KeyUp>
+      <Label>Toggle\nMenu</Label>
+      <ShiftDownLabel></ShiftDownLabel>
+    </DynamicKey>
+    <DynamicKey Row="11" Col="0">
+      <Text>a</Text>
+      <Label>Press\nany key</Label>
+      <ShiftDownLabel></ShiftDownLabel>
+    </DynamicKey>
+  </Content>
+</Keyboard>

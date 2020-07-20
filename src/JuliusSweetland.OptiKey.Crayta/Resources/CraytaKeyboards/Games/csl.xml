@@ -1,0 +1,88 @@
+<Keyboard>
+   <Name>Sprint League</Name>
+   <SymbolMargin>10</SymbolMargin>   
+   <BackgroundColor>Transparent</BackgroundColor>
+   <Height>15%</Height>
+   <Position>Bottom</Position>
+   <BorderThickness>20,20,20,20</BorderThickness>
+   <Width>90%</Width>
+   <BackgroundColor>Transparent</BackgroundColor>
+   <BorderColor>Transparent</BorderColor>   
+   <Grid>
+      <Rows>1</Rows>
+      <Cols>20</Cols>
+   </Grid>
+   
+   <KeyGroup Name="QuickKey" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="25" CompletionTimes="10, 1000" />
+   <KeyGroup Name="Scaling" AutoScaleToOneKeyWidth="false"/>
+
+   <Content>   
+
+      <DynamicKey Width="2">
+         <KeyGroup>Scaling</KeyGroup>
+         <Label>Restart\nRace</Label>
+         <KeyDown>XboxLeftBumper</KeyDown>
+         <Wait>100</Wait>
+         <KeyUp>XboxLeftBumper</KeyUp>
+      </DynamicKey>               
+
+      <DynamicKey Width="2">
+         <KeyGroup>Scaling</KeyGroup>
+         <Label>Restart\nSegment</Label>
+         <KeyDown>XboxY</KeyDown>
+         <Wait>100</Wait>
+         <KeyUp>XboxY</KeyUp>
+      </DynamicKey>               
+
+      <DynamicKey Width="2">
+         <KeyGroup>Scaling</KeyGroup>
+         <Label>Auto\nSteer</Label>
+         <KeyDown>XboxB</KeyDown>
+         <Wait>100</Wait>
+         <KeyUp>XboxB</KeyUp>
+      </DynamicKey>               
+
+      <DynamicKey Width="2">
+         <KeyGroup>Scaling</KeyGroup>
+         <Label>Right\nStick</Label>
+         <Action>RightJoystick</Action>
+      </DynamicKey>               
+
+      <DynamicKey></DynamicKey>
+
+      <DynamicKey Width="2">
+         <Label>JUMP</Label>
+         <KeyGroup>QuickKey</KeyGroup>
+         <KeyDown>XboxA</KeyDown>
+         <Wait>100</Wait>
+         <KeyUp>XboxA</KeyUp>
+      </DynamicKey>
+
+
+      <DynamicKey></DynamicKey>
+
+      <DynamicKey Width="2">
+         <Label>Walk</Label>
+         <KeyUp>XBoxLeftThumbHalfForward</KeyUp>
+         <KeyToggle>XBoxLeftThumbForward</KeyToggle>
+      </DynamicKey>
+
+
+      <DynamicKey Width="2">
+         <KeyGroup>Scaling</KeyGroup>
+         <Label>Slow\nwalk</Label>
+         <KeyUp>XBoxLeftThumbForward</KeyUp>
+         <KeyToggle>XBoxLeftThumbHalfForward</KeyToggle>
+      </DynamicKey>   
+
+      <DynamicKey Width="2"></DynamicKey>
+
+      <DynamicKey Width="2">
+         <KeyGroup>Scaling</KeyGroup>
+         <Symbol>BackIcon</Symbol>
+         <KeyUp>XBoxLeftThumbHalfForward</KeyUp>
+         <KeyUp>XBoxLeftThumbForward</KeyUp>         
+         <Action>BackFromKeyboard</Action>
+      </DynamicKey>
+   </Content>
+</Keyboard>

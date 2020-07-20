@@ -1,0 +1,59 @@
+<Keyboard>
+   <Name>Bomberman</Name>
+   <SymbolMargin>10</SymbolMargin>   
+   <BackgroundColor>Transparent</BackgroundColor>
+   <Height>15%</Height>
+   <Position>Top</Position>
+   <BorderThickness>20,20,20,20</BorderThickness>
+   <!-- <Width>80%</Width> -->
+   <BackgroundColor>Transparent</BackgroundColor>
+   <BorderColor>Transparent</BorderColor>   
+   <Grid>
+      <Rows>1</Rows>
+      <Cols>5</Cols>
+   </Grid>
+   <Content>   
+      <DynamicKey>
+         <Label>X</Label>
+         <KeyDown>XboxX</KeyDown>
+         <Wait>100</Wait>
+         <KeyUp>XboxX</KeyUp>
+      </DynamicKey>
+
+       <DynamicKey>
+         <Label>Right\nStick</Label>
+         <Action>RightJoystick</Action>
+      </DynamicKey>
+               
+       <DynamicKey>
+         <Label>Left\nStick</Label>
+         <Action>LeftJoystick</Action>
+      </DynamicKey>
+               
+      <DynamicKey>
+         <Label>RT</Label>
+         <KeyDown>XboxRightTrigger</KeyDown>
+         <Wait>100</Wait>
+         <KeyUp>XboxRightTrigger</KeyUp>
+      </DynamicKey>
+
+<!-- 
+      <DynamicKey>
+         <Label>Edit</Label>
+         <KeyUp>XBoxLeftThumbHalfForward</KeyUp>
+         <KeyUp>XBoxLeftThumbForward</KeyUp>
+         <KeyDown>XboxDown</KeyDown>
+         <Wait>1200</Wait>
+         <KeyUp>XboxDown</KeyUp>
+         <Action>BackFromKeyboard</Action>
+      </DynamicKey> -->
+
+      <DynamicKey>
+         <Symbol>BackIcon</Symbol>
+
+         <KeyUp>XBoxLeftThumbHalfForward</KeyUp>
+         <KeyUp>XBoxLeftThumbForward</KeyUp>         
+         <Action>BackFromKeyboard</Action>
+      </DynamicKey>
+   </Content>
+</Keyboard>

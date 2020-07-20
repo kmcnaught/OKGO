@@ -251,8 +251,8 @@ namespace JuliusSweetland.OptiKey.Crayta
         public static string GetKeyboardsFolderForInputSource()
         {
             string baseFolder = GetDefaultUserKeyboardFolder();
-            string subFolder = Settings.Default.PointsSource == PointsSources.MousePosition ? "Mouse" : "EyeTracker";
-            return Path.Combine(baseFolder, subFolder);
+            // Currently we only support eye tracker, i.e. one set of keyboards
+            return baseFolder;
         }
 
         private void SetupKeyboardSettings()

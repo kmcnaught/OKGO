@@ -1,0 +1,46 @@
+<Keyboard>
+   <Name>Crayta\nUtils</Name>
+   <SymbolMargin>10</SymbolMargin>   
+   <BackgroundColor>Transparent</BackgroundColor>
+   <Height>15%</Height>
+   <Position>Top</Position>
+   <BorderThickness>20,20,20,20</BorderThickness>
+   <!-- <Width>80%</Width> -->
+   <BackgroundColor>Transparent</BackgroundColor>
+   <BorderColor>Transparent</BorderColor>   
+   <Grid>
+      <Rows>1</Rows>
+      <Cols>6</Cols>
+   </Grid>
+   <Content>   
+      <DynamicKey>
+      <Text>a</Text>
+      <Label>Press\nany key</Label>
+      <ShiftDownLabel></ShiftDownLabel>
+    </DynamicKey>
+
+   <DynamicKey>
+      <Action>MouseLeftClickAtCentre</Action>
+      <Label>Click\nanywhere</Label>
+    </DynamicKey>
+
+
+     <DynamicKey>      
+      <Label>Launch\nCrayta</Label>
+   <Plugin>
+      <Name>ExternalProgram</Name>
+      <Method>RUN</Method>
+      <Argument>
+         <Name>command</Name>
+         <Value>"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"</Value>
+      </Argument>
+   </Plugin>
+    </DynamicKey>
+
+    <DynamicKey>      
+      <Label>Exit\nFullscreen</Label>
+      <Action>F11</Action>
+    </DynamicKey>
+
+   </Content>
+</Keyboard>
