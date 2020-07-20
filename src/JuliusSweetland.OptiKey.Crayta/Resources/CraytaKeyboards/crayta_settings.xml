@@ -38,9 +38,13 @@
     </DynamicKey>
 
     <DynamicKey>      
-      <Label>Exit\nFullscreen</Label>
+      <Label>Toggle\nFullscreen</Label>
       <Action>F11</Action>
     </DynamicKey>
 
+     <DynamicKey>
+       <Symbol>BackIcon</Symbol>
+       <Action>BackFromKeyboard</Action>
+     </DynamicKey>
    </Content>
 </Keyboard>
