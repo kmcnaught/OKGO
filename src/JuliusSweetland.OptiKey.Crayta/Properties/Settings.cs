@@ -22,6 +22,21 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
         public new static Settings Default => (Settings)OptiKey.Properties.Settings.Default;
 
 
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.6")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public new double MainWindowOpacity
+        {
+            get
+            {
+                return ((double)(this["MainWindowOpacity"]));
+            }
+            set
+            {
+                this["MainWindowOpacity"] = value;
+            }
+        }
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
