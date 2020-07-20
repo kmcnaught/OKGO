@@ -2676,6 +2676,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 Log.Error("Error running plugin.", exception);
                 while (exception.InnerException != null) exception = exception.InnerException;
+                //FIXME: would be nice to have title "Error running plugin" or message like "No plugins loaded"
                 if (RaiseToastNotification(Resources.CRASH_TITLE, exception.Message, NotificationTypes.Error, () => inputService.RequestResume()))
                 {
                     audioService.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume);
