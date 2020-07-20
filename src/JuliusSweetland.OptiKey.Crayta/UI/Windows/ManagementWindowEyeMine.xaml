@@ -1,0 +1,19 @@
+﻿<!--
+Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+-->
+<mahapps:MetroWindow x:Class="JuliusSweetland.OptiKey.Crayta.UI.Windows.ManagementWindowEyeMine"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                     xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties;assembly=OptiKey"
+                     xmlns:views="clr-namespace:JuliusSweetland.OptiKey.Crayta.UI.Views"
+                     xmlns:properties="clr-namespace:JuliusSweetland.OptiKey.Properties;assembly=OptiKey"
+                     Title="{x:Static properties:Resources.MANAGEMENT_CONSOLE_TITLE}"
+                     WindowStartupLocation="CenterOwner"
+                     WindowState="Maximized"
+                     ResizeMode="CanResizeWithGrip"
+                     Topmost="True"
+                     MinWidth="300" MinHeight="200"
+                     Icon="..\..\Resources\Icons\Management.ico">
+    <views:ManagementView x:Name="ManagementView" />
+</mahapps:MetroWindow>
