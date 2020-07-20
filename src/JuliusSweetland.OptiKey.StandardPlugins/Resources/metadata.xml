@@ -162,6 +162,37 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
 </DynamicKey>]]>
         </SampleConfig>
       </Method>
+      <Method>
+        <Name>RUN_ARGS</Name>
+        <Description>Runs a command in windows, with arguments. It can be anything that you would run using command line prompt.</Description>
+        <Arguments>
+          <Argument>
+            <Name>command</Name>
+            <Description>command line that will be executed</Description>
+            <Sample>notepad.exe</Sample>
+            <Required>true</Required>
+          </Argument>
+          <Argument>
+            <Name>arguments</Name>
+            <Description>arguments</Description>
+            <Sample/>/h /verbose</Sample>
+            <Required>true</Required>
+          </Argument>
+        </Arguments>
+        <SampleConfig>
+          <![CDATA[<DynamicKey>
+  <Label>Notepad</Label>
+  <Plugin>
+    <Name>ExternalProgram</Name>
+    <Method>RUN</Method>
+    <Argument>
+      <Name>command</Name>
+      <Value>notepad.exe</Value>
+    </Argument>
+  </Plugin>
+</DynamicKey>]]>
+        </SampleConfig>
+      </Method>
     </Methods>
   </Plugin>
 </Plugins>
