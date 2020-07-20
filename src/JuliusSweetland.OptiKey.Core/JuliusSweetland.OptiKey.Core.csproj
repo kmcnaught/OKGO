@@ -99,6 +99,9 @@
     <Reference Include="NBug, Version=1.2.0.0, Culture=neutral, PublicKeyToken=a4292a325f69b123, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NBug.1.2.2\lib\net40-client\NBug.dll</HintPath>
     </Reference>
+    <Reference Include="Nefarius.ViGEm.Client, Version=1.16.150.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Nefarius.ViGEm.Client.1.16.150\lib\net452\Nefarius.ViGEm.Client.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ext\TheEyeTribe\Newtonsoft.Json.dll</HintPath>
@@ -206,6 +209,8 @@
     <Compile Include="Enums\AppType.cs" />
     <Compile Include="Enums\KeyboardLayouts.cs" />
     <Compile Include="Enums\KeyCommands.cs" />
+    <Compile Include="Enums\XboxAxes.cs" />
+    <Compile Include="Enums\XboxButtons.cs" />
     <Compile Include="Enums\LookToScrollBounds.cs" />
     <Compile Include="Enums\LookToScrollModes.cs" />
     <Compile Include="Enums\LookToScrollSpeeds.cs" />
@@ -343,6 +348,9 @@
     <Compile Include="Services\Audio\SoundPlayerEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\IControllerOutputService.cs" />
+    <Compile Include="Services\NullControllerOutputService.cs" />
+    <Compile Include="Services\XBoxControllerOutputService.cs" />
     <Compile Include="Services\PluginEngine\PluginEngine.cs" />
     <Compile Include="Services\Suggestions\IManagedSuggestions.cs" />
     <Compile Include="Services\Suggestions\BasicAutoComplete.cs" />
@@ -502,6 +510,7 @@
     <Compile Include="UI\ViewModels\Keyboards\NumericAndSymbols1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha1.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Base\IKeyboard.cs" />
+    <Compile Include="UI\ViewModels\MainViewModel.ScrollUtils.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.LookToScroll.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.ServiceEventHandlers.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
@@ -951,27 +960,9 @@
     <None Include="NOTES AND DISCLAIMER.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\DynamicKeyboards\Samples\Demo_Bottom.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\DynamicKeyboards\Samples\Demo_Left.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\DynamicKeyboards\Samples\FullQwerty.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\DynamicKeyboards\Samples\FullSymbol.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Resources\DynamicKeyboards\crayta_edit.xml" />
+    <Resource Include="Resources\DynamicKeyboards\crayta_play.xml" />
+    <Resource Include="Resources\DynamicKeyboards\MainMenu.xml" />
     <Content Include="Resources\Fonts\B612-licence-epl-v10.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1191,10 +1182,6 @@
     <Resource Include="Resources\Icons\Quit.ico" />
     <Resource Include="Resources\Icons\ManualMode.ico" />
     <None Include="Resources\Icons\SVG Source Files\CommuniKateTopPage.svg" />
-    <Content Include="Resources\DynamicKeyboards\BigHackerKeyboard.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
     <Resource Include="Resources\Icons\RestartIcon.ico" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollActive.svg" />
     <Content Include="Resources\Icons\SVG Source Files\LookToScrollBoundsCustom.svg" />

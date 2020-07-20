@@ -51,10 +51,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mouseOutputService.MoveTo(CurrentPositionPoint);
                 }
 
-                if (Settings.Default.LookToScrollEnabled)
-                {
-                    UpdateLookToScroll(CurrentPositionPoint);
-                }
+                
+                leftJoystickInteractionHandler.UpdateLookToScroll(CurrentPositionPoint);
+                rightJoystickInteractionHandler.UpdateLookToScroll(CurrentPositionPoint);
+                legacyJoystickInteractionHandler.UpdateLookToScroll(CurrentPositionPoint);
+
             };
 
             inputServiceSelectionProgressHandler = (o, progress) =>
@@ -1198,20 +1199,36 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     ToggleLookToScroll();
                     break;
 
+                case FunctionKeys.LeftJoystick:
+                    ToggleLeftJoystick();
+                    break;
+
+                case FunctionKeys.RightJoystick:
+                    ToggleRightJoystick();
+                    break;
+
+                case FunctionKeys.LegacyJoystick:
+                    ToggleLegacyJoystick();
+                    break;
+
                 case FunctionKeys.LookToScrollBounds:
-                    HandleLookToScrollBoundsKeySelected();
+                    //FIXME: reinstate for scrolling
+                    ////HandleLookToScrollBoundsKeySelected();
                     break;
 
                 case FunctionKeys.LookToScrollIncrement:
-                    SelectNextLookToScrollIncrement();
+                    //FIXME: reinstate for scrolling
+                    ////SelectNextLookToScrollIncrement();
                     break;
 
                 case FunctionKeys.LookToScrollMode:
-                    SelectNextLookToScrollMode();
+                    //FIXME: reinstate for scrolling
+                    ////SelectNextLookToScrollMode();
                     break;
 
                 case FunctionKeys.LookToScrollSpeed:
-                    SelectNextLookToScrollSpeed();
+                    //FIXME: reinstate for scrolling
+                    //SelectNextLookToScrollSpeed();
                     break;
 
                 case FunctionKeys.MenuKeyboard:
@@ -1239,7 +1256,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseDrag:
                     Log.Info("Mouse drag selected.");
-                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    // FIXME: suspend other 2d handlers too
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(firstFinalPoint =>
                     {
                         if (firstFinalPoint != null)
@@ -1403,6 +1421,30 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     performLeftClick();
                     break;
 
+                case FunctionKeys.MouseLeftClickAtCentre:
+                    // Get "centre of screen" point
+                    // FIXME: do we need GetTransformFromDevice/GetTransformToDevice here? not sure coordinates
+                    Rect bounds = mainWindowManipulationService.WindowBounds;
+                    var leftClickPoint2 = new Point(bounds.Left + bounds.Width/2, bounds.Top + bounds.Height/2);
+                    
+                    Log.InfoFormat("Mouse left click selected at point ({0},{1}).", leftClickPoint2.X, leftClickPoint2.Y);
+                    Action performLeftClick2 = () =>
+                    {
+                        Action reinstateModifiers = () => { };
+                        if (keyStateService.SimulateKeyStrokes
+                            && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                        {
+                            reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                        }
+                        mouseOutputService.MoveTo(leftClickPoint2);
+                        audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+                        mouseOutputService.LeftButtonClick();
+                        reinstateModifiers();
+                    };
+                    lastMouseActionStateManager.LastMouseAction = () => performLeftClick2();
+                    performLeftClick2();
+                    break;
+
                 case FunctionKeys.MouseLeftDoubleClick:
                     var leftDoubleClickPoint = mouseOutputService.GetCursorPosition();
                     Log.InfoFormat("Mouse left double click selected at point ({0},{1}).", leftDoubleClickPoint.X, leftDoubleClickPoint.Y);
@@ -1509,7 +1551,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndLeftClick:
                     Log.Info("Mouse move and left click selected.");
-                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1539,7 +1581,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndLeftDoubleClick:
                     Log.Info("Mouse move and left double click selected.");
-                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1569,7 +1611,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndMiddleClick:
                     Log.Info("Mouse move and middle click selected.");
-                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1599,7 +1641,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndRightClick:
                     Log.Info("Mouse move and right click selected.");
-                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1659,7 +1701,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndScrollToBottom:
                     Log.Info("Mouse move and scroll to bottom selected.");
-                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    //FIXME: more
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1689,7 +1732,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndScrollToLeft:
                     Log.Info("Mouse move and scroll to left selected.");
-                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    //fixme
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1719,7 +1763,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndScrollToRight:
                     Log.Info("Mouse move and scroll to right selected.");
-                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1749,7 +1793,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndScrollToTop:
                     Log.Info("Mouse move and scroll to top selected.");
-                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1825,7 +1869,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveTo:
                     Log.Info("Mouse move to selected.");
-                    resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();
+                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -2335,7 +2379,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             keyboardOutputService.ProcessFunctionKey(singleKeyValue.FunctionKey.Value);
         }
 
-        private void SetupFinalClickAction(Action<Point?> finalClickAction, bool finalClickInSeries = true, bool suppressMagnification = false)
+        public void SetupFinalClickAction(Action<Point?> finalClickAction, bool finalClickInSeries = true, bool suppressMagnification = false)
         {
             nextPointSelectionAction = nextPoint =>
             {
@@ -2367,7 +2411,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ShowCursor = true;
         }
 
-        private void ResetAndCleanupAfterMouseAction()
+        public void ResetAndCleanupAfterMouseAction()
         {
             SelectionMode = SelectionModes.Key;
             nextPointSelectionAction = null;
@@ -2606,6 +2650,40 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 await KeyUpProcessing(singleKeyValue, keyValue);
                             }
                         }
+                    }
+                    else if (keyCommand.Name == KeyCommands.ButtonDown)
+                    {
+                        Log.InfoFormat("CommandList: Key down on [{0}] key", keyCommand.KeyValue.String);
+                        await controllerOutputService.ProcessKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
+                        keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
+                    }
+                    else if (keyCommand.Name == KeyCommands.ButtonToggle)
+                    {
+                        if (keyStateService.KeyDownStates[keyCommand.KeyValue].Value != KeyDownStates.Up)
+                        {
+                            Log.InfoFormat("CommandList: Toggle button up on [{0}]", keyCommand.KeyValue.String);
+                            //FIXME: reinstate more keyup logic from ... await KeyUpProcessing(singleKeyValue, keyCommand.KeyValue);
+                            await controllerOutputService.ProcessKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Release);
+                            keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.Up;
+                        }
+                        else
+                        {
+                            Log.InfoFormat("CommandList: Toggle button down on [{0}]", keyCommand.KeyValue.String);
+                            await controllerOutputService.ProcessKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
+                            keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
+                        }
+                    }
+                    else if (keyCommand.Name == KeyCommands.ButtonUp)
+                    {
+                        Log.InfoFormat("CommandList: Button up on [{0}]", keyCommand.KeyValue.String);
+                                                keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
+
+                        await controllerOutputService.ProcessKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Release);
+
+                        //FIXME: reinstate the logic from: await KeyUpProcessing(singleKeyValue, keyCommand.KeyValue);
+
+                        //the KeyUp value could be a KeyGroup so add any matches from KeyValueByGroup
+                        // FIXME: reinstate KeyValueByGroup functionality once I've learned how it works
                     }
                     else if (keyCommand.Name == KeyCommands.Text)
                     {

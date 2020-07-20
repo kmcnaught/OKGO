@@ -11,6 +11,9 @@ namespace JuliusSweetland.OptiKey.Enums
         Loop,
         Plugin,
         Text,
-        Wait
+        Wait, 
+        ButtonDown,
+        ButtonUp,
+        ButtonToggle,
     }
 }

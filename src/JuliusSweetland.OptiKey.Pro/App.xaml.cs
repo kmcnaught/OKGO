@@ -165,8 +165,8 @@ namespace JuliusSweetland.OptiKey.Pro
                 mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
-                    inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService,
-                    errorNotifyingServices);
+                    inputService, keyboardOutputService, mouseOutputService, 
+                    mainWindowManipulationService, errorNotifyingServices);
 
                 mainWindow.SetMainViewModel(mainViewModel);
 
@@ -185,7 +185,9 @@ namespace JuliusSweetland.OptiKey.Pro
                 if (Settings.Default.LookToScrollEnabled && Settings.Default.LookToScrollShowOverlayWindow)
                 {
                     // Create the overlay window, but don't show it yet. It'll make itself visible when the conditions are right.
-                    new LookToScrollOverlayWindow(mainViewModel);
+                    new LookToScrollOverlayWindow(mainViewModel.leftJoystickInteractionHandler);
+                    new LookToScrollOverlayWindow(mainViewModel.rightJoystickInteractionHandler);
+                    new LookToScrollOverlayWindow(mainViewModel.legacyJoystickInteractionHandler);
                 }
 
                 //Display splash screen and check for updates (and display message) after the window has been sized and positioned for the 1st time

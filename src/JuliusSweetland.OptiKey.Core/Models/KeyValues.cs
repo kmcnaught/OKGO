@@ -144,6 +144,9 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue LeftCtrlKey = new KeyValue(FunctionKeys.LeftCtrl);
         public static readonly KeyValue LeftShiftKey = new KeyValue(FunctionKeys.LeftShift);
         public static readonly KeyValue LeftWinKey = new KeyValue(FunctionKeys.LeftWin);
+        public static readonly KeyValue LeftJoystickActiveKey = new KeyValue(FunctionKeys.LeftJoystick);
+        public static readonly KeyValue RightJoystickActiveKey = new KeyValue(FunctionKeys.RightJoystick);
+        public static readonly KeyValue LegacyJoystickActiveKey = new KeyValue(FunctionKeys.LegacyJoystick);
         public static readonly KeyValue LookToScrollActiveKey = new KeyValue(FunctionKeys.LookToScrollActive);
         public static readonly KeyValue LookToScrollBoundsKey = new KeyValue(FunctionKeys.LookToScrollBounds);
         public static readonly KeyValue LookToScrollIncrementKey = new KeyValue(FunctionKeys.LookToScrollIncrement);
@@ -156,6 +159,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue MouseDragKey = new KeyValue(FunctionKeys.MouseDrag);
         public static readonly KeyValue MouseKeyboardKey = new KeyValue(FunctionKeys.MouseKeyboard);
         public static readonly KeyValue MouseLeftClickKey = new KeyValue(FunctionKeys.MouseLeftClick);
+        public static readonly KeyValue MouseLeftClickAtCentreKey = new KeyValue(FunctionKeys.MouseLeftClickAtCentre);
         public static readonly KeyValue MouseLeftDoubleClickKey = new KeyValue(FunctionKeys.MouseLeftDoubleClick);
         public static readonly KeyValue MouseLeftDownUpKey = new KeyValue(FunctionKeys.MouseLeftDownUp);
         public static readonly KeyValue MouseMagneticCursorKey = new KeyValue(FunctionKeys.MouseMagneticCursor);
@@ -462,6 +466,9 @@ namespace JuliusSweetland.OptiKey.Models
                     LeftCtrlKey,
                     LeftShiftKey,
                     LeftWinKey,
+                    LeftJoystickActiveKey, 
+                    RightJoystickActiveKey,
+                    LegacyJoystickActiveKey,
                     LookToScrollActiveKey,
                     LookToScrollBoundsKey,
                     MouseLeftDownUpKey,

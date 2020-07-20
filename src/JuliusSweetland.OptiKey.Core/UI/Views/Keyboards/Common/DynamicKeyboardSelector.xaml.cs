@@ -53,8 +53,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 MainGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-            // Add back/quit key, bottom right
-            if (keyboardsPath == Settings.Default.DynamicKeyboardsLocation)
+            // Add quit key, bottom right
             { 
                 Key newKey = new Key();
                 newKey.SharedSizeGroup = "SingleKey";
@@ -63,22 +62,13 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 newKey.Value = KeyValues.QuitKey;
                 this.AddKey(newKey, this.mRows - 1, this.mCols - 1);
             }
-            else
-            {
-                Key newKey = new Key();
-                newKey.SharedSizeGroup = "SingleKey";
-                newKey.SymbolGeometry = (Geometry)this.Resources["BackIcon"];
-                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.BACK;
-                newKey.Value = KeyValues.BackFromKeyboardKey;
-                this.AddKey(newKey, this.mRows - 1, this.mCols - 1);
-            }
 
-            // Sleep key for bottom left
+            // Minimise key for bottom left
             {
                 Key newKey = new Key();
-                newKey.SymbolGeometry = (Geometry)this.Resources["SleepIcon"];                
-                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.SLEEP;
-                newKey.Value = KeyValues.SleepKey;
+                newKey.SymbolGeometry = (Geometry)this.Resources["MinimiseIcon"];                
+                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.MINIMISE;
+                newKey.Value = KeyValues.MinimiseKey;
                 this.AddKey(newKey, this.mRows - 1, 0);
             }
 

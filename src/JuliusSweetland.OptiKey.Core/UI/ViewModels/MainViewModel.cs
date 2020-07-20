@@ -36,6 +36,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly ILastMouseActionStateManager lastMouseActionStateManager;
         private readonly IInputService inputService;
         private readonly IKeyboardOutputService keyboardOutputService;
+        private readonly IControllerOutputService controllerOutputService;
         private readonly IMouseOutputService mouseOutputService;
         private readonly IWindowManipulationService mainWindowManipulationService;
         private readonly List<INotifyErrors> errorNotifyingServices; 
@@ -86,6 +87,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.lastMouseActionStateManager = lastMouseActionStateManager;
             this.inputService = inputService;
             this.keyboardOutputService = keyboardOutputService;
+            this.controllerOutputService = controllerOutputService;
             this.mouseOutputService = mouseOutputService;
             this.mainWindowManipulationService = mainWindowManipulationService;
             this.errorNotifyingServices = errorNotifyingServices;
@@ -101,6 +103,34 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             AttachKeyboardSupportsCollapsedDockListener(mainWindowManipulationService);
             AttachKeyboardSupportsSimulateKeyStrokesListener();
             AttachKeyboardSupportsMultiKeySelectionListener();
+
+            // Initialise any 2D interaction handlers
+            Action<float, float> leftJoystickAction = (x, y) =>
+            {
+                Log.InfoFormat("leftJoystickAction, ({0}, {1})", x, y);
+                keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisX", (float)Settings.Default.LeftStickSensitivityX * x);
+                keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisY", -(float)Settings.Default.LeftStickSensitivityY * y);
+            };
+            Action<float, float> rightJoystickAction = (x, y) =>
+            {
+                Log.InfoFormat("rightJoystickAction, ({0}, {1})", x, y);
+                keyboardOutputService.XBoxProcessJoystick("RightJoystickAxisX", (float)Settings.Default.RightStickSensitivityX * x);
+                keyboardOutputService.XBoxProcessJoystick("RightJoystickAxisY", -(float)Settings.Default.RightStickSensitivityY * y);
+            };
+
+            Action<float, float> legacyJoystickAction = (x, y) =>
+            {
+                Log.InfoFormat("legacyJoystickAction, ({0}, {1})", x, y);
+                keyboardOutputService.XBoxProcessJoystick("RightJoystickAxisX", (float)Settings.Default.LegacyStickSensitivityX * x);
+                keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisY", -(float)Settings.Default.LegacyStickSensitivityY * y);
+            };
+
+            leftJoystickInteractionHandler = new Look2DInteractionHandler(KeyValues.LeftJoystickActiveKey, leftJoystickAction, 
+                                                                            keyStateService, this);
+            rightJoystickInteractionHandler = new Look2DInteractionHandler(KeyValues.RightJoystickActiveKey, rightJoystickAction,
+                                                                            keyStateService, this);
+            legacyJoystickInteractionHandler = new Look2DInteractionHandler(KeyValues.LegacyJoystickActiveKey, legacyJoystickAction,
+                keyStateService, this);
         }
 
         #endregion
@@ -118,6 +148,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public IInputService InputService { get { return inputService; } }
         public ICapturingStateManager CapturingStateManager { get { return capturingStateManager; } }
         public IKeyboardOutputService KeyboardOutputService { get { return keyboardOutputService; } }
+        public IControllerOutputService ControllerOutputService { get { return controllerOutputService; } }
         public IKeyStateService KeyStateService { get { return keyStateService; } }
         public ISuggestionStateService SuggestionService { get { return suggestionService; } }
         public ICalibrationService CalibrationService { get { return calibrationService; } }
@@ -136,6 +167,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 SetProperty(ref keyboard, value);
                 keyboard?.OnEnter(); // new keyboard
                 Log.InfoFormat("Keyboard changed to {0}", value);
+            }
+        }
+
+        private void DeactivateLookToScrollUponSwitchingKeyboards()
+        {
+            // FIXME: do this for multiple 2d handlers (if appropriate)
+            if (Settings.Default.LookToScrollDeactivateUponSwitchingKeyboards)
+            {
+                keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value = KeyDownStates.Up;
+                Log.Info("Look to scroll is no longer active.");
             }
         }
 

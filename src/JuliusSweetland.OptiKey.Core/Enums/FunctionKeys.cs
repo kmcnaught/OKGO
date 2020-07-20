@@ -112,6 +112,7 @@ namespace JuliusSweetland.OptiKey.Enums
         MouseDrag,
         MouseKeyboard,
         MouseLeftClick,
+        MouseLeftClickAtCentre,
         MouseLeftDoubleClick,
         MouseLeftDownUp,
         MouseMagneticCursor,
@@ -242,6 +243,9 @@ namespace JuliusSweetland.OptiKey.Enums
         UkrainianUkraine,
         UrduPakistan,
         WebBrowsingKeyboard,
-        YesQuestionResult
+        YesQuestionResult,
+        LeftJoystick,
+        RightJoystick,
+        LegacyJoystick,
     }
 }

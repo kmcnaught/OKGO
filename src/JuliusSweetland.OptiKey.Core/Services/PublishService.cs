@@ -1,27 +1,52 @@
 ﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using WindowsInput;
 using WindowsInput.Native;
+using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Static;
 using log4net;
+using Nefarius.ViGEm.Client;
+using Nefarius.ViGEm.Client.Targets;
+using Nefarius.ViGEm.Client.Targets.Xbox360;
 
 namespace JuliusSweetland.OptiKey.Services
 {
     public class PublishService : IPublishService
     {
-        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        
+        private static readonly ILog Log =
+            LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private readonly InputSimulator inputSimulator;
         private readonly WindowsInputDeviceStateAdaptor inputDeviceStateAdaptor;
 
+        private ViGEmClient client;
+        private IXbox360Controller controller;
+        private bool supportsController = false;
+
         public event EventHandler<Exception> Error;
-        
+
         public PublishService()
         {
             inputSimulator = new WindowsInput.InputSimulator();
             inputDeviceStateAdaptor = new WindowsInput.WindowsInputDeviceStateAdaptor();
+
+            try
+            {
+                client = new ViGEmClient();
+                controller = client.CreateXbox360Controller();
+                controller.Connect();
+                supportsController = true;
+                Log.Info("Virtual Xbox360 gamepad connected.");
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat("Exception connecting to ViGem USB controller driver:\n{0}", e);
+                supportsController = false;
+            }
         }
 
         public void ReleaseAllDownKeys()
@@ -36,6 +61,90 @@ namespace JuliusSweetland.OptiKey.Services
                         Log.DebugFormat("{0} is down - calling KeyUp", virtualKeyCode);
                         KeyUp(virtualKeyCode);
                     }
+                }
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void XBoxProcessJoystick(XboxAxes axisEnum, float amount)
+        {
+            // amount is in range [-1.0, +1.0] and needs scaling to 
+            // (signed) short range
+            Xbox360Axis axis = axisEnum.ToViGemAxis();
+            amount = Math.Min(1.0f, amount);
+            amount = Math.Max(-1.0f, amount);
+            controller.SetAxisValue(axis, (short)(Int16.MaxValue * amount));
+        }
+
+        public void XBoxButtonDown(XboxButtons button)
+        {
+            if (!supportsController)
+            {
+                throw new Exception("No controller set up. \nHave you installed ViGemBus?");
+            }
+            try
+            {
+                Log.DebugFormat("Simulating button down {0}", button);
+                Xbox360Button xboxButton = button.ToViGemButton();
+                if (xboxButton != null)
+                {
+                    controller.SetButtonState(xboxButton, true);
+                    return;
+                }
+
+                Xbox360Axis axis = button.ToViGemAxis();
+                float amount = button.ToAxisAmount();
+                if (axis != null)
+                {
+                    controller.SetAxisValue(axis, (short)(Int16.MaxValue * amount));
+                    return;
+                }
+
+                // Triggers are analogue 'sliders', but we'll treat them as buttons
+                Xbox360Slider slider = button.ToViGemSlider();
+                if (slider != null)
+                {
+                    controller.SetSliderValue(slider, (byte)(255 * amount));
+                }
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
+        public void XBoxButtonUp(XboxButtons button)
+        {
+            if (!supportsController)
+            {
+                throw new Exception("No controller set up. \nHave you installed ViGemBus?");
+            }
+            try
+            {
+                Log.DebugFormat("Simulating button up: {0}", button);
+                Xbox360Button xboxButton = button.ToViGemButton();
+                if (xboxButton != null)
+                {
+                    controller.SetButtonState(xboxButton, false);
+                    return;
+                }
+
+                Xbox360Axis axis = button.ToViGemAxis();
+                float amount = button.ToAxisAmount();
+                if (axis != null)
+                {
+                    controller.SetAxisValue(axis, (short) (0));
+                    return;
+                }
+
+                // Triggers are analogue 'sliders', but we'll treat them as buttons
+                Xbox360Slider slider = button.ToViGemSlider();
+                if (slider != null)
+                {
+                    controller.SetSliderValue(slider, (byte) (0));
                 }
             }
             catch (Exception exception)

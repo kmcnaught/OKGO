@@ -135,6 +135,7 @@ namespace JuliusSweetland.OptiKey.Mouse
                 IInputService inputService = CreateInputService(keyStateService, dictionaryService, audioService,
                     calibrationService, capturingStateManager, errorNotifyingServices);
                 IKeyboardOutputService keyboardOutputService = new KeyboardOutputService(keyStateService, suggestionService, publishService, dictionaryService, fireKeySelectionEvent);
+                IControllerOutputService controllerOutputService = new NullControllerOutputService(keyStateService);
                 IMouseOutputService mouseOutputService = new MouseOutputService(publishService);
                 errorNotifyingServices.Add(audioService);
                 errorNotifyingServices.Add(dictionaryService);
@@ -155,8 +156,8 @@ namespace JuliusSweetland.OptiKey.Mouse
                 mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
-                    inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService,
-                    errorNotifyingServices);
+                    inputService, keyboardOutputService, mouseOutputService,
+                    mainWindowManipulationService, errorNotifyingServices);
 
                 mainWindow.SetMainViewModel(mainViewModel);
 
@@ -175,7 +176,8 @@ namespace JuliusSweetland.OptiKey.Mouse
                 if (Settings.Default.LookToScrollEnabled && Settings.Default.LookToScrollShowOverlayWindow)
                 {
                     // Create the overlay window, but don't show it yet. It'll make itself visible when the conditions are right.
-                    new LookToScrollOverlayWindow(mainViewModel);
+                    new LookToScrollOverlayWindow(mainViewModel.leftJoystickInteractionHandler);
+                    new LookToScrollOverlayWindow(mainViewModel.rightJoystickInteractionHandler);
                 }
 
                 //Display splash screen and check for updates (and display message) after the window has been sized and positioned for the 1st time
