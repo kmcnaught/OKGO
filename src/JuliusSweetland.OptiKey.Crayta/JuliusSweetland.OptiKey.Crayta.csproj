@@ -274,88 +274,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Content Include="Resources\CraytaKeyboards\EyeTracker\0_MC_5_1_1_intro.xml">
+    <Content Include="Resources\CraytaKeyboards\crayta_edit.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\CraytaKeyboards\EyeTracker\0_MC_5_1_2_intro.xml">
+    <Content Include="Resources\CraytaKeyboards\crayta_play.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\CraytaKeyboards\crayta_settings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\CraytaKeyboards\Games\bomberman.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\CraytaKeyboards\Games\csl.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\CraytaKeyboards\EyeTracker\1_MC_5_1_1_advanced.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\EyeTracker\1_MC_5_1_2_advanced.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\EyeTracker\1_MC_5_1_build1.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\EyeTracker\1_MC_5_1_build2.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\EyeTracker\1_MC_5_1_misc.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\EyeTracker\2_MC_8_2_1.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\EyeTracker\2_MC_8_2_2.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\EyeTracker\2_MC_8_2_inv.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\EyeTracker\3_MC_ChatKeyboard.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\EyeTracker\3_MC_InventoryKeyboard.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\EyeTracker\3_MC_MainKeyboard.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\EyeTracker\Bonus Keyboards\MinecraftBuild.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\EyeTracker\Bonus Keyboards\MinecraftDebug.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Mouse\0_MC_5_1_1_intro.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Mouse\0_MC_5_1_2_intro.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Mouse\1_MC_5_1_1_advanced.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Mouse\1_MC_5_1_2_advanced.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Mouse\1_MC_5_1_build1.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Mouse\1_MC_5_1_build2.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Mouse\1_MC_5_1_misc.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Mouse\2_MC_8_2_1.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Mouse\2_MC_8_2_2.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Mouse\2_MC_8_2_inv.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Mouse\3_MC_ChatKeyboard.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Mouse\3_MC_InventoryKeyboard.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Mouse\3_MC_MainKeyboard.xml">
+    <Content Include="Resources\CraytaKeyboards\MainMenu.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <SplashScreen Include="Resources\Icons\CraytaSplash.png">
@@ -1078,6 +1015,7 @@
       <Name>SingleInstance</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rd /s /q $(TargetDir)\Resources\Plugins\
