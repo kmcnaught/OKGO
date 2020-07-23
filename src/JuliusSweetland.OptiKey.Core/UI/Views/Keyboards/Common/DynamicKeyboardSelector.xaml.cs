@@ -53,13 +53,23 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 MainGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-            // Add quit key, bottom right
-            { 
+            // Add back/quit key, bottom right
+            if (keyboardsPath == Settings.Default.DynamicKeyboardsLocation)
+            {
                 Key newKey = new Key();
                 newKey.SharedSizeGroup = "SingleKey";
                 newKey.SymbolGeometry = (Geometry)this.Resources["QuitIcon"];
                 newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.QUIT;
                 newKey.Value = KeyValues.QuitKey;
+                this.AddKey(newKey, this.mRows - 1, this.mCols - 1);
+            }
+            else
+            {
+                Key newKey = new Key();
+                newKey.SharedSizeGroup = "SingleKey";
+                newKey.SymbolGeometry = (Geometry)this.Resources["BackIcon"];
+                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.BACK;
+                newKey.Value = KeyValues.BackFromKeyboardKey;
                 this.AddKey(newKey, this.mRows - 1, this.mCols - 1);
             }
 
