@@ -88,7 +88,7 @@ namespace JuliusSweetland.OptiKey
         protected void Initialise()
         {
             //Setup unhandled exception handling and NBug
-            AttachUnhandledExceptionHandlers();
+            //FIXME: turn off NBug for Crayta / EyeMine AttachUnhandledExceptionHandlers();
 
             //Log startup diagnostic info
             Log.Info("STARTING UP.");
