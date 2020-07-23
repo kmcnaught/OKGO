@@ -24,6 +24,22 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Floating")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual global::JuliusSweetland.OptiKey.Enums.WindowStates MainWindowState
+        {
+            get
+            {
+                return ((global::JuliusSweetland.OptiKey.Enums.WindowStates)(this["MainWindowState"]));
+            }
+            set
+            {
+                this["MainWindowState"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0.6")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public new double MainWindowOpacity
@@ -185,23 +201,6 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
             set
             {
                 this["StartupKeyboard"] = value;
-            }
-        }
-
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Title")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public new global::JuliusSweetland.OptiKey.Enums.Case KeyCase
-        {
-            get
-            {
-                return ((global::JuliusSweetland.OptiKey.Enums.Case)(this["KeyCase"]));
-            }
-            set
-            {
-                this["KeyCase"] = value;
             }
         }
 
