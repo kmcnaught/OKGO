@@ -10,6 +10,7 @@ using Prism.Mvvm;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management;
+using OtherViewModel = JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management.OtherViewModel;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
