@@ -13,7 +13,7 @@ using JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
-    public class ManagementViewModelEyeMine 
+    public class ManagementViewModelCrayta 
     {
 
         #region Private Member Vars
@@ -24,7 +24,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         #region Ctor
 
-        public ManagementViewModelEyeMine(
+        public ManagementViewModelCrayta(
             IAudioService audioService,
             IDictionaryService dictionaryService,
             IWindowManipulationService windowManipulationService)

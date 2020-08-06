@@ -20,7 +20,7 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.Windows
             InitializeComponent();
 
             //Instantiate ManagementViewModel and set as DataContext of ManagementView
-            var managementViewModel = new ManagementViewModelEyeMine(audioService, dictionaryService, windowManipulationService);
+            var managementViewModel = new ManagementViewModelCrayta(audioService, dictionaryService, windowManipulationService);
             this.ManagementView.DataContext = managementViewModel;
         }
     }
