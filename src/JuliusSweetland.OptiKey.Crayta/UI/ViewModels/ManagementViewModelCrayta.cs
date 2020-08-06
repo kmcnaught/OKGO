@@ -10,7 +10,6 @@ using Prism.Mvvm;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management;
-using OtherViewModel = JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management.OtherViewModel;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -38,6 +37,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             VisualsViewModel = new VisualsViewModelEyeMine(windowManipulationService);
             FeaturesViewModel = new FeaturesViewModel();
             WordsViewModel = new WordsViewModel(dictionaryService);
+            ControlsViewModel = new ControlsViewModel();
 
             //Instantiate interaction requests and commands
             ConfirmationRequest = new InteractionRequest<Confirmation>();
@@ -59,6 +59,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     || SoundsViewModel.ChangesRequireRestart
                     || VisualsViewModel.ChangesRequireRestart
                     || FeaturesViewModel.ChangesRequireRestart
+                    || ControlsViewModel.ChangesRequireRestart
                     || WordsViewModel.ChangesRequireRestart;
             }
         }
@@ -70,6 +71,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public VisualsViewModelEyeMine VisualsViewModel { get; protected set; }
         public FeaturesViewModel FeaturesViewModel { get; private set; }
         public WordsViewModel WordsViewModel { get; private set; }
+        public ControlsViewModel ControlsViewModel { get; private set; }
 
         public InteractionRequest<Confirmation> ConfirmationRequest { get; private set; }
         public DelegateCommand<Window> OkCommand { get; private set; }
@@ -191,6 +193,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             SoundsViewModel.ApplyChanges();
             VisualsViewModel.ApplyChanges();
             FeaturesViewModel.ApplyChanges();
+            ControlsViewModel.ApplyChanges();
             WordsViewModel.ApplyChanges();
         }
 

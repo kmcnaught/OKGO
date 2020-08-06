@@ -10,7 +10,7 @@ using Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
 {
-    public class OtherViewModel : BindableBase
+    public class ControlsViewModel : BindableBase
     {
         #region Private Member Vars
 
@@ -20,14 +20,27 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
         
         #region Ctor
 
-        public OtherViewModel()
+        public ControlsViewModel()
         {
             Load();
         }
-        
+
         #endregion
-        
+
         #region Properties
+
+        public List<string> ColourNames
+        {
+            get
+            {
+                // Based on: https://stackoverflow.com/a/26287682/9091159
+                return typeof(Brushes)
+                    .GetProperties()
+                    .Where(pi => pi.PropertyType == typeof(SolidColorBrush))
+                    .Select(pi => pi.Name)
+                    .ToList();
+            }
+        }
 
         private bool lookToScrollLockDownBoundsKey;
         public bool LookToScrollLockDownBoundsKey
