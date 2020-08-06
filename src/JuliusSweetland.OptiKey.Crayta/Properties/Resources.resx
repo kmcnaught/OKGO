@@ -162,4 +162,22 @@
   <data name="VOLUME" xml:space="preserve">
     <value>Volume</value>
   </data>
+  <data name="SENSITIVITY_LEFT_X" xml:space="preserve">
+    <value>Left stick X axis sensitivity</value>
+  </data>
+  <data name="SENSITIVITY_LEFT_Y" xml:space="preserve">
+    <value>Left stick Y axis sensitivity</value>
+  </data>
+  <data name="SENSITIVITY_LEGACY_X" xml:space="preserve">
+    <value>Legacy stick X axis sensitivity</value>
+  </data>
+  <data name="SENSITIVITY_LEGACY_Y" xml:space="preserve">
+    <value>Legacy stick Y axis sensitivity</value>
+  </data>
+  <data name="SENSITIVITY_RIGHT_X" xml:space="preserve">
+    <value>Right stick X axis sensitivity</value>
+  </data>
+  <data name="SENSITIVITY_RIGHT_Y" xml:space="preserve">
+    <value>Right stick Y axis sensitivity</value>
+  </data>
 </root>

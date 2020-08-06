@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Media;
-using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Crayta.Properties;
 using log4net;
 using Prism.Mvvm;
 
@@ -107,8 +107,50 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             set { SetProperty(ref lookToScrollVerticalDeadzone, value); }
         }
 
+        private double leftStickSensitivityX;
+        public double LeftStickSensitivityX
+        {
+            get { return leftStickSensitivityX; }
+            set { SetProperty(ref leftStickSensitivityX, value); }
+        }
+
+        private double leftStickSensitivityY;
+        public double LeftStickSensitivityY
+        {
+            get { return leftStickSensitivityY; }
+            set { SetProperty(ref leftStickSensitivityY, value); }
+        }
+
+        private double rightStickSensitivityX;
+        public double RightStickSensitivityX
+        {
+            get { return rightStickSensitivityX; }
+            set { SetProperty(ref rightStickSensitivityX, value); }
+        }
+
+        private double rightStickSensitivityY;
+        public double RightStickSensitivityY
+        {
+            get { return rightStickSensitivityY; }
+            set { SetProperty(ref rightStickSensitivityY, value); }
+        }
+
+        private double legacyStickSensitivityX;
+        public double LegacyStickSensitivityX
+        {
+            get { return legacyStickSensitivityX; }
+            set { SetProperty(ref legacyStickSensitivityX, value); }
+        }
+
+        private double legacyStickSensitivityY;
+        public double LegacyStickSensitivityY
+        {
+            get { return legacyStickSensitivityY; }
+            set { SetProperty(ref legacyStickSensitivityY, value); }
+        }
+
         //TODO: Add non-linear mapping to joystick control?
-        
+
         public bool ChangesRequireRestart
         {
             get
@@ -132,6 +174,13 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             LookToScrollOverlayDeadzoneThickness = Settings.Default.LookToScrollOverlayDeadzoneThickness;
             LookToScrollHorizontalDeadzone = Settings.Default.LookToScrollHorizontalDeadzone;
             LookToScrollVerticalDeadzone = Settings.Default.LookToScrollVerticalDeadzone;
+
+            LeftStickSensitivityX = Settings.Default.LeftStickSensitivityX;
+            LeftStickSensitivityY = Settings.Default.LeftStickSensitivityY;
+            RightStickSensitivityX = Settings.Default.RightStickSensitivityX;
+            RightStickSensitivityY = Settings.Default.RightStickSensitivityY;
+            LegacyStickSensitivityX = Settings.Default.LegacyStickSensitivityX;
+            LegacyStickSensitivityY = Settings.Default.LegacyStickSensitivityY;
         }
 
         public void ApplyChanges()
@@ -145,6 +194,13 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             Settings.Default.LookToScrollOverlayDeadzoneThickness = LookToScrollOverlayDeadzoneThickness;
             Settings.Default.LookToScrollHorizontalDeadzone = LookToScrollHorizontalDeadzone;
             Settings.Default.LookToScrollVerticalDeadzone = LookToScrollVerticalDeadzone;
+
+            Settings.Default.LeftStickSensitivityX = LeftStickSensitivityX;
+            Settings.Default.LeftStickSensitivityY = LeftStickSensitivityY;
+            Settings.Default.RightStickSensitivityX = RightStickSensitivityX;
+            Settings.Default.RightStickSensitivityY = RightStickSensitivityY;
+            Settings.Default.LegacyStickSensitivityX = LegacyStickSensitivityX;
+            Settings.Default.LegacyStickSensitivityY = LegacyStickSensitivityY;
         }
 
         #endregion

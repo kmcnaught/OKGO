@@ -178,6 +178,60 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Left stick X axis sensitivity.
+        /// </summary>
+        public static string SENSITIVITY_LEFT_X {
+            get {
+                return ResourceManager.GetString("SENSITIVITY_LEFT_X", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Left stick Y axis sensitivity.
+        /// </summary>
+        public static string SENSITIVITY_LEFT_Y {
+            get {
+                return ResourceManager.GetString("SENSITIVITY_LEFT_Y", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Legacy stick X axis sensitivity.
+        /// </summary>
+        public static string SENSITIVITY_LEGACY_X {
+            get {
+                return ResourceManager.GetString("SENSITIVITY_LEGACY_X", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Legacy stick Y axis sensitivity.
+        /// </summary>
+        public static string SENSITIVITY_LEGACY_Y {
+            get {
+                return ResourceManager.GetString("SENSITIVITY_LEGACY_Y", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Right stick X axis sensitivity.
+        /// </summary>
+        public static string SENSITIVITY_RIGHT_X {
+            get {
+                return ResourceManager.GetString("SENSITIVITY_RIGHT_X", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Right stick Y axis sensitivity.
+        /// </summary>
+        public static string SENSITIVITY_RIGHT_Y {
+            get {
+                return ResourceManager.GetString("SENSITIVITY_RIGHT_Y", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [none set].
         /// </summary>
         public static string STRING_NOT_SET {
