@@ -106,7 +106,7 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selection of built-in Minecraft Keyboards.
+        ///   Looks up a localized string similar to Built-in Crayta Keyboards.
         /// </summary>
         public static string EYEMINE_ALL_KEYBOARDS {
             get {
@@ -115,7 +115,7 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EyeMine V2.
+        ///   Looks up a localized string similar to Crayta Access.
         /// </summary>
         public static string EYEMINE_DESCRIPTION {
             get {
@@ -124,7 +124,7 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specific EyeMine keyboard.
+        ///   Looks up a localized string similar to A single specific keyboard.
         /// </summary>
         public static string EYEMINE_SINGLE_KEYBOARD {
             get {
