@@ -195,7 +195,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
                 keyValueByGroup?.Clear();
                 overrideTimesByKey?.Clear();
 
-                if (!(Keyboard is ViewModelKeyboards.DynamicKeyboard))
+                if (!(Keyboard is ViewModelKeyboards.DynamicKeyboard) && !(Keyboard is ViewModelKeyboards.Mouse))
                     windowManipulationService.RestorePersistedState();
             }
 
@@ -529,6 +529,10 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
             else if (Keyboard is ViewModelKeyboards.Mouse)
             {
+                // HACK for testing: force mouse keyboard docked at bottom
+                mainWindow.WindowManipulationService.OverridePersistedState(false,
+                    WindowStates.Docked.ToString(), DockEdges.Bottom.ToString(),
+                    DockSizes.Collapsed.ToString(), "50%", "20%", "0", "0");
                 newContent = new CommonViews.Mouse { DataContext = Keyboard };
             }
             else if (Keyboard is ViewModelKeyboards.NumericAndSymbols1)

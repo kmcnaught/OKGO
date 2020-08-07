@@ -17,6 +17,7 @@ using JuliusSweetland.OptiKey.Services.PluginEngine;
 using JuliusSweetland.OptiKey.Services.Translation;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
+using JuliusSweetland.OptiKey.Static;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -1424,8 +1425,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseLeftClickAtCentre:
                     // Get "centre of screen" point
                     // FIXME: do we need GetTransformFromDevice/GetTransformToDevice here? not sure coordinates
-                    Rect bounds = mainWindowManipulationService.WindowBounds;
-                    var leftClickPoint2 = new Point(bounds.Left + bounds.Width/2, bounds.Top + bounds.Height/2);
+
+                    var leftClickPoint2 = new Point(Graphics.PrimaryScreenWidthInPixels/2, Graphics.PrimaryScreenHeightInPixels/2);
                     
                     Log.InfoFormat("Mouse left click selected at point ({0},{1}).", leftClickPoint2.X, leftClickPoint2.Y);
                     Action performLeftClick2 = () =>

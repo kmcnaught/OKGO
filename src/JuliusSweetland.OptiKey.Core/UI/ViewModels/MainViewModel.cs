@@ -18,6 +18,7 @@ using Prism.Interactivity.InteractionRequest;
 using Prism.Mvvm;
 using System.Text;
 using System.Net.Http;
+using System.Reactive.Linq;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -444,7 +445,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case Enums.Keyboards.Mouse:
-                    Keyboard = new Mouse(backAction);
+                    // HACK for testing: force mouse keyboard docked at bottom
+                    mainWindowManipulationService.OverridePersistedState(false, "Floating", "Bottom", 
+                        DockSizes.Full.ToString(), "50%", "20%", "0", "0");
+                    Action backAction2 = () =>
+                    {
+                        mainWindowManipulationService.RestoreSavedState();
+                        backAction();
+                    };
+                    Keyboard = new Mouse(backAction2);
                     break;
 
                 case Enums.Keyboards.NumericAndSymbols1:
@@ -491,15 +500,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case Enums.Keyboards.Mouse:
-                    windowManipulationService.Restore();
-                    if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full)
+                    //windowManipulationService.Restore();
+                    // HACK for testing: force mouse keyboard docked at bottom
+                    mainWindowManipulationService.OverridePersistedState(false,
+                        WindowStates.Docked.ToString(), DockEdges.Bottom.ToString(),
+                        DockSizes.Collapsed.ToString(), "50%", "20%", "0", "0");
+                    /*if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full)
                     {
                         windowManipulationService.ResizeDockToFull();
                     }
                     else
                     {
                         windowManipulationService.ResizeDockToCollapsed();
-                    }
+                    }*/
                     break;
 
                 default:
