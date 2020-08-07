@@ -21,7 +21,6 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
         // If Settings.Default is requested from an instance of this object, return a cast version
         public new static Settings Default => (Settings)OptiKey.Properties.Settings.Default;
 
-
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Floating")]
@@ -62,11 +61,11 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
         {
             get
             {
-                return false;
+                return true;
             }
             set
             {
-                this["EnablePlugins"] = value;
+                //no-op, forced on
             }
         }
 

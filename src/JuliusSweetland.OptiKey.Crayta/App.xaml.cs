@@ -135,6 +135,13 @@ namespace JuliusSweetland.OptiKey.Crayta
 
                 CleanupAndPrepareCommuniKateInitialState();
 
+                // Handle plugins. Validate if directory exists and is accessible and pre-load all plugins, building a in-memory list of available ones.
+                ValidatePluginsLocation();
+                if (Settings.Default.EnablePlugins)
+                {
+                    PluginEngine.LoadAvailablePlugins();
+                }
+
                 ValidateDynamicKeyboardLocationEyeMine();
 
                 //Create services
