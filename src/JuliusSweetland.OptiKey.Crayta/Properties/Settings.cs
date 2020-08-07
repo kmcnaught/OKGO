@@ -122,22 +122,6 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public new bool PointsMousePositionHideCursor
-        {
-            get
-            {
-                return ((bool)(this["PointsMousePositionHideCursor"]));
-            }
-            set
-            {
-                this["PointsMousePositionHideCursor"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("TobiiEyeX")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public new global::JuliusSweetland.OptiKey.Enums.PointsSources PointsSource
