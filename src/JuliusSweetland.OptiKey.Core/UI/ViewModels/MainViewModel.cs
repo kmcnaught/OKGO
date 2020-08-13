@@ -122,8 +122,19 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Action<float, float> legacyJoystickAction = (x, y) =>
             {
                 Log.InfoFormat("legacyJoystickAction, ({0}, {1})", x, y);
+                bool isLeftThumbHeldDown = false;
+                foreach (var key in keyStateService.KeyDownStates.Keys)
+                {
+                    if (keyStateService.KeyDownStates[key].Value == KeyDownStates.LockedDown &&
+                        !String.IsNullOrEmpty(key.String) &&
+                        key.String.Contains("XBoxLeftThumb"))
+                    {
+                        isLeftThumbHeldDown = true;
+                    }
+                }
                 keyboardOutputService.XBoxProcessJoystick("RightJoystickAxisX", (float)Settings.Default.LegacyStickSensitivityX * x);
-                keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisY", -(float)Settings.Default.LegacyStickSensitivityY * y);
+                if (!isLeftThumbHeldDown)
+                    keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisY", -(float)Settings.Default.LegacyStickSensitivityY * y);
             };
 
             leftJoystickInteractionHandler = new Look2DInteractionHandler(KeyValues.LeftJoystickActiveKey, leftJoystickAction, 
