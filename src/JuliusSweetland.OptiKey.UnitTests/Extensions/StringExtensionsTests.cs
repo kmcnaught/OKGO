@@ -191,6 +191,47 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
 
         }
 
+
+        [Test]
+        public void TestStringToFloat()
+        {
+            Assert.AreEqual(3.123F, "3.123".ToFloat(), 1e-5);
+
+            {
+                char[] delimChars = { ',' };
+                float[] expected = {1.0f, 2.0f, 3.0f};
+                float[] actual = "1.0, 2.0, 3.0".ToFloatArray(delimChars);
+                AssertFloatArray(expected, actual, 1e-5);
+            }
+            {
+                char[] delimChars = { ':' };
+                float[] expected = { 1.0f, 2.0f, 3.0f };
+                float[] actual = "1:2:3".ToFloatArray(delimChars);
+                AssertFloatArray(expected, actual, 1e-5);
+            }
+            {
+                char[] delimChars = { ',' };
+                float[] expected = { 1.0f, 2.0f, 3.0f };
+                float[] actual = "1.0,2.0,  3.0".ToFloatArray(delimChars);
+                AssertFloatArray(expected, actual, 1e-5);
+            }
+            {
+                char[] delimChars = { ',' };
+                float[] expected = { 1.23f };
+                float[] actual = "1.23".ToFloatArray(delimChars);
+                AssertFloatArray(expected, actual, 1e-5);
+            }
+        }
+
+        private void AssertFloatArray(float[] expected, float[] actual, double delta)
+        {
+            Assert.AreEqual(expected.Length, actual.Length);
+            for (int i=0; i < expected.Length; i++)
+            {
+                Assert.AreEqual(expected[i], actual[i], delta);
+            }
+        }
+
         private void AssertCharTuple(Tuple<char,char,int> tuple, char expectedItem1, char expectedItem2, int expectedItem3)
         {
             Assert.AreEqual(expectedItem1, tuple.Item1);

@@ -372,5 +372,23 @@ namespace JuliusSweetland.OptiKey.Extensions
             return s;
         }
 
+        public static float ToFloat(this string s)
+        {
+            return Convert.ToSingle(s.Trim());
+        }
+
+        public static float[] ToFloatArray(this string s, char[] delimChars)
+        {
+            string[] parts = s.Split(delimChars, StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length == 0)
+            {
+                throw new Exception("Cannot convert empty string to float");
+            }
+            else
+            {
+                IEnumerable<float> allEntries = from number in parts select number.ToFloat();
+                return allEntries.ToArray();
+            }
+        }
     }
 }
