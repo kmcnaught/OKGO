@@ -633,7 +633,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                         {
                             commandKeyValue = new KeyValue(actionEnum, dynamicAction.Payload);
                             
-                            if (xmlDynamicKey.Commands.Count == 1 && KeyValues.KeysWhichCanBeLockedDown.Contains(commandKeyValue))
+                            if (xmlDynamicKey.Commands.Count == 1 && KeyValues.KeyCanBeLockedDown(commandKeyValue))
                             {
                                 CreateDynamicKey(xmlDynamicKey, commandKeyValue, minKeyWidth, minKeyHeight);
                                 return null;
@@ -641,7 +641,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                             else
                                 commandList.Add(new KeyCommand(KeyCommands.Action, new KeyValue(actionEnum, dynamicAction.Payload)));
 
-                            if (KeyValues.KeysWhichCanBeLockedDown.Contains(commandKeyValue) 
+                            if (KeyValues.KeyCanBeLockedDown(commandKeyValue) 
                                 && !keyFamily.Contains(new Tuple<KeyValue, KeyValue>(xmlKeyValue, commandKeyValue)))
                             {
                                 keyFamily.Add(new Tuple<KeyValue, KeyValue>(xmlKeyValue, commandKeyValue));

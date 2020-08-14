@@ -83,20 +83,20 @@ namespace JuliusSweetland.OptiKey.Services
         {
             if (null != keyValue)
             {
-                if (KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
+                if (KeyValues.KeyCanBePressedDown(keyValue)
                     && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
                 {
                     Log.DebugFormat("Changing key down state of '{0}' key from UP to DOWN.", keyValue);
                     KeyDownStates[keyValue].Value = Enums.KeyDownStates.Down;
                 }
-                else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
-                         && !KeyValues.KeysWhichCanBePressedDown.Contains(keyValue)
+                else if (KeyValues.KeyCanBeLockedDown(keyValue)
+                         && !KeyValues.KeyCanBePressedDown(keyValue)
                          && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Up)
                 {
                     Log.DebugFormat("Changing key down state of '{0}' key from UP to LOCKED DOWN.", keyValue);
                     KeyDownStates[keyValue].Value = Enums.KeyDownStates.LockedDown;
                 }
-                else if (KeyValues.KeysWhichCanBeLockedDown.Contains(keyValue)
+                else if (KeyValues.KeyCanBeLockedDown(keyValue)
                          && KeyDownStates[keyValue].Value == Enums.KeyDownStates.Down)
                 {
                     Log.DebugFormat("Changing key down state of '{0}' key from DOWN to LOCKED DOWN.", keyValue);
