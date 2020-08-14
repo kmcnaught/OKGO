@@ -2608,6 +2608,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     if (keyCommand.Name == KeyCommands.Action)
                     {
                         Log.InfoFormat("CommandList: Press function key: {0}", keyCommand.KeyValue.FunctionKey.ToString());
+                        Log.InfoFormat("CommandList: function key payload: {0}", keyCommand.KeyValue.String);
                         KeySelectionResult(keyCommand.KeyValue, multiKeySelection);
                     }
                     else if (keyCommand.Name == KeyCommands.ChangeKeyboard)

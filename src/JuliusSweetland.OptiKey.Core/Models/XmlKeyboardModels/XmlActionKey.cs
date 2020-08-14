@@ -33,5 +33,8 @@ namespace JuliusSweetland.OptiKey.Models
                 }
             }
         }
+
+        [XmlAttribute] // Optional - if FunctionKey Value takes a string for payload
+        public string Payload { get; set; }
     }
 }

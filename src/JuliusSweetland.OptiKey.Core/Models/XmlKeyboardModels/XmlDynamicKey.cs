@@ -37,6 +37,9 @@ namespace JuliusSweetland.OptiKey.Models
     {
         [XmlText]
         public string Value { get; set; }
+        
+        [XmlAttribute] // Optional - if FunctionKey Value takes a string for payload
+        public string Payload { get; set; } 
     }
 
     public class DynamicLink : XmlDynamicKey

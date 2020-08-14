@@ -631,14 +631,15 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                             Log.ErrorFormat("Could not parse {0} as function key", dynamicAction.Value);
                         else
                         {
-                            commandKeyValue = new KeyValue(actionEnum);
+                            commandKeyValue = new KeyValue(actionEnum, dynamicAction.Payload);
+                            
                             if (xmlDynamicKey.Commands.Count == 1 && KeyValues.KeysWhichCanBeLockedDown.Contains(commandKeyValue))
                             {
                                 CreateDynamicKey(xmlDynamicKey, commandKeyValue, minKeyWidth, minKeyHeight);
                                 return null;
                             }
                             else
-                                commandList.Add(new KeyCommand(KeyCommands.Action, new KeyValue(actionEnum)));
+                                commandList.Add(new KeyCommand(KeyCommands.Action, new KeyValue(actionEnum, dynamicAction.Payload)));
 
                             if (KeyValues.KeysWhichCanBeLockedDown.Contains(commandKeyValue) 
                                 && !keyFamily.Contains(new Tuple<KeyValue, KeyValue>(xmlKeyValue, commandKeyValue)))
@@ -1088,7 +1089,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
             if (xmlKey.Action.HasValue)
             {
-                newKey.Value = new KeyValue(xmlKey.Action.Value);
+                newKey.Value = new KeyValue(xmlKey.Action.Value, xmlKey.Payload);
             }
             else
             {
