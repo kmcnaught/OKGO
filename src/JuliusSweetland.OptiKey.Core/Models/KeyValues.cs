@@ -633,5 +633,35 @@ namespace JuliusSweetland.OptiKey.Models
                     : new List<KeyValue>();
             }
         }
+
+        public static bool KeyCanBeLockedDown(KeyValue key)
+        {
+            if (KeyValues.KeysWhichCanBeLockedDown.Contains(key))
+                return true;
+
+            // If function key matches, we want a match for any string payload
+            if (key.FunctionKey != null)
+            {
+                KeyValue keyValueWithoutString = new KeyValue(key.FunctionKey, null);
+                return KeyValues.KeysWhichCanBeLockedDown.Contains(keyValueWithoutString);
+            }
+
+            return false;
+        }
+
+        public static bool KeyCanBePressedDown(KeyValue key)
+        {
+            if (KeyValues.KeysWhichCanBePressedDown.Contains(key))
+                return true;
+
+            // If function key matches, we want a match for any string payload
+            if (key.FunctionKey != null)
+            {
+                KeyValue keyValueWithoutString = new KeyValue(key.FunctionKey, null);
+                return KeyValues.KeysWhichCanBePressedDown.Contains(key);
+            }
+
+            return false;
+        }
     }
 }
