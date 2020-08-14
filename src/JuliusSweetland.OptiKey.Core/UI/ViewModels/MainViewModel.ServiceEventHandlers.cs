@@ -668,7 +668,50 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                     break;
 
+                case FunctionKeys.LeftJoystick:
+                    ToggleLeftJoystick(ParseScaleFromString(singleKeyValue.String));
+                    break;
+
+                case FunctionKeys.RightJoystick:
+                    ToggleRightJoystick(ParseScaleFromString(singleKeyValue.String));
+                    break;
+
+                case FunctionKeys.LegacyJoystick:
+                    ToggleLegacyJoystick(ParseScaleFromString(singleKeyValue.String));
+                    break;
+
             }
+        }
+        
+        private float[] ParseScaleFromString(string s)
+        {
+            float xScale = 1.0f;
+            float yScale = 1.0f;
+            
+            if (!String.IsNullOrEmpty(s))
+            {
+                try
+                {
+                    char[] delimChars = {','};
+                    float[] parts = s.ToFloatArray(delimChars);
+                    if (parts.Length == 1)
+                    {
+                        xScale = yScale = parts[0];
+                    }
+                    else if (parts.Length > 1)
+                    {
+                        xScale = parts[0];
+                        yScale = parts[1];
+                    }
+                }
+                catch (Exception e)
+                {
+                    Log.ErrorFormat("Couldn't parse scale {0}", s);
+                }
+            }
+
+            float[] scale = { xScale, yScale }; ;
+            return scale;
         }
 
         private async void HandleFunctionKeySelectionResult(KeyValue singleKeyValue)
@@ -1201,15 +1244,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.LeftJoystick:
-                    ToggleLeftJoystick();
-                    break;
-
                 case FunctionKeys.RightJoystick:
-                    ToggleRightJoystick();
-                    break;
-
                 case FunctionKeys.LegacyJoystick:
-                    ToggleLegacyJoystick();
+                    // these all have optional payloads in the FunctionKey's string, so the logic
+                    // is kept in HandleStringAndFunctionKeySelectionResult
+                    KeyValue newValue = new KeyValue(singleKeyValue.FunctionKey, null);
+                    HandleStringAndFunctionKeySelectionResult(newValue);
                     break;
 
                 case FunctionKeys.LookToScrollBounds:

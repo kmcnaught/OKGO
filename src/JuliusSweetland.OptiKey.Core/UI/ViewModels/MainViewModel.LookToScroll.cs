@@ -38,6 +38,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private IKeyStateService keyStateService;
         private MainViewModel mainViewModel;
 
+        private float scaleX = 1.0f;
+        private float scaleY = 1.0f;
+
         private bool active = false;
         // FIXME: need state renaming for different active state
 
@@ -48,6 +51,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.updateAction = updateAction;
             this.keyStateService = keyStateService;
             this.mainViewModel = mainViewModel;
+        }
+
+        public void SetScaleFactor(float[] scaleXY)
+        {
+            scaleX = scaleXY[0];
+            scaleY = scaleXY[1];
         }
 
         public bool ToggleActive()
@@ -306,7 +315,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void PerformLookToScroll(Vector scrollAmount)
         {
-            updateAction((float)scrollAmount.X, (float)scrollAmount.Y);
+            updateAction(scaleX*(float)scrollAmount.X, scaleY*(float)scrollAmount.Y);
         }
 
         private void UpdateLookToScrollOverlayProperties(bool active, Rect bounds, Point centre)
@@ -412,8 +421,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             //scrollInteractionHandler.ToggleActive();
         }
 
-        private void ToggleLeftJoystick()
+        private void ToggleLeftJoystick(float[] scaleXY)
         {
+            leftJoystickInteractionHandler.SetScaleFactor(scaleXY);
             bool nowActive = leftJoystickInteractionHandler.ToggleActive();
             //if (nowActive)
             //{
@@ -422,8 +432,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             //}
         }
 
-        private void ToggleRightJoystick()
+        private void ToggleRightJoystick(float[] scaleXY)
         {
+            rightJoystickInteractionHandler.SetScaleFactor(scaleXY);
             bool nowActive = rightJoystickInteractionHandler.ToggleActive();
             //if (nowActive)
             //{
@@ -432,8 +443,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             //}
         }
 
-        private void ToggleLegacyJoystick()
+        private void ToggleLegacyJoystick(float[] scaleXY)
         {
+            legacyJoystickInteractionHandler.SetScaleFactor(scaleXY);
             bool nowActive = legacyJoystickInteractionHandler.ToggleActive();
             if (nowActive)
             {
