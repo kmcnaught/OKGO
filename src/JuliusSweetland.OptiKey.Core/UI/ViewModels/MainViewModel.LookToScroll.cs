@@ -460,10 +460,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
     partial class MainViewModel 
     {
         // Initialised in ctr
-        public Look2DInteractionHandler leftJoystickInteractionHandler;
-        public Look2DInteractionHandler rightJoystickInteractionHandler;
-        public Look2DInteractionHandler legacyJoystickInteractionHandler;
-
         public Look2DInteractionHandler scrollInteractionHandler;
 
 
@@ -473,7 +469,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             //scrollInteractionHandler.ToggleActive();
         }
 
-        private static Dictionary<FunctionKeys, Look2DInteractionHandler> JoystickHandlers;
+        public Dictionary<FunctionKeys, Look2DInteractionHandler> JoystickHandlers;
 
         private void ToggleJoystick(KeyValue requestedKeyValue)
         {

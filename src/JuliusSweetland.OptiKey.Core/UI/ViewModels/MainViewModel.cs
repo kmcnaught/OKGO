@@ -138,19 +138,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             };
 
             // Set up a set of (mutually exlusive) joystick controllers
-            //TODO: remove individual declarations?
-            leftJoystickInteractionHandler = new Look2DInteractionHandler(FunctionKeys.LeftJoystick, leftJoystickAction, 
-                                                                            keyStateService, this);
-            rightJoystickInteractionHandler = new Look2DInteractionHandler(FunctionKeys.RightJoystick, rightJoystickAction,
-                                                                            keyStateService, this);
-            legacyJoystickInteractionHandler = new Look2DInteractionHandler(FunctionKeys.LegacyJoystick, legacyJoystickAction,
-                keyStateService, this);
-
             JoystickHandlers = new Dictionary<FunctionKeys, Look2DInteractionHandler>();
-            JoystickHandlers.Add(FunctionKeys.LeftJoystick, leftJoystickInteractionHandler);
-            JoystickHandlers.Add(FunctionKeys.RightJoystick, rightJoystickInteractionHandler);
-            JoystickHandlers.Add(FunctionKeys.LegacyJoystick, legacyJoystickInteractionHandler);
-
+            JoystickHandlers.Add(FunctionKeys.LeftJoystick, new Look2DInteractionHandler(FunctionKeys.LeftJoystick, leftJoystickAction,
+                                                            keyStateService, this));
+            JoystickHandlers.Add(FunctionKeys.RightJoystick, new Look2DInteractionHandler(FunctionKeys.RightJoystick, rightJoystickAction,
+                                                            keyStateService, this));
+            JoystickHandlers.Add(FunctionKeys.LegacyJoystick, new Look2DInteractionHandler(FunctionKeys.LegacyJoystick, legacyJoystickAction,
+                                                            keyStateService, this));
         }
 
         #endregion

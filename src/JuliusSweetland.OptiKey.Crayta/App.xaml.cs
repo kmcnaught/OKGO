@@ -205,9 +205,11 @@ namespace JuliusSweetland.OptiKey.Crayta
                 if (Settings.Default.LookToScrollShowOverlayWindow)
                 {
                     // Create the overlay window, but don't show it yet. It'll make itself visible when the conditions are right.
-                    new LookToScrollOverlayWindow(mainViewModel.leftJoystickInteractionHandler);
-                    new LookToScrollOverlayWindow(mainViewModel.rightJoystickInteractionHandler);
-                    new LookToScrollOverlayWindow(mainViewModel.legacyJoystickInteractionHandler);
+                    foreach (var joystick in mainViewModel.JoystickHandlers.Values)
+                    {
+                        //TODO: consider different colour overlays for diff handlers?
+                        new LookToScrollOverlayWindow(joystick);
+                    }
                 }
 
                 //Display splash screen and check for updates (and display message) after the window has been sized and positioned for the 1st time

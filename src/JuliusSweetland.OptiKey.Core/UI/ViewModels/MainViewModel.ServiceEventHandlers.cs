@@ -52,11 +52,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     mouseOutputService.MoveTo(CurrentPositionPoint);
                 }
 
-                
-                leftJoystickInteractionHandler.UpdateLookToScroll(CurrentPositionPoint);
-                rightJoystickInteractionHandler.UpdateLookToScroll(CurrentPositionPoint);
-                legacyJoystickInteractionHandler.UpdateLookToScroll(CurrentPositionPoint);
-
+                foreach (var joystick in JoystickHandlers.Values)
+                {
+                    joystick.UpdateLookToScroll(CurrentPositionPoint);
+                }
             };
 
             inputServiceSelectionProgressHandler = (o, progress) =>
@@ -1263,7 +1262,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseDrag:
                     Log.Info("Mouse drag selected.");
                     // FIXME: suspend other 2d handlers too
-                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    // FIXME reinstate LookToScroll handler resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(firstFinalPoint =>
                     {
                         if (firstFinalPoint != null)
@@ -1324,7 +1323,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         }
 
                                         ResetAndCleanupAfterMouseAction();
-                                        resumeLookToScroll();
+                                        //FIXME reinstate resumeLookToScroll();
                                     };
 
                                     if (keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value.IsDownOrLockedDown())
@@ -1362,7 +1361,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value = KeyDownStates.Up; //Release magnifier if down but not locked down
                             }
-                            resumeLookToScroll();
+                            //FIXME reinstate resumeLookToScroll();
                         }
 
                         //Reset and clean up
@@ -1557,7 +1556,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveAndLeftClick:
                     Log.Info("Mouse move and left click selected.");
-                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    // FIXME reinstate LookToScroll handler resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1581,13 +1580,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
 
                         ResetAndCleanupAfterMouseAction();
-                        resumeLookToScroll();
+                        // FIXME reinstate LookToScroll handler resumeLookToScroll();
                     });
                     break;
 
                 case FunctionKeys.MouseMoveAndLeftDoubleClick:
                     Log.Info("Mouse move and left double click selected.");
-                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    // FIXME reinstate LookToScroll handler resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1611,13 +1610,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
 
                         ResetAndCleanupAfterMouseAction();
-                        resumeLookToScroll();
+                        // FIXME reinstate LookToScroll handler resumeLookToScroll();
                     });
                     break;
 
                 case FunctionKeys.MouseMoveAndMiddleClick:
                     Log.Info("Mouse move and middle click selected.");
-                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    // FIXME reinstate LookToScroll handler resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1641,13 +1640,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
 
                         ResetAndCleanupAfterMouseAction();
-                        resumeLookToScroll();
+                        // FIXME reinstate LookToScroll handler resumeLookToScroll();
                     });
                     break;
 
                 case FunctionKeys.MouseMoveAndRightClick:
                     Log.Info("Mouse move and right click selected.");
-                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    // FIXME reinstate LookToScroll handler resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1671,7 +1670,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
 
                         ResetAndCleanupAfterMouseAction();
-                        resumeLookToScroll();
+                        // FIXME reinstate LookToScroll handler resumeLookToScroll();
                     });
                     break;
 
@@ -1708,7 +1707,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseMoveAndScrollToBottom:
                     Log.Info("Mouse move and scroll to bottom selected.");
                     //FIXME: more
-                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    // FIXME reinstate LookToScroll handler resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1732,14 +1731,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
 
                         ResetAndCleanupAfterMouseAction();
-                        resumeLookToScroll();
+                        //FIXME reinstate resumeLookToScroll();
                     }, suppressMagnification: true);
                     break;
 
                 case FunctionKeys.MouseMoveAndScrollToLeft:
                     Log.Info("Mouse move and scroll to left selected.");
                     //fixme
-                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    // FIXME reinstate LookToScroll handler resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1763,13 +1762,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
 
                         ResetAndCleanupAfterMouseAction();
-                        resumeLookToScroll();
+                        // FIXME reinstate LookToScroll handler resumeLookToScroll();
                     }, suppressMagnification: true);
                     break;
 
                 case FunctionKeys.MouseMoveAndScrollToRight:
                     Log.Info("Mouse move and scroll to right selected.");
-                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    // FIXME reinstate LookToScroll handler resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1793,13 +1792,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
 
                         ResetAndCleanupAfterMouseAction();
-                        resumeLookToScroll();
+                        // FIXME reinstate LookToScroll handler resumeLookToScroll();
                     }, suppressMagnification: true);
                     break;
 
                 case FunctionKeys.MouseMoveAndScrollToTop:
                     Log.Info("Mouse move and scroll to top selected.");
-                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    // FIXME reinstate LookToScroll handler resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1823,7 +1822,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
 
                         ResetAndCleanupAfterMouseAction();
-                        resumeLookToScroll();
+                        //FIXME reinstate resumeLookToScroll();
                     }, suppressMagnification: true);
                     break;
 
@@ -1875,7 +1874,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.MouseMoveTo:
                     Log.Info("Mouse move to selected.");
-                    resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    // FIXME reinstate LookToScroll handler resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
                     SetupFinalClickAction(finalPoint =>
                     {
                         if (finalPoint != null)
@@ -1896,7 +1895,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             simulateMoveTo(finalPoint.Value);
                         }
                         ResetAndCleanupAfterMouseAction();
-                        resumeLookToScroll();
+                        // FIXME reinstate LookToScroll handler resumeLookToScroll();
                     });
                     break;
 
