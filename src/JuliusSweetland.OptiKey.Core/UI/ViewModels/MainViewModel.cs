@@ -137,12 +137,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisY", -(float)Settings.Default.LegacyStickSensitivityY * y);
             };
 
-            leftJoystickInteractionHandler = new Look2DInteractionHandler(KeyValues.LeftJoystickActiveKey, leftJoystickAction, 
+            // Set up a set of (mutually exlusive) joystick controllers
+            //TODO: remove individual declarations?
+            leftJoystickInteractionHandler = new Look2DInteractionHandler(FunctionKeys.LeftJoystick, leftJoystickAction, 
                                                                             keyStateService, this);
-            rightJoystickInteractionHandler = new Look2DInteractionHandler(KeyValues.RightJoystickActiveKey, rightJoystickAction,
+            rightJoystickInteractionHandler = new Look2DInteractionHandler(FunctionKeys.RightJoystick, rightJoystickAction,
                                                                             keyStateService, this);
-            legacyJoystickInteractionHandler = new Look2DInteractionHandler(KeyValues.LegacyJoystickActiveKey, legacyJoystickAction,
+            legacyJoystickInteractionHandler = new Look2DInteractionHandler(FunctionKeys.LegacyJoystick, legacyJoystickAction,
                 keyStateService, this);
+
+            JoystickHandlers = new Dictionary<FunctionKeys, Look2DInteractionHandler>();
+            JoystickHandlers.Add(FunctionKeys.LeftJoystick, leftJoystickInteractionHandler);
+            JoystickHandlers.Add(FunctionKeys.RightJoystick, rightJoystickInteractionHandler);
+            JoystickHandlers.Add(FunctionKeys.LegacyJoystick, legacyJoystickInteractionHandler);
+
         }
 
         #endregion

@@ -34,20 +34,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private bool hasTarget = false;
 
         private Action<float, float> updateAction;
-        private KeyValue triggerKeyValue;
+        public FunctionKeys triggerKey;  // This function key controls the handler
+        public KeyValue currentKeyValue; // This key value was the one used to trigger it this time (e.g. may differ in payload)
+
         private IKeyStateService keyStateService;
         private MainViewModel mainViewModel;
 
         private float scaleX = 1.0f;
         private float scaleY = 1.0f;
 
-        private bool active = false;
-        // FIXME: need state renaming for different active state
+        public bool active = false;
+        // FIXME: need state renaming for different active state: enabled vs active?
 
-        public Look2DInteractionHandler(KeyValue triggerKeyValue, Action<float, float> updateAction, 
+        public Look2DInteractionHandler(FunctionKeys triggerKey, Action<float, float> updateAction, 
                                         IKeyStateService keyStateService, MainViewModel mainViewModel)
         {
-            this.triggerKeyValue = triggerKeyValue;
+            this.triggerKey = triggerKey;
             this.updateAction = updateAction;
             this.keyStateService = keyStateService;
             this.mainViewModel = mainViewModel;
@@ -59,25 +61,64 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             scaleY = scaleXY[1];
         }
 
-        public bool ToggleActive()
+        public bool IsEnabledWithKeyValue(KeyValue keyValue)
         {
-            Log.InfoFormat("{0} key was selected.", this.triggerKeyValue);
+            return (this.currentKeyValue == keyValue);
+        }
 
-            if (keyStateService.KeyDownStates[this.triggerKeyValue].Value.IsDownOrLockedDown())
-            {
-                Enable();
-            }
-            else
+        /*public bool ToggleActive()
+        {
+            Log.InfoFormat("{0} key was selected.", this.triggerKey);
+
+            if (active)
             {
                 Disable();
             }
-
+            else
+            {
+                Enable();
+            }
             return active;
+        }*/
+
+
+        private float[] ParseScaleFromString(string s)
+        {
+            float xScale = 1.0f;
+            float yScale = 1.0f;
+
+            if (!String.IsNullOrEmpty(s))
+            {
+                try
+                {
+                    char[] delimChars = { ',' };
+                    float[] parts = s.ToFloatArray(delimChars);
+                    if (parts.Length == 1)
+                    {
+                        xScale = yScale = parts[0];
+                    }
+                    else if (parts.Length > 1)
+                    {
+                        xScale = parts[0];
+                        yScale = parts[1];
+                    }
+                }
+                catch (Exception e)
+                {
+                    Log.ErrorFormat("Couldn't parse scale {0}", s);
+                }
+            }
+
+            float[] scale = { xScale, yScale }; ;
+            return scale;
         }
 
-        public bool Enable()
+        public bool Enable(KeyValue keyValue)
         {
-            Log.InfoFormat("Activating 2D control: {0}", this.triggerKeyValue);
+            currentKeyValue = keyValue;
+            Log.InfoFormat("Activating 2D control: {0}", this.triggerKey);
+
+            this.SetScaleFactor(ParseScaleFromString(keyValue.String));
 
             //FIXME: reinstate some way to re-use bounds
             if (!hasTarget)
@@ -99,7 +140,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 active = false;
                 IsLookToScrollActive = false;
-                keyStateService.KeyDownStates[this.triggerKeyValue].Value = KeyDownStates.Up;
+
+                // Turn off any keys associated with this interaction handler
+                foreach (var keyValue in keyStateService.KeyDownStates.Keys)
+                {
+                    if (keyValue.FunctionKey != null)
+                    {
+                        if (keyValue.FunctionKey == triggerKey)
+                        {
+                            keyStateService.KeyDownStates[keyValue].Value = KeyDownStates.Up;
+                        }
+                    }
+                }
 
                 Log.Info("Look to scroll is no longer active.");
                 updateAction(0.0f, 0.0f);
@@ -130,7 +182,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 else if (!success)
                 {
                     // If a target wasn't successfully chosen, de-activate scrolling and release the bounds key.
-                    keyStateService.KeyDownStates[triggerKeyValue].Value = KeyDownStates.Up;
+                    this.Disable();
                     keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value = KeyDownStates.Up;
                 }
 
@@ -421,38 +473,48 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             //scrollInteractionHandler.ToggleActive();
         }
 
-        private void ToggleLeftJoystick(float[] scaleXY)
-        {
-            leftJoystickInteractionHandler.SetScaleFactor(scaleXY);
-            bool nowActive = leftJoystickInteractionHandler.ToggleActive();
-            //if (nowActive)
-            //{
-                rightJoystickInteractionHandler.Disable();
-                legacyJoystickInteractionHandler.Disable();
-            //}
-        }
+        private static Dictionary<FunctionKeys, Look2DInteractionHandler> JoystickHandlers;
 
-        private void ToggleRightJoystick(float[] scaleXY)
+        private void ToggleJoystick(KeyValue requestedKeyValue)
         {
-            rightJoystickInteractionHandler.SetScaleFactor(scaleXY);
-            bool nowActive = rightJoystickInteractionHandler.ToggleActive();
-            //if (nowActive)
-            //{
-                leftJoystickInteractionHandler.Disable();
-                legacyJoystickInteractionHandler.Disable();
-            //}
-        }
+            // the key value defines:
+            // - which interaction handler to use (by FunctionKey), and
+            // - optional scaling (by string payload)
+            FunctionKeys requestedFunctionKey = requestedKeyValue.FunctionKey.Value;
+            Look2DInteractionHandler requestedHandler = JoystickHandlers[requestedFunctionKey];
 
-        private void ToggleLegacyJoystick(float[] scaleXY)
-        {
-            legacyJoystickInteractionHandler.SetScaleFactor(scaleXY);
-            bool nowActive = legacyJoystickInteractionHandler.ToggleActive();
-            if (nowActive)
+            // - Look for any joystick-related keys in KeyStateService
+            // - Update this one appropriately
+            // - Make sure any conflicting ones are disabled
+
+            List<FunctionKeys> joystickKeys = JoystickHandlers.Keys.ToList();
+            foreach (var keyVal in keyStateService.KeyDownStates.Keys)
             {
-                rightJoystickInteractionHandler.Disable();
-                leftJoystickInteractionHandler.Disable();
+                if (keyVal.FunctionKey != null)
+                {
+                    // If it's this one, toggle it and update the state??
+                    if (keyVal == requestedKeyValue)
+                    {
+                        // Set joystick state according to button state
+                        if (keyStateService.KeyDownStates[requestedKeyValue].Value == KeyDownStates.Up)
+                            JoystickHandlers[requestedFunctionKey].Disable();
+                        else
+                            JoystickHandlers[requestedFunctionKey].Enable(requestedKeyValue);
+                    }
+                    else if (joystickKeys.Contains(keyVal.FunctionKey.Value))
+                    {
+                        // Any other key which should be mutually-exclusive. 
+                        // Disable button and joystick 
+                        if (keyStateService.KeyDownStates[keyVal].Value == KeyDownStates.Down ||
+                            keyStateService.KeyDownStates[keyVal].Value == KeyDownStates.LockedDown)
+                        {
+                            keyStateService.KeyDownStates[keyVal].Value = KeyDownStates.Up;
+                            if (keyVal.FunctionKey.Value != requestedFunctionKey) 
+                                JoystickHandlers[keyVal.FunctionKey.Value].Disable();
+                        }
+                    }
+                }
             }
         }
-
     }
 }
