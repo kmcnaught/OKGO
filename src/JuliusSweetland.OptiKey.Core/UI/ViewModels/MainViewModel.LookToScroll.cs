@@ -61,27 +61,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             scaleY = scaleXY[1];
         }
 
-        public bool IsEnabledWithKeyValue(KeyValue keyValue)
-        {
-            return (this.currentKeyValue == keyValue);
-        }
-
-        /*public bool ToggleActive()
-        {
-            Log.InfoFormat("{0} key was selected.", this.triggerKey);
-
-            if (active)
-            {
-                Disable();
-            }
-            else
-            {
-                Enable();
-            }
-            return active;
-        }*/
-
-
         private float[] ParseScaleFromString(string s)
         {
             float xScale = 1.0f;
