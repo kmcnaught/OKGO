@@ -2885,6 +2885,23 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
         }
 
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.9")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double StickSensitivityAdjustmentAmount
+        {
+            // scalar by which to multiply sensitivity to incrementally decrease it
+            get
+            {
+                return ((double)(this["StickSensitivityAdjustmentAmount"]));
+            }
+            set
+            {
+                this["StickSensitivityAdjustmentAmount"] = value;
+            }
+        }
+
         public bool IsOverridden(string propName)
         {
             var propActual = this.GetType().GetProperty(propName);

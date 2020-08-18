@@ -15,6 +15,12 @@ namespace JuliusSweetland.OptiKey.Enums
         RightJoystickAxisY,
     }
 
+    public enum Axes
+    {
+        AxisX,
+        AxisY
+    }
+
     public static partial class EnumExtensions
     {
         public static Xbox360Axis ToViGemAxis(this XboxAxes button)

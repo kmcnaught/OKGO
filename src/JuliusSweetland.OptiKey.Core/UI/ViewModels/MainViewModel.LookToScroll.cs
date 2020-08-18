@@ -450,6 +450,56 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public Dictionary<FunctionKeys, Look2DInteractionHandler> JoystickHandlers;
 
+
+        private void UpdateJoystickSensitivity(Axes axis, double multiplier)
+        {
+            // Apply changes to settings for currently-selected joystick, e.g. Left / Right / Legacy
+
+            // Find out which joystick is down by querying key states
+            List<FunctionKeys> joystickKeys = JoystickHandlers.Keys.ToList();
+            
+            KeyValue selectedKeyValue = keyStateService.KeyDownStates.Keys.Where(
+                kv => kv.FunctionKey != null &&
+                      keyStateService.KeyDownStates[kv].Value == KeyDownStates.LockedDown &&
+                      joystickKeys.Contains(kv.FunctionKey.Value)).Distinct().FirstOrDefault();
+            if (selectedKeyValue == null)
+            {
+                Log.Error("Attempting sensitivity adjustment without any joysticks enabled");
+                return;
+            }
+    
+            FunctionKeys selectedJoyKey = selectedKeyValue.FunctionKey.Value;
+
+            // Now selectedJoyKey = LeftJoystick or RightJoystick or Legacy
+            // and axis = AxisX or AxisY
+            // multiplier already encapsulates  "up" or "down".
+            switch (selectedJoyKey)
+            {
+                case FunctionKeys.LeftJoystick:
+                    if (axis == Axes.AxisX)
+                        Settings.Default.LeftStickSensitivityX *= multiplier;
+                    else
+                        Settings.Default.LeftStickSensitivityY *= multiplier;
+                    break;
+                case FunctionKeys.RightJoystick:
+                    if (axis == Axes.AxisX)
+                        Settings.Default.RightStickSensitivityX *= multiplier;
+                    else
+                        Settings.Default.RightStickSensitivityY *= multiplier;
+                    break;
+                case FunctionKeys.LegacyJoystick:
+                    if (axis == Axes.AxisX)
+                        Settings.Default.LegacyStickSensitivityX *= multiplier;
+                    else
+                        Settings.Default.LegacyStickSensitivityY *= multiplier;
+                    break;
+                default:
+                    Log.ErrorFormat("Didn't recognise joystick {0} for adjustment", selectedJoyKey);
+                    break;
+            }
+            
+        }
+
         private void ToggleJoystick(KeyValue requestedKeyValue)
         {
             // the key value defines:

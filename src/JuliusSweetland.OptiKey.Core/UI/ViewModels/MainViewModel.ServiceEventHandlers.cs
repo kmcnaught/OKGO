@@ -2379,6 +2379,29 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.YesQuestionResult:
                     HandleYesNoQuestionResult(true);
                     break;
+
+                case FunctionKeys.JoystickXSensitivityDown:
+                {
+                    this.UpdateJoystickSensitivity(Axes.AxisX, Settings.Default.StickSensitivityAdjustmentAmount);
+                    break;
+                }
+
+                case FunctionKeys.JoystickXSensitivityUp:
+                {
+                    this.UpdateJoystickSensitivity(Axes.AxisX, 1.0/Settings.Default.StickSensitivityAdjustmentAmount);
+                    break;
+                }
+
+                case FunctionKeys.JoystickYSensitivityDown:
+                {
+                    this.UpdateJoystickSensitivity(Axes.AxisY, Settings.Default.StickSensitivityAdjustmentAmount);
+                    break;
+                }
+                case FunctionKeys.JoystickYSensitivityUp:
+                {
+                    this.UpdateJoystickSensitivity(Axes.AxisY, 1.0/Settings.Default.StickSensitivityAdjustmentAmount);
+                    break;
+                }
             }
 
             keyboardOutputService.ProcessFunctionKey(singleKeyValue.FunctionKey.Value);
