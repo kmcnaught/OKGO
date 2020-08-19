@@ -99,8 +99,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             this.SetScaleFactor(ParseScaleFromString(keyValue.String));
 
-            //FIXME: reinstate some way to re-use bounds
-            if (!hasTarget)
+            if (!hasTarget || keyStateService.KeyDownStates[KeyValues.ResetJoystickKey].Value == KeyDownStates.LockedDown)
             {
                 // will set 'active' once complete
                 ChooseLookToScrollBoundsTarget();
@@ -151,18 +150,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 {
                     active = true;
                     hasTarget = true;
+
+                    // Release the ResetJoystickKey if it was used
+                    keyStateService.KeyDownStates[KeyValues.ResetJoystickKey].Value = KeyDownStates.Up;
                 }
-                if (success && Settings.Default.LookToScrollLockDownBoundsKey)
-                {
-                    // Lock the bounds key down. This signals that the chosen target should be re-used during
-                    // subsequent scrolling sessions.
-                    keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value = KeyDownStates.LockedDown;
-                }
-                else if (!success)
+                else 
                 {
                     // If a target wasn't successfully chosen, de-activate scrolling and release the bounds key.
                     this.Disable();
-                    keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value = KeyDownStates.Up;
                 }
 
                 choosingBoundsTarget = false;

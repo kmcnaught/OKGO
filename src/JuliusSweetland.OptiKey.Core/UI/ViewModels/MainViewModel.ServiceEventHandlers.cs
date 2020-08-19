@@ -2380,6 +2380,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     HandleYesNoQuestionResult(true);
                     break;
 
+                case FunctionKeys.ResetJoystick:
+                    // No-op: state just gets queried by joystick functionality
+                    break;
+
                 case FunctionKeys.JoystickXSensitivityDown:
                 {
                     this.UpdateJoystickSensitivity(Axes.AxisX, Settings.Default.StickSensitivityAdjustmentAmount);

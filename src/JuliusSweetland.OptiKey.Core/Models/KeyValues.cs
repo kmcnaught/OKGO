@@ -282,6 +282,8 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue WebBrowsingKeyboardKey = new KeyValue(FunctionKeys.WebBrowsingKeyboard);
         public static readonly KeyValue YesQuestionResultKey = new KeyValue(FunctionKeys.YesQuestionResult);
 
+        public static readonly KeyValue ResetJoystickKey = new KeyValue(FunctionKeys.ResetJoystick);
+        
         private static readonly Dictionary<Languages, List<KeyValue>> multiKeySelectionKeys;
 
         static KeyValues()
@@ -477,7 +479,8 @@ namespace JuliusSweetland.OptiKey.Models
                     MouseMiddleDownUpKey,
                     MouseRightDownUpKey,
                     MultiKeySelectionIsOnKey,
-                    SleepKey
+                    SleepKey,
+                    ResetJoystickKey,
                 };
 
                 if (Settings.Default.KeySelectionTriggerSource == TriggerSources.KeyboardKeyDownsUps)
