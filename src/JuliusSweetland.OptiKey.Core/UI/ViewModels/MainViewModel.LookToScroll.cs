@@ -495,6 +495,31 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             
         }
 
+        private IEnumerable<KeyValue> GetHeldDownJoystickKeyValues()
+        {
+            List<FunctionKeys> joystickKeys = JoystickHandlers.Keys.ToList();
+
+            var heldDownJoystickKeyValues = keyStateService.KeyDownStates.Keys.Where(
+                kv => kv.FunctionKey != null &&
+                      keyStateService.KeyDownStates[kv].Value == KeyDownStates.LockedDown &&
+                      joystickKeys.Contains(kv.FunctionKey.Value)).Distinct();
+
+            return heldDownJoystickKeyValues;
+        }
+
+        private void ResetCurrentJoystick()
+        {
+            // If there's a joystick held down, reset its centre/bounds. 
+            // If not, the reset will happen when its switched on
+
+            var currentKeyValue = GetHeldDownJoystickKeyValues().FirstOrDefault();
+            if (currentKeyValue != null)
+            {
+                // Re-start with "Enable", which will check for reset request
+                JoystickHandlers[currentKeyValue.FunctionKey.Value].Enable(currentKeyValue);
+            }
+        }
+
         private void ToggleJoystick(KeyValue requestedKeyValue)
         {
             // the key value defines:

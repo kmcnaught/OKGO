@@ -2381,7 +2381,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.ResetJoystick:
-                    // No-op: state just gets queried by joystick functionality
+                    // If there's already a joystick key down, this will re-trigger it, 
+                    // otherwise the ResetJoystickKey state will just be queried next time.
+                    this.ResetCurrentJoystick();
                     break;
 
                 case FunctionKeys.JoystickXSensitivityDown:
