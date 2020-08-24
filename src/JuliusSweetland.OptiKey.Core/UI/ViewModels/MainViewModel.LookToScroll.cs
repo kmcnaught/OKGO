@@ -450,13 +450,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             // Apply changes to settings for currently-selected joystick, e.g. Left / Right / Legacy
 
-            // Find out which joystick is down by querying key states
-            List<FunctionKeys> joystickKeys = JoystickHandlers.Keys.ToList();
-            
-            KeyValue selectedKeyValue = keyStateService.KeyDownStates.Keys.Where(
-                kv => kv.FunctionKey != null &&
-                      keyStateService.KeyDownStates[kv].Value == KeyDownStates.LockedDown &&
-                      joystickKeys.Contains(kv.FunctionKey.Value)).Distinct().FirstOrDefault();
+            var selectedKeyValue = GetHeldDownJoystickKeyValues().FirstOrDefault();
             if (selectedKeyValue == null)
             {
                 Log.Error("Attempting sensitivity adjustment without any joysticks enabled");
