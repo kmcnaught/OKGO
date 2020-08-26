@@ -1,0 +1,50 @@
+<Keyboard>
+   <Name>Joystick\nTests</Name>
+   <SymbolMargin>10</SymbolMargin>   
+   <BackgroundColor>Transparent</BackgroundColor>
+   <Height>15%</Height>
+   <Position>Top</Position>
+   <BorderThickness>20,20,20,20</BorderThickness>
+   <!-- <Width>80%</Width> -->
+   <BackgroundColor>Transparent</BackgroundColor>
+   <BorderColor>Transparent</BorderColor>   
+   <Grid>
+      <Rows>1</Rows>
+      <Cols>6</Cols>
+   </Grid>
+   <Content>  
+    
+       <DynamicKey>
+         <Label>Right\nStick</Label>
+         <Action>RightJoystick</Action>
+      </DynamicKey>
+       
+       <DynamicKey>
+         <Label>Left\nStick</Label>
+         <Action>LeftJoystick</Action>
+      </DynamicKey>
+               
+       <DynamicKey>
+         <Label>Left\nx2</Label>
+         <Action Payload="2.0">LeftJoystick</Action>
+      </DynamicKey>
+
+       <DynamicKey>
+         <Label>Left\n(0,5, 2.0)</Label>
+         <Action Payload="0.5, 2.0">LeftJoystick</Action>
+      </DynamicKey>
+
+      <DynamicKey>
+         <Label>Right\nHalf</Label>
+         <Action Payload="0.5">RightJoystick</Action>
+      </DynamicKey>
+
+      <DynamicKey>
+         <Symbol>BackIcon</Symbol>
+
+         <KeyUp>XBoxLeftThumbHalfForward</KeyUp>
+         <KeyUp>XBoxLeftThumbForward</KeyUp>         
+         <Action>BackFromKeyboard</Action>
+      </DynamicKey>
+   </Content>
+</Keyboard>

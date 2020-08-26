@@ -10,23 +10,22 @@
    <BorderColor>Transparent</BorderColor>   
    <Grid>
       <Rows>1</Rows>
-      <Cols>20</Cols>
+      <Cols>11</Cols>
    </Grid>
    
    <KeyGroup Name="QuickKey" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="25" CompletionTimes="10, 1000" />
-   <KeyGroup Name="Scaling" AutoScaleToOneKeyWidth="false"/>
+   <KeyGroup Name="Scaling" AutoScaleToOneKeyWidth="false" AutoScaleToOneKeyHeight="false"/>
 
    <Content>   
-
-      <DynamicKey Width="2">
+      <DynamicKey>
          <KeyGroup>Scaling</KeyGroup>
          <Label>Restart\nRace</Label>
-         <KeyDown>XboxLeftBumper</KeyDown>
+         <KeyDown>XboxLeftShoulder</KeyDown>
          <Wait>100</Wait>
-         <KeyUp>XboxLeftBumper</KeyUp>
+         <KeyUp>XboxLeftShoulder</KeyUp>
       </DynamicKey>               
 
-      <DynamicKey Width="2">
+      <DynamicKey>
          <KeyGroup>Scaling</KeyGroup>
          <Label>Restart\nSegment</Label>
          <KeyDown>XboxY</KeyDown>
@@ -34,7 +33,7 @@
          <KeyUp>XboxY</KeyUp>
       </DynamicKey>               
 
-      <DynamicKey Width="2">
+      <DynamicKey>
          <KeyGroup>Scaling</KeyGroup>
          <Label>Auto\nSteer</Label>
          <KeyDown>XboxB</KeyDown>
@@ -42,42 +41,47 @@
          <KeyUp>XboxB</KeyUp>
       </DynamicKey>               
 
-      <DynamicKey Width="2">
+      <DynamicKey>
          <KeyGroup>Scaling</KeyGroup>
-         <Label>Right\nStick</Label>
-         <Action>RightJoystick</Action>
+         <Label>Auto\nRun</Label>
+         <KeyDown>XboxX</KeyDown>
+         <Wait>100</Wait>
+         <KeyUp>XboxX</KeyUp>
       </DynamicKey>               
 
       <DynamicKey></DynamicKey>
 
-      <DynamicKey Width="2">
+      <DynamicKey>
          <Label>JUMP</Label>
          <KeyGroup>QuickKey</KeyGroup>
          <KeyDown>XboxA</KeyDown>
          <Wait>100</Wait>
          <KeyUp>XboxA</KeyUp>
       </DynamicKey>
-
-
+  
       <DynamicKey></DynamicKey>
 
-      <DynamicKey Width="2">
+      <DynamicKey>
+         <KeyGroup>Scaling</KeyGroup>
+         <Label>Right\nStick</Label>
+         <Action>RightJoystick</Action>
+      </DynamicKey>             
+
+      <DynamicKey>
          <Label>Walk</Label>
          <KeyUp>XBoxLeftThumbHalfForward</KeyUp>
          <KeyToggle>XBoxLeftThumbForward</KeyToggle>
       </DynamicKey>
 
 
-      <DynamicKey Width="2">
+      <DynamicKey>
          <KeyGroup>Scaling</KeyGroup>
          <Label>Slow\nwalk</Label>
          <KeyUp>XBoxLeftThumbForward</KeyUp>
          <KeyToggle>XBoxLeftThumbHalfForward</KeyToggle>
       </DynamicKey>   
 
-      <DynamicKey Width="2"></DynamicKey>
-
-      <DynamicKey Width="2">
+      <DynamicKey>
          <KeyGroup>Scaling</KeyGroup>
          <Symbol>BackIcon</Symbol>
          <KeyUp>XBoxLeftThumbHalfForward</KeyUp>

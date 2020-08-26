@@ -1,0 +1,65 @@
+<Keyboard>
+   <Name>Basic</Name>
+   <SymbolMargin>10</SymbolMargin>   
+   <BackgroundColor>Transparent</BackgroundColor>
+   <Height>15%</Height>
+   <Width>75%</Width>
+   <Position>Bottom</Position>
+   <BorderThickness>20,20,20,20</BorderThickness>
+   <Width>90%</Width>
+   <BackgroundColor>Transparent</BackgroundColor>
+   <BorderColor>Transparent</BorderColor>   
+   <Grid>
+      <Rows>1</Rows>
+      <Cols>7</Cols>
+   </Grid>
+   
+   <KeyGroup Name="QuickKey" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="25" CompletionTimes="10, 1000" />   
+
+   <Content>   
+
+      <DynamicKey >         
+         <Label>Right\nStick</Label>
+         <Action>RightJoystick</Action>
+      </DynamicKey>               
+
+      <DynamicKey >         
+         <Label>Legacy\nStick</Label>
+         <Action>LegacyJoystick</Action>
+      </DynamicKey>   
+
+      <DynamicKey >         
+         <Label>Left\nStick</Label>
+         <Action>LeftJoystick</Action>
+      </DynamicKey>   
+
+      <DynamicKey >
+         <Label>Quick\nJump</Label>
+         <KeyGroup>QuickKey</KeyGroup>
+         <KeyDown>XboxA</KeyDown>
+         <Wait>100</Wait>
+         <KeyUp>XboxA</KeyUp>
+      </DynamicKey>
+
+      <DynamicKey >
+         <Label>Walk</Label>
+         <KeyUp>XBoxLeftThumbHalfForward</KeyUp>
+         <KeyToggle>XBoxLeftThumbForward</KeyToggle>
+      </DynamicKey>
+
+      <DynamicKey >
+         <Label>Slow\nwalk</Label>
+         <KeyUp>XBoxLeftThumbForward</KeyUp>
+         <KeyToggle>XBoxLeftThumbHalfForward</KeyToggle>
+      </DynamicKey>   
+
+      
+
+      <DynamicKey >         
+         <Symbol>BackIcon</Symbol>
+         <KeyUp>XBoxLeftThumbHalfForward</KeyUp>
+         <KeyUp>XBoxLeftThumbForward</KeyUp>         
+         <Action>BackFromKeyboard</Action>
+      </DynamicKey>
+   </Content>
+</Keyboard>

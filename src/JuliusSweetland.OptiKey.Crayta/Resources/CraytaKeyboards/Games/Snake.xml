@@ -1,0 +1,33 @@
+<Keyboard>
+   <Name>Snake</Name>
+   <SymbolMargin>10</SymbolMargin>   
+   <BackgroundColor>Transparent</BackgroundColor>
+   <Height>15%</Height>
+   <Position>Bottom</Position>
+   <BorderThickness>20,20,20,20</BorderThickness>
+   <Width>80%</Width>
+   <BackgroundColor>Transparent</BackgroundColor>
+   <BorderColor>Transparent</BorderColor>   
+   <Grid>
+      <Rows>1</Rows>
+      <Cols>6</Cols>
+   </Grid>
+   
+   <Content>   
+
+      <DynamicKey Row="0" Col="0" >         
+         <Label>Left\nStick</Label>
+         <Action>LeftJoystick</Action>
+      </DynamicKey>  
+
+      <DynamicKey/>
+      <DynamicKey/>
+      <DynamicKey/>
+      <DynamicKey/>
+      
+      <DynamicKey Row="0" Col="5" >
+         <Symbol>BackIcon</Symbol>
+         <Action>BackFromKeyboard</Action>
+      </DynamicKey>
+   </Content>
+</Keyboard>

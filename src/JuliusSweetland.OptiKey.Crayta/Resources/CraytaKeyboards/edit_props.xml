@@ -1,0 +1,107 @@
+<Keyboard>
+  <Name>Edit\nProperties</Name>
+  <SymbolMargin>10</SymbolMargin>
+  <BorderThickness>1,1,1,1</BorderThickness>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <HideFromKeyboardMenu>True</HideFromKeyboardMenu>
+  <BorderColor>Transparent</BorderColor>
+  <WindowState>Floating</WindowState>
+  <Position>Top</Position>
+  <Width>60%</Width>
+  <Height>60%</Height>
+  <HorizontalOffset>20%</HorizontalOffset>
+  <VerticalOffset>5%</VerticalOffset>
+  
+  <KeyGroup Name="AcceleratingKey" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="25" CompletionTimes="1000, 750, 300, 300, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150," />
+  <!-- Dwell completion Time linked to key completion time, otherwise you
+       get aliasing and repeat activations get skipped -->
+  <KeyGroup Name="ScrollKey" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="25" CompletionTimes="1100"/>
+  <Grid>
+    <Rows>16</Rows>
+    <Cols>18</Cols>
+  </Grid>
+  <Content>
+    <DynamicKey Width="3" Height="3" Row="0" Col="0">
+      <Label>&lt;&lt;</Label>
+      <KeyDown>XboxRightThumbLeft</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxRightThumbLeft</KeyUp>
+    </DynamicKey>
+    <DynamicKey Width="3" Height="3" Row="0" Col="3">
+      <Symbol>ArrowPointingToTopIcon</Symbol>
+      <KeyGroup>AcceleratingKey</KeyGroup>
+      <KeyDown>XBoxUp</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XBoxUp</KeyUp>
+    </DynamicKey>
+    <DynamicKey Width="3" Height="3" Row="0" Col="6">
+      <Label>&gt;&gt;</Label> 
+      <KeyDown>XboxRightThumbRight</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxRightThumbRight</KeyUp>
+    </DynamicKey>
+    <DynamicKey Width="2" Height="2" Row="0" Col="10">
+      <Label>Ⓧ</Label>
+      <KeyDown>XboxX</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxX</KeyUp>
+    </DynamicKey>
+    <DynamicKey Width="2" Height="2" Row="0" Col="13">
+      <Label>Ⓨ</Label>
+      <KeyDown>XboxY</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxY</KeyUp>
+    </DynamicKey>
+    <DynamicKey Width="2" Height="2" Row="0" Col="16">
+      <Symbol>BackIcon</Symbol>
+      <Action>BackFromKeyboard</Action>
+    </DynamicKey>    
+    <DynamicKey Width="3" Height="3" Row="3" Col="0">
+      <Symbol>ArrowPointingToLeftIcon</Symbol>
+      <KeyGroup>AcceleratingKey</KeyGroup>
+      <KeyDown>XBoxLeft</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XBoxLeft</KeyUp>
+    </DynamicKey>
+    <DynamicKey Width="3" Height="3" Row="3" Col="3">
+      <Label>Ⓐ</Label>
+      <KeyDown>XboxA</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxA</KeyUp>
+    </DynamicKey>
+    <DynamicKey Width="3" Height="3" Row="3" Col="6">
+      <Symbol>ArrowPointingToRightIcon</Symbol>
+      <KeyGroup>AcceleratingKey</KeyGroup>
+      <KeyDown>XBoxRight</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XBoxRight</KeyUp>
+    </DynamicKey>
+    <DynamicKey Width="3" Height="3" Row="6" Col="3">
+      <Symbol>ArrowPointingToBottomIcon</Symbol>
+      <KeyGroup>AcceleratingKey</KeyGroup>
+      <KeyDown>XBoxDown</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XBoxDown</KeyUp>
+    </DynamicKey>
+    <DynamicKey Width="3" Height="3" Row="6" Col="6">
+      <Label>Ⓑ</Label>
+      <KeyDown>XboxB</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxB</KeyUp>
+    </DynamicKey>    
+    <DynamicKey Width="2" Height="2" Row="10" Col="6">
+      <Label>scroll ↑</Label>
+      <KeyGroup>ScrollKey</KeyGroup>
+      <KeyDown>XBoxLeftThumbForward</KeyDown>
+      <Wait>1100</Wait>
+      <KeyUp>XBoxLeftThumbForward</KeyUp>
+    </DynamicKey>
+    <DynamicKey Width="2" Height="2" Row="13" Col="6">
+      <Label>scroll ↓</Label>
+      <KeyGroup>ScrollKey</KeyGroup>
+      <KeyDown>XBoxLeftThumbBackward</KeyDown>
+      <Wait>1100</Wait>
+      <KeyUp>XBoxLeftThumbBackward</KeyUp>
+    </DynamicKey>
+  </Content>
+</Keyboard>

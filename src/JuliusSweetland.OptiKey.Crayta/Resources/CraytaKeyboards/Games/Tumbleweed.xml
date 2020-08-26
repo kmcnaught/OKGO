@@ -1,0 +1,106 @@
+<Keyboard>
+   <Name>Tumbleweed</Name>
+   <SymbolMargin>10</SymbolMargin>   
+   <BackgroundColor>Transparent</BackgroundColor>
+   <Height>15%</Height>
+   <Position>Top</Position>
+   <BorderThickness>20,20,20,20</BorderThickness>
+   <Width>70%</Width>
+   <BackgroundColor>Transparent</BackgroundColor>
+   <BorderColor>Transparent</BorderColor>   
+   <Grid>
+      <Rows>2</Rows>
+      <Cols>6</Cols>
+   </Grid>
+   
+   <KeyGroup Name="QuickKey" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="25" CompletionTimes="10, 1000" />
+   
+   <Content>   
+      <DynamicKey>
+         <Label>X</Label>
+         <KeyDown>XboxX</KeyDown>
+         <Wait>100</Wait>
+         <KeyUp>XboxX</KeyUp>
+      </DynamicKey>               
+               
+      <DynamicKey>
+         <Label>RT</Label>
+         <KeyDown>XboxRightTrigger</KeyDown>
+         <Wait>100</Wait>
+         <KeyUp>XboxRightTrigger</KeyUp>
+      </DynamicKey>
+
+      <DynamicKey>
+         <Label>Slow\nwalk</Label>
+         <KeyUp>XBoxLeftThumbForward</KeyUp>
+         <KeyToggle>XBoxLeftThumbHalfForward</KeyToggle>
+      </DynamicKey>   
+
+      <DynamicKey>
+         <Label>Walk</Label>
+         <KeyUp>XBoxLeftThumbHalfForward</KeyUp>
+         <KeyToggle>XBoxLeftThumbForward</KeyToggle>
+      </DynamicKey>
+
+      <DynamicKey>
+         <Label>A</Label>
+         <KeyDown>XboxA</KeyDown>
+         <Wait>100</Wait>
+         <KeyUp>XboxA</KeyUp>
+      </DynamicKey>    
+
+
+      <DynamicKey>
+         <Label>Up</Label>
+         <KeyDown>XboxUp</KeyDown>
+         <Wait>100</Wait>
+         <KeyUp>XboxUp</KeyUp>
+      </DynamicKey>  
+
+
+      <!-- Second row starts here -->
+
+      <DynamicKey>
+         <Label>Y</Label>
+         <KeyDown>XboxY</KeyDown>
+         <Wait>100</Wait>
+         <KeyUp>XboxY</KeyUp>
+      </DynamicKey>      
+
+      <DynamicKey>
+         <Label>JUMP</Label>
+         <KeyGroup>QuickKey</KeyGroup>
+         <KeyDown>XboxA</KeyDown>
+         <Wait>100</Wait>
+         <KeyUp>XboxA</KeyUp>
+      </DynamicKey>
+  
+
+
+      <DynamicKey>
+         <Label>Right\nStick</Label>
+         <Action>RightJoystick</Action>
+      </DynamicKey>             
+
+
+      <DynamicKey>         
+         <Label>Legacy\nStick</Label>
+         <Action>LegacyJoystick</Action>
+      </DynamicKey>   
+
+
+      <DynamicKey>
+         <Label>B</Label>
+         <KeyDown>XboxB</KeyDown>
+         <Wait>100</Wait>
+         <KeyUp>XboxB</KeyUp>
+      </DynamicKey>  
+
+      <DynamicKey>
+         <Symbol>BackIcon</Symbol>
+         <KeyUp>XBoxLeftThumbHalfForward</KeyUp>
+         <KeyUp>XBoxLeftThumbForward</KeyUp>         
+         <Action>BackFromKeyboard</Action>
+      </DynamicKey>
+   </Content>
+</Keyboard>

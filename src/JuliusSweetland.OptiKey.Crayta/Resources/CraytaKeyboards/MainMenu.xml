@@ -90,10 +90,7 @@
       <Wait>200</Wait>
       <KeyUp>XboxB</KeyUp>
     </DynamicKey>
-    <DynamicKey Row="10" Col="10">
-      <Symbol>BackIcon</Symbol>
-      <Action>BackFromKeyboard</Action>
-    </DynamicKey>
+
     <DynamicKey Row="9" Col="0">
       <KeyDown>XboxStart</KeyDown>
       <Wait>200</Wait>
@@ -106,5 +103,15 @@
       <Label>Press\nany key</Label>
       <ShiftDownLabel></ShiftDownLabel>
     </DynamicKey>
+
+    <DynamicKey Row="9" Col="10">
+      <Label>ABC</Label>
+      <ChangeKeyboard BackReturnsHere="True">ABC</ChangeKeyboard>
+    </DynamicKey>
+    <DynamicKey Row="10" Col="10">
+      <Symbol>BackIcon</Symbol>
+      <Action>BackFromKeyboard</Action>
+    </DynamicKey>
+
   </Content>
 </Keyboard>

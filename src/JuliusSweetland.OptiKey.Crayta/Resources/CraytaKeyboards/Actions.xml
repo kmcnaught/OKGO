@@ -1,0 +1,73 @@
+<Keyboard>
+   <Name>Actions</Name>
+   <SymbolMargin>10</SymbolMargin>   
+   <BackgroundColor>Transparent</BackgroundColor>
+   <WindowState>Floating</WindowState>
+   <Height>15%</Height>
+   <Position>Top</Position>
+   <BorderThickness>20,20,20,20</BorderThickness>
+   <Width>60%</Width>
+   <BackgroundColor>Transparent</BackgroundColor>
+   <BorderColor>Transparent</BorderColor>   
+   <Grid>
+      <Rows>1</Rows>
+      <Cols>6</Cols>
+   </Grid>
+   <Content>   
+    <DynamicKey>      
+      <Label>View\nactions</Label>      
+      <KeyDown>XboxDown</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XboxDown</KeyUp>
+    </DynamicKey>
+
+    <DynamicKey>      
+      <Label>Action 1</Label>      
+      <KeyDown>XboxDown</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XboxDown</KeyUp>
+      <Wait>50</Wait>
+      <KeyDown>XboxUp</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XboxUp</KeyUp>      
+    </DynamicKey>
+
+    <DynamicKey>      
+      <Label>Action 2</Label>      
+      <KeyDown>XboxDown</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XboxDown</KeyUp>
+      <Wait>50</Wait>
+      <KeyDown>XboxRight</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XboxRight</KeyUp>      
+    </DynamicKey>
+
+    <DynamicKey>      
+      <Label>Action 3</Label>      
+      <KeyDown>XboxDown</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XboxDown</KeyUp>
+      <Wait>50</Wait>
+      <KeyDown>XboxDown</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XboxDown</KeyUp>      
+    </DynamicKey>
+
+    <DynamicKey>      
+      <Label>Action 4</Label>      
+      <KeyDown>XboxDown</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XboxDown</KeyUp>
+      <Wait>50</Wait>
+      <KeyDown>XboxLeft</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XboxLeft</KeyUp>      
+    </DynamicKey>
+
+     <DynamicKey>
+       <Symbol>BackIcon</Symbol>
+       <Action>BackFromKeyboard</Action>
+     </DynamicKey>
+   </Content>
+</Keyboard>

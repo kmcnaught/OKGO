@@ -1,0 +1,101 @@
+<Keyboard>
+  <Name>Inventory</Name>
+  <SymbolMargin>10</SymbolMargin>
+  <BorderThickness>1,1,1,1</BorderThickness>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <BorderColor>Transparent</BorderColor>
+  <WindowState>Floating</WindowState>
+  <VerticalOffset>-5%</VerticalOffset>
+  <Position>Bottom</Position>
+  <Width>90%</Width>
+  <Height>90%</Height>
+  <Grid>
+    <Rows>6</Rows>
+    <Cols>8</Cols>
+  </Grid>
+
+  <KeyGroup Name="AcceleratingKey" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="25" CompletionTimes="1000, 600, 300, 200, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150" />
+  <Content>
+    <DynamicKey Col="3" Row="0">
+      <Symbol>ArrowPointingToLeftIcon</Symbol>
+      <KeyGroup>AcceleratingKey</KeyGroup>
+      <KeyDown>XBoxLeft</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XBoxLeft</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="4" Row="0">
+      <Symbol>ArrowPointingToRightIcon</Symbol>
+      <KeyGroup>AcceleratingKey</KeyGroup>
+      <KeyDown>XBoxRight</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XBoxRight</KeyUp>
+    </DynamicKey>
+
+    <DynamicKey Col="0" Row="1">
+      <Label>LT</Label>
+      <KeyDown>XboxLeftTrigger</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxLeftTrigger</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="7" Row="1">
+      <Label>RT</Label>
+      <KeyDown>XboxRightTrigger</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxRightTrigger</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="7" Row="2">
+      <Label>Up</Label>
+      <Symbol>ArrowPointingToTopIcon</Symbol>
+      <KeyGroup>AcceleratingKey</KeyGroup>
+      <KeyDown>XboxUp</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XboxUp</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="0" Row="2">
+      <Label>Ⓨ</Label>      
+      <KeyDown>XboxY</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxY</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="7" Row="3">
+      <Label>Down</Label>
+      <Symbol>ArrowPointingToBottomIcon</Symbol>
+      <KeyGroup>AcceleratingKey</KeyGroup>
+      <KeyDown>XBoxDown</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XBoxDown</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="0" Row="3">
+      <Label>Ⓐ</Label>
+      <KeyDown>XboxA</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxA</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="0" Row="4">
+      <Label>Ⓑ</Label>
+      <KeyDown>XboxB</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxB</KeyUp>
+    </DynamicKey>
+    <!-- <DynamicKey Col="7" Row="4">
+      <Label>FreeScroll</Label>
+    </DynamicKey> -->
+    <DynamicKey Col="1" Row="5">
+      <Label>LB</Label>
+      <KeyDown>XboxLeftShoulder</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxLeftShoulder</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="6" Row="5">
+      <Label>RB</Label>
+      <KeyDown>XboxRightShoulder</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxRightShoulder</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="7" Row="5">
+      <Label>Back</Label>
+      <Symbol>BackIcon</Symbol>
+      <Action>BackFromKeyboard</Action>
+    </DynamicKey>
+  </Content>
+</Keyboard>

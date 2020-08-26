@@ -1,0 +1,60 @@
+<Keyboard>
+  <Name>Joystick\nSettings</Name>
+  <SymbolMargin>10</SymbolMargin>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <WindowState>Floating</WindowState>
+  <Height>15%</Height>
+  <Position>Top</Position>
+  <BorderThickness>20,20,20,20</BorderThickness>
+  <HideFromKeyboardMenu>True</HideFromKeyboardMenu>
+  <!-- <Width>80%</Width>-->
+  <BackgroundColor>Transparent</BackgroundColor>
+  <BorderColor>Transparent</BorderColor>
+  <Grid>
+    <Rows>2</Rows>
+    <Cols>5</Cols>
+  </Grid>
+  <Content>
+    <DynamicKey>
+      <Label>Reset\nCentre</Label>
+      <Action>ResetJoystick</Action>
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Legacy\nStick</Label>
+      <Action>LegacyJoystick</Action>
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Horizontal\nsensitivity ++</Label>
+      <Action>JoystickXSensitivityUp</Action>
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Vertical\nsensitivity ++</Label>
+      <Action>JoystickYSensitivityUp</Action>
+    </DynamicKey>
+    <DynamicKey> 
+      <Action>MouseLeftClickAtCentre</Action>
+      <Label>Click\nanywhere</Label>     
+    </DynamicKey>
+    <!-- second row starts here -->
+    <DynamicKey>
+      <Label>Left\nStick</Label>
+      <Action>LeftJoystick</Action>
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Right\nStick</Label>
+      <Action>RightJoystick</Action>
+    </DynamicKey>
+    <DynamicKey>
+      <Label>Horizontal\nsensitivity −−</Label>
+      <Action>JoystickXSensitivityDown</Action>
+    </DynamicKey>    
+    <DynamicKey>
+      <Label>Vertical\nsensitivity −−</Label>
+      <Action>JoystickYSensitivityDown</Action>
+    </DynamicKey>
+    <DynamicKey>
+      <Symbol>BackIcon</Symbol>
+      <Action>BackFromKeyboard</Action>
+    </DynamicKey>
+  </Content>
+</Keyboard>

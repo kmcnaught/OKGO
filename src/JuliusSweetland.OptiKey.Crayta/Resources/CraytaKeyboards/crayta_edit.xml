@@ -5,15 +5,16 @@
    <Height>20%</Height>
    <Position>Top</Position>
    <BorderThickness>20,20,20,20</BorderThickness>
-   <!-- <Width>80%</Width> -->
+   <Width>80%</Width>
    <BackgroundColor>Transparent</BackgroundColor>
    <BorderColor>Transparent</BorderColor>
    <WindowState>Floating</WindowState>
    <Grid>
       <Rows>2</Rows>
-      <Cols>7</Cols>
+      <Cols>10</Cols>
    </Grid>
    <Content>   
+
       <DynamicKey>
          <Label>LT\nDelete</Label>
          <KeyDown>XboxLeftTrigger</KeyDown>
@@ -25,8 +26,7 @@
          <KeyDown>XboxRightTrigger</KeyDown>
          <Wait>200</Wait>
          <KeyUp>XboxRightTrigger</KeyUp>
-      </DynamicKey>
-      
+      </DynamicKey>   
 
       <DynamicKey>
          <Label>RT\nToggle</Label>
@@ -56,6 +56,31 @@
       </DynamicKey>
 
 
+
+      <DynamicKey>
+         <Label>Slow\nwalk</Label>
+         <KeyUp>XBoxLeftThumbForward</KeyUp>
+         <KeyToggle>XBoxLeftThumbHalfForward</KeyToggle>
+      </DynamicKey>
+
+      <DynamicKey>
+         <Label>Fly ↑</Label>
+         <KeyDown>XboxA</KeyDown>
+         <Wait>350</Wait>
+         <KeyUp>XboxA</KeyUp>
+      </DynamicKey>
+
+      <DynamicKey>
+         <Label>Toggle\nDrone</Label>
+         <KeyDown>XboxA</KeyDown>
+         <Wait>100</Wait>
+         <KeyUp>XboxA</KeyUp>
+         <Wait>150</Wait>
+         <KeyDown>XboxA</KeyDown>
+         <Wait>300</Wait>
+         <KeyUp>XboxA</KeyUp>
+      </DynamicKey>
+
       <DynamicKey>
          <Label>Preview</Label>
          <KeyDown>XboxDown</KeyDown>
@@ -64,12 +89,20 @@
          <ChangeKeyboard BackReturnsHere="True">crayta_play</ChangeKeyboard>
       </DynamicKey>
 
+      <!-- start of the second row -->
 
       <DynamicKey>
          <Label>Voxel\ntool</Label>
          <KeyDown>XboxUp</KeyDown>
          <Wait>200</Wait>
          <KeyUp>XboxUp</KeyUp>
+      </DynamicKey>
+
+      <DynamicKey>
+         <Label>Undo</Label>
+         <KeyDown>XboxLeft</KeyDown>
+         <Wait>200</Wait>
+         <KeyUp>XboxLeft</KeyUp>
       </DynamicKey>
 
       <DynamicKey>
@@ -92,13 +125,22 @@
          <Action>RightJoystick</Action>
       </DynamicKey>
 
-
-
       <DynamicKey>
          <Label>Walk</Label>
          <KeyToggle>XBoxLeftThumbForward</KeyToggle>
       </DynamicKey>
 
+      <DynamicKey>
+         <Label>Fly ↓</Label>
+         <KeyDown>XboxRightThumb</KeyDown>
+         <Wait>350</Wait>
+         <KeyUp>XboxRightThumb</KeyUp>
+      </DynamicKey>
+
+      <DynamicKey>
+         <Label>Properties</Label>
+         <ChangeKeyboard BackReturnsHere="True">edit_props</ChangeKeyboard>
+      </DynamicKey>
 
       <DynamicKey>
          <Symbol>BackIcon</Symbol>
