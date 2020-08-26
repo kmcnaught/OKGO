@@ -443,8 +443,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             //scrollInteractionHandler.ToggleActive();
         }
 
-        public Dictionary<FunctionKeys, Look2DInteractionHandler> JoystickHandlers;
-
+        public Dictionary<FunctionKeys, Look2DInteractionHandler> JoystickHandlers = new Dictionary<FunctionKeys, Look2DInteractionHandler>();
 
         private void UpdateJoystickSensitivity(Axes axis, double multiplier)
         {
