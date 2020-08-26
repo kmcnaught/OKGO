@@ -63,6 +63,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_09D04A97E99745C1ABF95E39BE6D54E0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0CECA79725F40441F3BD512A6217C3B7"
         "OwnerKey" = "8:_5C1C9435CE5DE2EAE4F3E9E0682E9EA9"
         "MsmSig" = "8:_UNDEFINED"
@@ -232,6 +238,12 @@
         "Entry"
         {
         "MsmKey" = "8:_17F7EDC87F52412BBA18EC2E9D183C41"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1855524C67854DE0B0B92F1D35F95685"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -453,6 +465,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_291224D9D0B1486BB36E7C173B026042"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2B067B7FBFE4AB26C76E472CBA5EA0E5"
         "OwnerKey" = "8:_C912A12E9B0F44E7AA1CF58B9CE73232"
         "MsmSig" = "8:_UNDEFINED"
@@ -641,6 +659,12 @@
         {
         "MsmKey" = "8:_3A95C300AC4BA9EF4323EB1723931117"
         "OwnerKey" = "8:_275ED9D7217989E978FB8267CE492F98"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3C545450074F41968EB1790AB5ECEFE7"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -975,6 +999,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7AA01561E38045C6A3BEE93FF9BB2478"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7CF09E06A0574804A5BCD48E3DBE6832"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1035,6 +1065,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7F9166F05D8545ABAB61A149634CB51B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7FBB17218E2BEA85CC52B8AF2DE6E6AD"
         "OwnerKey" = "8:_443EE5BB4044818548AF697E9ADE90B4"
         "MsmSig" = "8:_UNDEFINED"
@@ -1078,6 +1114,12 @@
         "Entry"
         {
         "MsmKey" = "8:_814CB9CED4514B15A75B4774EED46319"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_818CCDB46DA548A1BD1721CC6A7203A0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1665,6 +1707,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DAE4723BE67749289E7315FC2C2492F9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_DAFC55C13EE277520CC4F74A03CD984F"
         "OwnerKey" = "8:_C912A12E9B0F44E7AA1CF58B9CE73232"
         "MsmSig" = "8:_UNDEFINED"
@@ -1871,6 +1919,12 @@
         {
         "MsmKey" = "8:_F68EBAB6A5428B1FD4E2EDB8BD05C192"
         "OwnerKey" = "8:_3CF9520CC81C48919FA77390C7CCB580"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F847C06180204ABFAC9E8ED1F712241E"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -3064,6 +3118,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_09D04A97E99745C1ABF95E39BE6D54E0"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\bin\\Release\\Resources\\CraytaKeyboards\\crayta_play.xml"
+            "TargetName" = "8:crayta_play.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_FE2E78147F89453AAF2DD39A6E084C8C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0CECA79725F40441F3BD512A6217C3B7"
             {
             "AssemblyRegister" = "3:1"
@@ -3358,6 +3432,26 @@
                 }
             "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\bin\\Release\\Microsoft.Practices.ServiceLocation.dll"
             "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_FE2E78147F89453AAF2DD39A6E084C8C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1855524C67854DE0B0B92F1D35F95685"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\bin\\Release\\Resources\\CraytaKeyboards\\Inventory.xml"
+            "TargetName" = "8:Inventory.xml"
             "Tag" = "8:"
             "Folder" = "8:_FE2E78147F89453AAF2DD39A6E084C8C"
             "Condition" = "8:"
@@ -3859,6 +3953,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_291224D9D0B1486BB36E7C173B026042"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\bin\\Release\\Resources\\CraytaKeyboards\\MainMenu.xml"
+            "TargetName" = "8:MainMenu.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_FE2E78147F89453AAF2DD39A6E084C8C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2B067B7FBFE4AB26C76E472CBA5EA0E5"
             {
             "AssemblyRegister" = "3:1"
@@ -4235,7 +4349,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.6.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.7.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_38D54356DD2B80FE7F44C25377CE75EE"
@@ -4373,6 +4487,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3C545450074F41968EB1790AB5ECEFE7"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\bin\\Release\\Resources\\CraytaKeyboards\\ABC.xml"
+            "TargetName" = "8:ABC.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_FE2E78147F89453AAF2DD39A6E084C8C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3E51CE8296C24F88BCC333266D662D26"
@@ -5354,6 +5488,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7AA01561E38045C6A3BEE93FF9BB2478"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\bin\\Release\\Resources\\CraytaKeyboards\\crayta_edit.xml"
+            "TargetName" = "8:crayta_edit.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_FE2E78147F89453AAF2DD39A6E084C8C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7CF09E06A0574804A5BCD48E3DBE6832"
             {
             "AssemblyRegister" = "3:1"
@@ -5467,6 +5621,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7F9166F05D8545ABAB61A149634CB51B"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\bin\\Release\\Resources\\CraytaKeyboards\\Actions.xml"
+            "TargetName" = "8:Actions.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_FE2E78147F89453AAF2DD39A6E084C8C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7FBB17218E2BEA85CC52B8AF2DE6E6AD"
             {
             "AssemblyRegister" = "3:1"
@@ -5513,6 +5687,26 @@
                 }
             "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\bin\\Release\\MouseKeyboardActivityMonitor.dll"
             "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_FE2E78147F89453AAF2DD39A6E084C8C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_818CCDB46DA548A1BD1721CC6A7203A0"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\bin\\Release\\Resources\\CraytaKeyboards\\edit_props.xml"
+            "TargetName" = "8:edit_props.xml"
             "Tag" = "8:"
             "Folder" = "8:_FE2E78147F89453AAF2DD39A6E084C8C"
             "Condition" = "8:"
@@ -5987,7 +6181,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.6.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.7.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_96E58761B21E4FBBB12F7BED7A09AE75"
@@ -7004,6 +7198,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DAE4723BE67749289E7315FC2C2492F9"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\bin\\Release\\Resources\\CraytaKeyboards\\joystick_settings.xml"
+            "TargetName" = "8:joystick_settings.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_FE2E78147F89453AAF2DD39A6E084C8C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DAFC55C13EE277520CC4F74A03CD984F"
             {
             "AssemblyRegister" = "3:1"
@@ -7562,6 +7776,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F847C06180204ABFAC9E8ED1F712241E"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\bin\\Release\\Resources\\CraytaKeyboards\\crayta_settings.xml"
+            "TargetName" = "8:crayta_settings.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_FE2E78147F89453AAF2DD39A6E084C8C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FFACE5F9D17C8AD639BE101759F04C25"
             {
             "SourcePath" = "8:sapi.dll"
@@ -7693,15 +7927,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CraytaAccess"
-        "ProductCode" = "8:{91E9B781-9949-4A2E-BB7F-A0B2DF8D2D6A}"
-        "PackageCode" = "8:{19A299E9-1B2A-4B5A-AD69-D9174D4D0570}"
+        "ProductCode" = "8:{F44A79F5-0468-4162-A9EE-612BFDB175A9}"
+        "PackageCode" = "8:{316A6375-F7BE-4851-9576-A6017B5A85E8}"
         "UpgradeCode" = "8:{37EF57F8-CAA5-4B93-B590-7D22AD3494ED}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.3"
+        "ProductVersion" = "8:1.0.4"
         "Manufacturer" = "8:KMcNaught"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -7718,7 +7952,7 @@
         "TargetPlatform" = "3:0"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
-        "RunPostBuildEvent" = "3:0"
+        "RunPostBuildEvent" = "3:1"
         }
         "Registry"
         {
