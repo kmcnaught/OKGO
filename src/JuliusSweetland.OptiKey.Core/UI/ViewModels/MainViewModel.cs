@@ -108,20 +108,20 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             // Initialise any 2D interaction handlers
             Action<float, float> leftJoystickAction = (x, y) =>
             {
-                Log.InfoFormat("leftJoystickAction, ({0}, {1})", x, y);
+                Log.DebugFormat("leftJoystickAction, ({0}, {1})", x, y);
                 keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisX", (float)Settings.Default.LeftStickSensitivityX * x);
                 keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisY", -(float)Settings.Default.LeftStickSensitivityY * y);
             };
             Action<float, float> rightJoystickAction = (x, y) =>
             {
-                Log.InfoFormat("rightJoystickAction, ({0}, {1})", x, y);
+                Log.DebugFormat("rightJoystickAction, ({0}, {1})", x, y);
                 keyboardOutputService.XBoxProcessJoystick("RightJoystickAxisX", (float)Settings.Default.RightStickSensitivityX * x);
                 keyboardOutputService.XBoxProcessJoystick("RightJoystickAxisY", -(float)Settings.Default.RightStickSensitivityY * y);
             };
 
             Action<float, float> legacyJoystickAction = (x, y) =>
             {
-                Log.InfoFormat("legacyJoystickAction, ({0}, {1})", x, y);
+                Log.DebugFormat("legacyJoystickAction, ({0}, {1})", x, y);
                 bool isLeftThumbHeldDown = false;
                 foreach (var key in keyStateService.KeyDownStates.Keys)
                 {
