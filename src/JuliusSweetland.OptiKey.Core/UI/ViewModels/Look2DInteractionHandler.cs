@@ -29,8 +29,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly FunctionKeys triggerKey;  // This function key controls the handler
 
         // How this handler is configured (may change)
-        private Point pointBoundsTarget = new Point();
-        private bool hasTarget = false; // FIXME: use an optional instead
+        private Point? pointBoundsTarget;
         private float scaleX = 1.0f;
         private float scaleY = 1.0f;
 
@@ -93,7 +92,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             this.SetScaleFactor(ParseScaleFromString(keyValue.String));
 
-            if (!hasTarget || keyStateService.KeyDownStates[KeyValues.ResetJoystickKey].Value == KeyDownStates.LockedDown)
+            if (!pointBoundsTarget.HasValue || keyStateService.KeyDownStates[KeyValues.ResetJoystickKey].Value == KeyDownStates.LockedDown)
             {
                 // will set 'active' once complete
                 ChooseLookToScrollBoundsTarget();
@@ -174,14 +173,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Log.Info("Choosing look to scroll bounds target.");
 
             choosingBoundsTarget = true;
-            pointBoundsTarget = new Point();
+            pointBoundsTarget = null;
 
             Action<bool> callback = success =>
             {
                 if (success)
                 {
                     IsActive = true;
-                    hasTarget = true;
 
                     // Release the ResetJoystickKey if it was used
                     keyStateService.KeyDownStates[KeyValues.ResetJoystickKey].Value = KeyDownStates.Up;
@@ -256,8 +254,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 return false;
             }
 
+            if (!pointBoundsTarget.HasValue)
+            {
+                Log.Info("Look to scroll doesn't have target. Deactivating look to scroll.");
+                return false;
+            }
+
             bounds = boundsContainer.Value;
-            centre = GetCurrentLookToScrollCentrePoint(bounds);
+            centre = pointBoundsTarget.Value;
 
             return bounds.Contains(position);
         }
@@ -269,11 +273,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 : mainViewModel.GetVirtualScreenBoundsInPixels();
 
             return bounds;
-        }
-
-        private Point GetCurrentLookToScrollCentrePoint(Rect bounds)
-        {
-            return pointBoundsTarget;
         }
 
         private Vector CalculateLookToScrollVelocity(Point current, Point centre)
