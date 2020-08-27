@@ -24,12 +24,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private DateTime? lastUpdate = null;
         private bool hasTarget = false;
 
-        private Action<float, float> updateAction;
-        public FunctionKeys triggerKey;  // This function key controls the handler
-        public KeyValue currentKeyValue; // This key value was the one used to trigger it this time (e.g. may differ in payload)
+        private readonly Action<float, float> updateAction;
+        private readonly FunctionKeys triggerKey;  // This function key controls the handler
+        private KeyValue currentKeyValue; // This key value was the one used to trigger it this time (e.g. may differ in payload)
 
-        private IKeyStateService keyStateService;
-        private MainViewModel mainViewModel;
+        private readonly IKeyStateService keyStateService;
+        private readonly MainViewModel mainViewModel;
 
         private float scaleX = 1.0f;
         private float scaleY = 1.0f;
