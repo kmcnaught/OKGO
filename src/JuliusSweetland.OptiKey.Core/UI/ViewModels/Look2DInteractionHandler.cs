@@ -106,8 +106,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             if (active)
             {
+                // FIXME: redundancy
                 active = false;
-                IsLookToScrollActive = false;
+                IsActive = false;
 
                 // Turn off any keys associated with this interaction handler
                 foreach (var keyValue in keyStateService.KeyDownStates.Keys)
@@ -333,10 +334,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 Height = vDeadzone * 2,
             };
 
-            IsLookToScrollActive = active;
-            ActiveLookToScrollBounds = Graphics.PixelsToDips(bounds);
-            ActiveLookToScrollDeadzone = Graphics.PixelsToDips(deadzone);
-            ActiveLookToScrollMargins = Graphics.PixelsToDips(bounds.CalculateMarginsAround(deadzone));
+            IsActive = active;
+            ActiveBounds = Graphics.PixelsToDips(bounds);
+            ActiveDeadzone = Graphics.PixelsToDips(deadzone);
+            ActiveMargins = Graphics.PixelsToDips(bounds.CalculateMarginsAround(deadzone));
         }
 
         public Action SuspendLookToScrollWhileChoosingPointForMouse()
@@ -377,32 +378,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             return resumeAction;
         }
 
-        private bool isLookToScrollActive = false;
-        public bool IsLookToScrollActive
+        private bool isActive = false;
+        public bool IsActive
         {
-            get { return isLookToScrollActive; }
-            private set { SetProperty(ref isLookToScrollActive, value); }
+            get { return isActive; }
+            private set { SetProperty(ref isActive, value); }
         }
 
-        private Rect activeLookToScrollBounds = Rect.Empty;
-        public Rect ActiveLookToScrollBounds
+        private Rect activeBounds = Rect.Empty;
+        public Rect ActiveBounds
         {
-            get { return activeLookToScrollBounds; }
-            private set { SetProperty(ref activeLookToScrollBounds, value); }
+            get { return activeBounds; }
+            private set { SetProperty(ref activeBounds, value); }
         }
 
-        private Rect activeLookToScrollDeadzone = Rect.Empty;
-        public Rect ActiveLookToScrollDeadzone
+        private Rect activeDeadzone = Rect.Empty;
+        public Rect ActiveDeadzone
         {
-            get { return activeLookToScrollDeadzone; }
-            private set { SetProperty(ref activeLookToScrollDeadzone, value); }
+            get { return activeDeadzone; }
+            private set { SetProperty(ref activeDeadzone, value); }
         }
 
-        private Thickness activeLookToScrollMargins = new Thickness();
-        public Thickness ActiveLookToScrollMargins
+        private Thickness activeMargins = new Thickness();
+        public Thickness ActiveMargins
         {
-            get { return activeLookToScrollMargins; }
-            private set { SetProperty(ref activeLookToScrollMargins, value); }
+            get { return activeMargins; }
+            private set { SetProperty(ref activeMargins, value); }
         }
 
     }

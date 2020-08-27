@@ -36,9 +36,9 @@ namespace JuliusSweetland.OptiKey.UI.Windows
 
         private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (string.Equals("ActiveLookToScrollBounds", e.PropertyName))
+            if (string.Equals("ActiveBounds", e.PropertyName))
             {
-                Rect bounds = viewModel.ActiveLookToScrollBounds;
+                Rect bounds = viewModel.ActiveBounds;
                 if (!bounds.IsEmpty)
                 {
                     Top = bounds.Top;
