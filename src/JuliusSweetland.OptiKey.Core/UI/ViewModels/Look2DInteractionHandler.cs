@@ -25,7 +25,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private readonly Action<float, float> updateAction;
         private readonly FunctionKeys triggerKey;  // This function key controls the handler
-        private KeyValue currentKeyValue; // This key value was the one used to trigger it this time (e.g. may differ in payload)
 
         private readonly IKeyStateService keyStateService;
         private readonly MainViewModel mainViewModel;
@@ -84,7 +83,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public bool Enable(KeyValue keyValue)
         {
-            currentKeyValue = keyValue;
             Log.InfoFormat("Activating 2D control: {0}", this.triggerKey);
 
             this.SetScaleFactor(ParseScaleFromString(keyValue.String));
