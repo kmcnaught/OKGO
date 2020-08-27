@@ -20,7 +20,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private bool choosingBoundsTarget = false;
         private Point pointBoundsTarget = new Point();
-        private IntPtr windowBoundsTarget = IntPtr.Zero;
         private DateTime? lastUpdate = null;
         private bool hasTarget = false;
 
@@ -133,7 +132,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             choosingBoundsTarget = true;
             pointBoundsTarget = new Point();
-            windowBoundsTarget = IntPtr.Zero;
 
             Action<bool> callback = success =>
             {
@@ -179,11 +177,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         else if (!PInvoke.SetForegroundWindow(hWnd))
                         {
                             Log.WarnFormat("Could not bring window at the point, {0}, to the front.", hWnd);
-                        }
-                        else
-                        {
-                            windowBoundsTarget = hWnd;
-                            Log.InfoFormat("Brought window at the point, {0}, to the front.", hWnd);
                         }
                     }
                 }
@@ -249,14 +242,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             bounds = boundsContainer.Value;
             centre = GetCurrentLookToScrollCentrePoint(bounds);
-
-            // If using a window or portion of it as the bounds target, only scroll while pointing _at_ that window, 
-            // not while pointing at another window on top of it.
-            /*if (mainViewModel.GetHwndForFrontmostWindowAtPoint(position) != windowBoundsTarget)
-            {
-                // this keeps flicking on/off with stadia, not sure why :(
-                return false;
-            }*/
 
             return bounds.Contains(position);
         }
