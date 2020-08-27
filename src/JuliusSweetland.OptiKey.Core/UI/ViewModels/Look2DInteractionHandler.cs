@@ -14,26 +14,28 @@ using Prism.Mvvm;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
+    // This class should eventually be a generic handler for 2D interactions. It currently has some joystick-specific 
+    // logic leaking in. 
     public class Look2DInteractionHandler : BindableBase, ILookToScrollOverlayViewModel
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        private bool choosingBoundsTarget = false;
-        private Point pointBoundsTarget = new Point();
-        private DateTime? lastUpdate = null;
-        private bool hasTarget = false;
-
-        private readonly Action<float, float> updateAction;
-        private readonly FunctionKeys triggerKey;  // This function key controls the handler
-
         private readonly IKeyStateService keyStateService;
         private readonly MainViewModel mainViewModel;
 
+        // How this handler is configured (once)
+        private readonly Action<float, float> updateAction;
+        private readonly FunctionKeys triggerKey;  // This function key controls the handler
+
+        // How this handler is configured (may change)
+        private Point pointBoundsTarget = new Point();
+        private bool hasTarget = false; // FIXME: use an optional instead
+        public bool active = false; // FIXME: rename enabled? vs temporary state
         private float scaleX = 1.0f;
         private float scaleY = 1.0f;
 
-        public bool active = false;
-        // FIXME: need state renaming for different active state: enabled vs active?
+        // Temporary state 
+        private bool choosingBoundsTarget = false;
+        private DateTime? lastUpdate = null;
 
         public Look2DInteractionHandler(FunctionKeys triggerKey, Action<float, float> updateAction, 
             IKeyStateService keyStateService, MainViewModel mainViewModel)
