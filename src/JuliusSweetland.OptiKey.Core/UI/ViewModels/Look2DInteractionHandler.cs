@@ -18,6 +18,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
     // logic leaking in. 
     public class Look2DInteractionHandler : BindableBase, ILookToScrollOverlayViewModel
     {
+        #region Fields
+
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly IKeyStateService keyStateService;
         private readonly MainViewModel mainViewModel;
@@ -37,6 +39,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private bool choosingBoundsTarget = false;
         private DateTime? lastUpdate = null;
 
+        #endregion
+
+        #region Constructor
+        
         public Look2DInteractionHandler(FunctionKeys triggerKey, Action<float, float> updateAction, 
             IKeyStateService keyStateService, MainViewModel mainViewModel)
         {
@@ -46,42 +52,41 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.mainViewModel = mainViewModel;
         }
 
-        public void SetScaleFactor(float[] scaleXY)
+        #endregion
+
+        #region Properties
+
+        private bool isActive = false;
+        public bool IsActive
         {
-            scaleX = scaleXY[0];
-            scaleY = scaleXY[1];
+            get { return isActive; }
+            private set { SetProperty(ref isActive, value); }
         }
 
-        private static float[] ParseScaleFromString(string s)
+        private Rect activeBounds = Rect.Empty;
+        public Rect ActiveBounds
         {
-            float xScale = 1.0f;
-            float yScale = 1.0f;
-
-            if (!String.IsNullOrEmpty(s))
-            {
-                try
-                {
-                    char[] delimChars = { ',' };
-                    float[] parts = s.ToFloatArray(delimChars);
-                    if (parts.Length == 1)
-                    {
-                        xScale = yScale = parts[0];
-                    }
-                    else if (parts.Length > 1)
-                    {
-                        xScale = parts[0];
-                        yScale = parts[1];
-                    }
-                }
-                catch (Exception e)
-                {
-                    Log.ErrorFormat("Couldn't parse scale {0}", s);
-                }
-            }
-
-            float[] scale = { xScale, yScale }; ;
-            return scale;
+            get { return activeBounds; }
+            private set { SetProperty(ref activeBounds, value); }
         }
+
+        private Rect activeDeadzone = Rect.Empty;
+        public Rect ActiveDeadzone
+        {
+            get { return activeDeadzone; }
+            private set { SetProperty(ref activeDeadzone, value); }
+        }
+
+        private Thickness activeMargins = new Thickness();
+        public Thickness ActiveMargins
+        {
+            get { return activeMargins; }
+            private set { SetProperty(ref activeMargins, value); }
+        }
+
+        #endregion
+
+        #region Public methods
 
         public bool Enable(KeyValue keyValue)
         {
@@ -127,6 +132,46 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
+        public void SetScaleFactor(float[] scaleXY)
+        {
+            scaleX = scaleXY[0];
+            scaleY = scaleXY[1];
+        }
+
+        // Call this method with new gaze points
+        public void UpdateLookToScroll(Point position)
+        {
+            if (!active)
+                return;
+
+            var thisUpdate = DateTime.Now;
+
+            bool shouldUpdate = ShouldUpdateLookToScroll(position, out Rect bounds, out Point centre);
+
+            if (shouldUpdate)
+            {
+                Log.DebugFormat("Updating look to scroll using position: {0}.", position);
+                Log.DebugFormat("Current look to scroll bounds rect is: {0}.", bounds);
+                Log.DebugFormat("Current look to scroll centre point is: {0}.", centre);
+
+                Vector scrollAmount = CalculateLookToScrollVelocity(position, centre);
+                PerformLookToScroll(scrollAmount);
+            }
+            else
+            {
+                updateAction(0.0f, 0.0f);
+            }
+
+            UpdateLookToScrollOverlayProperties(active, bounds, centre);
+
+            lastUpdate = thisUpdate;
+        }
+
+        #endregion
+
+
+        #region Private methods
+
         private void ChooseLookToScrollBoundsTarget()
         {
             Log.Info("Choosing look to scroll bounds target.");
@@ -144,7 +189,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     // Release the ResetJoystickKey if it was used
                     keyStateService.KeyDownStates[KeyValues.ResetJoystickKey].Value = KeyDownStates.Up;
                 }
-                else 
+                else
                 {
                     // If a target wasn't successfully chosen, de-activate scrolling and release the bounds key.
                     this.Disable();
@@ -188,33 +233,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         }
 
 
-        public void UpdateLookToScroll(Point position)
-        {
-            if (!active)
-                return;
-
-            var thisUpdate = DateTime.Now;
-
-            bool shouldUpdate = ShouldUpdateLookToScroll(position, out Rect bounds, out Point centre);
-
-            if (shouldUpdate)
-            {
-                Log.DebugFormat("Updating look to scroll using position: {0}.", position);
-                Log.DebugFormat("Current look to scroll bounds rect is: {0}.", bounds);
-                Log.DebugFormat("Current look to scroll centre point is: {0}.", centre);
-
-                Vector scrollAmount = CalculateLookToScrollVelocity(position, centre);
-                PerformLookToScroll(scrollAmount);
-            }
-            else
-            {
-                updateAction(0.0f, 0.0f);
-            }
-
-            UpdateLookToScrollOverlayProperties(active, bounds, centre);
-
-            lastUpdate = thisUpdate;
-        }
 
         private bool ShouldUpdateLookToScroll(Point position, out Rect bounds, out Point centre)
         {
@@ -318,7 +336,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void PerformLookToScroll(Vector scrollAmount)
         {
-            updateAction(scaleX*(float)scrollAmount.X, scaleY*(float)scrollAmount.Y);
+            updateAction(scaleX * (float)scrollAmount.X, scaleY * (float)scrollAmount.Y);
         }
 
         private void UpdateLookToScrollOverlayProperties(bool active, Rect bounds, Point centre)
@@ -340,33 +358,37 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ActiveMargins = Graphics.PixelsToDips(bounds.CalculateMarginsAround(deadzone));
         }
 
-        private bool isActive = false;
-        public bool IsActive
+        private static float[] ParseScaleFromString(string s)
         {
-            get { return isActive; }
-            private set { SetProperty(ref isActive, value); }
+            float xScale = 1.0f;
+            float yScale = 1.0f;
+
+            if (!String.IsNullOrEmpty(s))
+            {
+                try
+                {
+                    char[] delimChars = { ',' };
+                    float[] parts = s.ToFloatArray(delimChars);
+                    if (parts.Length == 1)
+                    {
+                        xScale = yScale = parts[0];
+                    }
+                    else if (parts.Length > 1)
+                    {
+                        xScale = parts[0];
+                        yScale = parts[1];
+                    }
+                }
+                catch (Exception e)
+                {
+                    Log.ErrorFormat("Couldn't parse scale {0}", s);
+                }
+            }
+
+            float[] scale = { xScale, yScale }; ;
+            return scale;
         }
 
-        private Rect activeBounds = Rect.Empty;
-        public Rect ActiveBounds
-        {
-            get { return activeBounds; }
-            private set { SetProperty(ref activeBounds, value); }
-        }
-
-        private Rect activeDeadzone = Rect.Empty;
-        public Rect ActiveDeadzone
-        {
-            get { return activeDeadzone; }
-            private set { SetProperty(ref activeDeadzone, value); }
-        }
-
-        private Thickness activeMargins = new Thickness();
-        public Thickness ActiveMargins
-        {
-            get { return activeMargins; }
-            private set { SetProperty(ref activeMargins, value); }
-        }
-
+        #endregion
     }
 }
