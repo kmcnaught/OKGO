@@ -31,7 +31,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         // How this handler is configured (may change)
         private Point pointBoundsTarget = new Point();
         private bool hasTarget = false; // FIXME: use an optional instead
-        public bool active = false; // FIXME: rename enabled? vs temporary state
         private float scaleX = 1.0f;
         private float scaleY = 1.0f;
 
@@ -101,18 +100,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
             else
             {
-                active = true;
+                IsActive = true;
             }
 
-            return active;
+            return IsActive;
         }
 
         public void Disable()
         {
-            if (active)
+            if (IsActive)
             {
-                // FIXME: redundancy
-                active = false;
                 IsActive = false;
 
                 // Turn off any keys associated with this interaction handler
@@ -141,7 +138,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         // Call this method with new gaze points
         public void UpdateLookToScroll(Point position)
         {
-            if (!active)
+            if (!IsActive)
                 return;
 
             var thisUpdate = DateTime.Now;
@@ -162,7 +159,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 updateAction(0.0f, 0.0f);
             }
 
-            UpdateLookToScrollOverlayProperties(active, bounds, centre);
+            UpdateLookToScrollOverlayProperties(bounds, centre);
 
             lastUpdate = thisUpdate;
         }
@@ -183,7 +180,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 if (success)
                 {
-                    active = true;
+                    IsActive = true;
                     hasTarget = true;
 
                     // Release the ResetJoystickKey if it was used
@@ -339,7 +336,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             updateAction(scaleX * (float)scrollAmount.X, scaleY * (float)scrollAmount.Y);
         }
 
-        private void UpdateLookToScrollOverlayProperties(bool active, Rect bounds, Point centre)
+        private void UpdateLookToScrollOverlayProperties(Rect bounds, Point centre)
         {
             int hDeadzone = Settings.Default.LookToScrollHorizontalDeadzone;
             int vDeadzone = Settings.Default.LookToScrollVerticalDeadzone;
@@ -352,7 +349,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 Height = vDeadzone * 2,
             };
 
-            IsActive = active;
             ActiveBounds = Graphics.PixelsToDips(bounds);
             ActiveDeadzone = Graphics.PixelsToDips(deadzone);
             ActiveMargins = Graphics.PixelsToDips(bounds.CalculateMarginsAround(deadzone));
