@@ -52,7 +52,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             scaleY = scaleXY[1];
         }
 
-        private float[] ParseScaleFromString(string s)
+        private static float[] ParseScaleFromString(string s)
         {
             float xScale = 1.0f;
             float yScale = 1.0f;
