@@ -86,7 +86,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         #region Public methods
 
-        public bool Enable(KeyValue keyValue)
+        public void Enable(KeyValue keyValue)
         {
             Log.InfoFormat("Activating 2D control: {0}", this.triggerKey);
 
@@ -94,15 +94,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             if (!pointBoundsTarget.HasValue || keyStateService.KeyDownStates[KeyValues.ResetJoystickKey].Value == KeyDownStates.LockedDown)
             {
-                // will set 'active' once complete
+                // will set 'IsActive' once complete
                 ChooseLookToScrollBoundsTarget();
             }
             else
             {
                 IsActive = true;
             }
-
-            return IsActive;
         }
 
         public void Disable()
@@ -348,6 +346,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 Height = vDeadzone * 2,
             };
 
+            IsActive = isActive;
             ActiveBounds = Graphics.PixelsToDips(bounds);
             ActiveDeadzone = Graphics.PixelsToDips(deadzone);
             ActiveMargins = Graphics.PixelsToDips(bounds.CalculateMarginsAround(deadzone));
