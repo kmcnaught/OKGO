@@ -350,7 +350,6 @@
     </Compile>
     <Compile Include="Services\IControllerOutputService.cs" />
     <Compile Include="Services\NullControllerOutputService.cs" />
-    <Compile Include="Services\XBoxControllerOutputService.cs" />
     <Compile Include="Services\PluginEngine\PluginEngine.cs" />
     <Compile Include="Services\Suggestions\IManagedSuggestions.cs" />
     <Compile Include="Services\Suggestions\BasicAutoComplete.cs" />
