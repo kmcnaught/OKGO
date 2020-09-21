@@ -1,8 +1,10 @@
 ﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using WindowsInput;
 using WindowsInput.Native;
 using JuliusSweetland.OptiKey.Enums;
@@ -116,6 +118,127 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
+        public bool TryXBoxThumbPress(string buttonString, KeyPressKeyValue.KeyPressType pressType)
+        {
+            if (!supportsController)
+            {
+                throw new Exception("No controller set up. \nHave you installed ViGemBus?");
+            }
+
+            // Examples of valid buttonString :
+            // XBoxLeftThumbLeft
+            // XBoxRightThumbUp
+            // Any combination: XBox{Left/Right}Thumb{Left/Right/Up/Down/Forward/Back/Backward}
+            // Half versions: XBox{Left/Right}ThumbHalf{Left/Right/Up/Down/Forward/Back/Backward}
+            // 
+            // With stick, direction & amplitude separated with |:
+            // XBoxLeftThumb | NorthEast | 0.25
+            // XBoxRightThumb | South | 1.0
+            // XBoxRightThumb | Up | 1.0
+            // XBoxRightThumb | 10 | 1.0
+            // XBoxRightThumb | Down 
+            // XBoxRightThumb|Left
+            //  
+            // If no amplitude given, will default to 1.0
+            // Direction is word, compass direction or degrees clockwise from north (integer)
+            // Whitespace and capitalisation is ignored
+
+            buttonString = buttonString.ToLowerInvariant();
+            if (!buttonString.Contains("xbox") || !(buttonString.Contains("thumb")))
+            {
+                return false;
+            }
+
+            // Split string into parts
+            const char sep = '|';
+            string[] parts = buttonString.Split(sep);
+            string mainString = parts[0].Trim();
+            string directionString = parts.Length > 1 ? parts[1].Trim() : mainString;
+            string amountString = parts.Length > 2 ? parts[2].Trim() : null;
+
+            // Extract amplitude
+            float amount = 1.0f;
+            if (mainString.Contains("half"))
+                amount = 0.5f;
+            else if (mainString.Contains("neutral"))
+                amount = 0.0f;
+            else if (amountString != null) 
+                float.TryParse(amountString, NumberStyles.Any, CultureInfo.InvariantCulture, out amount);
+
+            // Extract direction from either directionString, (which might be copy of whole of mainString)
+            int direction = 0; // Degrees clockwise from north
+
+            if (directionString.EndsWith("northeast"))
+                direction = 45;
+            else if (directionString.EndsWith("southeast"))
+                direction = 135;
+            else if (directionString.EndsWith("southwest"))
+                direction = 225;
+            else if (directionString.EndsWith("northwest"))
+                direction = 315;
+            else if (directionString.EndsWith("up") ||
+                      directionString.EndsWith("forward") ||
+                      directionString.EndsWith("north"))
+                direction = 0;
+            else if (directionString.EndsWith("right") ||
+                     directionString.EndsWith("east"))
+                direction = 90;
+            else if (directionString.EndsWith("down") ||
+                     directionString.EndsWith("backward") ||
+                     directionString.EndsWith("back") ||
+                     directionString.EndsWith("south"))
+                direction = 180;
+            else if (directionString.EndsWith("left") ||
+                     directionString.EndsWith("west"))
+                direction = 270;
+           
+            else
+                int.TryParse(directionString, NumberStyles.Any, CultureInfo.InvariantCulture, out direction);
+        
+            
+            // Split amount into x, y components
+            double dAmountX = (double)amount*Math.Sin((double)direction / 180 * Math.PI);
+            double dAmountY = (double)amount *Math.Cos((double)direction / 180 * Math.PI);
+            short amountX = (short)(Int16.MaxValue * dAmountX);
+            short amountY = (short)(Int16.MaxValue * dAmountY);
+
+            // Press a thumbstick!
+            if (mainString.Contains("leftthumb"))
+            {
+                // TODO: do we *always* want to set an axis, even to value of 0? Would we sometimes want to control
+                // axes independently? 
+                if (pressType == KeyPressKeyValue.KeyPressType.Press || pressType == KeyPressKeyValue.KeyPressType.PressAndRelease)
+                {
+                    controller.SetAxisValue(Xbox360Axis.LeftThumbX, amountX);
+                    controller.SetAxisValue(Xbox360Axis.LeftThumbY, amountY);
+                    return true;
+                }
+                if (pressType == KeyPressKeyValue.KeyPressType.Release)
+                {
+
+                    controller.SetAxisValue(Xbox360Axis.LeftThumbX, 0);
+                    controller.SetAxisValue(Xbox360Axis.LeftThumbY, 0);
+                    return true;
+                }
+            }
+            else if (mainString.Contains("rightthumb"))
+            {
+                if (pressType == KeyPressKeyValue.KeyPressType.Press)
+                {
+                    controller.SetAxisValue(Xbox360Axis.RightThumbX, amountX);
+                    controller.SetAxisValue(Xbox360Axis.RightThumbY, amountY);
+                    return true;
+                }
+                if (pressType == KeyPressKeyValue.KeyPressType.Release)
+                {
+                    controller.SetAxisValue(Xbox360Axis.RightThumbX, 0);
+                    controller.SetAxisValue(Xbox360Axis.RightThumbY, 0);
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void XBoxButtonUp(XboxButtons button)
         {
             if (!supportsController)
@@ -145,6 +268,7 @@ namespace JuliusSweetland.OptiKey.Services
                 if (slider != null)
                 {
                     controller.SetSliderValue(slider, (byte) (0));
+                    return;
                 }
             }
             catch (Exception exception)

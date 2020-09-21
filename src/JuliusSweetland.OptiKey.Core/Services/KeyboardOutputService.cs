@@ -532,7 +532,13 @@ namespace JuliusSweetland.OptiKey.Services
                 return;
             }
 
-            // Is it a controller output?
+            // Is it a controller thumbstick press?
+            if (publishService.TryXBoxThumbPress(inKey, type))
+            {
+                return;
+            }
+
+            // Is it another controller output?
             XboxButtons button;
             if (Enum.TryParse(inKey, true, out button))
             {

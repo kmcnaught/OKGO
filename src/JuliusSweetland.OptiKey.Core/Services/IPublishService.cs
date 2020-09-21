@@ -2,6 +2,7 @@
 using System.Windows;
 using WindowsInput.Native;
 using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Models;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -13,6 +14,7 @@ namespace JuliusSweetland.OptiKey.Services
         void XBoxButtonDown(XboxButtons button);
         void XBoxButtonUp(XboxButtons button);
         void XBoxProcessJoystick(XboxAxes axisEnum, float amount);
+        bool TryXBoxThumbPress(string buttonString, KeyPressKeyValue.KeyPressType pressType);
         void LeftMouseButtonClick();
         void LeftMouseButtonDoubleClick();
         void LeftMouseButtonDown();
