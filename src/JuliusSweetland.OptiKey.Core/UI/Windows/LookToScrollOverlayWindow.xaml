@@ -22,22 +22,22 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
     </Window.Resources>
 
     <Window.Visibility>
-        <Binding Path="IsLookToScrollActive" Converter="{StaticResource BooleanToVisibility}"/>
+        <Binding Path="IsActive" Converter="{StaticResource BooleanToVisibility}"/>
     </Window.Visibility>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="{Binding Path=ActiveLookToScrollMargins.Top}"/>
-            <RowDefinition Height="{Binding Path=ActiveLookToScrollDeadzone.Height}"/>
-            <RowDefinition Height="{Binding Path=ActiveLookToScrollMargins.Bottom}"/>
+            <RowDefinition Height="{Binding Path=ActiveMargins.Top}"/>
+            <RowDefinition Height="{Binding Path=ActiveDeadzone.Height}"/>
+            <RowDefinition Height="{Binding Path=ActiveMargins.Bottom}"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="{Binding Path=ActiveLookToScrollMargins.Left}"/>
-            <ColumnDefinition Width="{Binding Path=ActiveLookToScrollDeadzone.Width}"/>
-            <ColumnDefinition Width="{Binding Path=ActiveLookToScrollMargins.Right}"/>
+            <ColumnDefinition Width="{Binding Path=ActiveMargins.Left}"/>
+            <ColumnDefinition Width="{Binding Path=ActiveDeadzone.Width}"/>
+            <ColumnDefinition Width="{Binding Path=ActiveMargins.Right}"/>
         </Grid.ColumnDefinitions>
-        
+
         <!-- Bounds -->
         <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" 
                 BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayBoundsColour, Converter={StaticResource ColourNameToBrush}}" 

@@ -150,13 +150,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 Vector scrollAmount = CalculateLookToScrollVelocity(position, centre);
                 PerformLookToScroll(scrollAmount);
+
+                UpdateLookToScrollOverlayProperties(bounds, centre);
             }
             else
             {
                 updateAction(0.0f, 0.0f);
             }
-
-            UpdateLookToScrollOverlayProperties(bounds, centre);
 
             lastUpdate = thisUpdate;
         }
