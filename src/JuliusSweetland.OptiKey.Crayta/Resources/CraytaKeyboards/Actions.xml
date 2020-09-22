@@ -1,73 +1,136 @@
 <Keyboard>
-   <Name>Actions</Name>
-   <SymbolMargin>10</SymbolMargin>   
-   <BackgroundColor>Transparent</BackgroundColor>
-   <WindowState>Floating</WindowState>
-   <Height>15%</Height>
-   <Position>Top</Position>
-   <BorderThickness>20,20,20,20</BorderThickness>
-   <Width>60%</Width>
-   <BackgroundColor>Transparent</BackgroundColor>
-   <BorderColor>Transparent</BorderColor>   
-   <Grid>
-      <Rows>1</Rows>
-      <Cols>6</Cols>
-   </Grid>
-   <Content>   
-    <DynamicKey>      
-      <Label>View\nactions</Label>      
+  <Name>Actions</Name>
+  <SymbolMargin>10</SymbolMargin>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <WindowState>Floating</WindowState>
+  <Height>100%</Height>
+  <Width>80%</Width>
+  <Position>Top</Position>
+  <BorderThickness>20,20,20,20</BorderThickness>
+  <Width>100%</Width>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <BorderColor>Transparent</BorderColor>
+  <Grid>
+    <Rows>7</Rows>
+    <Cols>9</Cols>
+  </Grid>
+  <KeyGroup Name="Radial"
+    BorderColor="transparent"
+    BackgroundColor="transparent"
+    ForegroundColor="#202020"/>
+  <Content>
+    <DynamicKey Row="0" Col="0">
+      <Label>LB</Label>
+      <KeyDown>XboxLeftShoulder</KeyDown>
+      <Wait>600</Wait>
+      <KeyUp>XboxLeftShoulder</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="0" Col="4">
+      <KeyGroup>Radial</KeyGroup>
+      <Symbol>ChevronNorth</Symbol>
+      <KeyDown>XBoxRightThumb|North</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XBoxRightThumb|North</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="0" Col="8">
+      <Label>RB</Label>
+      <KeyDown>XboxRightShoulder</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxRightShoulder</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="1" Col="2">
+      <KeyGroup>Radial</KeyGroup>
+      <Symbol>ChevronNorthWest</Symbol>
+      <KeyDown>XBoxRightThumb|NorthWest</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XBoxRightThumb|NorthWest</KeyUp>
+      <Wait>100</Wait>
       <KeyDown>XboxDown</KeyDown>
       <Wait>50</Wait>
       <KeyUp>XboxDown</KeyUp>
     </DynamicKey>
-
-    <DynamicKey>      
-      <Label>Action 1</Label>      
+    <DynamicKey Row="1" Col="6">
+      <KeyGroup>Radial</KeyGroup>
+      <Symbol>ChevronNorthEast</Symbol>
+      <KeyDown>XBoxRightThumb|NorthEast</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XBoxRightThumb|NorthEast</KeyUp>
+      <Wait>100</Wait>
       <KeyDown>XboxDown</KeyDown>
       <Wait>50</Wait>
       <KeyUp>XboxDown</KeyUp>
-      <Wait>50</Wait>
-      <KeyDown>XboxUp</KeyDown>
-      <Wait>50</Wait>
-      <KeyUp>XboxUp</KeyUp>      
     </DynamicKey>
-
-    <DynamicKey>      
-      <Label>Action 2</Label>      
+    <DynamicKey Row="3" Col="1">
+      <KeyGroup>Radial</KeyGroup>
+      <Symbol>ChevronWest</Symbol>
+      <KeyDown>XBoxRightThumb|West</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XBoxRightThumb|West</KeyUp>
+      <Wait>100</Wait>
       <KeyDown>XboxDown</KeyDown>
       <Wait>50</Wait>
       <KeyUp>XboxDown</KeyUp>
-      <Wait>50</Wait>
-      <KeyDown>XboxRight</KeyDown>
-      <Wait>50</Wait>
-      <KeyUp>XboxRight</KeyUp>      
     </DynamicKey>
-
-    <DynamicKey>      
-      <Label>Action 3</Label>      
+    <DynamicKey Row="3" Col="4">
+      <Label>Select</Label>
       <KeyDown>XboxDown</KeyDown>
       <Wait>50</Wait>
       <KeyUp>XboxDown</KeyUp>
-      <Wait>50</Wait>
-      <KeyDown>XboxDown</KeyDown>
-      <Wait>50</Wait>
-      <KeyUp>XboxDown</KeyUp>      
     </DynamicKey>
-
-    <DynamicKey>      
-      <Label>Action 4</Label>      
+    <DynamicKey Row="3" Col="7">
+      <KeyGroup>Radial</KeyGroup>
+      <Symbol>ChevronEast</Symbol>
+      <KeyDown>XBoxRightThumb|East</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XBoxRightThumb|East</KeyUp>
+      <Wait>100</Wait>
       <KeyDown>XboxDown</KeyDown>
       <Wait>50</Wait>
       <KeyUp>XboxDown</KeyUp>
-      <Wait>50</Wait>
-      <KeyDown>XboxLeft</KeyDown>
-      <Wait>50</Wait>
-      <KeyUp>XboxLeft</KeyUp>      
     </DynamicKey>
-
-     <DynamicKey>
-       <Symbol>BackIcon</Symbol>
-       <Action>BackFromKeyboard</Action>
-     </DynamicKey>
-   </Content>
+    <DynamicKey Row="5" Col="0">
+      <Label>Cancel</Label>
+      <KeyDown>XboxB</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxB</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="5" Col="2">
+      <KeyGroup>Radial</KeyGroup>
+      <Symbol>ChevronSouthWest</Symbol>
+      <KeyDown>XBoxRightThumb|SouthWest</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XBoxRightThumb|SouthWest</KeyUp>
+      <Wait>100</Wait>
+      <KeyDown>XboxDown</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XboxDown</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="5" Col="6">
+      <KeyGroup>Radial</KeyGroup>
+      <Symbol>ChevronSouthEast</Symbol>
+      <KeyDown>XBoxRightThumb|SouthEast</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XBoxRightThumb|SouthEast</KeyUp>
+      <Wait>100</Wait>
+      <KeyDown>XboxDown</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XboxDown</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="5" Col="8">
+      <Symbol>BackIcon</Symbol>
+      <Label>back</Label>
+      <Action>BackFromKeyboard</Action>
+    </DynamicKey>
+    <DynamicKey Row="6" Col="4">
+      <KeyGroup>Radial</KeyGroup>
+      <Symbol>ChevronSouth</Symbol>
+      <KeyDown>XBoxRightThumb|South</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XBoxRightThumb|South</KeyUp>
+      <Wait>100</Wait>
+      <KeyDown>XboxDown</KeyDown>
+      <Wait>50</Wait>
+      <KeyUp>XboxDown</KeyUp>
+    </DynamicKey>
+  </Content>
 </Keyboard>
