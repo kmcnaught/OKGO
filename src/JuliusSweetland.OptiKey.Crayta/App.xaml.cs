@@ -225,7 +225,7 @@ namespace JuliusSweetland.OptiKey.Crayta
 
                     inputService.RequestResume(); //Start the input service
 
-                    await CheckForUpdates(inputService, audioService, mainViewModel);
+                    // await CheckForUpdates(inputService, audioService, mainViewModel);
                 };
 
                 if (mainWindowManipulationService.SizeAndPositionIsInitialised)
