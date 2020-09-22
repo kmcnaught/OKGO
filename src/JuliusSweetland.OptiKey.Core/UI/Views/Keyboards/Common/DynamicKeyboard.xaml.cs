@@ -888,6 +888,11 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             else if (newKey.ForegroundColourOverride != null)
                 newKey.KeyDownForegroundOverride = new SolidColorBrush(HlsColor.Fade(((SolidColorBrush)newKey.ForegroundColourOverride).Color, .15));
 
+            if (ValidColor(xmlKey.BorderColor, out colorBrush))
+                newKey.BorderColourOverride = colorBrush;
+            else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.BorderColor, out colorBrush)))
+                newKey.BorderColourOverride = colorBrush;
+
             if (ValidColor(xmlKey.BackgroundColor, out colorBrush))
                 newKey.BackgroundColourOverride = colorBrush;
             else if (keyGroupList != null && keyGroupList.Exists(x => ValidColor(x.BackgroundColor, out colorBrush)))

@@ -447,6 +447,11 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                         <Setter Property="Background" Value="{Binding Path=BackgroundColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
                     </DataTrigger>
 
+                    <!--This key has a Border Colour Override-->
+                    <DataTrigger Binding="{Binding Path=BorderColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource OverrideHasValue}, Mode=OneWay}" Value="True">
+                        <Setter Property="BorderBrush" Value="{Binding Path=BorderColourOverride, RelativeSource={RelativeSource AncestorType={x:Type controls:Key}}, Converter={StaticResource CloneBrush}, Mode=OneWay}" />
+                    </DataTrigger>
+
                     <!--This key is in a key down state of On and is not only visible when in use-->
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
