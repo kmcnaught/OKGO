@@ -3,7 +3,7 @@
   <SymbolMargin>10</SymbolMargin>
   <BackgroundColor>Transparent</BackgroundColor>
   <WindowState>Floating</WindowState>
-  <Height>15%</Height>
+  <Height>20%</Height>
   <Position>Top</Position>
   <BorderThickness>20,20,20,20</BorderThickness>
   <HideFromKeyboardMenu>True</HideFromKeyboardMenu>
