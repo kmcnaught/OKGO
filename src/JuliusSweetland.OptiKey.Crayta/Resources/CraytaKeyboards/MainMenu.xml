@@ -40,7 +40,7 @@
     <DynamicKey Row="8" Col="4">
       <Label>&lt;&lt;</Label>
       <KeyDown>XboxRightThumbLeft</KeyDown>
-      <Wait>200</Wait>
+      <Wait>150</Wait>
       <KeyUp>XboxRightThumbLeft</KeyUp>
     </DynamicKey>
     <DynamicKey Row="8" Col="5">
@@ -52,7 +52,7 @@
     <DynamicKey Row="8" Col="6">
       <Label>&gt;&gt;</Label>
       <KeyDown>XboxRightThumbRight</KeyDown>
-      <Wait>200</Wait>
+      <Wait>150</Wait>
       <KeyUp>XboxRightThumbRight</KeyUp>
     </DynamicKey>
     <DynamicKey Row="9" Col="4">
