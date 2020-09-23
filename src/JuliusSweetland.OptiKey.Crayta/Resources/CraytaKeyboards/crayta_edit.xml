@@ -75,7 +75,7 @@
          <KeyDown>XboxA</KeyDown>
          <Wait>100</Wait>
          <KeyUp>XboxA</KeyUp>
-         <Wait>150</Wait>
+         <Wait>200</Wait>
          <KeyDown>XboxA</KeyDown>
          <Wait>300</Wait>
          <KeyUp>XboxA</KeyUp>
@@ -83,9 +83,9 @@
 
       <DynamicKey>
          <Label>Preview</Label>
-         <KeyDown>XboxDown</KeyDown>
-         <Wait>1200</Wait>
-         <KeyUp>XboxDown</KeyUp>
+         <KeyDown>XboxStart</KeyDown>
+         <Wait>1500</Wait>
+         <KeyUp>XboxStart</KeyUp>
          <ChangeKeyboard BackReturnsHere="True">crayta_play</ChangeKeyboard>
       </DynamicKey>
 
