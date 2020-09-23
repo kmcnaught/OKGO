@@ -15,7 +15,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         private static Settings defaultInstance;
         
         // Settings singleton used by core library is configured by each executable with their own derived settings.       
-        public static Settings Default {sen
+        public static Settings Default {
             get {
                 if (null == defaultInstance)
                 {
