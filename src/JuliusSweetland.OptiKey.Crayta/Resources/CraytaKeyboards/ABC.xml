@@ -137,13 +137,14 @@
 		<DynamicKey Col="15" Width="2">
 			<Label>space</Label>
 			<Symbol>SpaceIcon</Symbol>
-			<Text/>
+			<Text>&#032;</Text>
 		</DynamicKey>
 		<DynamicKey Col="17" Width="3">
 			<Label>Enter</Label>
 			<KeyDown>Return</KeyDown>
 			<Wait>100</Wait>
 			<KeyUp>Return</KeyUp>
+			<Action>ClearScratchpad</Action>
 		</DynamicKey>
 		<DynamicKey Col="20" Width="2">
 			<Label>Back</Label>
