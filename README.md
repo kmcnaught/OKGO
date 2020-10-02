@@ -1,6 +1,6 @@
 # CraytaAccess
 
-CraytaAccess provides an on-screen gaze-controlled keyboard to support eye-gaze access to [Crayt](https://crayta.com/). This allowed disabled creators to build games using only eye control. 
+CraytaAccess provides an on-screen gaze-controlled keyboard to support eye-gaze access to [Crayta](https://crayta.com/). This allowed disabled creators to build games using only eye control. 
 
 To find out more or to get involved with testing, contact kmcnaught@unit2games.com
 
