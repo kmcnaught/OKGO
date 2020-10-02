@@ -20,4 +20,4 @@ Crayta is designed to be approachable and easy to use at different levels of exp
 
 All source code is licensed under the GNU GENERAL PUBLIC LICENSE (Version 3, 29th June 2007)
 
-Resources such as icons, imagery or trademarked names are not covered by the GPL license. 
+Resources such as icons, imagery or trademarked names are not covered by the GPL license. Some license details / credits are detailed at [CREDITS.md](https://github.com/kmcnaught/CraytaAccess/blob/master/docs/CREDITS.md)
