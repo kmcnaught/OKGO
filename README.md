@@ -1,37 +1,23 @@
-# OptiKey
+# CraytaAccess
 
-OptiKey is an on-screen keyboard that is designed to help Motor Neuron Disease (MND) patients interact with Windows computers. When used with an eye-tracking device, OptiKey's on-screen keyboard allows MND patients to complete tasks, such as email composition, using only their eyes. OptiKey can also be used with a mouse or webcam. Unlike expensive and unreliable Alternative and Augmentative Communication (AAC) products that are difficult to use, Optikey is free, reliable, and easy to use.
+CraytaAccess provides an on-screen gaze-controlled keyboard to support eye-gaze access to [Crayt](https://crayta.com/). This allowed disabled creators to build games using only eye control. 
 
-# Getting Started
+To find out more or to get involved with testing, contact kmcnaught@unit2games.com
 
-[**The OptiKey Wiki**](https://github.com/OptiKey/OptiKey/wiki) contains OptiKey's user guides, installation and system requirements, and additional support information. OptiKey's Windows installer can be downloaded from the [latest release](https://github.com/JuliusSweetland/OptiKey/releases/latest). To get an understanding of OptiKey's use, users should watch [Optikey's introduction video](https://www.youtube.com/watch?v=HLkyORh7vKk).
+# System requirements
 
-# Supported Platforms
+CraytaAccess uses the .Net 4.6 Framework and is designed to run on Windows 8 / 8.1 / 10. It requires the [ViGem Bus Driver](https://github.com/ViGEm/ViGEmBus/releases) to be installed separately.
 
-OptiKey uses the .Net 4.6 Framework and is designed to run on Windows 8 / 8.1 / 10.
+Crayta is available on Stadia, which is [available in these countries](https://support.google.com/stadia/answer/9338852) and has [minimum broadband connection requirements](https://support.google.com/stadia/answer/9607891).
 
-# Problems?
+# Access requirements
 
-If users encounter an issue with OptiKey, such as a software crash or an unexpected behaviour, users should add an issue ticket to [OptiKey's issue tracker](https://github.com/OptiKey/OptiKey/issues). Users are encouraged to check if their issue is already being tracked by OptiKey before creating a new issue ticket.
+CraytaAccess currently supports any Tobii eye tracker that works with the Tobii Eye Tracking engine. This includes all gaming eye trackers, and some (more recent) Tobii Dynavox eye trackers. Contact kmcnaught@unit2games.com to find out more. 
 
-The following information should be specified in an issue ticket:
-
-* How OptiKey was being used
-* What the user expected to happen
-* What the user actually experienced
-* Steps to reproduce the issue
-* Any other information that helps to describe and/or reproduce the problem (ex. screenshots)
+Crayta is designed to be approachable and easy to use at different levels of expertise. However, there are a number of controls required and as such you will need relatively accurate eye control. If you've played [EyeMine](https://github.com/SpecialEffect/EyeMine/wiki) with the advanced keyboards, you will have no problem with CraytaAccess. If you've played EyeMine with the intermediate keyboards, you should be able to use Crayta, but please do talk to us for advice. If you'd like to play collaboratively with someone with limited eye gaze experience we can advise you how best to do this. Our goal is to make collaborative game-creation available to as many people as possible, and we are prepared to support individuals in this process.
 
 # License
 
-Licensed under the GNU GENERAL PUBLIC LICENSE (Version 3, 29th June 2007)
+All source code is licensed under the GNU GENERAL PUBLIC LICENSE (Version 3, 29th June 2007)
 
-# Contributing
-
-Contributions to this project are always welcome. If you'd like to help translate Optikey to another language, fix bugs or add new features, check out our [Contributing page](https://github.com/OptiKey/OptiKey/wiki/Contribute). 
-
-# Contact
-
-To ask a question, or to discuss information that is not on the [**OptiKey Wiki**](https://github.com/JuliusSweetland/OptiKey/wiki/), please use <optikeyfeedback@gmail.com> to contact Julius.
-
-[![Build status](https://dev.azure.com/optikey/optikey/_apis/build/status/OptiKey.OptiKey)](https://dev.azure.com/optikey/optikey/_build/latest?definitionId=-1)
+Resources such as icons, imagery or trademarked names are not covered by the GPL license. 
