@@ -4,6 +4,8 @@ CraytaAccess provides an on-screen gaze-controlled keyboard to support eye-gaze 
 
 To find out more or to get involved with testing, contact kmcnaught@unit2games.com
 
+CraytaAccess is a fork of the excellent [OptiKey](OptiKey) project.
+
 # System requirements
 
 CraytaAccess uses the .Net 4.6 Framework and is designed to run on Windows 8 / 8.1 / 10. It requires the [ViGem Bus Driver](https://github.com/ViGEm/ViGEmBus/releases) to be installed separately.
