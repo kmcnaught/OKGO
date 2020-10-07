@@ -61,7 +61,7 @@ namespace JuliusSweetland.OptiKey.EyeMine
         {
             // Setup derived settings class
             Settings.Initialise();
-            String appName = "EyeMineV2";
+            String appName = "CraytaAccess";
 
             Action runApp = () =>
             {
