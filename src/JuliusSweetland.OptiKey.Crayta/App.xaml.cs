@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Rights Reserved
+
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
