@@ -56,8 +56,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstance", "src\Singl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstance.Wpf", "src\SingleInstance.Wpf\SingleInstance.Wpf.csproj", "{2A8B4AE0-48BE-4A49-9C9C-654C195C8AB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.EyeMine", "src\JuliusSweetland.OptiKey.EyeMine\JuliusSweetland.OptiKey.EyeMine.csproj", "{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.Crayta", "src\JuliusSweetland.OptiKey.Crayta\JuliusSweetland.OptiKey.Crayta.csproj", "{21A46990-29CA-40E5-B99B-A02722A469E1}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CraytaAccessSetup", "installer\Crayta\CraytaAccessSetup\CraytaAccessSetup.vdproj", "{53797CF3-F271-40F2-8D3B-E66BF4A3300F}"
@@ -234,22 +232,6 @@ Global
 		{2A8B4AE0-48BE-4A49-9C9C-654C195C8AB2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2A8B4AE0-48BE-4A49-9C9C-654C195C8AB2}.Release|x86.ActiveCfg = Release|Any CPU
 		{2A8B4AE0-48BE-4A49-9C9C-654C195C8AB2}.Release|x86.Build.0 = Release|Any CPU
-		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.All|Any CPU.ActiveCfg = Release|Any CPU
-		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.All|Any CPU.Build.0 = Release|Any CPU
-		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.All|x86.ActiveCfg = Release|Any CPU
-		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.All|x86.Build.0 = Release|Any CPU
-		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.Debug|x86.Build.0 = Debug|Any CPU
-		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.DefaultBuild|Any CPU.ActiveCfg = Debug|Any CPU
-		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
-		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.DefaultBuild|x86.ActiveCfg = Debug|Any CPU
-		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.DefaultBuild|x86.Build.0 = Debug|Any CPU
-		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.Release|x86.ActiveCfg = Release|Any CPU
-		{C73AF7DF-D542-4D44-B118-71C34AF0D7B2}.Release|x86.Build.0 = Release|Any CPU
 		{21A46990-29CA-40E5-B99B-A02722A469E1}.All|Any CPU.ActiveCfg = Release|Any CPU
 		{21A46990-29CA-40E5-B99B-A02722A469E1}.All|Any CPU.Build.0 = Release|Any CPU
 		{21A46990-29CA-40E5-B99B-A02722A469E1}.All|x86.ActiveCfg = Release|Any CPU
