@@ -45,7 +45,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstance", "src\Singl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstance.Wpf", "src\SingleInstance.Wpf\SingleInstance.Wpf.csproj", "{2A8B4AE0-48BE-4A49-9C9C-654C195C8AB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.Crayta", "src\JuliusSweetland.OptiKey.Crayta\JuliusSweetland.OptiKey.Crayta.csproj", "{21A46990-29CA-40E5-B99B-A02722A469E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.OptikeyGaming", "src\JuliusSweetland.OptiKey.Crayta\JuliusSweetland.OptiKey.OptikeyGaming.csproj", "{21A46990-29CA-40E5-B99B-A02722A469E1}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CraytaAccessSetup", "installer\Crayta\CraytaAccessSetup\CraytaAccessSetup.vdproj", "{53797CF3-F271-40F2-8D3B-E66BF4A3300F}"
 EndProject
