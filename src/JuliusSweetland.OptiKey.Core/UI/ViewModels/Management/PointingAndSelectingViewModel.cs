@@ -77,6 +77,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.SteelseriesSentry.ToDescription(), Enums.PointsSources.SteelseriesSentry),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TheEyeTribe.ToDescription(), Enums.PointsSources.TheEyeTribe),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiEyeTracker4C.ToDescription(), Enums.PointsSources.TobiiEyeTracker4C),
+                    new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiEyeTracker5.ToDescription(), Enums.PointsSources.TobiiEyeTracker5),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiEyeX.ToDescription(), Enums.PointsSources.TobiiEyeX),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiPcEyeGo.ToDescription(), Enums.PointsSources.TobiiPcEyeGo),
                     new KeyValuePair<string, PointsSources>(Enums.PointsSources.TobiiPcEyeGoPlus.ToDescription(), Enums.PointsSources.TobiiPcEyeGoPlus),
@@ -124,6 +125,30 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 {
                     new KeyValuePair<string, DataStreamProcessingLevels>(Enums.DataStreamProcessingLevels.None.ToDescription(), Enums.DataStreamProcessingLevels.None),
                     new KeyValuePair<string, DataStreamProcessingLevels>(Enums.DataStreamProcessingLevels.Medium.ToDescription(), Enums.DataStreamProcessingLevels.Medium)
+                };
+            }
+        }
+
+        public List<KeyValuePair<string, int>> GazeSmoothingLevels
+        {
+            get
+            {
+                return new List<KeyValuePair<string, int>>
+                {
+                    new KeyValuePair<string, int>
+                        ("0 - " + Resources.NONE, 0),
+                    new KeyValuePair<string, int>
+                        ("1 - " + Resources.LOW,  1),
+                    new KeyValuePair<string, int>
+                        ("2 - " + Resources.MEDIUM, 2),
+                    new KeyValuePair<string, int>
+                        ("3 - " + Resources.HIGH, 3),
+                    new KeyValuePair<string, int>
+                        ("4 - Ultra", 4),
+                    new KeyValuePair<string, int>
+                        ("5 - Extreme", 5),
+                    new KeyValuePair<string, int>
+                        ("6 - XXtreme", 6),
                 };
             }
         }
@@ -184,11 +209,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref irisBondProcessingLevel, value); }
         }
 
-        private bool kalmanFilterEnabled;
-        public bool KalmanFilterEnabled
+        private int gazeSmoothingLevel;
+        public int GazeSmoothingLevel
         {
-            get { return kalmanFilterEnabled; }
-            set { SetProperty(ref kalmanFilterEnabled, value); }
+            get { return gazeSmoothingLevel; }
+            set { SetProperty(ref gazeSmoothingLevel, value); }
+        }
+
+        private bool smoothWhenChangingGazeTarget;
+        public bool SmoothWhenChangingGazeTarget
+        {
+            get { return smoothWhenChangingGazeTarget; }
+            set { SetProperty(ref smoothWhenChangingGazeTarget, value); }
         }
 
         private double pointsMousePositionSampleIntervalInMs;
@@ -414,7 +446,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             PointsSource = Settings.Default.PointsSource;
             TobiiEyeXProcessingLevel = Settings.Default.TobiiEyeXProcessingLevel;
             IrisbondProcessingLevel = Settings.Default.IrisbondProcessingLevel;
-            KalmanFilterEnabled = Settings.Default.KalmanFilterEnabled;
+            GazeSmoothingLevel = Settings.Default.GazeSmoothingLevel;
+            SmoothWhenChangingGazeTarget = Settings.Default.SmoothWhenChangingGazeTarget;
             PointsMousePositionSampleIntervalInMs = Settings.Default.PointsMousePositionSampleInterval.TotalMilliseconds;
             PointsMousePositionHideCursor = Settings.Default.PointsMousePositionHideCursor;
             PointTtlInMs = Settings.Default.PointTtl.TotalMilliseconds;
@@ -447,7 +480,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.PointsSource = PointsSource;
             Settings.Default.TobiiEyeXProcessingLevel = TobiiEyeXProcessingLevel;
             Settings.Default.IrisbondProcessingLevel = IrisbondProcessingLevel;
-            Settings.Default.KalmanFilterEnabled = KalmanFilterEnabled;
+            Settings.Default.GazeSmoothingLevel = GazeSmoothingLevel;
+            Settings.Default.SmoothWhenChangingGazeTarget = SmoothWhenChangingGazeTarget;
             Settings.Default.PointsMousePositionSampleInterval = TimeSpan.FromMilliseconds(PointsMousePositionSampleIntervalInMs);
             Settings.Default.PointsMousePositionHideCursor = PointsMousePositionHideCursor;
             Settings.Default.PointTtl = TimeSpan.FromMilliseconds(PointTtlInMs);
@@ -527,7 +561,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                     new KeyValueAndTimeSpan(Resources.GERMAN_GERMANY, KeyValues.GermanGermanyKey, dictionary.ContainsKey(KeyValues.GermanGermanyKey) ? dictionary[KeyValues.GermanGermanyKey] : (TimeSpan?)null),
                     new KeyValueAndTimeSpan(Resources.GREEK_GREECE, KeyValues.GreekGreeceKey, dictionary.ContainsKey(KeyValues.GreekGreeceKey) ? dictionary[KeyValues.GreekGreeceKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.HEBREW_ISRAEL, KeyValues.HebrewIsraelKey, dictionary.ContainsKey(KeyValues.HebrewIsraelKey) ? dictionary[KeyValues.HebrewIsraelKey] : (TimeSpan?) null),
-                     new KeyValueAndTimeSpan(Resources.HUNGARIAN_HUNGARY, KeyValues.HungarianHungaryKey, dictionary.ContainsKey(KeyValues.HungarianHungaryKey) ? dictionary[KeyValues.HungarianHungaryKey] : (TimeSpan?) null),
+                    new KeyValueAndTimeSpan(Resources.HINDI_INDIA, KeyValues.HindiIndiaKey, dictionary.ContainsKey(KeyValues.HindiIndiaKey) ? dictionary[KeyValues.HindiIndiaKey] : (TimeSpan?) null),
+                    new KeyValueAndTimeSpan(Resources.HUNGARIAN_HUNGARY, KeyValues.HungarianHungaryKey, dictionary.ContainsKey(KeyValues.HungarianHungaryKey) ? dictionary[KeyValues.HungarianHungaryKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.ITALIAN_ITALY, KeyValues.ItalianItalyKey, dictionary.ContainsKey(KeyValues.ItalianItalyKey) ? dictionary[KeyValues.ItalianItalyKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.JAPANESE_JAPAN, KeyValues.JapaneseJapanKey, dictionary.ContainsKey(KeyValues.JapaneseJapanKey) ? dictionary[KeyValues.JapaneseJapanKey] : (TimeSpan?) null),
                     new KeyValueAndTimeSpan(Resources.KOREAN_KOREA, KeyValues.KoreanKoreaKey, dictionary.ContainsKey(KeyValues.KoreanKoreaKey) ? dictionary[KeyValues.KoreanKoreaKey] : (TimeSpan?) null),

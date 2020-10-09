@@ -649,6 +649,7 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.SteelseriesSentry:
                 case PointsSources.TobiiEyeX:
                 case PointsSources.TobiiEyeTracker4C:
+                case PointsSources.TobiiEyeTracker5:
                 case PointsSources.TobiiRex:
                 case PointsSources.TobiiPcEyeGo:
                 case PointsSources.TobiiPcEyeGoPlus:
@@ -710,6 +711,7 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.SteelseriesSentry:
                 case PointsSources.TobiiEyeX:
                 case PointsSources.TobiiEyeTracker4C:
+                case PointsSources.TobiiEyeTracker5:
                 case PointsSources.TobiiRex:
                 case PointsSources.TobiiPcEyeGo:
                 case PointsSources.TobiiPcEyeGoPlus:
@@ -782,7 +784,7 @@ namespace JuliusSweetland.OptiKey
                         Settings.Default.PointSelectionTriggerFixationLockOnTime,
                         Settings.Default.PointSelectionTriggerFixationCompleteTime,
                         Settings.Default.PointSelectionTriggerLockOnRadiusInPixels,
-                        Settings.Default.PointSelectionTriggerFixationRadiusInPixels,
+                        Settings.Default.PointSelectionTriggerLockOnRadiusInPixels,
                         pointSource);
                     break;
 

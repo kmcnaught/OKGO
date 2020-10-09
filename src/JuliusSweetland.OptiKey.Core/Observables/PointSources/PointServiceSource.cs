@@ -19,8 +19,7 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
         
         private readonly TimeSpan pointTtl;
         private readonly IPointService pointGeneratingService;
-        private readonly KalmanFilter kalmanFilterX;
-        private readonly KalmanFilter kalmanFilterY;
+        private readonly KalmanFilter kalmanFilter;
 
         private IObservable<Timestamped<PointAndKeyValue>> sequence;
 
@@ -34,10 +33,7 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
         {
             this.pointTtl = pointTtl;
             this.pointGeneratingService = pointGeneratingService;
-            this.kalmanFilterX = new KalmanFilter(Settings.Default.KalmanFilterInitialValue, Settings.Default.KalmanFilterConfidenceOfInitialValue, 
-                Settings.Default.KalmanFilterProcessNoise, Settings.Default.KalmanFilterMeasurementNoise);
-            this.kalmanFilterY = new KalmanFilter(Settings.Default.KalmanFilterInitialValue, Settings.Default.KalmanFilterConfidenceOfInitialValue, 
-                Settings.Default.KalmanFilterProcessNoise, Settings.Default.KalmanFilterMeasurementNoise);
+            this.kalmanFilter = new KalmanFilter();
         }
 
         #endregion
@@ -58,8 +54,8 @@ namespace JuliusSweetland.OptiKey.Observables.PointSources
                             eh => pointGeneratingService.Point += eh,
                             eh => pointGeneratingService.Point -= eh)
                         .Where(_ => State == RunningStates.Running)
-                        .Select(ep => Settings.Default.KalmanFilterEnabled && pointGeneratingService.KalmanFilterSupported
-                            ? new Timestamped<Point>(new Point((int)kalmanFilterX.Update(ep.EventArgs.Value.X), (int)kalmanFilterY.Update(ep.EventArgs.Value.Y)), ep.EventArgs.Timestamp)
+                        .Select(ep => Settings.Default.GazeSmoothingLevel > 0
+                            ? new Timestamped<Point>(kalmanFilter.Update(ep.EventArgs.Value), ep.EventArgs.Timestamp)
                             : ep.EventArgs
                         )
                         .PublishLivePointsOnly(pointTtl)

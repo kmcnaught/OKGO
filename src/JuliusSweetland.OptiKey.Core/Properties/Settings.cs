@@ -1569,69 +1569,30 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["ForceCapsLock"] = value;
             }
         }
-        
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int GazeSmoothingLevel{
+            get{
+                return ((int)(this["GazeSmoothingLevel"]));
+            }
+            set{
+                this["GazeSmoothingLevel"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool KalmanFilterEnabled {
+        public bool SmoothWhenChangingGazeTarget {
             get {
-                return ((bool)(this["KalmanFilterEnabled"]));
+                return ((bool)(this["SmoothWhenChangingGazeTarget"]));
             }
             set {
-                this["KalmanFilterEnabled"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double KalmanFilterInitialValue {
-            get {
-                return ((double)(this["KalmanFilterInitialValue"]));
-            }
-            set {
-                this["KalmanFilterInitialValue"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double KalmanFilterConfidenceOfInitialValue {
-            get {
-                return ((double)(this["KalmanFilterConfidenceOfInitialValue"]));
-            }
-            set {
-                this["KalmanFilterConfidenceOfInitialValue"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double KalmanFilterProcessNoise {
-            get {
-                return ((double)(this["KalmanFilterProcessNoise"]));
-            }
-            set {
-                this["KalmanFilterProcessNoise"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public double KalmanFilterMeasurementNoise {
-            get {
-                return ((double)(this["KalmanFilterMeasurementNoise"]));
-            }
-            set {
-                this["KalmanFilterMeasurementNoise"] = value;
+                this["SmoothWhenChangingGazeTarget"] = value;
             }
         }
         
@@ -2501,6 +2462,12 @@ namespace JuliusSweetland.OptiKey.Properties {
             "/functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S<" +
             "/ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n       " +
             " <functionKey>GreekGreece</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <val" +
+            "ue>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n       " +
+            " <functionKey>HebrewIsrael</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <val" +
+            "ue>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n       " +
+            " <functionKey>HindiIndia</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <val" +
+            "ue>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r\n      <keyValue>\r\n       " +
+            " <functionKey>HungarianHungary</functionKey>\r\n      </keyValue>\r\n    </key>\r\n    <val" +
             "ue>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </item>\r\n  <item>\r\n    <key>\r" +
             "\n      <keyValue>\r\n        <functionKey>ItalianItaly</functionKey>\r\n      </keyV" +
             "alue>\r\n    </key>\r\n    <value>\r\n      <ticks>PT1.75S</ticks>\r\n    </value>\r\n  </" +
@@ -2786,6 +2753,54 @@ namespace JuliusSweetland.OptiKey.Properties {
             set
             {
                 this["AllowMultipleInstances"] = value;
+            }
+        }
+
+	[global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("false")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual bool CleanShutdown
+        {
+            get
+            {
+                return ((bool)(this["CleanShutdown"]));
+            }
+            set
+            {
+                this["CleanShutdown"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual bool AttemptRestartUponCrash
+        {
+            get
+            {
+                return ((bool)(this["AttemptRestartUponCrash"]));
+            }
+            set
+            {
+                this["AttemptRestartUponCrash"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public virtual bool EnableResizeWithMouse
+        {
+            get
+            {
+                return ((bool)(this["EnableResizeWithMouse"]));
+            }
+            set
+            {
+                this["EnableResizeWithMouse"] = value;
             }
         }
 

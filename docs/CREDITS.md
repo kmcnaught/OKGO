@@ -48,6 +48,10 @@ I would like to extend my thanks/credit to the following people, websites & orga
 * Samual Haddad
 * Amy Vining
 * Ömer Ney
+* Sam Snowball
+* Crazyb
+* William
+* Dan Ngo
 
 ## Resources
 

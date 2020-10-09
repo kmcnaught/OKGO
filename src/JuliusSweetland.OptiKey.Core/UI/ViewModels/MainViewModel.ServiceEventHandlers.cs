@@ -674,6 +674,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     
                     break;
 
+		// FIXME: Came in from merging ee34fb
+		// I think this conflicts with the function key payload, 
+		// so might not ever be hit? 
+                default:
+                    //Process single key text, THEN function key. The use case might be to output text and then change keyboard, for example.
+                    //N.B. Combining text and a function key changes the KeyValue, which will impact whether the KeyValue can be used to detect
+                    //a key which can be locked down, or anything keyed on that KeyValue.
+                    keyboardOutputService.ProcessSingleKeyText(singleKeyValue.String);
+                    HandleFunctionKeySelectionResult(singleKeyValue);
+                break;
+
             }
         }
         
@@ -703,6 +714,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.Alpha2Keyboard:
                     Log.Info("Changing keyboard to Alpha2.");
                     Keyboard = new Alpha2();
+                    break;
+
+                case FunctionKeys.Alpha3Keyboard:
+                    Log.Info("Changing keyboard to Alpha3.");
+                    Keyboard = new Alpha3();
                     break;
 
                 case FunctionKeys.Attention:
@@ -804,20 +820,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     var opacityBeforeConversationAlpha1 = mainWindowManipulationService.GetOpacity();
                     Action conversationAlpha1BackAction = currentKeyboard is ConversationAlpha2
                         ? ((ConversationAlpha2)currentKeyboard).BackAction
-                        : currentKeyboard is ConversationNumericAndSymbols
-                            ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
-                            : currentKeyboard is SimplifiedConversationAlpha
-                                ? ((SimplifiedConversationAlpha)currentKeyboard).BackAction
-                                : currentKeyboard is ConversationConfirm
-                                    ? ((ConversationConfirm)currentKeyboard).BackAction
-                                    : () =>
-                                    {
-                                        Log.Info("Restoring window size.");
-                                        mainWindowManipulationService.Restore();
-                                        Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha1);
-                                        mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha1);
-                                        Keyboard = currentKeyboard;
-                                    };
+                        : currentKeyboard is ConversationAlpha3
+                            ? ((ConversationAlpha3)currentKeyboard).BackAction
+                            : currentKeyboard is ConversationNumericAndSymbols
+                                ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
+                                : currentKeyboard is SimplifiedConversationAlpha
+                                    ? ((SimplifiedConversationAlpha)currentKeyboard).BackAction
+                                    : currentKeyboard is ConversationConfirm
+                                        ? ((ConversationConfirm)currentKeyboard).BackAction
+                                        : () =>
+                                        {
+                                            Log.Info("Restoring window size.");
+                                            mainWindowManipulationService.Restore();
+                                            Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha1);
+                                            mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha1);
+                                            Keyboard = currentKeyboard;
+                                        };
                     Keyboard = new ConversationAlpha1(conversationAlpha1BackAction);
                     Log.Info("Maximising window.");
                     mainWindowManipulationService.Maximise();
@@ -830,7 +848,37 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     var opacityBeforeConversationAlpha2 = mainWindowManipulationService.GetOpacity();
                     Action conversationAlpha2BackAction = currentKeyboard is ConversationAlpha1
                         ? ((ConversationAlpha1)currentKeyboard).BackAction
-                        : currentKeyboard is ConversationNumericAndSymbols
+                        : currentKeyboard is ConversationAlpha3
+                            ? ((ConversationAlpha3)currentKeyboard).BackAction
+                            : currentKeyboard is ConversationNumericAndSymbols
+                                ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
+                                : currentKeyboard is SimplifiedConversationAlpha
+                                    ? ((SimplifiedConversationAlpha)currentKeyboard).BackAction
+                                    : currentKeyboard is ConversationConfirm
+                                        ? ((ConversationConfirm)currentKeyboard).BackAction
+                                        : () =>
+                                        {
+                                            Log.Info("Restoring window size.");
+                                            mainWindowManipulationService.Restore();
+                                            Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha2);
+                                            mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha2);
+                                            Keyboard = currentKeyboard;
+                                        };
+                    Keyboard = new ConversationAlpha2(conversationAlpha2BackAction);
+                    Log.Info("Maximising window.");
+                    mainWindowManipulationService.Maximise();
+                    Log.InfoFormat("Setting opacity to 1 (fully opaque)");
+                    mainWindowManipulationService.SetOpacity(1);
+                    break;
+
+                case FunctionKeys.ConversationAlpha3Keyboard:
+                    Log.Info("Changing keyboard to ConversationAlpha3.");
+                    var opacityBeforeConversationAlpha3 = mainWindowManipulationService.GetOpacity();
+                    Action conversationAlpha3BackAction = currentKeyboard is ConversationAlpha1
+                        ? ((ConversationAlpha1)currentKeyboard).BackAction
+                        : currentKeyboard is ConversationAlpha2
+                            ? ((ConversationAlpha2)currentKeyboard).BackAction
+                            : currentKeyboard is ConversationNumericAndSymbols
                             ? ((ConversationNumericAndSymbols)currentKeyboard).BackAction
                             : currentKeyboard is SimplifiedConversationAlpha
                                 ? ((SimplifiedConversationAlpha)currentKeyboard).BackAction
@@ -840,11 +888,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                     {
                                         Log.Info("Restoring window size.");
                                         mainWindowManipulationService.Restore();
-                                        Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha2);
-                                        mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha2);
+                                        Log.InfoFormat("Restoring window opacity to {0}", opacityBeforeConversationAlpha3);
+                                        mainWindowManipulationService.SetOpacity(opacityBeforeConversationAlpha3);
                                         Keyboard = currentKeyboard;
                                     };
-                    Keyboard = new ConversationAlpha2(conversationAlpha2BackAction);
+                    Keyboard = new ConversationAlpha3(conversationAlpha3BackAction);
                     Log.Info("Maximising window.");
                     mainWindowManipulationService.Maximise();
                     Log.InfoFormat("Setting opacity to 1 (fully opaque)");
@@ -1173,6 +1221,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 case FunctionKeys.HebrewIsrael:
                     SelectLanguage(Languages.HebrewIsrael);
+                    break;
+
+                case FunctionKeys.HindiIndia:
+                    SelectLanguage(Languages.HindiIndia);
                     break;
 
                 case FunctionKeys.HungarianHungary:
@@ -2254,6 +2306,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Keyboard = new YesNoQuestion(Resources.REFRESH_MESSAGE,
                         () =>
                         {
+                            Settings.Default.CleanShutdown = true;
                             OptiKeyApp.RestartApp();
                             Application.Current.Shutdown();
                         },
@@ -2539,12 +2592,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 TimeSpanOverrides timeSpanOverrides = null;
                 inputService.OverrideTimesByKey?.TryGetValue(singleKeyValue, out timeSpanOverrides);
 
+                //Action the key's command list before setting the key to Down/LockedDown to avoid a scenario where the command changes the keyboard
+                //to one which toggles SimulateKeyStrokes, which results in all key states being stored and restored when leaving the keyboard. This
+                //incorrectly stores the key Down/LockedDown state, which is restored when we leave the keyboard. This *should* be safe as the command
+                //key's value is different from the key values of each individual command.
+                await CommandList(singleKeyValue, multiKeySelection, commandList, 0);
+
                 //if there is an override lock down time then do not set the key to LockedDown
-                keyStateService.KeyDownStates[singleKeyValue].Value = timeSpanOverrides != null && timeSpanOverrides.TimeRequiredToLockDown > TimeSpan.Zero 
+                keyStateService.KeyDownStates[singleKeyValue].Value = timeSpanOverrides != null && timeSpanOverrides.TimeRequiredToLockDown > TimeSpan.Zero
                     ? KeyDownStates.Down : KeyDownStates.LockedDown;
 
-                await CommandList(singleKeyValue, multiKeySelection, commandList, 0);
-                
                 //if there is an override lock down time then run this key until the gaze stops or another trigger stops it
                 if (timeSpanOverrides != null && timeSpanOverrides.TimeRequiredToLockDown > TimeSpan.Zero)
                 {
