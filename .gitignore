@@ -186,3 +186,12 @@ src/JuliusSweetland.OptiKey.Core/Resources/Icons/SVG Source Files/ironsights.svg
 src/JuliusSweetland.OptiKey.Core/Resources/Icons/SVG Source Files/eyes.svg
 src/JuliusSweetland.OptiKey.Core/Resources/Icons/SVG Source Files/eyemineIcons.svg
 src/JuliusSweetland.OptiKey.InstallerTranslations/JuliusSweetland.OptiKey.InstallerTranslations.UnitTests.csproj
+installer/resources/error2.bmp
+installer/resources/error.BMP
+installer/resources/toppanel.jpeg
+installer/resources/leftpanel.jpeg
+installer/resources/info2.png
+installer/resources/info2.bmp
+installer/resources/info.bmp
+installer/resources/error2.png
+installer/TestSequentialDialogs.aip
