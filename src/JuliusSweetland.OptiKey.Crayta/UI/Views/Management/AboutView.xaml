@@ -33,13 +33,13 @@
                            VerticalAlignment="Center" Margin="5" />
                 <TextBlock Grid.Row="0" Grid.Column="1" 
                           VerticalAlignment="Center"
-                          Text="{Binding OptiKeyVersion, Mode=OneWay}" />
+                          Text="{Binding AppVersion, Mode=OneWay}" />
 
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="SHA:" 
                            VerticalAlignment="Center" Margin="5" />
                 <TextBlock Grid.Row="1" Grid.Column="1" 
                            VerticalAlignment="Center"
-                           Text="{Binding MinecraftForgeVersion, Mode=OneWay}" />
+                           Text="{Binding ReleaseSHA, Mode=OneWay}" />
 
                 <TextBlock Grid.Row="2" Grid.Column="0" 
                            VerticalAlignment="Center" Margin="5" />
@@ -48,7 +48,7 @@
                            VerticalAlignment="Center" Margin="5" />
                 <TextBlock Grid.Row="3" Grid.Column="1" 
                            VerticalAlignment="Center"
-                           Text="{Binding OptiKeyVersion, Mode=OneWay}" />
+                           Text="{Binding AboutInfo, Mode=OneWay}" />
 
                 <TextBlock Grid.Row="4" Grid.Column="0" 
                            VerticalAlignment="Center" Margin="5" />

@@ -11,6 +11,9 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        // Updated by release process
+        private readonly string releaseSHA = "RELEASE_SHA";
+
         #endregion
 
         #region Ctor
@@ -24,22 +27,30 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
 
         #region Properties
 
-        private string optiKeyVersion;
-        public string OptiKeyVersion
+        public string AppVersion
         {
-            get { return DiagnosticInfo.AssemblyVersion; }
+            get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
         }
 
-        private string minecraftModVersion;
-        public string MinecraftModVersion
+        public string ReleaseSHA
         {
-            get { return ""; }
+            get { return releaseSHA; }
         }
 
-        private string minecraftForgeVersion;
-        public string MinecraftForgeVersion
+        public string AboutInfo
         {
-            get { return ""; }
+            get
+            {
+                string aboutInfo = "";
+                aboutInfo += "CraytaAccess was developed by K McNaught Consulting Ltd for Unit 2 Games Ltd.\n";
+                aboutInfo += "The app is based on both the excellent Optikey project and EyeMine, ";
+                aboutInfo += "and provides eye gaze access to Crayta.\n";
+                aboutInfo += "CraytaAccess uses ViGemBus to provide controller emulation, as well as other third party ";
+                aboutInfo += "libraries as detailed below";
+                aboutInfo += "";
+
+                return aboutInfo;
+            }
         }
 
         #endregion
