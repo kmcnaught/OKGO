@@ -1,4 +1,5 @@
-﻿using JuliusSweetland.OptiKey.Properties;
+﻿using System.IO;
+using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Static;
 using log4net;
 using Prism.Mvvm;
@@ -35,6 +36,16 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
         public string ReleaseSHA
         {
             get { return releaseSHA; }
+        }
+
+        public string ThirdPartyDetailsFile
+        {
+            get
+            {
+                string basePath = System.AppDomain.CurrentDomain.BaseDirectory;
+                string fileName = "ThirdPartyLicenses.md";
+                return Path.Combine(basePath, fileName);
+            }
         }
 
         public string AboutInfo

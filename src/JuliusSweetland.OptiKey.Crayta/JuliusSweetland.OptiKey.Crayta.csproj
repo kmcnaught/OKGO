@@ -283,6 +283,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Content Include="..\..\ThirdPartyLicenses\BSD 3-Clause License.txt">
+      <Link>ThirdPartyLicenses\BSD 3-Clause License.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ThirdPartyLicenses\MICROSOFT .NET LIBRARY LICENSE.txt">
+      <Link>ThirdPartyLicenses\MICROSOFT .NET LIBRARY LICENSE.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ThirdPartyLicenses\MICROSOFT EXPRESSION SDK LICENSE.txt">
+      <Link>ThirdPartyLicenses\MICROSOFT EXPRESSION SDK LICENSE.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ThirdPartyLicenses\Microsoft Public License %28MS-PL%29.txt">
+      <Link>ThirdPartyLicenses\Microsoft Public License %28MS-PL%29.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ThirdPartyLicenses\New BSD.txt">
+      <Link>ThirdPartyLicenses\New BSD.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ThirdPartyLicenses\The MIT License %28MIT%29.txt">
+      <Link>ThirdPartyLicenses\The MIT License %28MIT%29.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\CraytaKeyboards\ABC.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -338,6 +362,17 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </SplashScreen>
     <Resource Include="Crayta.ico" />
+    <Content Include="..\..\ThirdPartyLicenses\Apache License, Version 2.0">
+      <Link>ThirdPartyLicenses\Apache License, Version 2.0</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ThirdPartyLicenses\NUnit License.text">
+      <Link>ThirdPartyLicenses\NUnit License.text</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="..\..\ThirdPartyLicenses.md">
+      <Link>ThirdPartyLicenses.md</Link>
+    </None>
     <None Include="..\JuliusSweetland.OptiKey.Core\app.manifest">
       <Link>app.manifest</Link>
     </None>

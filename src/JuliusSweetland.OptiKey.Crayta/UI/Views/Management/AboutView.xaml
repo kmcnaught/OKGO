@@ -45,9 +45,9 @@
                            VerticalAlignment="Center" Margin="5" />
 
                 <TextBlock Grid.Row="3" Grid.Column="0" Text="About:" 
-                           VerticalAlignment="Center" Margin="5" />
+                           VerticalAlignment="Top" Margin="5" />
                 <TextBlock Grid.Row="3" Grid.Column="1" 
-                           VerticalAlignment="Center"
+                           VerticalAlignment="Top"
                            Text="{Binding AboutInfo, Mode=OneWay}" />
 
                 <TextBlock Grid.Row="4" Grid.Column="0" 
@@ -74,59 +74,12 @@
                 <TextBlock Grid.Row="7" Grid.Column="0" Text="Third party licenses:" 
                            VerticalAlignment="Center" Margin="5" />
                 <TextBlock Grid.Row="7" Grid.Column="1" 
-                           VerticalAlignment="Center"
-                           Text="{Binding OptiKeyVersion, Mode=OneWay}" />
-
-
-                <!--<TextBlock Grid.Row="2" Grid.Column="0" 
-                           VerticalAlignment="Center" Margin="5" />
-                <CheckBox Grid.Row="2" Grid.Column="1" 
-                          VerticalAlignment="Center"
-                          IsChecked="{Binding PublishVirtualKeyCodesForCharacters, Mode=TwoWay}" />-->
-                
-                <!--<TextBlock Grid.Row="3" Grid.Column="0" Text="Built by SpecialEffect" 
-                           VerticalAlignment="Center" Margin="5" />
-                <CheckBox Grid.Row="3" Grid.Column="1" 
-                          VerticalAlignment="Center"
-                          IsChecked="{Binding SuppressModifierKeysForAllMouseActions, Mode=TwoWay}" />
-                
-                <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resx:Resources.SUPPRESS_MODIFIERS_IN_MOUSE_KEYBOARD_LABEL}" 
-                           VerticalAlignment="Center" Margin="5">
-                    <TextBlock.Style>
-                        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                            <Setter Property="Visibility" Value="Collapsed" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding SuppressModifierKeysForAllMouseActions}" Value="False">
-                                    <Setter Property="Visibility" Value="Visible" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
+                           VerticalAlignment="Center" >
+                    <Hyperlink NavigateUri="{Binding ThirdPartyDetailsFile, Mode=OneWay}" RequestNavigate="Hyperlink_RequestNavigate">
+                        ThirdPartyLicenses.md
+                    </Hyperlink>
                 </TextBlock>
-                <CheckBox Grid.Row="4" Grid.Column="1" 
-                          VerticalAlignment="Center"
-                          IsChecked="{Binding SuppressModifierKeysWhenInMouseKeyboard, Mode=TwoWay}">
-                    <CheckBox.Style>
-                        <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
-                            <Setter Property="Visibility" Value="Collapsed" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding SuppressModifierKeysForAllMouseActions}" Value="False">
-                                    <Setter Property="Visibility" Value="Visible" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </CheckBox.Style>
-                </CheckBox>
-                <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resx:Resources.MAGNIFY_SUPPRESSED_FOR_SCROLLING_ACTIONS_LABEL}" 
-                           VerticalAlignment="Center" Margin="5" />
-                <CheckBox Grid.Row="5" Grid.Column="1" 
-                          VerticalAlignment="Center"
-                          IsChecked="{Binding MagnifySuppressedForScrollingActions, Mode=TwoWay}" />
-                <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resx:Resources.DEBUGGING_MODE_LABEL}" 
-                           VerticalAlignment="Center" Margin="5" />
-                <CheckBox Grid.Row="6" Grid.Column="1" 
-                          VerticalAlignment="Center"
-                          IsChecked="{Binding Debug, Mode=TwoWay}" />-->
+
             </Grid>
         </GroupBox>
     </ScrollViewer>
