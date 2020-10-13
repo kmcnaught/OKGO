@@ -184,10 +184,11 @@ namespace JuliusSweetland.OptiKey.Services
                 direction = 180;
             else if (directionString.EndsWith("left") ||
                      directionString.EndsWith("west"))
-                direction = 270;
-           
-            else
-                int.TryParse(directionString, NumberStyles.Any, CultureInfo.InvariantCulture, out direction);
+                direction = 270;                      
+            else {
+                bool success = int.TryParse(directionString, NumberStyles.Any, CultureInfo.InvariantCulture, out direction);
+                if (!success) { return false; }
+            }
         
             
             // Split amount into x, y components
