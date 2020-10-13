@@ -38,6 +38,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             FeaturesViewModel = new FeaturesViewModel();
             WordsViewModel = new WordsViewModel(dictionaryService);
             ControlsViewModel = new ControlsViewModel();
+            AboutViewModel = new AboutViewModel();
 
             //Instantiate interaction requests and commands
             ConfirmationRequest = new InteractionRequest<Confirmation>();
@@ -60,6 +61,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     || VisualsViewModel.ChangesRequireRestart
                     || FeaturesViewModel.ChangesRequireRestart
                     || ControlsViewModel.ChangesRequireRestart
+                    || AboutViewModel.ChangesRequireRestart
                     || WordsViewModel.ChangesRequireRestart;
             }
         }
@@ -72,6 +74,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public FeaturesViewModel FeaturesViewModel { get; private set; }
         public WordsViewModel WordsViewModel { get; private set; }
         public ControlsViewModel ControlsViewModel { get; private set; }
+        public AboutViewModel AboutViewModel { get; private set; }
 
         public InteractionRequest<Confirmation> ConfirmationRequest { get; private set; }
         public DelegateCommand<Window> OkCommand { get; private set; }

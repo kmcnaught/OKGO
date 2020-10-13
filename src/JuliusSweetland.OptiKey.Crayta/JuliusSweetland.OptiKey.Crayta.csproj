@@ -199,6 +199,7 @@
     <Compile Include="Enums\StartupKeyboardOptions.cs" />
     <Compile Include="UI\ValueConverters\StringOrEmptyLabel.cs" />
     <Compile Include="UI\ViewModels\ManagementViewModelCrayta.cs" />
+    <Compile Include="UI\ViewModels\Management\AboutViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\ControlsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\VisualsViewModelEyeMine.cs" />
     <Compile Include="UI\Views\ManagementView.xaml.cs">
