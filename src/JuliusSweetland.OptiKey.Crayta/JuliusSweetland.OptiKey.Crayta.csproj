@@ -370,9 +370,10 @@
       <Link>ThirdPartyLicenses\NUnit License.text</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="..\..\ThirdPartyLicenses.md">
+    <Content Include="..\..\ThirdPartyLicenses.md">
       <Link>ThirdPartyLicenses.md</Link>
-    </None>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="..\JuliusSweetland.OptiKey.Core\app.manifest">
       <Link>app.manifest</Link>
     </None>
