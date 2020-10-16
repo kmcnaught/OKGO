@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Forms;
 using JuliusSweetland.OptiKey.Models;
 
 namespace JuliusSweetland.OptiKey.Extensions
@@ -27,17 +28,39 @@ namespace JuliusSweetland.OptiKey.Extensions
                 return null;
             }
 
-            return new PointAndKeyValue(point.Value, point.Value.ToKeyValue(pointToKeyValueMap));
+            return point.Value.ToPointAndKeyValue(pointToKeyValueMap);
         }
 
-        public static KeyValue ToKeyValue(this Point point, Dictionary<Rect, KeyValue> pointToKeyValueMap)
+        /// <summary>
+        /// Convert a point to a PointAndKeyValue (if one can be mapped from the supplied pointToKeyValueMap).
+        /// </summary>
+        public static PointAndKeyValue ToPointAndKeyValue(this Point point, Dictionary<Rect, KeyValue> pointToKeyValueMap)
         {
-            Rect? keyRect = pointToKeyValueMap != null
-                ? pointToKeyValueMap.Keys.FirstOrDefault(r => r.Contains(point))
-                : (Rect?)null;
+            return new PointAndKeyValue(point, point.ToKeyValue(pointToKeyValueMap));
+        }
 
-            return keyRect != null && pointToKeyValueMap.ContainsKey(keyRect.Value)
-                ? pointToKeyValueMap[keyRect.Value]
+        public static KeyValue ToKeyValue(this Point point, Dictionary<Rect, KeyValue> pointToKeyValueMap, int padding = 0)
+        {
+            if (pointToKeyValueMap == null)
+            {
+                return null;
+            }
+
+            Rect keyRect = pointToKeyValueMap.Keys.FirstOrDefault(r => r.Contains(point));
+            
+            // If not *inside* any key, try again with padding
+            // Will return first one that matches
+            if (!pointToKeyValueMap.ContainsKey(keyRect) && padding > 0)
+            {
+                keyRect = pointToKeyValueMap.Keys.FirstOrDefault(r =>
+                {
+                    r.Inflate(padding, padding);
+                    return r.Contains(point);
+                });
+            }
+
+            return pointToKeyValueMap.ContainsKey(keyRect)
+                ? pointToKeyValueMap[keyRect]
                 : (KeyValue)null;
         }
     }

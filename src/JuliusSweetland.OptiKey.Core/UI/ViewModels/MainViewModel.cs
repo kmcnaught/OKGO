@@ -234,6 +234,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
+        public KeyValue PointToKeyValue(Point point)
+        {
+            if (pointToKeyValueMap == null)
+                return null;
+            
+            else 
+                return point.ToPointAndKeyValue(pointToKeyValueMap)?.KeyValue;
+        }
+
         public SelectionModes SelectionMode
         {
             get { return selectionMode; }

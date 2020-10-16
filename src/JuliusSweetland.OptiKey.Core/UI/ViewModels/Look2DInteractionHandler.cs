@@ -27,6 +27,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         // How this handler is configured (once)
         private readonly Action<float, float> updateAction;
         private readonly FunctionKeys triggerKey;  // This function key controls the handler
+        private int keyPadding = 10; // controls when handling is paused over/near keys
 
         // How this handler is configured (may change)
         private Point? pointBoundsTarget;
@@ -232,8 +233,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             bounds = Rect.Empty;
             centre = new Point();
 
+            KeyValue keyVal = mainViewModel.PointToKeyValue(position);
+            keyPadding = 25;
+
             if (keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown() ||
-                mainViewModel.IsPointInsideMainWindow(position) ||
+                mainViewModel.IsPointInsideValidKey(position, keyPadding) ||
                 choosingBoundsTarget ||
                 !lastUpdate.HasValue)
             {
