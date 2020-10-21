@@ -41,6 +41,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             inputServicePointsPerSecondHandler = (o, value) => { PointsPerSecond = value; };
 
+            // Things that need to happen with every new (x,y) position
             inputServiceCurrentPositionHandler = (o, tuple) =>
             {
                 CurrentPositionPoint = tuple.Item1;
@@ -163,6 +164,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         NotificationTypes.Error, () => { });
                 }
             };
+
+            perKeyPauseHandlers = new Dictionary<KeyValue, KeyPauseHandler>();
 
             Log.Info("SetupInputServiceEventHandlers complete.");
         }
@@ -2712,18 +2715,54 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         await keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
                         keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
                     }
-                    else if (keyCommand.Name == KeyCommands.KeyToggle)
+                    else if (keyCommand.Name == KeyCommands.KeyToggle || 
+                             keyCommand.Name == KeyCommands.KeyTogglePauseOnThisKey ||
+                             keyCommand.Name == KeyCommands.KeyTogglePauseOnAnyKey)
                     {
+
+                         // What kind of pausing are we after?
+                         bool doPause = false;
+                         Func<Point, bool> whenRequiresPausing = null;
+                         if (keyCommand.Name == KeyCommands.KeyTogglePauseOnThisKey) {
+                             doPause = true;
+                             whenRequiresPausing = (point) => this.IsPointInsideKey(point, singleKeyValue);
+                         }
+                         else if (keyCommand.Name == KeyCommands.KeyTogglePauseOnAnyKey)
+                         {
+                             doPause = true;
+                             whenRequiresPausing = (point) => this.IsPointInsideValidKey(point);
+                         }
+
+                        // Key is released
                         if (keyStateService.KeyDownStates[keyCommand.KeyValue].Value != KeyDownStates.Up)
                         {
                             Log.InfoFormat("CommandList: Toggle key up on [{0}] key", keyCommand.KeyValue.String);
+
+                            // Unsubscribe from position stream
+                            if (doPause)
+                                inputService.CurrentPosition -= perKeyPauseHandlers[singleKeyValue].inputServiceCurrentPositionHandler;
+
                             await KeyUpProcessing(singleKeyValue, keyCommand.KeyValue);
                         }
+                        // Key is pressed
                         else
                         {
                             Log.InfoFormat("CommandList: Toggle key down on [{0}] key", keyCommand.KeyValue.String);
                             await keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
                             keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
+
+                            // Subscribe to position stream to allow pausing
+                            if (doPause) {
+                                if (!perKeyPauseHandlers.ContainsKey(singleKeyValue))
+                                {
+                                    perKeyPauseHandlers.Add(singleKeyValue, new KeyPauseHandler(
+                                        whenRequiresPausing,
+                                        new Action(() => { keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Release); }),
+                                        new Action(() => { keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press); })
+                                        ));
+                                }
+                                inputService.CurrentPosition += perKeyPauseHandlers[singleKeyValue].inputServiceCurrentPositionHandler;
+                            }
                         }
                     }
                     else if (keyCommand.Name == KeyCommands.KeyUp)

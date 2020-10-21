@@ -75,6 +75,12 @@ namespace JuliusSweetland.OptiKey.Models
     {
         [XmlText]
         public string Value { get; set; }
+
+        [XmlAttribute] // Optional - pause the output when you're looking back at this key
+        public bool PauseWhenLookingAtThisKey { get; set; }
+
+        [XmlAttribute] // Optional - pause the output when you're looking at any key in keyboard
+        public bool PauseWhenLookingAtAnyKey { get; set; }
     }
 
     public class DynamicButtonDown : XmlDynamicKey

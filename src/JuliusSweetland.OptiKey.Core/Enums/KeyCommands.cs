@@ -7,6 +7,8 @@ namespace JuliusSweetland.OptiKey.Enums
         ChangeKeyboard,
         KeyDown,
         KeyToggle,
+        KeyTogglePauseOnThisKey,
+        KeyTogglePauseOnAnyKey,
         KeyUp,
         Loop,
         Plugin,

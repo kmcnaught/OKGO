@@ -59,6 +59,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             return point.ToKeyValue(pointToKeyValueMap, padding) != null;
         }
 
+        public bool IsPointInsideKey(Point point, KeyValue keyValue)
+        {
+            KeyValue pointKeyVal = point.ToKeyValue(pointToKeyValueMap);
+            return (pointKeyVal != null &&
+                    pointKeyVal == keyValue);
+
+        }
+
         public bool IsMainWindowDocked()
         {
             return mainWindowManipulationService.WindowState == WindowStates.Docked;

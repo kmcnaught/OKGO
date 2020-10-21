@@ -50,6 +50,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private EventHandler<Tuple<PointAndKeyValue, double>> inputServiceSelectionProgressHandler;
         private EventHandler<PointAndKeyValue> inputServiceSelectionHandler;
         private EventHandler<Tuple<List<Point>, KeyValue, List<string>>> inputServiceSelectionResultHandler;
+        
+        private Dictionary<KeyValue, KeyPauseHandler> perKeyPauseHandlers;        
+
         private SelectionModes selectionMode;
         private Point currentPositionPoint;
         private KeyValue currentPositionKey;
