@@ -325,6 +325,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             }
 
             // Middle row is detailed error message
+            // FIXME: can this be "auto stretch"-ed ?
             {
                 var newKey = new Key {Text = content};
                 PlaceKeyInPosition(newKey, 1, 0, 2, 4);
