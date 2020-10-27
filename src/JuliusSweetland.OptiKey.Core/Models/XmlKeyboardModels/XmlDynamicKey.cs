@@ -13,9 +13,6 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlElement("KeyDown", typeof(DynamicKeyDown))]
         [XmlElement("KeyUp", typeof(DynamicKeyUp))]
         [XmlElement("KeyToggle", typeof(DynamicKeyToggle))]
-        [XmlElement("ButtonDown", typeof(DynamicButtonDown))]
-        [XmlElement("ButtonUp", typeof(DynamicButtonUp))]
-        [XmlElement("ButtonToggle", typeof(DynamicButtonToggle))]
         [XmlElement("Loop", typeof(DynamicLoop))]
         [XmlElement("Plugin", typeof(DynamicPlugin))]
         [XmlElement("Text", typeof(DynamicText))]
@@ -81,24 +78,6 @@ namespace JuliusSweetland.OptiKey.Models
 
         [XmlAttribute] // Optional - pause the output when you're looking at any key in keyboard
         public bool PauseWhenLookingAtAnyKey { get; set; }
-    }
-
-    public class DynamicButtonDown : XmlDynamicKey
-    {
-        [XmlText]
-        public string Value { get; set; }
-    }
-
-    public class DynamicButtonUp : XmlDynamicKey
-    {
-        [XmlText]
-        public string Value { get; set; }
-    }
-
-    public class DynamicButtonToggle : XmlDynamicKey
-    {
-        [XmlText]
-        public string Value { get; set; }
     }
 
     public class DynamicLoop : XmlDynamicKey
