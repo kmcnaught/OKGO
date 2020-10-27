@@ -2738,10 +2738,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         {
                             Log.InfoFormat("CommandList: Toggle key up on [{0}] key", keyCommand.KeyValue.String);
 
-                            // Unsubscribe from position stream
-                            if (doPause)
-                                inputService.CurrentPosition -= perKeyPauseHandlers[singleKeyValue].inputServiceCurrentPositionHandler;
-
                             await KeyUpProcessing(singleKeyValue, keyCommand.KeyValue);
                         }
                         // Key is pressed
@@ -2760,8 +2756,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                         new Action(() => { keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Release); }),
                                         new Action(() => { keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press); })
                                         ));
-                                }
-                                inputService.CurrentPosition += perKeyPauseHandlers[singleKeyValue].inputServiceCurrentPositionHandler;
+                                }                                
+                                perKeyPauseHandlers.GetValueOrDefault(singleKeyValue)?.AttachListener(inputService);                                
                             }
                         }
                     }
@@ -2815,6 +2811,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                         //the KeyUp value could be a KeyGroup so add any matches from KeyValueByGroup
                         // FIXME: reinstate KeyValueByGroup functionality once I've learned how it works
+
+                    //FIXME: is this even used?? I think it's been replaced by keyup etc to share the surrounding implementation
                     }
                     else if (keyCommand.Name == KeyCommands.Text)
                     {
@@ -2838,33 +2836,49 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private async Task KeyUpProcessing(KeyValue singleKeyValue, KeyValue commandKey)
         {
+            // Either singleKeyValue = xml keyvalue, like "R2-C3", commandKey = actual keyValue, like String:"a" or FunctionKey:"Sleep"
+            // OR singleKeyValue = xml keyvalue (as above) and commandKey = a child's XML key value
+
             var inKey = commandKey.FunctionKey.HasValue
                 ? commandKey.FunctionKey.Value.ToString() : commandKey.String;
             await keyboardOutputService.ProcessSingleKeyPress(inKey, KeyPressKeyValue.KeyPressType.Release);
             keyStateService.KeyDownStates[commandKey].Value = KeyDownStates.Up;
 
-            //if the released key has any children then release them as well 
-            foreach (var childKey in keyStateService.KeyFamily.Where(x => x.Item1 == commandKey
+            // Unsubscribe from position stream (if attached)               
+            perKeyPauseHandlers.GetValueOrDefault(singleKeyValue)?.DetachListener(inputService);
+
+            // If the released key has any child commmands then release them as well             
+            // For instance, if key is holding down multiple keyboard keys, release them all
+            foreach (var keyPair in keyStateService.KeyFamily.Where(x => x.Item1 == commandKey
                 && KeyStateService.KeyDownStates[x.Item2].Value != KeyDownStates.Up))
             {
-                inKey = childKey.Item2.FunctionKey.HasValue
-                    ? childKey.Item2.FunctionKey.Value.ToString() : childKey.Item2.String;
-                await keyboardOutputService.ProcessSingleKeyPress(inKey, KeyPressKeyValue.KeyPressType.Release);
-                keyStateService.KeyDownStates[childKey.Item2].Value = KeyDownStates.Up;
-            }
+                KeyValue keyValParent = keyPair.Item1; 
+                KeyValue keyValChildCommand = keyPair.Item2;  
 
+                inKey = keyValChildCommand.FunctionKey.HasValue
+                    ? keyValChildCommand.FunctionKey.Value.ToString() : keyValChildCommand.String;
+
+                await keyboardOutputService.ProcessSingleKeyPress(inKey, KeyPressKeyValue.KeyPressType.Release);
+                keyStateService.KeyDownStates[keyValChildCommand].Value = KeyDownStates.Up;
+            }
+            
             //if the released key has a parent 
             //and the parent is not up
             //and the parent is not running
             //and the parent has no child that is not released
             //then release the parent
-            foreach (var parentKey in keyStateService.KeyFamily.Where(x => x.Item2 == commandKey
+            foreach (var keyPair in keyStateService.KeyFamily.Where(x => x.Item2 == commandKey
                 && KeyStateService.KeyDownStates[x.Item1].Value != KeyDownStates.Up
                 && !KeyStateService.KeyRunningStates[x.Item1].Value
                 && !keyStateService.KeyFamily.Exists(y => y.Item1 == x.Item1 && KeyStateService.KeyDownStates[y.Item2].Value != KeyDownStates.Up)))
             {
-                await keyboardOutputService.ProcessSingleKeyPress(parentKey.Item1.String, KeyPressKeyValue.KeyPressType.Release);
-                keyStateService.KeyDownStates[parentKey.Item1].Value = KeyDownStates.Up;
+                KeyValue keyValParent = keyPair.Item1;
+                KeyValue keyValChildCommand = keyPair.Item2;  
+                
+                await keyboardOutputService.ProcessSingleKeyPress(keyValParent.String, KeyPressKeyValue.KeyPressType.Release);
+
+                keyStateService.KeyDownStates[keyValParent].Value = KeyDownStates.Up;
+                perKeyPauseHandlers.GetValueOrDefault(keyValParent)?.DetachListener(inputService);
             }
 
             if (commandKey != singleKeyValue && keyStateService.KeyRunningStates[commandKey].Value != false)

@@ -54,5 +54,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.paused = false;
             this.resumeAction();
         }
+
+        public void AttachListener(Services.IInputService inputService)
+        {
+            // Remove first, to ensure only one instance
+            inputService.CurrentPosition -= inputServiceCurrentPositionHandler;
+            inputService.CurrentPosition += inputServiceCurrentPositionHandler;
+        }
+
+        public void DetachListener(Services.IInputService inputService)
+        {            
+            inputService.CurrentPosition -= inputServiceCurrentPositionHandler;            
+        }
     }
 }
