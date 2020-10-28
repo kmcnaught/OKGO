@@ -11,10 +11,7 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
         #region Private Member Vars
 
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-        // Updated by release process
-        private readonly string releaseSHA = "RELEASE_SHA";
-
+        
         #endregion
 
         #region Ctor
@@ -30,13 +27,13 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
 
         public string AppVersion
         {
-            get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
+            get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "-" + 
+                    ReleaseSHA; }
         }
 
-        public string ReleaseSHA
-        {
-            get { return releaseSHA; }
-        }
+        // Updated by release process, loaded from a resource in App.xaml.cs
+        public static string ReleaseSHA
+        { set; get; }
 
         public string ThirdPartyDetailsFile
         {

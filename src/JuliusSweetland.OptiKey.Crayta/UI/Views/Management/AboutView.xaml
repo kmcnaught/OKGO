@@ -31,22 +31,21 @@
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Version:" 
                            VerticalAlignment="Center" Margin="5" />
-                <TextBlock Grid.Row="0" Grid.Column="1" 
-                          VerticalAlignment="Center"
-                          Text="{Binding AppVersion, Mode=OneWay}" />
-
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="SHA:" 
-                           VerticalAlignment="Center" Margin="5" />
-                <TextBlock Grid.Row="1" Grid.Column="1" 
-                           VerticalAlignment="Center"
-                           Text="{Binding ReleaseSHA, Mode=OneWay}" />
+                
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" >
+                    <TextBlock
+                           VerticalAlignment="Center" Margin="5"
+                           Text="{Binding AppVersion, Mode=OneWay}" />
+                    <Button Click="Copy_Click"                                                 
+                           VerticalAlignment="Center" Margin="5" >Copy details</Button>
+                </StackPanel>
 
                 <TextBlock Grid.Row="2" Grid.Column="0" 
                            VerticalAlignment="Center" Margin="5" />
 
                 <TextBlock Grid.Row="3" Grid.Column="0" Text="About:" 
                            VerticalAlignment="Top" Margin="5" />
-                <TextBlock Grid.Row="3" Grid.Column="1" 
+                <TextBlock Grid.Row="3" Grid.Column="1"  Margin="5" 
                            VerticalAlignment="Top"
                            Text="{Binding AboutInfo, Mode=OneWay}" />
 
@@ -55,7 +54,7 @@
 
                 <TextBlock Grid.Row="5" Grid.Column="0" Text="License:" 
                            VerticalAlignment="Center" Margin="5" />
-                <TextBlock Grid.Row="5" Grid.Column="1" 
+                <TextBlock Grid.Row="5" Grid.Column="1"  Margin="5" 
                            VerticalAlignment="Center">
                     <Hyperlink NavigateUri="https://www.gnu.org/licenses/gpl-3.0.en.html" RequestNavigate="Hyperlink_RequestNavigate">
                         GPLv3
@@ -64,7 +63,7 @@
 
                 <TextBlock Grid.Row="6" Grid.Column="0" Text="Request source code:" 
                            VerticalAlignment="Center" Margin="5" />
-                <TextBlock Grid.Row="6" Grid.Column="1" 
+                <TextBlock Grid.Row="6" Grid.Column="1" Margin="5" 
                            VerticalAlignment="Center">
                     <Hyperlink NavigateUri="mailto:kmcnaught@unit2games.com" RequestNavigate="Hyperlink_RequestNavigate">
                         kmcnaught@unit2games.com
@@ -73,7 +72,7 @@
 
                 <TextBlock Grid.Row="7" Grid.Column="0" Text="Third party licenses:" 
                            VerticalAlignment="Center" Margin="5" />
-                <TextBlock Grid.Row="7" Grid.Column="1" 
+                <TextBlock Grid.Row="7" Grid.Column="1"  Margin="5" 
                            VerticalAlignment="Center" >
                     <Hyperlink NavigateUri="{Binding ThirdPartyDetailsFile, Mode=OneWay}" RequestNavigate="Hyperlink_RequestNavigate">
                         ThirdPartyLicenses.md
