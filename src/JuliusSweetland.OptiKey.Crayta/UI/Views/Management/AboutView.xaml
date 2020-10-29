@@ -27,6 +27,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Version:" 
@@ -61,18 +62,18 @@
                     </Hyperlink>
                 </TextBlock>
 
-                <TextBlock Grid.Row="6" Grid.Column="0" Text="Request source code:" 
+                <TextBlock Grid.Row="7" Grid.Column="0" Text="Request source code:" 
                            VerticalAlignment="Center" Margin="5" />
-                <TextBlock Grid.Row="6" Grid.Column="1" Margin="5" 
+                <TextBlock Grid.Row="7" Grid.Column="1" Margin="5" 
                            VerticalAlignment="Center">
-                    <Hyperlink NavigateUri="mailto:kmcnaught@unit2games.com" RequestNavigate="Hyperlink_RequestNavigate">
-                        kmcnaught@unit2games.com
+                    <Hyperlink NavigateUri="mailto:kirsty.mcnaught@gmail.com" RequestNavigate="Hyperlink_RequestNavigate">
+                        kirsty.mcnaught@gmail.com
                     </Hyperlink>
                 </TextBlock>
 
-                <TextBlock Grid.Row="7" Grid.Column="0" Text="Third party licenses:" 
+                <TextBlock Grid.Row="8" Grid.Column="0" Text="Third party licenses:" 
                            VerticalAlignment="Center" Margin="5" />
-                <TextBlock Grid.Row="7" Grid.Column="1"  Margin="5" 
+                <TextBlock Grid.Row="8" Grid.Column="1"  Margin="5" 
                            VerticalAlignment="Center" >
                     <Hyperlink NavigateUri="{Binding ThirdPartyDetailsFile, Mode=OneWay}" RequestNavigate="Hyperlink_RequestNavigate">
                         ThirdPartyLicenses.md

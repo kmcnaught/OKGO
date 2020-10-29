@@ -50,11 +50,10 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             get
             {
                 string aboutInfo = "";
-                aboutInfo += "CraytaAccess was developed by K McNaught Consulting Ltd for Unit 2 Games Ltd.\n";
-                aboutInfo += "The app is based on both the excellent Optikey project and EyeMine, ";
-                aboutInfo += "and provides eye gaze access to Crayta.\n";
-                aboutInfo += "CraytaAccess uses ViGemBus to provide controller emulation, as well as other third party ";
-                aboutInfo += "libraries as detailed below";
+                aboutInfo += "Optikey Gaming was developed by Kirsty McNaught\n";
+                aboutInfo += "The app is based on both the excellent Optikey project, ";
+                aboutInfo += "and provides eye gaze access to a variety of PC games.\n";
+                aboutInfo += "Optikey Gaming uses the third party libraries detailed below";
                 aboutInfo += "";
 
                 return aboutInfo;
