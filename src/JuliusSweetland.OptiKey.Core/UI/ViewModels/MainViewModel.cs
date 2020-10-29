@@ -50,6 +50,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private EventHandler<Tuple<PointAndKeyValue, double>> inputServiceSelectionProgressHandler;
         private EventHandler<PointAndKeyValue> inputServiceSelectionHandler;
         private EventHandler<Tuple<List<Point>, KeyValue, List<string>>> inputServiceSelectionResultHandler;
+        
+        private Dictionary<KeyValue, KeyPauseHandler> perKeyPauseHandlers;        
+
         private SelectionModes selectionMode;
         private Point currentPositionPoint;
         private KeyValue currentPositionKey;
@@ -232,6 +235,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     SelectionResultPoints = null; //The last selection result points cannot be valid if this has changed (window has moved or resized)
                 }
             }
+        }
+
+        public KeyValue PointToKeyValue(Point point)
+        {
+            if (pointToKeyValueMap == null)
+                return null;
+            
+            else 
+                return point.ToPointAndKeyValue(pointToKeyValueMap)?.KeyValue;
         }
 
         public SelectionModes SelectionMode

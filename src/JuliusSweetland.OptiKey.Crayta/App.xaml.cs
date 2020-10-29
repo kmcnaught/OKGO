@@ -104,6 +104,19 @@ namespace JuliusSweetland.OptiKey.Crayta
 
         #region On Startup
 
+   
+        private string GetStringFromResource(string resourceName)
+        {
+            string s = String.Empty;
+            using (Stream stream = Assembly.GetExecutingAssembly()
+                        .GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                s = reader.ReadToEnd().Trim();
+            }
+            return s;
+        }
+
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
             try
@@ -115,6 +128,10 @@ namespace JuliusSweetland.OptiKey.Crayta
                     .GetProperty("AppDataDirectoryName")
                     .SetValue(null, @"SpecialEffect\EyeMine");
                     */
+
+                // Grab the autogen commit SHA for About view model
+                UI.ViewModels.Management.AboutViewModel.ReleaseSHA = GetStringFromResource("JuliusSweetland.OptiKey.Crayta." + "version.txt");
+                
                 Log.Info("Boot strapping the services and UI.");
 
                 // We manually close this because automatic closure steals focus from the 

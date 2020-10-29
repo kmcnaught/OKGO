@@ -41,6 +41,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             inputServicePointsPerSecondHandler = (o, value) => { PointsPerSecond = value; };
 
+            // Things that need to happen with every new (x,y) position
             inputServiceCurrentPositionHandler = (o, tuple) =>
             {
                 CurrentPositionPoint = tuple.Item1;
@@ -163,6 +164,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         NotificationTypes.Error, () => { });
                 }
             };
+
+            perKeyPauseHandlers = new Dictionary<KeyValue, KeyPauseHandler>();
 
             Log.Info("SetupInputServiceEventHandlers complete.");
         }
@@ -2712,18 +2715,50 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         await keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
                         keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
                     }
-                    else if (keyCommand.Name == KeyCommands.KeyToggle)
+                    else if (keyCommand.Name == KeyCommands.KeyToggle || 
+                             keyCommand.Name == KeyCommands.KeyTogglePauseOnThisKey ||
+                             keyCommand.Name == KeyCommands.KeyTogglePauseOnAnyKey)
                     {
+
+                         // What kind of pausing are we after?
+                         bool doPause = false;
+                         Func<Point, bool> whenRequiresPausing = null;
+                         if (keyCommand.Name == KeyCommands.KeyTogglePauseOnThisKey) {
+                             doPause = true;
+                             whenRequiresPausing = (point) => this.IsPointInsideKey(point, singleKeyValue);
+                         }
+                         else if (keyCommand.Name == KeyCommands.KeyTogglePauseOnAnyKey)
+                         {
+                             doPause = true;
+                             whenRequiresPausing = (point) => this.IsPointInsideValidKey(point);
+                         }
+
+                        // Key is released
                         if (keyStateService.KeyDownStates[keyCommand.KeyValue].Value != KeyDownStates.Up)
                         {
                             Log.InfoFormat("CommandList: Toggle key up on [{0}] key", keyCommand.KeyValue.String);
+
                             await KeyUpProcessing(singleKeyValue, keyCommand.KeyValue);
                         }
+                        // Key is pressed
                         else
                         {
                             Log.InfoFormat("CommandList: Toggle key down on [{0}] key", keyCommand.KeyValue.String);
                             await keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
                             keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
+
+                            // Subscribe to position stream to allow pausing
+                            if (doPause) {
+                                if (!perKeyPauseHandlers.ContainsKey(singleKeyValue))
+                                {
+                                    perKeyPauseHandlers.Add(singleKeyValue, new KeyPauseHandler(
+                                        whenRequiresPausing,
+                                        new Action(() => { keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Release); }),
+                                        new Action(() => { keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press); })
+                                        ));
+                                }                                
+                                perKeyPauseHandlers.GetValueOrDefault(singleKeyValue)?.AttachListener(inputService);                                
+                            }
                         }
                     }
                     else if (keyCommand.Name == KeyCommands.KeyUp)
@@ -2742,41 +2777,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 await KeyUpProcessing(singleKeyValue, keyValue);
                             }
                         }
-                    }
-                    else if (keyCommand.Name == KeyCommands.ButtonDown)
-                    {
-                        Log.InfoFormat("CommandList: Key down on [{0}] key", keyCommand.KeyValue.String);
-                        await controllerOutputService.ProcessKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
-                        keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
-                    }
-                    else if (keyCommand.Name == KeyCommands.ButtonToggle)
-                    {
-                        if (keyStateService.KeyDownStates[keyCommand.KeyValue].Value != KeyDownStates.Up)
-                        {
-                            Log.InfoFormat("CommandList: Toggle button up on [{0}]", keyCommand.KeyValue.String);
-                            //FIXME: reinstate more keyup logic from ... await KeyUpProcessing(singleKeyValue, keyCommand.KeyValue);
-                            await controllerOutputService.ProcessKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Release);
-                            keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.Up;
-                        }
-                        else
-                        {
-                            Log.InfoFormat("CommandList: Toggle button down on [{0}]", keyCommand.KeyValue.String);
-                            await controllerOutputService.ProcessKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press);
-                            keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
-                        }
-                    }
-                    else if (keyCommand.Name == KeyCommands.ButtonUp)
-                    {
-                        Log.InfoFormat("CommandList: Button up on [{0}]", keyCommand.KeyValue.String);
-                                                keyStateService.KeyDownStates[keyCommand.KeyValue].Value = KeyDownStates.LockedDown;
-
-                        await controllerOutputService.ProcessKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Release);
-
-                        //FIXME: reinstate the logic from: await KeyUpProcessing(singleKeyValue, keyCommand.KeyValue);
-
-                        //the KeyUp value could be a KeyGroup so add any matches from KeyValueByGroup
-                        // FIXME: reinstate KeyValueByGroup functionality once I've learned how it works
-                    }
+                    }                                        
                     else if (keyCommand.Name == KeyCommands.Text)
                     {
                         Log.InfoFormat("CommandList: Text of [{0}]", keyCommand.KeyValue.String);
@@ -2799,33 +2800,49 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private async Task KeyUpProcessing(KeyValue singleKeyValue, KeyValue commandKey)
         {
+            // Either singleKeyValue = xml keyvalue, like "R2-C3", commandKey = actual keyValue, like String:"a" or FunctionKey:"Sleep"
+            // OR singleKeyValue = xml keyvalue (as above) and commandKey = a child's XML key value
+
             var inKey = commandKey.FunctionKey.HasValue
                 ? commandKey.FunctionKey.Value.ToString() : commandKey.String;
             await keyboardOutputService.ProcessSingleKeyPress(inKey, KeyPressKeyValue.KeyPressType.Release);
             keyStateService.KeyDownStates[commandKey].Value = KeyDownStates.Up;
 
-            //if the released key has any children then release them as well 
-            foreach (var childKey in keyStateService.KeyFamily.Where(x => x.Item1 == commandKey
+            // Unsubscribe from position stream (if attached)               
+            perKeyPauseHandlers.GetValueOrDefault(singleKeyValue)?.DetachListener(inputService);
+
+            // If the released key has any child commmands then release them as well             
+            // For instance, if key is holding down multiple keyboard keys, release them all
+            foreach (var keyPair in keyStateService.KeyFamily.Where(x => x.Item1 == commandKey
                 && KeyStateService.KeyDownStates[x.Item2].Value != KeyDownStates.Up))
             {
-                inKey = childKey.Item2.FunctionKey.HasValue
-                    ? childKey.Item2.FunctionKey.Value.ToString() : childKey.Item2.String;
-                await keyboardOutputService.ProcessSingleKeyPress(inKey, KeyPressKeyValue.KeyPressType.Release);
-                keyStateService.KeyDownStates[childKey.Item2].Value = KeyDownStates.Up;
-            }
+                KeyValue keyValParent = keyPair.Item1; 
+                KeyValue keyValChildCommand = keyPair.Item2;  
 
+                inKey = keyValChildCommand.FunctionKey.HasValue
+                    ? keyValChildCommand.FunctionKey.Value.ToString() : keyValChildCommand.String;
+
+                await keyboardOutputService.ProcessSingleKeyPress(inKey, KeyPressKeyValue.KeyPressType.Release);
+                keyStateService.KeyDownStates[keyValChildCommand].Value = KeyDownStates.Up;
+            }
+            
             //if the released key has a parent 
             //and the parent is not up
             //and the parent is not running
             //and the parent has no child that is not released
             //then release the parent
-            foreach (var parentKey in keyStateService.KeyFamily.Where(x => x.Item2 == commandKey
+            foreach (var keyPair in keyStateService.KeyFamily.Where(x => x.Item2 == commandKey
                 && KeyStateService.KeyDownStates[x.Item1].Value != KeyDownStates.Up
                 && !KeyStateService.KeyRunningStates[x.Item1].Value
                 && !keyStateService.KeyFamily.Exists(y => y.Item1 == x.Item1 && KeyStateService.KeyDownStates[y.Item2].Value != KeyDownStates.Up)))
             {
-                await keyboardOutputService.ProcessSingleKeyPress(parentKey.Item1.String, KeyPressKeyValue.KeyPressType.Release);
-                keyStateService.KeyDownStates[parentKey.Item1].Value = KeyDownStates.Up;
+                KeyValue keyValParent = keyPair.Item1;
+                KeyValue keyValChildCommand = keyPair.Item2;  
+                
+                await keyboardOutputService.ProcessSingleKeyPress(keyValParent.String, KeyPressKeyValue.KeyPressType.Release);
+
+                keyStateService.KeyDownStates[keyValParent].Value = KeyDownStates.Up;
+                perKeyPauseHandlers.GetValueOrDefault(keyValParent)?.DetachListener(inputService);
             }
 
             if (commandKey != singleKeyValue && keyStateService.KeyRunningStates[commandKey].Value != false)

@@ -98,16 +98,9 @@ namespace JuliusSweetland.OptiKey.Services
                     return;
                 }
 
-                Xbox360Axis axis = button.ToViGemAxis();
-                float amount = button.ToAxisAmount();
-                if (axis != null)
-                {
-                    controller.SetAxisValue(axis, (short)(Int16.MaxValue * amount));
-                    return;
-                }
-
                 // Triggers are analogue 'sliders', but we'll treat them as buttons
                 Xbox360Slider slider = button.ToViGemSlider();
+                double amount = 1.0f;
                 if (slider != null)
                 {
                     controller.SetSliderValue(slider, (byte)(255 * amount));
@@ -191,10 +184,11 @@ namespace JuliusSweetland.OptiKey.Services
                 direction = 180;
             else if (directionString.EndsWith("left") ||
                      directionString.EndsWith("west"))
-                direction = 270;
-           
-            else
-                int.TryParse(directionString, NumberStyles.Any, CultureInfo.InvariantCulture, out direction);
+                direction = 270;                      
+            else {
+                bool success = int.TryParse(directionString, NumberStyles.Any, CultureInfo.InvariantCulture, out direction);
+                if (!success) { return false; }
+            }
         
             
             // Split amount into x, y components
@@ -253,14 +247,6 @@ namespace JuliusSweetland.OptiKey.Services
                 if (xboxButton != null)
                 {
                     controller.SetButtonState(xboxButton, false);
-                    return;
-                }
-
-                Xbox360Axis axis = button.ToViGemAxis();
-                float amount = button.ToAxisAmount();
-                if (axis != null)
-                {
-                    controller.SetAxisValue(axis, (short) (0));
                     return;
                 }
 

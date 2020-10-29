@@ -1217,7 +1217,7 @@ ARROW</value>
 You can turn off update checks from the Management Console (ALT + M).</value>
   </data>
   <data name="VERIFY_RESTART" xml:space="preserve">
-    <value>May I restart Optikey?</value>
+    <value>May I restart CraytaAccess?</value>
   </data>
   <data name="VERSION_DESCRIPTION" xml:space="preserve">
     <value>Version: {0}</value>

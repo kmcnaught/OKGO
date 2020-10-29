@@ -1,0 +1,156 @@
+<Keyboard>
+   <Name>Edit V2</Name>
+   <SymbolMargin>10</SymbolMargin>   
+   <BackgroundColor>Transparent</BackgroundColor>
+   <HideFromKeyboardMenu>True</HideFromKeyboardMenu>
+   <Height>90%</Height>
+   <Position>Top</Position>   
+   <VerticalOffset>5%</VerticalOffset>
+   <Width>98%</Width>
+   <BackgroundColor>Transparent</BackgroundColor>
+   <BorderColor>Transparent</BorderColor>
+   <WindowState>Floating</WindowState>
+   <Grid>
+    <Rows>18</Rows>
+    <Cols>22</Cols>
+  </Grid>
+
+   <KeyGroup Name="QuickKey" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="25" CompletionTimes="100, 1000" />   
+
+  <Content>
+    <DynamicKey Col="0" Height="2" Row="0" Width="2">
+      <Label>Less</Label>
+      <ChangeKeyboard BackReturnsHere="False">crayta_edit2</ChangeKeyboard>
+      <!-- <KeyGroup>QuickKey</KeyGroup> -->
+    </DynamicKey>
+
+    <DynamicKey Col="0" Height="2" Row="3" Width="2">
+      <Label>Properties</Label>
+      <ChangeKeyboard BackReturnsHere="True">edit_props</ChangeKeyboard>
+    </DynamicKey>
+
+    <DynamicKey Col="0" Height="2" Row="5" Width="2">
+      <Label>Inventory</Label>
+      <ChangeKeyboard BackReturnsHere="True">Inventory</ChangeKeyboard>
+    </DynamicKey>    
+
+    <DynamicKey Col="0" Height="2" Row="7" Width="2">
+      <Label>Toggle\nDrone</Label>
+      <KeyDown>XboxA</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxA</KeyUp>
+      <Wait>200</Wait>
+      <KeyDown>XboxA</KeyDown>
+      <Wait>300</Wait>
+      <KeyUp>XboxA</KeyUp>
+    </DynamicKey>
+
+    <DynamicKey Col="0" Height="2" Row="9" Width="2">
+      <Label>Toggle\nConsole</Label>
+      <Text>o</Text>
+    </DynamicKey>
+
+
+    <DynamicKey Col="2" Height="2" Row="0" Width="2">
+      <Label>Precision\nTank</Label>
+      <Action Payload="0.5">LegacyJoystick</Action>             
+    </DynamicKey>
+    <DynamicKey Col="4" Height="2" Row="0" Width="2">
+      <Label>Tank\ncontrols</Label>
+      <Action>LegacyJoystick</Action>      
+    </DynamicKey>
+    <DynamicKey Col="6" Height="2" Row="0" Width="2">
+      <Label>Move</Label>
+      <Action>LeftJoystick</Action>
+    </DynamicKey>
+    <DynamicKey Col="13" Height="2" Row="0" Width="2">
+      <Label>Look</Label>
+      <Action>RightJoystick</Action>
+    </DynamicKey>
+    <DynamicKey Col="15" Height="2" Row="0" Width="2">
+      <Label>Walk</Label>      
+      <KeyToggle PauseWhenLookingAtAnyKey="true">XBoxLeftThumb|Forward|0.85</KeyToggle>
+    </DynamicKey>
+    <DynamicKey Col="17" Height="2" Row="0" Width="2">
+      <Label>Precision\nLook</Label>
+      <Action Payload="0.5">RightJoystick</Action>
+    </DynamicKey>
+    <!-- <DynamicKey Col="0" Height="2" Row="2" Width="2">
+      <Label>Toggle\ndrone</Label>
+      <KeyDown>XboxA</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxA</KeyUp>
+      <Wait>200</Wait>
+      <KeyDown>XboxA</KeyDown>
+      <Wait>300</Wait>
+      <KeyUp>XboxA</KeyUp>
+    </DynamicKey> -->
+    <DynamicKey Col="3" Height="2" Row="2" Width="2">
+      <Label>LT\nToggle</Label>
+      <KeyToggle PauseWhenLookingAtThisKey="true">XboxLeftTrigger</KeyToggle>     
+    </DynamicKey>
+    <DynamicKey Col="5" Height="2" Row="2" Width="2">
+      <Label>LT\ndelete</Label>
+      <KeyDown>XboxLeftTrigger</KeyDown>
+      <Wait>600</Wait>
+      <KeyUp>XboxLeftTrigger</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="14" Height="2" Row="2" Width="2">
+      <Label>RT\nPlace</Label>
+      <KeyDown>XboxRightTrigger</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxRightTrigger</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="16" Height="2" Row="2" Width="2">
+      <Label>RT\nToggle</Label>
+      <KeyToggle PauseWhenLookingAtThisKey="true">XboxRightTrigger</KeyToggle>        
+    </DynamicKey>
+    <DynamicKey Col="20" Height="2" Row="2" Width="2">
+      <Label>Preview</Label>
+      <KeyDown>XboxStart</KeyDown>
+      <Wait>1500</Wait>
+      <KeyUp>XboxStart</KeyUp>
+    </DynamicKey>
+    <!-- <DynamicKey Col="0" Height="2" Row="11" Width="2">
+      <Label>Voxel\ntool</Label>
+      <KeyDown>XboxUp</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxUp</KeyUp>
+    </DynamicKey> -->
+    
+    <!-- <DynamicKey Col="2" Height="2" Row="11" Width="2">
+      <Label>Select\nmode</Label>
+      <KeyDown>XboxB</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxB</KeyUp>
+    </DynamicKey> -->
+    <DynamicKey Col="18" Height="2" Row="12" Width="2">
+      <Label>Undo</Label>
+      <KeyDown>XboxLeft</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxLeft</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="20" Height="2" Row="12" Width="2">
+      <Label>Redo</Label>
+      <KeyDown>XboxRight</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxRight</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="4" Height="2" Row="16" Width="2">
+      <Label>Prev</Label>
+      <KeyDown>XboxLeftShoulder</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxLeftShoulder</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="16" Height="2" Row="16" Width="2">
+      <Label>Next</Label>
+      <KeyDown>XboxRightShoulder</KeyDown>
+      <Wait>200</Wait>
+      <KeyUp>XboxRightShoulder</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="20" Height="2" Row="16" Width="2">
+      <Label>Back</Label>
+      <Action>BackFromKeyboard</Action>
+    </DynamicKey>
+  </Content>
+</Keyboard>

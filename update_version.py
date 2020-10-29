@@ -38,6 +38,11 @@ def safeProcess( cmd ):
         print("Status : FAIL", e.returncode, e.output)
         return False;
         
+def get_short_sha():
+    cmd = "git rev-parse --short HEAD"
+    out = subprocess.check_output(cmd, shell=True)
+    return out.decode("utf-8").strip()
+
 def safeExit():
     print ("Exiting...")
     os.chdir(origPath)
@@ -77,24 +82,33 @@ def update_installer_version(filename, new_version):
     if not safeProcess("AdvancedInstaller.com /edit {} /SetVersion {}".format(filename, new_version)):
         print("Failed updating version of AI project")
         safeExit()
-   
-        
+    
 # Don't continue if working copy is dirty
 if not safeProcess('git diff-index --quiet HEAD --'):
     print( "Cannot continue, git working copy dirty")
     safeExit()
     
 # Update the source files that OptiKey uses
-version_file = 'src/JuliusSweetland.OptiKey.EyeMine/Properties/AssemblyInfo.cs'
-new_version = update_assembly_version(version_file)
+version_file1 = 'src/JuliusSweetland.OptiKey.Core/Properties/AssemblyInfo.cs'
+new_version = update_assembly_version(version_file1)
 
-# Update the version reported in the AI installer project
-installer_file = "installer\EyeMine.aip"
-update_installer_version(installer_file, new_version)
+version_file2 = 'src/JuliusSweetland.OptiKey.Crayta/Properties/AssemblyInfo.cs'
+new_version = update_assembly_version(version_file2)
+
+# Update the SHA in the VisualsViewModel
+# in git bash this can be a one-liner: 
+# sed -i  "s/RELEASE_SHA/$("git rev-parse --short HEAD)/" src/JuliusSweetland.OptiKey.Crayta/UI/ViewModels/Management/AboutViewModel.cs
+vvmFile = 'src/JuliusSweetland.OptiKey.Crayta/UI/ViewModels/Management/AboutViewModel.cs'
+sha=get_short_sha() 
+safeProcess("sed -i  \"s/RELEASE_SHA/{}/\" {}".format(sha, vvmFile))
 
 # Commit changes
-safeProcess("git add {}".format(version_file))
-safeProcess("git add {}".format(installer_file))
-safeProcess('git commit -m "Update version number to ' + new_version + '"')
-    
+safeProcess("git add {}".format(version_file1))
+safeProcess("git add {}".format(version_file2))
+safeProcess("git add {}".format(vvmFile))
+
+print("")
+print("Updated version and SHA. Next please:")
+print("(1) Update vdproj version # manually & commit changes")
+print("(2) Run release.py ")    
 

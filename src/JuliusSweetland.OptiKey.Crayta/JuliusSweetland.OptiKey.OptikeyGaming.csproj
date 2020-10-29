@@ -14,6 +14,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -199,6 +200,7 @@
     <Compile Include="Enums\StartupKeyboardOptions.cs" />
     <Compile Include="UI\ValueConverters\StringOrEmptyLabel.cs" />
     <Compile Include="UI\ViewModels\ManagementViewModelCrayta.cs" />
+    <Compile Include="UI\ViewModels\Management\AboutViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\ControlsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\VisualsViewModelEyeMine.cs" />
     <Compile Include="UI\Views\ManagementView.xaml.cs">
@@ -282,6 +284,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Content Include="..\..\ThirdPartyLicenses\BSD 3-Clause License.txt">
+      <Link>ThirdPartyLicenses\BSD 3-Clause License.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ThirdPartyLicenses\MICROSOFT .NET LIBRARY LICENSE.txt">
+      <Link>ThirdPartyLicenses\MICROSOFT .NET LIBRARY LICENSE.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ThirdPartyLicenses\MICROSOFT EXPRESSION SDK LICENSE.txt">
+      <Link>ThirdPartyLicenses\MICROSOFT EXPRESSION SDK LICENSE.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ThirdPartyLicenses\Microsoft Public License %28MS-PL%29.txt">
+      <Link>ThirdPartyLicenses\Microsoft Public License %28MS-PL%29.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ThirdPartyLicenses\New BSD.txt">
+      <Link>ThirdPartyLicenses\New BSD.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ThirdPartyLicenses\The MIT License %28MIT%29.txt">
+      <Link>ThirdPartyLicenses\The MIT License %28MIT%29.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\CraytaKeyboards\ABC.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -289,6 +315,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\CraytaKeyboards\crayta_edit.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\CraytaKeyboards\crayta_edit2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\CraytaKeyboards\crayta_edit2more.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\CraytaKeyboards\crayta_play.xml">
@@ -333,10 +365,23 @@
     <Content Include="Resources\CraytaKeyboards\MainMenu.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="version.txt" />
     <SplashScreen Include="Resources\Icons\CraytaSplash.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </SplashScreen>
     <Resource Include="Crayta.ico" />
+    <Content Include="..\..\ThirdPartyLicenses\Apache License, Version 2.0">
+      <Link>ThirdPartyLicenses\Apache License, Version 2.0</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ThirdPartyLicenses\NUnit License.text">
+      <Link>ThirdPartyLicenses\NUnit License.text</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ThirdPartyLicenses.md">
+      <Link>ThirdPartyLicenses.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="..\JuliusSweetland.OptiKey.Core\app.manifest">
       <Link>app.manifest</Link>
     </None>
@@ -1057,5 +1102,9 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rd /s /q $(TargetDir)\Resources\Presage\</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>"C:\Program Files\Git\bin\git.exe" rev-parse --short HEAD &gt; "$(ProjectDir)\version.txt"
+</PreBuildEvent>
   </PropertyGroup>
 </Project>

@@ -325,6 +325,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             }
 
             // Middle row is detailed error message
+            // FIXME: can this be "auto stretch"-ed ?
             {
                 var newKey = new Key {Text = content};
                 PlaceKeyInPosition(newKey, 1, 0, 2, 4);
@@ -680,7 +681,12 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                         else
                         {
                             commandKeyValue = new KeyValue(dynamicKeyToggle.Value);
-                            commandList.Add(new KeyCommand(KeyCommands.KeyToggle, commandKeyValue));
+                            if (dynamicKeyToggle.PauseWhenLookingAtAnyKey)
+                                commandList.Add(new KeyCommand(KeyCommands.KeyTogglePauseOnAnyKey, commandKeyValue));
+                            else if (dynamicKeyToggle.PauseWhenLookingAtThisKey)
+                                commandList.Add(new KeyCommand(KeyCommands.KeyTogglePauseOnThisKey, commandKeyValue));
+                            else
+                                commandList.Add(new KeyCommand(KeyCommands.KeyToggle, commandKeyValue));
                             if (!keyFamily.Contains(new Tuple<KeyValue, KeyValue>(xmlKeyValue, commandKeyValue)))
                                 keyFamily.Add(new Tuple<KeyValue, KeyValue>(xmlKeyValue, commandKeyValue));
                         }
@@ -691,28 +697,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                             Log.ErrorFormat("KeyUp text not found for {0} ", dynamicKeyUp.Label);
                         else
                             commandList.Add(new KeyCommand(KeyCommands.KeyUp, new KeyValue(dynamicKeyUp.Value)));
-                    }
-                    else if (dynamicKey is DynamicButtonUp dynamicButtonUp)
-                    {
-                        if (string.IsNullOrEmpty(dynamicButtonUp.Value))
-                            Log.ErrorFormat("KeyUp text not found for {0} ", dynamicButtonUp.Label);
-                        else
-                            commandList.Add(new KeyCommand(KeyCommands.ButtonUp, new KeyValue(dynamicButtonUp.Value)));
-                    }
-                    else if (dynamicKey is DynamicButtonDown dynamicButtonDown)
-                    {
-                        if (string.IsNullOrEmpty(dynamicButtonDown.Value))
-                            Log.ErrorFormat("KeyUp text not found for {0} ", dynamicButtonDown.Label);
-                        else
-                            commandList.Add(new KeyCommand(KeyCommands.ButtonDown, new KeyValue(dynamicButtonDown.Value)));
-                    }
-                    else if (dynamicKey is DynamicButtonToggle dynamicButtonToggle)
-                    {
-                        if (string.IsNullOrEmpty(dynamicButtonToggle.Value))
-                            Log.ErrorFormat("KeyUp text not found for {0} ", dynamicButtonToggle.Label);
-                        else
-                            commandList.Add(new KeyCommand(KeyCommands.ButtonToggle, new KeyValue(dynamicButtonToggle.Value)));
-                    }
+                    }                    
                     else if (dynamicKey is DynamicText dynamicText)
                     {
                         if (string.IsNullOrEmpty(dynamicText.Value))
