@@ -69,7 +69,7 @@ namespace JuliusSweetland.OptiKey.Crayta
             Action runApp = () =>
             {
 
-                splashScreen = new SplashScreen("/Resources/Icons/CraytaSplash.png");
+                splashScreen = new SplashScreen("/Resources/Icons/OptikeyGamingSplash.png");
                 splashScreen.Show(false);
 
                 var application = new App();

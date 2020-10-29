@@ -365,10 +365,10 @@
     <Content Include="Resources\CraytaKeyboards\MainMenu.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="version.txt" />
-    <SplashScreen Include="Resources\Icons\CraytaSplash.png">
+    <SplashScreen Include="Resources\Icons\OptikeyGamingSplash.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </SplashScreen>
+    <EmbeddedResource Include="version.txt" />
     <Resource Include="Crayta.ico" />
     <Content Include="..\..\ThirdPartyLicenses\Apache License, Version 2.0">
       <Link>ThirdPartyLicenses\Apache License, Version 2.0</Link>
