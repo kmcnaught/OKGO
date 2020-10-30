@@ -255,5 +255,6 @@ namespace JuliusSweetland.OptiKey.Enums
         JoystickXSensitivityDown,
         JoystickYSensitivityUp,
         JoystickYSensitivityDown,
+        CopyJoystickSettings
     }
 }

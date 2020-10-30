@@ -2464,6 +2464,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     this.UpdateJoystickSensitivity(Axes.AxisY, 1.0/Settings.Default.StickSensitivityAdjustmentAmount);
                     break;
                 }
+                case FunctionKeys.CopyJoystickSettings:
+                {
+                    string msg1 = $"Left Stick: ({Settings.Default.LeftStickSensitivityX}, {Settings.Default.LeftStickSensitivityY})";
+                    string msg2 = $"Right Stick: ({Settings.Default.RightStickSensitivityX}, {Settings.Default.RightStickSensitivityY})";
+                    string msg3 = $"Legacy Stick: ({Settings.Default.LegacyStickSensitivityX}, {Settings.Default.LegacyStickSensitivityY})";
+                    string combinedMsg = $"{msg1}\n{msg2}\n{msg3}";
+                    Clipboard.SetText(combinedMsg);
+                    // FIXME: Resource
+                    RaiseToastNotification("Copied!", "Sensitivities copied to clipboard\n" +  combinedMsg, NotificationTypes.Normal, () => { });
+                    break;
+                }
+
             }
 
             keyboardOutputService.ProcessFunctionKey(singleKeyValue.FunctionKey.Value);
