@@ -1,5 +1,5 @@
 # Third Party licenses
-CraytaAccess uses the following third-party dependencies under the license terms listed.
+Optikey Gaming uses the following third-party dependencies under the license terms listed.
 License files are contained in ./ThirdPartyLicenses/
 
 ## NuGet package dependencies:

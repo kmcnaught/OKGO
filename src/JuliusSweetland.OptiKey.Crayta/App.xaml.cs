@@ -64,7 +64,7 @@ namespace JuliusSweetland.OptiKey.Crayta
         {
             // Setup derived settings class
             Settings.Initialise();
-            String appName = "Crayta Access";
+            String appName = "Optikey Gaming";
 
             Action runApp = () =>
             {
@@ -121,13 +121,8 @@ namespace JuliusSweetland.OptiKey.Crayta
         {
             try
             {
-                DiagnosticInfo.AppDataDirectoryName = @"OptiKey\Crayta";
-
-                // Swap out the AppData directory being used
-                /*typeof(DiagnosticInfo)
-                    .GetProperty("AppDataDirectoryName")
-                    .SetValue(null, @"SpecialEffect\EyeMine");
-                    */
+                // FIXME: move declaration of all app-specific branding/directories into one place
+                DiagnosticInfo.AppDataDirectoryName = @"OptiKey\Gaming";                
 
                 // Grab the autogen commit SHA for About view model
                 UI.ViewModels.Management.AboutViewModel.ReleaseSHA = GetStringFromResource("JuliusSweetland.OptiKey.Crayta." + "version.txt");
@@ -333,7 +328,7 @@ namespace JuliusSweetland.OptiKey.Crayta
             if (!Directory.Exists(applicationDataPath))
             {
                 Directory.CreateDirectory(applicationDataPath);
-                String baseSourceDir = AppDomain.CurrentDomain.BaseDirectory + @"\Resources\CraytaKeyboards";
+                String baseSourceDir = AppDomain.CurrentDomain.BaseDirectory + @"\Resources\GamingKeyboards";
                 foreach (string dynamicKeyboard in Directory.GetFiles(baseSourceDir,"*.xml", SearchOption.AllDirectories))
                 {
                     // Copy folder hierarchy
