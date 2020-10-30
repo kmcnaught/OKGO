@@ -1,0 +1,56 @@
+<Keyboard>
+   <Name>Superhot</Name>
+   <SymbolMargin>10</SymbolMargin>   
+   <BackgroundColor>Transparent</BackgroundColor>
+   <Height>15%</Height>
+   <Position>Top</Position>
+   <!-- <Width>80%</Width> -->
+   <BackgroundColor>Transparent</BackgroundColor>
+   <BorderColor>Transparent</BorderColor>
+   <WindowState>Floating</WindowState>
+   <Opacity>0.5</Opacity>
+   <Grid>
+      <Rows>1</Rows>
+      <Cols>7</Cols>
+   </Grid>
+   <KeyGroup Name="LeftJoystick"/>   
+   <KeyGroup Name="RightJoystick"/>   
+   <Content>   
+      <DynamicKey>
+         <Label>A\nPunch\nPick</Label>
+         <ButtonDown>XboxA</ButtonDown>
+         <Wait>200</Wait>
+         <ButtonUp>XboxA</ButtonUp>
+      </DynamicKey>
+      <DynamicKey>
+         <!-- <KeyGroup>LeftJoystick</KeyGroup> -->
+         <Label>L Joy</Label>
+         <!-- <KeyUp>RightJoystick</KeyUp> -->
+         <Action>LeftJoystick</Action>
+      </DynamicKey>
+      <DynamicKey>         
+         <Label>shoot</Label>
+         <ButtonDown>XBoxRightTrigger</ButtonDown>
+         <Wait>200</Wait>
+         <ButtonUp>XBoxRightTrigger</ButtonUp>
+      </DynamicKey>
+      <DynamicKey>
+         <!-- <KeyGroup>RightJoystick</KeyGroup> -->
+         <Label>R Joy</Label>
+         <!-- <KeyUp>LeftJoystick</KeyUp> -->
+         <Action>RightJoystick</Action>
+      </DynamicKey>
+      <DynamicKey>
+         <Label>B\nThrow</Label>
+         <ButtonToggle>XboxB</ButtonToggle>
+      </DynamicKey>
+      <DynamicKey>
+         <Label>Y</Label>
+         <ButtonToggle>XboxY</ButtonToggle>
+      </DynamicKey>
+      <DynamicKey>
+         <Symbol>BackIcon</Symbol>
+         <Action>BackFromKeyboard</Action>
+      </DynamicKey>
+   </Content>
+</Keyboard>

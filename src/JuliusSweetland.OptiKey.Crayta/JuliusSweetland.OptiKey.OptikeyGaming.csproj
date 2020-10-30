@@ -308,61 +308,10 @@
       <Link>ThirdPartyLicenses\The MIT License %28MIT%29.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\CraytaKeyboards\ABC.xml">
+    <Content Include="Resources\GamingKeyboards\Portal.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\CraytaKeyboards\Actions.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\crayta_edit.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\crayta_edit2.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\crayta_edit2more.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\crayta_play.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\crayta_settings.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\edit_props.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Games\basic.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Games\bomberman.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Games\csl.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Games\PuzzleRooms.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Games\Snake.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Games\Test.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Games\Tumbleweed.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\Inventory.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\joystick_settings.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CraytaKeyboards\MainMenu.xml">
+    <Content Include="Resources\GamingKeyboards\SuperHot.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <SplashScreen Include="Resources\Icons\OptikeyGamingSplash.png">
