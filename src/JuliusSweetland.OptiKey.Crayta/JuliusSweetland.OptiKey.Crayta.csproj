@@ -1103,7 +1103,9 @@
   <PropertyGroup>
     <PostBuildEvent>rd /s /q $(TargetDir)\Resources\Presage\
 
-$(ProjectDir)\..\..\installer\tools\signtool.exe sign /n "Open Source Developer, Kirsty McNaught" /t  http://time.certum.pl /fd sha256 /v  $(ProjectDir)\obj\$(ConfigurationName)\$(TargetFileName)</PostBuildEvent>
+if "$(ConfigurationName)"=="Release" (
+  $(ProjectDir)\..\..\installer\tools\signtool.exe sign /n "Open Source Developer, Kirsty McNaught" /t  http://time.certum.pl /fd sha256 /v  $(ProjectDir)\obj\$(ConfigurationName)\$(TargetFileName)
+)</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>"C:\Program Files\Git\bin\git.exe" rev-parse --short HEAD &gt; "$(ProjectDir)\version.txt"
