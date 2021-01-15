@@ -126,6 +126,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             List<IntPtr> windows = Static.Windows.GetHandlesOfTopLevelWindows();
             windows = Static.Windows.ReplaceUWPTopLevelWindowsWithCoreWindowChildren(windows);
             windows = windows.Where(criteria).ToList();
+
+            Log.Debug("WINDOWS");
+            foreach (IntPtr hWnd in windows)
+            {
+                Log.DebugFormat("Window: {0}", hWnd);
+                Log.DebugFormat("\t\t Class name: {0}", Static.Windows.GetWindowClassName(hWnd));
+                Log.DebugFormat("\t\t Title: {0}", Static.Windows.GetWindowTitle(hWnd));
+                Log.DebugFormat("\t\t Style: {0}", Static.Windows.GetWindowStyle(hWnd));
+                Log.DebugFormat("\t\t Visible?: {0}", PInvoke.IsWindowVisible(hWnd));
+                Log.DebugFormat("\t\t Iconic?: {0}", PInvoke.IsIconic(hWnd));
+                var flags = Static.Windows.GetWindowStyles(hWnd);
+                string flagsString = "\t\t Flags: ";
+                foreach (var f in flags)
+                    flagsString += f.Value + " ";
+                Log.Info(flagsString);
+            }
+
             return Static.Windows.GetFrontmostWindow(windows);
         }
 
