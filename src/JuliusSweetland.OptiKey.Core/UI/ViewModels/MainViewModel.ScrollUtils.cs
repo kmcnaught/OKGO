@@ -85,6 +85,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     return false;
                 }
 
+                // Exclude ourselves
+                if (Static.Windows.GetWindowTitle(hWnd).Contains("CraytaAccess") ||
+                    Static.Windows.GetWindowClassName(hWnd).Contains("CraytaAccess"))
+                {
+                    return false;
+                }
+
                 // Exclude windows that aren't visible or that have been minimized.
                 if (!PInvoke.IsWindowVisible(hWnd) || PInvoke.IsIconic(hWnd))
                 {
