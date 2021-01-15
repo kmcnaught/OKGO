@@ -214,9 +214,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         {
                             Log.Info("No valid window at the point to bring to the front.");
                         }
-                        else if (!PInvoke.SetForegroundWindow(hWnd))
+                        else
                         {
-                            Log.WarnFormat("Could not bring window at the point, {0}, to the front.", hWnd);
+                            Log.InfoFormat("Focusing frontmost window {0} ({1})",
+                                Static.Windows.GetWindowClassName(hWnd),
+                                Static.Windows.GetWindowTitle(hWnd));
+                            if (!PInvoke.SetForegroundWindow(hWnd))
+                            {
+                                Log.WarnFormat("Could not bring window at the point, {0}, to the front.", hWnd);
+                            }
                         }
                     }
                 }
