@@ -332,7 +332,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             // Calculate total speed using base speed and distance-based acceleration.
             double speed = baseSpeed + Math.Sqrt(distance) * acceleration;
 
-            Log.InfoFormat("current: {0}, centre: {1}, accel: {2}, velocity: {3}", current, centre, acceleration, sign * speed);
+            //Log.InfoFormat("current: {0}, centre: {1}, accel: {2}, velocity: {3}", current, centre, acceleration, sign * speed);
 
             // Give the speed the correct direction.
             return sign * speed;
