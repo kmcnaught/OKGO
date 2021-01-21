@@ -146,6 +146,29 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             return Static.Windows.GetFrontmostWindow(windows);
         }
 
+        public bool TryGrabFocusAtPoint(Point point)
+        {
+            IntPtr hWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(point);
+            bool bSuccess = false;
+
+            if (hWnd == IntPtr.Zero)
+            {
+                Log.Info("No valid window at the point to bring to the front.");
+            }
+            else
+            {
+                Log.InfoFormat("Focusing frontmost window {0} ({1})",
+                    Static.Windows.GetWindowClassName(hWnd),
+                    Static.Windows.GetWindowTitle(hWnd));
+                bSuccess = PInvoke.SetForegroundWindow(hWnd);
+                if (!bSuccess)
+                {
+                    Log.WarnFormat("Could not bring window at the point, {0}, to the front.", hWnd);
+                }
+            }
+            return bSuccess;
+        }
+
         public IntPtr HideCursorAndGetHwndForFrontmostWindowAtPoint(Point point)
         {
             // Make sure the cursor is hidden or else it may be picked as the front-most "window"!

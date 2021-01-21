@@ -1629,22 +1629,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 }
                                 audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
 
-                                IntPtr hWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(fp);
-
-                                if (hWnd == IntPtr.Zero)
-                                {
-                                    Log.Info("No valid window at the point to bring to the front.");
-                                }
-                                else
-                                {
-                                    Log.InfoFormat("Focusing frontmost window {0} ({1})",
-                                        Static.Windows.GetWindowClassName(hWnd),
-                                        Static.Windows.GetWindowTitle(hWnd));
-                                    if (!PInvoke.SetForegroundWindow(hWnd))
-                                    {
-                                        Log.WarnFormat("Could not bring window at the point, {0}, to the front.", hWnd);
-                                    }
-                                }
+                                TryGrabFocusAtPoint(fp);
 
                                 reinstateModifiers();
                             };

@@ -208,22 +208,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     if (Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint)
                     {
-                        IntPtr hWnd = mainViewModel.HideCursorAndGetHwndForFrontmostWindowAtPoint(point.Value);
-
-                        if (hWnd == IntPtr.Zero)
-                        {
-                            Log.Info("No valid window at the point to bring to the front.");
-                        }
-                        else
-                        {
-                            Log.InfoFormat("Focusing frontmost window {0} ({1})",
-                                Static.Windows.GetWindowClassName(hWnd),
-                                Static.Windows.GetWindowTitle(hWnd));
-                            if (!PInvoke.SetForegroundWindow(hWnd))
-                            {
-                                Log.WarnFormat("Could not bring window at the point, {0}, to the front.", hWnd);
-                            }
-                        }
+                        mainViewModel.TryGrabFocusAtPoint(point.Value);
                     }
                 }
 
