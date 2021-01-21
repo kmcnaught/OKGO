@@ -42,6 +42,13 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             }
         }
 
+        private bool lookToScrollBringWindowToFrontAfterChoosingScreenPoint;
+        public bool LookToScrollBringWindowToFrontAfterChoosingScreenPoint
+        {
+            get { return lookToScrollBringWindowToFrontAfterChoosingScreenPoint; }
+            set { SetProperty(ref lookToScrollBringWindowToFrontAfterChoosingScreenPoint, value); }
+        }
+
         private bool lookToScrollLockDownBoundsKey;
         public bool LookToScrollLockDownBoundsKey
         {
@@ -175,6 +182,8 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             LookToScrollHorizontalDeadzone = Settings.Default.LookToScrollHorizontalDeadzone;
             LookToScrollVerticalDeadzone = Settings.Default.LookToScrollVerticalDeadzone;
 
+            LookToScrollBringWindowToFrontAfterChoosingScreenPoint = Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
+
             LeftStickSensitivityX = Settings.Default.LeftStickSensitivityX;
             LeftStickSensitivityY = Settings.Default.LeftStickSensitivityY;
             RightStickSensitivityX = Settings.Default.RightStickSensitivityX;
@@ -194,6 +203,8 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             Settings.Default.LookToScrollOverlayDeadzoneThickness = LookToScrollOverlayDeadzoneThickness;
             Settings.Default.LookToScrollHorizontalDeadzone = LookToScrollHorizontalDeadzone;
             Settings.Default.LookToScrollVerticalDeadzone = LookToScrollVerticalDeadzone;
+
+            Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint = LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
 
             Settings.Default.LeftStickSensitivityX = LeftStickSensitivityX;
             Settings.Default.LeftStickSensitivityY = LeftStickSensitivityY;
