@@ -18,6 +18,7 @@ using JuliusSweetland.OptiKey.Services.Translation;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using JuliusSweetland.OptiKey.Static;
+using JuliusSweetland.OptiKey.Native;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -1607,6 +1608,54 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         reinstateModifiers();
                         lastMouseActionStateManager.LastMouseAction = null;
                     }
+                    break;
+
+                case FunctionKeys.FocusAtPoint:
+                    Log.Info("Mouse move and left click selected.");
+                    // FIXME reinstate LookToScroll handler resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    SetupFinalClickAction(finalPoint =>
+                    {
+                        if (finalPoint != null)
+                        {
+                            Action<Point> setFocus = fp =>
+                            {
+                                
+                                Log.InfoFormat("Performing mouse left click at point ({0},{1}).", fp.X, fp.Y);
+                                Action reinstateModifiers = () => { };
+                                if (keyStateService.SimulateKeyStrokes
+                                    && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                                {
+                                    reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                                }
+                                audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+
+                                IntPtr hWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(fp);
+
+                                if (hWnd == IntPtr.Zero)
+                                {
+                                    Log.Info("No valid window at the point to bring to the front.");
+                                }
+                                else
+                                {
+                                    Log.InfoFormat("Focusing frontmost window {0} ({1})",
+                                        Static.Windows.GetWindowClassName(hWnd),
+                                        Static.Windows.GetWindowTitle(hWnd));
+                                    if (!PInvoke.SetForegroundWindow(hWnd))
+                                    {
+                                        Log.WarnFormat("Could not bring window at the point, {0}, to the front.", hWnd);
+                                    }
+                                }
+
+                                reinstateModifiers();
+                            };
+                            lastMouseActionStateManager.LastMouseAction = () => setFocus(finalPoint.Value);
+                            ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
+                            setFocus(finalPoint.Value);
+                        }
+
+                        ResetAndCleanupAfterMouseAction();
+                        // FIXME reinstate LookToScroll handler resumeLookToScroll();
+                    });
                     break;
 
                 case FunctionKeys.MouseMoveAndLeftClick:
