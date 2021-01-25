@@ -57,6 +57,38 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public new bool LookToScrollBringWindowToFrontWhenActivated
+        {
+            get
+            {
+                return ((bool)(this["LookToScrollBringWindowToFrontWhenActivated"]));
+            }
+            set
+            {
+                this["LookToScrollBringWindowToFrontWhenActivated"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public new bool LookToScrollBringWindowToFrontAfterChoosingScreenPoint
+        {
+            get
+            {
+                return ((bool)(this["LookToScrollBringWindowToFrontAfterChoosingScreenPoint"]));
+            }
+            set
+            {
+                this["LookToScrollBringWindowToFrontAfterChoosingScreenPoint"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public new bool EnablePlugins
         {
             get
