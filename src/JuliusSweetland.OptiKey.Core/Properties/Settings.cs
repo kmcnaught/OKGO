@@ -2037,7 +2037,39 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["LookToScrollSpeed"] = value;
             }
         }
-        
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int JoystickHorizontalDeadzonePercentScreen
+        {
+            get
+            {
+                return ((int)(this["JoystickHorizontalDeadzonePercentScreen"]));
+            }
+            set
+            {
+                this["JoystickHorizontalDeadzonePercentScreen"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.5")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double JoystickDeadzoneAspectRatio
+        {
+            get
+            {
+                return ((double)(this["JoystickDeadzoneAspectRatio"]));
+            }
+            set
+            {
+                this["JoystickDeadzoneAspectRatio"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("50")]
