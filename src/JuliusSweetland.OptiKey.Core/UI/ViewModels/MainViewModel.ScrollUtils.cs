@@ -44,6 +44,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             };
         }
 
+        public Rect GetPrimaryScreenBoundsInPixels()
+        {
+            return new Rect
+            {
+                X = 0,
+                Y = 0,
+                Width = Graphics.PrimaryScreenWidthInPixels,
+                Height = Graphics.PrimaryScreenHeightInPixels,
+            };
+        }
+
         public Rect GetMainWindowBoundsInPixels()
         {
             return Graphics.DipsToPixels(mainWindowManipulationService.WindowBounds);

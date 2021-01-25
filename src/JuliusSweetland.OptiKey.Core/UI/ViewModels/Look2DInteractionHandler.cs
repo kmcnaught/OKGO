@@ -93,10 +93,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             this.SetScaleFactor(ParseScaleFromString(keyValue.String));
 
-            if (!pointBoundsTarget.HasValue || keyStateService.KeyDownStates[KeyValues.ResetJoystickKey].Value == KeyDownStates.LockedDown)
+            // Choose joystick centre via "Reset" key
+            if (keyStateService.KeyDownStates[KeyValues.ResetJoystickKey].Value == KeyDownStates.LockedDown)
+            {                
+                ChooseLookToScrollBoundsTarget(false);
+            }
+            // Default to centre of screen
+            else if (!pointBoundsTarget.HasValue) 
             {
-                // will set 'IsActive' once complete
-                ChooseLookToScrollBoundsTarget();
+                ChooseLookToScrollBoundsTarget(true);
             }
             else
             {
@@ -167,7 +172,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         #region Private methods
 
-        private void ChooseLookToScrollBoundsTarget()
+        private void ChooseLookToScrollBoundsTarget(bool useCentre = false)
         {
             Log.Info("Choosing look to scroll bounds target.");
 
@@ -192,7 +197,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 choosingBoundsTarget = false;
             };
 
-            ChoosePointLookToScrollBoundsTarget(callback);
+            if (useCentre)
+            {
+                ChooseScreenLookToScrollBoundsTarget(callback);
+            }
+            else
+            {
+                ChoosePointLookToScrollBoundsTarget(callback);
+            }
+        }
+        
+        private void ChooseScreenLookToScrollBoundsTarget(Action<bool> callback)
+        {
+            Log.Info("Will use entire usable portion of the screen as the scroll bounds.");
+            pointBoundsTarget = GetCurrentLookToScrollBoundsRect().Value.CalculateCentre();
+            callback(true); // Always successful.
         }
 
         private void ChoosePointLookToScrollBoundsTarget(Action<bool> callback)
@@ -263,7 +282,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Rect? bounds = mainViewModel.IsMainWindowDocked()
                 ? mainViewModel.FindLargestGapBetweenScreenAndMainWindow()
-                : mainViewModel.GetVirtualScreenBoundsInPixels();
+                : mainViewModel.GetPrimaryScreenBoundsInPixels();
 
             return bounds;
         }
