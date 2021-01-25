@@ -303,6 +303,28 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         
         #region Methods
 
+        private TimeSpan ConvertTimeFromText(string timeString, TimeSpan reference)
+        {
+            // Input is either an absolute time (in milliseconds) as a string, 
+            // or a relative time (e.g. "20%") wrt some reference (default) amount
+            timeString = timeString.Trim();
+            try
+            {
+                if (timeString.EndsWith("%"))
+                {
+                    return TimeSpan.FromMilliseconds(Convert.ToDouble(timeString.Replace("%", "")) * (double)reference.TotalMilliseconds / 100.0f);
+                }
+                else
+                {
+                    return TimeSpan.FromMilliseconds(Convert.ToDouble(timeString));
+                }
+            }
+            catch (Exception e)
+            {                
+                return reference;
+            }
+        }
+
         TimeSpan GetTimeToCompleteTrigger(KeyValue keyValue, KeyValue lastKeyValue, int keystroke)
         { 
             if (keyValue.FunctionKey.HasValue)
@@ -326,15 +348,15 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
             {
                 if (lastKeyValue == null || keyValue != lastKeyValue)
                 {
-                    return TimeSpan.FromMilliseconds(Convert.ToDouble(timeSpanOverrides.CompletionTimes.First()));
+                    return ConvertTimeFromText(timeSpanOverrides.CompletionTimes.First(), timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger));
                 }
 
                 if (timeSpanOverrides.CompletionTimes.Count > keystroke)
                 {
-                    return TimeSpan.FromMilliseconds(Convert.ToDouble(timeSpanOverrides.CompletionTimes[keystroke]));
+                    return ConvertTimeFromText(timeSpanOverrides.CompletionTimes[keystroke], timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger));                    
                 }
 
-                return TimeSpan.FromMilliseconds(Convert.ToDouble(timeSpanOverrides.CompletionTimes.Last()));
+                return ConvertTimeFromText(timeSpanOverrides.CompletionTimes.Last(), timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger));                
             }
 
             //if this key does not have overrides then get the time from setting or use the default
