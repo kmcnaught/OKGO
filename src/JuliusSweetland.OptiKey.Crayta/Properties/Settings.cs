@@ -39,6 +39,22 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public new bool SmoothWhenChangingGazeTarget
+        {
+            get
+            {
+                return ((bool)(this["SmoothWhenChangingGazeTarget"]));
+            }
+            set
+            {
+                this["SmoothWhenChangingGazeTarget"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0.6")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public new double MainWindowOpacity
