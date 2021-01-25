@@ -1316,10 +1316,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.MouseDrag:
+                case FunctionKeys.MouseDragLive:
                     Log.Info("Mouse drag selected.");
+
+                    // If we're doing the 'live' version, temporarily hold down the magnetic cursor key
+                    bool forceMagneticCursor = singleKeyValue.FunctionKey.Value == FunctionKeys.MouseDragLive &&
+                        !keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value.IsDownOrLockedDown();
+
+                    if (forceMagneticCursor)
+                    {
+                        keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value = KeyDownStates.Down;
+                    }
+
                     // FIXME: suspend other 2d handlers too
                     // FIXME reinstate LookToScroll handler resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
-                    SetupFinalClickAction(firstFinalPoint =>
+                        SetupFinalClickAction(firstFinalPoint =>
                     {
                         if (firstFinalPoint != null)
                         {
@@ -1371,6 +1382,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                 audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
                                                 mouseOutputService.LeftButtonUp();
                                                 reinstateModifiers();
+
+                                                // Reset overridden magnetic cursor
+                                                if (forceMagneticCursor)
+                                                {
+                                                    keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value = KeyDownStates.Up;
+                                                }
                                             };
 
                                             lastMouseActionStateManager.LastMouseAction =
@@ -1418,6 +1435,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value = KeyDownStates.Up; //Release magnifier if down but not locked down
                             }
                             //FIXME reinstate resumeLookToScroll();
+
+                            // Reset overridden magnetic cursor
+                            if (forceMagneticCursor)
+                            {
+                                keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value = KeyDownStates.Up;
+                            }
                         }
 
                         //Reset and clean up

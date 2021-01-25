@@ -1429,6 +1429,9 @@ Español
   <data name="CLICK_AND_DRAG" xml:space="preserve">
     <value>CLICK &amp; DRAG</value>
   </data>
+  <data name="CLICK_AND_DRAG_LIVE" xml:space="preserve">
+    <value>CLICK &amp; DRAG (live)</value>
+  </data>
   <data name="CURRENCIES_1" xml:space="preserve">
     <value>CURRENCIES 1</value>
   </data>

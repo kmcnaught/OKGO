@@ -114,6 +114,7 @@ namespace JuliusSweetland.OptiKey.Enums
         Minimise,
         More,
         MouseDrag,
+        MouseDragLive,
         MouseKeyboard,
         MouseLeftClick,
         MouseLeftClickAtCentre,
