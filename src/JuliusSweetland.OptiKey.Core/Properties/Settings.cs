@@ -94,7 +94,23 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["SettingsUpgradeRequired"] = value;
             }
         }
-        
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.0000000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::System.TimeSpan DoubleClickDelay
+        {
+            get
+            {
+                return ((global::System.TimeSpan)(this["DoubleClickDelay"]));
+            }
+            set
+            {
+                this["DoubleClickDelay"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.0130000")]
