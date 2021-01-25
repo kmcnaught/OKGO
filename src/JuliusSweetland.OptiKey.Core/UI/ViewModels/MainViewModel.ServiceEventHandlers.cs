@@ -1319,14 +1319,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.MouseDragLive:
                     Log.Info("Mouse drag selected.");
 
-                    // If we're doing the 'live' version, temporarily hold down the magnetic cursor key
-                    bool forceMagneticCursor = singleKeyValue.FunctionKey.Value == FunctionKeys.MouseDragLive &&
-                        !keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value.IsDownOrLockedDown();
-
-                    if (forceMagneticCursor)
-                    {
-                        keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value = KeyDownStates.Down;
-                    }
+                    // If we're doing the 'live' version, we'll temporarily hold down the magnetic cursor key
+                    bool doActionLive = singleKeyValue.FunctionKey.Value == FunctionKeys.MouseDragLive;
+                    bool forceMagneticCursor = doActionLive && 
+                        !keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value.IsDownOrLockedDown();                    
 
                     // FIXME: suspend other 2d handlers too
                     // FIXME reinstate LookToScroll handler resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
@@ -1335,6 +1331,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         if (firstFinalPoint != null)
                         {
                             audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
+
+                            if (doActionLive)
+                            {
+                                // start immediately
+                                mouseOutputService.MoveTo(firstFinalPoint.Value);
+                                audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
+                                mouseOutputService.LeftButtonDown();
+                                keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value = KeyDownStates.Down;                                
+                            }
 
                             //This class reacts to the point selection event AFTER the MagnifyPopup reacts to it.
                             //This means that if the MagnifyPopup sets the nextPointSelectionAction from the
@@ -1359,35 +1364,48 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                 {
                                                     reinstateModifiers = keyStateService.ReleaseModifiers(Log);
                                                 }
-                                                mouseOutputService.MoveTo(fp1);
-                                                audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
-                                                mouseOutputService.LeftButtonDown();
-                                                Thread.Sleep(Settings.Default.MouseDragDelayAfterLeftMouseButtonDownBeforeMove);
 
-                                                Vector stepVector = fp1 - fp2;
-                                                int steps = Settings.Default.MouseDragNumberOfSteps;
-                                                stepVector = stepVector / steps;
-
-                                                do
+                                                // Finish drag
+                                                if (doActionLive)
                                                 {
-                                                    fp1.X = fp1.X - stepVector.X;
-                                                    fp1.Y = fp1.Y - stepVector.Y;
-                                                    mouseOutputService.MoveTo(fp1);
-                                                    Thread.Sleep(Settings.Default.MouseDragDelayBetweenEachStep);
-                                                    steps--;
-                                                } while (steps > 0);
-
-                                                mouseOutputService.MoveTo(fp2);
-                                                Thread.Sleep(Settings.Default.MouseDragDelayAfterMoveBeforeLeftMouseButtonUp);
-                                                audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
-                                                mouseOutputService.LeftButtonUp();
-                                                reinstateModifiers();
-
-                                                // Reset overridden magnetic cursor
-                                                if (forceMagneticCursor)
-                                                {
-                                                    keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value = KeyDownStates.Up;
+                                                    if (forceMagneticCursor)
+                                                    {
+                                                        keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value = KeyDownStates.Up;
+                                                    }
+                                                    mouseOutputService.MoveTo(fp2);
+                                                    audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
+                                                    mouseOutputService.LeftButtonUp();
                                                 }
+                                                else
+                                                {
+                                                    // Perform whole drag event now
+
+
+                                                    mouseOutputService.MoveTo(fp1);
+                                                    audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
+                                                    mouseOutputService.LeftButtonDown();
+                                                    Thread.Sleep(Settings.Default.MouseDragDelayAfterLeftMouseButtonDownBeforeMove);
+
+                                                    Vector stepVector = fp1 - fp2;
+                                                    int steps = Settings.Default.MouseDragNumberOfSteps;
+                                                    stepVector = stepVector / steps;
+
+                                                    do
+                                                    {
+                                                        fp1.X = fp1.X - stepVector.X;
+                                                        fp1.Y = fp1.Y - stepVector.Y;
+                                                        mouseOutputService.MoveTo(fp1);
+                                                        Thread.Sleep(Settings.Default.MouseDragDelayBetweenEachStep);
+                                                        steps--;
+                                                    } while (steps > 0);
+
+                                                    mouseOutputService.MoveTo(fp2);
+                                                    Thread.Sleep(Settings.Default.MouseDragDelayAfterMoveBeforeLeftMouseButtonUp);
+                                                    audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
+                                                    mouseOutputService.LeftButtonUp();
+                                                }
+
+                                                reinstateModifiers();
                                             };
 
                                             lastMouseActionStateManager.LastMouseAction =
