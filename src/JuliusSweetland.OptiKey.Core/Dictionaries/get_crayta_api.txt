@@ -1,0 +1,16 @@
+# Save API as HTML
+
+grep -i "<div class=\"api-name\"" 'Lua API Documentation Crayta Developer Area.html'> apinames.txt
+grep -i "<span class=\"api-entrypoint-name\"" 'Lua API Documentation Crayta Developer Area.html'  > entrypoints.txt
+grep -i "<span class=\"api-function-name\"" 'Lua API Documentation Crayta Developer Area.html'  > functionnames.txt
+
+# Then use rect select in sublime to be left with words only
+# Save all
+cat apinames.txt >> words.txt
+cat entrypoints.txt >> words.txt
+cat functionnames.txt >> words.txt
+
+# Open words.txt in sublime
+# Remove any indents
+# Permute -> Unique
+
