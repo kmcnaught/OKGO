@@ -6202,7 +6202,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.11.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.12.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_96E58761B21E4FBBB12F7BED7A09AE75"
@@ -6315,7 +6315,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.11.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.12.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_9E07E2FC47DF47BFADC799365056AD12"
@@ -8181,15 +8181,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CraytaAccess"
-        "ProductCode" = "8:{5DB2D25D-DCC4-4694-9ED8-83E7291DB0E4}"
-        "PackageCode" = "8:{A0B37D50-8DB1-4B6B-834A-EAD9B0CA982C}"
+        "ProductCode" = "8:{4B3F6D30-5C1B-454E-A41B-C4C75C11C096}"
+        "PackageCode" = "8:{56FC59D9-A7B5-4A9B-9E8E-0705408375BD}"
         "UpgradeCode" = "8:{37EF57F8-CAA5-4B93-B590-7D22AD3494ED}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.9"
+        "ProductVersion" = "8:1.0.10"
         "Manufacturer" = "8:KMcNaught"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -8731,7 +8731,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3CF9520CC81C48919FA77390C7CCB580"
             {
-            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\obj\\Release\\CraytaAccess.exe"
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\obj\\Debug\\CraytaAccess.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_FE2E78147F89453AAF2DD39A6E084C8C"
