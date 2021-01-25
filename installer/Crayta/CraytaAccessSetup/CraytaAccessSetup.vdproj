@@ -4421,7 +4421,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.13.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.14.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_38D54356DD2B80FE7F44C25377CE75EE"
@@ -6353,7 +6353,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.13.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.14.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_96E58761B21E4FBBB12F7BED7A09AE75"
@@ -8239,15 +8239,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CraytaAccess"
-        "ProductCode" = "8:{4B3F6D30-5C1B-454E-A41B-C4C75C11C096}"
-        "PackageCode" = "8:{56FC59D9-A7B5-4A9B-9E8E-0705408375BD}"
+        "ProductCode" = "8:{AC20D057-DC9E-4C94-8AF9-F0EEBBE17CFE}"
+        "PackageCode" = "8:{908230A8-5FF6-4FB6-9F53-89C0D6387755}"
         "UpgradeCode" = "8:{37EF57F8-CAA5-4B93-B590-7D22AD3494ED}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.10"
+        "ProductVersion" = "8:1.0.11"
         "Manufacturer" = "8:KMcNaught"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
