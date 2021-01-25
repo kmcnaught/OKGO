@@ -349,15 +349,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void UpdateLookToScrollOverlayProperties(Rect bounds, Point centre)
         {
-            int hDeadzone = Settings.Default.LookToScrollHorizontalDeadzone;
-            int vDeadzone = Settings.Default.LookToScrollVerticalDeadzone;
+            double hDeadzone = (double)Settings.Default.JoystickHorizontalDeadzonePercentScreen * Graphics.PrimaryScreenWidthInPixels / 100.0d;
+            double vDeadzone = hDeadzone / Settings.Default.JoystickDeadzoneAspectRatio;
+
+            bool b = IsActive;
 
             var deadzone = new Rect
             {
-                X = centre.X - hDeadzone,
-                Y = centre.Y - vDeadzone,
-                Width = hDeadzone * 2,
-                Height = vDeadzone * 2,
+                X = centre.X - (int)(hDeadzone/2.0),
+                Y = centre.Y - (int)(vDeadzone/2.0),
+                Width = hDeadzone,
+                Height = vDeadzone,
             };
 
             IsActive = isActive;
