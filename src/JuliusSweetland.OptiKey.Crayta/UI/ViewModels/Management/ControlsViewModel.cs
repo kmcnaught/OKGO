@@ -42,6 +42,13 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             }
         }
 
+        private int doubleClickPauseMilliseconds;
+        public int DoubleClickPauseMilliseconds
+        {
+            get { return doubleClickPauseMilliseconds; }
+            set { SetProperty(ref doubleClickPauseMilliseconds, value); }
+        }
+
         private bool lookToScrollBringWindowToFrontAfterChoosingScreenPoint;
         public bool LookToScrollBringWindowToFrontAfterChoosingScreenPoint
         {
@@ -181,6 +188,8 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             JoystickHorizontalDeadzonePercentScreen = Settings.Default.JoystickHorizontalDeadzonePercentScreen;
             JoystickDeadzoneAspectRatio = Settings.Default.JoystickDeadzoneAspectRatio;
 
+            DoubleClickPauseMilliseconds = (int)Settings.Default.DoubleClickDelay.TotalMilliseconds;
+
             LookToScrollBringWindowToFrontAfterChoosingScreenPoint = Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
 
             LeftStickSensitivityX = Settings.Default.LeftStickSensitivityX;
@@ -203,6 +212,8 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             
             Settings.Default.JoystickHorizontalDeadzonePercentScreen = JoystickHorizontalDeadzonePercentScreen;
             Settings.Default.JoystickDeadzoneAspectRatio = JoystickDeadzoneAspectRatio;
+
+            Settings.Default.DoubleClickDelay = System.TimeSpan.FromMilliseconds(DoubleClickPauseMilliseconds);
 
             Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint = LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
 

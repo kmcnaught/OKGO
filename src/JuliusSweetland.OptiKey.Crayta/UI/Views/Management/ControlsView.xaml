@@ -25,6 +25,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <GroupBox Grid.Row="0" Header="JOYSTICK SENSITIVITY">
@@ -196,7 +197,30 @@
 
                 </Grid>
             </GroupBox>
-            
+
+            <GroupBox Grid.Row="3" Header="KEYBOARD + MOUSE">
+                <!-- FIXME: resources-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Delay (ms) between double-clicking" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <mah:NumericUpDown  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+											    Minimum="0" Interval="5" StringFormat="###,##0"
+											    Value="{Binding DoubleClickPauseMilliseconds, Mode=TwoWay}" />
+
+                </Grid>
+            </GroupBox>
+
             <GroupBox Grid.Row="2" Header="OTHER">
                 <!-- FIXME: resources-->
                 <Grid>
