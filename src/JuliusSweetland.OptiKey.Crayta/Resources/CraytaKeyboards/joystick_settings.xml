@@ -2,60 +2,58 @@
 Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Rights Reserved
 -->
 <Keyboard>
-  <Name>Joystick\nSettings</Name>
+  <Name>Joystick\nSettings2</Name>
   <SymbolMargin>10</SymbolMargin>
   <BackgroundColor>Transparent</BackgroundColor>
   <WindowState>Floating</WindowState>
-  <Height>20%</Height>
+  <Height>90%</Height>
+  <Width>90%</Width>
   <Position>Top</Position>
-  <BorderThickness>20,20,20,20</BorderThickness>
-  <HideFromKeyboardMenu>True</HideFromKeyboardMenu>
-  <!-- <Width>80%</Width>-->
+  <VerticalOffset>5%</VerticalOffset>
   <BackgroundColor>Transparent</BackgroundColor>
   <BorderColor>Transparent</BorderColor>
   <Grid>
-    <Rows>2</Rows>
-    <Cols>5</Cols>
+    <Rows>7</Rows>
+    <Cols>8</Cols>
   </Grid>
   <Content>
-    <DynamicKey>
-      <Label>Reset\nCentre</Label>
-      <Action>ResetJoystick</Action>
-    </DynamicKey>
-    <DynamicKey>
-      <Label>Legacy\nStick</Label>
-      <Action>LegacyJoystick</Action>
-    </DynamicKey>
-    <DynamicKey>
-      <Label>Horizontal\nsensitivity ++</Label>
-      <Action>JoystickXSensitivityUp</Action>
-    </DynamicKey>
-    <DynamicKey>
-      <Label>Vertical\nsensitivity ++</Label>
-      <Action>JoystickYSensitivityUp</Action>
-    </DynamicKey>
-    <DynamicKey> 
-      <Action>MouseLeftClickAtCentre</Action>
-      <Label>Click\nanywhere</Label>     
-    </DynamicKey>
-    <!-- second row starts here -->
-    <DynamicKey>
+    <DynamicKey Row="0" Col="0">
       <Label>Left\nStick</Label>
       <Action>LeftJoystick</Action>
     </DynamicKey>
-    <DynamicKey>
+    <DynamicKey Row="0" Col="1">
       <Label>Right\nStick</Label>
       <Action>RightJoystick</Action>
     </DynamicKey>
-    <DynamicKey>
+    <DynamicKey Row="0" Col="6">
       <Label>Horizontal\nsensitivity −−</Label>
       <Action>JoystickXSensitivityDown</Action>
-    </DynamicKey>    
-    <DynamicKey>
+    </DynamicKey>
+    <DynamicKey Row="0" Col="7">
       <Label>Vertical\nsensitivity −−</Label>
       <Action>JoystickYSensitivityDown</Action>
     </DynamicKey>
-    <DynamicKey>
+    <DynamicKey Row="1" Col="0">
+      <Label>Legacy\nStick</Label>
+      <Action>LegacyJoystick</Action>
+    </DynamicKey>
+    <DynamicKey Row="1" Col="1">
+      <Label>Reset\nCentre</Label>
+      <Action>ResetJoystick</Action>
+    </DynamicKey>
+    <DynamicKey Row="1" Col="6">
+      <Label>Horizontal\nsensitivity ++</Label>
+      <Action>JoystickXSensitivityUp</Action>
+    </DynamicKey>
+    <DynamicKey Row="1" Col="7">
+      <Label>Vertical\nsensitivity ++</Label>
+      <Action>JoystickYSensitivityUp</Action>
+    </DynamicKey>
+    <!-- <DynamicKey Row="6" Col="0">
+      <Label>Copy\nsettings</Label>
+      <Action>CopyJoystickSettings</Action>
+    </DynamicKey> -->
+    <DynamicKey Row="6" Col="7">
       <Symbol>BackIcon</Symbol>
       <Action>BackFromKeyboard</Action>
     </DynamicKey>
