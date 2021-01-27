@@ -87,7 +87,7 @@
     </DynamicKey> -->
     <DynamicKey Col="3" Height="2" Row="2" Width="2">
       <Label>LT\nToggle</Label>
-      <KeyToggle PauseWhenLookingAtThisKey="true">XboxLeftTrigger</KeyToggle>     
+      <KeyToggle PauseWhenLookingAtAnyKey="true">XboxLeftTrigger</KeyToggle>     
     </DynamicKey>
     <DynamicKey Col="5" Height="2" Row="2" Width="2">
       <Label>LT\ndelete</Label>
@@ -103,7 +103,7 @@
     </DynamicKey>
     <DynamicKey Col="16" Height="2" Row="2" Width="2">
       <Label>RT\nToggle</Label>
-      <KeyToggle PauseWhenLookingAtThisKey="true">XboxRightTrigger</KeyToggle>        
+      <KeyToggle PauseWhenLookingAtAnyKey="true">XboxRightTrigger</KeyToggle>        
     </DynamicKey>
     <DynamicKey Col="20" Height="2" Row="2" Width="2">
       <Label>Preview</Label>
