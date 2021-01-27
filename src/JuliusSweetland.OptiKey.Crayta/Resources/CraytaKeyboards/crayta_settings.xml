@@ -14,7 +14,7 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
   <BorderColor>Transparent</BorderColor>
   <Grid>
     <Rows>1</Rows>
-    <Cols>10</Cols>
+    <Cols>9</Cols>
   </Grid>
   <Content>
     <DynamicKey>
@@ -29,11 +29,7 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
     <DynamicKey>
       <Label>ABC</Label>
       <ChangeKeyboard BackReturnsHere="True">ABC</ChangeKeyboard>
-    </DynamicKey>
-    <DynamicKey>
-      <Label>Mouse</Label>
-      <ChangeKeyboard BackReturnsHere="True">Mouse</ChangeKeyboard>
-    </DynamicKey>
+    </DynamicKey>    
     <DynamicKey>
       <Label>Play\nWebsite</Label>
       <Plugin>
