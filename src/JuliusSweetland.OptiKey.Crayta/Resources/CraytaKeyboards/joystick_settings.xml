@@ -12,6 +12,7 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
   <VerticalOffset>5%</VerticalOffset>
   <BackgroundColor>Transparent</BackgroundColor>
   <BorderColor>Transparent</BorderColor>
+  <HideFromKeyboardMenu>True</HideFromKeyboardMenu>
   <Grid>
     <Rows>7</Rows>
     <Cols>8</Cols>

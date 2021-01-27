@@ -2,7 +2,7 @@
 Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Rights Reserved
 -->
 <Keyboard>
-   <Name>Crayta\nEdit</Name>
+   <Name>Crayta Edit\n(original)</Name>
    <SymbolMargin>10</SymbolMargin>   
    <BackgroundColor>Transparent</BackgroundColor>
    <Height>20%</Height>
@@ -12,6 +12,7 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
    <BackgroundColor>Transparent</BackgroundColor>
    <BorderColor>Transparent</BorderColor>
    <WindowState>Floating</WindowState>
+   <HideFromKeyboardMenu>True</HideFromKeyboardMenu>
    <Grid>
       <Rows>2</Rows>
       <Cols>10</Cols>

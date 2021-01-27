@@ -344,10 +344,16 @@
     <Content Include="Resources\CraytaKeyboards\Games\csl.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\CraytaKeyboards\Games\PropHunt.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\CraytaKeyboards\Games\PuzzleRooms.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\CraytaKeyboards\Games\Snake.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\CraytaKeyboards\Games\SpaceRun.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\CraytaKeyboards\Games\Test.xml">
