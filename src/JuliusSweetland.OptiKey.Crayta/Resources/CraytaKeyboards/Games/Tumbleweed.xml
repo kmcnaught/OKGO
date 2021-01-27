@@ -16,7 +16,7 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
       <Cols>6</Cols>
    </Grid>
    
-   <KeyGroup Name="QuickKey" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="25" CompletionTimes="10, 1000" />
+   <KeyGroup Name="QuickKey" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="25" CompletionTimes="10%, 100%" />
    
    <Content>   
       <DynamicKey>

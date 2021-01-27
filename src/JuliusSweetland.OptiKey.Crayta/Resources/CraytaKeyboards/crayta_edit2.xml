@@ -14,7 +14,7 @@
     <Cols>22</Cols>
   </Grid>
 
-   <KeyGroup Name="QuickKey" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="25" CompletionTimes="100, 1000" />   
+   <KeyGroup Name="QuickKey" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="25" CompletionTimes="10%, 100%" />   
 
   <Content>
     <DynamicKey Col="0" Height="2" Row="0" Width="2">

@@ -15,10 +15,11 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
   <HorizontalOffset>20%</HorizontalOffset>
   <VerticalOffset>5%</VerticalOffset>
   
-  <KeyGroup Name="AcceleratingKey" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="25" CompletionTimes="1000, 750, 300, 300, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150," />
-  <!-- Dwell completion Time linked to key completion time, otherwise you
+  <KeyGroup Name="AcceleratingKey" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="25" CompletionTimes="100%, 80%, 60%, 40%, 20%, 15%"/>  
+  <!-- Dwell completion time is tied to the key action's completion time, otherwise you
        get aliasing and repeat activations get skipped -->
   <KeyGroup Name="ScrollKey" BackgroundColor="black" Opacity=".9" KeyDownOpacity="1" LockOnTime="25" CompletionTimes="1100"/>
+
   <Grid>
     <Rows>16</Rows>
     <Cols>18</Cols>
