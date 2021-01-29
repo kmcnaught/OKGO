@@ -180,4 +180,10 @@
   <data name="SENSITIVITY_RIGHT_Y" xml:space="preserve">
     <value>Right stick Y axis sensitivity</value>
   </data>
+  <data name="JOYSTICK_ASPECT_RATIO_LABEL" xml:space="preserve">
+    <value>Joystick deadzone aspect ratio</value>
+  </data>
+  <data name="JOYSTICK_HORZ_DEADZONE_PERCENT_LABEL" xml:space="preserve">
+    <value>Joystick horizontal deadzone (% screen)</value>
+  </data>
 </root>

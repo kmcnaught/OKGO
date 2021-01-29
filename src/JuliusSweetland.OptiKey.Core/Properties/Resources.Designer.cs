@@ -592,7 +592,19 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("CLICK_AND_DRAG", resourceCulture);
             }
         }
-        
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to CLICK &amp; DRAG (live).
+        /// </summary>
+        public static string CLICK_AND_DRAG_LIVE
+        {
+            get
+            {
+                return ResourceManager.GetString("CLICK_AND_DRAG_LIVE", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to CLICK
         ///&amp; DRAG.

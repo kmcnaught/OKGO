@@ -44,6 +44,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             };
         }
 
+        public Rect GetPrimaryScreenBoundsInPixels()
+        {
+            return new Rect
+            {
+                X = 0,
+                Y = 0,
+                Width = Graphics.PrimaryScreenWidthInPixels,
+                Height = Graphics.PrimaryScreenHeightInPixels,
+            };
+        }
+
         public Rect GetMainWindowBoundsInPixels()
         {
             return Graphics.DipsToPixels(mainWindowManipulationService.WindowBounds);
@@ -85,6 +96,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     return false;
                 }
 
+                // Exclude ourselves
+                if (Static.Windows.GetWindowTitle(hWnd).Contains("CraytaAccess") ||
+                    Static.Windows.GetWindowClassName(hWnd).Contains("CraytaAccess"))
+                {
+                    return false;
+                }
+
                 // Exclude windows that aren't visible or that have been minimized.
                 if (!PInvoke.IsWindowVisible(hWnd) || PInvoke.IsIconic(hWnd))
                 {
@@ -119,7 +137,47 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             List<IntPtr> windows = Static.Windows.GetHandlesOfTopLevelWindows();
             windows = Static.Windows.ReplaceUWPTopLevelWindowsWithCoreWindowChildren(windows);
             windows = windows.Where(criteria).ToList();
+
+            Log.Debug("WINDOWS");
+            foreach (IntPtr hWnd in windows)
+            {
+                Log.DebugFormat("Window: {0}", hWnd);
+                Log.DebugFormat("\t\t Class name: {0}", Static.Windows.GetWindowClassName(hWnd));
+                Log.DebugFormat("\t\t Title: {0}", Static.Windows.GetWindowTitle(hWnd));
+                Log.DebugFormat("\t\t Style: {0}", Static.Windows.GetWindowStyle(hWnd));
+                Log.DebugFormat("\t\t Visible?: {0}", PInvoke.IsWindowVisible(hWnd));
+                Log.DebugFormat("\t\t Iconic?: {0}", PInvoke.IsIconic(hWnd));
+                var flags = Static.Windows.GetWindowStyles(hWnd);
+                string flagsString = "\t\t Flags: ";
+                foreach (var f in flags)
+                    flagsString += f.Value + " ";
+                Log.Info(flagsString);
+            }
+
             return Static.Windows.GetFrontmostWindow(windows);
+        }
+
+        public bool TryGrabFocusAtPoint(Point point)
+        {
+            IntPtr hWnd = HideCursorAndGetHwndForFrontmostWindowAtPoint(point);
+            bool bSuccess = false;
+
+            if (hWnd == IntPtr.Zero)
+            {
+                Log.Info("No valid window at the point to bring to the front.");
+            }
+            else
+            {
+                Log.InfoFormat("Focusing frontmost window {0} ({1})",
+                    Static.Windows.GetWindowClassName(hWnd),
+                    Static.Windows.GetWindowTitle(hWnd));
+                bSuccess = PInvoke.SetForegroundWindow(hWnd);
+                if (!bSuccess)
+                {
+                    Log.WarnFormat("Could not bring window at the point, {0}, to the front.", hWnd);
+                }
+            }
+            return bSuccess;
         }
 
         public IntPtr HideCursorAndGetHwndForFrontmostWindowAtPoint(Point point)

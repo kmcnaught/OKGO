@@ -93,10 +93,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             this.SetScaleFactor(ParseScaleFromString(keyValue.String));
 
-            if (!pointBoundsTarget.HasValue || keyStateService.KeyDownStates[KeyValues.ResetJoystickKey].Value == KeyDownStates.LockedDown)
+            // Choose joystick centre via "Reset" key
+            if (keyStateService.KeyDownStates[KeyValues.ResetJoystickKey].Value == KeyDownStates.LockedDown)
+            {                
+                ChooseLookToScrollBoundsTarget(false);
+            }
+            // Default to centre of screen
+            else if (!pointBoundsTarget.HasValue) 
             {
-                // will set 'IsActive' once complete
-                ChooseLookToScrollBoundsTarget();
+                ChooseLookToScrollBoundsTarget(true);
             }
             else
             {
@@ -167,7 +172,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         #region Private methods
 
-        private void ChooseLookToScrollBoundsTarget()
+        private void ChooseLookToScrollBoundsTarget(bool useCentre = false)
         {
             Log.Info("Choosing look to scroll bounds target.");
 
@@ -192,7 +197,21 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 choosingBoundsTarget = false;
             };
 
-            ChoosePointLookToScrollBoundsTarget(callback);
+            if (useCentre)
+            {
+                ChooseScreenLookToScrollBoundsTarget(callback);
+            }
+            else
+            {
+                ChoosePointLookToScrollBoundsTarget(callback);
+            }
+        }
+        
+        private void ChooseScreenLookToScrollBoundsTarget(Action<bool> callback)
+        {
+            Log.Info("Will use entire usable portion of the screen as the scroll bounds.");
+            pointBoundsTarget = GetCurrentLookToScrollBoundsRect().Value.CalculateCentre();
+            callback(true); // Always successful.
         }
 
         private void ChoosePointLookToScrollBoundsTarget(Action<bool> callback)
@@ -208,16 +227,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     if (Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint)
                     {
-                        IntPtr hWnd = mainViewModel.HideCursorAndGetHwndForFrontmostWindowAtPoint(point.Value);
-
-                        if (hWnd == IntPtr.Zero)
-                        {
-                            Log.Info("No valid window at the point to bring to the front.");
-                        }
-                        else if (!PInvoke.SetForegroundWindow(hWnd))
-                        {
-                            Log.WarnFormat("Could not bring window at the point, {0}, to the front.", hWnd);
-                        }
+                        mainViewModel.TryGrabFocusAtPoint(point.Value);
                     }
                 }
 
@@ -272,7 +282,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Rect? bounds = mainViewModel.IsMainWindowDocked()
                 ? mainViewModel.FindLargestGapBetweenScreenAndMainWindow()
-                : mainViewModel.GetVirtualScreenBoundsInPixels();
+                : mainViewModel.GetPrimaryScreenBoundsInPixels();
 
             return bounds;
         }
@@ -326,7 +336,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             // Calculate total speed using base speed and distance-based acceleration.
             double speed = baseSpeed + Math.Sqrt(distance) * acceleration;
 
-            Log.InfoFormat("current: {0}, centre: {1}, accel: {2}, velocity: {3}", current, centre, acceleration, sign * speed);
+            //Log.InfoFormat("current: {0}, centre: {1}, accel: {2}, velocity: {3}", current, centre, acceleration, sign * speed);
 
             // Give the speed the correct direction.
             return sign * speed;
@@ -339,15 +349,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void UpdateLookToScrollOverlayProperties(Rect bounds, Point centre)
         {
-            int hDeadzone = Settings.Default.LookToScrollHorizontalDeadzone;
-            int vDeadzone = Settings.Default.LookToScrollVerticalDeadzone;
+            double hDeadzone = (double)Settings.Default.JoystickHorizontalDeadzonePercentScreen * Graphics.PrimaryScreenWidthInPixels / 100.0d;
+            double vDeadzone = hDeadzone / Settings.Default.JoystickDeadzoneAspectRatio;
+
+            bool b = IsActive;
 
             var deadzone = new Rect
             {
-                X = centre.X - hDeadzone,
-                Y = centre.Y - vDeadzone,
-                Width = hDeadzone * 2,
-                Height = vDeadzone * 2,
+                X = centre.X - (int)(hDeadzone/2.0),
+                Y = centre.Y - (int)(vDeadzone/2.0),
+                Width = hDeadzone,
+                Height = vDeadzone,
             };
 
             IsActive = isActive;

@@ -24,6 +24,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <GroupBox Grid.Row="0" Header="JOYSTICK SENSITIVITY">
@@ -181,20 +183,67 @@
 											    Value="{Binding LookToScrollOverlayDeadzoneThickness, Mode=TwoWay}" 
 											     />
 
-                    <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL}" 
+                    <TextBlock Grid.Row="13" Grid.Column="0" Text="{x:Static resxGaming:Resources.JOYSTICK_HORZ_DEADZONE_PERCENT_LABEL}" 
 							       VerticalAlignment="Center" Margin="5" />
                     <mah:NumericUpDown Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
-											    Minimum="0" Interval="5" StringFormat="###,##0"
-											    Value="{Binding LookToScrollHorizontalDeadzone, Mode=TwoWay}" />
+											    Minimum="0" Interval="1" StringFormat="###,##0"
+											    Value="{Binding JoystickHorizontalDeadzonePercentScreen, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL}" 
+                    <TextBlock Grid.Row="14" Grid.Column="0" Text="{x:Static resxGaming:Resources.JOYSTICK_ASPECT_RATIO_LABEL}" 
 							       VerticalAlignment="Center" Margin="5" />
                     <mah:NumericUpDown Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
-											    Minimum="0" Interval="5" StringFormat="###,##0"
-											    Value="{Binding LookToScrollVerticalDeadzone, Mode=TwoWay}" />
+											    Minimum="0" Interval="0.1" 
+											    Value="{Binding JoystickDeadzoneAspectRatio, Mode=TwoWay}" />
 
                 </Grid>
             </GroupBox>
+
+            <GroupBox Grid.Row="3" Header="KEYBOARD + MOUSE">
+                <!-- FIXME: resources-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Delay (ms) between double-clicking" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <mah:NumericUpDown  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+											    Minimum="0" Interval="5" StringFormat="###,##0"
+											    Value="{Binding DoubleClickPauseMilliseconds, Mode=TwoWay}" />
+
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="2" Header="OTHER">
+                <!-- FIXME: resources-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Focus window when positioning joystick" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding LookToScrollBringWindowToFrontAfterChoosingScreenPoint, Mode=TwoWay}" />
+
+                </Grid>
+            </GroupBox>
+            
         </Grid>
     </ScrollViewer>
 </UserControl>

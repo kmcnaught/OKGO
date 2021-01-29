@@ -18,6 +18,7 @@ using JuliusSweetland.OptiKey.Services.Translation;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using JuliusSweetland.OptiKey.Static;
+using JuliusSweetland.OptiKey.Native;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -1317,14 +1318,30 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.MouseDrag:
+                case FunctionKeys.MouseDragLive:
                     Log.Info("Mouse drag selected.");
+
+                    // If we're doing the 'live' version, we'll temporarily hold down the magnetic cursor key
+                    bool doActionLive = singleKeyValue.FunctionKey.Value == FunctionKeys.MouseDragLive;
+                    bool forceMagneticCursor = doActionLive && 
+                        !keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value.IsDownOrLockedDown();                    
+
                     // FIXME: suspend other 2d handlers too
                     // FIXME reinstate LookToScroll handler resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
-                    SetupFinalClickAction(firstFinalPoint =>
+                        SetupFinalClickAction(firstFinalPoint =>
                     {
                         if (firstFinalPoint != null)
                         {
                             audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
+
+                            if (doActionLive)
+                            {
+                                // start immediately
+                                mouseOutputService.MoveTo(firstFinalPoint.Value);
+                                audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
+                                mouseOutputService.LeftButtonDown();
+                                keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value = KeyDownStates.Down;                                
+                            }
 
                             //This class reacts to the point selection event AFTER the MagnifyPopup reacts to it.
                             //This means that if the MagnifyPopup sets the nextPointSelectionAction from the
@@ -1349,28 +1366,47 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                 {
                                                     reinstateModifiers = keyStateService.ReleaseModifiers(Log);
                                                 }
-                                                mouseOutputService.MoveTo(fp1);
-                                                audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
-                                                mouseOutputService.LeftButtonDown();
-                                                Thread.Sleep(Settings.Default.MouseDragDelayAfterLeftMouseButtonDownBeforeMove);
 
-                                                Vector stepVector = fp1 - fp2;
-                                                int steps = Settings.Default.MouseDragNumberOfSteps;
-                                                stepVector = stepVector / steps;
-
-                                                do
+                                                // Finish drag
+                                                if (doActionLive)
                                                 {
-                                                    fp1.X = fp1.X - stepVector.X;
-                                                    fp1.Y = fp1.Y - stepVector.Y;
-                                                    mouseOutputService.MoveTo(fp1);
-                                                    Thread.Sleep(Settings.Default.MouseDragDelayBetweenEachStep);
-                                                    steps--;
-                                                } while (steps > 0);
+                                                    if (forceMagneticCursor)
+                                                    {
+                                                        keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value = KeyDownStates.Up;
+                                                    }
+                                                    mouseOutputService.MoveTo(fp2);
+                                                    audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
+                                                    mouseOutputService.LeftButtonUp();
+                                                }
+                                                else
+                                                {
+                                                    // Perform whole drag event now
 
-                                                mouseOutputService.MoveTo(fp2);
-                                                Thread.Sleep(Settings.Default.MouseDragDelayAfterMoveBeforeLeftMouseButtonUp);
-                                                audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
-                                                mouseOutputService.LeftButtonUp();
+
+                                                    mouseOutputService.MoveTo(fp1);
+                                                    audioService.PlaySound(Settings.Default.MouseDownSoundFile, Settings.Default.MouseDownSoundVolume);
+                                                    mouseOutputService.LeftButtonDown();
+                                                    Thread.Sleep(Settings.Default.MouseDragDelayAfterLeftMouseButtonDownBeforeMove);
+
+                                                    Vector stepVector = fp1 - fp2;
+                                                    int steps = Settings.Default.MouseDragNumberOfSteps;
+                                                    stepVector = stepVector / steps;
+
+                                                    do
+                                                    {
+                                                        fp1.X = fp1.X - stepVector.X;
+                                                        fp1.Y = fp1.Y - stepVector.Y;
+                                                        mouseOutputService.MoveTo(fp1);
+                                                        Thread.Sleep(Settings.Default.MouseDragDelayBetweenEachStep);
+                                                        steps--;
+                                                    } while (steps > 0);
+
+                                                    mouseOutputService.MoveTo(fp2);
+                                                    Thread.Sleep(Settings.Default.MouseDragDelayAfterMoveBeforeLeftMouseButtonUp);
+                                                    audioService.PlaySound(Settings.Default.MouseUpSoundFile, Settings.Default.MouseUpSoundVolume);
+                                                    mouseOutputService.LeftButtonUp();
+                                                }
+
                                                 reinstateModifiers();
                                             };
 
@@ -1419,6 +1455,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 keyStateService.KeyDownStates[KeyValues.MouseMagnifierKey].Value = KeyDownStates.Up; //Release magnifier if down but not locked down
                             }
                             //FIXME reinstate resumeLookToScroll();
+
+                            // Reset overridden magnetic cursor
+                            if (forceMagneticCursor)
+                            {
+                                keyStateService.KeyDownStates[KeyValues.MouseMagneticCursorKey].Value = KeyDownStates.Up;
+                            }
                         }
 
                         //Reset and clean up
@@ -1607,6 +1649,39 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         reinstateModifiers();
                         lastMouseActionStateManager.LastMouseAction = null;
                     }
+                    break;
+
+                case FunctionKeys.FocusAtPoint:
+                    Log.Info("Mouse move and left click selected.");
+                    // FIXME reinstate LookToScroll handler resumeLookToScroll = leftJoystickInteractionHandler.SuspendLookToScrollWhileChoosingPointForMouse();
+                    SetupFinalClickAction(finalPoint =>
+                    {
+                        if (finalPoint != null)
+                        {
+                            Action<Point> setFocus = fp =>
+                            {
+                                
+                                Log.InfoFormat("Performing mouse left click at point ({0},{1}).", fp.X, fp.Y);
+                                Action reinstateModifiers = () => { };
+                                if (keyStateService.SimulateKeyStrokes
+                                    && Settings.Default.SuppressModifierKeysForAllMouseActions)
+                                {
+                                    reinstateModifiers = keyStateService.ReleaseModifiers(Log);
+                                }
+                                audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
+
+                                TryGrabFocusAtPoint(fp);
+
+                                reinstateModifiers();
+                            };
+                            lastMouseActionStateManager.LastMouseAction = () => setFocus(finalPoint.Value);
+                            ShowCursor = false; //Hide cursor popup before performing action as it is possible for it to be performed on the popup
+                            setFocus(finalPoint.Value);
+                        }
+
+                        ResetAndCleanupAfterMouseAction();
+                        // FIXME reinstate LookToScroll handler resumeLookToScroll();
+                    });
                     break;
 
                 case FunctionKeys.MouseMoveAndLeftClick:

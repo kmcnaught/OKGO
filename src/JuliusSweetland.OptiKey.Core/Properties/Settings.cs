@@ -94,7 +94,23 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["SettingsUpgradeRequired"] = value;
             }
         }
-        
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.0000000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::System.TimeSpan DoubleClickDelay
+        {
+            get
+            {
+                return ((global::System.TimeSpan)(this["DoubleClickDelay"]));
+            }
+            set
+            {
+                this["DoubleClickDelay"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.0130000")]
@@ -2037,7 +2053,39 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["LookToScrollSpeed"] = value;
             }
         }
-        
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int JoystickHorizontalDeadzonePercentScreen
+        {
+            get
+            {
+                return ((int)(this["JoystickHorizontalDeadzonePercentScreen"]));
+            }
+            set
+            {
+                this["JoystickHorizontalDeadzonePercentScreen"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.5")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double JoystickDeadzoneAspectRatio
+        {
+            get
+            {
+                return ((double)(this["JoystickDeadzoneAspectRatio"]));
+            }
+            set
+            {
+                this["JoystickDeadzoneAspectRatio"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("50")]

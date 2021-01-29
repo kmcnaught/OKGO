@@ -133,6 +133,24 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Joystick deadzone aspect ratio.
+        /// </summary>
+        public static string JOYSTICK_ASPECT_RATIO_LABEL {
+            get {
+                return ResourceManager.GetString("JOYSTICK_ASPECT_RATIO_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Joystick horizontal deadzone (% screen).
+        /// </summary>
+        public static string JOYSTICK_HORZ_DEADZONE_PERCENT_LABEL {
+            get {
+                return ResourceManager.GetString("JOYSTICK_HORZ_DEADZONE_PERCENT_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overall sound effect volume.
         /// </summary>
         public static string OVERALL_VOLUME {

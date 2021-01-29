@@ -42,6 +42,20 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             }
         }
 
+        private int doubleClickPauseMilliseconds;
+        public int DoubleClickPauseMilliseconds
+        {
+            get { return doubleClickPauseMilliseconds; }
+            set { SetProperty(ref doubleClickPauseMilliseconds, value); }
+        }
+
+        private bool lookToScrollBringWindowToFrontAfterChoosingScreenPoint;
+        public bool LookToScrollBringWindowToFrontAfterChoosingScreenPoint
+        {
+            get { return lookToScrollBringWindowToFrontAfterChoosingScreenPoint; }
+            set { SetProperty(ref lookToScrollBringWindowToFrontAfterChoosingScreenPoint, value); }
+        }
+
         private bool lookToScrollLockDownBoundsKey;
         public bool LookToScrollLockDownBoundsKey
         {
@@ -91,20 +105,18 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             set { SetProperty(ref lookToScrollOverlayDeadzoneThickness, value); }
         }
 
-        // TODO: single deadzone for both,
-        // TODO: as a % of screen?
-        private int lookToScrollHorizontalDeadzone;
-        public int LookToScrollHorizontalDeadzone
+        private double joystickDeadzoneAspectRatio;
+        public double JoystickDeadzoneAspectRatio
         {
-            get { return lookToScrollHorizontalDeadzone; }
-            set { SetProperty(ref lookToScrollHorizontalDeadzone, value); }
+            get { return joystickDeadzoneAspectRatio; }
+            set { SetProperty(ref joystickDeadzoneAspectRatio, value); }
         }
 
-        private int lookToScrollVerticalDeadzone;
-        public int LookToScrollVerticalDeadzone
+        private int joystickHorizontalDeadzonePercentScreen;
+        public int JoystickHorizontalDeadzonePercentScreen
         {
-            get { return lookToScrollVerticalDeadzone; }
-            set { SetProperty(ref lookToScrollVerticalDeadzone, value); }
+            get { return joystickHorizontalDeadzonePercentScreen; }
+            set { SetProperty(ref joystickHorizontalDeadzonePercentScreen, value); }
         }
 
         private double leftStickSensitivityX;
@@ -172,8 +184,13 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             LookToScrollOverlayDeadzoneColour = Settings.Default.LookToScrollOverlayDeadzoneColour;
             LookToScrollOverlayBoundsThickness = Settings.Default.LookToScrollOverlayBoundsThickness;
             LookToScrollOverlayDeadzoneThickness = Settings.Default.LookToScrollOverlayDeadzoneThickness;
-            LookToScrollHorizontalDeadzone = Settings.Default.LookToScrollHorizontalDeadzone;
-            LookToScrollVerticalDeadzone = Settings.Default.LookToScrollVerticalDeadzone;
+
+            JoystickHorizontalDeadzonePercentScreen = Settings.Default.JoystickHorizontalDeadzonePercentScreen;
+            JoystickDeadzoneAspectRatio = Settings.Default.JoystickDeadzoneAspectRatio;
+
+            DoubleClickPauseMilliseconds = (int)Settings.Default.DoubleClickDelay.TotalMilliseconds;
+
+            LookToScrollBringWindowToFrontAfterChoosingScreenPoint = Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
 
             LeftStickSensitivityX = Settings.Default.LeftStickSensitivityX;
             LeftStickSensitivityY = Settings.Default.LeftStickSensitivityY;
@@ -192,8 +209,13 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             Settings.Default.LookToScrollOverlayDeadzoneColour = LookToScrollOverlayDeadzoneColour;
             Settings.Default.LookToScrollOverlayBoundsThickness = LookToScrollOverlayBoundsThickness;
             Settings.Default.LookToScrollOverlayDeadzoneThickness = LookToScrollOverlayDeadzoneThickness;
-            Settings.Default.LookToScrollHorizontalDeadzone = LookToScrollHorizontalDeadzone;
-            Settings.Default.LookToScrollVerticalDeadzone = LookToScrollVerticalDeadzone;
+            
+            Settings.Default.JoystickHorizontalDeadzonePercentScreen = JoystickHorizontalDeadzonePercentScreen;
+            Settings.Default.JoystickDeadzoneAspectRatio = JoystickDeadzoneAspectRatio;
+
+            Settings.Default.DoubleClickDelay = System.TimeSpan.FromMilliseconds(DoubleClickPauseMilliseconds);
+
+            Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint = LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
 
             Settings.Default.LeftStickSensitivityX = LeftStickSensitivityX;
             Settings.Default.LeftStickSensitivityY = LeftStickSensitivityY;

@@ -11,10 +11,12 @@ using WindowsInput.Native;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Static;
+using JuliusSweetland.OptiKey.Properties;
 using log4net;
 using Nefarius.ViGEm.Client;
 using Nefarius.ViGEm.Client.Targets;
 using Nefarius.ViGEm.Client.Targets.Xbox360;
+using System.Threading;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -366,7 +368,17 @@ namespace JuliusSweetland.OptiKey.Services
             try
             {
                 Log.Info("Simulating pressing the left mouse button down twice");
-                inputSimulator.Mouse.LeftButtonDoubleClick();
+                if (Settings.Default.DoubleClickDelay > TimeSpan.Zero)
+                {
+                    inputSimulator.Mouse.LeftButtonClick();
+                    Thread.Sleep(Settings.Default.DoubleClickDelay);
+                    inputSimulator.Mouse.LeftButtonClick();
+                }
+                else
+                {
+                    inputSimulator.Mouse.LeftButtonDoubleClick();
+                }
+                
             }
             catch (Exception exception)
             {

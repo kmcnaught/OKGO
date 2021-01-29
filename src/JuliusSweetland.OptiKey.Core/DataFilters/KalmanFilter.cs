@@ -39,11 +39,14 @@ namespace JuliusSweetland.OptiKey.DataFilters
             var curveOffset = -1.0 * smoothingFactor;
 
             //A weighted average of the last 3 measurements will reduce the recoil inherent with large movements
+            // EyeMine hack: I've adjusted this to forget faster than the Optikey implementation. 
+            // Ideally we'd turn it off and instead re-tune the KF model to have a less-fast drop-off 
+            // so we get smooth behaviour locally but still rapid saccades
             if (Settings.Default.SmoothWhenChangingGazeTarget)
             {
                 measurement = new Point(
-                    measurement.X * 0.45 + Measurement1.X * 0.3 + Measurement2.X * 0.25,
-                    measurement.Y * 0.45 + Measurement1.Y * 0.3 + Measurement2.Y * 0.25);
+                    measurement.X * 0.75 + Measurement1.X * 0.25,
+                    measurement.Y * 0.75 + Measurement1.Y * 0.25);
 
                 Measurement2 = Measurement1;
                 Measurement1 = measurement;

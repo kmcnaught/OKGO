@@ -23,6 +23,22 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.0050000")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public new global::System.TimeSpan DoubleClickDelay
+        {
+            get
+            {
+                return ((global::System.TimeSpan)(this["DoubleClickDelay"]));
+            }
+            set
+            {
+                this["DoubleClickDelay"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Floating")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public virtual global::JuliusSweetland.OptiKey.Enums.WindowStates MainWindowState
@@ -39,6 +55,22 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public new bool SmoothWhenChangingGazeTarget
+        {
+            get
+            {
+                return ((bool)(this["SmoothWhenChangingGazeTarget"]));
+            }
+            set
+            {
+                this["SmoothWhenChangingGazeTarget"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0.6")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public new double MainWindowOpacity
@@ -50,6 +82,38 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
             set
             {
                 this["MainWindowOpacity"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public new bool LookToScrollBringWindowToFrontWhenActivated
+        {
+            get
+            {
+                return ((bool)(this["LookToScrollBringWindowToFrontWhenActivated"]));
+            }
+            set
+            {
+                this["LookToScrollBringWindowToFrontWhenActivated"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public new bool LookToScrollBringWindowToFrontAfterChoosingScreenPoint
+        {
+            get
+            {
+                return ((bool)(this["LookToScrollBringWindowToFrontAfterChoosingScreenPoint"]));
+            }
+            set
+            {
+                this["LookToScrollBringWindowToFrontAfterChoosingScreenPoint"] = value;
             }
         }
 

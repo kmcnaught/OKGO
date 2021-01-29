@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Native.Common.Enums;
@@ -17,9 +18,42 @@ namespace JuliusSweetland.OptiKey.Static
         private const string UWPTopLevelWindowClassName = "ApplicationFrameWindow";
         private const string UWPCoreWindowClassName = "Windows.UI.Core.CoreWindow";
 
+        private static List<KeyValuePair<UInt32, string> > GetFlagValues(Type type)
+        {
+            var flags = new List<KeyValuePair<UInt32, string>>();
+            
+            // For every static UInt32 member, return value and name
+            FieldInfo[] fields = typeof(WindowStyles).GetFields(BindingFlags.Public | BindingFlags.Static);
+            foreach (var f in fields)
+            {
+                if (f.FieldType == typeof(System.UInt32))
+                {
+                    flags.Add(new KeyValuePair<UInt32, string>((UInt32)f.GetValue(null), f.Name));
+                }
+            }
+
+            return flags;
+        }
+
         public static long GetWindowStyle(IntPtr hWnd)
         {
             return PInvoke.GetWindowLong(hWnd, (int)GWL.GWL_STYLE);
+        }
+
+        public static List<KeyValuePair<UInt32, string>> GetWindowStyles(IntPtr hWnd)
+        {
+            var possibleFlags = GetFlagValues(typeof(WindowStyles));
+            var style = Static.Windows.GetWindowStyle(hWnd);
+
+            var flags = new List<KeyValuePair<UInt32, string>>();
+            foreach (var flagPair in possibleFlags)
+            {
+                if ((style & flagPair.Key) != 0)
+                {
+                    flags.Add(flagPair);
+                }
+            }
+            return flags;
         }
 
         public static ExtendedWindowStyles GetExtendedWindowStyle(IntPtr hWnd)
@@ -75,6 +109,22 @@ namespace JuliusSweetland.OptiKey.Static
             else
             {
                 return false;
+            }
+        }
+
+        public static string GetWindowClassName(IntPtr hWnd)
+        {
+            var builder = new StringBuilder(256);
+
+            int nRet = PInvoke.GetClassName(hWnd, builder, builder.Capacity);
+
+            if (nRet != 0)
+            {
+                return builder.ToString();
+            }
+            else
+            {
+                return null;
             }
         }
 
