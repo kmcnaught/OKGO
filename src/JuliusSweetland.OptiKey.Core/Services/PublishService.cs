@@ -316,6 +316,19 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
+        public void MouseMoveBy(Point point)
+        {
+            try
+            {
+                Log.DebugFormat("Simulating moving mouse by '{0}' pixels", point);
+                inputSimulator.Mouse.MoveMouseBy((int)point.X, (int)point.Y);
+            }
+            catch (Exception exception)
+            {
+                PublishError(this, exception);
+            }
+        }
+
         public void MouseMouseToPoint(Point point)
         {
             try

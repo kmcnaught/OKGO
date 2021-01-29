@@ -23,6 +23,7 @@ namespace JuliusSweetland.OptiKey.Services
         void MiddleMouseButtonDown();
         void MiddleMouseButtonUp();
         void MouseMouseToPoint(Point point);
+        void MouseMoveBy(Point point);
         void ReleaseAllDownKeys();
         void RightMouseButtonClick();
         void RightMouseButtonDown();

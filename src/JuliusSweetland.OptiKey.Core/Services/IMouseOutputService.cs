@@ -21,6 +21,7 @@ namespace JuliusSweetland.OptiKey.Services
         void MoveAndScrollWheelDown(Point point, int clicks, bool sleep = false);
         void MoveAndScrollWheelLeft(Point point, int clicks, bool sleep = false);
         void MoveAndScrollWheelRight(Point point, int clicks, bool sleep = false);
+        void MoveBy(Point point);
         void MoveTo(Point point);
         void RightButtonClick();
         void RightButtonDown();
