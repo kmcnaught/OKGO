@@ -125,8 +125,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Action<float, float> mouseJoystickAction = (x, y) =>
             {
                 Log.DebugFormat("mouseJoystickAction, ({0}, {1})", x, y);
-                mouseOutputService.MoveBy(new Point(Settings.Default.MouseStickSensitivityX * x,
-                                                    Settings.Default.MouseStickSensitivityY * y));                    
+                mouseOutputService.MoveBy(new Point(250.0 * Settings.Default.MouseStickSensitivityX * x,
+                                                    250.0 * Settings.Default.MouseStickSensitivityY * y));                    
             };
 
             Action<float, float> legacyJoystickAction = (x, y) =>
