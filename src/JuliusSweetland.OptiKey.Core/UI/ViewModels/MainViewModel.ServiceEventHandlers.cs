@@ -670,6 +670,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                     break;
 
+                case FunctionKeys.MouseJoystick:
                 case FunctionKeys.LeftJoystick:
                 case FunctionKeys.RightJoystick:
                 case FunctionKeys.LegacyJoystick:
@@ -1262,6 +1263,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     ToggleLookToScroll();
                     break;
 
+                case FunctionKeys.MouseJoystick:
                 case FunctionKeys.LeftJoystick:
                 case FunctionKeys.RightJoystick:
                 case FunctionKeys.LegacyJoystick:
@@ -2466,7 +2468,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     string msg1 = $"Left Stick: ({Settings.Default.LeftStickSensitivityX}, {Settings.Default.LeftStickSensitivityY})";
                     string msg2 = $"Right Stick: ({Settings.Default.RightStickSensitivityX}, {Settings.Default.RightStickSensitivityY})";
                     string msg3 = $"Legacy Stick: ({Settings.Default.LegacyStickSensitivityX}, {Settings.Default.LegacyStickSensitivityY})";
-                    string combinedMsg = $"{msg1}\n{msg2}\n{msg3}";
+                    string msg4 = $"Mouse Stick: ({Settings.Default.MouseStickSensitivityX}, {Settings.Default.MouseStickSensitivityY})";
+                    string combinedMsg = $"{msg1}\n{msg2}\n{msg3}\n{msg4}";
                     Clipboard.SetText(combinedMsg);
                     // FIXME: Resource
                     RaiseToastNotification("Copied!", "Sensitivities copied to clipboard\n" +  combinedMsg, NotificationTypes.Normal, () => { });

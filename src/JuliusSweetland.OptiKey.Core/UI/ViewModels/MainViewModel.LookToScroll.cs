@@ -48,6 +48,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             // multiplier already encapsulates  "up" or "down".
             switch (selectedJoyKey)
             {
+                case FunctionKeys.MouseJoystick:
+                    if (axis == Axes.AxisX)
+                        Settings.Default.MouseStickSensitivityX *= multiplier;
+                    else
+                        Settings.Default.MouseStickSensitivityY *= multiplier;
+                    break;
                 case FunctionKeys.LeftJoystick:
                     if (axis == Axes.AxisX)
                         Settings.Default.LeftStickSensitivityX *= multiplier;

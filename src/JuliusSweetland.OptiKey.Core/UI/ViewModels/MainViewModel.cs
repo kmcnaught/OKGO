@@ -122,6 +122,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 keyboardOutputService.XBoxProcessJoystick("RightJoystickAxisY", -(float)Settings.Default.RightStickSensitivityY * y);
             };
 
+            Action<float, float> mouseJoystickAction = (x, y) =>
+            {
+                Log.DebugFormat("mouseJoystickAction, ({0}, {1})", x, y);
+                mouseOutputService.MoveBy(new Point(Settings.Default.MouseStickSensitivityX * x,
+                                                    Settings.Default.MouseStickSensitivityY * y));                    
+            };
+
             Action<float, float> legacyJoystickAction = (x, y) =>
             {
                 Log.DebugFormat("legacyJoystickAction, ({0}, {1})", x, y);
@@ -147,6 +154,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             JoystickHandlers.Add(FunctionKeys.RightJoystick, new Look2DInteractionHandler(FunctionKeys.RightJoystick, rightJoystickAction,
                                                             keyStateService, this));
             JoystickHandlers.Add(FunctionKeys.LegacyJoystick, new Look2DInteractionHandler(FunctionKeys.LegacyJoystick, legacyJoystickAction,
+                                                            keyStateService, this));
+            JoystickHandlers.Add(FunctionKeys.MouseJoystick, new Look2DInteractionHandler(FunctionKeys.MouseJoystick, mouseJoystickAction,
                                                             keyStateService, this));
         }
 
