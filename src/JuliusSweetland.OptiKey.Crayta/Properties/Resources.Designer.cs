@@ -106,7 +106,7 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Built-in Crayta Keyboards.
+        ///   Looks up a localized string similar to Installed sample keyboards.
         /// </summary>
         public static string EYEMINE_ALL_KEYBOARDS {
             get {

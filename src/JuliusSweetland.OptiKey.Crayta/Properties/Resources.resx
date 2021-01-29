@@ -124,7 +124,7 @@
     <value>Custom folder containing dynamic keyboards</value>
   </data>
   <data name="EYEMINE_ALL_KEYBOARDS" xml:space="preserve">
-    <value>Built-in Crayta Keyboards</value>
+    <value>Installed sample keyboards</value>
   </data>
   <data name="EYEMINE_SINGLE_KEYBOARD" xml:space="preserve">
     <value>A single specific keyboard</value>
