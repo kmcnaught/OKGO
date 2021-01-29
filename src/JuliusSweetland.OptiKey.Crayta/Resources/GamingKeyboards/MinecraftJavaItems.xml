@@ -1,0 +1,88 @@
+<!--  
+Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Rights Reserved
+-->
+<Keyboard>
+  <Name>Minecraft</Name>
+  <SymbolMargin>10</SymbolMargin>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <Height>100%</Height>
+  <Width>100%</Width>
+  <Position>Bottom</Position>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <BorderColor>Transparent</BorderColor>
+  <HideFromKeyboardMenu>true</HideFromKeyboardMenu>
+  <Grid>
+    <Rows>7</Rows>
+    <Cols>9</Cols>
+  </Grid>
+  <KeyGroup BackgroundColor="black" CompletionTimes="50%" KeyDownOpacity="1" LockOnTime="25" Name="QuickKey" Opacity=".9"/>
+  <KeyGroup AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" Name="Scaling"/>
+  <Content>
+    <DynamicKey Row="0" Col="0">
+      <Label>Open\ninventory</Label>
+      <Text>e</Text>
+    </DynamicKey>
+    <DynamicKey Row="0" Col="2">
+      <Label>Look</Label>
+      <Action>MouseJoystick</Action>
+    </DynamicKey>
+    <DynamicKey Row="0" Col="6">
+      <Label>Walk</Label>w
+      <KeyToggle PauseWhenLookingAtAnyKey="true">w</KeyToggle>
+    </DynamicKey>
+
+    <DynamicKey Row="0" Col="7">
+      <Label>Fly</Label>
+      <KeyDown>Space</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>Space</KeyUp>
+      <Wait>100</Wait>
+      <KeyDown>Space</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>Space</KeyUp>
+    </DynamicKey>
+    <DynamicKey Row="0" Col="8">
+      <Label>Fly\ndown</Label>
+      <KeyToggle PauseWhenLookingAtThisKey="true">Shift</KeyToggle>
+     </DynamicKey>
+
+    <DynamicKey Row="5" Col="0"><Label>1</Label><Text>1</Text></DynamicKey>
+    <DynamicKey Row="5" Col="1"><Label>2</Label><Text>2</Text></DynamicKey>
+    <DynamicKey Row="5" Col="2"><Label>3</Label><Text>3</Text></DynamicKey>
+    <DynamicKey Row="5" Col="3"><Label>4</Label><Text>4</Text></DynamicKey>
+    <DynamicKey Row="5" Col="4"><Label>5</Label><Text>5</Text></DynamicKey>
+    <DynamicKey Row="5" Col="5"><Label>6</Label><Text>6</Text></DynamicKey>
+    <DynamicKey Row="5" Col="6"><Label>7</Label><Text>7</Text></DynamicKey>
+    <DynamicKey Row="5" Col="7"><Label>8</Label><Text>8</Text></DynamicKey>
+    <DynamicKey Row="5" Col="8"><Label>9</Label><Text>9</Text></DynamicKey>    
+
+    <DynamicKey Row="6" Col="0">
+      <KeyGroup>QuickKey</KeyGroup>
+      <Label>Items</Label>
+      <ChangeKeyboard BackReturnsHere="False">MinecraftJava</ChangeKeyboard>
+    </DynamicKey>
+    <DynamicKey Row="6" Col="1">
+      <Label>Jump/\nSwim</Label>      
+      <KeyToggle PauseWhenLookingAtThisKey="true">Space</KeyToggle>
+    </DynamicKey>
+    <DynamicKey Row="6" Col="2">
+      <Label>Place x1</Label>      
+      <Action>MouseRightClick</Action>
+    </DynamicKey>
+    <DynamicKey Row="6" Col="6">
+      <Label>Mine x1</Label>
+      <Action>MouseLeftClick</Action>      
+    </DynamicKey>
+    <DynamicKey Row="6" Col="7">
+      <Label>Toggle\nMine</Label>
+      <Loop Count="0">
+        <Action>MouseLeftClick</Action>      
+        <Wait>500</Wait>
+      </Loop>
+    </DynamicKey>
+    <DynamicKey Row="6" Col="8" >
+      <Symbol>BackIcon</Symbol>
+      <Action>BackFromKeyboard</Action>
+    </DynamicKey>
+  </Content>
+</Keyboard>
