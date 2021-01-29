@@ -1461,9 +1461,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     break;
 
-                case FunctionKeys.MouseLeftClick:
-                    var leftClickPoint = mouseOutputService.GetCursorPosition();
-                    Log.InfoFormat("Mouse left click selected at point ({0},{1}).", leftClickPoint.X, leftClickPoint.Y);
+                case FunctionKeys.MouseLeftClick:                    
+                    Log.InfoFormat("Mouse left click at current point");
                     Action performLeftClick = () =>
                     {
                         Action reinstateModifiers = () => { };
@@ -1471,8 +1470,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             && Settings.Default.SuppressModifierKeysForAllMouseActions)
                         {
                             reinstateModifiers = keyStateService.ReleaseModifiers(Log);
-                        }
-                        mouseOutputService.MoveTo(leftClickPoint);
+                        }                        
                         audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                         mouseOutputService.LeftButtonClick();
                         reinstateModifiers();
@@ -2035,18 +2033,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case FunctionKeys.MouseRightClick:
-                    var rightClickPoint = mouseOutputService.GetCursorPosition();
-                    Log.InfoFormat("Mouse right click selected at point ({0},{1}).", rightClickPoint.X, rightClickPoint.Y);
+                    Log.InfoFormat("Mouse right click selected at current point");
                     Action performRightClick = () =>
                     {
-                        Log.InfoFormat("Performing mouse right click at point ({0},{1}).", rightClickPoint.X, rightClickPoint.Y);
+                        Log.InfoFormat("Performing mouse right click at current point");
                         Action reinstateModifiers = () => { };
                         if (keyStateService.SimulateKeyStrokes
                             && Settings.Default.SuppressModifierKeysForAllMouseActions)
                         {
                             reinstateModifiers = keyStateService.ReleaseModifiers(Log);
                         }
-                        mouseOutputService.MoveTo(rightClickPoint);
+
                         audioService.PlaySound(Settings.Default.MouseClickSoundFile, Settings.Default.MouseClickSoundVolume);
                         mouseOutputService.RightButtonClick();
                         reinstateModifiers();
