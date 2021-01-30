@@ -23,7 +23,11 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
     </DynamicKey>
     <DynamicKey Row="0" Col="2">
       <Label>Look</Label>
-      <Action Payload="0.23, 0.15">MouseJoystick</Action>
+      <Action Payload="0.6, 0.7">MouseJoystick</Action>
+    </DynamicKey>
+    <DynamicKey Row="0" Col="1">
+      <Label>Careful\nLook</Label>
+      <Action Payload="0.3, 0.35">MouseJoystick</Action>
     </DynamicKey>
     <DynamicKey Row="0" Col="6">
       <Label>Walk</Label>

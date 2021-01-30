@@ -27,7 +27,7 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
     </DynamicKey>
     <DynamicKey Row="0" Col="2">
       <Label>Look</Label>
-      <Action Payload="1.1, 1.5">RightJoystick</Action>
+      <Action Payload="1.2, 1.6">RightJoystick</Action>
     </DynamicKey>
     <DynamicKey Row="0" Col="6">
       <Label>Walk</Label>
