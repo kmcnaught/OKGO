@@ -58,9 +58,13 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
       <Label>Reset\nCentre</Label>
       <Action>ResetJoystick</Action>
     </DynamicKey>    
-    <DynamicKey Row="6" Col="0">
+    <DynamicKey Row="6" Col="1">
       <Label>Copy\nsettings</Label>
       <Action>CopyJoystickSettings</Action>
+    </DynamicKey>
+    <DynamicKey Row="6" Col="0" CompletionTimes="200%">
+      <Label>Reset all\nsensitivities</Label>
+      <Action>ResetAllJoystickSettings</Action>
     </DynamicKey>
     <DynamicKey Row="6" Col="7">
       <Symbol>BackIcon</Symbol>

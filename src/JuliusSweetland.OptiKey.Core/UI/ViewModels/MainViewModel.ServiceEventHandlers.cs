@@ -2550,7 +2550,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     RaiseToastNotification("Copied!", "Sensitivities copied to clipboard\n" +  combinedMsg, NotificationTypes.Normal, () => { });
                     break;
                 }
+                case FunctionKeys.ResetAllJoystickSettings:
+                {
+                    Log.Info("Resetting all joystick sensitivities to 1.0");
 
+                    Settings.Default.LeftStickSensitivityX = 1.0;
+                    Settings.Default.LeftStickSensitivityY = 1.0;
+
+                    Settings.Default.RightStickSensitivityX = 1.0;
+                    Settings.Default.RightStickSensitivityY = 1.0;
+
+                    Settings.Default.LegacyStickSensitivityX = 1.0;
+                    Settings.Default.LegacyStickSensitivityY = 1.0;
+
+                    Settings.Default.MouseStickSensitivityX = 1.0;
+                    Settings.Default.MouseStickSensitivityY = 1.0;
+                        
+                    break;
+                }
             }
 
             keyboardOutputService.ProcessFunctionKey(singleKeyValue.FunctionKey.Value);
