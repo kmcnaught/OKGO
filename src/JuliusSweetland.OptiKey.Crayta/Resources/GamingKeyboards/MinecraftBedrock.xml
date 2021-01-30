@@ -23,7 +23,7 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
     </DynamicKey>
     <DynamicKey Row="0" Col="1">
       <Label>Careful\nwalk</Label>
-      <Action Payload="1.2, 1.5">LegacyJoystick</Action>
+      <Action Payload="1.1, 1.5">LegacyJoystick</Action>
     </DynamicKey>
     <DynamicKey Row="0" Col="2">
       <Label>Look</Label>

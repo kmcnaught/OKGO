@@ -2,7 +2,7 @@
 Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Rights Reserved
 -->
 <Keyboard>
-  <Name>Joystick\nSettings2</Name>
+  <Name>Joystick\nSettings</Name>
   <SymbolMargin>10</SymbolMargin>
   <BackgroundColor>Transparent</BackgroundColor>
   <WindowState>Floating</WindowState>
