@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.Opt
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CraytaAccessSetup", "installer\Crayta\CraytaAccessSetup\CraytaAccessSetup.vdproj", "{53797CF3-F271-40F2-8D3B-E66BF4A3300F}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "OKGameOnSetup", "installer\Gaming\OKGameOnSetup\OKGameOnSetup.vdproj", "{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -181,6 +183,14 @@ Global
 		{53797CF3-F271-40F2-8D3B-E66BF4A3300F}.DefaultBuild|x86.ActiveCfg = Debug
 		{53797CF3-F271-40F2-8D3B-E66BF4A3300F}.Release|Any CPU.ActiveCfg = Release
 		{53797CF3-F271-40F2-8D3B-E66BF4A3300F}.Release|x86.ActiveCfg = Release
+		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.All|Any CPU.ActiveCfg = Release
+		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.All|x86.ActiveCfg = Release
+		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.Debug|Any CPU.ActiveCfg = Debug
+		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.Debug|x86.ActiveCfg = Debug
+		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.DefaultBuild|Any CPU.ActiveCfg = Debug
+		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.DefaultBuild|x86.ActiveCfg = Debug
+		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.Release|Any CPU.ActiveCfg = Release
+		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
