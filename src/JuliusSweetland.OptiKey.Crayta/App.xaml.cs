@@ -64,12 +64,12 @@ namespace JuliusSweetland.OptiKey.Crayta
         {
             // Setup derived settings class
             Settings.Initialise();
-            String appName = "Optikey Gaming";
+            String appName = "OK Game On";
 
             Action runApp = () =>
             {
 
-                splashScreen = new SplashScreen("/Resources/Icons/OptikeyGamingSplash.png");
+                splashScreen = new SplashScreen("/Resources/Icons/OkGameOnSplash.png");
                 splashScreen.Show(false);
 
                 var application = new App();

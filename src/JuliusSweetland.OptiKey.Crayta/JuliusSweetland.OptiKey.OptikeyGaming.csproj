@@ -314,8 +314,8 @@
     <Content Include="Resources\GamingKeyboards\SuperHot.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <SplashScreen Include="Resources\Icons\OptikeyGamingSplash.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <SplashScreen Include="Resources\Icons\OkGameOnSplash.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </SplashScreen>
     <EmbeddedResource Include="version.txt" />
     <Resource Include="Crayta.ico" />
