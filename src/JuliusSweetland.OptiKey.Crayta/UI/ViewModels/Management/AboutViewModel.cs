@@ -50,10 +50,10 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             get
             {
                 string aboutInfo = "";
-                aboutInfo += "Optikey Gaming was developed by Kirsty McNaught\n";
+                aboutInfo += "OK Game On was developed by Kirsty McNaught\n";
                 aboutInfo += "The app is based on both the excellent Optikey project, ";
                 aboutInfo += "and provides eye gaze access to a variety of PC games.\n";
-                aboutInfo += "Optikey Gaming uses the third party libraries detailed below";
+                aboutInfo += "OK Game On uses the third party libraries detailed below";
                 aboutInfo += "";
 
                 return aboutInfo;

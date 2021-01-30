@@ -1,5 +1,5 @@
 # Third Party licenses
-Optikey Gaming uses the following third-party dependencies under the license terms listed.
+OK Game On uses the following third-party dependencies under the license terms listed.
 License files are contained in ./ThirdPartyLicenses/
 
 ## NuGet package dependencies:

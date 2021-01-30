@@ -592,19 +592,16 @@ namespace JuliusSweetland.OptiKey.Properties {
                 return ResourceManager.GetString("CLICK_AND_DRAG", resourceCulture);
             }
         }
-
-
+        
         /// <summary>
         ///   Looks up a localized string similar to CLICK &amp; DRAG (live).
         /// </summary>
-        public static string CLICK_AND_DRAG_LIVE
-        {
-            get
-            {
+        public static string CLICK_AND_DRAG_LIVE {
+            get {
                 return ResourceManager.GetString("CLICK_AND_DRAG_LIVE", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to CLICK
         ///&amp; DRAG.
@@ -896,7 +893,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Optikey has detected that your user settings file has become corrupted and must be repaired. This will be done by restoring an old version, or a default version if that isn&apos;t possible.
+        ///   Looks up a localized string similar to OK Game On has detected that your user settings file has become corrupted and must be repaired. This will be done by restoring an old version, or a default version if that isn&apos;t possible.
         ///
         ///Click Yes to reset your user settings and restart.
         ///
@@ -1484,7 +1481,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable translation key? (translation auto copied).
+        ///   Looks up a localized string similar to Enable translation key: (translation auto copied).
         /// </summary>
         public static string ENABLE_TRANSLATION_KEY_LABEL {
             get {
@@ -2076,7 +2073,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Floating position (left, top, width, height):.
+        ///   Looks up a localized string similar to Floating position (left, top, width, height).
         /// </summary>
         public static string FLOATING_POSITION_LABEL {
             get {
@@ -2203,7 +2200,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adaptive smoothing level:.
+        ///   Looks up a localized string similar to Application smoothing level:.
         /// </summary>
         public static string GAZE_SMOOTHING_LEVEL {
             get {
@@ -3561,7 +3558,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Optikey Management Console.
+        ///   Looks up a localized string similar to OK Game On Management Console.
         /// </summary>
         public static string MANAGEMENT_CONSOLE_TITLE {
             get {
@@ -5113,7 +5110,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you absolutely sure that you&apos;d like to restart Optikey?.
+        ///   Looks up a localized string similar to Are you absolutely sure that you&apos;d like to restart OK Game On?.
         /// </summary>
         public static string REFRESH_CONFIRMATION_MESSAGE {
             get {
@@ -5122,7 +5119,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you&apos;d like to restart Optikey?.
+        ///   Looks up a localized string similar to Are you sure you&apos;d like to restart OK Game On?.
         /// </summary>
         public static string REFRESH_MESSAGE {
             get {
@@ -5177,7 +5174,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Optikey needs to restart to apply your changes.
+        ///   Looks up a localized string similar to OK Game On needs to restart to apply your changes.
         ///Please click OK to continue with the restart, or CANCEL to discard your changes.
         /// </summary>
         public static string RESTART_MESSAGE {
@@ -6627,7 +6624,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to May I restart Optikey?.
+        ///   Looks up a localized string similar to May I restart OK Game On?.
         /// </summary>
         public static string VERIFY_RESTART {
             get {
@@ -6754,7 +6751,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Optikey v{0}.
+        ///   Looks up a localized string similar to OK Game On v{0}.
         /// </summary>
         public static string WINDOW_TITLE {
             get {

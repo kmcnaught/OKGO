@@ -7,11 +7,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Optikey Gaming")]
+[assembly: AssemblyTitle("OK Game On")]
 [assembly: AssemblyDescription("Play with your eyes")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("KMcNaught")]
-[assembly: AssemblyProduct("Optikey Gaming")]
+[assembly: AssemblyProduct("OK Game On")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -27,7 +27,7 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.Views.Management
             AboutViewModel viewModel = this.DataContext as AboutViewModel;
             if (viewModel != null)
             {
-                string content = "Optikey Gaming " + viewModel.AppVersion;
+                string content = "OK Game On " + viewModel.AppVersion;
                 Clipboard.SetText(content);
             }
         }

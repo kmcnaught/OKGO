@@ -115,7 +115,7 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Optikey Gaming.
+        ///   Looks up a localized string similar to OK Game On.
         /// </summary>
         public static string EYEMINE_DESCRIPTION {
             get {
