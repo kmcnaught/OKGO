@@ -291,12 +291,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             double baseSpeed = 0;
             double acceleration = 0.02;
+            double hDeadzone = (double)Settings.Default.JoystickHorizontalDeadzonePercentScreen * Graphics.PrimaryScreenWidthInPixels / 100.0d;
+            double vDeadzone = hDeadzone / Settings.Default.JoystickDeadzoneAspectRatio;
 
             var velocity = new Vector { X = 0, Y = 0 };
             velocity.X = CalculateLookToScrollVelocity(
                 current.X,
                 centre.X,
-                Settings.Default.LookToScrollHorizontalDeadzone,
+                0.5f * hDeadzone,
                 baseSpeed,
                 acceleration
             );
@@ -304,7 +306,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             velocity.Y = CalculateLookToScrollVelocity(
                 current.Y,
                 centre.Y,
-                Settings.Default.LookToScrollVerticalDeadzone,
+                0.5f * vDeadzone,
                 baseSpeed,
                 acceleration
             );
