@@ -23,11 +23,11 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
     </DynamicKey> -->
     <DynamicKey Col="3" Row="0">
       <Label>Move</Label>
-      <Action>LeftJoystick</Action>
+      <Action Payload="1.65, 2.5">LeftJoystick</Action>
     </DynamicKey>
     <DynamicKey Col="6" Row="0">
       <Label>Look</Label>
-      <Action>RightJoystick</Action>
+      <Action Payload="1.1, 1.5">RightJoystick</Action>
     </DynamicKey>
     <!-- <DynamicKey Col="7" Row="0">
       <Label>Walk</Label>
@@ -63,12 +63,6 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
       <Wait>100</Wait>
       <KeyUp>XboxX</KeyUp>
     </DynamicKey> -->
-    <DynamicKey Col="0" Row="6">
-      <Label>Y</Label>
-      <KeyDown>XboxY</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>XboxY</KeyUp>
-    </DynamicKey>
     <DynamicKey Col="7" Row="6">
         <Label>RB</Label>
       <KeyDown>XboxRightShoulder</KeyDown>

@@ -22,14 +22,14 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
       <Label>Open\ninventory</Label>
       <Text>e</Text>
     </DynamicKey>
-    
+
     <DynamicKey Row="0" Col="1">
       <Label>Careful\nwalk</Label>
-      <Action>LegacyJoystick</Action>
+      <Action Payload="1.1, 1.5">LegacyJoystick</Action>
     </DynamicKey>
     <DynamicKey Row="0" Col="2">
       <Label>Look</Label>
-      <Action>RightJoystick</Action>
+      <Action Payload="1.1, 1.5">RightJoystick</Action>
     </DynamicKey>
     <DynamicKey Row="0" Col="6">
       <Label>Walk</Label>w
