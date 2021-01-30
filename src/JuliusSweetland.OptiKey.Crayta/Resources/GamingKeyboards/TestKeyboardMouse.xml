@@ -1,0 +1,63 @@
+<!--  
+Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Rights Reserved
+-->
+<Keyboard>
+  <Name>Test\nKB+M</Name>
+  <SymbolMargin>10</SymbolMargin>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <Height>100%</Height>
+  <Width>100%</Width>
+  <Position>Bottom</Position>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <BorderColor>Transparent</BorderColor>
+  <Grid>
+    <Rows>7</Rows>
+    <Cols>9</Cols>
+  </Grid>
+  <KeyGroup BackgroundColor="black" CompletionTimes="5%, 100%" KeyDownOpacity="1" LockOnTime="25" Name="QuickKey" Opacity=".9"/>
+  <KeyGroup AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" Name="Scaling"/>
+  <Content>    
+    <DynamicKey Row="0" Col="2">
+      <Label>Look</Label>
+      <Action Payload="1.0, 1.0">MouseJoystick</Action>
+    </DynamicKey>
+    <DynamicKey Row="0" Col="1">
+      <Label>Careful\nLook</Label>
+      <Action Payload="0.5, 0.5">MouseJoystick</Action>
+    </DynamicKey>
+
+    <DynamicKey Row="0" Col="6">
+      <Label>Hold\nw</Label>
+      <KeyToggle PauseWhenLookingAtAnyKey="true">w</KeyToggle>
+    </DynamicKey>
+
+    <DynamicKey Row="0" Col="7">
+      <Label>press\ne</Label>
+      <KeyDown>e</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>e</KeyUp>    
+    </DynamicKey>
+      
+    <DynamicKey Row="6" Col="0">
+      <KeyGroup>QuickKey</KeyGroup>
+      <Label>Space\n(quick)</Label>
+      <KeyDown>Space</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>Space</KeyUp>
+    </DynamicKey>
+    
+    <DynamicKey Row="6" Col="6">
+      <Label>R click</Label>      
+      <Action>MouseRightClick</Action>
+    </DynamicKey>
+    <DynamicKey Row="6" Col="2">
+      <Label>L click</Label>
+      <Action>MouseLeftClick</Action>      
+    </DynamicKey>
+    
+    <DynamicKey Row="6" Col="8" >
+      <Symbol>BackIcon</Symbol>
+      <Action>BackFromKeyboard</Action>
+    </DynamicKey>
+  </Content>
+</Keyboard>

@@ -1,0 +1,115 @@
+<!--  
+Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Rights Reserved
+-->
+<Keyboard>
+  <Name>Test\ngamepad</Name>
+  <SymbolMargin>10</SymbolMargin>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <Height>100%</Height>
+  <Width>100%</Width>
+  <Position>Bottom</Position>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <BorderColor>Transparent</BorderColor>
+  <Grid>
+    <Rows>7</Rows>
+    <Cols>10</Cols>
+  </Grid>
+  <KeyGroup BackgroundColor="black" CompletionTimes="10, 1000" KeyDownOpacity="1" LockOnTime="25" Name="QuickKey" Opacity=".9"/>
+  <KeyGroup BackgroundColor="black" CompletionTimes="50%" KeyDownOpacity="1" LockOnTime="25" Name="HalfSpeed" Opacity=".9"/>
+  <KeyGroup AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" Name="Scaling"/>
+  <Content>
+    <DynamicKey Col="0" Row="0">
+      <Label>Menu</Label>
+      <Action>XboxStart</Action>
+    </DynamicKey>
+    <DynamicKey Col="2" Row="0">
+      <Label>Tank\ncontrols</Label>
+      <Action>LegacyJoystick</Action>
+    </DynamicKey>
+    <DynamicKey Col="3" Row="0">
+      <Label>Move</Label>
+      <Action>LeftJoystick</Action>
+    </DynamicKey>
+    <DynamicKey Col="6" Row="0">
+      <Label>Look</Label>
+      <Action>RightJoystick</Action>
+    </DynamicKey>
+    <DynamicKey Col="7" Row="0">
+      <Label>Slow\nLook</Label>
+      <Action Payload="0.5">RightJoystick</Action>
+    </DynamicKey>
+    <DynamicKey Col="9" Row="0">
+      <Label>D-pad</Label>
+      <KeyGroup>HalfSpeed</KeyGroup>
+      <ChangeKeyboard BackReturnsHere="False">TestXboxMore</ChangeKeyboard>
+    </DynamicKey>
+
+    
+    <!-- <DynamicKey Col="7" Row="0">
+      <Label>Walk</Label>
+      <KeyToggle PauseWhenLookingAtAnyKey="true">XBoxLeftThumb|North|0.75</KeyToggle>
+    </DynamicKey> -->
+    <DynamicKey Col="2" Row="6">      
+      <Label>LB</Label>
+      <KeyDown>XboxLeftShoulder</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxLeftShoulder</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="1" Row="6">      
+      <Label>LT</Label>
+      <KeyDown>XboxLeftTrigger</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxLeftTrigger</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="0" Row="4">
+      <Label>A</Label>      
+      <KeyDown>XboxA</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxA</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="0" Row="5">
+      <Label>B</Label>      
+      <KeyDown>XboxB</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxB</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="9" Row="4">
+      <Label>X</Label>      
+      <KeyDown>XboxX</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxX</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="9" Row="5">
+      <Label>Y</Label>      
+      <KeyDown>XboxY</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxY</KeyUp>
+    </DynamicKey>
+   <!--  <DynamicKey Col="6" Row="6">
+      <Label>Pick\nup</Label>
+      <KeyDown>XboxX</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxX</KeyUp>
+    </DynamicKey> -->
+    <DynamicKey Col="7" Row="6">
+        <Label>RB</Label>
+      <KeyDown>XboxRightShoulder</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxRightShoulder</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="8" Row="6">
+        <Label>RT</Label>
+      <KeyDown>XboxRightTrigger</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxRightTrigger</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="9" Row="6">
+      <Symbol>BackIcon</Symbol>
+      <Action>BackFromKeyboard</Action>
+    </DynamicKey>
+    <!-- <DynamicKey Col="0" Row="6">
+      <Label>Joystick\nSettings</Label>
+      <ChangeKeyboard BackReturnsHere="True">../joystick_settings</ChangeKeyboard>
+    </DynamicKey> -->
+  </Content>
+</Keyboard>
