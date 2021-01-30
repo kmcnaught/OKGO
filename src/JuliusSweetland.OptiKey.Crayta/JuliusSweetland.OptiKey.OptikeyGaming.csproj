@@ -309,12 +309,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="OKGO.ico" />
-    <Content Include="Resources\GamingKeyboards\Portal.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\GamingKeyboards\SuperHot.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <SplashScreen Include="Resources\Icons\OkGameOnSplash.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </SplashScreen>
@@ -1047,7 +1041,9 @@
       <Name>SingleInstance</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\GamingKeyboards\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rd /s /q $(TargetDir)\Resources\Presage\
