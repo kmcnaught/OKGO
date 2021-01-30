@@ -39,7 +39,7 @@
     <StartupObject>JuliusSweetland.OptiKey.Crayta.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Crayta.ico</ApplicationIcon>
+    <ApplicationIcon>OKGO.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -308,6 +308,7 @@
       <Link>ThirdPartyLicenses\The MIT License %28MIT%29.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="OKGO.ico" />
     <Content Include="Resources\GamingKeyboards\Portal.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -317,8 +318,7 @@
     <SplashScreen Include="Resources\Icons\OkGameOnSplash.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </SplashScreen>
-    <EmbeddedResource Include="version.txt" />
-    <Resource Include="Crayta.ico" />
+    <EmbeddedResource Include="version.txt" />    
     <Content Include="..\..\ThirdPartyLicenses\Apache License, Version 2.0">
       <Link>ThirdPartyLicenses\Apache License, Version 2.0</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
