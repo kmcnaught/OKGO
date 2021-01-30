@@ -40,7 +40,7 @@
         "Entry"
         {
         "MsmKey" = "8:_05B82F0E6D4BC5672FCBA9BB15C0B409"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -64,7 +64,7 @@
         "Entry"
         {
         "MsmKey" = "8:_0F2EC727A3C6A8AAA254D2D5D22F70D3"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -94,7 +94,7 @@
         "Entry"
         {
         "MsmKey" = "8:_161B2855148757A7DB204E060008781B"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -112,13 +112,13 @@
         "Entry"
         {
         "MsmKey" = "8:_171E4D003EAFAD02760A6918A6CF7E20"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_1D494F4554C4D840B1D61EF4F4D1CB87"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -135,8 +135,26 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1F0F00E6B5194CB795B8C490D4DEE41D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1F4AF9EBEB5F21D11519E91594A061EB"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_20DA01927A8E451794C67D97F11D27CD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_23D3637714424A73928EE17277FF7450"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -161,6 +179,12 @@
         {
         "MsmKey" = "8:_25DBDCFA48DE748D4348A800CDDB08F1"
         "OwnerKey" = "8:_F0A3834F21214D55082CB62438C15AAE"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2B66A629D9744F5AA8FF04EE2F965300"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -190,7 +214,7 @@
         "Entry"
         {
         "MsmKey" = "8:_2E9A024D968882F89C16C73DB58F4D80"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -274,7 +298,7 @@
         "Entry"
         {
         "MsmKey" = "8:_3D17C0994BBB6374FE2FDF46145D5E30"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -293,6 +317,12 @@
         {
         "MsmKey" = "8:_453472D3ED667DCD35DA1D8CDF00406B"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_45503F2B0CC54558A06B521DC43EF578"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -328,7 +358,7 @@
         "Entry"
         {
         "MsmKey" = "8:_499FE4D24DC2B67FBB4EEACE43E083C0"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -357,20 +387,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_49D15835D0C935DC8636217E3D7BBC96"
-        "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_49D15835D0C935DC8636217E3D7BBC96"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_49FECC31FCA959512AB13B5C26519C7B"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4A18114AEA65447EA9C022353E58DB30"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -393,8 +417,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "MsmKey" = "8:_52C143789B1C5922E41C9F5A331CF723"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_52C143789B1C5922E41C9F5A331CF723"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -424,7 +454,7 @@
         "Entry"
         {
         "MsmKey" = "8:_58D158EAC8E27ECFF17F07126AE7C853"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -453,6 +483,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_660F3FD1D33EC01F4D0FB40B4C7C6E0B"
+        "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_661B3D69E3A9D5910B31FF38A13AF93E"
         "OwnerKey" = "8:_0F2EC727A3C6A8AAA254D2D5D22F70D3"
         "MsmSig" = "8:_UNDEFINED"
@@ -460,19 +496,13 @@
         "Entry"
         {
         "MsmKey" = "8:_6793722CEC2469023037D8B247DC6060"
-        "OwnerKey" = "8:_B70722B71F8F046A2ECA3AC0D0F072DC"
+        "OwnerKey" = "8:_A1B5941F2EF5AB24EFBDD7EC2B8C59F6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_6893F29AD4D6618F0444A3293878CC96"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_68ACBA39C8654BB684D529CFD57EE0E5"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -496,7 +526,7 @@
         "Entry"
         {
         "MsmKey" = "8:_6E62525630FA2F4A9D282D34626C1B8E"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -519,6 +549,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_70621F3B86E94457B058E8B70084B8E4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_750698A535E0105C7BC046D6F7496C10"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
         "MsmSig" = "8:_UNDEFINED"
@@ -532,7 +568,7 @@
         "Entry"
         {
         "MsmKey" = "8:_7585F4476DC41EA4C3B95BF85331ACC8"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -556,13 +592,25 @@
         "Entry"
         {
         "MsmKey" = "8:_79D8EBE56B034B0C4A5D44312F8A45C6"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_7AAB9778E852BF4CF41AF0D6A35EB47E"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7CFADCD3A3EA9797D2EE51B5EE7BEC16"
+        "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7E3B4962DDCB49AFB0EA211F1E586267"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -592,7 +640,7 @@
         "Entry"
         {
         "MsmKey" = "8:_8B0D899030A1349C9098F5F91C460262"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -604,7 +652,7 @@
         "Entry"
         {
         "MsmKey" = "8:_8C54863FF35C6F5C4C987D0D679B694A"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -634,7 +682,19 @@
         "Entry"
         {
         "MsmKey" = "8:_9EE351B52FC7372AC791912B1D682A50"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A1B5941F2EF5AB24EFBDD7EC2B8C59F6"
+        "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A1B5941F2EF5AB24EFBDD7EC2B8C59F6"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -646,31 +706,13 @@
         "Entry"
         {
         "MsmKey" = "8:_A2A0A62542F30F6FFF2DB56471EECA52"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_A2A0A62542F30F6FFF2DB56471EECA52"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A2FA527D7FE0888C50B66314A971DD9B"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A2FA527D7FE0888C50B66314A971DD9B"
-        "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A2FA527D7FE0888C50B66314A971DD9B"
-        "OwnerKey" = "8:_E2E681F5625275CFEA3A655E6DB3CCFA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -694,7 +736,7 @@
         "Entry"
         {
         "MsmKey" = "8:_A870D2762C8642AAB47EBDB339B5A3B3"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -731,6 +773,12 @@
         {
         "MsmKey" = "8:_A9D7722EA886164B25087F717D2B930F"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A9D7722EA886164B25087F717D2B930F"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -777,20 +825,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_AE0B27E77673231DF7072FD9E45529C3"
-        "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_B2DE77D48CE26FF9C831EC060B489284"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B3620C570760446086C808B4C70C3776"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -808,6 +844,18 @@
         "Entry"
         {
         "MsmKey" = "8:_B698ADD288539689C3E2EF7F7C7B5EF1"
+        "OwnerKey" = "8:_660F3FD1D33EC01F4D0FB40B4C7C6E0B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B698ADD288539689C3E2EF7F7C7B5EF1"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B698ADD288539689C3E2EF7F7C7B5EF1"
         "OwnerKey" = "8:_84950C82556742C69E67AC69AF3A5189"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -819,30 +867,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B698ADD288539689C3E2EF7F7C7B5EF1"
-        "OwnerKey" = "8:_AE0B27E77673231DF7072FD9E45529C3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B698ADD288539689C3E2EF7F7C7B5EF1"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B70722B71F8F046A2ECA3AC0D0F072DC"
-        "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B70722B71F8F046A2ECA3AC0D0F072DC"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_B7E488922C174F941B4E3F037CB6C21C"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
         "MsmSig" = "8:_UNDEFINED"
@@ -850,7 +874,7 @@
         "Entry"
         {
         "MsmKey" = "8:_B7E488922C174F941B4E3F037CB6C21C"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -868,7 +892,7 @@
         "Entry"
         {
         "MsmKey" = "8:_B98AABF9A9CED3F255F5E1DAB793F3B5"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -887,6 +911,12 @@
         {
         "MsmKey" = "8:_BFDC8BCC69CA1C85BD0F536EAA3857DD"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C40E8D918A9E4B4094CBBFC8CA476FEB"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -921,6 +951,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_CC21719AA80F4CF1ABBB181490BFBFF7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CEB56015EABCD5ACC936052E035BB79A"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
         "MsmSig" = "8:_UNDEFINED"
@@ -928,7 +964,7 @@
         "Entry"
         {
         "MsmKey" = "8:_CEB56015EABCD5ACC936052E035BB79A"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -939,20 +975,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CF802FB073564F75A635410B700851E8"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_CF9107D6C44224D99274F6217FCCB1D4"
         "OwnerKey" = "8:_0F2EC727A3C6A8AAA254D2D5D22F70D3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D20FD493DE1B4498BFF81F737FEB748A"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -976,7 +1000,13 @@
         "Entry"
         {
         "MsmKey" = "8:_D30023D7D61A2C03D9E9D0C48B0BB65F"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D34F847BCAC1402189DDD81F2F9D6694"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1041,12 +1071,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DBF8ABF184ED4D4B8F9456618791518C"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_DD90F7ED2777CF4062651663A55F8032"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
         "MsmSig" = "8:_UNDEFINED"
@@ -1065,14 +1089,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E2E681F5625275CFEA3A655E6DB3CCFA"
+        "MsmKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E604671E8B514802BFBCFDEAEE3A7034"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1125,14 +1143,26 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F6ABAF9EC74C7E80320CFC3AB1E02D5A"
+        "MsmKey" = "8:_F4E0AB9F7C274EF6F1735C20C989D0BB"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F4E0AB9F7C274EF6F1735C20C989D0BB"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F70F9CBD44B94241BC4FCED92B6E7AC3"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_F4E0AB9F7C274EF6F1735C20C989D0BB"
+        "OwnerKey" = "8:_7CFADCD3A3EA9797D2EE51B5EE7BEC16"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F6ABAF9EC74C7E80320CFC3AB1E02D5A"
+        "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1143,12 +1173,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_FB2C85B201804ADABF5590E023E569AD"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_FB8A731154B9610061D0589B458AF9B6"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
         "MsmSig" = "8:_UNDEFINED"
@@ -1156,7 +1180,7 @@
         "Entry"
         {
         "MsmKey" = "8:_FB8A731154B9610061D0589B458AF9B6"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1181,6 +1205,42 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_161B2855148757A7DB204E060008781B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7CFADCD3A3EA9797D2EE51B5EE7BEC16"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_660F3FD1D33EC01F4D0FB40B4C7C6E0B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F4E0AB9F7C274EF6F1735C20C989D0BB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_52C143789B1C5922E41C9F5A331CF723"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A1B5941F2EF5AB24EFBDD7EC2B8C59F6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1492,43 +1552,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E2E681F5625275CFEA3A655E6DB3CCFA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AE0B27E77673231DF7072FD9E45529C3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_528B984710731C5F9088E9D6D3BA6919"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_1D494F4554C4D840B1D61EF4F4D1CB87"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A2FA527D7FE0888C50B66314A971DD9B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_49D15835D0C935DC8636217E3D7BBC96"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B70722B71F8F046A2ECA3AC0D0F072DC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1864,6 +1888,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
     }
@@ -2235,6 +2267,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1F0F00E6B5194CB795B8C490D4DEE41D"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\Games\\MinecraftJavaItems.xml"
+            "TargetName" = "8:MinecraftJavaItems.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_D743FF8F01B647D6AB0F53724A20D05E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1F4AF9EBEB5F21D11519E91594A061EB"
             {
             "AssemblyRegister" = "3:1"
@@ -2266,6 +2318,46 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_20DA01927A8E451794C67D97F11D27CD"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\Testing\\TestXbox.xml"
+            "TargetName" = "8:TestXbox.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_588A3980EF9F4296929C2ECBAA623134"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_23D3637714424A73928EE17277FF7450"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\Games\\MinecraftJava.xml"
+            "TargetName" = "8:MinecraftJava.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_D743FF8F01B647D6AB0F53724A20D05E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_25DBDCFA48DE748D4348A800CDDB08F1"
             {
             "AssemblyRegister" = "3:1"
@@ -2295,6 +2387,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2B66A629D9744F5AA8FF04EE2F965300"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\Games\\Ooblets.xml"
+            "TargetName" = "8:Ooblets.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_D743FF8F01B647D6AB0F53724A20D05E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2CB307C63DB573CB0B2414CC181DF7A2"
@@ -2678,6 +2790,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_45503F2B0CC54558A06B521DC43EF578"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\Games\\MinecraftBedrock.xml"
+            "TargetName" = "8:MinecraftBedrock.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_D743FF8F01B647D6AB0F53724A20D05E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_45FB4BF10B12719BB465A7B9E5FD64D0"
             {
             "AssemblyRegister" = "3:1"
@@ -2802,37 +2934,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_49D15835D0C935DC8636217E3D7BBC96"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Nefarius.ViGEm.Client, Version=1.16.150.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_49D15835D0C935DC8636217E3D7BBC96"
-                    {
-                    "Name" = "8:Nefarius.ViGEm.Client.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Nefarius.ViGEm.Client.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_856941099282428A88C01A4645A86A6C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_49FECC31FCA959512AB13B5C26519C7B"
             {
             "AssemblyRegister" = "3:1"
@@ -2862,6 +2963,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4A18114AEA65447EA9C022353E58DB30"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\Testing\\TestKeyboardMouse.xml"
+            "TargetName" = "8:TestKeyboardMouse.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_588A3980EF9F4296929C2ECBAA623134"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4A9455622BDB680048F48EEF21A653D6"
@@ -2926,20 +3047,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_528B984710731C5F9088E9D6D3BA6919"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_52C143789B1C5922E41C9F5A331CF723"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.16.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Nefarius.ViGEm.Client, Version=1.16.150.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_528B984710731C5F9088E9D6D3BA6919"
+                    "_52C143789B1C5922E41C9F5A331CF723"
                     {
-                    "Name" = "8:OptiKey.dll"
+                    "Name" = "8:Nefarius.ViGEm.Client.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:OptiKey.dll"
+            "SourcePath" = "8:Nefarius.ViGEm.Client.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_856941099282428A88C01A4645A86A6C"
@@ -3174,6 +3295,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_660F3FD1D33EC01F4D0FB40B4C7C6E0B"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:OptiKeyStandardPlugins, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_660F3FD1D33EC01F4D0FB40B4C7C6E0B"
+                    {
+                    "Name" = "8:OptiKeyStandardPlugins.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:OptiKeyStandardPlugins.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_856941099282428A88C01A4645A86A6C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_661B3D69E3A9D5910B31FF38A13AF93E"
             {
             "AssemblyRegister" = "3:1"
@@ -3254,26 +3406,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_68ACBA39C8654BB684D529CFD57EE0E5"
-            {
-            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\MinecraftJavaItems.xml"
-            "TargetName" = "8:MinecraftJavaItems.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_5A36A8CD437C40AF95CDF23707770540"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6C30465C173BCAB798FA48D8B5AF0A48"
@@ -3367,6 +3499,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_70621F3B86E94457B058E8B70084B8E4"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\Testing\\JoystickSettings.xml"
+            "TargetName" = "8:JoystickSettings.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_588A3980EF9F4296929C2ECBAA623134"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_750698A535E0105C7BC046D6F7496C10"
@@ -3522,6 +3674,57 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7CFADCD3A3EA9797D2EE51B5EE7BEC16"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:WindowsRecipes.TaskbarSingleInstance.Wpf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_7CFADCD3A3EA9797D2EE51B5EE7BEC16"
+                    {
+                    "Name" = "8:WindowsRecipes.TaskbarSingleInstance.Wpf.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:WindowsRecipes.TaskbarSingleInstance.Wpf.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_856941099282428A88C01A4645A86A6C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7E3B4962DDCB49AFB0EA211F1E586267"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\Games\\SuperHot.xml"
+            "TargetName" = "8:SuperHot.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_D743FF8F01B647D6AB0F53724A20D05E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8051148C8C6A9696D91A625DA5A36248"
@@ -3803,20 +4006,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A2A0A62542F30F6FFF2DB56471EECA52"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A1B5941F2EF5AB24EFBDD7EC2B8C59F6"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:TETCSharpClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Interop.SpeechLib, Version=5.4.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_A2A0A62542F30F6FFF2DB56471EECA52"
+                    "_A1B5941F2EF5AB24EFBDD7EC2B8C59F6"
                     {
-                    "Name" = "8:TETCSharpClient.dll"
+                    "Name" = "8:Interop.SpeechLib.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:TETCSharpClient.dll"
+            "SourcePath" = "8:Interop.SpeechLib.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_856941099282428A88C01A4645A86A6C"
@@ -3834,20 +4037,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A2FA527D7FE0888C50B66314A971DD9B"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A2A0A62542F30F6FFF2DB56471EECA52"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:WindowsRecipes.TaskbarSingleInstance, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:TETCSharpClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_A2FA527D7FE0888C50B66314A971DD9B"
+                    "_A2A0A62542F30F6FFF2DB56471EECA52"
                     {
-                    "Name" = "8:WindowsRecipes.TaskbarSingleInstance.dll"
+                    "Name" = "8:TETCSharpClient.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:WindowsRecipes.TaskbarSingleInstance.dll"
+            "SourcePath" = "8:TETCSharpClient.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_856941099282428A88C01A4645A86A6C"
@@ -4051,37 +4254,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AE0B27E77673231DF7072FD9E45529C3"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OptiKeyStandardPlugins, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_AE0B27E77673231DF7072FD9E45529C3"
-                    {
-                    "Name" = "8:OptiKeyStandardPlugins.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:OptiKeyStandardPlugins.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_856941099282428A88C01A4645A86A6C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B2DE77D48CE26FF9C831EC060B489284"
             {
             "AssemblyRegister" = "3:1"
@@ -4111,26 +4283,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B3620C570760446086C808B4C70C3776"
-            {
-            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\Ooblets.xml"
-            "TargetName" = "8:Ooblets.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_5A36A8CD437C40AF95CDF23707770540"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B592854A998CAC39ACE5628FACB62024"
@@ -4178,37 +4330,6 @@
                     }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_856941099282428A88C01A4645A86A6C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B70722B71F8F046A2ECA3AC0D0F072DC"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Interop.SpeechLib, Version=5.4.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_B70722B71F8F046A2ECA3AC0D0F072DC"
-                    {
-                    "Name" = "8:Interop.SpeechLib.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Interop.SpeechLib.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_856941099282428A88C01A4645A86A6C"
@@ -4381,6 +4502,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C40E8D918A9E4B4094CBBFC8CA476FEB"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\Testing\\TestXboxMore.xml"
+            "TargetName" = "8:TestXboxMore.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_588A3980EF9F4296929C2ECBAA623134"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C46AECDF087554DD6BDBFA3171A1D2F8"
             {
             "AssemblyRegister" = "3:1"
@@ -4494,6 +4635,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CC21719AA80F4CF1ABBB181490BFBFF7"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\Games\\MinecraftBedrockItems.xml"
+            "TargetName" = "8:MinecraftBedrockItems.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_D743FF8F01B647D6AB0F53724A20D05E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CEB56015EABCD5ACC936052E035BB79A"
             {
             "AssemblyRegister" = "3:1"
@@ -4525,26 +4686,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CF802FB073564F75A635410B700851E8"
-            {
-            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\MinecraftBedrockItems.xml"
-            "TargetName" = "8:MinecraftBedrockItems.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_5A36A8CD437C40AF95CDF23707770540"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CF9107D6C44224D99274F6217FCCB1D4"
             {
             "AssemblyRegister" = "3:1"
@@ -4574,26 +4715,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D20FD493DE1B4498BFF81F737FEB748A"
-            {
-            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\SuperHot.xml"
-            "TargetName" = "8:SuperHot.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_5A36A8CD437C40AF95CDF23707770540"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D2727966755EAD5866F616A5E26F4C25"
@@ -4687,6 +4808,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D34F847BCAC1402189DDD81F2F9D6694"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\Games\\Portal.xml"
+            "TargetName" = "8:Portal.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_D743FF8F01B647D6AB0F53724A20D05E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D3F61113F20B4E6BAB2E5CD2415BF2CD"
@@ -4935,26 +5076,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DBF8ABF184ED4D4B8F9456618791518C"
-            {
-            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\JoystickSettings.xml"
-            "TargetName" = "8:JoystickSettings.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_5A36A8CD437C40AF95CDF23707770540"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DD90F7ED2777CF4062651663A55F8032"
             {
             "AssemblyRegister" = "3:1"
@@ -5048,15 +5169,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E2E681F5625275CFEA3A655E6DB3CCFA"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EC3FC012B43940DBD97BE8F74AF62305"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:WindowsRecipes.TaskbarSingleInstance.Wpf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.16.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_EC3FC012B43940DBD97BE8F74AF62305"
+                    {
+                    "Name" = "8:OptiKey.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
-            "SourcePath" = "8:WindowsRecipes.TaskbarSingleInstance.Wpf.dll"
+            "SourcePath" = "8:OptiKey.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_856941099282428A88C01A4645A86A6C"
@@ -5072,26 +5198,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E604671E8B514802BFBCFDEAEE3A7034"
-            {
-            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\MinecraftJava.xml"
-            "TargetName" = "8:MinecraftJava.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_5A36A8CD437C40AF95CDF23707770540"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EF3AA318F47494C0AB8A5F9D33F37A9F"
@@ -5249,6 +5355,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F4E0AB9F7C274EF6F1735C20C989D0BB"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:WindowsRecipes.TaskbarSingleInstance, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_F4E0AB9F7C274EF6F1735C20C989D0BB"
+                    {
+                    "Name" = "8:WindowsRecipes.TaskbarSingleInstance.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:WindowsRecipes.TaskbarSingleInstance.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_856941099282428A88C01A4645A86A6C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F6ABAF9EC74C7E80320CFC3AB1E02D5A"
             {
             "AssemblyRegister" = "3:1"
@@ -5280,26 +5417,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F70F9CBD44B94241BC4FCED92B6E7AC3"
-            {
-            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\Portal.xml"
-            "TargetName" = "8:Portal.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_5A36A8CD437C40AF95CDF23707770540"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F77C8E5CC8D7B826C9E2D22E07311CDA"
             {
             "AssemblyRegister" = "3:1"
@@ -5329,26 +5446,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FB2C85B201804ADABF5590E023E569AD"
-            {
-            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\MinecraftBedrock.xml"
-            "TargetName" = "8:MinecraftBedrock.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_5A36A8CD437C40AF95CDF23707770540"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FB8A731154B9610061D0589B458AF9B6"
@@ -5517,6 +5614,28 @@
                                     "Property" = "8:_4DFD753375834B7B84207DB280211433"
                                         "Folders"
                                         {
+                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_588A3980EF9F4296929C2ECBAA623134"
+                                            {
+                                            "Name" = "8:Testing"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "Condition" = "8:"
+                                            "Transitive" = "11:FALSE"
+                                            "Property" = "8:_C14731453E7C4372BEE2502AAE9B6621"
+                                                "Folders"
+                                                {
+                                                }
+                                            }
+                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_D743FF8F01B647D6AB0F53724A20D05E"
+                                            {
+                                            "Name" = "8:Games"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "Condition" = "8:"
+                                            "Transitive" = "11:FALSE"
+                                            "Property" = "8:_BAE34B094D0A4FB1A045BA5BA831A647"
+                                                "Folders"
+                                                {
+                                                }
+                                            }
                                         }
                                     }
                                     "{9EF0B969-E518-4E46-987F-47570745A589}:_7A62AF94CD7443398385F489781C8936"
@@ -5598,7 +5717,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:OKGameOn"
         "ProductCode" = "8:{EAC9F49A-D322-4217-BB97-195BE790CEE7}"
-        "PackageCode" = "8:{6E6416A9-4F01-424D-9597-7A7A0B15E76B}"
+        "PackageCode" = "8:{EE43E4AE-3A91-4031-8631-1623DB6488B4}"
         "UpgradeCode" = "8:{23C84922-0CE5-4706-B4C9-D617690BEEEF}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
