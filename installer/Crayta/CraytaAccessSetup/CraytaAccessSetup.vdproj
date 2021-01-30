@@ -387,12 +387,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2594C1CFCCF45FD009F9E00FE342BCC6"
-        "OwnerKey" = "8:_96E58761B21E4FBBB12F7BED7A09AE75"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_25E2D06F56F24F44B004A0292700826A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -449,6 +443,24 @@
         {
         "MsmKey" = "8:_2D5B669A8AEDA40E35E9857FBCDE525D"
         "OwnerKey" = "8:_3CF9520CC81C48919FA77390C7CCB580"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2DED0870C1A46C2F20B39959C849D44C"
+        "OwnerKey" = "8:_3CF9520CC81C48919FA77390C7CCB580"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2DED0870C1A46C2F20B39959C849D44C"
+        "OwnerKey" = "8:_96E58761B21E4FBBB12F7BED7A09AE75"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2DED0870C1A46C2F20B39959C849D44C"
+        "OwnerKey" = "8:_9E07E2FC47DF47BFADC799365056AD12"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2086,12 +2098,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2594C1CFCCF45FD009F9E00FE342BCC6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_8EAF1D4C2416413F89196A3D67562450"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2609,6 +2615,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A74E74F48FC684230FDF8F40D11023DD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_2DED0870C1A46C2F20B39959C849D44C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -3800,37 +3812,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2594C1CFCCF45FD009F9E00FE342BCC6"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Nefarius.ViGEm.Client, Version=1.16.150.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_2594C1CFCCF45FD009F9E00FE342BCC6"
-                    {
-                    "Name" = "8:Nefarius.ViGEm.Client.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Nefarius.ViGEm.Client.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_FE2E78147F89453AAF2DD39A6E084C8C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_25E2D06F56F24F44B004A0292700826A"
             {
             "AssemblyRegister" = "3:1"
@@ -4020,6 +4001,37 @@
                     }
                 }
             "SourcePath" = "8:System.Text.Encoding.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_FE2E78147F89453AAF2DD39A6E084C8C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2DED0870C1A46C2F20B39959C849D44C"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Nefarius.ViGEm.Client, Version=1.16.150.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_2DED0870C1A46C2F20B39959C849D44C"
+                    {
+                    "Name" = "8:Nefarius.ViGEm.Client.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Nefarius.ViGEm.Client.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_FE2E78147F89453AAF2DD39A6E084C8C"
@@ -6190,7 +6202,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.7.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.10.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_96E58761B21E4FBBB12F7BED7A09AE75"
@@ -6303,7 +6315,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.10.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.16.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_9E07E2FC47DF47BFADC799365056AD12"
@@ -8168,7 +8180,7 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:CraytaAccess"
+        "ProductName" = "8:OKGameOn"
         "ProductCode" = "8:{3D2D8476-6FA7-485A-83DE-0C3D19EF1ED4}"
         "PackageCode" = "8:{88E7A44D-201E-4E5E-AD3E-CB119C2E0FF2}"
         "UpgradeCode" = "8:{37EF57F8-CAA5-4B93-B590-7D22AD3494ED}"
@@ -8181,7 +8193,7 @@
         "Manufacturer" = "8:KMcNaught"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:CraytaAccess"
+        "Title" = "8:OKGameOn"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Kirsty"
         "Keywords" = "8:"
@@ -8719,7 +8731,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3CF9520CC81C48919FA77390C7CCB580"
             {
-            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\obj\\Debug\\CraytaAccess.exe"
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\obj\\Debug\\OptikeyGaming.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_FE2E78147F89453AAF2DD39A6E084C8C"
