@@ -111,6 +111,12 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
       <Wait>100</Wait>
       <KeyUp>XboxY</KeyUp>
     </DynamicKey>
+    <DynamicKey Col="0" Row="6">      
+      <Label>Holds</Label>
+      <KeyGroup>HalfSpeed</KeyGroup>
+      <ChangeKeyboard BackReturnsHere="False">TestXboxHolds</ChangeKeyboard>
+    </DynamicKey>
+
    <!--  <DynamicKey Col="6" Row="6">
       <Label>Pick\nup</Label>
       <KeyDown>XboxX</KeyDown>

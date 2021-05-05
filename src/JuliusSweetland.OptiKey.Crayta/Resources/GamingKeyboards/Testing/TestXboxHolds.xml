@@ -10,6 +10,7 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
   <Position>Bottom</Position>
   <BackgroundColor>Transparent</BackgroundColor>
   <BorderColor>Transparent</BorderColor>
+  <HideFromKeyboardMenu>true</HideFromKeyboardMenu>
   <Grid>
     <Rows>7</Rows>
     <Cols>10</Cols>
@@ -50,16 +51,12 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
       <KeyToggle PauseWhenLookingAtAnyKey="true">XBoxLeftThumb|North|0.75</KeyToggle>
     </DynamicKey> -->
     <DynamicKey Col="2" Row="6">      
-      <Label>LB</Label>
-      <KeyDown>XboxLeftShoulder</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>XboxLeftShoulder</KeyUp>
+      <Label>hold\nLB</Label>
+      <KeyToggle>XboxLeftShoulder</KeyToggle>
     </DynamicKey>
     <DynamicKey Col="1" Row="6">      
-      <Label>LT</Label>
-      <KeyDown>XboxLeftTrigger</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>XboxLeftTrigger</KeyUp>
+      <Label>hold\nLT</Label>
+      <KeyToggle>XboxLeftTrigger</KeyToggle>
     </DynamicKey>
     <DynamicKey Col="0" Row="4">
       <Label>A</Label>      
@@ -76,7 +73,7 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
     <DynamicKey Col="0" Row="6">      
       <Label>Holds</Label>
       <KeyGroup>HalfSpeed</KeyGroup>
-      <ChangeKeyboard BackReturnsHere="False">TestXboxHolds</ChangeKeyboard>
+      <ChangeKeyboard BackReturnsHere="False">TestXbox</ChangeKeyboard>
     </DynamicKey>
     <DynamicKey Col="9" Row="4">
       <Label>X</Label>      
@@ -97,16 +94,12 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
       <KeyUp>XboxX</KeyUp>
     </DynamicKey> -->
     <DynamicKey Col="7" Row="6">
-        <Label>RB</Label>
-      <KeyDown>XboxRightShoulder</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>XboxRightShoulder</KeyUp>
+        <Label>hold\nRB</Label>
+      <KeyToggle>XboxRightShoulder</KeyToggle>
     </DynamicKey>
     <DynamicKey Col="8" Row="6">
-        <Label>RT</Label>
-      <KeyDown>XboxRightTrigger</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>XboxRightTrigger</KeyUp>
+        <Label>hold\nRT</Label>
+      <KeyToggle>XboxRightTrigger</KeyToggle>
     </DynamicKey>
     <DynamicKey Col="9" Row="6">
       <Symbol>BackIcon</Symbol>
