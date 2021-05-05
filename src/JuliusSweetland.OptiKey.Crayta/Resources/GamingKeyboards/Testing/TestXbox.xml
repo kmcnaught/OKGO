@@ -19,8 +19,16 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
   <KeyGroup AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" Name="Scaling"/>
   <Content>
     <DynamicKey Col="0" Row="0">
-      <Label>Menu</Label>
-      <Action>XboxStart</Action>
+      <Label>Start/\nMenu</Label>
+      <KeyDown>XboxStart</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxStart</KeyUp>
+    </DynamicKey>
+    <DynamicKey Col="0" Row="1">
+      <Label>Back/\nView</Label>
+      <KeyDown>XboxBack</KeyDown>
+      <Wait>100</Wait>
+      <KeyUp>XboxBack</KeyUp>
     </DynamicKey>
     <DynamicKey Col="2" Row="0">
       <Label>Tank\ncontrols</Label>
