@@ -117,6 +117,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1735143F5F3145A88AF6D92E9F0AA656"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1D494F4554C4D840B1D61EF4F4D1CB87"
         "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
@@ -413,18 +419,6 @@
         {
         "MsmKey" = "8:_517961F611F6BAB0BA1460E0374FE6E6"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_52C143789B1C5922E41C9F5A331CF723"
-        "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_52C143789B1C5922E41C9F5A331CF723"
-        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -844,18 +838,6 @@
         "Entry"
         {
         "MsmKey" = "8:_B698ADD288539689C3E2EF7F7C7B5EF1"
-        "OwnerKey" = "8:_660F3FD1D33EC01F4D0FB40B4C7C6E0B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B698ADD288539689C3E2EF7F7C7B5EF1"
-        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B698ADD288539689C3E2EF7F7C7B5EF1"
         "OwnerKey" = "8:_84950C82556742C69E67AC69AF3A5189"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -863,6 +845,18 @@
         {
         "MsmKey" = "8:_B698ADD288539689C3E2EF7F7C7B5EF1"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B698ADD288539689C3E2EF7F7C7B5EF1"
+        "OwnerKey" = "8:_660F3FD1D33EC01F4D0FB40B4C7C6E0B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B698ADD288539689C3E2EF7F7C7B5EF1"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1210,42 +1204,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7CFADCD3A3EA9797D2EE51B5EE7BEC16"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_660F3FD1D33EC01F4D0FB40B4C7C6E0B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F4E0AB9F7C274EF6F1735C20C989D0BB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_52C143789B1C5922E41C9F5A331CF723"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A1B5941F2EF5AB24EFBDD7EC2B8C59F6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_84950C82556742C69E67AC69AF3A5189"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1552,7 +1510,37 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7CFADCD3A3EA9797D2EE51B5EE7BEC16"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_660F3FD1D33EC01F4D0FB40B4C7C6E0B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_1D494F4554C4D840B1D61EF4F4D1CB87"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F4E0AB9F7C274EF6F1735C20C989D0BB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A1B5941F2EF5AB24EFBDD7EC2B8C59F6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2203,6 +2191,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1735143F5F3145A88AF6D92E9F0AA656"
+            {
+            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\Testing\\TestXboxHolds.xml"
+            "TargetName" = "8:TestXboxHolds.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_588A3980EF9F4296929C2ECBAA623134"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1D494F4554C4D840B1D61EF4F4D1CB87"
@@ -3030,37 +3038,6 @@
                     }
                 }
             "SourcePath" = "8:System.Reflection.Extensions.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_856941099282428A88C01A4645A86A6C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_52C143789B1C5922E41C9F5A331CF723"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Nefarius.ViGEm.Client, Version=1.16.150.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_52C143789B1C5922E41C9F5A331CF723"
-                    {
-                    "Name" = "8:Nefarius.ViGEm.Client.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Nefarius.ViGEm.Client.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_856941099282428A88C01A4645A86A6C"
@@ -5173,7 +5150,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.16.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_EC3FC012B43940DBD97BE8F74AF62305"
@@ -5716,15 +5693,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:OKGameOn"
-        "ProductCode" = "8:{EAC9F49A-D322-4217-BB97-195BE790CEE7}"
-        "PackageCode" = "8:{EE43E4AE-3A91-4031-8631-1623DB6488B4}"
+        "ProductCode" = "8:{194ED5CC-B07F-47FB-8810-9A148807663B}"
+        "PackageCode" = "8:{235F4997-6A6F-48CF-887E-AAD187874207}"
         "UpgradeCode" = "8:{23C84922-0CE5-4706-B4C9-D617690BEEEF}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:KMcNaught"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
