@@ -191,6 +191,7 @@ Global
 		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.DefaultBuild|x86.ActiveCfg = Debug
 		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.Release|Any CPU.ActiveCfg = Release
 		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.Release|x86.ActiveCfg = Release
+		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
