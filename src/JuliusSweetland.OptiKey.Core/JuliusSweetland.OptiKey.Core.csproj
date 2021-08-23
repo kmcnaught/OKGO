@@ -430,6 +430,7 @@
     <Compile Include="UI\Controls\KeyboardView.cs" />
     <Compile Include="UI\ValueConverters\HlsColor.cs" />
     <Compile Include="UI\ValueConverters\InvertedBoolToVisibilityConverter.cs" />
+    <Compile Include="UI\ValueConverters\Half.cs" />
     <Compile Include="UI\ValueConverters\MultiBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ViewModels\Keyboards\Alpha3.cs" />
     <Compile Include="UI\ViewModels\Keyboards\ConversationAlpha3.cs" />
@@ -987,7 +988,7 @@
     <None Include="app.config" />
     <Content Include="Dictionaries\HungarianHungary.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>    
+    </Content>
     <Content Include="Dictionaries\HindiIndia.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

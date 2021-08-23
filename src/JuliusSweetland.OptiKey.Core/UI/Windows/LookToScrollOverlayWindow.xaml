@@ -19,6 +19,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
         <valueConverters:ColourNameToBrush x:Key="ColourNameToBrush"/>
         <valueConverters:EnumToVisibilityConverter x:Key="EnumToVisibility"/>
+        <valueConverters:Half x:Key="Half"/>
     </Window.Resources>
 
     <Window.Visibility>
@@ -44,10 +45,13 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
                 BorderThickness="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayBoundsThickness}"/>
 
         <!-- Deadzone (Free Mode) -->
-        <Border Grid.Row="1" Grid.Column="1" 
-                BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneColour, Converter={StaticResource ColourNameToBrush}}" 
-                BorderThickness="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneThickness}"
-                Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource EnumToVisibility}, ConverterParameter='Free'}"/>
+        <Rectangle Grid.Row="1" Grid.Column="1" 
+                   RadiusX="{Binding Path=ActiveDeadzone.Width, Converter={StaticResource Half}}"
+                   RadiusY="{Binding Path=ActiveDeadzone.Height, Converter={StaticResource Half}}"
+                Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneColour, Converter={StaticResource ColourNameToBrush}}" 
+                StrokeThickness="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneThickness}"
+                Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource EnumToVisibility}, ConverterParameter='Free'}">
+        </Rectangle>
 
         <!-- Deadzone (Horizontal or Cross Mode) -->
         <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="3"
