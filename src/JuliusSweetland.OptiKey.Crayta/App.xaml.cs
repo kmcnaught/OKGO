@@ -58,9 +58,11 @@ namespace JuliusSweetland.OptiKey.Crayta
         // Handle to management window whilst open
         private ManagementWindowEyeMine managementWindow;
 
+        private string startKeyboardOverride = null;        
+
         #region Main
         [STAThread]
-        public static void Main()
+        public static void Main(string[] args)
         {
             // Setup derived settings class
             Settings.Initialise();
@@ -72,7 +74,7 @@ namespace JuliusSweetland.OptiKey.Crayta
                 splashScreen = new SplashScreen("/Resources/Icons/OkGameOnSplash.png");
                 splashScreen.Show(false);
 
-                var application = new App();
+                var application = new App(args);
                 application.InitializeComponent();
                 application.Run();
             };
@@ -94,10 +96,23 @@ namespace JuliusSweetland.OptiKey.Crayta
 
         #region Ctor
 
-        public App()
+        public App(string[] args)
         {
+            // Parse command-line args, 
+            // Display the number of command line arguments.
+            Console.WriteLine(args.Length);
+
+            if (args.Length == 1)
+            {
+                // Allow entry straight into specified dynamic keyboard(s)
+                startKeyboardOverride = args[0];
+            }
+
             // Core setup for all OptiKey apps
             Initialise();
+
+            // Setup specific to this app happens in App_OnStartup
+
         }
 
         #endregion
@@ -200,7 +215,7 @@ namespace JuliusSweetland.OptiKey.Crayta
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
                     inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService,
-                    errorNotifyingServices);
+                    errorNotifyingServices, startKeyboardOverride);
 
                 mainWindow.SetMainViewModel(mainViewModel);
 

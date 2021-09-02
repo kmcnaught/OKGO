@@ -19,6 +19,7 @@ using Prism.Mvvm;
 using System.Text;
 using System.Net.Http;
 using System.Reactive.Linq;
+using System.IO;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -79,7 +80,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             IKeyboardOutputService keyboardOutputService,
             IMouseOutputService mouseOutputService,
             IWindowManipulationService mainWindowManipulationService,
-            List<INotifyErrors> errorNotifyingServices)
+            List<INotifyErrors> errorNotifyingServices,
+            string startKeyboardOverride = null)
         {
             this.audioService = audioService;
             this.calibrationService = calibrationService;
@@ -99,8 +101,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             this.translationService = new TranslationService(new HttpClient());
 
+            Console.WriteLine($"startKeyboardOverride = {startKeyboardOverride}");
+
             SetupInputServiceEventHandlers();
-            InitialiseKeyboard(mainWindowManipulationService);
+            InitialiseKeyboard(mainWindowManipulationService, startKeyboardOverride);
             AttachScratchpadEnabledListener();
             AttachKeyboardSupportsCollapsedDockListener(mainWindowManipulationService);
             AttachKeyboardSupportsSimulateKeyStrokesListener();
@@ -362,8 +366,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private void InitialiseKeyboard(IWindowManipulationService windowManipulationService)
+        private void InitialiseKeyboard(IWindowManipulationService windowManipulationService, string keyboardOverride=null)
         {
+            if (keyboardOverride != null)
+            {
+                if (Directory.Exists(keyboardOverride))
+                {
+                    Log.Info($"Loading keyboards from requested directory: {keyboardOverride}");
+                    Keyboard = new DynamicKeyboardSelector(() => { }, 0, keyboardOverride);
+                    return;
+                }
+                else if (File.Exists(keyboardOverride))
+                {
+                    Log.Info($"Loading keyboard from requested file: {keyboardOverride}");
+                    Keyboard = new DynamicKeyboard(() => { }, keyStateService, keyboardOverride);
+                    //TODO: consider whether back action should take you to 'normal' keyboards?
+                    return;
+                }
+            }
+
             if (Settings.Default.ConversationOnlyMode)
             {
                 Keyboard = new ConversationAlpha1(null);
