@@ -123,18 +123,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_18B7B79AC18D86DDB820820F18172F19"
-        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_18B7B79AC18D86DDB820820F18172F19"
-        "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_1D494F4554C4D840B1D61EF4F4D1CB87"
         "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
@@ -435,20 +423,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_546140F684D141285378F4E9DA6D8205"
+        "MsmKey" = "8:_52C143789B1C5922E41C9F5A331CF723"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_546140F684D141285378F4E9DA6D8205"
+        "MsmKey" = "8:_52C143789B1C5922E41C9F5A331CF723"
         "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_546140F684D141285378F4E9DA6D8205"
-        "OwnerKey" = "8:_78F025D1EC0D05070556A333E75012BF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -609,18 +591,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_78F025D1EC0D05070556A333E75012BF"
-        "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_78F025D1EC0D05070556A333E75012BF"
-        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_79D8EBE56B034B0C4A5D44312F8A45C6"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
         "MsmSig" = "8:_UNDEFINED"
@@ -653,24 +623,6 @@
         {
         "MsmKey" = "8:_8051148C8C6A9696D91A625DA5A36248"
         "OwnerKey" = "8:_0F2EC727A3C6A8AAA254D2D5D22F70D3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_83CEA74AB10F3AA95846A3796329E093"
-        "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_83CEA74AB10F3AA95846A3796329E093"
-        "OwnerKey" = "8:_18B7B79AC18D86DDB820820F18172F19"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_83CEA74AB10F3AA95846A3796329E093"
-        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -898,12 +850,6 @@
         "Entry"
         {
         "MsmKey" = "8:_B698ADD288539689C3E2EF7F7C7B5EF1"
-        "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B698ADD288539689C3E2EF7F7C7B5EF1"
         "OwnerKey" = "8:_660F3FD1D33EC01F4D0FB40B4C7C6E0B"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -911,6 +857,18 @@
         {
         "MsmKey" = "8:_B698ADD288539689C3E2EF7F7C7B5EF1"
         "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B698ADD288539689C3E2EF7F7C7B5EF1"
+        "OwnerKey" = "8:_84950C82556742C69E67AC69AF3A5189"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B698ADD288539689C3E2EF7F7C7B5EF1"
+        "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1258,6 +1216,48 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7CFADCD3A3EA9797D2EE51B5EE7BEC16"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_660F3FD1D33EC01F4D0FB40B4C7C6E0B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F4E0AB9F7C274EF6F1735C20C989D0BB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_52C143789B1C5922E41C9F5A331CF723"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A1B5941F2EF5AB24EFBDD7EC2B8C59F6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_84950C82556742C69E67AC69AF3A5189"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1558,61 +1558,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7CFADCD3A3EA9797D2EE51B5EE7BEC16"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_660F3FD1D33EC01F4D0FB40B4C7C6E0B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_1D494F4554C4D840B1D61EF4F4D1CB87"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F4E0AB9F7C274EF6F1735C20C989D0BB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_18B7B79AC18D86DDB820820F18172F19"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_78F025D1EC0D05070556A333E75012BF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_546140F684D141285378F4E9DA6D8205"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A1B5941F2EF5AB24EFBDD7EC2B8C59F6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_83CEA74AB10F3AA95846A3796329E093"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2283,37 +2229,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_18B7B79AC18D86DDB820820F18172F19"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:WPFMediaKit, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_18B7B79AC18D86DDB820820F18172F19"
-                    {
-                    "Name" = "8:WPFMediaKit.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:WPFMediaKit.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_856941099282428A88C01A4645A86A6C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1D494F4554C4D840B1D61EF4F4D1CB87"
@@ -3158,20 +3073,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_546140F684D141285378F4E9DA6D8205"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_52C143789B1C5922E41C9F5A331CF723"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:NHotkey, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a76ffb086700b11c, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Nefarius.ViGEm.Client, Version=1.16.150.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_546140F684D141285378F4E9DA6D8205"
+                    "_52C143789B1C5922E41C9F5A331CF723"
                     {
-                    "Name" = "8:NHotkey.dll"
+                    "Name" = "8:Nefarius.ViGEm.Client.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:NHotkey.dll"
+            "SourcePath" = "8:Nefarius.ViGEm.Client.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_856941099282428A88C01A4645A86A6C"
@@ -3725,37 +3640,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_78F025D1EC0D05070556A333E75012BF"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:NHotkey.Wpf, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a76ffb086700b11c, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_78F025D1EC0D05070556A333E75012BF"
-                    {
-                    "Name" = "8:NHotkey.Wpf.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:NHotkey.Wpf.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_856941099282428A88C01A4645A86A6C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_79D8EBE56B034B0C4A5D44312F8A45C6"
             {
             "AssemblyRegister" = "3:1"
@@ -3900,37 +3784,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_83CEA74AB10F3AA95846A3796329E093"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DirectShowLib-2005, Version=2.1.0.26626, Culture=neutral, PublicKeyToken=67e7b740cdfc2d3f, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_83CEA74AB10F3AA95846A3796329E093"
-                    {
-                    "Name" = "8:DirectShowLib-2005.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:DirectShowLib-2005.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_856941099282428A88C01A4645A86A6C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_84950C82556742C69E67AC69AF3A5189"
             {
             "AssemblyRegister" = "3:1"
@@ -3938,6 +3791,11 @@
             "AssemblyAsmDisplayName" = "8:OptiKeyStandardPlugins, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_84950C82556742C69E67AC69AF3A5189"
+                    {
+                    "Name" = "8:OptiKeyStandardPlugins.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\bin\\Release\\Resources\\Plugins\\OptiKeyStandardPlugins.dll"
             "TargetName" = "8:"
@@ -5341,7 +5199,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.18.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_EC3FC012B43940DBD97BE8F74AF62305"
@@ -5885,7 +5743,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:OKGameOn"
         "ProductCode" = "8:{56B0BDA5-2A9A-4F22-944D-FF1B7696D919}"
-        "PackageCode" = "8:{C947CC7D-4B70-4BF4-B81E-84608C7F7F67}"
+        "PackageCode" = "8:{BD1161EF-FBAB-4A3F-A569-1DC05078660A}"
         "UpgradeCode" = "8:{23C84922-0CE5-4706-B4C9-D617690BEEEF}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -5985,6 +5843,156 @@
             {
                 "Keys"
                 {
+                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_5C21378848E4471096D5504676AB3B1B"
+                    {
+                    "Name" = "8:SystemFileAssociations"
+                    "Condition" = "8:"
+                    "AlwaysCreate" = "11:FALSE"
+                    "DeleteAtUninstall" = "11:FALSE"
+                    "Transitive" = "11:FALSE"
+                        "Keys"
+                        {
+                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_A9025638CE7A400B84A20016DBFFA6D3"
+                            {
+                            "Name" = "8:.xml"
+                            "Condition" = "8:"
+                            "AlwaysCreate" = "11:FALSE"
+                            "DeleteAtUninstall" = "11:FALSE"
+                            "Transitive" = "11:FALSE"
+                                "Keys"
+                                {
+                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_AE6CB054EBD74384B8ED10D306A733F5"
+                                    {
+                                    "Name" = "8:Shell"
+                                    "Condition" = "8:"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "DeleteAtUninstall" = "11:FALSE"
+                                    "Transitive" = "11:FALSE"
+                                        "Keys"
+                                        {
+                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_6437813A9CF545A68884F961E0931796"
+                                            {
+                                            "Name" = "8:Open with OKGameOn"
+                                            "Condition" = "8:"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "DeleteAtUninstall" = "11:FALSE"
+                                            "Transitive" = "11:FALSE"
+                                                "Keys"
+                                                {
+                                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_4571729248FC434D8259AAA2B05CEAFB"
+                                                    {
+                                                    "Name" = "8:command"
+                                                    "Condition" = "8:"
+                                                    "AlwaysCreate" = "11:TRUE"
+                                                    "DeleteAtUninstall" = "11:TRUE"
+                                                    "Transitive" = "11:FALSE"
+                                                        "Keys"
+                                                        {
+                                                        }
+                                                        "Values"
+                                                        {
+                                                            "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_17218D6A797E4EBF8995520DE9B17D8B"
+                                                            {
+                                                            "Name" = "8:"
+                                                            "Condition" = "8:"
+                                                            "Transitive" = "11:FALSE"
+                                                            "ValueTypes" = "3:1"
+                                                            "Value" = "8:[TARGETDIR]OKGame.exe \"%1\""
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                "Values"
+                                                {
+                                                }
+                                            }
+                                        }
+                                        "Values"
+                                        {
+                                        }
+                                    }
+                                }
+                                "Values"
+                                {
+                                }
+                            }
+                        }
+                        "Values"
+                        {
+                        }
+                    }
+                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_8727235129F9428C8D171A2ABCDB78E1"
+                    {
+                    "Name" = "8:Directory"
+                    "Condition" = "8:"
+                    "AlwaysCreate" = "11:FALSE"
+                    "DeleteAtUninstall" = "11:FALSE"
+                    "Transitive" = "11:FALSE"
+                        "Keys"
+                        {
+                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_82C52351DE1B45DE80A30D46D18AD2C6"
+                            {
+                            "Name" = "8:shell"
+                            "Condition" = "8:"
+                            "AlwaysCreate" = "11:FALSE"
+                            "DeleteAtUninstall" = "11:FALSE"
+                            "Transitive" = "11:FALSE"
+                                "Keys"
+                                {
+                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_DA563EB7ED144BEB8531557412E0B730"
+                                    {
+                                    "Name" = "8:Open folder with OKGameOn"
+                                    "Condition" = "8:"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "DeleteAtUninstall" = "11:FALSE"
+                                    "Transitive" = "11:FALSE"
+                                        "Keys"
+                                        {
+                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_2FEBCC87D47C48C788E0A9AB8F6C9922"
+                                            {
+                                            "Name" = "8:command"
+                                            "Condition" = "8:"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "DeleteAtUninstall" = "11:TRUE"
+                                            "Transitive" = "11:FALSE"
+                                                "Keys"
+                                                {
+                                                }
+                                                "Values"
+                                                {
+                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_F32CBEFA9C9C49A88902020C5A6073D7"
+                                                    {
+                                                    "Name" = "8:"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "ValueTypes" = "3:1"
+                                                    "Value" = "8:[TARGETDIR]OKGame.exe \"%1\""
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        "Values"
+                                        {
+                                            "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_8398C3C87A754C8A8C02C9C05BA3FF7C"
+                                            {
+                                            "Name" = "8:New Value #1"
+                                            "Condition" = "8:"
+                                            "Transitive" = "11:FALSE"
+                                            "ValueTypes" = "3:1"
+                                            "Value" = "8:"
+                                            }
+                                        }
+                                    }
+                                }
+                                "Values"
+                                {
+                                }
+                            }
+                        }
+                        "Values"
+                        {
+                        }
+                    }
                 }
             }
             "HKU"
