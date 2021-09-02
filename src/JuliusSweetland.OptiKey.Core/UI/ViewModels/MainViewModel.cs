@@ -37,7 +37,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly ILastMouseActionStateManager lastMouseActionStateManager;
         private readonly IInputService inputService;
         private readonly IKeyboardOutputService keyboardOutputService;
-        private readonly IControllerOutputService controllerOutputService;
         private readonly IMouseOutputService mouseOutputService;
         private readonly IWindowManipulationService mainWindowManipulationService;
         private readonly List<INotifyErrors> errorNotifyingServices; 
@@ -91,7 +90,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.lastMouseActionStateManager = lastMouseActionStateManager;
             this.inputService = inputService;
             this.keyboardOutputService = keyboardOutputService;
-            this.controllerOutputService = controllerOutputService;
             this.mouseOutputService = mouseOutputService;
             this.mainWindowManipulationService = mainWindowManipulationService;
             this.errorNotifyingServices = errorNotifyingServices;
@@ -174,7 +172,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public IInputService InputService { get { return inputService; } }
         public ICapturingStateManager CapturingStateManager { get { return capturingStateManager; } }
         public IKeyboardOutputService KeyboardOutputService { get { return keyboardOutputService; } }
-        public IControllerOutputService ControllerOutputService { get { return controllerOutputService; } }
         public IKeyStateService KeyStateService { get { return keyStateService; } }
         public ISuggestionStateService SuggestionService { get { return suggestionService; } }
         public ICalibrationService CalibrationService { get { return calibrationService; } }
