@@ -51,7 +51,7 @@ using System.Windows;
 //      Revision
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
+// by using the '*' as shown below:uiacce
 // [assembly: AssemblyVersion("1.0.*")]
 //
 //SEMANTIC VERSIONING (http://semver.org)
@@ -59,8 +59,8 @@ using System.Windows;
 //MAJOR version when you make incompatible API changes,
 //MINOR version when you add functionality in a backwards-compatible manner, and
 //PATCH version when you make backwards-compatible bug fixes (in the Version class this is the Build number).
-[assembly: AssemblyVersion("3.0.18")]
+[assembly: AssemblyVersion("3.0.19")]
 
 [assembly: InternalsVisibleTo("JuliusSweetland.OptiKey.UnitTests")]
-[assembly: InternalsVisibleTo("JuliusSweetland.OptiKey.AutoCompletePerformance")][assembly: AssemblyFileVersion("3.0.18")]
-[assembly: AssemblyFileVersion("3.0.18")]
+[assembly: InternalsVisibleTo("JuliusSweetland.OptiKey.AutoCompletePerformance")]
+[assembly: AssemblyFileVersion("3.0.19")]
