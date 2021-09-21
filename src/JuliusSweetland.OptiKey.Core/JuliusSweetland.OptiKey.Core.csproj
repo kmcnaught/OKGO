@@ -267,6 +267,8 @@
     <Compile Include="Models\ILastMouseActionStateManager.cs" />
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
     <Compile Include="Models\KeyCommand.cs" />
+    <Compile Include="Models\ScalingModels\ISensitivityFunction.cs" />
+    <Compile Include="Models\ScalingModels\SqrtScalingFromSettings.cs" />
     <Compile Include="Models\TimeSpanOverrides.cs" />
     <Compile Include="Models\KeyValueConverter.cs" />
     <Compile Include="Models\PluginMetadata.cs" />

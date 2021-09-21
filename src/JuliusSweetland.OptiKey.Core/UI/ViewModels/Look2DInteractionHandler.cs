@@ -5,6 +5,7 @@ using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Models.ScalingModels;
 using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
@@ -31,8 +32,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         // How this handler is configured (may change)
         private Point? pointBoundsTarget;
-        private float scaleX = 1.0f;
-        private float scaleY = 1.0f;
+
+        private ISensitivityFunction sensitivityFunction;
 
         // Temporary state 
         private bool choosingBoundsTarget = false;
@@ -49,6 +50,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.updateAction = updateAction;
             this.keyStateService = keyStateService;
             this.mainViewModel = mainViewModel;
+
+            this.sensitivityFunction = new SqrtScalingFromSettings(0, 0.02);
         }
 
         #endregion
@@ -91,7 +94,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Log.InfoFormat("Activating 2D control: {0}", this.triggerKey);
 
-            this.SetScaleFactor(ParseScaleFromString(keyValue.String));
+            SqrtScalingFromSettings sqrtScaling = (SqrtScalingFromSettings)sensitivityFunction;
+            sqrtScaling.SetScaleFactor(ParseScaleFromString(keyValue.String));
 
             // Choose joystick centre via "Reset" key
             if (keyStateService.KeyDownStates[KeyValues.ResetJoystickKey].Value == KeyDownStates.LockedDown)
@@ -130,13 +134,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 Log.Info("Look to scroll is no longer active.");
                 updateAction(0.0f, 0.0f);
             }
-        }
-
-        public void SetScaleFactor(float[] scaleXY)
-        {
-            scaleX = scaleXY[0];
-            scaleY = scaleXY[1];
-        }
+        }       
 
         // Call this method with new gaze points
         public void UpdateLookToScroll(Point position)
@@ -154,8 +152,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 Log.DebugFormat("Current look to scroll bounds rect is: {0}.", bounds);
                 Log.DebugFormat("Current look to scroll centre point is: {0}.", centre);
 
-                Vector scrollAmount = CalculateLookToScrollVelocity(position, centre);
-                PerformLookToScroll(scrollAmount);
+                Vector scrollAmount = sensitivityFunction.CalculateScaling(position, centre);
+                updateAction((float)scrollAmount.X, (float)scrollAmount.Y);
 
                 UpdateLookToScrollOverlayProperties(bounds, centre);
             }
@@ -302,93 +300,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
-        private Vector CalculateLookToScrollVelocity(Point current, Point centre)
-        {
-            double baseSpeed = 0;
-            double acceleration = 0.02;
-
-            
-            double deadzoneWidth = (double)Settings.Default.JoystickHorizontalDeadzonePercentScreen * Graphics.PrimaryScreenWidthInPixels / 100.0d;
-            double deadzoneHeight = deadzoneWidth / Settings.Default.JoystickDeadzoneAspectRatio;
-
-            Vector velocity = CalculateLookToScrollVelocityVec(
-                current, centre, 
-                deadzoneWidth, deadzoneHeight,
-                baseSpeed, acceleration
-            );
-
-            Log.DebugFormat("Current scrolling velocity is: {0}.", velocity);
-
-            return velocity;
-        }
-
-        private double signedSqrt(double x)
-        {
-            // return sqrt of magnitude but with original sign
-            return Math.Sign(x) * Math.Sqrt(Math.Abs(x));
-        }
-
-        private Vector CalculateLookToScrollVelocityVec(
-            Point current,
-            Point centre,
-            double deadzoneWidth,
-            double deadzoneHeight,
-            double baseSpeed,
-            double acceleration)
-        {
-            // Calculate the direction and distance from the centre to the current value. 
-            Vector distance = current - centre;
-            Vector intersectionPoint = ellipseIntersection(distance, deadzoneWidth/2, deadzoneHeight/2);
-            if (distance.LengthSquared < intersectionPoint.LengthSquared)
-            {
-                // inside the deadzone
-                return new Vector(0, 0);
-            }
-            else
-            {
-                // Remove the deadzone.
-                distance -= intersectionPoint;
-
-                // Calculate total speed using base speed and distance-based acceleration.
-                Vector speed = new Vector(baseSpeed + signedSqrt(distance.X) * acceleration, 
-                                          baseSpeed + signedSqrt(distance.Y) * acceleration );         
-
-                return speed;
-            }
-        }
-
-        private double CalculateLookToScrollVelocity(
-            double current,
-            double centre,
-            double deadzone,
-            double baseSpeed,
-            double acceleration)
-        {
-            // Calculate the direction and distance from the centre to the current value. 
-            double signedDistance = current - centre;
-            double sign = Math.Sign(signedDistance);
-            double distance = Math.Abs(signedDistance);
-
-            // Remove the deadzone.
-            distance -= deadzone;
-            if (distance < 0)
-            {
-                return 0;
-            }
-
-            // Calculate total speed using base speed and distance-based acceleration.
-            double speed = baseSpeed + Math.Sqrt(distance) * acceleration;
-
-            //Log.InfoFormat("current: {0}, centre: {1}, accel: {2}, velocity: {3}", current, centre, acceleration, sign * speed);
-
-            // Give the speed the correct direction.
-            return sign * speed;
-        }
-
-        private void PerformLookToScroll(Vector scrollAmount)
-        {
-            updateAction(scaleX * (float)scrollAmount.X, scaleY * (float)scrollAmount.Y);
-        }
 
         private void UpdateLookToScrollOverlayProperties(Rect bounds, Point centre)
         {
