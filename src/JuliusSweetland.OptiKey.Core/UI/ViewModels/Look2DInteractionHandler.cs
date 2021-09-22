@@ -94,8 +94,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             Log.InfoFormat("Activating 2D control: {0}", this.triggerKey);
 
-            SqrtScalingFromSettings sqrtScaling = (SqrtScalingFromSettings)sensitivityFunction;
+            double baseSpeed = 0;
+            double acceleration = 0.02;
+            SqrtScalingFromSettings sqrtScaling = new SqrtScalingFromSettings(baseSpeed, acceleration);
             sqrtScaling.SetScaleFactor(ParseScaleFromString(keyValue.String));
+            sensitivityFunction = sqrtScaling;            
 
             // Choose joystick centre via "Reset" key
             if (keyStateService.KeyDownStates[KeyValues.ResetJoystickKey].Value == KeyDownStates.LockedDown)
