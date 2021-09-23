@@ -28,6 +28,17 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
             scaleY = scaleXY[1];
         }
 
+        public List<Point> GetContours()
+        {
+            
+            double deadzoneWidth = (double)Settings.Default.JoystickHorizontalDeadzonePercentScreen * Graphics.PrimaryScreenWidthInPixels / 100.0d;
+            double deadzoneHeight = deadzoneWidth / Settings.Default.JoystickDeadzoneAspectRatio;
+
+            Point deadzone = new Point(deadzoneWidth / 2.0f, deadzoneHeight / 2.0f);
+
+            return new List<Point> { deadzone };
+        }
+
         public Vector CalculateScaling(Point current, Point centre)
         {
             double baseSpeed = 0;

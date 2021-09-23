@@ -12,6 +12,7 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
     class PiecewiseScaling : ISensitivityFunction
     {
         List<Tuple<Tuple<float, float>, Tuple<float, float>>> pairwiseCoords;
+        List<Tuple<float, float>> individualCoords;
 
         double screenScale;
 
@@ -32,7 +33,7 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
             int n = list_of_all_coords.Length / 2; // number of pairs
             if (n > 0)
             {
-                List<Tuple<float, float>> individualCoords = new List<Tuple<float, float>>();
+                individualCoords = new List<Tuple<float, float>>();
 
                 if (list_of_all_coords[0] > 0)
                 {
@@ -53,6 +54,34 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
                 pairwiseCoords = individualCoords.Zip(individualCoords.Skip(1), (a, b) => Tuple.Create(a, b)).ToList();
             }
         }
+
+        public List<Point> GetContours()
+        {
+            List<Point> ctrs = new List<Point>();
+            float lastVal = 0;
+            float lastX = 0;
+            foreach (var coord in individualCoords)
+            {
+                float currX = coord.Item1;
+                float currVal = coord.Item2;
+
+                if (lastVal == 0 && currVal > 0)
+                {
+                    // previous contour was zero-crossing
+                    ctrs.Add(new Point(screenScale * lastX, screenScale * lastX));
+                }
+                else if (lastVal > 0 && currVal == 0)
+                {
+                    // new contour is zero-crossing
+                    ctrs.Add(new Point(screenScale * currX, screenScale * currX));
+                }
+                lastVal = currVal;
+                lastX = currX;
+            }
+
+            return ctrs;
+        }
+
 
         private float map_val(float f)
         {

@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,7 +18,6 @@ namespace JuliusSweetland.OptiKey.UI.Windows
     public partial class LookToScrollOverlayWindow : Window
     {
         private readonly ILookToScrollOverlayViewModel viewModel;
-        Rectangle rect;
 
         public LookToScrollOverlayWindow(ILookToScrollOverlayViewModel viewModel)
         {
@@ -26,28 +26,30 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             this.viewModel = viewModel;
             viewModel.PropertyChanged += ViewModel_PropertyChanged;
             DataContext = viewModel;
-            
-            this.AddEllipse(new Point(Graphics.PrimaryScreenWidthInPixels/2, Graphics.PrimaryScreenHeightInPixels/2), new Point(150, 150));
 
+            this.UpdateContours(viewModel.ZeroContours);
         }
 
         private void AddEllipse(Point centre, Point radii)
         {
-            rect = new Rectangle();
-            rect.Width = radii.X*2;
-            rect.Height = radii.Y*2;
+            double w = Graphics.PrimaryScreenWidthInPixels;
+            double h = Graphics.PrimaryScreenHeightInPixels;
+
+            Rectangle rect = new Rectangle();
+            rect.Width = radii.X * 2;
+            rect.Height = radii.Y * 2;
             rect.RadiusX = radii.X;
-            rect.RadiusY = radii.Y;            
+            rect.RadiusY = radii.Y;
             rect.Stroke = Brushes.CadetBlue;
             rect.Opacity = 0.25;
-            rect.StrokeThickness = 4;            
+            rect.StrokeThickness = 4;
 
             var top = centre - radii;
             Canvas.SetTop(rect, top.Y);
             Canvas.SetLeft(rect, top.X);
 
             canvas.Children.Add(rect);
-        }        
+        }
 
         // Based on: https://stackoverflow.com/a/3367137/9091159
         protected override void OnSourceInitialized(EventArgs e)
@@ -60,21 +62,22 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             Static.Windows.SetWindowExTransparent(hWnd);
         }
 
+        private void UpdateContours(List<Point> zeroContours)
+        {
+            canvas.Children.Clear();
+
+            Point centre = new Point(Graphics.PrimaryScreenWidthInPixels / 2, Graphics.PrimaryScreenHeightInPixels / 2);
+            foreach (Point radii in zeroContours)
+            {
+                this.AddEllipse(centre, radii);
+            }
+        }
+
         private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (string.Equals("ActiveDeadzone", e.PropertyName))
-            {
-                Rect bounds = viewModel.ActiveDeadzone;
-                if (!bounds.IsEmpty)
-                {
-                    Canvas.SetTop(rect, bounds.Top);
-                    Canvas.SetLeft(rect, bounds.Left);
-                    
-                    rect.Width = bounds.Width;
-                    rect.Height = bounds.Height;
-                    rect.RadiusX = bounds.Width / 2;
-                    rect.RadiusY = bounds.Height / 2;
-                }                
+            if (string.Equals("ZeroContours", e.PropertyName))
+            {                
+                this.UpdateContours(viewModel.ZeroContours);
             }
         }
     }

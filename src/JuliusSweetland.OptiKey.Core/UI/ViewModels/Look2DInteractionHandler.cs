@@ -1,6 +1,7 @@
 ﻿// Copyright (c) K McNaught Consulting (UK company number 11297717) - All Rights Reserved
 
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
@@ -86,6 +87,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             private set { SetProperty(ref activeMargins, value); }
         }
 
+        private List<Point> zeroContours = new List<Point>();
+        public List<Point> ZeroContours
+        {
+            get { return zeroContours; }
+            private set { SetProperty(ref zeroContours, value); }
+        }
+
         #endregion
 
         #region Public methods
@@ -95,7 +103,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Log.InfoFormat("Activating 2D control: {0}", this.triggerKey);
 
             sensitivityFunction = SensitivityFunctionFactory.Create(keyValue.String);
-            
+            zeroContours = sensitivityFunction.GetContours();
+            RaisePropertyChanged("ZeroContours");
+
             // Choose joystick centre via "Reset" key
             if (keyStateService.KeyDownStates[KeyValues.ResetJoystickKey].Value == KeyDownStates.LockedDown)
             {                

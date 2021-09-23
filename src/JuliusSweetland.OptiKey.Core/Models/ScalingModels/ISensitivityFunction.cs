@@ -10,5 +10,6 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
     interface ISensitivityFunction
     {
         Vector CalculateScaling(Point current, Point centre);
+        List<Point> GetContours();
     }
 }
