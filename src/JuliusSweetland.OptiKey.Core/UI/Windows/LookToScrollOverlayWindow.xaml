@@ -13,6 +13,7 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         ResizeMode="NoResize"
         ShowInTaskbar="False"
         Topmost="True"
+        WindowState="Maximized"
         WindowStyle="None">
 
     <Window.Resources>
@@ -26,45 +27,5 @@ Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserve
         <Binding Path="IsActive" Converter="{StaticResource BooleanToVisibility}"/>
     </Window.Visibility>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="{Binding Path=ActiveMargins.Top}"/>
-            <RowDefinition Height="{Binding Path=ActiveDeadzone.Height}"/>
-            <RowDefinition Height="{Binding Path=ActiveMargins.Bottom}"/>
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="{Binding Path=ActiveMargins.Left}"/>
-            <ColumnDefinition Width="{Binding Path=ActiveDeadzone.Width}"/>
-            <ColumnDefinition Width="{Binding Path=ActiveMargins.Right}"/>
-        </Grid.ColumnDefinitions>
-
-        <!-- Bounds -->
-        <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" 
-                BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayBoundsColour, Converter={StaticResource ColourNameToBrush}}" 
-                BorderThickness="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayBoundsThickness}"/>
-
-        <!-- Deadzone (Free Mode) -->
-        <Rectangle Grid.Row="1" Grid.Column="1" 
-                   RadiusX="{Binding Path=ActiveDeadzone.Width, Converter={StaticResource Half}}"
-                   RadiusY="{Binding Path=ActiveDeadzone.Height, Converter={StaticResource Half}}"
-                Stroke="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneColour, Converter={StaticResource ColourNameToBrush}}" 
-                StrokeThickness="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneThickness}"
-                Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource EnumToVisibility}, ConverterParameter='Free'}">
-        </Rectangle>
-
-        <!-- Deadzone (Horizontal or Cross Mode) -->
-        <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="3"
-                CornerRadius="5"
-                BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneColour, Converter={StaticResource ColourNameToBrush}}" 
-                BorderThickness="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneThickness}"
-                Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource EnumToVisibility}, ConverterParameter='Horizontal,Cross'}"/>
-
-        <!-- Deadzone (Vertical or Cross Mode) -->
-        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
-                BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneColour, Converter={StaticResource ColourNameToBrush}}" 
-                BorderThickness="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollOverlayDeadzoneThickness}"
-                Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=LookToScrollMode, Converter={StaticResource EnumToVisibility}, ConverterParameter='Vertical,Cross'}"/>
-    </Grid>
-    
+    <Canvas x:Name="canvas"></Canvas>
 </Window>
