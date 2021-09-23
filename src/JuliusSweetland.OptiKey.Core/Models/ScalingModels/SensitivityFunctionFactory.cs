@@ -12,7 +12,6 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
     {
         public static ISensitivityFunction Create(string inputString)
         {
-            inputString = inputString.Trim();
 
             // Empty string: classic SqrtScalingFromSettings
             double baseSpeed = 0;
@@ -23,9 +22,13 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
                 sqrtScaling.SetScaleFactor(new float[] { 1.0f, 1.0f });
                 return sqrtScaling;
             }
+            else
+            {
+                inputString = inputString.Trim();
+            }
 
             // String contains numbers, separator, whitespace only: classic SqrtScalingFromSettings
-            else if (inputString.All(x => char.IsWhiteSpace(x) || x == ',' || char.IsDigit(x)))
+            if (inputString.All(x => char.IsWhiteSpace(x) || x == ',' || char.IsDigit(x)))
             {
                 try
                 {
