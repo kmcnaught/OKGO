@@ -390,5 +390,12 @@ namespace JuliusSweetland.OptiKey.Extensions
                 return allEntries.ToArray();
             }
         }
+
+        public static string RemoveWhitespace(this string s)
+        {            
+            return new string(s.ToCharArray()
+                .Where(c => !Char.IsWhiteSpace(c))
+                .ToArray());
+        }
     }
 }

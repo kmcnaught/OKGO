@@ -26,6 +26,8 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
             {
                 inputString = inputString.Trim();
             }
+            
+            string inputStringWithoutWhitespace = inputString.RemoveWhitespace();
 
             // String contains numbers, separator, whitespace only: classic SqrtScalingFromSettings
             if (inputString.All(x => char.IsWhiteSpace(x) || x == ',' || char.IsDigit(x)))
@@ -79,6 +81,30 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
                 }                
             }
 
+            // string "segments" and params
+            // e.g. "segments[4, 0.5, 0.8, 0.5]" where params are
+            // number of segments, inner radius, outer radius, (optional) maximum scaling
+            Regex rgxMatchSegment= new Regex(@"segments?\[(\d*),([\d.]*),([\d.]*),?([\d.]*)?\]");
+            if (rgxMatchSegment.IsMatch(inputStringWithoutWhitespace))
+            {
+                Match m = rgxMatchSegment.Match(inputStringWithoutWhitespace);
+                if (m.Success)
+                {
+                    if (m.Groups.Count >= 4) {
+                        // TODO: add some exception handling for these conversions?
+                        int n = Convert.ToInt32(m.Groups[1].Captures[0].ToString());
+                        float innerRadius = Convert.ToSingle(m.Groups[2].Captures[0].ToString());
+                        float outerRadius = Convert.ToSingle(m.Groups[3].Captures[0].ToString());
+                        float scale = 1.0f;
+                        if (m.Groups.Count >= 5)
+                        {
+                            scale = Convert.ToSingle(m.Groups[4].Captures[0].ToString());
+                        }
+                        SegmentScaling segmentScaling = new SegmentScaling(n, innerRadius, outerRadius, scale);                        
+                        return segmentScaling;
+                    }
+                }
+            }
 
             //fallback - basic 
             SqrtScalingFromSettings sqrtScalingFallback = new SqrtScalingFromSettings(baseSpeed, acceleration);
