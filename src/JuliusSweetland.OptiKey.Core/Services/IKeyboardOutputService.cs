@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
+using WindowsInput.Native;
 
 namespace JuliusSweetland.OptiKey.Services
 {
@@ -14,6 +15,7 @@ namespace JuliusSweetland.OptiKey.Services
         void ProcessSingleKeyText(string capturedText);
         Task ProcessSingleKeyPress(string key, KeyPressKeyValue.KeyPressType type);
         void ProcessMultiKeyTextAndSuggestions(List<string> captureAndSuggestions);
+        void PressKey(VirtualKeyCode vkCode, KeyPressKeyValue.KeyPressType type);
         void XBoxProcessJoystick(string axis, float amount);
     }
 }

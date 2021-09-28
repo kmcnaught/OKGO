@@ -1112,7 +1112,7 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
-        private void PressKey(VirtualKeyCode vkCode, KeyPressKeyValue.KeyPressType type)
+        public void PressKey(VirtualKeyCode vkCode, KeyPressKeyValue.KeyPressType type)
         {
             // Simple fast method for potentially-continuous pressing
             switch (type)
