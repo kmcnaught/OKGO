@@ -237,7 +237,8 @@ namespace JuliusSweetland.OptiKey.Crayta
                     foreach (var joystick in mainViewModel.JoystickHandlers.Values)
                     {
                         //TODO: consider different colour overlays for diff handlers?
-                        new LookToScrollOverlayWindow(joystick);
+                        LookToScrollOverlayWindow w = new LookToScrollOverlayWindow(joystick);
+                        w.Owner = mainWindow;
                     }
                 }
 
