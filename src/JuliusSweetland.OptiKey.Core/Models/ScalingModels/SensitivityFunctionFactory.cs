@@ -96,8 +96,8 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
                         float innerRadius = Convert.ToSingle(m.Groups[2].Captures[0].ToString());
                         float outerRadius = Convert.ToSingle(m.Groups[3].Captures[0].ToString());
                         float scale = 1.0f;
-                        if (m.Groups.Count >= 5)
-                        {
+                        if (m.Groups.Count >= 5 && m.Groups[4].Length > 0)
+                        {                            
                             scale = Convert.ToSingle(m.Groups[4].Captures[0].ToString());
                         }
                         SegmentScaling segmentScaling = new SegmentScaling(n, innerRadius, outerRadius, scale);                        
