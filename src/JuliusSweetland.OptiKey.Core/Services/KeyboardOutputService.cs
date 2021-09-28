@@ -1112,6 +1112,24 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
+        private void PressKey(VirtualKeyCode vkCode, KeyPressKeyValue.KeyPressType type)
+        {
+            // Simple fast method for potentially-continuous pressing
+            switch (type)
+            {
+                case KeyPressKeyValue.KeyPressType.Press:
+                    publishService.KeyDown(vkCode);
+                    break;
+                case KeyPressKeyValue.KeyPressType.Release:
+                    publishService.KeyUp(vkCode);
+                    break;
+                case KeyPressKeyValue.KeyPressType.PressAndRelease:
+                    publishService.KeyDownUp(vkCode);
+                    break;
+            }
+        }
+
+
         private void PressKey(char character, KeyPressKeyValue.KeyPressType type)
         {
 
@@ -1165,18 +1183,8 @@ namespace JuliusSweetland.OptiKey.Services
                     releaseAlt = true;
                 }
 
-                switch (type)
-                {
-                    case KeyPressKeyValue.KeyPressType.Press:
-                        publishService.KeyDown((VirtualKeyCode)vkCode);
-                        break;
-                    case KeyPressKeyValue.KeyPressType.Release:
-                        publishService.KeyUp((VirtualKeyCode)vkCode);
-                        break;
-                    case KeyPressKeyValue.KeyPressType.PressAndRelease:
-                        publishService.KeyDownUp((VirtualKeyCode)vkCode);
-                        break;
-                }
+                // Now we know the keycode, do the actual keypress action
+                PressKey((VirtualKeyCode)vkCode, type);
 
                 if (releaseShift)
                 {
