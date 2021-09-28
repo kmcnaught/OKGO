@@ -64,10 +64,10 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
             // string "piecewise" and a list of coordinates
             // e.g. triangle would be "piecewise[(0.25, 0), (0.5, 1), (0.75, 0)]"
 
-            Regex rgxMatchPiecewise = new Regex(@"piecewise\s*\[([\d.,()\s]*)\]");
-            if (rgxMatchPiecewise.IsMatch(inputString))
+            Regex rgxMatchPiecewise = new Regex(@"piecewise\[([\d.,()]*)\]");
+            if (rgxMatchPiecewise.IsMatch(inputStringWithoutWhitespace))
             {
-                Match m = rgxMatchPiecewise.Match(inputString);
+                Match m = rgxMatchPiecewise.Match(inputStringWithoutWhitespace);
                 if (m.Success)
                 {
                     string coords = m.Groups[1].Captures[0].ToString();
