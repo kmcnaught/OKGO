@@ -254,6 +254,7 @@ namespace JuliusSweetland.OptiKey.Enums
         LegacyJoystick,
         ResetJoystick,
         MouseJoystick,
+        WasdJoystick,
         JoystickXSensitivityUp,
         JoystickXSensitivityDown,
         JoystickYSensitivityUp,

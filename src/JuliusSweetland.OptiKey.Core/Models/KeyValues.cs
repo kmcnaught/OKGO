@@ -166,6 +166,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue LeftShiftKey = new KeyValue(FunctionKeys.LeftShift);
         public static readonly KeyValue LeftWinKey = new KeyValue(FunctionKeys.LeftWin);
         public static readonly KeyValue LeftJoystickActiveKey = new KeyValue(FunctionKeys.LeftJoystick);
+        public static readonly KeyValue WasdJoystickActiveKey = new KeyValue(FunctionKeys.WasdJoystick);
         public static readonly KeyValue RightJoystickActiveKey = new KeyValue(FunctionKeys.RightJoystick);
         public static readonly KeyValue LegacyJoystickActiveKey = new KeyValue(FunctionKeys.LegacyJoystick);
         public static readonly KeyValue MouseJoystickActiveKey = new KeyValue(FunctionKeys.MouseJoystick);
@@ -505,6 +506,7 @@ namespace JuliusSweetland.OptiKey.Models
                     MultiKeySelectionIsOnKey,
                     SleepKey,
                     ResetJoystickKey,
+                    WasdJoystickActiveKey,
                 };
 
                 if (Settings.Default.KeySelectionTriggerSource == TriggerSources.KeyboardKeyDownsUps)

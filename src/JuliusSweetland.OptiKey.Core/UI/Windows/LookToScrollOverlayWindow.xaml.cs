@@ -65,11 +65,16 @@ namespace JuliusSweetland.OptiKey.UI.Windows
         private void UpdateContours(List<Point> zeroContours)
         {
             canvas.Children.Clear();
-
-            Point centre = new Point(Graphics.PrimaryScreenWidthInPixels / 2, Graphics.PrimaryScreenHeightInPixels / 2);
+            
+            Point centre = new Point(SystemParameters.PrimaryScreenWidth / 2, SystemParameters.PrimaryScreenHeight / 2);
             foreach (Point radii in zeroContours)
             {
-                this.AddEllipse(centre, radii);
+                // we convert from px to dip for canvas
+                Point radiiScaled = radii;
+                radiiScaled.X /= Graphics.DipScalingFactorX;
+                radiiScaled.Y /= Graphics.DipScalingFactorY;
+
+                this.AddEllipse(centre, radiiScaled);
             }
         }
 
