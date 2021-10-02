@@ -61,6 +61,35 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
                 }
             }
 
+            // special case for "ring": i,e spherical tophat
+            // "ring[inner radius, outer radius, amount]"
+            // e.g ring[0.3, 0.5, 1.0]
+            Regex rgxMatchRing= new Regex(@"ring\[([\d.]*),([\d.]*),([\d.]*)\]");
+            if (rgxMatchRing.IsMatch(inputStringWithoutWhitespace))
+            {
+                Match m = rgxMatchRing.Match(inputStringWithoutWhitespace);
+                if (m.Success)
+                {
+                    if (m.Groups.Count >= 4)
+                    {
+                        // TODO: add some exception handling for these conversions?
+                        int n = Convert.ToInt32(m.Groups[1].Captures[0].ToString());
+                        float innerRadius = Convert.ToSingle(m.Groups[2].Captures[0].ToString());
+                        float outerRadius = Convert.ToSingle(m.Groups[3].Captures[0].ToString());
+                        float scale = 1.0f;
+
+                        PiecewiseScaling piecewiseScaling = new PiecewiseScaling();
+                        float eps = 1e-3f;
+                        float[] coords = new float[] { innerRadius, 0,
+                                                       innerRadius + eps, scale,
+                                                       outerRadius - eps, scale,
+                                                       outerRadius, 0};
+                        piecewiseScaling.SetCoords(coords);
+
+                    }
+                }
+
+
             // string "piecewise" and a list of coordinates
             // e.g. triangle would be "piecewise[(0.25, 0), (0.5, 1), (0.75, 0)]"
 
