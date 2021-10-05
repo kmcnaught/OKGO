@@ -1,0 +1,90 @@
+<!--  
+Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Rights Reserved
+-->
+<Keyboard>
+  <Name>Left Joystick\nExamples</Name>
+  <SymbolMargin>10</SymbolMargin>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <WindowState>Floating</WindowState>
+  <Height>90%</Height>
+  <Width>90%</Width>
+  <Position>Top</Position>
+  <VerticalOffset>5%</VerticalOffset>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <BorderColor>Transparent</BorderColor>
+  <Grid>
+    <Rows>15</Rows>
+    <Cols>16</Cols>
+  </Grid>
+  <KeyGroup AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" Name="Scaling"/>
+  <Content>
+    <DynamicKey Row="0" Col="0" Width="4" Height="1"  AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >      
+      <Label>Deadzone examples</Label>
+
+    </DynamicKey>
+    <DynamicKey Row="0" Col="12" Width="4" Height="1"  AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >      
+      <Label>Scaling examples</Label>
+    </DynamicKey>
+    <DynamicKey Row="1" Col="0" Width="2" Height="2" AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >
+      <Label>Medium</Label>
+      <Action Payload="piecewise[(0.4, 0), (1.0, 1.0)]">LeftJoystick</Action>      
+    </DynamicKey>
+    <DynamicKey Row="1" Col="2" Width="2" Height="2" AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >
+      <Label>Large</Label>
+      <Action Payload="piecewise[(0.9, 0), (1.0, 1.0)]">LeftJoystick</Action>      
+    </DynamicKey>
+    <DynamicKey Row="1" Col="12" Width="2" Height="2" AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >      
+      <Label>Slow</Label>
+      <Action Payload="piecewise[(0.3, 0), (1.0, 0.6)]">LeftJoystick</Action>      
+    </DynamicKey>
+    <DynamicKey Row="1" Col="14" Width="2" Height="2" AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >
+      <Action Payload="piecewise[(0.3, 0), (0.7, 0.3), (1.0, 1.0)]">LeftJoystick</Action>      
+      <Label>Slow /\n fast</Label>
+    </DynamicKey>
+    <DynamicKey Row="3" Col="0" Width="2" Height="2" AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >
+      <Label>Small</Label>      
+      <Action Payload="piecewise[(0.1, 0), (1.0, 1.0)]">LeftJoystick</Action>      
+    </DynamicKey>
+    <DynamicKey Row="3" Col="14" Width="2" Height="2" AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >      
+      <Label>Fast</Label>
+      <Action Payload="piecewise[(0.3, 0), (0.7, 1.0)]">LeftJoystick</Action>      
+    </DynamicKey>
+    <DynamicKey Row="10" Col="0" Width="4" Height="1" AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >      
+      <Label>Ring examples</Label>
+    </DynamicKey>
+    <DynamicKey Row="11" Col="0" Width="2" Height="2" AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >
+      <Action Payload="ring[0.3, 0.7, 0.5]">LeftJoystick</Action>            
+      <Label>50%</Label>
+    </DynamicKey>
+    <DynamicKey Row="13" Col="0" Width="2" Height="2" AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >      
+      <Label>Gradual</Label>
+      <Action Payload="piecewise[(0.3, 0), (0.5, 1.0), (0.7, 0.0)]">LeftJoystick</Action>      
+    </DynamicKey>
+    <DynamicKey Row="13" Col="2" Width="2" Height="2" AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >      
+      <Action Payload="ring[0.3, 0.7, 1.0]">LeftJoystick</Action>            
+      <Label>100%</Label>
+    </DynamicKey>
+    <DynamicKey Row="10" Col="12" Width="4" Height="1" AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >      
+      <Label>Segment examples</Label>
+    </DynamicKey>
+    
+    <DynamicKey Row="11" Col="12" Width="2" Height="2" AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >
+      <Action Payload="segments[4, 0, 0.3, 1.0]">LeftJoystick</Action>            
+      <Label>centre (4)</Label>
+    </DynamicKey>
+
+    <DynamicKey Row="13" Col="12" Width="2" Height="2" AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >
+      <Action Payload="segments[4, 0.3, 0.7, 1.0]">LeftJoystick</Action>            
+      <Label>ring (4)</Label>
+    </DynamicKey>
+    <DynamicKey Row="11" Col="14" Width="2" Height="2" AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >
+      <Label>ring (8)</Label>
+      <Action Payload="segments[8, 0.3, 0.7, 1.0]">LeftJoystick</Action>            
+    </DynamicKey>
+
+    <DynamicKey Row="13" Col="14" Width="2" Height="2" AutoScaleToOneKeyHeight="false" AutoScaleToOneKeyWidth="false" >      
+      <Symbol>BackIcon</Symbol>      
+      <Action>BackFromKeyboard</Action>
+    </DynamicKey>
+  </Content>
+</Keyboard>

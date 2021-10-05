@@ -1,0 +1,49 @@
+<!--  
+Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Rights Reserved
+-->
+<Keyboard>
+  <Name>WASD Joystick\nExamples</Name>
+  <SymbolMargin>10</SymbolMargin>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <WindowState>Floating</WindowState>
+  <Height>90%</Height>
+  <Width>90%</Width>
+  <Position>Top</Position>
+  <VerticalOffset>5%</VerticalOffset>
+  <BackgroundColor>Transparent</BackgroundColor>
+  <BorderColor>Transparent</BorderColor>
+  <Grid>
+    <Rows>14</Rows>
+    <Cols>16</Cols>
+  </Grid>
+  <Content>
+    <DynamicKey Row="0" Col="0" Width="2" Height="2">
+      <Label>4 ring</Label>
+      <Action Payload="segments[4, 0.3, 0.7, 1.0]">WasdJoystick</Action>            
+    </DynamicKey>
+    <DynamicKey Row="0" Col="2" Width="2" Height="2">
+      <Label>4 inner</Label>
+      <Action Payload="segments[4, 0, 0.3, 1.0]">WasdJoystick</Action>            
+    </DynamicKey>
+    <DynamicKey Row="0" Col="12" Width="2" Height="2">
+      <Label>8 inner</Label>
+      <Action Payload="segments[8, 0, 0.3, 1.0]">WasdJoystick</Action>            
+    </DynamicKey>
+    <DynamicKey Row="0" Col="14" Width="2" Height="2">
+      <Label>8 ring</Label>
+      <Action Payload="segments[8, 0.3, 0.7, 1.0]">WasdJoystick</Action>            
+    </DynamicKey>
+    <DynamicKey Row="2" Col="0" Width="2" Height="2">
+      <Label>4 outer</Label>
+      <Action Payload="segments[4, 0.7, 2.0, 1.0]">WasdJoystick</Action>            
+    </DynamicKey>
+    <DynamicKey Row="2" Col="14" Width="2" Height="2">
+      <Label>8 outer</Label>
+      <Action Payload="segments[8, 0.7, 2.0, 1.0]">WasdJoystick</Action>            
+    </DynamicKey>
+    <DynamicKey Row="12" Col="14" Width="2" Height="2">
+      <Symbol>BackIcon</Symbol>      
+      <Action>BackFromKeyboard</Action>
+    </DynamicKey>
+  </Content>
+</Keyboard>
