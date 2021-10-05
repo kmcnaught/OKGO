@@ -73,10 +73,13 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
                     if (m.Groups.Count >= 4)
                     {
                         // TODO: add some exception handling for these conversions?
-                        int n = Convert.ToInt32(m.Groups[1].Captures[0].ToString());
-                        float innerRadius = Convert.ToSingle(m.Groups[2].Captures[0].ToString());
-                        float outerRadius = Convert.ToSingle(m.Groups[3].Captures[0].ToString());
-                        float scale = 1.0f;
+                        float innerRadius = Convert.ToSingle(m.Groups[1].Captures[0].ToString());
+                        float outerRadius = Convert.ToSingle(m.Groups[2].Captures[0].ToString());
+                        float scale = 1.0f;                        
+                        if (m.Groups.Count >= 4 && m.Groups[3].Length > 0)
+                        {
+                            scale = Convert.ToSingle(m.Groups[3].Captures[0].ToString());
+                        }
 
                         PiecewiseScaling piecewiseScaling = new PiecewiseScaling();
                         float eps = 1e-3f;
@@ -86,6 +89,7 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
                                                        outerRadius, 0};
                         piecewiseScaling.SetCoords(coords);
 
+                        return piecewiseScaling;
                     }
                 }
             }
