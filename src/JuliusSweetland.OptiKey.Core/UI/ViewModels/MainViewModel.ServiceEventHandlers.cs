@@ -691,6 +691,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     HandleFunctionKeySelectionResult(singleKeyValue);
                 break;
 
+                case FunctionKeys.NoJoystick:
+                    TurnOffJoysticks();
+                break;                    
             }
         }
         
@@ -2586,6 +2589,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         
                     break;
                 }
+                case FunctionKeys.NoJoystick:
+                    TurnOffJoysticks();
+                    break;
             }
 
             keyboardOutputService.ProcessFunctionKey(singleKeyValue.FunctionKey.Value);

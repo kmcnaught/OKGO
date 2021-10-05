@@ -104,6 +104,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }
 
+        private void TurnOffJoysticks()
+        {
+            List<FunctionKeys> joystickKeys = JoystickHandlers.Keys.ToList();
+            foreach (var keyVal in keyStateService.KeyDownStates.Keys)
+            {
+                if (keyVal.FunctionKey != null)
+                {
+                    if (joystickKeys.Contains(keyVal.FunctionKey.Value))
+                    {
+                        keyStateService.KeyDownStates[keyVal].Value = KeyDownStates.Up;
+                        JoystickHandlers[keyVal.FunctionKey.Value].Disable();
+                    }
+                }
+            }
+        }
+
         private void ToggleJoystick(KeyValue requestedKeyValue)
         {
             // the key value defines:
