@@ -15,12 +15,14 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
         List<Tuple<float, float>> individualCoords;
 
         double screenScale;
+        double screenMax;
 
         public PiecewiseScaling()
         {
             // To make sure things don't get stretched, we scale to the smaller axis
             // which makes things spherical in the centre, and extend beyond 1 outside        
             screenScale = Math.Min(Graphics.PrimaryScreenHeightInPixels, Graphics.PrimaryScreenWidthInPixels)/2;
+            screenMax = (Math.Max(Graphics.PrimaryScreenHeightInPixels, Graphics.PrimaryScreenWidthInPixels) / 2) / screenScale;
         }
 
         public void SetCoords(float[] list_of_all_coords)
@@ -45,10 +47,12 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
                     Tuple<float, float> coord = Tuple.Create(list_of_all_coords[i * 2], list_of_all_coords[i * 2 + 1]);
                     individualCoords.Add(coord);
                 }
-                if (individualCoords.Last().Item1 < 1)
+
+                if (individualCoords.Last().Item1 < screenMax)
                 {
                     // manually extend last value to the end of the range
-                    individualCoords.Add(Tuple.Create(1.0f, individualCoords.Last().Item2));
+                    // we extend to 2.0f to cover full aspect ratio of screen
+                    individualCoords.Add(Tuple.Create((float)screenMax, individualCoords.Last().Item2));
                 }
 
                 pairwiseCoords = individualCoords.Zip(individualCoords.Skip(1), (a, b) => Tuple.Create(a, b)).ToList();
