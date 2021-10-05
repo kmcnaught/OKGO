@@ -88,7 +88,7 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
 
                     }
                 }
-
+            }
 
             // string "piecewise" and a list of coordinates
             // e.g. triangle would be "piecewise[(0.25, 0), (0.5, 1), (0.75, 0)]"
