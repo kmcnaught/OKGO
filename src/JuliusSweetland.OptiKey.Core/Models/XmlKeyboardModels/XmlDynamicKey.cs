@@ -13,6 +13,7 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlElement("KeyDown", typeof(DynamicKeyDown))]
         [XmlElement("KeyUp", typeof(DynamicKeyUp))]
         [XmlElement("KeyToggle", typeof(DynamicKeyToggle))]
+        [XmlElement("KeyPress", typeof(DynamicKeyPress))]
         [XmlElement("Loop", typeof(DynamicLoop))]
         [XmlElement("Plugin", typeof(DynamicPlugin))]
         [XmlElement("Text", typeof(DynamicText))]
@@ -68,6 +69,15 @@ namespace JuliusSweetland.OptiKey.Models
         public string Value { get; set; }
     }
 
+    public class DynamicKeyPress : XmlDynamicKey
+    {
+        [XmlText]
+        public string Value { get; set; }
+
+        [XmlAttribute] // Optional - otherwise uses defaults 
+        public string Duration { get; set; }
+    }
+
     public class DynamicKeyToggle : XmlDynamicKey
     {
         [XmlText]
@@ -89,6 +99,7 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlElement("KeyDown", typeof(DynamicKeyDown))]
         [XmlElement("KeyUp", typeof(DynamicKeyUp))]
         [XmlElement("KeyToggle", typeof(DynamicKeyToggle))]
+        [XmlElement("KeyPress", typeof(DynamicKeyPress))]
         [XmlElement("Loop", typeof(DynamicLoop))]
         [XmlElement("Plugin", typeof(DynamicPlugin))]
         [XmlElement("Text", typeof(DynamicText))]

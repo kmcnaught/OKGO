@@ -854,7 +854,24 @@ namespace JuliusSweetland.OptiKey.Properties {
                 this["CalibrationMaxDuration"] = value;
             }
         }
-        
+
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int KeyPressDurationMs
+        {
+            get
+            {
+                return ((int)(this["KeyPressDurationMs"]));
+            }
+            set
+            {
+                this["KeyPressDurationMs"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Insert")]

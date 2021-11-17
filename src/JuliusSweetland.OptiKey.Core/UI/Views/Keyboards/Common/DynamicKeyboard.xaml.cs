@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using JuliusSweetland.OptiKey.UI.Windows;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.ValueConverters;
+using JuliusSweetland.OptiKey.Properties;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
@@ -623,7 +624,33 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             if (xmlDynamicKey.Commands.Any())
             {
                 var rootDir = Path.GetDirectoryName(inputFilename);
+
+                // Expand commands before parsing
+                List<XmlDynamicKey> newCommands = new List<XmlDynamicKey>();
                 foreach (XmlDynamicKey dynamicKey in xmlDynamicKey.Commands)
+                {
+                    if (dynamicKey is DynamicKeyPress dynamicKeyPress)
+                    {
+                        DynamicKeyPress keyPress = dynamicKey as DynamicKeyPress;
+
+                        int customDurationMs;
+                        int durationMs = Settings.Default.KeyPressDurationMs;
+                        if (Int32.TryParse(keyPress.Duration, out customDurationMs))
+                        {
+                            durationMs = customDurationMs;
+                        }
+
+                        newCommands.Add(new DynamicKeyDown { Value = keyPress.Value });
+                        newCommands.Add(new DynamicWait { Value = durationMs.ToString() });
+                        newCommands.Add(new DynamicKeyUp { Value = keyPress.Value });
+                    }
+                    else
+                    {
+                        newCommands.Add(dynamicKey);
+                    }
+                }
+
+                foreach (XmlDynamicKey dynamicKey in newCommands)
                 {
                     KeyValue commandKeyValue;
                     if (dynamicKey is DynamicAction dynamicAction)
@@ -634,7 +661,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                         {
                             commandKeyValue = new KeyValue(actionEnum, dynamicAction.Payload);
                             
-                            if (xmlDynamicKey.Commands.Count == 1 && KeyValues.KeyCanBeLockedDown(commandKeyValue))
+                            if (newCommands.Count == 1 && KeyValues.KeyCanBeLockedDown(commandKeyValue))
                             {
                                 CreateDynamicKey(xmlDynamicKey, commandKeyValue, minKeyWidth, minKeyHeight);
                                 return null;
