@@ -640,9 +640,29 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                             durationMs = customDurationMs;
                         }
 
+                        string modifiers = String.IsNullOrEmpty(keyPress.Modifiers) ? "" : keyPress.Modifiers;
+                        modifiers = modifiers.ToLower();
+
+                        bool useCtrl = modifiers.Contains("ctrl");
+                        bool useShift = modifiers.Contains("shift");
+                        bool useAlt = modifiers.Contains("alt");
+                        bool useWin = modifiers.Contains("win");                        
+
+                        // Temporarily hold modifiers
+                        if (useCtrl) { newCommands.Add(new DynamicKeyDown { Value = FunctionKeys.LeftCtrl.ToString() }); }
+                        if (useShift) { newCommands.Add(new DynamicKeyDown { Value = FunctionKeys.LeftShift.ToString() }); }
+                        if (useAlt) { newCommands.Add(new DynamicKeyDown { Value = FunctionKeys.LeftAlt.ToString() }); }
+                        if (useWin) { newCommands.Add(new DynamicKeyDown { Value = FunctionKeys.LeftWin.ToString() }); }
+
                         newCommands.Add(new DynamicKeyDown { Value = keyPress.Value });
                         newCommands.Add(new DynamicWait { Value = durationMs.ToString() });
                         newCommands.Add(new DynamicKeyUp { Value = keyPress.Value });
+
+                        if (useCtrl) { newCommands.Add(new DynamicKeyUp { Value = FunctionKeys.LeftCtrl.ToString() }); }
+                        if (useShift) { newCommands.Add(new DynamicKeyUp { Value = FunctionKeys.LeftShift.ToString() }); }
+                        if (useAlt) { newCommands.Add(new DynamicKeyUp { Value = FunctionKeys.LeftAlt.ToString() }); }
+                        if (useWin) { newCommands.Add(new DynamicKeyUp { Value = FunctionKeys.LeftWin.ToString() }); }
+
                     }
                     else
                     {

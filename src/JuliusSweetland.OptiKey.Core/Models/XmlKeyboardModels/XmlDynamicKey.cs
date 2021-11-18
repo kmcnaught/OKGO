@@ -76,6 +76,9 @@ namespace JuliusSweetland.OptiKey.Models
 
         [XmlAttribute] // Optional - otherwise uses defaults 
         public string Duration { get; set; }
+    
+        [XmlAttribute] // Optional - otherwise none
+        public string Modifiers { get; set; }
     }
 
     public class DynamicKeyToggle : XmlDynamicKey
