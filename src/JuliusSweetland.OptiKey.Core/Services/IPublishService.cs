@@ -11,6 +11,7 @@ namespace JuliusSweetland.OptiKey.Services
         void KeyDown(VirtualKeyCode virtualKeyCode);
         void KeyUp(VirtualKeyCode virtualKeyCode);
         void KeyDownUp(VirtualKeyCode virtualKeyCode);
+        bool SupportsController();
         void XBoxButtonDown(XboxButtons button);
         void XBoxButtonUp(XboxButtons button);
         void XBoxProcessJoystick(XboxAxes axisEnum, float amount);

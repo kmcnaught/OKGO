@@ -54,6 +54,12 @@ namespace JuliusSweetland.OptiKey.Services
             }
         }
 
+        public bool SupportsController()
+        {
+            return supportsController;
+        }
+
+
         public void ReleaseAllDownKeys()
         {
             try
