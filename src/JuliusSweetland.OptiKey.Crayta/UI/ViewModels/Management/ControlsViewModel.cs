@@ -42,6 +42,13 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             }
         }
 
+        private int keyPressDurationMs;
+        public int KeyPressDurationMs
+        {
+            get { return keyPressDurationMs; }
+            set { SetProperty(ref keyPressDurationMs, value); }
+        }
+
         private int doubleClickPauseMilliseconds;
         public int DoubleClickPauseMilliseconds
         {
@@ -189,6 +196,7 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             JoystickDeadzoneAspectRatio = Settings.Default.JoystickDeadzoneAspectRatio;
 
             DoubleClickPauseMilliseconds = (int)Settings.Default.DoubleClickDelay.TotalMilliseconds;
+            KeyPressDurationMs = (int)Settings.Default.KeyPressDurationMs.TotalMilliseconds;
 
             LookToScrollBringWindowToFrontAfterChoosingScreenPoint = Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
 
@@ -214,6 +222,7 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             Settings.Default.JoystickDeadzoneAspectRatio = JoystickDeadzoneAspectRatio;
 
             Settings.Default.DoubleClickDelay = System.TimeSpan.FromMilliseconds(DoubleClickPauseMilliseconds);
+            Settings.Default.KeyPressDurationMs = System.TimeSpan.FromMilliseconds(KeyPressDurationMs);       
 
             Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint = LookToScrollBringWindowToFrontAfterChoosingScreenPoint;
 

@@ -634,7 +634,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                         DynamicKeyPress keyPress = dynamicKey as DynamicKeyPress;
 
                         int customDurationMs;
-                        int durationMs = Settings.Default.KeyPressDurationMs;
+                        int durationMs = (int)Settings.Default.KeyPressDurationMs.TotalMilliseconds;
                         if (Int32.TryParse(keyPress.Duration, out customDurationMs))
                         {
                             durationMs = customDurationMs;

@@ -858,13 +858,13 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00.20000")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int KeyPressDurationMs
+        public global::System.TimeSpan KeyPressDurationMs
         {
             get
             {
-                return ((int)(this["KeyPressDurationMs"]));
+                return ((global::System.TimeSpan)(this["KeyPressDurationMs"]));
             }
             set
             {
@@ -872,6 +872,7 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
         }
 
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Insert")]

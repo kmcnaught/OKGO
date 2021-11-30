@@ -212,9 +212,16 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Delay (ms) between double-clicking" 
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Duration of default KeyPress (ms)" 
                                VerticalAlignment="Center" Margin="5" />
                     <mah:NumericUpDown  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
+											    Minimum="0" Interval="5" StringFormat="###,##0"
+											    Value="{Binding KeyPressDurationMs, Mode=TwoWay}" />
+
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Delay (ms) between double-clicking" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <mah:NumericUpDown  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Left"
 											    Minimum="0" Interval="5" StringFormat="###,##0"
 											    Value="{Binding DoubleClickPauseMilliseconds, Mode=TwoWay}" />
 
