@@ -35,27 +35,19 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
     </DynamicKey> -->
     <DynamicKey Col="2" Row="6">      
       <Label>LB</Label>
-      <KeyDown>XboxLeftShoulder</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>XboxLeftShoulder</KeyUp>
+      <KeyPress>XboxLeftShoulder</KeyPress>      
     </DynamicKey>
     <DynamicKey Col="1" Row="6">      
       <Label>LT</Label>
-      <KeyDown>XboxLeftTrigger</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>XboxLeftTrigger</KeyUp>
+      <KeyPress>XboxLeftTrigger</KeyPress>      
     </DynamicKey>
     <DynamicKey Col="0" Row="5">
       <Label>B</Label>      
-      <KeyDown>XboxB</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>XboxB</KeyUp>
+      <KeyPress>XboxB</KeyPress>      
     </DynamicKey>
     <DynamicKey Col="9" Row="5">
       <Label>A</Label>      
-      <KeyDown>XboxA</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>XboxA</KeyUp>
+      <KeyPress>XboxA</KeyPress>      
     </DynamicKey>
    <!--  <DynamicKey Col="6" Row="6">
       <Label>Pick\nup</Label>
@@ -65,15 +57,11 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
     </DynamicKey> -->
     <DynamicKey Col="7" Row="6">
         <Label>RB</Label>
-      <KeyDown>XboxRightShoulder</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>XboxRightShoulder</KeyUp>
+        <KeyPress>XboxRightShoulder</KeyPress>      
     </DynamicKey>
     <DynamicKey Col="8" Row="6">
         <Label>RT</Label>
-      <KeyDown>XboxRightTrigger</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>XboxRightTrigger</KeyUp>
+        <KeyPress>XboxRightTrigger</KeyPress>      
     </DynamicKey>
     <DynamicKey Col="9" Row="6">
       <Symbol>BackIcon</Symbol>

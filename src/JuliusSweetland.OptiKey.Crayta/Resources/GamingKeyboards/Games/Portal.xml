@@ -35,28 +35,20 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
     </DynamicKey>
     <DynamicKey Col="2" Row="6">
       <Label>Blue\nportal</Label>
-      <KeyDown>XboxRightTrigger</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>XboxRightTrigger</KeyUp>
+      <KeyPress>XboxRightTrigger</KeyPress>      
     </DynamicKey>
     <DynamicKey Col="3" Row="6">
       <Label>Jump</Label>
       <KeyGroup>QuickKey</KeyGroup>
-      <KeyDown>XboxA</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>XboxA</KeyUp>
+      <KeyPress>XboxA</KeyPress>      
     </DynamicKey>
     <DynamicKey Col="6" Row="6">
       <Label>Pick\nup</Label>
-      <KeyDown>XboxX</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>XboxX</KeyUp>
+      <KeyPress>XboxX</KeyPress>      
     </DynamicKey>
     <DynamicKey Col="7" Row="6">
       <Label>Orange\nportal</Label>
-      <KeyDown>XboxLeftTrigger</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>XboxLeftTrigger</KeyUp>
+      <KeyPress>XboxLeftTrigger</KeyPress>            
     </DynamicKey>
     <DynamicKey Col="9" Row="6">
       <Symbol>BackIcon</Symbol>

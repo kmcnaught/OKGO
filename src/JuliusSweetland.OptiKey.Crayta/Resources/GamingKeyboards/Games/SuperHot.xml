@@ -17,27 +17,19 @@
   <Content>
     <DynamicKey Row="0" Col="1">
       <Label>A\nPunch / Pick</Label>
-      <KeyDown>XboxA</KeyDown>
-      <Wait>200</Wait>
-      <KeyUp>XboxA</KeyUp>
+      <KeyPress>XboxA</KeyPress>      
     </DynamicKey>
     <DynamicKey Row="0" Col="2">
-      <Label>B\nThrow</Label>      
-      <KeyDown>XboxB</KeyDown>
-      <Wait>200</Wait>
+      <Label>B\nThrow</Label>   
       <KeyUp>XboxB</KeyUp>
     </DynamicKey>
     <DynamicKey Row="0" Col="6">
       <Label>Shoot</Label>
-      <KeyDown>XBoxRightTrigger</KeyDown>
-      <Wait>200</Wait>
-      <KeyUp>XBoxRightTrigger</KeyUp>
+      <KeyPress>XBoxRightTrigger</KeyPress>
     </DynamicKey>
     <DynamicKey Row="0" Col="7">
       <Label>Y</Label>
-      <KeyDown>XboxY</KeyDown>
-      <Wait>200</Wait>
-      <KeyUp>XboxY</KeyUp>
+      <KeyPress>XboxY</KeyPress>
     </DynamicKey>    
     <DynamicKey Row="6" Col="0">
       <Label>Tank\nmode</Label>

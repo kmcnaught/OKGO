@@ -35,13 +35,9 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
     </DynamicKey>
     <DynamicKey Row="0" Col="7">
       <Label>Fly</Label>
-      <KeyDown>Space</KeyDown>
+      <KeyPress Duration="100">Space</KeyPress>      
       <Wait>100</Wait>
-      <KeyUp>Space</KeyUp>
-      <Wait>100</Wait>
-      <KeyDown>Space</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>Space</KeyUp>
+      <KeyPress Duration="100">Space</KeyPress>
     </DynamicKey>
     <DynamicKey Row="0" Col="8">
       <Label>Fly\ndown</Label>
