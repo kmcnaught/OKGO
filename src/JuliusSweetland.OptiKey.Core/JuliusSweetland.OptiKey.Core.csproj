@@ -2082,4 +2082,10 @@
     <RemoveDir Directories="$(AppData)\JuliusSweetland" />
     <Message Text="### Post Cleanup Task: Done ###" Importance="high" />
   </Target>
+  <PropertyGroup>
+    <PreBuildEvent>if $(ConfigurationName) == Debug copy "$(ProjectDir)app.manifest.debug" "$(ProjectDir)app.manifest"
+
+if $(ConfigurationName) == Release copy "$(ProjectDir)app.manifest.release" "$(ProjectDir)app.manifest"
+</PreBuildEvent>
+  </PropertyGroup>
 </Project>
