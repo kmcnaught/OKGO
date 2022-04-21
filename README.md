@@ -10,13 +10,13 @@ Before running OKGO, you must separately install the latest version of ViGemBus 
 
 # Tips and tricks
 
-Ideally you should not have any other USB controllers connected to your PC - OKGO will create a virtual one that you can see in the “Game Controllers” list in Windows, and many games don’t like more than one controller attached
+- Ideally you should not have any other USB controllers connected to your PC - OKGO will create a virtual one that you can see in the “Game Controllers” list in Windows, and many games don’t like more than one controller attached
 
-Some games may be sensitive to launch order - e.g. they require OKGO to be running before the game is launched (or maybe vice versa). Feedback is very welcome if you take notes on this.
+- Some games may be sensitive to launch order - e.g. they require OKGO to be running before the game is launched (or maybe vice versa). Feedback is very welcome if you take notes on this.
 
-Sometimes it may be necessary to set yout game to use “fullscreen windowed” or “windowed” + maximised, other games work fine in fullscreen mode.
+- Sometimes it may be necessary to set yout game to use “fullscreen windowed” or “windowed” + maximised, other games work fine in fullscreen mode.
 
-If the game isn’t responding to OKGO, make sure the game has focus by clicking on the game with a mouse.
+- If the game isn’t responding to OKGO, make sure the game has focus by clicking on the game with a mouse.
 
 # Included keyboards
 
