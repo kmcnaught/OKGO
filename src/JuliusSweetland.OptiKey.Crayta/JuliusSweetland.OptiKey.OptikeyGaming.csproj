@@ -1049,7 +1049,7 @@
     <PostBuildEvent>rd /s /q $(TargetDir)\Resources\Presage\
 
 if "$(ConfigurationName)"=="Release" (
-  $(ProjectDir)\..\..\installer\tools\signtool.exe sign /n "Open Source Developer, Kirsty McNaught" /t  http://time.certum.pl /fd sha256 /v  $(ProjectDir)\obj\$(ConfigurationName)\$(TargetFileName)
+  $(ProjectDir)\..\..\installer\tools\signtool.exe sign /a /n "Open Source Developer, Kirsty McNaught" /t  http://time.certum.pl /fd sha256 /v  $(ProjectDir)\obj\$(ConfigurationName)\$(TargetFileName)
 )</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
