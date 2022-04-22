@@ -47,10 +47,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstance.Wpf", "src\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.OptikeyGaming", "src\JuliusSweetland.OptiKey.Crayta\JuliusSweetland.OptiKey.OptikeyGaming.csproj", "{21A46990-29CA-40E5-B99B-A02722A469E1}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CraytaAccessSetup", "installer\Crayta\CraytaAccessSetup\CraytaAccessSetup.vdproj", "{53797CF3-F271-40F2-8D3B-E66BF4A3300F}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "OKGameOnSetup", "installer\Gaming\OKGameOnSetup\OKGameOnSetup.vdproj", "{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -175,24 +171,6 @@ Global
 		{21A46990-29CA-40E5-B99B-A02722A469E1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{21A46990-29CA-40E5-B99B-A02722A469E1}.Release|x86.ActiveCfg = Release|Any CPU
 		{21A46990-29CA-40E5-B99B-A02722A469E1}.Release|x86.Build.0 = Release|Any CPU
-		{53797CF3-F271-40F2-8D3B-E66BF4A3300F}.All|Any CPU.ActiveCfg = Release
-		{53797CF3-F271-40F2-8D3B-E66BF4A3300F}.All|x86.ActiveCfg = Release
-		{53797CF3-F271-40F2-8D3B-E66BF4A3300F}.Debug|Any CPU.ActiveCfg = Debug
-		{53797CF3-F271-40F2-8D3B-E66BF4A3300F}.Debug|x86.ActiveCfg = Debug
-		{53797CF3-F271-40F2-8D3B-E66BF4A3300F}.DefaultBuild|Any CPU.ActiveCfg = Debug
-		{53797CF3-F271-40F2-8D3B-E66BF4A3300F}.DefaultBuild|x86.ActiveCfg = Debug
-		{53797CF3-F271-40F2-8D3B-E66BF4A3300F}.Release|Any CPU.ActiveCfg = Release
-		{53797CF3-F271-40F2-8D3B-E66BF4A3300F}.Release|x86.ActiveCfg = Release
-		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.All|Any CPU.ActiveCfg = Release
-		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.All|x86.ActiveCfg = Release
-		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.Debug|Any CPU.ActiveCfg = Debug
-		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.Debug|x86.ActiveCfg = Debug
-		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.DefaultBuild|Any CPU.ActiveCfg = Debug
-		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.DefaultBuild|x86.ActiveCfg = Debug
-		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.Release|Any CPU.ActiveCfg = Release
-		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.Release|Any CPU.Build.0 = Release
-		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.Release|x86.ActiveCfg = Release
-		{5F9E5BF5-5C77-465C-AFCA-E005BC11F980}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
