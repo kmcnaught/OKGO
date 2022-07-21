@@ -1053,8 +1053,7 @@ if "$(ConfigurationName)"=="Release" (
 )</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>if "$(ConfigurationName)"=="Release" (
-  "C:\Program Files\Git\bin\git.exe" rev-parse --short HEAD &gt; "$(ProjectDir)\version.txt"
-)</PreBuildEvent>
+    <PreBuildEvent>"C:\Program Files\Git\bin\git.exe" rev-parse --short HEAD &gt; "$(ProjectDir)\version.txt"
+</PreBuildEvent>
   </PropertyGroup>
 </Project>
