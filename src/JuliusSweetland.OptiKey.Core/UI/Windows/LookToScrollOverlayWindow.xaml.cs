@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using JuliusSweetland.OptiKey.Models.ScalingModels;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 
@@ -30,23 +31,19 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             this.UpdateContours(viewModel.ZeroContours);
         }
 
-        private void AddEllipse(Point centre, Point radii)
+        private void AddEllipse(Region region)
         {
-            double w = Graphics.PrimaryScreenWidthInPixels;
-            double h = Graphics.PrimaryScreenHeightInPixels;
-
             Rectangle rect = new Rectangle();
-            rect.Width = radii.X * 2;
-            rect.Height = radii.Y * 2;
-            rect.RadiusX = radii.X;
-            rect.RadiusY = radii.Y;
+            rect.Width = region.Width * Graphics.PrimaryScreenWidthInPixels / Graphics.DipScalingFactorX;
+            rect.Height = region.Height * Graphics.PrimaryScreenHeightInPixels / Graphics.DipScalingFactorY;
+            rect.RadiusX = region.Radius * Graphics.PrimaryScreenWidthInPixels / Graphics.DipScalingFactorX; ;
+            rect.RadiusY = rect.RadiusX;
             rect.Stroke = Brushes.CadetBlue;
             rect.Opacity = 0.25;
             rect.StrokeThickness = 4;
 
-            var top = centre - radii;
-            Canvas.SetTop(rect, top.Y);
-            Canvas.SetLeft(rect, top.X);
+            Canvas.SetLeft(rect, region.Left * Graphics.PrimaryScreenWidthInPixels / Graphics.DipScalingFactorX);
+            Canvas.SetTop(rect, region.Top * Graphics.PrimaryScreenHeightInPixels / Graphics.DipScalingFactorY);
 
             canvas.Children.Add(rect);
         }
@@ -62,19 +59,13 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             Static.Windows.SetWindowExTransparent(hWnd);
         }
 
-        private void UpdateContours(List<Point> zeroContours)
+        private void UpdateContours(List<Region> zeroContours)
         {
             canvas.Children.Clear();
             
-            Point centre = new Point(SystemParameters.PrimaryScreenWidth / 2, SystemParameters.PrimaryScreenHeight / 2);
-            foreach (Point radii in zeroContours)
+            foreach (var region in zeroContours)
             {
-                // we convert from px to dip for canvas
-                Point radiiScaled = radii;
-                radiiScaled.X /= Graphics.DipScalingFactorX;
-                radiiScaled.Y /= Graphics.DipScalingFactorY;
-
-                this.AddEllipse(centre, radiiScaled);
+                this.AddEllipse(region);
             }
         }
 

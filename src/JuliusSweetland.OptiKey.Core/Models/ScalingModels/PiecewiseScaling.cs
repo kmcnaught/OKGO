@@ -59,9 +59,9 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
             }
         }
 
-        public List<Point> GetContours()
+        public List<Region> GetContours()
         {
-            List<Point> ctrs = new List<Point>();
+            List<Region> ctrs = new List<Region>();
             float lastVal = 0;
             float lastX = 0;
             foreach (var coord in individualCoords)
@@ -72,12 +72,12 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
                 if (lastVal == 0 && currVal > 0)
                 {
                     // previous contour was zero-crossing
-                    ctrs.Add(new Point(screenScale * lastX, screenScale * lastX));
+                    ctrs.Add(new Region(.5 - lastX, .5 - lastX * Graphics.PrimaryScreenWidthInPixels / Graphics.PrimaryScreenHeightInPixels, 2 * lastX, 2 * lastX * Graphics.PrimaryScreenWidthInPixels / Graphics.PrimaryScreenHeightInPixels, 2 * lastX));
                 }
                 else if (lastVal > 0 && currVal == 0)
                 {
                     // new contour is zero-crossing
-                    ctrs.Add(new Point(screenScale * currX, screenScale * currX));
+                    ctrs.Add(new Region(.5 - currX, .5 - currX * Graphics.PrimaryScreenWidthInPixels / Graphics.PrimaryScreenHeightInPixels, 2 * currX, 2 * currX * Graphics.PrimaryScreenWidthInPixels / Graphics.PrimaryScreenHeightInPixels, 2 * currX));
                 }
                 lastVal = currVal;
                 lastX = currX;
@@ -85,7 +85,6 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
 
             return ctrs;
         }
-
 
         private float map_val(float f)
         {
@@ -118,11 +117,6 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
             // Map back to x, y
             return new Vector(amount * Math.Cos((double)theta), amount * Math.Sin((double)theta));
         }
-
-        private double signedSqrt(double x)
-        {
-            // return sqrt of magnitude but with original sign
-            return Math.Sign(x) * Math.Sqrt(Math.Abs(x));
-        }
+        public bool Contains(Point point) { return true; }
     }
 }

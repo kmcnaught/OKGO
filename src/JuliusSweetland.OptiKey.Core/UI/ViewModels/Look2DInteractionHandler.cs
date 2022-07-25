@@ -87,8 +87,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             private set { SetProperty(ref activeMargins, value); }
         }
 
-        private List<Point> zeroContours = new List<Point>();
-        public List<Point> ZeroContours
+        private List<Region> zeroContours = new List<Region>();
+        public List<Region> ZeroContours
         {
             get { return zeroContours; }
             private set { SetProperty(ref zeroContours, value); }
@@ -101,14 +101,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public void Enable(KeyValue keyValue)
         {
             Log.InfoFormat("Activating 2D control: {0}", this.triggerKey);
-
+            
             sensitivityFunction = SensitivityFunctionFactory.Create(keyValue.String);
             zeroContours = sensitivityFunction.GetContours();
             RaisePropertyChanged("ZeroContours");
 
             // Choose joystick centre via "Reset" key
             if (keyStateService.KeyDownStates[KeyValues.ResetJoystickKey].Value == KeyDownStates.LockedDown)
-            {                
+            {
                 ChooseLookToScrollBoundsTarget(false);
             }
             // Default to centre of screen
@@ -254,7 +254,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             keyPadding = 25;
 
             if (keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown() ||
-                mainViewModel.IsPointInsideValidKey(position, keyPadding) ||
+                //mainViewModel.IsPointInsideValidKey(position, keyPadding) ||
                 choosingBoundsTarget ||
                 !lastUpdate.HasValue)
             {
@@ -282,7 +282,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             bounds = boundsContainer.Value;
             centre = pointBoundsTarget.Value;
 
-            return bounds.Contains(position);
+            return sensitivityFunction.Contains(position);
         }
 
         private Rect? GetCurrentLookToScrollBoundsRect()
@@ -293,22 +293,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             return bounds;
         }
-
-        private Vector ellipseIntersection(Vector vector, double rx, double ry)
-        {
-            if (vector.LengthSquared == 0)
-            {
-                return new Vector(0, 0);
-            }
-            else {
-                // Intersection computed using parametric form for ellipse
-                // x = rx*cos(t), y = ry*sin(t) for parameter t [0,2π]
-                var t = Math.Atan2((rx * vector.Y), (ry * vector.X));
-
-                return new Vector(rx * Math.Cos(t), ry * Math.Sin(t));
-            }
-        }
-
 
         private void UpdateLookToScrollOverlayProperties(Rect bounds, Point centre)
         {
@@ -330,38 +314,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             ActiveDeadzone = Graphics.PixelsToDips(deadzone);
             ActiveMargins = Graphics.PixelsToDips(bounds.CalculateMarginsAround(deadzone));
         }
-
-        private static float[] ParseScaleFromString(string s)
-        {
-            float xScale = 1.0f;
-            float yScale = 1.0f;
-
-            if (!String.IsNullOrEmpty(s))
-            {
-                try
-                {
-                    char[] delimChars = { ',' };
-                    float[] parts = s.ToFloatArray(delimChars);
-                    if (parts.Length == 1)
-                    {
-                        xScale = yScale = parts[0];
-                    }
-                    else if (parts.Length > 1)
-                    {
-                        xScale = parts[0];
-                        yScale = parts[1];
-                    }
-                }
-                catch (Exception e)
-                {
-                    Log.ErrorFormat("Couldn't parse scale {0}", s);
-                }
-            }
-
-            float[] scale = { xScale, yScale }; ;
-            return scale;
-        }
-
         #endregion
     }
 }
