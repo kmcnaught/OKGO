@@ -268,6 +268,8 @@
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
     <Compile Include="Models\KeyCommand.cs" />
     <Compile Include="Models\ScalingModels\ISensitivityFunction.cs" />
+    <Compile Include="Models\ScalingModels\RegionScaling.cs" />
+    <Compile Include="Models\ScalingModels\Region.cs" />
     <Compile Include="Models\ScalingModels\SegmentScaling.cs" />
     <Compile Include="Models\ScalingModels\SensitivityFunctionFactory.cs" />
     <Compile Include="Models\ScalingModels\PiecewiseScaling.cs" />

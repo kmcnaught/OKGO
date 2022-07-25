@@ -1046,15 +1046,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>rd /s /q $(TargetDir)\Resources\Presage\
-
-if "$(ConfigurationName)"=="Release" (
-  $(ProjectDir)\..\..\installer\tools\signtool.exe sign /a /n "Open Source Developer, Kirsty McNaught" /t  http://time.certum.pl /fd sha256 /v  $(ProjectDir)\obj\$(ConfigurationName)\$(TargetFileName)
-)</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>if "$(ConfigurationName)"=="Release" (
-  "C:\Program Files\Git\bin\git.exe" rev-parse --short HEAD &gt; "$(ProjectDir)\version.txt"
-)</PreBuildEvent>
+    <PreBuildEvent>"C:\Program Files\Git\bin\git.exe" rev-parse --short HEAD &gt; "$(ProjectDir)\version.txt"
+</PreBuildEvent>
   </PropertyGroup>
 </Project>

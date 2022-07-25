@@ -31,15 +31,15 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
             // To make sure things don't get stretched, we scale to the smaller axis
             // which makes things spherical in the centre, and extend beyond 1 outside        
             screenScale = Math.Min(Graphics.PrimaryScreenHeightInPixels, Graphics.PrimaryScreenWidthInPixels)/2;
-        }        
+        }
 
-        public List<Point> GetContours()
+        public List<Region> GetContours()
         {
-            List<Point> ctrs = new List<Point>();
-            ctrs.Add(new Point(screenScale * innerRadius, screenScale * innerRadius));
-            ctrs.Add(new Point(screenScale * outerRadius, screenScale * outerRadius));
-
-            return ctrs;
+            return new List<Region>()
+            {
+                new Region(.5 - innerRadius, .5 - innerRadius * Graphics.PrimaryScreenWidthInPixels / Graphics.PrimaryScreenHeightInPixels, 2 * innerRadius, 2 * innerRadius * Graphics.PrimaryScreenWidthInPixels / Graphics.PrimaryScreenHeightInPixels, 2 * innerRadius),
+                new Region(.5 - outerRadius, .5 - outerRadius * Graphics.PrimaryScreenWidthInPixels / Graphics.PrimaryScreenHeightInPixels, 2 * outerRadius, 2 * outerRadius * Graphics.PrimaryScreenWidthInPixels / Graphics.PrimaryScreenHeightInPixels, 2 * outerRadius)
+            };
         }
         
 
@@ -69,6 +69,8 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
 
             // Map back to x, y
             return new Vector(scale * Math.Cos(theta_snap), scale * Math.Sin(theta_snap));
-        }        
+        }
+
+        public bool Contains(Point point) { return true; }
     }
 }

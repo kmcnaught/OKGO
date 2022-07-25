@@ -146,18 +146,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         else
                             JoystickHandlers[requestedFunctionKey].Enable(requestedKeyValue);
                     }
-                    else if (joystickKeys.Contains(keyVal.FunctionKey.Value))
-                    {
-                        // Any other key which should be mutually-exclusive. 
-                        // Disable button and joystick 
-                        if (keyStateService.KeyDownStates[keyVal].Value == KeyDownStates.Down ||
-                            keyStateService.KeyDownStates[keyVal].Value == KeyDownStates.LockedDown)
-                        {
-                            keyStateService.KeyDownStates[keyVal].Value = KeyDownStates.Up;
-                            if (keyVal.FunctionKey.Value != requestedFunctionKey) 
-                                JoystickHandlers[keyVal.FunctionKey.Value].Disable();
-                        }
-                    }
+                    //else if (joystickKeys.Contains(keyVal.FunctionKey.Value))
+                    //{
+                    //    // Any other key which should be mutually-exclusive. 
+                    //    // Disable button and joystick 
+                    //    if (keyStateService.KeyDownStates[keyVal].Value == KeyDownStates.Down ||
+                    //        keyStateService.KeyDownStates[keyVal].Value == KeyDownStates.LockedDown)
+                    //    {
+                    //        keyStateService.KeyDownStates[keyVal].Value = KeyDownStates.Up;
+                    //        if (keyVal.FunctionKey.Value != requestedFunctionKey) 
+                    //            JoystickHandlers[keyVal.FunctionKey.Value].Disable();
+                    //    }
+                    //}
                 }
             }
         }

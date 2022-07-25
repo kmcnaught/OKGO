@@ -21,22 +21,20 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
             this.acceleration = acceleration;
         }
 
-
         public void SetScaleFactor(float[] scaleXY)
         {
             scaleX = scaleXY[0];
             scaleY = scaleXY[1];
         }
 
-        public List<Point> GetContours()
+        public List<Region> GetContours()
         {
             
-            double deadzoneWidth = (double)Settings.Default.JoystickHorizontalDeadzonePercentScreen * Graphics.PrimaryScreenWidthInPixels / 100.0d;
-            double deadzoneHeight = deadzoneWidth / Settings.Default.JoystickDeadzoneAspectRatio;
+            var deadzoneWidth = Settings.Default.JoystickHorizontalDeadzonePercentScreen / 100d;
+            var deadzoneHeight = deadzoneWidth * Graphics.PrimaryScreenWidthInPixels / Graphics.PrimaryScreenHeightInPixels / Settings.Default.JoystickDeadzoneAspectRatio;
 
-            Point deadzone = new Point(deadzoneWidth / 2.0f, deadzoneHeight / 2.0f);
 
-            return new List<Point> { deadzone };
+            return new List<Region>() { new Region(.5 - deadzoneWidth / 2, .5 - deadzoneHeight / 2, deadzoneWidth, deadzoneHeight, 1) };
         }
 
         public Vector CalculateScaling(Point current, Point centre)
@@ -94,6 +92,7 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
             }
         }
 
+        public bool Contains(Point point) { return true; }
 
         private Vector ellipseIntersection(Vector vector, double rx, double ry)
         {
