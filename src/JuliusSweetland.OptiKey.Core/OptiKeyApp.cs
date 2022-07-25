@@ -1063,7 +1063,8 @@ namespace JuliusSweetland.OptiKey
 
         protected static void ValidatePluginsLocation()
         {
-            if (string.IsNullOrEmpty(Settings.Default.PluginsLocation))
+            if (string.IsNullOrEmpty(Settings.Default.PluginsLocation) ||
+                !Directory.Exists(Settings.Default.PluginsLocation))
             {
                 // First time we set to APPDATA location, user may move through settings later
                 Settings.Default.PluginsLocation = GetDefaultPluginsFolder(); ;
