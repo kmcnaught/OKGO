@@ -12,7 +12,7 @@ using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.Static;
 using log4net;
-
+using WindowsInput.Native;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -26,10 +26,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         IKeyboardOutputService keyboardOutputService;
 
+        
+
+        private enum DirectionKeys
+        {
+            Up, 
+            Down,
+            Left,
+            Right
+        }
+
+        Dictionary<DirectionKeys, VirtualKeyCode> keyMappings;
+        Dictionary<DirectionKeys, bool> keyDownStates; // probably superfluous?
+        Dictionary<DirectionKeys, DateTime> keyDownUpTimes; // keep track of when last changed (for 'active' keys)
+
         #endregion
 
         #region Constructor
-        
+
         public Look2DKeyFeather(FunctionKeys triggerKey, 
             IKeyStateService keyStateService, 
             MainViewModel mainViewModel)            
@@ -37,47 +51,71 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             // Replace base update action method with our own
             this.updateAction = this.updateActionFeather;
-
+            
             keyboardOutputService = mainViewModel.KeyboardOutputService;
+
+            // TODO: Will support swapping out for arrows or ijkl etc
+            keyMappings = new Dictionary<DirectionKeys, VirtualKeyCode>();
+            keyMappings.Add(DirectionKeys.Up, WindowsInput.Native.VirtualKeyCode.VK_W);
+            keyMappings.Add(DirectionKeys.Left, WindowsInput.Native.VirtualKeyCode.VK_A);
+            keyMappings.Add(DirectionKeys.Down, WindowsInput.Native.VirtualKeyCode.VK_S);
+            keyMappings.Add(DirectionKeys.Right, WindowsInput.Native.VirtualKeyCode.VK_D);
+
+            keyDownStates = new Dictionary<DirectionKeys, bool>();
+            keyDownStates.Add(DirectionKeys.Up, false);
+            keyDownStates.Add(DirectionKeys.Left, false);
+            keyDownStates.Add(DirectionKeys.Down, false);
+            keyDownStates.Add(DirectionKeys.Right, false);
+
+            keyDownUpTimes = new Dictionary<DirectionKeys, DateTime>();
+            keyDownUpTimes.Add(DirectionKeys.Up, DateTime.MaxValue);
+            keyDownUpTimes.Add(DirectionKeys.Left, DateTime.MaxValue);
+            keyDownUpTimes.Add(DirectionKeys.Down, DateTime.MaxValue);
+            keyDownUpTimes.Add(DirectionKeys.Right, DateTime.MaxValue);
+
         }
 
         #endregion
+        private void UpdateKey(DirectionKeys key, bool active)
+        {
+            DateTime now = Time.HighResolutionUtcNow;
+            if (active)
+            {
+                if (keyDownUpTimes[key] < now)
+                {
+                    // already pressed, no-op
+                }
+                else
+                {
+                    keyboardOutputService.PressKey(keyMappings[key], KeyPressKeyValue.KeyPressType.Press);
+                    keyDownUpTimes[key] = now;
+                }
+            }
+            else
+            {
+                if (keyDownUpTimes[key] < now) // was pressed
+                {
+                    keyboardOutputService.PressKey(keyMappings[key], KeyPressKeyValue.KeyPressType.Release);
+                    keyDownUpTimes[key] = DateTime.MaxValue;
+                }
+            }
+        }
 
         private void updateActionFeather(float x, float y)
         {
             Log.DebugFormat("wasdJoystickAction, ({0}, {1})", x, y);
             float eps = 1e-6f;
-            if (x > eps)
-            {
-                keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_D, KeyPressKeyValue.KeyPressType.Press);
-                keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_A, KeyPressKeyValue.KeyPressType.Release);
-            }
-            else if (x < -eps)
-            {
-                keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_D, KeyPressKeyValue.KeyPressType.Release);
-                keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_A, KeyPressKeyValue.KeyPressType.Press);
-            }
-            else
-            {
-                keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_D, KeyPressKeyValue.KeyPressType.Release);
-                keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_A, KeyPressKeyValue.KeyPressType.Release);
-            }
+            DateTime now = Time.HighResolutionUtcNow;
 
-            if (y > eps)
-            {
-                keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_S, KeyPressKeyValue.KeyPressType.Press);
-                keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_W, KeyPressKeyValue.KeyPressType.Release);
-            }
-            else if (y < -eps)
-            {
-                keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_S, KeyPressKeyValue.KeyPressType.Release);
-                keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_W, KeyPressKeyValue.KeyPressType.Press);
-            }
-            else
-            {
-                keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_S, KeyPressKeyValue.KeyPressType.Release);
-                keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_W, KeyPressKeyValue.KeyPressType.Release);
-            }
+            bool keyRightActive = x > eps;
+            bool keyLeftActive = x < -eps;
+            bool keyUpActive = y < -eps;
+            bool keyDownActive = y > eps;
+
+            UpdateKey(DirectionKeys.Left, keyLeftActive);
+            UpdateKey(DirectionKeys.Right, keyRightActive);
+            UpdateKey(DirectionKeys.Up, keyUpActive);
+            UpdateKey(DirectionKeys.Down, keyDownActive);            
         }
 
     }

@@ -422,6 +422,7 @@
     <Compile Include="Services\TheEyeTribePointService.cs" />
     <Compile Include="Static\Graphics.cs" />
     <Compile Include="Static\Sound.cs" />
+    <Compile Include="Static\Time.cs" />
     <Compile Include="Static\Windows.cs" />
     <Compile Include="UI\Behaviours\CursorBehaviours.cs" />
     <Compile Include="UI\Behaviours\TextBoxBehaviours.cs" />
@@ -517,6 +518,7 @@
     <Compile Include="UI\ViewModels\Keyboards\Base\IKeyboard.cs" />
     <Compile Include="UI\ViewModels\KeyPauseHandler.cs" />
     <Compile Include="UI\ViewModels\Look2DInteractionHandler.cs" />
+    <Compile Include="UI\ViewModels\Look2DKeyFeather.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.ScrollUtils.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.LookToScroll.cs" />
     <Compile Include="UI\ViewModels\MainViewModel.ServiceEventHandlers.cs" />
