@@ -27,7 +27,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly MainViewModel mainViewModel;
 
         // How this handler is configured (once)
-        private readonly Action<float, float> updateAction;
+        protected Action<float, float> updateAction;
         private readonly FunctionKeys triggerKey;  // This function key controls the handler
         private int keyPadding = 10; // controls when handling is paused over/near keys
 

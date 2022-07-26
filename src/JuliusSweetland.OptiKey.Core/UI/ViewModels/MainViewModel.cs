@@ -149,42 +149,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisY", -(float)Settings.Default.LegacyStickSensitivityY * y);
             };
             
-            Action<float, float> wasdJoystickAction = (x, y) =>
-            {
-                Log.DebugFormat("wasdJoystickAction, ({0}, {1})", x, y);
-                float eps = 1e-6f;
-                if (x > eps)
-                {
-                    keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_D, KeyPressKeyValue.KeyPressType.Press);
-                    keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_A, KeyPressKeyValue.KeyPressType.Release);
-                }
-                else if (x < -eps)
-                {
-                    keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_D, KeyPressKeyValue.KeyPressType.Release);
-                    keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_A, KeyPressKeyValue.KeyPressType.Press);
-                }
-                else
-                {
-                    keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_D, KeyPressKeyValue.KeyPressType.Release);
-                    keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_A, KeyPressKeyValue.KeyPressType.Release);
-                }
-
-                if (y > eps)
-                {
-                    keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_S, KeyPressKeyValue.KeyPressType.Press);
-                    keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_W, KeyPressKeyValue.KeyPressType.Release);
-                }
-                else if (y < -eps)
-                {
-                    keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_S, KeyPressKeyValue.KeyPressType.Release);
-                    keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_W, KeyPressKeyValue.KeyPressType.Press);
-                }
-                else
-                {
-                    keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_S, KeyPressKeyValue.KeyPressType.Release);
-                    keyboardOutputService.PressKey(WindowsInput.Native.VirtualKeyCode.VK_W, KeyPressKeyValue.KeyPressType.Release);
-                }                            
-            };
 
             // Set up a set of (mutually exlusive) joystick controllers
             JoystickHandlers = new Dictionary<FunctionKeys, Look2DInteractionHandler>();
@@ -196,7 +160,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                             keyStateService, this));
             JoystickHandlers.Add(FunctionKeys.MouseJoystick, new Look2DInteractionHandler(FunctionKeys.MouseJoystick, mouseJoystickAction,
                                                             keyStateService, this));
-            JoystickHandlers.Add(FunctionKeys.WasdJoystick, new Look2DInteractionHandler(FunctionKeys.WasdJoystick, wasdJoystickAction,
+            JoystickHandlers.Add(FunctionKeys.WasdJoystick, new Look2DKeyFeather(FunctionKeys.WasdJoystick,
                                                             keyStateService, this));
         }
 
