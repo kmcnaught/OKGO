@@ -2727,11 +2727,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 //to one which toggles SimulateKeyStrokes, which results in all key states being stored and restored when leaving the keyboard. This
                 //incorrectly stores the key Down/LockedDown state, which is restored when we leave the keyboard. This *should* be safe as the command
                 //key's value is different from the key values of each individual command.
-                await CommandList(singleKeyValue, multiKeySelection, commandList, 0);
+                
+                // FIXME: I've reordered this to fix the locking of loop commands, but the above issue is presumably present
 
                 //if there is an override lock down time then do not set the key to LockedDown
                 keyStateService.KeyDownStates[singleKeyValue].Value = timeSpanOverrides != null && timeSpanOverrides.TimeRequiredToLockDown > TimeSpan.Zero
                     ? KeyDownStates.Down : KeyDownStates.LockedDown;
+
+                await CommandList(singleKeyValue, multiKeySelection, commandList, 0);
 
                 //if there is an override lock down time then run this key until the gaze stops or another trigger stops it
                 if (timeSpanOverrides != null && timeSpanOverrides.TimeRequiredToLockDown > TimeSpan.Zero)
