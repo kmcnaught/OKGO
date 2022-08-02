@@ -676,6 +676,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.RightJoystick:
                 case FunctionKeys.LegacyJoystick:
                 case FunctionKeys.WasdJoystick:
+                case FunctionKeys.LegacyTriggerJoystick:
                     ToggleJoystick(singleKeyValue);
                     
                     break;
@@ -1272,6 +1273,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.LeftJoystick:
                 case FunctionKeys.RightJoystick:
                 case FunctionKeys.LegacyJoystick:
+                case FunctionKeys.LegacyTriggerJoystick:
                 case FunctionKeys.WasdJoystick:
                     // these all have optional payloads in the FunctionKey's string, so the logic
                     // is kept in HandleStringAndFunctionKeySelectionResult
@@ -2552,7 +2554,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         string msg2 = $"<Action Payload=\"{Settings.Default.RightStickSensitivityX}, {Settings.Default.RightStickSensitivityY}\">RightJoystick</Action>";
                         string msg3 = $"<Action Payload=\"{Settings.Default.LegacyStickSensitivityX}, {Settings.Default.LegacyStickSensitivityY}\">LegacyJoystick</Action>";
                         string msg4 = $"<Action Payload=\"{Settings.Default.MouseStickSensitivityX}, {Settings.Default.MouseStickSensitivityY}\">MouseJoystick</Action>";
-                        string combinedMsg = $"{msg0}\n{msg1}\n{msg2}\n{msg3}\n{msg4}";
+                        string msg5 = $"<Action Payload=\"{Settings.Default.LegacyTriggerStickSensitivityX}, {Settings.Default.LegacyTriggerStickSensitivityY}\">LegacyTriggerJoystick</Action>";
+                        string combinedMsg = $"{msg0}\n{msg1}\n{msg2}\n{msg3}\n{msg4}\n{msg5}";
 
                         Clipboard.SetText(combinedMsg);
                     }
@@ -2562,7 +2565,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         string msg2 = $"Right Stick: ({Settings.Default.RightStickSensitivityX}, {Settings.Default.RightStickSensitivityY})";
                         string msg3 = $"Legacy Stick: ({Settings.Default.LegacyStickSensitivityX}, {Settings.Default.LegacyStickSensitivityY})";
                         string msg4 = $"Mouse Stick: ({Settings.Default.MouseStickSensitivityX}, {Settings.Default.MouseStickSensitivityY})";
-                        string combinedMsg = $"{msg1}\n{msg2}\n{msg3}\n{msg4}";
+                        string msg5 = $"Legacy trigger Stick: ({Settings.Default.LegacyTriggerStickSensitivityX}, {Settings.Default.LegacyTriggerStickSensitivityY})";
+                        string combinedMsg = $"{msg1}\n{msg2}\n{msg3}\n{msg4}\n{msg5}";
 
                         RaiseToastNotification("Copied!", "Sensitivities copied to clipboard\n" + combinedMsg, NotificationTypes.Normal, () => { });
                     }

@@ -169,6 +169,7 @@ namespace JuliusSweetland.OptiKey.Models
         public static readonly KeyValue WasdJoystickActiveKey = new KeyValue(FunctionKeys.WasdJoystick);
         public static readonly KeyValue RightJoystickActiveKey = new KeyValue(FunctionKeys.RightJoystick);
         public static readonly KeyValue LegacyJoystickActiveKey = new KeyValue(FunctionKeys.LegacyJoystick);
+        public static readonly KeyValue LegacyTriggerJoystickActiveKey = new KeyValue(FunctionKeys.LegacyTriggerJoystick);
         public static readonly KeyValue MouseJoystickActiveKey = new KeyValue(FunctionKeys.MouseJoystick);
         public static readonly KeyValue LookToScrollActiveKey = new KeyValue(FunctionKeys.LookToScrollActive);
         public static readonly KeyValue LookToScrollBoundsKey = new KeyValue(FunctionKeys.LookToScrollBounds);
@@ -495,6 +496,7 @@ namespace JuliusSweetland.OptiKey.Models
                     LeftJoystickActiveKey, 
                     RightJoystickActiveKey,
                     LegacyJoystickActiveKey,
+                    LegacyTriggerJoystickActiveKey,
                     LookToScrollActiveKey,
                     LookToScrollBoundsKey,
                     MouseJoystickActiveKey,

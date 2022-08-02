@@ -3000,6 +3000,38 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double LegacyTriggerStickSensitivityX
+        {
+            get
+            {
+                return ((double)(this["LegacyTriggerStickSensitivityX"]));
+            }
+            set
+            {
+                this["LegacyTriggerStickSensitivityX"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double LegacyTriggerStickSensitivityY
+        {
+            get
+            {
+                return ((double)(this["LegacyTriggerStickSensitivityY"]));
+            }
+            set
+            {
+                this["LegacyTriggerStickSensitivityY"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0.9")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public double StickSensitivityAdjustmentAmount

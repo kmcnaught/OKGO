@@ -82,12 +82,26 @@ namespace JuliusSweetland.OptiKey.Services
 
         public void XBoxProcessJoystick(XboxAxes axisEnum, float amount)
         {
-            // amount is in range [-1.0, +1.0] and needs scaling to 
-            // (signed) short range
             Xbox360Axis axis = axisEnum.ToViGemAxis();
-            amount = Math.Min(1.0f, amount);
-            amount = Math.Max(-1.0f, amount);
-            controller.SetAxisValue(axis, (short)(Int16.MaxValue * amount));
+            if (axis != null)
+            {
+                // amount is in range [-1.0, +1.0] and needs scaling to 
+                // (signed) short range
+                amount = Math.Min(1.0f, amount);
+                amount = Math.Max(-1.0f, amount);
+                controller.SetAxisValue(axis, (short)(Int16.MaxValue * amount));
+                return;
+            }
+
+            Xbox360Slider slider = axisEnum.ToViGemSlider();
+            if (slider != null)
+            {
+                // amount is in range [0.0, +1.0] and needs scaling to 
+                // (byte) [0, 255]
+                amount = Math.Min(1.0f, amount);
+                amount = Math.Max(0.0f, amount);
+                controller.SetSliderValue(slider, (byte)(amount * 255.0f));
+            }
         }
 
         public void XBoxButtonDown(XboxButtons button)

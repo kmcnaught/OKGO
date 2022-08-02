@@ -148,7 +148,44 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 if (!isLeftThumbHeldDown)
                     keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisY", -(float)Settings.Default.LegacyStickSensitivityY * y);
             };
-            
+
+            Action<float, float> legacyTriggerJoystickAction = (x, y) =>
+            {
+                Log.DebugFormat("legacyTriggerJoystickAction, ({0}, {1})", x, y);
+
+                // A held down trigger key
+                bool isTriggerHeldDown = false;
+                foreach (var key in keyStateService.KeyDownStates.Keys)
+                {
+                    if (keyStateService.KeyDownStates[key].Value == KeyDownStates.LockedDown &&
+                        !String.IsNullOrEmpty(key.String) &&
+                        (key.String.Contains("XBoxLeftTrigger") ||
+                         key.String.Contains("XBoxRightTrigger"))
+                        )
+                    {
+                        isTriggerHeldDown = true;
+                    }
+                }
+
+                if (!isTriggerHeldDown)
+                {
+                    keyboardOutputService.XBoxProcessJoystick("RightJoystickAxisX", (float)Settings.Default.LegacyTriggerStickSensitivityX * x);
+                    float eps = 1e-3f;
+                    if (Math.Abs(y) < eps)
+                    {
+                        keyboardOutputService.XBoxProcessJoystick("LeftTriggerSlider", 0.0f);
+                        keyboardOutputService.XBoxProcessJoystick("RightTriggerSlider", 0.0f);
+                    }
+                    else
+                    {
+                        if (y < 0)
+                            keyboardOutputService.XBoxProcessJoystick("LeftTriggerSlider", -(float)Settings.Default.LegacyTriggerStickSensitivityY * y);
+                        else
+                            keyboardOutputService.XBoxProcessJoystick("RightTriggerSlider", (float)Settings.Default.LegacyTriggerStickSensitivityY * y);
+                    }
+                }
+            };
+
 
             // Set up a set of (mutually exlusive) joystick controllers
             JoystickHandlers = new Dictionary<FunctionKeys, Look2DInteractionHandler>();
@@ -160,8 +197,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                                             keyStateService, this));
             JoystickHandlers.Add(FunctionKeys.MouseJoystick, new Look2DInteractionHandler(FunctionKeys.MouseJoystick, mouseJoystickAction,
                                                             keyStateService, this));
-            JoystickHandlers.Add(FunctionKeys.WasdJoystick, new Look2DKeyFeather(FunctionKeys.WasdJoystick,
+            JoystickHandlers.Add(FunctionKeys.LegacyTriggerJoystick, new Look2DInteractionHandler(FunctionKeys.LegacyTriggerJoystick, legacyTriggerJoystickAction,
                                                             keyStateService, this));
+            JoystickHandlers.Add(FunctionKeys.WasdJoystick, new Look2DKeyFeather(FunctionKeys.WasdJoystick,
+                                                            keyStateService, this));            
         }
 
         #endregion
