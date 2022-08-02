@@ -9,5 +9,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
     {
         bool IsActive { get; }
         List<Point> ZeroContours { get;  }
+        Point JoystickCentre { get; }
     }
 }

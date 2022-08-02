@@ -67,6 +67,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             canvas.Children.Clear();
             
             Point centre = new Point(SystemParameters.PrimaryScreenWidth / 2, SystemParameters.PrimaryScreenHeight / 2);
+            centre = viewModel.JoystickCentre;
             foreach (Point radii in zeroContours)
             {
                 // we convert from px to dip for canvas
@@ -80,7 +81,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
 
         private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (string.Equals("ZeroContours", e.PropertyName))
+            if (string.Equals("ZeroContours", e.PropertyName) ||
+                string.Equals("JoystickCentre", e.PropertyName))
             {                
                 this.UpdateContours(viewModel.ZeroContours);
             }

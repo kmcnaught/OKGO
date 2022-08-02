@@ -31,9 +31,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private readonly FunctionKeys triggerKey;  // This function key controls the handler
         private int keyPadding = 10; // controls when handling is paused over/near keys
 
-        // How this handler is configured (may change)
-        private Point? pointBoundsTarget;
-
+        // How this handler is configured (may change)       
         private ISensitivityFunction sensitivityFunction;
 
         // Temporary state 
@@ -53,6 +51,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.mainViewModel = mainViewModel;
 
             this.sensitivityFunction = new SqrtScalingFromSettings(0, 0.02);
+            joystickCentre = new Point(SystemParameters.PrimaryScreenWidth / 2, SystemParameters.PrimaryScreenHeight / 2);
         }
 
         #endregion
@@ -94,6 +93,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             private set { SetProperty(ref zeroContours, value); }
         }
 
+        private Point? joystickCentre;
+        public Point JoystickCentre
+        {
+            get { return joystickCentre.HasValue ? joystickCentre.Value : new Point(SystemParameters.PrimaryScreenWidth / 2, SystemParameters.PrimaryScreenHeight / 2); }
+            private set {
+                SetProperty(ref joystickCentre, value);
+                RaisePropertyChanged("JoystickCentre");
+            }
+        }
+        
         #endregion
 
         #region Public methods
@@ -112,7 +121,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 ChooseLookToScrollBoundsTarget(false);
             }
             // Default to centre of screen
-            else if (!pointBoundsTarget.HasValue) 
+            else if (!joystickCentre.HasValue) 
             {
                 ChooseLookToScrollBoundsTarget(true);
             }
@@ -184,7 +193,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             Log.Info("Choosing look to scroll bounds target.");
 
             choosingBoundsTarget = true;
-            pointBoundsTarget = null;
+            joystickCentre = null;
 
             Action<bool> callback = success =>
             {
@@ -217,7 +226,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private void ChooseScreenLookToScrollBoundsTarget(Action<bool> callback)
         {
             Log.Info("Will use entire usable portion of the screen as the scroll bounds.");
-            pointBoundsTarget = GetCurrentLookToScrollBoundsRect().Value.CalculateCentre();
+            JoystickCentre = GetCurrentLookToScrollBoundsRect().Value.CalculateCentre();
             callback(true); // Always successful.
         }
 
@@ -230,7 +239,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 if (point.HasValue)
                 {
                     Log.InfoFormat("User chose point: {0}.", point.Value);
-                    pointBoundsTarget = point.Value;
+                    JoystickCentre = point.Value;
 
                     if (Settings.Default.LookToScrollBringWindowToFrontAfterChoosingScreenPoint)
                     {
@@ -273,14 +282,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 return false;
             }
 
-            if (!pointBoundsTarget.HasValue)
+            if (!joystickCentre.HasValue)
             {
                 Log.Info("Look to scroll doesn't have target. Deactivating look to scroll.");
                 return false;
             }
 
             bounds = boundsContainer.Value;
-            centre = pointBoundsTarget.Value;
+            centre = joystickCentre.Value;
 
             return bounds.Contains(position);
         }
