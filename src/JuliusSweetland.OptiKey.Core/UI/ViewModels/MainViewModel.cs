@@ -169,7 +169,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                 if (!isTriggerHeldDown)
                 {
-                    keyboardOutputService.XBoxProcessJoystick("RightJoystickAxisX", (float)Settings.Default.LegacyTriggerStickSensitivityX * x);
+                    keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisX", (float)Settings.Default.LegacyTriggerStickSensitivityX * x);
                     float eps = 1e-3f;
                     if (Math.Abs(y) < eps)
                     {
