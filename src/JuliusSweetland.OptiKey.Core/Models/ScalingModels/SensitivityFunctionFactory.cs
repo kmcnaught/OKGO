@@ -30,7 +30,7 @@ namespace JuliusSweetland.OptiKey.Models.ScalingModels
             string inputStringWithoutWhitespace = inputString.RemoveWhitespace();
 
             // String contains numbers, separator, whitespace only: classic SqrtScalingFromSettings
-            if (inputString.All(x => char.IsWhiteSpace(x) || x == ',' || char.IsDigit(x)))
+            if (inputString.All(x => char.IsWhiteSpace(x) || x == ',' || x == '.' || char.IsDigit(x)))
             {
                 try
                 {
