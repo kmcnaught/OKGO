@@ -179,9 +179,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     else
                     {
                         if (y < 0)
-                            keyboardOutputService.XBoxProcessJoystick("LeftTriggerSlider", -(float)Settings.Default.LegacyTriggerStickSensitivityY * y);
+                            keyboardOutputService.XBoxProcessJoystick("RightTriggerSlider", -(float)Settings.Default.LegacyTriggerStickSensitivityY * y);
                         else
-                            keyboardOutputService.XBoxProcessJoystick("RightTriggerSlider", (float)Settings.Default.LegacyTriggerStickSensitivityY * y);
+                            keyboardOutputService.XBoxProcessJoystick("LeftTriggerSlider", (float)Settings.Default.LegacyTriggerStickSensitivityY * y);
                     }
                 }
             };
