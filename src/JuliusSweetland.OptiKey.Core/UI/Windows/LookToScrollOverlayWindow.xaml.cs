@@ -67,7 +67,8 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             canvas.Children.Clear();
             
             Point centre = new Point(SystemParameters.PrimaryScreenWidth / 2, SystemParameters.PrimaryScreenHeight / 2);
-            centre = viewModel.JoystickCentre;
+            centre = new Point(viewModel.JoystickCentre.X / Graphics.DipScalingFactorX, 
+                               viewModel.JoystickCentre.Y / Graphics.DipScalingFactorY);
             foreach (Point radii in zeroContours)
             {
                 // we convert from px to dip for canvas
