@@ -102,9 +102,14 @@ namespace JuliusSweetland.OptiKey.Crayta
             // Display the number of command line arguments.
             Console.WriteLine(args.Length);
 
-            if (args.Length == 1)
+            if (args.Length > 0)
             {
                 // Allow entry straight into specified dynamic keyboard(s)
+                // keyboardArg may be:
+                // - single XML file to load
+                // - folder containing XML files
+                // - single .zip file containing XML files
+
                 startKeyboardOverride = args[0];
             }
 
