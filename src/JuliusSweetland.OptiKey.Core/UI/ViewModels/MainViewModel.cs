@@ -20,6 +20,7 @@ using System.Text;
 using System.Net.Http;
 using System.Reactive.Linq;
 using System.IO;
+using System.IO.Compression;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -412,6 +413,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             if (keyboardOverride != null)
             {
+                // If a ZIP file is given, unzip it and treat as a directory
+                if (keyboardOverride.ToLower().EndsWith(".zip"))
+                {
+                    string extractionPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+                    Directory.CreateDirectory(extractionPath);
+                    ZipFile.ExtractToDirectory(keyboardOverride, extractionPath);                    
+
+                    keyboardOverride = extractionPath;
+                }
                 if (Directory.Exists(keyboardOverride))
                 {
                     Log.Info($"Loading keyboards from requested directory: {keyboardOverride}");

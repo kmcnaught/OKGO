@@ -6099,8 +6099,8 @@
                                                     {
                                                     "Name" = "8:command"
                                                     "Condition" = "8:"
-                                                    "AlwaysCreate" = "11:FALSE"
-                                                    "DeleteAtUninstall" = "11:FALSE"
+                                                    "AlwaysCreate" = "11:TRUE"
+                                                    "DeleteAtUninstall" = "11:TRUE"
                                                     "Transitive" = "11:FALSE"
                                                         "Keys"
                                                         {
@@ -6132,7 +6132,7 @@
                                     "Name" = "8:DefaultIcon"
                                     "Condition" = "8:"
                                     "AlwaysCreate" = "11:FALSE"
-                                    "DeleteAtUninstall" = "11:FALSE"
+                                    "DeleteAtUninstall" = "11:TRUE"
                                     "Transitive" = "11:FALSE"
                                         "Keys"
                                         {
