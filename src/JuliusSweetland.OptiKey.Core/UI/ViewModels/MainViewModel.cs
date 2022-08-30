@@ -413,14 +413,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             if (keyboardOverride != null)
             {
-                // If a ZIP file is given, unzip it and treat as a directory
-                if (keyboardOverride.ToLower().EndsWith(".zip"))
+                // If an 'okgo' zip file is given, unzip it and treat as a directory
+                // We add the .okgo file extension to allow default "open with.." behaviour
+                if (keyboardOverride.ToLower().EndsWith(".zip") || keyboardOverride.ToLower().EndsWith(".okgo"))
                 {
                     string extractionPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
                     Directory.CreateDirectory(extractionPath);
-                    ZipFile.ExtractToDirectory(keyboardOverride, extractionPath);                    
+                    ZipFile.ExtractToDirectory(keyboardOverride, extractionPath);
 
-                    keyboardOverride = extractionPath;
+                    var xmlFileList = Directory.GetFiles(extractionPath, "*.xml", SearchOption.AllDirectories);
+                    if (xmlFileList.Length == 1)
+                    {   // single file
+                        keyboardOverride = xmlFileList[0];
+                        Log.Info($"Unzipped and found single file { keyboardOverride }");
+                    }
+                    else
+                    {   // whole folder
+                        keyboardOverride = extractionPath;
+                        Log.Info($"Unzipped and using directory { keyboardOverride }");
+                    }
                 }
                 if (Directory.Exists(keyboardOverride))
                 {
