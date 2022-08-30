@@ -5720,6 +5720,29 @@
         }
         "FileType"
         {
+            "{5EB83D71-FA18-4901-BE56-DE22E13CC478}:_39CD2537C47C4016B6903814F2F1A251"
+            {
+            "Name" = "8:OK Game On"
+            "Description" = "8:OKGO keyboards"
+            "Extensions" = "8:okgo"
+            "MIME" = "8:"
+            "Icon" = "8:_3B870A06838B443BB36613CB42F32BF8"
+            "IconIndex" = "3:0"
+                "Command"
+                {
+                "Command" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
+                }
+                "Verbs"
+                {
+                    "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_608BEF0866834DC08ACAD4D56245B87F"
+                    {
+                    "Command" = "8:&Open"
+                    "Verb" = "8:open"
+                    "Arguments" = "8:\"%1\""
+                    "Order" = "3:0"
+                    }
+                }
+            }
         }
         "Folder"
         {
