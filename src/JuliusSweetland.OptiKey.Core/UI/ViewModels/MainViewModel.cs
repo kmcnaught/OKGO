@@ -418,7 +418,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 if (keyboardOverride.ToLower().EndsWith(".zip") || keyboardOverride.ToLower().EndsWith(".okgo"))
                 {
                     string extractionPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-                    Directory.CreateDirectory(extractionPath);
+                    DirectoryInfo tempDir = Directory.CreateDirectory(extractionPath);
                     ZipFile.ExtractToDirectory(keyboardOverride, extractionPath);
 
                     var xmlFileList = Directory.GetFiles(extractionPath, "*.xml", SearchOption.AllDirectories);
@@ -432,6 +432,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         keyboardOverride = extractionPath;
                         Log.Info($"Unzipped and using directory { keyboardOverride }");
                     }
+
+                    // Clean up on app exit
+                    tempDir.DeleteOnApplicationExit(Log);
                 }
                 if (Directory.Exists(keyboardOverride))
                 {

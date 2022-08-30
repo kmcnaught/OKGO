@@ -245,6 +245,7 @@
     <Compile Include="Enums\PointsSources.cs" />
     <Compile Include="Enums\TriggerSources.cs" />
     <Compile Include="Enums\TriggerStopSignals.cs" />
+    <Compile Include="Extensions\DirectoryExtensions.cs" />
     <Compile Include="Extensions\TaskExtensions.cs" />
     <Compile Include="Extensions\ArrayExtensions.cs" />
     <Compile Include="Extensions\BitmapExtensions.cs" />
