@@ -2590,7 +2590,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
                     Settings.Default.MouseStickSensitivityX = 1.0;
                     Settings.Default.MouseStickSensitivityY = 1.0;
-                        
+
+                    Settings.Default.LegacyTriggerStickSensitivityX = 1.0;
+                    Settings.Default.LegacyTriggerStickSensitivityY = 1.0;
+
                     break;
                 }
                 case FunctionKeys.NoJoystick:
