@@ -171,6 +171,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 if (!isTriggerHeldDown)
                 {
                     keyboardOutputService.XBoxProcessJoystick("LeftJoystickAxisX", (float)Settings.Default.LegacyTriggerStickSensitivityX * x);
+
                     float eps = 1e-3f;
                     if (Math.Abs(y) < eps)
                     {
@@ -179,10 +180,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                     else
                     {
+                        float amount = (float)Math.Abs(Settings.Default.LegacyTriggerStickSensitivityY * y);
                         if (y < 0)
-                            keyboardOutputService.XBoxProcessJoystick("RightTriggerSlider", -(float)Settings.Default.LegacyTriggerStickSensitivityY * y);
+                        {
+                            keyboardOutputService.XBoxProcessJoystick("RightTriggerSlider", amount);
+                            keyboardOutputService.XBoxProcessJoystick("LeftTriggerSlider", 0.0f);
+                        }
                         else
-                            keyboardOutputService.XBoxProcessJoystick("LeftTriggerSlider", (float)Settings.Default.LegacyTriggerStickSensitivityY * y);
+                        {
+                            keyboardOutputService.XBoxProcessJoystick("LeftTriggerSlider", amount);
+                            keyboardOutputService.XBoxProcessJoystick("RightTriggerSlider", 0.0f);
+                        }
                     }
                 }
             };
