@@ -271,11 +271,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
 
             // Deactivate whilst we are reselecting centre
+            Rect? boundsContainer = GetCurrentLookToScrollBoundsRect();
+
+            if (!boundsContainer.HasValue)
+            {
+                Log.Info("Look to scroll bounds is no longer valid. Deactivating look to scroll.");
+
+                keyStateService.KeyDownStates[KeyValues.LookToScrollActiveKey].Value = KeyDownStates.Up;
+                keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value = KeyDownStates.Up;
+
+                return false;
+            }
+
             if (!joystickCentre.HasValue)
             {
                 Log.Info("Look to scroll doesn't have target. Deactivating look to scroll.");
                 return false;
             }
+
+            bounds = boundsContainer.Value;
+            centre = joystickCentre.Value;
 
             return true;
         }
