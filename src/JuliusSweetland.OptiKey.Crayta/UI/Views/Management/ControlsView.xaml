@@ -48,45 +48,39 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static resxGaming:Resources.SENSITIVITY_LEFT_X}" 
-                               VerticalAlignment="Center" Margin="5" 
-                               Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
+                               VerticalAlignment="Center" Margin="5"  />
                     <mah:NumericUpDown Grid.Row="1" Grid.Column="1" TextAlignment="Left"
                                        Minimum="0" Interval="0.1" StringFormat="{}{0:N1}"
                                        Value="{Binding LeftStickSensitivityX, Mode=TwoWay}"/>
 
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="{x:Static resxGaming:Resources.SENSITIVITY_LEFT_Y}" 
-                               VerticalAlignment="Center" Margin="5" 
-                               Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
+                               VerticalAlignment="Center" Margin="5"  />
                     <mah:NumericUpDown Grid.Row="2" Grid.Column="1" TextAlignment="Left"
                                        Minimum="0" Interval="0.1" StringFormat="{}{0:N1}"
                                        Value="{Binding LeftStickSensitivityY, Mode=TwoWay}"/>
 
                     
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resxGaming:Resources.SENSITIVITY_RIGHT_X}" 
-                               VerticalAlignment="Center" Margin="5" 
-                               Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
+                               VerticalAlignment="Center" Margin="5"  />
                     <mah:NumericUpDown Grid.Row="3" Grid.Column="1" TextAlignment="Left"
                                        Minimum="0" Interval="0.1" StringFormat="{}{0:N1}"
                                        Value="{Binding RightStickSensitivityX, Mode=TwoWay}"/>
 
                     <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static resxGaming:Resources.SENSITIVITY_RIGHT_Y}" 
-                               VerticalAlignment="Center" Margin="5" 
-                               Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
+                               VerticalAlignment="Center" Margin="5"  />
                     <mah:NumericUpDown Grid.Row="4" Grid.Column="1" TextAlignment="Left"
                                        Minimum="0" Interval="0.1" StringFormat="{}{0:N1}"
                                        Value="{Binding RightStickSensitivityY, Mode=TwoWay}"/>
 
 
                     <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static resxGaming:Resources.SENSITIVITY_LEGACY_X}" 
-                               VerticalAlignment="Center" Margin="5" 
-                               Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
+                               VerticalAlignment="Center" Margin="5" />
                     <mah:NumericUpDown Grid.Row="5" Grid.Column="1" TextAlignment="Left"
                                        Minimum="0" Interval="0.1" StringFormat="{}{0:N1}"
                                        Value="{Binding LegacyStickSensitivityX, Mode=TwoWay}"/>
 
                     <TextBlock Grid.Row="6" Grid.Column="0" Text="{x:Static resxGaming:Resources.SENSITIVITY_LEGACY_Y}" 
-                               VerticalAlignment="Center" Margin="5" 
-                               Visibility="{Binding LookToScrollShowOverlayWindow, Converter={StaticResource BooleanToVisibility}}" />
+                               VerticalAlignment="Center" Margin="5" />
                     <mah:NumericUpDown Grid.Row="6" Grid.Column="1" TextAlignment="Left"
                                        Minimum="0" Interval="0.1" StringFormat="{}{0:N1}"
                                        Value="{Binding LegacyStickSensitivityY, Mode=TwoWay}"/>
