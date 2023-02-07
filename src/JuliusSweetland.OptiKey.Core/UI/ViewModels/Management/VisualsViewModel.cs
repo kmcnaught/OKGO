@@ -1,6 +1,7 @@
-// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
@@ -384,8 +385,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set
             {
                 SetProperty(ref fontFamily, value);
-                OnPropertyChanged(() => FontStretches);
-                OnPropertyChanged(() => FontWeights);
+                
+                RaisePropertyChanged(nameof(FontStretches));
+                if (FontStretches != null)
+                {
+                    //Retain current stretch if available; otherwise pick the first one
+                    FontStretch = FontStretches.Contains(FontStretch) ? FontStretch : FontStretches[0];
+                }
+                
+                RaisePropertyChanged(nameof(FontWeights));
             }
         }
 
@@ -396,7 +404,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set
             {
                 SetProperty(ref fontStretch, value);
-                OnPropertyChanged(() => FontWeights);
+
+                RaisePropertyChanged(nameof(FontWeights));
+                if (FontWeights != null)
+                {
+                    //Retain current weight if available; otherwise pick the first one
+                    FontWeight = FontWeights.Contains(FontWeight) ? FontWeight : FontWeights[0];
+                }
             }
         }
 
@@ -461,6 +475,25 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
         {
             get { return cursorHeightInPixels; }
             set { SetProperty(ref cursorHeightInPixels, value); }
+        }
+
+        public List<string> GazeIndicatorStyleList
+        {
+            get { return Enum.GetNames(typeof(GazeIndicatorStyles)).Cast<string>().ToList(); }
+        }
+
+        private string gazeIndicatorStyle;
+        public string GazeIndicatorStyle
+        {
+            get { return gazeIndicatorStyle; }
+            set { SetProperty(ref gazeIndicatorStyle, value); }
+        }
+
+        private int gazeIndicatorSize;
+        public int GazeIndicatorSize
+        {
+            get { return gazeIndicatorSize; }
+            set { SetProperty(ref gazeIndicatorSize, value); }
         }
 
         private bool magnifierCenterOnScreen;
@@ -554,7 +587,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 return Settings.Default.ConversationOnlyMode != ConversationOnlyMode
                     || Settings.Default.ConversationConfirmEnable != ConversationConfirmEnable
                     || Settings.Default.ConversationConfirmOnlyMode != ConversationConfirmOnlyMode
-                    || Settings.Default.EnableResizeWithMouse != EnableResizeWithMouse;
+                    || Settings.Default.EnableResizeWithMouse != EnableResizeWithMouse
+                    || (Settings.Default.GazeIndicatorStyle == GazeIndicatorStyles.None
+                        && (GazeIndicatorStyles)Enum.Parse(typeof(GazeIndicatorStyles), GazeIndicatorStyle) != GazeIndicatorStyles.None);
             }
         }
 
@@ -608,6 +643,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             ToastNotificationSecondsPerCharacter = Settings.Default.ToastNotificationSecondsPerCharacter;
             CursorWidthInPixels = Settings.Default.CursorWidthInPixels;
             CursorHeightInPixels = Settings.Default.CursorHeightInPixels;
+            GazeIndicatorStyle = Settings.Default.GazeIndicatorStyle.ToString();
+            GazeIndicatorSize = Settings.Default.GazeIndicatorSize;
             MagnifierCenterOnScreen = Settings.Default.MagnifierCenterOnScreen;
             MagnifySourcePercentageOfScreen = Settings.Default.MagnifySourcePercentageOfScreen;
             MagnifyDestinationPercentageOfScreen = Settings.Default.MagnifyDestinationPercentageOfScreen;
@@ -640,6 +677,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.ToastNotificationSecondsPerCharacter = ToastNotificationSecondsPerCharacter;
             Settings.Default.CursorWidthInPixels = CursorWidthInPixels;
             Settings.Default.CursorHeightInPixels = CursorHeightInPixels;
+            Settings.Default.GazeIndicatorStyle = (GazeIndicatorStyles)Enum.Parse(typeof(GazeIndicatorStyles), GazeIndicatorStyle);
+            Settings.Default.GazeIndicatorSize = GazeIndicatorSize;
             Settings.Default.MagnifierCenterOnScreen = MagnifierCenterOnScreen;
             Settings.Default.MagnifySourcePercentageOfScreen = MagnifySourcePercentageOfScreen;
             Settings.Default.MagnifyDestinationPercentageOfScreen = MagnifyDestinationPercentageOfScreen;

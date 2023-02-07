@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
@@ -29,6 +29,10 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlAttribute] public string BorderColor { get; set; }
         [XmlAttribute] public string KeyDisabledBackground { get; set; }
         [XmlAttribute] public string KeyDownBackground { get; set; }
+        [XmlAttribute] public string BorderColor { get; set; }
+        [XmlAttribute] public string BorderThickness { get; set; }
+        [XmlAttribute] public string CornerRadius { get; set; }
+        [XmlAttribute] public string Margin { get; set; }
         [XmlAttribute] public string Opacity { get; set; }
         [XmlAttribute] public string KeyDisabledOpacity { get; set; }
         [XmlAttribute] public string KeyDownOpacity { get; set; }

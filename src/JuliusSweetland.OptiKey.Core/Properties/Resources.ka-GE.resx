@@ -1108,7 +1108,7 @@ LK</value>
     <value>EyeTribe-ი არ არის დაკალიბრებული. მონაცემები ვერ მიიღება კალიბრაციის დასრულებამდე.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>კალიბრაციის მცდელობა ვერ ხერხდება რადგანაც EyeX-ის ხელსაწყო არ არის ხელმისაწვდომი.</value>
+    <value>კალიბრაციის მცდელობა ვერ ხერხდება რადგანაც EyeTribe-ის ხელსაწყო არ არის ხელმისაწვდომი.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>თემა:</value>
@@ -1129,10 +1129,10 @@ LK</value>
     <value>კალიბრაცია დასრულდა, ან შესაძლოა გაუქმდა, მაგრამ ყველაფერი ოპერაციულია!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine არ მოიძებნება. გთხოვთ დააინსტალიროთ EyeX Engine და სცადოთ თავიდან.</value>
+    <value>Tobii Service არ მოიძებნება. გთხოვთ დააინსტალიროთ Tobii software  და სცადოთ თავიდან.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine არ ფუნქციონირებს. გთხოვთ ჩართოთ EyeX Engine და სცადოთ თავიდან.</value>
+    <value>Tobii Service არ ფუნქციონირებს. გთხოვთ ჩართოთ Tobii service  და სცადოთ თავიდან.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go</value>
@@ -2206,7 +2206,7 @@ Optikey შეეცდება გააგრძელოს მუშაო�
       <value>ეს მოითხოვს ITU Gaze Tracking ბიბლიოთეკა, რომელიც არის ჩარჩო ღია თვალის მიდევნება გამოყენებით off-the- შელფზე კომპონენტები, როგორიცაა კამერები და ვიდეოკამერა.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>თუ თქვენ აპირებთ გამოიყენოთ Optikey ერთად Irisbond Duo თვალის tracker მაშინ, გთხოვთ, დარწმუნდით, რომ თქვენ გაქვთ Irisbond Duo მძღოლები დამონტაჟებული. ეს შეიძლება იყოს გადმოწერილი https://www.irisbond.com/products/downloads.</value>
+      <value>თუ თქვენ აპირებთ გამოიყენოთ Optikey ერთად Irisbond Duo თვალის tracker მაშინ, გთხოვთ, დარწმუნდით, რომ თქვენ გაქვთ Irisbond Duo მძღოლები დამონტაჟებული. ეს შეიძლება იყოს გადმოწერილი https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>ამ რეჟიმში, Optikey გამოიყენოთ მაუსის კურსორი შეტანის ლაპარაკის ნაცვლად პირდაპირ თვალის ისტორიაზე. დაგვჭირდება, თუ თქვენ ტესტირების Optikey out, ან თუ გსურთ გამოიყენოთ ეს ალტერნატივა შეტანის მოწყობილობა როგორიცაა ხელმძღვანელი მაუსის ან თვალის tracker არა ამ სიაში. </value>

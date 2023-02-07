@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Properties;
@@ -42,17 +42,21 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
             InputService.Verify(s => s.RequestSuspend(), Times.Once());
             AudioService.Verify(s => s.PlaySound(Settings.Default.ErrorSoundFile, Settings.Default.ErrorSoundVolume), Times.Once());
 
-            Assert.IsNotNull(NotificationEvent);
-            Assert.AreEqual(Resources.CRASH_TITLE, NotificationEvent.Title);
-            Assert.AreEqual(ex.Message, NotificationEvent.Content);
-            Assert.AreEqual(NotificationTypes.Error, NotificationEvent.NotificationType);
+            Assert.That(NotificationEvent, Is.Not.Null);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(NotificationEvent.Title, Is.EqualTo(Resources.CRASH_TITLE));
+                Assert.That(NotificationEvent.Content, Is.EqualTo(ex.Message));
+                Assert.That(NotificationEvent.NotificationType, Is.EqualTo(NotificationTypes.Error));
+            });            
         }
 
         [Test]
         public void ThenPointsPerSecondEventHandlerShouldBeAttachedToInputService()
         {
             InputService.Raise(s => s.PointsPerSecond += null, this, 123);
-            Assert.AreEqual(123, MainViewModel.PointsPerSecond);
+            Assert.That(MainViewModel.PointsPerSecond, Is.EqualTo(123));
         }
 
         [Test]
@@ -88,8 +92,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
             var keyValue = new KeyValue();
             InputService.Raise(s => s.CurrentPosition += null, this, new Tuple<Point, KeyValue>(point, keyValue));
 
-            Assert.AreEqual(point, MainViewModel.CurrentPositionPoint);
-            Assert.AreEqual(keyValue, MainViewModel.CurrentPositionKey);
+            Assert.Multiple(() =>
+            {
+                Assert.That(MainViewModel.CurrentPositionPoint, Is.EqualTo(point));
+                Assert.That(MainViewModel.CurrentPositionKey, Is.EqualTo(keyValue));
+            });            
 
             MouseOutputService.Verify(s => s.MoveTo(point), Times.Once());
         }
@@ -114,15 +121,36 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
             var keyValue = new KeyValue();
             InputService.Raise(s => s.CurrentPosition += null, this, new Tuple<Point, KeyValue>(point, keyValue));
 
-            Assert.AreEqual(point, MainViewModel.CurrentPositionPoint);
-            Assert.AreEqual(keyValue, MainViewModel.CurrentPositionKey);
+            Assert.Multiple(() =>
+            {
+                Assert.That(MainViewModel.CurrentPositionPoint, Is.EqualTo(point));
+                Assert.That(MainViewModel.CurrentPositionKey, Is.EqualTo(keyValue));
+            });            
 
             MouseOutputService.Verify(s => s.MoveTo(point), Times.Never());
         }
     }
 
     [TestFixture]
-    public class WhenAttachServiceEventHandlersGivenEmptyProgress : WhenAttachServiceEventHandlers
+    public class WhenAttachServiceEventHandlersGivenEmptyPointProgress : WhenAttachServiceEventHandlers
+    {
+        protected NotifyingConcurrentDictionary<KeyValue, double> KeySelectionProgress { get; set; }
+
+        protected override void Arrange()
+        {
+            base.Arrange();
+        }
+
+        [Test]
+        public void ThenSelectionProgressShouldBeReset()
+        {
+            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<TriggerTypes, PointAndKeyValue, double>(TriggerTypes.Point, null, 0));
+            Assert.That(MainViewModel.PointSelectionProgress, Is.Null);
+        }
+    }
+
+    [TestFixture]
+    public class WhenAttachServiceEventHandlersGivenEmptyKeyProgress : WhenAttachServiceEventHandlers
     {
         protected NotifyingConcurrentDictionary<KeyValue, double> KeySelectionProgress { get; set; }
 
@@ -139,14 +167,11 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenSelectionProgressShouldBeReset()
         {
-
-            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<PointAndKeyValue, double>(null, 0));
-
-            Assert.IsNull(MainViewModel.PointSelectionProgress);
+            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<TriggerTypes, PointAndKeyValue, double>(TriggerTypes.Key, null, 0));
 
             KeySelectionProgress.Keys
                 .ToList()
-                .ForEach(k => Assert.AreEqual(default(double), KeySelectionProgress[k].Value));
+                .ForEach(k => Assert.That(KeySelectionProgress[k].Value, Is.EqualTo(default(double))));
         }
     }
 
@@ -160,7 +185,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             base.Arrange();
 
-            MainViewModel.SelectionMode = SelectionModes.Key;
+            MainViewModel.SelectionMode = SelectionModes.Keys;
 
             KeyValueToAssert = new KeyValue();
             KeySelectionProgress = new NotifyingConcurrentDictionary<KeyValue, double>();
@@ -172,10 +197,10 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeySelectionProgressOnKeyStateServiceShouldBeSet()
         {
-            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<PointAndKeyValue, double>(
-                new PointAndKeyValue(new Point(), KeyValueToAssert), 14));
+            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<TriggerTypes, PointAndKeyValue, double>(
+                TriggerTypes.Key, new PointAndKeyValue(new Point(), KeyValueToAssert), 14));
 
-            Assert.AreEqual(14, KeySelectionProgress[KeyValueToAssert].Value);
+            Assert.That(KeySelectionProgress[KeyValueToAssert].Value, Is.EqualTo(14));
         }
     }
 
@@ -186,7 +211,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             base.Arrange();
 
-            MainViewModel.SelectionMode = SelectionModes.Point;
+            MainViewModel.SelectionMode = SelectionModes.SinglePoint;
         }
 
         [Test]
@@ -194,12 +219,17 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             var pointAndKeyValue = new PointAndKeyValue(new Point(), new KeyValue());
 
-            InputService.Raise(s => s.SelectionProgress += null, this, new Tuple<PointAndKeyValue, double>(
-                pointAndKeyValue, 83));
+            InputService.Raise(s => s.SelectionProgress += null, this, 
+                new Tuple<TriggerTypes, PointAndKeyValue, double>(
+                    TriggerTypes.Point, pointAndKeyValue, 83));
 
-            Assert.IsNotNull(MainViewModel.PointSelectionProgress);
-            Assert.AreEqual(pointAndKeyValue.Point, MainViewModel.PointSelectionProgress.Item1);
-            Assert.AreEqual(83, MainViewModel.PointSelectionProgress.Item2);
+            Assert.That(MainViewModel.PointSelectionProgress, Is.Not.Null);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(MainViewModel.PointSelectionProgress.Item1, Is.EqualTo(pointAndKeyValue.Point));
+                Assert.That(MainViewModel.PointSelectionProgress.Item2, Is.EqualTo(83));
+            });            
         }
     }
 
@@ -210,7 +240,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             base.Arrange();
 
-            MainViewModel.SelectionMode = SelectionModes.Key;
+            MainViewModel.SelectionMode = SelectionModes.Keys;
 
             CapturingStateManager.Setup(s => s.CapturingMultiKeySelection)
                 .Returns(false);
@@ -221,13 +251,13 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             var pointAndKeyValue = new PointAndKeyValue(new Point(), new KeyValue());
 
-            InputService.Raise(s => s.Selection += null, this, pointAndKeyValue);
+            InputService.Raise(s => s.Selection += null, this, new Tuple<TriggerTypes, PointAndKeyValue>(TriggerTypes.Key, pointAndKeyValue));
 
-            Assert.IsNull(MainViewModel.SelectionResultPoints);
+            Assert.That(MainViewModel.SelectionResultPoints, Is.Null);
 
             AudioService.Verify(s => s.PlaySound(Settings.Default.KeySelectionSoundFile, Settings.Default.KeySelectionSoundVolume));
 
-            Assert.IsTrue(IsKeySelectionEventHandlerCalled);
+            Assert.That(IsKeySelectionEventHandlerCalled, Is.True);
         }
     }
 
@@ -238,7 +268,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             base.Arrange();
 
-            MainViewModel.SelectionMode = SelectionModes.Point;
+            MainViewModel.SelectionMode = SelectionModes.SinglePoint;
         }
 
         [Test]
@@ -246,11 +276,14 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             var pointAndKeyValue = new PointAndKeyValue(new Point(), new KeyValue());
 
-            InputService.Raise(s => s.Selection += null, this, pointAndKeyValue);
+            InputService.Raise(s => s.Selection += null, this, new Tuple<TriggerTypes, PointAndKeyValue>(
+                TriggerTypes.Point, pointAndKeyValue));
 
-            Assert.IsNull(MainViewModel.SelectionResultPoints);
-
-            Assert.IsTrue(IsPointSelectionEventHandlerCalled);
+            Assert.Multiple(() =>
+            {
+                Assert.That(MainViewModel.SelectionResultPoints, Is.Null);
+                Assert.That(IsPointSelectionEventHandlerCalled, Is.True);
+            });            
         }
     }
 
@@ -261,12 +294,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         public void GivenSingleKeyIsStringThenSelectionResultEventHandlerShouldBeAttachedToInputService()
         {
             var points = new List<Point>();
-            var selection = new Tuple<List<Point>, KeyValue, List<string>>(
-                points, new KeyValue("SingleKeyValueIsString"), new List<string>());
+            var selection = new Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>(
+                TriggerTypes.Key, points, new KeyValue("SingleKeyValueIsString"), new List<string>());
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 
-            Assert.AreEqual(points, MainViewModel.SelectionResultPoints);
+            Assert.That(MainViewModel.SelectionResultPoints, Is.EqualTo(points));
 
             KeyboardOutputService.Verify(s => s.ProcessSingleKeyText("SingleKeyValueIsString"), Times.Once());
         }
@@ -275,12 +308,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         public void GivenSingleKeyIsFunctionKeySelectionResultEventHandlerShouldBeAttachedToInputService()
         {
             var points = new List<Point>();
-            var selection = new Tuple<List<Point>, KeyValue, List<string>>(
-                points, new KeyValue(FunctionKeys.Suggestion1), new List<string>());
+            var selection = new Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>(
+                TriggerTypes.Key, points, new KeyValue(FunctionKeys.Suggestion1), new List<string>());
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 
-            Assert.AreEqual(points, MainViewModel.SelectionResultPoints);
+            Assert.That(MainViewModel.SelectionResultPoints, Is.EqualTo(points));
 
             KeyStateService.Verify(s => s.ProgressKeyDownState(It.IsAny<KeyValue>()), Times.Once());
 
@@ -294,12 +327,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             var points = new List<Point>();
             var multiKeySelection = new List<string> { "test-multi" };
-            var selection = new Tuple<List<Point>, KeyValue, List<string>>(
-                points, null, multiKeySelection);
+            var selection = new Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>(
+                TriggerTypes.Key, points, null, multiKeySelection);
 
             InputService.Raise(s => s.SelectionResult += null, this, selection);
 
-            Assert.AreEqual(points, MainViewModel.SelectionResultPoints);
+            Assert.That(MainViewModel.SelectionResultPoints, Is.EqualTo(points));
 
             KeyboardOutputService.Verify(s => s.ProcessMultiKeyTextAndSuggestions(multiKeySelection), Times.Once());
         }

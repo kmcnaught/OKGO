@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Models;
 using Moq;
 using NUnit.Framework;
@@ -48,7 +48,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenSelectionResultPointsShouldNotBeReset()
         {
-            Assert.IsNotNull(MainViewModel.SelectionResultPoints);
+            Assert.That(MainViewModel.SelectionResultPoints, Is.Not.Null);
         }
     }
 
@@ -70,7 +70,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenSelectionResultPointsShouldBeReset()
         {
-            Assert.IsNull(MainViewModel.SelectionResultPoints);
+            Assert.That(MainViewModel.SelectionResultPoints, Is.Null);
         }
     }
 }

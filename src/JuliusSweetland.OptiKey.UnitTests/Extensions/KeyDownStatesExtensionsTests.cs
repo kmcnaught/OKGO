@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.UnitTests.Properties;
@@ -19,9 +19,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
         [Test]
         public void TestIsDownOrLockedDown()
         {
-            Assert.AreEqual(true, KeyDownStates.Down.IsDownOrLockedDown());
-            Assert.AreEqual(true, KeyDownStates.LockedDown.IsDownOrLockedDown());
-            Assert.AreEqual(false, KeyDownStates.Up.IsDownOrLockedDown());
+            Assert.Multiple(() =>
+            {
+                Assert.That(KeyDownStates.Down.IsDownOrLockedDown(), Is.True);
+                Assert.That(KeyDownStates.LockedDown.IsDownOrLockedDown(), Is.True);
+                Assert.That(KeyDownStates.Up.IsDownOrLockedDown(), Is.False);
+            });            
         }
 
 

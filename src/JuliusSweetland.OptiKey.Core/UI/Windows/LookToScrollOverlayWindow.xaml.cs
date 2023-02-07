@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +8,8 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using JuliusSweetland.OptiKey.Static;
+using System.Windows.Interop;
+using JuliusSweetland.OptiKey.Native.Common.Enums;
 using JuliusSweetland.OptiKey.UI.ViewModels;
 
 namespace JuliusSweetland.OptiKey.UI.Windows
@@ -51,15 +53,13 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             canvas.Children.Add(rect);
         }
 
-        // Based on: https://stackoverflow.com/a/3367137/9091159
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
 
-            // Apply the WS_EX_TRANSPARENT flag to the overlay window so that mouse events will
-            // pass through to any window underneath.
-            var hWnd = new WindowInteropHelper(this).Handle;
-            Static.Windows.SetWindowExTransparent(hWnd);
+            var windowHandle = new WindowInteropHelper(this).Handle;
+            Static.Windows.SetExtendedWindowStyle(windowHandle,
+                Static.Windows.GetExtendedWindowStyle(windowHandle) | ExtendedWindowStyles.WS_EX_TRANSPARENT | ExtendedWindowStyles.WS_EX_TOOLWINDOW);
         }
 
         private void UpdateContours(List<Point> zeroContours)

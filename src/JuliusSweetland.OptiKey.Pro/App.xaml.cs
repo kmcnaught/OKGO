@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 
 using System;
 using System.Collections.Generic;
@@ -28,11 +28,9 @@ using log4net.Appender;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
 using Microsoft.Win32;
-using NBug.Core.UI;
 using Octokit;
 using presage;
 using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
-using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using WindowsRecipes.TaskbarSingleInstance;
 using Application = System.Windows.Application;
 
@@ -44,10 +42,11 @@ namespace JuliusSweetland.OptiKey.Pro
     public partial class App : OptiKeyApp
     {
         private static SplashScreen splashScreen;
+        private string startKeyboardOverride = null;
 
         #region Main
         [STAThread]
-        public static void Main()
+        public static void Main(string[] args)
         {
             // Setup derived settings class
             Settings.Initialise();
@@ -55,11 +54,10 @@ namespace JuliusSweetland.OptiKey.Pro
 
             Action runApp = () =>
             {
-
                 splashScreen = new SplashScreen("/Resources/Icons/OptikeyProSplash.png");
                 splashScreen.Show(false);
 
-                var application = new App();
+                var application = new App(args);
                 application.InitializeComponent();
                 application.Run();
             };
@@ -81,10 +79,24 @@ namespace JuliusSweetland.OptiKey.Pro
 
         #region Ctor
 
-        public App()
+        public App(string[] args)
         {
+            // Parse command-line args, 
+            
+            if (args.Length > 0)
+            {
+                // Allow entry straight into specified dynamic keyboard(s)
+                // keyboardArg may be:
+                // - single XML file to load
+                // - folder containing XML files                
+
+                startKeyboardOverride = args[0];
+            }
+
             // Core setup for all OptiKey apps
             Initialise();
+
+            // (Setup specific to this app happens in App_OnStartup)
         }
 
         #endregion
@@ -116,6 +128,8 @@ namespace JuliusSweetland.OptiKey.Pro
                 };
 
                 CleanupAndPrepareCommuniKateInitialState();
+
+                ValidateEyeGestures();
 
                 ValidateDynamicKeyboardLocation();
 
@@ -165,8 +179,8 @@ namespace JuliusSweetland.OptiKey.Pro
                 mainViewModel = new MainViewModel(
                     audioService, calibrationService, dictionaryService, keyStateService,
                     suggestionService, capturingStateManager, lastMouseActionStateManager,
-                    inputService, keyboardOutputService, mouseOutputService, 
-                    mainWindowManipulationService, errorNotifyingServices);
+                    inputService, keyboardOutputService, mouseOutputService, mainWindowManipulationService,
+                    errorNotifyingServices, startKeyboardOverride);
 
                 mainWindow.SetMainViewModel(mainViewModel);
 
@@ -182,11 +196,14 @@ namespace JuliusSweetland.OptiKey.Pro
                 //Show the main window
                 mainWindow.Show();
 
-                if (Settings.Default.LookToScrollEnabled && Settings.Default.LookToScrollShowOverlayWindow)
+                if (Settings.Default.LookToScrollOverlayBoundsThickness > 0
+                    || Settings.Default.LookToScrollOverlayDeadzoneThickness > 0)
                 {
                     // Create the overlay window, but don't show it yet. It'll make itself visible when the conditions are right.
                     // FIXME reinstate LookToScroll overlay
                 }
+                if (Settings.Default.GazeIndicatorStyle != GazeIndicatorStyles.None)
+                    new OverlayWindow(mainViewModel);
 
                 //Display splash screen and check for updates (and display message) after the window has been sized and positioned for the 1st time
                 EventHandler sizeAndPositionInitialised = null;

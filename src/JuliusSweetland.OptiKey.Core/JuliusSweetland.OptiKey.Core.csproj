@@ -81,8 +81,8 @@
     <Reference Include="EyeXFramework">
       <HintPath>..\..\ext\TobiiEyeXSdk\EyeXFramework.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
     </Reference>
     <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MahApps.Metro.1.6.5\lib\net46\MahApps.Metro.dll</HintPath>
@@ -121,6 +121,15 @@
     </Reference>
     <Reference Include="Prism.Wpf, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Wpf.6.3.0\lib\net45\Prism.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SharpDX.4.2.0\lib\net45\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DirectInput, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SharpDX.DirectInput.4.2.0\lib\net45\SharpDX.DirectInput.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.XInput, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SharpDX.XInput.4.2.0\lib\net45\SharpDX.XInput.dll</HintPath>
     </Reference>
     <Reference Include="SharpVectors.Converters, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b532964b8548be77, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SharpVectors.1.0\lib\net20\SharpVectors.Converters.dll</HintPath>
@@ -176,6 +185,7 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Speech" />
     <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -201,12 +211,18 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WindowsInput, Version=1.0.6.0, Culture=neutral, PublicKeyToken=de2685b4776e9c2e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\InputSimulatorPlus.1.0.7\lib\net20\WindowsInput.dll</HintPath>
+    <Reference Include="WindowsInput, Version=1.0.9.0, Culture=neutral, PublicKeyToken=de2685b4776e9c2e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\InputSimulatorPlus2.1.0.9.0\lib\net20\WindowsInput.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\TriggerTypes.cs" />
+    <Compile Include="Models\Gamepads\GamepadButtonEvents.cs" />
+    <Compile Include="Models\Gamepads\DirectInputControllerState.cs" />
+    <Compile Include="Models\Gamepads\DirectInputListener.cs" />
     <Compile Include="Enums\AppType.cs" />
+    <Compile Include="Enums\GazeIndicatorStyles.cs" />
+    <Compile Include="Enums\EyeGestureStepTypes.cs" />
     <Compile Include="Enums\KeyboardLayouts.cs" />
     <Compile Include="Enums\KeyCommands.cs" />
     <Compile Include="Enums\XboxAxes.cs" />
@@ -265,6 +281,13 @@
     <Compile Include="Extensions\UiElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Models\DynamicKeyboardFolder.cs" />
+    <Compile Include="Models\Gamepads\XInputControllerState.cs" />
+    <Compile Include="Models\Gamepads\XInputListener.cs" />
+    <Compile Include="Models\XmlKeyCommand.cs" />
+    <Compile Include="Models\EyeGestureShape.cs" />
+    <Compile Include="Models\XmlEyeGestures.cs" />
+    <Compile Include="Models\EyeGesture.cs" />
+    <Compile Include="Models\EyeGestureStep.cs" />
     <Compile Include="Models\ILastMouseActionStateManager.cs" />
     <Compile Include="Models\KeyboardOutputServiceState.cs" />
     <Compile Include="Models\KeyCommand.cs" />
@@ -326,10 +349,14 @@
     <Compile Include="Native\Common\Enums\TOKEN_ELEVATION_TYPE.cs" />
     <Compile Include="Native\Common\Enums\TOKEN_INFORMATION_CLASS.cs" />
     <Compile Include="Native\Common\Enums\WindowShowStyle.cs" />
-    <Compile Include="Native\Irisbond\Enums\CALIBRATION_STATUS.cs" />
-    <Compile Include="Native\Irisbond\Enums\CONTROLLING_EYE.cs" />
-    <Compile Include="Native\Irisbond\Enums\START_STATUS.cs" />
-    <Compile Include="Native\Irisbond\PInvoke.cs" />
+    <Compile Include="Native\Irisbond\Hiru\Enums\CALIBRATION_STATUS.cs" />
+    <Compile Include="Native\Irisbond\Hiru\Enums\CONTROLLING_EYE.cs" />
+    <Compile Include="Native\Irisbond\Hiru\Enums\START_STATUS.cs" />
+    <Compile Include="Native\Irisbond\Hiru\PInvoke.cs" />
+    <Compile Include="Native\Irisbond\Duo\Enums\CALIBRATION_STATUS.cs" />
+    <Compile Include="Native\Irisbond\Duo\Enums\CONTROLLING_EYE.cs" />
+    <Compile Include="Native\Irisbond\Duo\Enums\START_STATUS.cs" />
+    <Compile Include="Native\Irisbond\Duo\PInvoke.cs" />
     <Compile Include="Native\PInvoke.cs" />
     <Compile Include="Native\Common\Static\WindowStyles.cs" />
     <Compile Include="Native\Common\Structs\APPBARDATA.cs" />
@@ -344,6 +371,9 @@
     <Compile Include="Observables\PointSources\IPointSource.cs" />
     <Compile Include="Observables\PointSources\MousePositionSource.cs" />
     <Compile Include="Observables\PointSources\PointServiceSource.cs" />
+    <Compile Include="Observables\TriggerSources\EyeGestureSource.cs" />
+    <Compile Include="Observables\TriggerSources\DirectInputButtonDownUpSource.cs" />
+    <Compile Include="Observables\TriggerSources\XInputButtonDownUpSource.cs" />
     <Compile Include="OptiKeyApp.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -354,6 +384,8 @@
     <Compile Include="Services\Audio\SoundPlayerEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\PointSources\IrisbondHiruCalibrationService.cs" />
+    <Compile Include="Services\PointSources\IrisbondHiruPointService.cs" />
     <Compile Include="Services\PluginEngine\PluginEngine.cs" />
     <Compile Include="Services\Suggestions\IManagedSuggestions.cs" />
     <Compile Include="Services\Suggestions\BasicAutoComplete.cs" />
@@ -396,13 +428,13 @@
     <Compile Include="Services\IPublishService.cs" />
     <Compile Include="Services\ISuggestionStateService.cs" />
     <Compile Include="Services\MouseOutputService.cs" />
-    <Compile Include="Services\MyGazePointService.cs" />
-    <Compile Include="Services\MyGazeCalibrationService.cs" />
+    <Compile Include="Services\PointSources\MyGazePointService.cs" />
+    <Compile Include="Services\PointSources\MyGazeCalibrationService.cs" />
     <Compile Include="Services\Suggestions\PresageSuggestions.cs" />
-    <Compile Include="Services\IrisbondDuoCalibrationService.cs" />
-    <Compile Include="Services\TobiiEyeXCalibrationService.cs" />
-    <Compile Include="Services\IrisbondDuoPointService.cs" />
-    <Compile Include="Services\TobiiEyeXPointService.cs" />
+    <Compile Include="Services\PointSources\IrisbondDuoCalibrationService.cs" />
+    <Compile Include="Services\PointSources\TobiiEyeXCalibrationService.cs" />
+    <Compile Include="Services\PointSources\IrisbondDuoPointService.cs" />
+    <Compile Include="Services\PointSources\TobiiEyeXPointService.cs" />
     <Compile Include="Services\Translation\Languages\TranslationTargetLanguages.cs" />
     <Compile Include="Services\Translation\TranslationResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -419,8 +451,8 @@
     <Compile Include="Services\KeyboardOutputService.cs" />
     <Compile Include="Services\PublishService.cs" />
     <Compile Include="Services\SuggestionStateService.cs" />
-    <Compile Include="Services\TheEyeTribeCalibrationService.cs" />
-    <Compile Include="Services\TheEyeTribePointService.cs" />
+    <Compile Include="Services\PointSources\TheEyeTribeCalibrationService.cs" />
+    <Compile Include="Services\PointSources\TheEyeTribePointService.cs" />
     <Compile Include="Static\Graphics.cs" />
     <Compile Include="Static\Sound.cs" />
     <Compile Include="Static\Time.cs" />
@@ -433,6 +465,7 @@
       <DependentUpon>CK20Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Controls\KeyboardView.cs" />
+    <Compile Include="UI\ValueConverters\CompletionTimesValidation.cs" />
     <Compile Include="UI\ValueConverters\HlsColor.cs" />
     <Compile Include="UI\ValueConverters\InvertedBoolToVisibilityConverter.cs" />
     <Compile Include="UI\ValueConverters\Half.cs" />
@@ -526,11 +559,11 @@
     <Compile Include="UI\ViewModels\MainViewModel.cs" />
     <Compile Include="UI\ViewModels\ManagementViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\DictionaryViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\GesturesViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\PointingAndSelectingViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\SoundsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\FeaturesViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\VisualsViewModel.cs" />
-    <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\WordsViewModel.cs" />
     <Compile Include="UI\Views\Keyboards\Catalan\Alpha1.xaml.cs">
       <DependentUpon>Alpha1.xaml</DependentUpon>
@@ -891,8 +924,11 @@
     <Compile Include="UI\Views\ManagementView.xaml.cs">
       <DependentUpon>ManagementView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Views\Management\OtherView.xaml.cs">
-      <DependentUpon>OtherView.xaml</DependentUpon>
+    <Compile Include="UI\Controls\GestureEditor.xaml.cs">
+      <DependentUpon>GestureEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\GesturesView.xaml.cs">
+      <DependentUpon>GesturesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Management\DictionaryView.xaml.cs">
       <DependentUpon>DictionaryView.xaml</DependentUpon>
@@ -917,6 +953,9 @@
     </Compile>
     <Compile Include="UI\Windows\ConfirmationWindow.xaml.cs">
       <DependentUpon>ConfirmationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Windows\OverlayWindow.xaml.cs">
+      <DependentUpon>OverlayWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Windows\LookToScrollOverlayWindow.xaml.cs">
       <DependentUpon>LookToScrollOverlayWindow.xaml</DependentUpon>
@@ -968,11 +1007,39 @@
     <EmbeddedResource Include="Properties\Resources.hr-HR.resx" />
     <EmbeddedResource Include="Properties\Resources.da-DK.resx" />
     <EmbeddedResource Include="Properties\Resources.uk-UA.resx" />
+    <Content Include="..\..\ext\IrisBond\avcodec-58.dll">
+      <Link>avcodec-58.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\IrisBond\avdevice-58.dll">
+      <Link>avdevice-58.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\IrisBond\avfilter-7.dll">
+      <Link>avfilter-7.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\IrisBond\avformat-58.dll">
+      <Link>avformat-58.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\IrisBond\avutil-56.dll">
+      <Link>avutil-56.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\ext\IrisBond\IrisbondHiruAPI.dll">
+      <Link>IrisbondHiruAPI.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\ext\Irisbond\PGRFlyCapture.dll">
       <Link>PGRFlyCapture.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Properties\Resources.ur-PK.resx" />
+    <Content Include="..\..\ext\IrisBond\swresample-3.dll">
+      <Link>swresample-3.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dictionaries\UrduPakistan.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1110,10 +1177,6 @@
     <Content Include="Dictionaries\GeorgianGeorgia.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="nbug.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </None>
     <Resource Include="Resources\Fonts\CharisSIL-B.ttf" />
     <Resource Include="Resources\Fonts\CharisSIL-BI.ttf" />
     <Resource Include="Resources\Fonts\CharisSIL-I.ttf" />
@@ -1396,6 +1459,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Content Include="Dictionaries\EnglishUS.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1403,10 +1467,6 @@
     <Content Include="Dictionaries\EnglishCanada.dic">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="log4net.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
@@ -1975,7 +2035,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Views\Management\OtherView.xaml">
+    <Page Include="UI\Controls\GestureEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\GesturesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -2009,6 +2073,9 @@
     </Page>
     <Page Include="UI\Windows\ConfirmationWindow.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Windows\OverlayWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Windows\LookToScrollOverlayWindow.xaml">
@@ -2074,6 +2141,7 @@
       <Name>SingleInstance</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

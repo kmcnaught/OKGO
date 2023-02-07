@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using WindowsInput.Native;
 using JuliusSweetland.OptiKey.Enums;
 using log4net;
@@ -100,7 +100,22 @@ namespace JuliusSweetland.OptiKey.Extensions
 
                 case FunctionKeys.F19:
                     return VirtualKeyCode.F19;
-                    
+
+                case FunctionKeys.F20:
+                    return VirtualKeyCode.F20;
+
+                case FunctionKeys.F21:
+                    return VirtualKeyCode.F21;
+
+                case FunctionKeys.F22:
+                    return VirtualKeyCode.F22;
+
+                case FunctionKeys.F23:
+                    return VirtualKeyCode.F23;
+
+                case FunctionKeys.F24:
+                    return VirtualKeyCode.F24;
+
                 case FunctionKeys.PrintScreen:
                     return VirtualKeyCode.SNAPSHOT; //This is not a typo
 

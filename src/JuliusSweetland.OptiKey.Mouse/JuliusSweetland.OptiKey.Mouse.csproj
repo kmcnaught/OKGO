@@ -55,7 +55,7 @@
     <Reference Include="EyeXFramework">
       <HintPath>..\..\ext\TobiiEyeXSdk\EyeXFramework.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
@@ -190,9 +190,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WindowsInput, Version=1.0.6.0, Culture=neutral, PublicKeyToken=de2685b4776e9c2e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\InputSimulatorPlus.1.0.7\lib\net20\WindowsInput.dll</HintPath>
+    <Reference Include="WindowsInput, Version=1.0.9.0, Culture=neutral, PublicKeyToken=de2685b4776e9c2e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\InputSimulatorPlus2.1.0.9.0\lib\net20\WindowsInput.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -227,43 +226,48 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\BigHackerKeyboard.xml">
-      <Link>Resources\DynamicKeyboards\BigHackerKeyboard.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\BigHackerKeyboard.xml">
+      <Link>Resources\Keyboards\BigHackerKeyboard.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml">
-      <Link>Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\AltAlphaHorizontalKeyboard.xml">
+      <Link>Resources\Keyboards\AltAlphaHorizontalKeyboard.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml">
-      <Link>Resources\DynamicKeyboards\AltAlphaVerticalKeyboard.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\AltAlphaVerticalKeyboard.xml">
+      <Link>Resources\Keyboards\AltAlphaVerticalKeyboard.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Bottom.xml">
-      <Link>Resources\DynamicKeyboards\Samples\Demo_Bottom.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\Samples\AR16-Qwerty.xml">
+      <Link>Resources\Keyboards\Samples\AR16-Qwerty.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml">
-      <Link>Resources\DynamicKeyboards\Samples\Demo_Minecraft.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\Samples\Demo_Bottom.xml">
+      <Link>Resources\Keyboards\Samples\Demo_Bottom.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\Demo_Left.xml">
-      <Link>Resources\DynamicKeyboards\Samples\Demo_Left.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\Samples\Demo_Left.xml">
+      <Link>Resources\Keyboards\Samples\Demo_Left.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\FullQwerty.xml">
-      <Link>Resources\DynamicKeyboards\Samples\FullQwerty.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\Samples\Demo_Minecraft.xml">
+      <Link>Resources\Keyboards\Samples\Demo_Minecraft.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\DynamicKeyboards\Samples\FullSymbol.xml">
-      <Link>Resources\DynamicKeyboards\Samples\FullSymbol.xml</Link>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\Samples\FullQwerty.xml">
+      <Link>Resources\Keyboards\Samples\FullQwerty.xml</Link>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Keyboards\Samples\FullSymbol.xml">
+      <Link>Resources\Keyboards\Samples\FullSymbol.xml</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -272,6 +276,9 @@
     </Content>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Nafees Web Naskh License Agreement.txt">
       <Link>Resources\Fonts\Nafees Web Naskh License Agreement.txt</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font Info And License Agreement.txt">
+      <Link>Resources\Fonts\FarsiWeb Font Info And License Agreement.txt</Link>
     </Resource>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Roboto Font - Apache License.txt">
       <Link>Resources\Fonts\Roboto Font - Apache License.txt</Link>
@@ -871,6 +878,36 @@
     </Resource>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\CharisSIL-R.ttf">
       <Link>Resources\Fonts\CharisSIL-R.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - elham.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - elham.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - homa.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - homa.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - koodak.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - koodak.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - roya.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - roya.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - royab.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - royab.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - terafik.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - terafik.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - terafikb.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - terafikb.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - titr.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - titr.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - nazli.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - nazli.ttf</Link>
+    </Resource>
+    <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\FarsiWeb Font - nazlib.ttf">
+      <Link>Resources\Fonts\FarsiWeb Font - nazlib.ttf</Link>
     </Resource>
     <Resource Include="..\JuliusSweetland.OptiKey.Core\Resources\Fonts\Fajer Noori Nastalique 15-12-2006.ttf">
       <Link>Resources\Fonts\Fajer Noori Nastalique 15-12-2006.ttf</Link>

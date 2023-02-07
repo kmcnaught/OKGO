@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
 using NUnit.Framework;
@@ -18,7 +18,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenKeySelectionEventHandlerShouldBeTriggered()
         {
-            Assert.IsTrue(IsKeySelectionEventHandlerCalled);
+            Assert.That(IsKeySelectionEventHandlerCalled, Is.True);
         }
     }
 }

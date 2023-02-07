@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -11,6 +11,7 @@ namespace JuliusSweetland.OptiKey.Services
         event EventHandler SizeAndPositionInitialised;
 
         bool SizeAndPositionIsInitialised { get; }
+        IntPtr WindowHandle { get; }
         Rect WindowBounds { get; }
         WindowStates WindowState { get; }
 
@@ -35,5 +36,6 @@ namespace JuliusSweetland.OptiKey.Services
         void LogTimeAfterLoading(Stopwatch sw);
         void DisableResize();
         void SetResizeState();
+        void InvokeMoveWindow(string parameterString);
     }
 }

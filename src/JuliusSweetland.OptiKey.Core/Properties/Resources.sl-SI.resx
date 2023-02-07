@@ -1060,7 +1060,7 @@ POZICIJA</value>
     <value>TheEyeTribe ni bil kalibriran. Kalibracija mora biti končana, da lahko sprejemamo podatke.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Ni bilo možno kalibrirati, ker ni dostopnega EyeX Engine.</value>
+    <value>Ni bilo možno kalibrirati, ker ni dostopnega EyeTribe software .</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Tema:</value>
@@ -1075,10 +1075,10 @@ POZICIJA</value>
     <value>Kalibracija končana ali mogoče prekinjena, ampak vse spet deluje!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Ni možno najti Tobii EyeX Engine. Prosim namestite EyeX Engine in poskusite znova.</value>
+    <value>Ni možno najti Tobii Service. Prosim namestite Tobii software in poskusite znova.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine ne deluje. Prosim zaženi EyeX Engine in poskusi znova.</value>
+    <value>Tobii Service ne deluje. Prosim zaženi Tobii service in poskusi znova.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Zvok 1</value>
@@ -1572,7 +1572,7 @@ Lahko si izklopite preverjanje posodobitev v upravljalnem oknu (ALT + M).</value
       <value>To zahteva ITU pogled sledenje knjižnice, ki je okvir za odprtokodne oko sledenje uporabo off-the-polici komponent, kot so spletne kamere in videokamere.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Če nameravate uporabljati Optikey z oči tracker Irisbond Duo potem se prepričajte, da imate gonilnike Irisbond Duo namestili. Te lahko prenesete s https://www.irisbond.com/products/downloads.</value>
+      <value>Če nameravate uporabljati Optikey z oči tracker Irisbond Duo potem se prepričajte, da imate gonilnike Irisbond Duo namestili. Te lahko prenesete s https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>V tem načinu bo Optikey uporabite miško kot vhod, namesto da bi govoril neposredno v sledilnik oči. Morda boste to želeli, če ste testiranje Optikey ven, ali če želite, da ga uporabljate z alternativnim vhodne naprave, kot so glave miško ali katere koli oči tracker ni na tem seznamu. </value>

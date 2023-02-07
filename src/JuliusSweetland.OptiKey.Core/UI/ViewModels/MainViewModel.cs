@@ -1,4 +1,4 @@
-// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,9 +48,9 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private EventHandler<int> inputServicePointsPerSecondHandler;
         private EventHandler<Tuple<Point, KeyValue>> inputServiceCurrentPositionHandler;
-        private EventHandler<Tuple<PointAndKeyValue, double>> inputServiceSelectionProgressHandler;
-        private EventHandler<PointAndKeyValue> inputServiceSelectionHandler;
-        private EventHandler<Tuple<List<Point>, KeyValue, List<string>>> inputServiceSelectionResultHandler;
+        private EventHandler<Tuple<TriggerTypes, PointAndKeyValue, double>> inputServiceSelectionProgressHandler;
+        private EventHandler<Tuple<TriggerTypes, PointAndKeyValue>> inputServiceSelectionHandler;
+        private EventHandler<Tuple<TriggerTypes, List<Point>, KeyValue, List<string>>> inputServiceSelectionResultHandler;
         
         private Dictionary<KeyValue, KeyPauseHandler> perKeyPauseHandlers;        
 
@@ -60,10 +60,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private Tuple<Point, double> pointSelectionProgress;
         private Dictionary<Rect, KeyValue> pointToKeyValueMap;
         private bool showCursor;
+        private bool showCrosshair;
+        private bool showMonical;
+        private bool showSuggestions;
+        private bool suspendCommands;
         private bool manualModeEnabled;
         private Action<Point> nextPointSelectionAction;
         private Point? magnifyAtPoint;
         private Action<Point?> magnifiedPointSelectionAction;
+        private KeyValue keyValueForCurrentPointAction;
 
         #endregion
 
@@ -83,7 +88,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             IWindowManipulationService mainWindowManipulationService,
             List<INotifyErrors> errorNotifyingServices,
             string startKeyboardOverride = null)
-        {
+        { 
             this.audioService = audioService;
             this.calibrationService = calibrationService;
             this.dictionaryService = dictionaryService;
@@ -98,7 +103,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             this.errorNotifyingServices = errorNotifyingServices;
 
             calibrateRequest = new InteractionRequest<NotificationWithCalibrationResult>();
-            SelectionMode = SelectionModes.Key;
+            SelectionMode = SelectionModes.Keys;
 
             this.translationService = new TranslationService(new HttpClient());
 
@@ -110,6 +115,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             AttachKeyboardSupportsCollapsedDockListener(mainWindowManipulationService);
             AttachKeyboardSupportsSimulateKeyStrokesListener();
             AttachKeyboardSupportsMultiKeySelectionListener();
+            ShowCrosshair = Settings.Default.GazeIndicatorStyle == GazeIndicatorStyles.Crosshair
+                || Settings.Default.GazeIndicatorStyle == GazeIndicatorStyles.Scope;
+            ShowMonical = Settings.Default.GazeIndicatorStyle == GazeIndicatorStyles.Monical
+                || Settings.Default.GazeIndicatorStyle == GazeIndicatorStyles.Scope;
 
             // Initialise any 2D interaction handlers
             Action<float, float> leftJoystickAction = (x, y) =>
@@ -338,6 +347,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             set { SetProperty(ref showCursor, value); }
         }
 
+        public bool ShowCrosshair
+        {
+            get { return showCrosshair; }
+            set { SetProperty(ref showCrosshair, value); }
+        }
+
+        public bool ShowMonical
+        {
+            get { return showMonical; }
+            set { SetProperty(ref showMonical, value); }
+        }
+
+        public bool ShowSuggestions
+        {
+            get { return showSuggestions; }
+            set { SetProperty(ref showSuggestions, value); }
+        }
+
         public Point? MagnifyAtPoint
         {
             get { return magnifyAtPoint; }
@@ -453,46 +480,38 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 else if (File.Exists(keyboardOverride))
                 {
                     Log.Info($"Loading keyboard from requested file: {keyboardOverride}");
-                    Keyboard = new DynamicKeyboard(() => { }, keyStateService, keyboardOverride);
+                    Keyboard = new DynamicKeyboard(() =>
+                    {
+                        mainWindowManipulationService.Restore();
+                        Keyboard = new Menu(() => Keyboard = new Alpha1());
                     //TODO: consider whether back action should take you to 'normal' keyboards?
                     return;
                 }
             }
 
+            Action backaction = null;
             if (Settings.Default.ConversationOnlyMode)
             {
-                Keyboard = new ConversationAlpha1(null);
-                windowManipulationService.Maximise();
+                Settings.Default.StartupKeyboard = Enums.Keyboards.ConversationAlpha;
             }
             else if (Settings.Default.ConversationConfirmOnlyMode)
             {
-                Keyboard = new ConversationConfirm(null);
-                windowManipulationService.Maximise();
+                Settings.Default.StartupKeyboard = Enums.Keyboards.ConversationConfirm;
             }
-            else
+            else 
             {
                 switch (Settings.Default.StartupKeyboard)
                 {
                     case Enums.Keyboards.ConversationAlpha:
                     case Enums.Keyboards.ConversationConfirm:
                     case Enums.Keyboards.ConversationNumericAndSymbols:
-                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
-                            windowManipulationService, () =>
-                            {
-                                Keyboard = new Menu(() => Keyboard = new Alpha1());
-                                windowManipulationService.Restore();
-                                windowManipulationService.ResizeDockToFull();
-                            });
-                        break;
-
                     case Enums.Keyboards.Minimised:
-                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
-                            windowManipulationService, () =>
+                        backaction = () =>
                             {
-                                Keyboard = new Menu(() => Keyboard = new Alpha1());
                                 windowManipulationService.Restore();
                                 windowManipulationService.ResizeDockToFull();
-                            });
+                                Keyboard = new Menu(() => Keyboard = new Alpha1());
+                            };
                         break;
 
                     case Enums.Keyboards.CustomKeyboardFile:
@@ -501,20 +520,22 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         break;
 
                     default:
-                        SetKeyboardFromEnum(Settings.Default.StartupKeyboard,
-                            windowManipulationService, () =>
+                        backaction = () =>
                             {
                                 Keyboard = new Alpha1();
-                            });
+                            };
                         break;
                 }
             }
+            SetKeyboardFromEnum(Settings.Default.StartupKeyboard, windowManipulationService, backaction);
         }
 
         private void SetKeyboardFromEnum(Enums.Keyboards keyboardEnum,
                                          IWindowManipulationService windowManipulationService,
                                          Action backAction)
         {
+            if (Keyboard is Minimised && keyboardEnum == Enums.Keyboards.Minimised)
+                return;
             // Set up the keyboard
             switch (keyboardEnum)
             {
@@ -567,7 +588,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case Enums.Keyboards.Minimised:
-                    Keyboard = new Minimised(backAction);
+                    mainWindowManipulationService.Minimise();
+                    var currentKeyboard = Keyboard; 
+                    Keyboard = new Minimised(() =>
+                    {
+                        mainWindowManipulationService.Restore();
+                        Keyboard = currentKeyboard != null ? currentKeyboard : new Menu(() => Keyboard = new Alpha1());
+                    });
                     break;
 
                 case Enums.Keyboards.Mouse:
@@ -613,7 +640,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
 
             // Set the window appropriately according to keyboard
-            switch (Settings.Default.StartupKeyboard)
+            switch (keyboardEnum)
             {
                 case Enums.Keyboards.ConversationAlpha:
                 case Enums.Keyboards.ConversationConfirm:
@@ -622,7 +649,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case Enums.Keyboards.Minimised:
-                    windowManipulationService.Minimise();
                     break;
 
                 case Enums.Keyboards.Mouse:
@@ -810,11 +836,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public bool RaiseToastNotification(string title, string content, NotificationTypes notificationType, Action callback)
         {
             bool notificationRaised = false;
-
-            // Disabling resize handles temporarily prevents mouse capture by the non-client area around the main keyboard
-            this.mainWindowManipulationService.DisableResize();
-            callback += () => this.mainWindowManipulationService.SetResizeState();
-
+            
             if (ToastNotification != null)
             {
                 ToastNotification(this, new NotificationEventArgs(title, content, notificationType, callback));

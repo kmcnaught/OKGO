@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 
 using System;
 using System.Collections.Generic;
@@ -28,11 +28,9 @@ using log4net.Appender;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
 using Microsoft.Win32;
-using NBug.Core.UI;
 using Octokit;
 using presage;
 using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
-using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using WindowsRecipes.TaskbarSingleInstance;
 using Application = System.Windows.Application;
 
@@ -173,7 +171,7 @@ namespace JuliusSweetland.OptiKey.Chat
                 //Show the main window
                 mainWindow.Show();
 
-                if (Settings.Default.LookToScrollEnabled && Settings.Default.LookToScrollShowOverlayWindow)
+                if (Settings.Default.LookToScrollShowOverlayWindow)
                 {
                     // Create the overlay window, but don't show it yet. It'll make itself visible when the conditions are right.
                     // FIXME reinstate LookToScroll overlay

@@ -1110,7 +1110,7 @@ LK (سکرول کو تالا لگانے کی کلید)</value>
     <value>نظر منتظم TheEyeTribe کی پیمانہ بندی نہیں کی گئی ہے۔ پیمانہ بندی مکمل ہونے تک کوئی ڈیٹا موصول نہیں کیا جا سکے گا</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>پیمانہ بندی کرنا ممکن نہیں کیونکہ پروگرامی سہارا EyeX engine دستیاب نہیں ہے</value>
+    <value>پیمانہ بندی کرنا ممکن نہیں کیونکہ پروگرامی سہارا EyeTribe software  دستیاب نہیں ہے</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>تمثیل/خیال بندی (Theme) :</value>
@@ -1131,10 +1131,10 @@ LK (سکرول کو تالا لگانے کی کلید)</value>
     <value>پیمانہ بندی کا عمَل  مکمل، یا ممکنہ طور پر منسوخ کر دیا، لیکن سب کچھ دوبارہ کام کر رہا ہے!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>بینائی کا انجن Tobii EyeX نہیں مل سکا. براہ مہربانی بینائی کا انجن EyeX نصب کریں اور دوبارہ کوشش کریں.</value>
+    <value>بینائی کا انجن Tobii service نہیں مل سکا. براہ مہربانی بینائی کا انجن Tobii software نصب کریں اور دوبارہ کوشش کریں.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>بینائی کا انجن Tobii EyeX نہیں چل رہا ہے. براہ مہربانی بینائی کا انجن EyeX شروع کریں اور دوبارہ کوشش کریں.</value>
+    <value>بینائی کا انجن Tobii service نہیں چل رہا ہے. براہ مہربانی بینائی کا انجن service شروع کریں اور دوبارہ کوشش کریں.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>ٹوبی Tobii کمپیوٹری آنکھ چلو</value>
@@ -2340,7 +2340,7 @@ Française
       <value>یہ اوپن سورس آنکھ جیسے ویب کیمز اور videocameras بند شیلف کے اجزاء کا استعمال کرتے ہوئے سے باخبر رہنے کے کے لئے ایک فریم ورک ہے جو آئٹییو Gaze کی ٹریکنگ لائبریری، کی ضرورت ہے.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>آپ Irisbond جوڑی آنکھ ٹریکر کے ساتھ Optikey استعمال کرنے کا ارادہ ہو تو براہ مہربانی آپ Irisbond جوڑی ڈرائیوروں نصب ہے براہ کرم یقینی بنائیں. یہ https://www.irisbond.com/products/downloads سے ڈاؤن لوڈ کیا جا سکتا ہے.</value>
+      <value>آپ Irisbond جوڑی آنکھ ٹریکر کے ساتھ Optikey استعمال کرنے کا ارادہ ہو تو براہ مہربانی آپ Irisbond جوڑی ڈرائیوروں نصب ہے براہ کرم یقینی بنائیں. یہ https://www.irisbond.com/en/producto/irisbond-duo-2 سے ڈاؤن لوڈ کیا جا سکتا ہے.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>اس موڈ میں، Optikey ایک آنکھ ٹریکر سے براہ راست بات کرنے کی بجائے ان پٹ کے طور پر ماؤس کرسر کا استعمال کریں گے. تم یہ چاہتے ہو سکتا ہے آپ Optikey باہر کی جانچ کر رہے ہیں، یا اگر آپ اس طرح کے طور پر ایک سر ماؤس یا کسی بھی آنکھ کی اس فہرست میں نہیں ٹریکر ایک متبادل ان پٹ ڈیوائس کے ساتھ اس کا استعمال کرنا چاہتے ہیں.</value>

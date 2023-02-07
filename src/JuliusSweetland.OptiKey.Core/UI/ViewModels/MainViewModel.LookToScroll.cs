@@ -1,14 +1,17 @@
-﻿// Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Rights Reserved
-// based on GPL3 code Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
-
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
+using System.Reactive;
 using System.Runtime.InteropServices;
-using System.Security.Permissions;
-using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Native;
+using System.ComponentModel;
+using System.Security.Permissions;
 using JuliusSweetland.OptiKey.Native.Common.Enums;
 using JuliusSweetland.OptiKey.Native.Common.Static;
 using JuliusSweetland.OptiKey.Native.Common.Structs;
@@ -19,12 +22,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
     partial class MainViewModel 
     {
         // Initialised in ctr
+        private bool lookToScrolActive;
         public Look2DInteractionHandler scrollInteractionHandler;
 
+
+        private double opacity = 1;
+        public double Opacity
+        {
+            get { return opacity; }
+            private set { SetProperty(ref opacity, value); }
+        }
 
         private void ToggleLookToScroll()
         {
             //TODO: needs reinstating
+            lookToScrollBoundsWhenActivated = Settings.Default.LookToScrollBounds;
+
+                // Turn off any locked (continuous) mouse actions
+                ResetAndCleanupAfterMouseAction();
+                SetCurrentMouseActionKey(null);
+
             //scrollInteractionHandler.ToggleActive();
         }
 
@@ -32,12 +49,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         private void UpdateJoystickSensitivity(Axes axis, double multiplier)
         {
-            // Apply changes to settings for currently-selected joystick, e.g. Left / Right / Legacy
+                    // Lock the bounds key down. This signals that the chosen target should be re-used during
 
-            var selectedKeyValue = GetHeldDownJoystickKeyValues().FirstOrDefault();
+                else if (!success)
+                    keyStateService.KeyDownStates[KeyValues.LookToScrollBoundsKey].Value = KeyDownStates.Up;
             if (selectedKeyValue == null)
             {
-                Log.Error("Attempting sensitivity adjustment without any joysticks enabled");
+                        Log.Warn("Can't choose OptiKey main window as the target!");
+                // Exclude the shell window.
+                if (hWnd == shellWindow)
                 return;
             }
     
@@ -57,9 +77,23 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.LeftJoystick:
                     if (axis == Axes.AxisX)
                         Settings.Default.LeftStickSensitivityX *= multiplier;
+
+            SelectionMode = SelectionModes.Keys;
                     else
-                        Settings.Default.LeftStickSensitivityY *= multiplier;
+            Settings.Default.LookToScrollSpeed = after;
+                Opacity = (4 * ((position - centre).Length - activeLookToScrollDeadzone.Height / 2)
+                    / activeLookToScrollBounds.Height).Clamp(0.1, 1);
+
+                double interval = (thisUpdate - lookToScrollLastUpdate.Value).TotalSeconds;
+
+            if (lookToScrolActive || active)
+            lookToScrolActive = active;
                     break;
+            }
+
+            if (position.ToKeyValue(pointToKeyValueMap) != null)
+            {
+                return false;
                 case FunctionKeys.RightJoystick:
                     if (axis == Axes.AxisX)
                         Settings.Default.RightStickSensitivityX *= multiplier;
@@ -117,7 +151,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 if (keyVal.FunctionKey != null)
                 {
-                    if (joystickKeys.Contains(keyVal.FunctionKey.Value))
+            Tuple<decimal, decimal> baseSpeedAndAcceleration = GetCurrentBaseSpeedAndAcceleration();
+                ? 0.3 : Settings.Default.LookToScrollSpeed == LookToScrollSpeeds.Medium
+            double baseSpeed = (double)baseSpeedAndAcceleration.Item1;
+            double acceleration = (double)baseSpeedAndAcceleration.Item2;
+                ? 0.3 : Settings.Default.LookToScrollSpeed == LookToScrollSpeeds.Medium
+                ? 0.1 : 0.03;
                     {
                         keyStateService.KeyDownStates[keyVal].Value = KeyDownStates.Up;
                         JoystickHandlers[keyVal.FunctionKey.Value].Disable();
@@ -138,25 +177,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             // - Update this one appropriately
             // - Make sure any conflicting ones are disabled
 
-            List<FunctionKeys> joystickKeys = JoystickHandlers.Keys.ToList();
-            foreach (var keyVal in keyStateService.KeyDownStates.Keys)
-            {
-                if (keyVal.FunctionKey != null)
+        private Tuple<decimal, decimal> GetCurrentBaseSpeedAndAcceleration()
+            switch (Settings.Default.LookToScrollSpeed)
+                case LookToScrollSpeeds.Slow:
                 {
-                    // If it's this one, toggle it and update the state??
-                    if (keyVal == requestedKeyValue)
-                    {
-                        // Set joystick state according to button state
+            // Ensure scroll amount is a multiple of the scroll increment.
+            int increment = Settings.Default.LookToScrollIncrement;
+                // Looks like a no-op, but note the integer division!
                         if (keyStateService.KeyDownStates[requestedKeyValue].Value == KeyDownStates.Up)
-                            JoystickHandlers[requestedFunctionKey].Disable();
-                        else
-                            JoystickHandlers[requestedFunctionKey].Enable(requestedKeyValue);
-                    }
-                    else if (joystickKeys.Contains(keyVal.FunctionKey.Value))
-                    {
-                        // Any other key which should be mutually-exclusive. 
-                        // Disable button and joystick 
+            if (Settings.Default.LookToScrollDirectionInverted)
+            {
+            if (Settings.Default.LookToScrollSuspendBeforeChoosingPointForMouse)
+                // Make sure look to scroll is currently active. Otherwise, there's nothing to suspend or resume.
+                    // Force scrolling to stop by releasing the LookToScrollActiveKey.
+                    // If configured to resume afterwards, just reapply the original state of the key so the user doesn't have 
+                    // to rechoose the bounds. Otherwise, the user will have to press the key themselves and potentially rechoose 
+                    // the bounds (depending on the state of the bounds key). 
                         if (keyStateService.KeyDownStates[keyVal].Value == KeyDownStates.Down ||
+                        resumeAction = () =>
+                        //Give time for click to process before resuming
+                        await Task.Delay(200);
+
+                        if (Settings.Default.LookToScrollCentreMouseWhenActivated)
+                        {
+                            CentreMouseInsideLookToScrollDeadzone();
+                        }
+
                             keyStateService.KeyDownStates[keyVal].Value == KeyDownStates.LockedDown)
                         {
                             keyStateService.KeyDownStates[keyVal].Value = KeyDownStates.Up;
@@ -165,7 +211,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         }
                     }
                 }
-            }
         }
     }
 }

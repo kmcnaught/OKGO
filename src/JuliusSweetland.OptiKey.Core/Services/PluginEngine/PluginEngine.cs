@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,7 +37,13 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
                 List<Plugin> plugins = ValidateAndCreatePlugins(file);
                 foreach (Plugin plugin in plugins)
                 {
-                    availablePlugins.Add(plugin.Id, plugin);
+                    if (availablePlugins.ContainsKey(plugin.Id))
+                    {
+                        Log.ErrorFormat("Cannot load plugin ID: '{0}' from {1} due to duplicate name.", plugin.Id, pathName);
+                    }
+                    else { 
+                        availablePlugins.Add(plugin.Id, plugin);
+                    }
                 }
             }
         }
@@ -74,9 +80,14 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
             plugin.Type.InvokeMember(key.Method, BindingFlags.InvokeMethod, null, plugin.Instance, methodArgs?.ToArray());
         }
 
-        public static void RunDynamicPlugin(Dictionary<string, string> context, DynamicPlugin key)
+        public static bool IsPluginAvailable(string key)
         {
-            Plugin plugin = availablePlugins[key.Name];
+            return availablePlugins.ContainsKey(key);
+        }
+
+        public static void RunDynamicPlugin(Dictionary<string, string> context, KeyCommand key)
+        {
+            Plugin plugin = availablePlugins[key.Value];
             List<string> methodArgs = null;
             if (key.Argument.Any())
             {
@@ -149,6 +160,10 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
                         }
                     }
                 }
+                else
+                {
+                    Log.ErrorFormat("Error handling library: [{0}]. No manifest found.", file);                    
+                }
             }
             catch (Exception e)
             {
@@ -161,7 +176,7 @@ namespace JuliusSweetland.OptiKey.Services.PluginEngine
 
         private static bool FindMetadataResource(string resource)
         {
-            return resource.StartsWith("JuliusSweetland.OptiKey.") && resource.EndsWith("metadata.xml");
+            return resource.ToLower().StartsWith("juliussweetland.optikey.") && resource.EndsWith("metadata.xml");
         }
 
         private static string GetArgumentValue(Dictionary<String, String> context, string value)

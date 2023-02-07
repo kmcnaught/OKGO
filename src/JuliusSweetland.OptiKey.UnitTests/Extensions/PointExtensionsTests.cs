@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System.Collections.Generic;
 using System.Windows;
 using JuliusSweetland.OptiKey.Extensions;
@@ -27,8 +27,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.Extensions
             };
 
             var centrePoint = points.CalculateCentrePoint();
-            Assert.AreEqual(6, centrePoint.X);
-            Assert.AreEqual(6, centrePoint.Y);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(centrePoint.X, Is.EqualTo(6));
+                Assert.That(centrePoint.Y, Is.EqualTo(6));
+            });            
         }
 
     }

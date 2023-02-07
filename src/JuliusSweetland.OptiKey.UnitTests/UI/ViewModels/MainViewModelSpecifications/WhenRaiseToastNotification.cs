@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Enums;
 using NUnit.Framework;
 using System;
@@ -29,7 +29,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenToastNotificationEventHandlerShouldBeTriggered()
         {
-            Assert.IsTrue(IsToastNotificationEventHandlerCalled);
+            Assert.That(IsToastNotificationEventHandlerCalled, Is.True);
         }
     }
 }

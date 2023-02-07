@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using log4net;
 using System;
 using System.Collections.Generic;
@@ -38,7 +38,7 @@ namespace JuliusSweetland.OptiKey.Models
         #endregion
 
         public List<KeyboardInfo> keyboards;
-        
+
         public DynamicKeyboardFolder(String filePath)
         {
             if (String.IsNullOrEmpty(filePath))

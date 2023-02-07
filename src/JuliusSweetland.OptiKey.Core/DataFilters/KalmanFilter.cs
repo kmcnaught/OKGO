@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Properties;
 using System;
 using System.Windows;
@@ -58,6 +58,8 @@ namespace JuliusSweetland.OptiKey.DataFilters
 
             // == KALMAN FILTER:  Standard update equations from the KF framework - these shouldn't be changed == //
             EstimationNoise += currentProcessNoise;
+            EstimationNoise = Math.Min(currentProcessNoise, 1e100); // Prevent saturation to Inf
+
             Gain = (EstimationNoise) / (EstimationNoise + MeasurementNoise);
             EstimationNoise = (1.0 - Gain) * EstimationNoise;
             EstimatedPoint += (measurement - EstimatedPoint) * Gain;

@@ -1,4 +1,4 @@
-// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Services;
@@ -247,6 +247,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             set { SetProperty(ref autoCapitalise, value); }
         }
 
+        private bool limitBackOne;
+        public bool LimitBackOne
+        {
+            get { return limitBackOne; }
+            set { SetProperty(ref limitBackOne, value); }
+        }
+
         private bool suppressAutoCapitaliseIntelligently;
         public bool SuppressAutoCapitaliseIntelligently
         {
@@ -318,6 +325,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             SuggestWords = Settings.Default.SuggestWords;
             MultiKeySelectionEnabled = Settings.Default.MultiKeySelectionEnabled;
             MultiKeySelectionMaxDictionaryMatches = Settings.Default.MaxDictionaryMatchesOrSuggestions;
+            LimitBackOne = Settings.Default.LimitBackOne;
         }
 
         public void ApplyChanges()
@@ -345,6 +353,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
             Settings.Default.SuggestWords = SuggestWords;
             Settings.Default.MultiKeySelectionEnabled = MultiKeySelectionEnabled;
             Settings.Default.MaxDictionaryMatchesOrSuggestions = MultiKeySelectionMaxDictionaryMatches;
+            Settings.Default.LimitBackOne = LimitBackOne;
 
             if (reloadDictionary)
             {

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Enums;
 using Moq;
 using NUnit.Framework;
@@ -14,8 +14,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         {
             base.Arrange();
 
-            OriginalValue = SelectionModes.Key;
-            NewValue = SelectionModes.Point;
+            OriginalValue = SelectionModes.Keys;
+            NewValue = SelectionModes.SinglePoint;
 
             MainViewModel.SelectionMode = OriginalValue;
             InputService.ResetCalls();
@@ -55,7 +55,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.MainViewModelSpecifica
         [Test]
         public void ThenSelectionProgressShouldBeReset()
         {
-            Assert.IsNull(MainViewModel.PointSelectionProgress);
+            Assert.That(MainViewModel.PointSelectionProgress, Is.Null);
             KeyStateService.VerifyGet(s => s.KeySelectionProgress, Times.Once());
         }
 

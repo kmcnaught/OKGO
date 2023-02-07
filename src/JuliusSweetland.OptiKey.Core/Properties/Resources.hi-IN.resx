@@ -1088,7 +1088,7 @@
     <value>TheEyeTribe को कैलिब्रेट नहीं किया गया है। अंशांकन पूरा होने तक कोई डेटा प्राप्त नहीं होगा।</value>
   </data>
 	<data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>अंशांकन का प्रयास करने में असमर्थ क्योंकि कोई EyeX इंजन उपलब्ध नहीं है।</value>
+    <value>अंशांकन का प्रयास करने में असमर्थ क्योंकि कोई EyeTribe इंजन उपलब्ध नहीं है।</value>
   </data>
 	<data name="THEME_LABEL" xml:space="preserve">
     <value>थीम</value>
@@ -1106,10 +1106,10 @@
     <value>अंशांकन पूरा हो गया, या संभवतः रद्द कर दिया गया, लेकिन सब कुछ फिर से काम कर रहा है!</value>
   </data>
 	<data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX इंजन नहीं मिल सकता है। कृपया EyeX Engine इंस्टॉल करें और पुनः प्रयास करें।</value>
+    <value>Tobii इंजन नहीं मिल सकता है। कृपया Tobii software  इंस्टॉल करें और पुनः प्रयास करें।</value>
   </data>
 	<data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX इंजन नहीं चल रहा है। कृपया EyeX इंजन शुरू करें और फिर से प्रयास करें</value>
+    <value>Tobii service इंजन नहीं चल रहा है। कृपया Tobii service इंजन शुरू करें और फिर से प्रयास करें</value>
   </data>
 	<data name="TONE_SOUND_1" xml:space="preserve">
     <value>टोन 1</value>
@@ -2030,7 +2030,7 @@
     <value>इसके लिए ITU Gaze ट्रैकिंग लाइब्रेरी की आवश्यकता होती है, जो वेबकैम और वीडियोकैमरा जैसे ऑफ-द-शेल्फ घटकों का उपयोग करके ओपन सोर्स आई ट्रैकिंग के लिए एक ढांचा है।</value>
   </data>
 	<data name="IRISBOND_DUO_INFO" xml:space="preserve">
-    <value>यदि आप Irisbond Duo आई ट्रैकर के साथ Optikey का उपयोग करने की योजना बनाते हैं, तो कृपया सुनिश्चित करें कि आपके पास Irisbond Duo ड्राइवर स्थापित हैं। इन्हें https://www.irisbond.com/products/downloads से डाउनलोड किया जा सकता है।</value>
+    <value>यदि आप Irisbond Duo आई ट्रैकर के साथ Optikey का उपयोग करने की योजना बनाते हैं, तो कृपया सुनिश्चित करें कि आपके पास Irisbond Duo ड्राइवर स्थापित हैं। इन्हें https://www.irisbond.com/en/producto/irisbond-duo-2 से डाउनलोड किया जा सकता है।</value>
   </data>
 	<data name="MOUSE_POSITION_INFO" xml:space="preserve">
     <value>इस मोड में, Optikey माउस कर्सर को आई ट्रैकर से सीधे बात करने के बजाय इनपुट के रूप में उपयोग करेगा। यदि आप Optikey का परीक्षण कर रहे हैं, या यदि आप इसे वैकल्पिक इनपुट डिवाइस जैसे हेड माउस या किसी आई ट्रैकर के साथ प्रयोग करना चाहते हैं, तो आप यह नहीं चाह सकते हैं।</value>

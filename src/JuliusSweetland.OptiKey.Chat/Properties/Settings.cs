@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 
 using JuliusSweetland.OptiKey.Enums;
 
@@ -114,7 +114,7 @@ namespace JuliusSweetland.OptiKey.Chat.Properties
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public override bool LookToScrollEnabled
+        public override bool LookToScrollIsDefault
         {
             get { return false; }
             set { /* no-op */ }

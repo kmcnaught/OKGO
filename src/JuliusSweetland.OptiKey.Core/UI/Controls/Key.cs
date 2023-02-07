@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.ComponentModel;
 using System.Globalization;
@@ -388,6 +388,32 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(BorderColourOverrideProperty, value); }
         }
 
+        public static readonly DependencyProperty BorderThicknessOverrideProperty =
+            DependencyProperty.Register("BorderThicknessOverrideProperty", typeof(int), typeof(Key), new PropertyMetadata(defaultValue:1));
+
+        public int BorderThicknessOverride
+        {
+            get { return (int)GetValue(BorderThicknessOverrideProperty); }
+            set { SetValue(BorderThicknessOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty CornerRadiusOverrideProperty =
+            DependencyProperty.Register("CornerRadiusOverrideProperty", typeof(int), typeof(Key), new PropertyMetadata(defaultValue: 0));
+
+        public int CornerRadiusOverride
+        {
+            get { return (int)GetValue(CornerRadiusOverrideProperty); }
+            set { SetValue(CornerRadiusOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty MarginOverrideProperty =
+            DependencyProperty.Register("MarginOverrideProperty", typeof(int), typeof(Key), new PropertyMetadata(defaultValue: 0));
+
+        public int MarginOverride
+        {
+            get { return (int)GetValue(MarginOverrideProperty); }
+            set { SetValue(MarginOverrideProperty, value); }
+        }
 
         public static readonly DependencyProperty DisabledBackgroundColourOverrideProperty =
             DependencyProperty.Register("DisabledBackgroundColourOverride", typeof(Brush), typeof(Key), new PropertyMetadata(default(Brush)));

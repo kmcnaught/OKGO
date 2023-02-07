@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -157,7 +157,7 @@ namespace JuliusSweetland.OptiKey.Services
                         if (backOneCount == 1)
                         {
                             var inProgressWord = Text.InProgressWord(Text.Length);
-                            if (inProgressWord != null)
+                            if (inProgressWord != null && !Settings.Default.LimitBackOne)
                             {
                                 //Attempt to break-apart/decompose in-progress word using normalisation
                                 var decomposedInProgressWord = inProgressWord.Decompose();

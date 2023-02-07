@@ -161,6 +161,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All DirectInput controllers.
+        /// </summary>
+        public static string ALL_DIRECTINPUT_CONTROLLERS {
+            get {
+                return ResourceManager.GetString("ALL_DIRECTINPUT_CONTROLLERS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Allow multiple instances of this Optikey app to run simultaneously:.
         /// </summary>
         public static string ALLOW_MULTIPLE_INSTANCES {
@@ -772,6 +781,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string COMMUNIKATE_TOPPAGE_LOCATION_LABEL {
             get {
                 return ResourceManager.GetString("COMMUNIKATE_TOPPAGE_LOCATION_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter multiple values separated by commas to speed up/slow down subsequent selections, for example: 1250,750,450,250.
+        /// </summary>
+        public static string COMPLETION_TIMES_HINT {
+            get {
+                return ResourceManager.GetString("COMPLETION_TIMES_HINT", resourceCulture);
             }
         }
         
@@ -1580,6 +1598,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Clipboard could not be cleared. This typically occurs when the Clipboard is being used by another process..
+        /// </summary>
+        public static string ERROR_ACCESSING_CLIPBOARD {
+            get {
+                return ResourceManager.GetString("ERROR_ACCESSING_CLIPBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error has occured during the translation of text.
         /// </summary>
         public static string ERROR_DURING_TRANSLATION {
@@ -2200,6 +2227,51 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (connected).
+        /// </summary>
+        public static string GAMEPAD_CONNECTED_IN_PARENTHESES {
+            get {
+                return ResourceManager.GetString("GAMEPAD_CONNECTED_IN_PARENTHESES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gamepad button (DirectInput).
+        /// </summary>
+        public static string GAMEPAD_DIRECTINPUT_BUTTON {
+            get {
+                return ResourceManager.GetString("GAMEPAD_DIRECTINPUT_BUTTON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gamepad button (XInput).
+        /// </summary>
+        public static string GAMEPAD_XINPUT_BUTTON {
+            get {
+                return ResourceManager.GetString("GAMEPAD_XINPUT_BUTTON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gaze Indicator Size.
+        /// </summary>
+        public static string GAZE_INDICATOR_SIZE {
+            get {
+                return ResourceManager.GetString("GAZE_INDICATOR_SIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gaze Indicator Style.
+        /// </summary>
+        public static string GAZE_INDICATOR_STYLE {
+            get {
+                return ResourceManager.GetString("GAZE_INDICATOR_STYLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Application smoothing level:.
         /// </summary>
         public static string GAZE_SMOOTHING_LEVEL {
@@ -2398,7 +2470,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Incomplete key fixation time to live (ms):.
+        ///   Looks up a localized string similar to Time before incomplete key fixations expire (ms):.
         /// </summary>
         public static string INCOMPLETE_KEY_FIXATION_TTL_LABEL {
             get {
@@ -2498,7 +2570,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you plan to use Optikey with the Irisbond Duo eye tracker then please make sure you have the Irisbond Duo drivers installed. These can be downloaded from https://www.irisbond.com/products/downloads..
+        ///   Looks up a localized string similar to If you plan to use Optikey with the Irisbond Duo eye tracker then please make sure you have the Irisbond Duo drivers installed. These can be downloaded from https://www.irisbond.com/en/producto/irisbond-duo-2..
         /// </summary>
         public static string IRISBOND_DUO_INFO {
             get {
@@ -2507,7 +2579,25 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Irisbond Duo tracker could not be started..
+        ///   Looks up a localized string similar to Irisbond Hiru.
+        /// </summary>
+        public static string IRISBOND_HIRU {
+            get {
+                return ResourceManager.GetString("IRISBOND_HIRU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you plan to use Optikey with the Irisbond Hiru eye tracker then please make sure you have the Irisbond Hiru drivers installed. These can be downloaded from https://www.irisbond.com/en/producto/irisbond-duo-2..
+        /// </summary>
+        public static string IRISBOND_HIRU_INFO {
+            get {
+                return ResourceManager.GetString("IRISBOND_HIRU_INFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Irisbond tracker could not be started..
         /// </summary>
         public static string IRISBOND_TRACKER_COULD_NOT_BE_STARTED {
             get {
@@ -2516,7 +2606,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Irisbond Duo tracker cannot be found. Please check the tracker&apos;s connection and try again..
+        ///   Looks up a localized string similar to Irisbond tracker cannot be found. Please check the tracker&apos;s connection and try again..
         /// </summary>
         public static string IRISBOND_TRACKER_NOT_FOUND {
             get {
@@ -2741,7 +2831,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Key fixation time to complete (ms):.
+        ///   Looks up a localized string similar to Time to complete and repeat a key (ms):.
         /// </summary>
         public static string KEY_FIXATION_TIME_TO_COMPLETE_LABEL {
             get {
@@ -2764,6 +2854,33 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string KEY_FIXATION_TIME_TO_LOCK_ON_LABEL {
             get {
                 return ResourceManager.GetString("KEY_FIXATION_TIME_TO_LOCK_ON_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key selection gamepad button:.
+        /// </summary>
+        public static string KEY_SELECTION_GAMEPAD_BUTTON_LABEL {
+            get {
+                return ResourceManager.GetString("KEY_SELECTION_GAMEPAD_BUTTON_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key selection gamepad controller:.
+        /// </summary>
+        public static string KEY_SELECTION_GAMEPAD_CONTROLLER_LABEL {
+            get {
+                return ResourceManager.GetString("KEY_SELECTION_GAMEPAD_CONTROLLER_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key selection gamepad controller:.
+        /// </summary>
+        public static string KEY_SELECTION_GAMEPAD_SLOT_LABEL {
+            get {
+                return ResourceManager.GetString("KEY_SELECTION_GAMEPAD_SLOT_LABEL", resourceCulture);
             }
         }
         
@@ -3028,6 +3145,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Limit &quot;BackOne&quot; deletion to a single character.
+        /// </summary>
+        public static string LIMIT_BACKONE {
+            get {
+                return ResourceManager.GetString("LIMIT_BACKONE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Load dictionary.
         /// </summary>
         public static string LOAD_DICTIONARY {
@@ -3064,42 +3190,6 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;Fast&apos; acceleration (cps per pixel from deadzone):.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &apos;Medium&apos; acceleration (cps per pixel from deadzone):.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &apos;Slow&apos; acceleration (cps per pixel from deadzone):.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TOGGLE SCROLLING.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Look to
         ///Scroll.
         /// </summary>
@@ -3110,101 +3200,25 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;Fast&apos; base speed (in cps or &quot;clicks&quot; per second):.
+        ///   Looks up a localized string similar to Look to scroll speed:.
         /// </summary>
-        public static string LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL {
+        public static string LOOK_TO_SCROLL_BASE_SPEED_LABEL {
             get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL", resourceCulture);
+                return ResourceManager.GetString("LOOK_TO_SCROLL_BASE_SPEED_LABEL", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;Medium&apos; base speed (in cps or &quot;clicks&quot; per second):.
+        ///   Looks up a localized string similar to Scrolling point and boundary:.
         /// </summary>
-        public static string LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL {
+        public static string LOOK_TO_SCROLL_BOUNDS_LABEL {
             get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL", resourceCulture);
+                return ResourceManager.GetString("LOOK_TO_SCROLL_BOUNDS_LABEL", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;Slow&apos; base speed (in cps or &quot;clicks&quot; per second):.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to NEXT BOUNDS.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Custom
-        ///Region.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Screen
-        ///Centred.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Screen at
-        ///Point.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Window
-        ///Region.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Window.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to After choosing screen point, bring any window there to the front:.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Before scrolling within window, bring it to the front:.
+        ///   Looks up a localized string similar to Bring window to front before scrolling:.
         /// </summary>
         public static string LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL {
             get {
@@ -3213,7 +3227,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Before scrolling, move mouse to centre of deadzone:.
+        ///   Looks up a localized string similar to Move mouse to scroll origin when activated:.
         /// </summary>
         public static string LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL {
             get {
@@ -3231,16 +3245,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invert scrolling direction:.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use alternative &quot;look to scroll&quot; method for scrolling:.
+        ///   Looks up a localized string similar to Look To Scroll is the default scrolling method:.
         /// </summary>
         public static string LOOK_TO_SCROLL_ENABLED_LABEL {
             get {
@@ -3249,7 +3254,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Horizontal deadzone (in pixels):.
+        ///   Looks up a localized string similar to Deadzone Width (in pixels):.
         /// </summary>
         public static string LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL {
             get {
@@ -3258,108 +3263,25 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cycle through these scroll increments:.
+        ///   Looks up a localized string similar to Directional scrolling mode:.
         /// </summary>
-        public static string LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL {
+        public static string LOOK_TO_SCROLL_MODE_LABEL {
             get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL", resourceCulture);
+                return ResourceManager.GetString("LOOK_TO_SCROLL_MODE_LABEL", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scroll by {0} wheel unit:
-        ///(120 wheel units = 1 click)|Scroll by {0} wheel units:
-        ///(120 wheel units = 1 click).
+        ///   Looks up a localized string similar to Scroll boundary border color:.
         /// </summary>
-        public static string LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT {
+        public static string LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOR_LABEL {
             get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT", resourceCulture);
+                return ResourceManager.GetString("LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOR_LABEL", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to NEXT INCREMENT.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to LOOK TO SCROLL KEYS:.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_KEY_GROUP {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_KEY_GROUP", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lock down bounds key to preserve chosen point, window, or region:.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to NEXT MODE.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cross.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Free.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Horizontal.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vertical.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Colour of scroll bounds drawn on the overlay:.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Thickness of scroll bounds drawn on the overlay:.
+        ///   Looks up a localized string similar to Scroll boundary border thickness (0-None):.
         /// </summary>
         public static string LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL {
             get {
@@ -3368,16 +3290,16 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Colour of deadzone guides drawn on the overlay:.
+        ///   Looks up a localized string similar to Deadzone border color:.
         /// </summary>
-        public static string LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL {
+        public static string LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOR_LABEL {
             get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL", resourceCulture);
+                return ResourceManager.GetString("LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOR_LABEL", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thickness of deadzone guides drawn on the overlay:.
+        ///   Looks up a localized string similar to Deadzone border thickness (0-None):.
         /// </summary>
         public static string LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL {
             get {
@@ -3386,7 +3308,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatically resume scrolling afterwards:.
+        ///   Looks up a localized string similar to Automatically resume scrolling after performing mouse actions:.
         /// </summary>
         public static string LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL {
             get {
@@ -3395,61 +3317,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show overlay window (requires restart):.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to NEXT SPEED.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fast.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Medium.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Slow.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stop scrolling when choosing where to move, click or drag the mouse:.
-        /// </summary>
-        public static string LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL {
-            get {
-                return ResourceManager.GetString("LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vertical deadzone (in pixels):.
+        ///   Looks up a localized string similar to Deadzone Height (in pixels):.
         /// </summary>
         public static string LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL {
             get {
@@ -4864,6 +4732,33 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Point selection gamepad button:.
+        /// </summary>
+        public static string POINT_SELECTION_GAMEPAD_BUTTON_LABEL {
+            get {
+                return ResourceManager.GetString("POINT_SELECTION_GAMEPAD_BUTTON_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Point selection gamepad controller.
+        /// </summary>
+        public static string POINT_SELECTION_GAMEPAD_CONTROLLER_LABEL {
+            get {
+                return ResourceManager.GetString("POINT_SELECTION_GAMEPAD_CONTROLLER_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Point selection gamepad controller:.
+        /// </summary>
+        public static string POINT_SELECTION_GAMEPAD_SLOT_LABEL {
+            get {
+                return ResourceManager.GetString("POINT_SELECTION_GAMEPAD_SLOT_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Point selection keyboard key:.
         /// </summary>
         public static string POINT_SELECTION_KEYBOARD_KEY_LABEL {
@@ -6059,6 +5954,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Suppress warning when gaze is missing during trigger event.
+        /// </summary>
+        public static string SUPPRESS_TRIGGER_WARNING {
+            get {
+                return ResourceManager.GetString("SUPPRESS_TRIGGER_WARNING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TAB.
         /// </summary>
         public static string TAB {
@@ -6095,7 +5999,7 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to attempt a calibration as no EyeX engine is available..
+        ///   Looks up a localized string similar to Unable to attempt a calibration as no EyeTribe software is available..
         /// </summary>
         public static string THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE {
             get {
@@ -6208,6 +6112,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         public static string TOBII_EYEX_INFO {
             get {
                 return ResourceManager.GetString("TOBII_EYEX_INFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tobii PCEye 5.
+        /// </summary>
+        public static string TOBII_PCEYE_5 {
+            get {
+                return ResourceManager.GetString("TOBII_PCEYE_5", resourceCulture);
             }
         }
         

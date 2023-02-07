@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -249,6 +249,7 @@ namespace JuliusSweetland.OptiKey.UI.Windows
             if (MessageBox.Show(Properties.Resources.QUIT_MESSAGE, Properties.Resources.QUIT, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 Settings.Default.CleanShutdown = true;
+                Settings.Default.Save();
                 Application.Current.Shutdown();
             }
         }

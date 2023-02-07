@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Reactive.Linq;
 using System.Windows.Forms;
@@ -91,7 +91,10 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                         .DistinctUntilChanged(signal => signal.Signal) //Combining latest will output a trigger signal for every change in BOTH sequences - only output when the trigger signal changes
                         .Where(_ => State == RunningStates.Running)
                         .Publish()
-                        .RefCount();
+                        .RefCount()
+                        .Finally(() => {
+                            sequence = null;
+                        });
                 }
 
                 return sequence;

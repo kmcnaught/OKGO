@@ -474,7 +474,7 @@ UP</value>
     <value>Horizontal fill (as % of screen):</value>
   </data>
   <data name="INCOMPLETE_KEY_FIXATION_TTL_LABEL" xml:space="preserve">
-    <value>Incomplete key fixation time to live (ms):</value>
+    <value>Time before incomplete key fixations expire (ms):</value>
   </data>
   <data name="INCREASE_OPACITY_SPLIT_WITH_NEWLINE" xml:space="preserve">
     <value>INCREASE
@@ -534,8 +534,11 @@ UP</value>
   <data name="KEY_CASE_LABEL" xml:space="preserve">
     <value>Key text transformation:</value>
   </data>
+  <data name="COMPLETION_TIMES_HINT" xml:space="preserve">
+    <value>Enter multiple values separated by commas to speed up/slow down subsequent selections, for example: 1250,750,450,250</value>
+  </data>
   <data name="KEY_FIXATION_TIME_TO_COMPLETE_LABEL" xml:space="preserve">
-    <value>Key fixation time to complete (ms):</value>
+    <value>Time to complete and repeat a key (ms):</value>
   </data>
   <data name="KEY_FIXATION_TIME_TO_LOCK_ON_LABEL" xml:space="preserve">
     <value>Key fixation time to lock-on (ms):</value>
@@ -1137,7 +1140,7 @@ POSITION</value>
     <value>TheEyeTribe has not been calibrated. No data will be received until calibration is completed.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Unable to attempt a calibration as no EyeX engine is available.</value>
+    <value>Unable to attempt a calibration as no EyeTribe software is available.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Theme:</value>
@@ -2089,140 +2092,50 @@ such as "DB Browser for SQLite" (which is a free program).</value>
     <value>Look to Scroll</value>
   </data>
   <data name="LOOK_TO_SCROLL_ENABLED_LABEL" xml:space="preserve">
-    <value>Use alternative "look to scroll" method for scrolling:</value>
+    <value>Look To Scroll is the default scrolling method:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_DIRECTION_INVERTED_LABEL" xml:space="preserve">
-    <value>Invert scrolling direction:</value>
+  <data name="LOOK_TO_SCROLL_BOUNDS_LABEL" xml:space="preserve">
+    <value>Scrolling point and boundary:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_LOCK_DOWN_BOUNDS_KEY_LABEL" xml:space="preserve">
-    <value>Lock down bounds key to preserve chosen point, window, or region:</value>
+  <data name="LOOK_TO_SCROLL_MODE_LABEL" xml:space="preserve">
+    <value>Directional scrolling mode:</value>
   </data>
   <data name="LOOK_TO_SCROLL_CENTRE_MOUSE_WHEN_ACTIVATED_LABEL" xml:space="preserve">
-    <value>Before scrolling, move mouse to centre of deadzone:</value>
+    <value>Move mouse to scroll origin when activated:</value>
   </data>
   <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_WHEN_ACTIVATED_LABEL" xml:space="preserve">
-    <value>Before scrolling within window, bring it to the front:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BRING_WINDOW_TO_FRONT_AFTER_CHOOSING_SCREENPOINT_LABEL" xml:space="preserve">
-    <value>After choosing screen point, bring any window there to the front:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SUSPEND_BEFORE_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
-    <value>Stop scrolling when choosing where to move, click or drag the mouse:</value>
+    <value>Bring window to front before scrolling:</value>
   </data>
   <data name="LOOK_TO_SCROLL_RESUME_AFTER_CHOOSING_POINT_FOR_MOUSE_LABEL" xml:space="preserve">
-    <value>Automatically resume scrolling afterwards:</value>
+    <value>Automatically resume scrolling after performing mouse actions:</value>
   </data>
   <data name="LOOK_TO_SCROLL_DEACTIVATE_UPON_SWITCHING_KEYBOARDS_LABEL" xml:space="preserve">
     <value>Stop scrolling upon switching keyboards:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
-    <value>Show overlay window (requires restart):</value>
+  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOR_LABEL" xml:space="preserve">
+    <value>Scroll boundary border color:</value>
   </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL" xml:space="preserve">
-    <value>Colour of scroll bounds drawn on the overlay:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL" xml:space="preserve">
-    <value>Colour of deadzone guides drawn on the overlay:</value>
+  <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOR_LABEL" xml:space="preserve">
+    <value>Deadzone border color:</value>
   </data>
   <data name="LOOK_TO_SCROLL_OVERLAY_BOUNDS_THICKNESS_LABEL" xml:space="preserve">
-    <value>Thickness of scroll bounds drawn on the overlay:</value>
+    <value>Scroll boundary border thickness (0-None):</value>
   </data>
   <data name="LOOK_TO_SCROLL_OVERLAY_DEADZONE_THICKNESS_LABEL" xml:space="preserve">
-    <value>Thickness of deadzone guides drawn on the overlay:</value>
+    <value>Deadzone border thickness (0-None):</value>
   </data>
   <data name="LOOK_TO_SCROLL_HORIZONTAL_DEADZONE_LABEL" xml:space="preserve">
-    <value>Horizontal deadzone (in pixels):</value>
+    <value>Deadzone Width (in pixels):</value>
   </data>
   <data name="LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL" xml:space="preserve">
-    <value>Vertical deadzone (in pixels):</value>
+    <value>Deadzone Height (in pixels):</value>
   </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_CHOICES_LABEL" xml:space="preserve">
-    <value>Cycle through these scroll increments:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_SLOW_LABEL" xml:space="preserve">
-    <value>'Slow' base speed (in cps or "clicks" per second):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_MEDIUM_LABEL" xml:space="preserve">
-    <value>'Medium' base speed (in cps or "clicks" per second):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BASE_SPEED_FAST_LABEL" xml:space="preserve">
-    <value>'Fast' base speed (in cps or "clicks" per second):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_SLOW_LABEL" xml:space="preserve">
-    <value>'Slow' acceleration (cps per pixel from deadzone):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_MEDIUM_LABEL" xml:space="preserve">
-    <value>'Medium' acceleration (cps per pixel from deadzone):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACCELERATION_FAST_LABEL" xml:space="preserve">
-    <value>'Fast' acceleration (cps per pixel from deadzone):</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_KEY_GROUP" xml:space="preserve">
-    <value>LOOK TO SCROLL KEYS:</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_ACTIVE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>TOGGLE SCROLLING</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT BOUNDS</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT INCREMENT</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT MODE</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_GROUP_LABEL" xml:space="preserve">
-    <value>NEXT SPEED</value>
+  <data name="LOOK_TO_SCROLL_BASE_SPEED_LABEL" xml:space="preserve">
+    <value>Look to scroll speed:</value>
   </data>
   <data name="LOOK_TO_SCROLL_ACTIVE_KEY_TEXT" xml:space="preserve">
     <value>Look to
 Scroll</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_INCREMENT_KEY_FORMAT" xml:space="preserve">
-    <value>Scroll by {0} wheel unit:
-(120 wheel units = 1 click)|Scroll by {0} wheel units:
-(120 wheel units = 1 click)</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENPOINT" xml:space="preserve">
-    <value>Screen at
-Point</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SCREENCENTRED" xml:space="preserve">
-    <value>Screen
-Centred</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_WINDOW" xml:space="preserve">
-    <value>Window</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_SUBWINDOW" xml:space="preserve">
-    <value>Window
-Region</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_BOUNDS_KEY_TEXT_CUSTOM" xml:space="preserve">
-    <value>Custom
-Region</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_VERTICAL" xml:space="preserve">
-    <value>Vertical</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_HORIZONTAL" xml:space="preserve">
-    <value>Horizontal</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_CROSS" xml:space="preserve">
-    <value>Cross</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_MODE_KEY_TEXT_FREE" xml:space="preserve">
-    <value>Free</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_SLOW" xml:space="preserve">
-    <value>Slow</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_MEDIUM" xml:space="preserve">
-    <value>Medium</value>
-  </data>
-  <data name="LOOK_TO_SCROLL_SPEED_KEY_TEXT_FAST" xml:space="preserve">
-    <value>Fast</value>
   </data>
   <data name="FRENCH_CANADA" xml:space="preserve">
     <value>French (Canada) / Française (Canada)</value>
@@ -2308,11 +2221,14 @@ Française
   <data name="IRISBOND_DUO" xml:space="preserve">
     <value>Irisbond Duo</value>
   </data>
+  <data name="IRISBOND_HIRU" xml:space="preserve">
+    <value>Irisbond Hiru</value>
+  </data>
   <data name="IRISBOND_TRACKER_COULD_NOT_BE_STARTED" xml:space="preserve">
-    <value>Irisbond Duo tracker could not be started.</value>
+    <value>Irisbond tracker could not be started.</value>
   </data>
   <data name="IRISBOND_TRACKER_NOT_FOUND" xml:space="preserve">
-    <value>Irisbond Duo tracker cannot be found. Please check the tracker's connection and try again.</value>
+    <value>Irisbond tracker cannot be found. Please check the tracker's connection and try again.</value>
   </data>
   <data name="IRISBOND_CALIBRATION_COMPLETE" xml:space="preserve">
     <value>Calibration completed (success or failure), but everything is working again!</value>
@@ -2447,7 +2363,10 @@ Magyar
     <value>This requires the ITU Gaze Tracking Library, which is a framework for open source eye tracking using off-the-shelf components, such as webcams and videocameras.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-    <value>If you plan to use Optikey with the Irisbond Duo eye tracker then please make sure you have the Irisbond Duo drivers installed. These can be downloaded from https://www.irisbond.com/products/downloads.</value>
+    <value>If you plan to use Optikey with the Irisbond Duo eye tracker then please make sure you have the Irisbond Duo drivers installed. These can be downloaded from https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
+  </data>
+  <data name="IRISBOND_HIRU_INFO" xml:space="preserve">
+    <value>If you plan to use Optikey with the Irisbond Hiru eye tracker then please make sure you have the Irisbond Hiru drivers installed. These can be downloaded from https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
     <value>In this mode, Optikey will use the mouse cursor as input instead of talking directly to an eye tracker. You might want this if you're testing Optikey out, or if you want to use it with an alternative input device such as a head mouse or any eye tracker not in this list.</value>
@@ -2514,5 +2433,53 @@ Magyar
   </data>
   <data name="ENABLE_RESIZE_WITH_MOUSE" xml:space="preserve">
     <value>Enable Resizing with Mouse:</value>
+  </data>
+  <data name="TOBII_PCEYE_5" xml:space="preserve">
+    <value>Tobii PCEye 5</value>
+  </data>
+  <data name="GAZE_INDICATOR_SIZE" xml:space="preserve">
+    <value>Gaze Indicator Size</value>
+  </data>
+  <data name="GAZE_INDICATOR_STYLE" xml:space="preserve">
+    <value>Gaze Indicator Style</value>
+  </data>
+  <data name="SUPPRESS_TRIGGER_WARNING" xml:space="preserve">
+    <value>Suppress warning when gaze is missing during trigger event</value>
+  </data>
+  <data name="GAMEPAD_XINPUT_BUTTON" xml:space="preserve">
+    <value>Gamepad button (XInput)</value>
+  </data>
+  <data name="GAMEPAD_DIRECTINPUT_BUTTON" xml:space="preserve">
+    <value>Gamepad button (DirectInput)</value>
+  </data>
+  <data name="KEY_SELECTION_GAMEPAD_BUTTON_LABEL" xml:space="preserve">
+    <value>Key selection gamepad button:</value>
+  </data>
+  <data name="POINT_SELECTION_GAMEPAD_BUTTON_LABEL" xml:space="preserve">
+    <value>Point selection gamepad button:</value>
+  </data>
+  <data name="KEY_SELECTION_GAMEPAD_SLOT_LABEL" xml:space="preserve">
+    <value>Key selection gamepad controller:</value>
+  </data>
+  <data name="GAMEPAD_CONNECTED_IN_PARENTHESES" xml:space="preserve">
+    <value>(connected)</value>
+  </data>
+  <data name="KEY_SELECTION_GAMEPAD_CONTROLLER_LABEL" xml:space="preserve">
+    <value>Key selection gamepad controller:</value>
+  </data>
+  <data name="ALL_DIRECTINPUT_CONTROLLERS" xml:space="preserve">
+    <value>All DirectInput controllers</value>
+  </data>
+  <data name="POINT_SELECTION_GAMEPAD_SLOT_LABEL" xml:space="preserve">
+    <value>Point selection gamepad controller:</value>
+  </data>
+  <data name="POINT_SELECTION_GAMEPAD_CONTROLLER_LABEL" xml:space="preserve">
+    <value>Point selection gamepad controller</value>
+  </data>
+  <data name="LIMIT_BACKONE" xml:space="preserve">
+    <value>Limit "BackOne" deletion to a single character</value>
+  </data>
+  <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
+    <value>The Clipboard could not be cleared. This typically occurs when the Clipboard is being used by another process.</value>
   </data>
 </root>

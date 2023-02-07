@@ -1,4 +1,4 @@
-// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -123,5 +123,8 @@ namespace JuliusSweetland.OptiKey.Native
 
         [DllImport("user32.dll", SetLastError = true)]
         public static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
+
+        [DllImport("user32.dll")]
+        public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
     }
 } 

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System.Collections.Generic;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Models;
@@ -39,7 +39,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
             keyboardOutputService.ProcessFunctionKey(FunctionKeys.Suggestion2);
 
             //Assert
-            Assert.AreEqual(multiCodePointString, keyboardOutputService.Text);
+            Assert.That(keyboardOutputService.Text, Is.EqualTo(multiCodePointString));
         }
 
         [Test]
@@ -64,7 +64,7 @@ namespace JuliusSweetland.OptiKey.UnitTests.Services
             keyboardOutputService.ProcessFunctionKey(FunctionKeys.Suggestion1);
 
             //Assert
-            Assert.AreEqual(singleCodePointString, keyboardOutputService.Text);
+            Assert.That(keyboardOutputService.Text, Is.EqualTo(singleCodePointString));
         }
     }
 }

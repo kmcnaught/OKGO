@@ -1114,7 +1114,7 @@ LK</value>
     <value>TheEyeTribe לא כויל. שום מידע לא יתקבל עד אשר הכיול יסתיים.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>אי אפשר לבצע כיול. מנוע EyeX לא פנוי.</value>
+    <value>אי אפשר לבצע כיול. מנוע EyeTribe לא פנוי.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>ערכת נושא:</value>
@@ -1135,10 +1135,10 @@ LK</value>
     <value>כיול נגמר או בוטל, אבל הכל עובד שוב!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>המנוע Tobii EyeX לא נמצא. אנא התקינו אותו ונסו שוב.</value>
+    <value>המנוע Tobii Software לא נמצא. אנא התקינו אותו ונסו שוב.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>המנוע Tobii EyeX לא פועל. אנא הפעילו אותו ונסו שוב.</value>
+    <value>המנוע Tobii Service לא פועל. אנא הפעילו אותו ונסו שוב.</value>
   </data>
   <data name="TOBII_PCEYE_GO" xml:space="preserve">
     <value>Tobii PCEye Go </value>
@@ -2359,7 +2359,7 @@ Would you like Optikey to automatically set the font to Nazli?</value>
       <value>זה דורש לספריית מעקב מבט ITU, המהווה מסגרת עין קוד פתוחה מעקב באמצעות ה- off- מדף רכיבים, כגון מצלמות ו למצלמות.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>אם אתם מתכננים להשתמש Optikey עם גשש עין Irisbond Duo אז אנא ודא שיש לך את הנהגים Irisbond Duo מותקן. אלו ניתן להוריד מאתר https://www.irisbond.com/products/downloads.</value>
+      <value>אם אתם מתכננים להשתמש Optikey עם גשש עין Irisbond Duo אז אנא ודא שיש לך את הנהגים Irisbond Duo מותקן. אלו ניתן להוריד מאתר https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>במצב זה, Optikey ישתמש סמן העכבר כקלט במקום לדבר ישירות גשש העין. אולי אתה רוצה את זה אם אתה בודק את Optikey, או אם אתה רוצה להשתמש בו עם מכשיר קלט חלופי כגון עכבר ראש או גשש כל עין לא ברשימה זו.</value>

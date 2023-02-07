@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 namespace JuliusSweetland.OptiKey.Enums
 {
     public enum FunctionKeys
@@ -83,6 +83,11 @@ namespace JuliusSweetland.OptiKey.Enums
         F17,
         F18,
         F19,
+        F20,
+        F21,
+        F22, 
+        F23,
+        F24,
         FinnishFinland,
         FocusAtPoint,
         FrenchFrance,

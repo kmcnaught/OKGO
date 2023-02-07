@@ -1,4 +1,4 @@
-// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 
 using System.Linq;
 using JuliusSweetland.OptiKey.Properties;
@@ -30,7 +30,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         {
             //Instantiate child VMs
             DictionaryViewModel = new DictionaryViewModel(dictionaryService);
-            OtherViewModel = new OtherViewModel();
+            GesturesViewModel = new GesturesViewModel();
             PointingAndSelectingViewModel = new PointingAndSelectingViewModel();
             SoundsViewModel = new SoundsViewModel(audioService);
             VisualsViewModel = new VisualsViewModel(windowManipulationService);
@@ -52,7 +52,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             get
             {
                 return DictionaryViewModel.ChangesRequireRestart
-                    || OtherViewModel.ChangesRequireRestart
                     || PointingAndSelectingViewModel.ChangesRequireRestart
                     || SoundsViewModel.ChangesRequireRestart
                     || VisualsViewModel.ChangesRequireRestart
@@ -62,7 +61,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         }
 
         public DictionaryViewModel DictionaryViewModel { get; private set; }
-        public OtherViewModel OtherViewModel { get; private set; }
+        public GesturesViewModel GesturesViewModel { get; private set; }
         public PointingAndSelectingViewModel PointingAndSelectingViewModel { get; private set; }
         public SoundsViewModel SoundsViewModel { get; private set; }
         public VisualsViewModel VisualsViewModel { get; protected set; }
@@ -184,7 +183,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         private void ApplyChanges()
         {
             DictionaryViewModel.ApplyChanges();
-            OtherViewModel.ApplyChanges();
+            GesturesViewModel.ApplyChanges();
             PointingAndSelectingViewModel.ApplyChanges();
             SoundsViewModel.ApplyChanges();
             VisualsViewModel.ApplyChanges();
@@ -214,6 +213,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             try
                             {
                                 Settings.Default.CleanShutdown = true;
+                                Settings.Default.Save();
                                 OptiKeyApp.RestartApp();
                             }
                             catch { } //Swallow any exceptions (e.g. DispatcherExceptions) - we're shutting down so it doesn't matter.

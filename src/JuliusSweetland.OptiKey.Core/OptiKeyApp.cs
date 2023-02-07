@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -26,7 +26,6 @@ using log4net;
 using log4net.Core;
 using log4net.Repository.Hierarchy;
 using log4net.Appender; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
-using NBug.Core.UI; //Do not remove even if marked as unused by Resharper - it is used by the Release build configuration
 using Octokit;
 using presage;
 using Application = System.Windows.Application;
@@ -68,7 +67,7 @@ namespace JuliusSweetland.OptiKey
 
         public OptiKeyApp()
         {
-            
+
         }
 
         // This will be assigned from within derived apps
@@ -87,7 +86,7 @@ namespace JuliusSweetland.OptiKey
         // Previously in core OptiKey ctr, now called by derived classes after setting up Settings class
         protected void Initialise()
         {
-            //Setup unhandled exception handling and NBug
+            //Setup unhandled exception handling
             //FIXME: turn off NBug for Crayta / EyeMine AttachUnhandledExceptionHandlers();
 
             //Log startup diagnostic info
@@ -113,6 +112,13 @@ namespace JuliusSweetland.OptiKey
                 Settings.Default.SettingsUpgradeRequired = false;
                 Settings.Default.Save();
                 Settings.Default.Reload();
+            }
+
+            //Migrate the completion time setting to the new field
+            if (Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes == null)
+            {
+                Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes
+                    = Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime.TotalMilliseconds.ToString();
             }
 
             //Adjust log4net logging level if in debug mode
@@ -161,8 +167,8 @@ namespace JuliusSweetland.OptiKey
                 //1.Check the install path to detect if the wrong bitness of Presage is installed
                 string presagePath = null;
                 string presageStartMenuFolder = null;
-                string osBitness = DiagnosticInfo.OperatingSystemBitness;
-
+                string processBitness = DiagnosticInfo.ProcessBitness;
+                
                 try
                 {
                     presagePath = Registry.GetValue("HKEY_CURRENT_USER\\Software\\Presage", "", string.Empty).ToString();
@@ -170,16 +176,31 @@ namespace JuliusSweetland.OptiKey
                 }
                 catch (Exception ex)
                 {
+                    Log.Error("Cannot find Presage entries in the registry, is it installed?");
                     Log.ErrorFormat("Caught exception: {0}", ex);
                 }
 
-                Log.InfoFormat("Presage path: {0} | Presage start menu folder: {1} | OS bitness: {2}", presagePath, presageStartMenuFolder, osBitness);
+                Log.InfoFormat("Presage path: {0} | Presage start menu folder: {1} | process bitness: {2}", presagePath, presageStartMenuFolder, processBitness);
+
+                List<string> presageOptions = new List<string>();
+                if (processBitness.Contains("64"))
+                {
+                    presageOptions.Add("presage - 0.9.1 - 64bit");
+                    presageOptions.Add("presage-0.9.2~beta20150909-64bit");
+                }
+                else
+                {
+                    presageOptions.Add("presage - 0.9.1 - 32bit");
+                    presageOptions.Add("presage-0.9.2~beta20150909-32bit");
+                }
 
                 if (string.IsNullOrEmpty(presagePath)
                     || string.IsNullOrEmpty(presageStartMenuFolder))
                 {
                     Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                    Log.Error("Invalid Presage installation detected (path(s) missing). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    string msg = "Invalid Presage installation detected (path(s) missing).\n";
+                    msg += $"Must install '{ String.Join("' or '", presageOptions.ToArray()) }'. Changed SuggestionMethod to NGram.";
+                    Log.Error(msg);
                     return true;
                 }
 
@@ -187,16 +208,25 @@ namespace JuliusSweetland.OptiKey
                     && presageStartMenuFolder != "presage-0.9.1")
                 {
                     Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                    Log.Error("Invalid Presage installation detected (valid version not detected). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                    string msg = "Invalid Presage installation detected (valid version not detected).\n";
+                    msg += $"Must install '{ String.Join("' or '", presageOptions.ToArray()) }'. Changed SuggestionMethod to NGram.";
+                    Log.Error(msg);
                     return true;
                 }
 
-                if ((osBitness == "64-Bit" && presagePath != @"C:\Program Files (x86)\presage")
-                    || (osBitness == "32-Bit" && presagePath != @"C:\Program Files\presage"))
-                {
-                    Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
-                    Log.Error("Invalid Presage installation detected (incorrect bitness? Install location is suspect). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
-                    return true;
+                // On Windows 32 bit, we will only be able to install 32 bit Presage and 32 bit Optikey so don't need to check bitness.
+                // Presage's install location will be \Program Files\ since there is only one Program Files folder available. 
+
+                // On Windows 64 bit, 32 bit apps get installed into Program Files (x86) and 64 bit apps into Program Files.
+                // We need to check that Optikey and Presage have the same bitness
+                if (DiagnosticInfo.OperatingSystemBitness.Contains("64")) {
+                    if ((processBitness == "64-Bit" && presagePath != @"C:\Program Files\presage")
+                        || (processBitness == "32-Bit" && presagePath != @"C:\Program Files (x86)\presage"))
+                    {
+                        Settings.Default.SuggestionMethod = SuggestionMethods.NGram;
+                        Log.Error("Invalid Presage installation detected (incorrect bitness? Install location is suspect). Must install 'presage-0.9.1-32bit' or 'presage-0.9.2~beta20150909-32bit'. Changed SuggesionMethod to NGram.");
+                        return true;
+                    }
                 }
 
                 if (!Directory.Exists(presagePath))
@@ -283,7 +313,7 @@ namespace JuliusSweetland.OptiKey
                 presageTestInstance.save_config();
                 Log.Info("Presage settings set successfully.");
             }
-            
+
             return false;
         }
 
@@ -550,52 +580,39 @@ namespace JuliusSweetland.OptiKey
 
         #region Attach Unhandled Exception Handlers
 
+        // Make sure exceptions get logged, and a crash message appears
         protected static void AttachUnhandledExceptionHandlers()
         {
+            Action CloseLogsAndShowCrashWindow = () =>
+            {
 #if !DEBUG
-            Application.Current.DispatcherUnhandledException += NBug.Handler.DispatcherUnhandledException;
-            AppDomain.CurrentDomain.UnhandledException += NBug.Handler.UnhandledException;
-            TaskScheduler.UnobservedTaskException += NBug.Handler.UnobservedTaskException;
+                LogManager.Flush(1000);
+                LogManager.Shutdown();
 
-            NBug.Settings.ProcessingException += (exception, report) =>
-            {
-                //Add latest log file contents as custom info in the error report
-                var rootAppender = ((Hierarchy)LogManager.GetRepository())
-                    .Root.Appenders.OfType<FileAppender>()
-                    .FirstOrDefault();
-
-                if (rootAppender != null)
+                Application.Current.Dispatcher.Invoke((Action)delegate
                 {
-                    using (var fs = new FileStream(rootAppender.File, System.IO.FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-                    {
-                        using (var sr = new StreamReader(fs, Encoding.Default))
-                        {
-                            var logFileText = sr.ReadToEnd();
-                            report.CustomInfo = logFileText;
-                        }
-                    }
-                }
-            };
-
-            NBug.Settings.CustomUIEvent += (sender, args) =>
-            {
-                var crashWindow = new CrashWindow
-                {
-                    Topmost = true,
-                    ShowActivated = true
-                };
-                crashWindow.ShowDialog();
-
-                //The crash report has not been created yet - the UIDialogResult SendReport param determines what happens next
-                args.Result = new UIDialogResult(ExecutionFlow.BreakExecution, SendReport.Send);
-            };
-
-            NBug.Settings.InternalLogWritten += (logMessage, category) => Log.DebugFormat("NBUG:{0} - {1}", category, logMessage);
+                    CrashWindow crashWindow = CrashWindow.Instance;
+                    if (!crashWindow.IsVisible)
+                        crashWindow.ShowDialog();                    
+                });
 #endif
+            };
 
-            Current.DispatcherUnhandledException += (sender, args) => Log.Error("A DispatcherUnhandledException has been encountered...", args.Exception);
-            AppDomain.CurrentDomain.UnhandledException += (sender, args) => Log.Error("An UnhandledException has been encountered...", args.ExceptionObject as Exception);
-            TaskScheduler.UnobservedTaskException += (sender, args) => Log.Error("An UnobservedTaskException has been encountered...", args.Exception);
+            Current.DispatcherUnhandledException += (sender, args) =>
+            {
+                Log.Error("A DispatcherUnhandledException has been encountered...", args.Exception);
+                CloseLogsAndShowCrashWindow();
+            };
+            AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
+            {
+                Log.Error("An UnhandledException has been encountered...", args.ExceptionObject as Exception);
+                CloseLogsAndShowCrashWindow();                
+            };
+            TaskScheduler.UnobservedTaskException += (sender, args) =>
+            {
+                Log.Error("An UnobservedTaskException has been encountered...", args.Exception);
+                CloseLogsAndShowCrashWindow();
+            };        
         }
 
         #endregion
@@ -645,6 +662,9 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.IrisbondDuo:
                     return new IrisbondDuoCalibrationService();
 
+                case PointsSources.IrisbondHiru:
+                    return new IrisbondHiruCalibrationService();
+
                 case PointsSources.Alienware17:
                 case PointsSources.SteelseriesSentry:
                 case PointsSources.TobiiEyeX:
@@ -653,6 +673,7 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.TobiiRex:
                 case PointsSources.TobiiPcEyeGo:
                 case PointsSources.TobiiPcEyeGoPlus:
+                case PointsSources.TobiiPcEye5:
                 case PointsSources.TobiiPcEyeMini:
                 case PointsSources.TobiiX2_30:
                 case PointsSources.TobiiX2_60:
@@ -674,7 +695,7 @@ namespace JuliusSweetland.OptiKey
             List<INotifyErrors> errorNotifyingServices)
         {
             Log.Info("Creating InputService.");
-            
+
             //Instantiate point source
             IPointSource pointSource;
             switch (Settings.Default.PointsSource)
@@ -687,11 +708,19 @@ namespace JuliusSweetland.OptiKey
                     break;
 
                 case PointsSources.IrisbondDuo:
-                    var irisBondPointService = new IrisbondDuoPointService();
-                    errorNotifyingServices.Add(irisBondPointService);
+                    var irisBondDuoPointService = new IrisbondDuoPointService();
+                    errorNotifyingServices.Add(irisBondDuoPointService);
                     pointSource = new PointServiceSource(
                         Settings.Default.PointTtl,
-                        irisBondPointService);
+                        irisBondDuoPointService);
+                    break;
+
+                case PointsSources.IrisbondHiru:
+                    var irisBondHiruPointService = new IrisbondHiruPointService();
+                    errorNotifyingServices.Add(irisBondHiruPointService);
+                    pointSource = new PointServiceSource(
+                        Settings.Default.PointTtl,
+                        irisBondHiruPointService);
                     break;
 
                 case PointsSources.MousePosition:
@@ -715,6 +744,7 @@ namespace JuliusSweetland.OptiKey
                 case PointsSources.TobiiRex:
                 case PointsSources.TobiiPcEyeGo:
                 case PointsSources.TobiiPcEyeGoPlus:
+                case PointsSources.TobiiPcEye5:
                 case PointsSources.TobiiPcEyeMini:
                 case PointsSources.TobiiX2_30:
                 case PointsSources.TobiiX2_60:
@@ -742,6 +772,8 @@ namespace JuliusSweetland.OptiKey
                     throw new ArgumentException("'PointsSource' settings is missing or not recognised! Please correct and restart OptiKey.");
             }
 
+            ITriggerSource eyeGestureTriggerSource = new EyeGestureSource(pointSource);
+
             //Instantiate key trigger source
             ITriggerSource keySelectionTriggerSource;
             switch (Settings.Default.KeySelectionTriggerSource)
@@ -750,7 +782,7 @@ namespace JuliusSweetland.OptiKey
                     keySelectionTriggerSource = new KeyFixationSource(
                        Settings.Default.KeySelectionTriggerFixationLockOnTime,
                        Settings.Default.KeySelectionTriggerFixationResumeRequiresLockOn,
-                       Settings.Default.KeySelectionTriggerFixationDefaultCompleteTime,
+                       Settings.Default.KeySelectionTriggerFixationDefaultCompleteTimes,
                        Settings.Default.KeySelectionTriggerFixationCompleteTimesByIndividualKey
                         ? Settings.Default.KeySelectionTriggerFixationCompleteTimesByKeyValues
                         : null,
@@ -767,6 +799,20 @@ namespace JuliusSweetland.OptiKey
                 case TriggerSources.MouseButtonDownUps:
                     keySelectionTriggerSource = new MouseButtonDownUpSource(
                         Settings.Default.KeySelectionTriggerMouseDownUpButton,
+                        pointSource);
+                    break;
+
+                case TriggerSources.XInputButtonDownUps:
+                    keySelectionTriggerSource = new XInputButtonDownUpSource(
+                        Settings.Default.KeySelectionTriggerGamepadXInputController,
+                        Settings.Default.KeySelectionTriggerGamepadXInputButtonDownUpButton,
+                        pointSource);
+                    break;
+
+                case TriggerSources.DirectInputButtonDownUps:
+                    keySelectionTriggerSource = new DirectInputButtonDownUpSource(
+                        Settings.Default.KeySelectionTriggerGamepadDirectInputController,
+                        Settings.Default.KeySelectionTriggerGamepadDirectInputButtonDownUpButton,
                         pointSource);
                     break;
 
@@ -800,6 +846,20 @@ namespace JuliusSweetland.OptiKey
                         pointSource);
                     break;
 
+                case TriggerSources.XInputButtonDownUps:
+                    pointSelectionTriggerSource = new XInputButtonDownUpSource(
+                        Settings.Default.PointSelectionTriggerGamepadXInputController,
+                        Settings.Default.PointSelectionTriggerGamepadXInputButtonDownUpButton,
+                        pointSource);
+                    break;
+
+                case TriggerSources.DirectInputButtonDownUps:
+                    pointSelectionTriggerSource = new DirectInputButtonDownUpSource(
+                        Settings.Default.PointSelectionTriggerGamepadDirectInputController,
+                        Settings.Default.PointSelectionTriggerGamepadDirectInputButtonDownUpButton,
+                        pointSource);
+                    break;
+
                 default:
                     throw new ArgumentException(
                         "'PointSelectionTriggerSource' setting is missing or not recognised! "
@@ -807,7 +867,7 @@ namespace JuliusSweetland.OptiKey
             }
 
             var inputService = new InputService(keyStateService, dictionaryService, audioService, capturingStateManager,
-                pointSource, keySelectionTriggerSource, pointSelectionTriggerSource);
+            pointSource, eyeGestureTriggerSource, keySelectionTriggerSource, pointSelectionTriggerSource);
             inputService.RequestSuspend(); //Pause it initially
             return inputService;
         }
@@ -824,10 +884,11 @@ namespace JuliusSweetland.OptiKey
             {
                 Log.InfoFormat("Assembly file version: {0}", assemblyFileVersion);
             }
-            if(DiagnosticInfo.IsApplicationNetworkDeployed)
-            {
-                Log.InfoFormat("ClickOnce deployment version: {0}", DiagnosticInfo.DeploymentVersion);
-            }
+            if (DiagnosticInfo.IsApplicationNetworkDeployed)
+                if (DiagnosticInfo.IsApplicationNetworkDeployed)
+                {
+                    Log.InfoFormat("ClickOnce deployment version: {0}", DiagnosticInfo.DeploymentVersion);
+                }
             Log.InfoFormat("Running as admin: {0}", DiagnosticInfo.RunningAsAdministrator);
             Log.InfoFormat("Process elevated: {0}", DiagnosticInfo.IsProcessElevated);
             Log.InfoFormat("Process bitness: {0}", DiagnosticInfo.ProcessBitness);
@@ -870,6 +931,14 @@ namespace JuliusSweetland.OptiKey
                     case TriggerSources.MouseButtonDownUps:
                         keySelectionSb.Append(string.Format(" ({0})", Settings.Default.KeySelectionTriggerMouseDownUpButton));
                         break;
+
+                    case TriggerSources.XInputButtonDownUps:
+                        keySelectionSb.Append(string.Format(" ({0})", Settings.Default.KeySelectionTriggerGamepadXInputButtonDownUpButton));
+                        break;
+
+                    case TriggerSources.DirectInputButtonDownUps:
+                        keySelectionSb.Append(string.Format(" ({0})", Settings.Default.KeySelectionTriggerGamepadDirectInputButtonDownUpButton));
+                        break;
                 }
 
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.KEY_SELECTION_TRIGGER_DESCRIPTION, keySelectionSb));
@@ -889,6 +958,14 @@ namespace JuliusSweetland.OptiKey
                     case TriggerSources.MouseButtonDownUps:
                         pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerMouseDownUpButton));
                         break;
+
+                    case TriggerSources.XInputButtonDownUps:
+                        pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerGamepadXInputButtonDownUpButton));
+                        break;
+
+                    case TriggerSources.DirectInputButtonDownUps:
+                        pointSelectionSb.Append(string.Format(" ({0})", Settings.Default.PointSelectionTriggerGamepadDirectInputButtonDownUpButton));
+                        break;
                 }
 
                 message.AppendLine(string.Format(OptiKey.Properties.Resources.POINT_SELECTION_DESCRIPTION, pointSelectionSb));
@@ -903,10 +980,10 @@ namespace JuliusSweetland.OptiKey
                     message.ToString(),
                     NotificationTypes.Normal,
                     () =>
-                        {
-                            inputService.RequestResume();
-                            taskCompletionSource.SetResult(true);
-                        });
+                    {
+                        inputService.RequestResume();
+                        taskCompletionSource.SetResult(true);
+                    });
             }
             else
             {
@@ -947,20 +1024,29 @@ namespace JuliusSweetland.OptiKey
                             var latestAvailableVersion = new Version(tagNameWithoutLetters);
                             if (latestAvailableVersion > currentVersion)
                             {
-                                Log.InfoFormat(
-                                    "An update is available. Current version is {0}. Latest version on GitHub repo is {1}",
-                                    currentVersion, latestAvailableVersion);
+                                if (currentVersion.Major < 4 && latestAvailableVersion.Major >= 4)
+                                {
+                                    //There should be no update prompt to upgrade from v3 (or earlier) to v4 (or later) due to a breaking change that means that v4 is not
+                                    //a suitable choice for many users on earlier version of Optikey (v4 removes supports for Tobii gaming devices).
+                                    Log.InfoFormat("An update is available, BUT this update could remove support for the user's current input device. The user will not be notified. " +
+                                                   "Current version is {0}. Latest version on GitHub repo is {1}", currentVersion, latestAvailableVersion);
+                                }
+                                else
+                                {
+                                    Log.InfoFormat("An update is available. Current version is {0}. Latest version on GitHub repo is {1}",
+                                        currentVersion, latestAvailableVersion);
 
-                                inputService.RequestSuspend();
-                                audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
-                                mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.UPDATE_AVAILABLE,
-                                    string.Format(OptiKey.Properties.Resources.URL_DOWNLOAD_PROMPT, latestRelease.TagName),
-                                    NotificationTypes.Normal,
-                                     () =>
-                                     {
-                                         inputService.RequestResume();
-                                         taskCompletionSource.SetResult(true);
-                                     });
+                                    inputService.RequestSuspend();
+                                    audioService.PlaySound(Settings.Default.InfoSoundFile, Settings.Default.InfoSoundVolume);
+                                    mainViewModel.RaiseToastNotification(OptiKey.Properties.Resources.UPDATE_AVAILABLE,
+                                        string.Format(OptiKey.Properties.Resources.URL_DOWNLOAD_PROMPT, latestRelease.TagName),
+                                        NotificationTypes.Normal,
+                                        () =>
+                                        {
+                                            inputService.RequestResume();
+                                            taskCompletionSource.SetResult(true);
+                                        });
+                                }
                             }
                             else
                             {
@@ -1012,24 +1098,75 @@ namespace JuliusSweetland.OptiKey
 
         #endregion
 
-        #region Validate Dynamic Keyboard Location
-
-        protected static string GetDefaultUserKeyboardFolder()
+        #region Copying of installed resources 
+		protected static string CopyResourcesFirstTime(string subDirectoryName)
         {
-            var applicationDataPath = DiagnosticInfo.GetAppDataPath(@"Keyboards");
+            // Ensure resources have been copied from Program Files to user's AppData folder
 
-            // If directory doesn't exist, assume that this is the first run. So, move dynamic keyboards from installation package to target path
-            if (!Directory.Exists(applicationDataPath))
+            var sourcePath = AppDomain.CurrentDomain.BaseDirectory + @"\Resources\" + subDirectoryName;
+
+            var destPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 
+                                           @"OptiKey\OptiKey\" + subDirectoryName);
+
+            // If directory doesn't exist, assume that this is the first run. 
+            // So, move resource from installation package to target path
+            if (!Directory.Exists(destPath))
             {
-                Directory.CreateDirectory(applicationDataPath);
-                foreach (string dynamicKeyboard in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\DynamicKeyboards"))
+                Directory.CreateDirectory(destPath);
+                foreach (string file in Directory.GetFiles(sourcePath))
                 {
-                    File.Copy(dynamicKeyboard, Path.Combine(applicationDataPath, Path.GetFileName(dynamicKeyboard)), true);
+                    File.Copy(file, 
+                              Path.Combine(destPath, Path.GetFileName(file)), 
+                              true);
+                }
+            }
+            
+            return destPath;
+        }        
+
+        protected static void ValidateEyeGestures()
+        {
+            // Check that eye gestures file is readable, reset to default otherwise
+            var eyeGesturesFilePath = Settings.Default.EyeGestureFile;
+
+            try
+            {
+                XmlEyeGestures.ReadFromFile(eyeGesturesFilePath);
+            }
+            catch
+            {
+                Settings.Default.EyeGesturesEnabled = false; // to be enabled from Management Console by user
+
+                // Copy bundled gesture file/s
+                var applicationDataPath = CopyResourcesFirstTime("EyeGestures");
+
+                // Read into string also 
+                eyeGesturesFilePath = Directory.GetFiles(applicationDataPath).First();
+                try
+                {
+                    Settings.Default.EyeGestureString = XmlEyeGestures.ReadFromFile(eyeGesturesFilePath).WriteToString();
+                }
+                catch
+                {
+                    Log.ErrorFormat("Could not read from gestures file {0}", eyeGesturesFilePath);
+#if DEBUG 
+                    throw;  // This file gets installed by Optikey so if there's an exception here we want to know about it
+#endif                    
                 }
             }
 
-            return applicationDataPath;
+            Settings.Default.EyeGestureFile = eyeGesturesFilePath;
         }
+
+        protected static void ValidateDynamicKeyboardLocation()
+        {
+            if (string.IsNullOrEmpty(Settings.Default.DynamicKeyboardsLocation))
+            {
+                // First time we set to APPDATA location, user may move through settings later
+                Settings.Default.DynamicKeyboardsLocation = CopyResourcesFirstTime("Keyboards");
+            }
+        } 
+
 
         protected static void ValidateDynamicKeyboardLocation()
         {
@@ -1040,34 +1177,13 @@ namespace JuliusSweetland.OptiKey
             }
         }
 
-        #endregion
-
-        #region Validate Plugins Location
-
-        protected static string GetDefaultPluginsFolder()
-        {
-            var applicationDataPath = DiagnosticInfo.GetAppDataPath(@"Plugins");
-
-            // If directory doesn't exist, assume that this is the first run. So, move plugins from installation package to target path
-            if (!Directory.Exists(applicationDataPath))
-            {
-                Directory.CreateDirectory(applicationDataPath);
-                foreach (string pluginFile in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\Plugins"))
-                {
-                    File.Copy(pluginFile, Path.Combine(applicationDataPath, Path.GetFileName(pluginFile)), true);
-                }
-            }
-
-            return applicationDataPath;
-        }
-
         protected static void ValidatePluginsLocation()
         {
             if (string.IsNullOrEmpty(Settings.Default.PluginsLocation) ||
                 !Directory.Exists(Settings.Default.PluginsLocation))
             {
                 // First time we set to APPDATA location, user may move through settings later
-                Settings.Default.PluginsLocation = GetDefaultPluginsFolder(); ;
+                Settings.Default.PluginsLocation = CopyResourcesFirstTime("Plugins");
             }
         }
 
@@ -1092,7 +1208,7 @@ namespace JuliusSweetland.OptiKey
                     Log.Info("Previously unpacked CommuniKate pageset deleted successfully.");
                 }
                 Settings.Default.CommuniKateStagedForDeletion = false;
-                
+
                 Settings.Default.UsingCommuniKateKeyboardLayout = Settings.Default.UseCommuniKateKeyboardLayoutByDefault;
                 Settings.Default.CommuniKateKeyboardCurrentContext = null;
                 Settings.Default.CommuniKateKeyboardPrevious1Context = "_null_";
@@ -1149,7 +1265,7 @@ namespace JuliusSweetland.OptiKey
                     catch (Exception ex)
                     {
                         var errorMsg = string.Format(
-                            "Failed to started MaryTTS (exception encountered). Disabling MaryTTS and using System Voice '{0}' instead.", 
+                            "Failed to started MaryTTS (exception encountered). Disabling MaryTTS and using System Voice '{0}' instead.",
                             Settings.Default.SpeechVoice);
                         Log.Error(errorMsg, ex);
                         Settings.Default.MaryTTSEnabled = false;
@@ -1218,7 +1334,7 @@ namespace JuliusSweetland.OptiKey
             {
                 taskCompletionSource.SetResult(true);
             }
-            
+
             return await taskCompletionSource.Task;
         }
 
@@ -1227,7 +1343,7 @@ namespace JuliusSweetland.OptiKey
         #region Alert If Presage Bitness Or Bootstrap Or Version Failure
 
         protected static async Task<bool> AlertIfPresageBitnessOrBootstrapOrVersionFailure(
-            bool presageInstallationProblem, IInputService inputService, IAudioService audioService,  MainViewModel mainViewModel)
+            bool presageInstallationProblem, IInputService inputService, IAudioService audioService, MainViewModel mainViewModel)
         {
             var taskCompletionSource = new TaskCompletionSource<bool>(); //Used to make this method awaitable on the InteractionRequest callback
 
@@ -1246,16 +1362,16 @@ namespace JuliusSweetland.OptiKey
                         taskCompletionSource.SetResult(false);
                     });
             }
-            else 
-            {
-                if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
-                {
-                    Log.Info("Presage installation validated.");
-                }
-                taskCompletionSource.SetResult(true);
-            }
+            else
+{
+    if (Settings.Default.SuggestionMethod == SuggestionMethods.Presage)
+    {
+        Log.Info("Presage installation validated.");
+    }
+    taskCompletionSource.SetResult(true);
+}
 
-            return await taskCompletionSource.Task;
+return await taskCompletionSource.Task;
         }
 
         #endregion

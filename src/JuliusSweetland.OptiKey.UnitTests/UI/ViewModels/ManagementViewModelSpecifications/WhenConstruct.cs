@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.UI.ViewModels;
 using NUnit.Framework;
 
@@ -24,7 +24,8 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         public void ThenChildViewModelShouldBeConstructed()
         {
             Assert.IsNotNull(ManagementViewModel.DictionaryViewModel);
-            Assert.IsNotNull(ManagementViewModel.OtherViewModel);
+            Assert.IsNotNull(ManagementViewModel.FeaturesViewModel);
+            Assert.IsNotNull(ManagementViewModel.GesturesViewModel);
             Assert.IsNotNull(ManagementViewModel.PointingAndSelectingViewModel);
             Assert.IsNotNull(ManagementViewModel.SoundsViewModel);
             Assert.IsNotNull(ManagementViewModel.VisualsViewModel);
@@ -34,9 +35,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         [Test]
         public void ThenInteractionRequestsAndCommandsShouldBeConstructed()
         {
-            Assert.IsNotNull(ManagementViewModel.ConfirmationRequest);
-            Assert.IsNotNull(ManagementViewModel.OkCommand);
-            Assert.IsNotNull(ManagementViewModel.CancelCommand);
+            Assert.Multiple(() => 
+            {
+                Assert.That(ManagementViewModel.ConfirmationRequest, Is.Not.Null); 
+                Assert.That(ManagementViewModel.OkCommand, Is.Not.Null);
+                Assert.That(ManagementViewModel.CancelCommand, Is.Not.Null);
+            });
         }
     }
 }

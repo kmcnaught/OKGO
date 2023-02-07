@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.UI.ViewModels.Management;
 using NUnit.Framework;
@@ -37,17 +37,20 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.Management.DictionaryV
         [Test]
         public void ThenCommandsShouldBeConstructed()
         {
-            Assert.IsNotNull(DictionaryViewModel.AddCommand);
-            Assert.IsNotNull(DictionaryViewModel.ToggleDeleteCommand);
-            Assert.IsNotNull(DictionaryViewModel.LoadCommand);
+            Assert.Multiple(() =>
+            {
+                Assert.That(DictionaryViewModel.AddCommand, Is.Not.Null);
+                Assert.That(DictionaryViewModel.ToggleDeleteCommand, Is.Not.Null);
+                Assert.That(DictionaryViewModel.LoadCommand, Is.Not.Null);
+            });            
         }
 
         [Test]
         public void ThenEntriesShouldBeLoaded()
         {
             DictionaryViewModel.Load();
-            Assert.IsNotNull(DictionaryViewModel.Entries);
-            Assert.AreEqual(DictionaryEntries.Count, DictionaryViewModel.Entries.Count);
+            Assert.That(DictionaryViewModel.Entries, Is.Not.Null);
+            Assert.That(DictionaryViewModel.Entries.Count, Is.EqualTo(DictionaryEntries.Count));
         }
     }
 }

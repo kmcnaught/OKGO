@@ -11,6 +11,7 @@ scripts/output.XML
 *.user
 *.sln.docstates
 .vs
+**.orig
 
 # Release deployment, including certificates, etc
 deployment/
@@ -173,6 +174,9 @@ $RECYCLE.BIN/
 packages/log4net.2.0.3/lib/net10-full/log4net.xml
 packages/log4net.2.0.3/lib/net11-full/log4net.xml
 src/JuliusSweetland.OptiKey.InstallerTranslations/InstallerStrings.cs
+.vscode
+src/JuliusSweetland.OptiKey.Crayta/Resources/CraytaKeyboards
+
 src/OptikeyPro.exe - Shortcut.lnk
 src/OptikeyMouse.exe - Shortcut.lnk
 src/OptikeySymbol.exe - Shortcut.lnk

@@ -1462,7 +1462,7 @@ a pozice</value>
     <value>The Eye Tribe nebyl nakalibrovaný. Přenos dat není možný dokud nebude kalibrace dokončená.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Není možné začít kalibraci, protože EyeX engine není k dispozici.</value>
+    <value>Není možné začít kalibraci, protože Eye Tribe software není k dispozici.</value>
   </data>
   <data name="TIME_UNTIL_POINT_BECOMES_IRRELEVENT_LABEL" xml:space="preserve">
     <value>Čas dokud se bod stane nepodstatným (ms):</value>
@@ -1477,10 +1477,10 @@ a pozice</value>
     <value>Množství zpracovaných dat z datového toku:</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Nepodařilo se najít Tobii EyeX Engine. Prosím nainstalujte Tobii EyeX Engine a zkuste to znovu.</value>
+    <value>Nepodařilo se najít Tobii Service. Prosím nainstalujte Tobii software a zkuste to znovu.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine není spuštěný. Prosím spusťte Tobii EyeX Engine a zkuste to znovu.</value>
+    <value>Tobii Service není spuštěný. Prosím spusťte Tobii Service a zkuste to znovu.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Tón 1</value>
@@ -1599,7 +1599,7 @@ Kontrolu aktualizacií můžete vypnout v nastavení (ALT + M).</value>
       <value>To vyžaduje, aby Gaze Tracking knihovnu ITU, což je framework pro sledování pomocí off-the-shelf komponenty, jako jsou kamery a videokameru s otevřeným zdrojovým kódem oka.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Pokud máte v plánu používat Optikey s oční tracker Irisbond Duo, pak si prosím zkontrolujte, zda máte k dispozici ovladače Irisbond Duo nainstalovány. Ty lze stáhnout z https://www.irisbond.com/products/downloads.</value>
+      <value>Pokud máte v plánu používat Optikey s oční tracker Irisbond Duo, pak si prosím zkontrolujte, zda máte k dispozici ovladače Irisbond Duo nainstalovány. Ty lze stáhnout z https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>V tomto režimu bude Optikey použijte kurzor myši jako vstup namísto mluvení přímo do očí tracker. Možná budete chtít to, pokud testujete Optikey ven, nebo chcete-li použít alternativní vstupní zařízení, jako je například hlava myši nebo jakékoliv oční tracker není v tomto seznamu. Pro více informací viz www.optikey.org/help</value>

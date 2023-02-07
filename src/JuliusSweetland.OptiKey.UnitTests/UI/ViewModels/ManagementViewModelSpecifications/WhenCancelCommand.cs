@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using JuliusSweetland.OptiKey.Properties;
 using NUnit.Framework;
 using Prism.Interactivity.InteractionRequest;
@@ -53,9 +53,12 @@ namespace JuliusSweetland.OptiKey.UnitTests.UI.ViewModels.ManagementViewModelSpe
         [Test]
         public void ThenWindowShouldBeClosedWithoutSaving()
         {
-            Assert.IsTrue(IsWindowClosed);
-            Assert.AreEqual(Settings.Default.CommuniKatePagesetLocation, defaultCommuniKatePagesetLocation);
-            Assert.AreEqual(Settings.Default.MaryTTSLocation, defaultMaryTTSLocation);
+            Assert.Multiple(() =>
+            {
+                Assert.That(IsWindowClosed, Is.True);
+                Assert.That(defaultCommuniKatePagesetLocation, Is.EqualTo(Settings.Default.CommuniKatePagesetLocation));
+                Assert.That(defaultMaryTTSLocation, Is.EqualTo(Settings.Default.MaryTTSLocation));
+            });            
         }
     }    
 }

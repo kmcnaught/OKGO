@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,12 +64,6 @@ namespace JuliusSweetland.OptiKey.Static
         public static void SetExtendedWindowStyle(IntPtr hWnd, ExtendedWindowStyles exStyle)
         {
             PInvoke.SetWindowLong(hWnd, (int)GWL.GWL_EXSTYLE, (int)exStyle);
-        }
-
-        // Based on: https://stackoverflow.com/a/3367137/9091159
-        public static void SetWindowExTransparent(IntPtr hWnd)
-        {
-            SetExtendedWindowStyle(hWnd, GetExtendedWindowStyle(hWnd) | ExtendedWindowStyles.WS_EX_TRANSPARENT);
         }
 
         public static List<IntPtr> GetHandlesOfTopLevelWindows()

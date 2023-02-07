@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
+﻿// Copyright (c) 2022 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 using log4net;
 using System.Collections.Generic;
 using System.IO;
@@ -154,7 +154,7 @@ namespace JuliusSweetland.OptiKey.Models
 
             // Read in XML file (may throw)
             XmlSerializer serializer = new XmlSerializer(typeof(XmlKeyboard));
-            using (FileStream readStream = new FileStream(@inputFilename, FileMode.Open))
+            using (FileStream readStream = new FileStream(@inputFilename, FileMode.Open, FileAccess.Read))
             {
                 keyboard = (XmlKeyboard)serializer.Deserialize(readStream);
             }

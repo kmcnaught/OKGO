@@ -1080,7 +1080,7 @@ POSITION</value>
     <value>TheEyeTribe er ikke blevet kalibreret. Ingen data vil blive modtager indtil kalibreringen er fuldført.</value>
   </data>
   <data name="THE_EYE_TRIBE_UNABLE_TO_CALIBRATE_NO_ENGINE" xml:space="preserve">
-    <value>Ude af stand til at forsøge en kalibrering da ingen EyeX engine er tilgængelig.</value>
+    <value>Ude af stand til at forsøge en kalibrering da ingen EyeTribe software er tilgængelig.</value>
   </data>
   <data name="THEME_LABEL" xml:space="preserve">
     <value>Tema:</value>
@@ -1095,10 +1095,10 @@ POSITION</value>
     <value>Kalibrering færdig, eller muligvis afbrudt, men alt virker igen!</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_FOUND" xml:space="preserve">
-    <value>Tobii EyeX Engine blev ikke fundet. Installer venligst EyeX Engine og forsøg igen.</value>
+    <value>Tobii Service blev ikke fundet. Installer venligst Tobii software  og forsøg igen.</value>
   </data>
   <data name="TOBII_EYEX_ENGINE_NOT_RUNNING" xml:space="preserve">
-    <value>Tobii EyeX Engine kører ikke. Start venligst EyeX Enginen og forsøg igen.</value>
+    <value>Tobii Service kører ikke. Start venligst Tobii service n og forsøg igen.</value>
   </data>
   <data name="TONE_SOUND_1" xml:space="preserve">
     <value>Tone 1</value>
@@ -1688,7 +1688,7 @@ Türkçe
       <value>Dette kræver ITU Gaze Tracking Bibliotek, som er en ramme for open source eyetracking hjælp off-the-shelf komponenter, såsom webcams og videokameraer.</value>
   </data>
   <data name="IRISBOND_DUO_INFO" xml:space="preserve">
-      <value>Hvis du planlægger at bruge Optikey med Irisbond Duo øje tracker så skal du sørge for at du har de Irisbond Duo drivere installeret. Disse kan downloades fra https://www.irisbond.com/products/downloads.</value>
+      <value>Hvis du planlægger at bruge Optikey med Irisbond Duo øje tracker så skal du sørge for at du har de Irisbond Duo drivere installeret. Disse kan downloades fra https://www.irisbond.com/en/producto/irisbond-duo-2.</value>
   </data>
   <data name="MOUSE_POSITION_INFO" xml:space="preserve">
       <value>I denne tilstand vil Optikey bruge musemarkøren som input i stedet for at tale direkte til et øje tracker. Du vil måske dette, hvis du tester Optikey ud, eller hvis du ønsker at bruge den med en alternativ indgang enhed, såsom et hoved mus eller en hvilken som helst øje tracker ikke på denne liste. </value>
