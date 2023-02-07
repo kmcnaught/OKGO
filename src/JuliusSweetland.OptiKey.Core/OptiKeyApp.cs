@@ -1158,24 +1158,33 @@ namespace JuliusSweetland.OptiKey
             Settings.Default.EyeGestureFile = eyeGesturesFilePath;
         }
 
+        protected static string GetDefaultUserKeyboardFolder()
+        {
+            var applicationDataPath = DiagnosticInfo.GetAppDataPath(@"Keyboards");
+
+            // If directory doesn't exist, assume that this is the first run. So, move dynamic keyboards from installation package to target path
+            if (!Directory.Exists(applicationDataPath))
+            {
+                Directory.CreateDirectory(applicationDataPath);
+                foreach (string dynamicKeyboard in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + @"\Resources\DynamicKeyboards"))
+                {
+                    File.Copy(dynamicKeyboard, Path.Combine(applicationDataPath, Path.GetFileName(dynamicKeyboard)), true);
+                }
+            }
+
+            return applicationDataPath;
+        }
+
         protected static void ValidateDynamicKeyboardLocation()
         {
             if (string.IsNullOrEmpty(Settings.Default.DynamicKeyboardsLocation))
             {
                 // First time we set to APPDATA location, user may move through settings later
                 Settings.Default.DynamicKeyboardsLocation = CopyResourcesFirstTime("Keyboards");
+                // fIXME: or this??
+                //Settings.Default.DynamicKeyboardsLocation = GetDefaultUserKeyboardFolder();
             }
         } 
-
-
-        protected static void ValidateDynamicKeyboardLocation()
-        {
-            if (string.IsNullOrEmpty(Settings.Default.DynamicKeyboardsLocation))
-            {
-                // First time we set to APPDATA location, user may move through settings later
-                Settings.Default.DynamicKeyboardsLocation = GetDefaultUserKeyboardFolder();
-            }
-        }
 
         protected static void ValidatePluginsLocation()
         {

@@ -3317,6 +3317,15 @@ namespace JuliusSweetland.OptiKey.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show overlay window (requires restart):.
+        /// </summary>
+        public static string LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL {
+            get {
+                return ResourceManager.GetString("LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deadzone Height (in pixels):.
         /// </summary>
         public static string LOOK_TO_SCROLL_VERTICAL_DEADZONE_LABEL {

@@ -62,13 +62,6 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
             get { return lookToScrollBringWindowToFrontAfterChoosingScreenPoint; }
             set { SetProperty(ref lookToScrollBringWindowToFrontAfterChoosingScreenPoint, value); }
         }
-
-        private bool lookToScrollLockDownBoundsKey;
-        public bool LookToScrollLockDownBoundsKey
-        {
-            get { return lookToScrollLockDownBoundsKey; }
-            set { SetProperty(ref lookToScrollLockDownBoundsKey, value); }
-        }
         
         private bool lookToScrollDeactivateUponSwitchingKeyboards;
         public bool LookToScrollDeactivateUponSwitchingKeyboards
@@ -184,7 +177,6 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
 
         private void Load()
         {
-            LookToScrollLockDownBoundsKey = Settings.Default.LookToScrollLockDownBoundsKey;
             LookToScrollDeactivateUponSwitchingKeyboards = Settings.Default.LookToScrollDeactivateUponSwitchingKeyboards;
             LookToScrollShowOverlayWindow = Settings.Default.LookToScrollShowOverlayWindow;
             LookToScrollOverlayBoundsColour = Settings.Default.LookToScrollOverlayBoundsColour;
@@ -210,7 +202,6 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.ViewModels.Management
 
         public void ApplyChanges()
         {
-            Settings.Default.LookToScrollLockDownBoundsKey = LookToScrollLockDownBoundsKey;
             Settings.Default.LookToScrollDeactivateUponSwitchingKeyboards = LookToScrollDeactivateUponSwitchingKeyboards;
             Settings.Default.LookToScrollShowOverlayWindow = LookToScrollShowOverlayWindow;
             Settings.Default.LookToScrollOverlayBoundsColour = LookToScrollOverlayBoundsColour;

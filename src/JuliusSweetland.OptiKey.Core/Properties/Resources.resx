@@ -2393,9 +2393,6 @@ Magyar
     <value>Dock position:</value>
   </data>
   <data name="FLOATING_POSITION_LABEL" xml:space="preserve">
-    <value>Floating position (left, top, width, height):</value>
-  </data>
-  <data name="FLOATING_POSITION_LABEL" xml:space="preserve">
     <value>Floating position (left, top, width, height)</value>
   </data>
   <data name="TRANSLATION_TARGET_LANGUAGE_LABEL" xml:space="preserve">
@@ -2481,5 +2478,8 @@ Magyar
   </data>
   <data name="ERROR_ACCESSING_CLIPBOARD" xml:space="preserve">
     <value>The Clipboard could not be cleared. This typically occurs when the Clipboard is being used by another process.</value>
+  </data>
+  <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
+    <value>Show overlay window (requires restart):</value>
   </data>
 </root>

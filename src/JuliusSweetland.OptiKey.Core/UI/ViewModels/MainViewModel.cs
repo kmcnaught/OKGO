@@ -483,8 +483,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Keyboard = new DynamicKeyboard(() =>
                     {
                         mainWindowManipulationService.Restore();
-                        Keyboard = new Menu(() => Keyboard = new Alpha1());
-                    //TODO: consider whether back action should take you to 'normal' keyboards?
+                        //TODO: consider whether back action should take you to 'normal' keyboards?
+                        //Keyboard = new Menu(() => Keyboard = new Alpha1());
+                    }, keyStateService, keyboardOverride);
+                    
                     return;
                 }
             }

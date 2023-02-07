@@ -560,6 +560,7 @@
     <Compile Include="UI\ViewModels\ManagementViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\DictionaryViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\GesturesViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\OtherViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\PointingAndSelectingViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\SoundsViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\FeaturesViewModel.cs" />
@@ -1068,15 +1069,9 @@
     <None Include="NOTES AND DISCLAIMER.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Resources\DynamicKeyboards\AltAlphaHorizontalKeyboard.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="NOTES AND DISCLAIMER.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Resource Include="Resources\DynamicKeyboards\crayta_edit.xml" />
-    <Resource Include="Resources\DynamicKeyboards\crayta_play.xml" />
-    <Resource Include="Resources\DynamicKeyboards\MainMenu.xml" />
     <Content Include="Resources\Fonts\B612-licence-epl-v10.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -2141,7 +2136,9 @@
       <Name>SingleInstance</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\DynamicKeyboards\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

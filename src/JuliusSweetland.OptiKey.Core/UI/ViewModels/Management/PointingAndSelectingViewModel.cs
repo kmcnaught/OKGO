@@ -758,7 +758,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
                 new KeyValueAndTimeSpanGroup(Resources.MOUSE_DO_AT_POINT_KEY_GROUP, new List<KeyValueAndTimeSpan>
                 {
                     new KeyValueAndTimeSpan(Resources.CLICK_AND_DRAG, KeyValues.MouseDragKey, dictionary.ContainsKey(KeyValues.MouseDragKey) ? dictionary[KeyValues.MouseDragKey] : null),
-                    new KeyValueAndTimeSpan(Resources.CLICK_AND_DRAG_LIVE, KeyValues.MouseDragLiveKey, dictionary.ContainsKey(KeyValues.MouseDragLiveKey) ? dictionary[KeyValues.MouseDragLiveKey] : (TimeSpan?)null),
+                    new KeyValueAndTimeSpan(Resources.CLICK_AND_DRAG_LIVE, KeyValues.MouseDragLiveKey, dictionary.ContainsKey(KeyValues.MouseDragLiveKey) ? dictionary[KeyValues.MouseDragLiveKey] : null),
                     new KeyValueAndTimeSpan(Resources.LEFT_CLICK, KeyValues.MouseMoveAndLeftClickKey, dictionary.ContainsKey(KeyValues.MouseMoveAndLeftClickKey) ? dictionary[KeyValues.MouseMoveAndLeftClickKey] : null),
                     new KeyValueAndTimeSpan(Resources.LEFT_DOUBLE_CLICK, KeyValues.MouseMoveAndLeftDoubleClickKey, dictionary.ContainsKey(KeyValues.MouseMoveAndLeftDoubleClickKey) ? dictionary[KeyValues.MouseMoveAndLeftDoubleClickKey] : null),
                     new KeyValueAndTimeSpan(Resources.MIDDLE_CLICK, KeyValues.MouseMoveAndMiddleClickKey, dictionary.ContainsKey(KeyValues.MouseMoveAndMiddleClickKey) ? dictionary[KeyValues.MouseMoveAndMiddleClickKey] : null),

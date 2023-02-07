@@ -141,7 +141,7 @@
 							      VerticalAlignment="Center"
 							      IsChecked="{Binding LookToScrollShowOverlayWindow, Mode=TwoWay}" />
 
-                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOUR_LABEL}" 
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_BOUNDS_COLOR_LABEL}" 
 							       VerticalAlignment="Center" Margin="5"
 								    />
                     <ComboBox Grid.Row="9" Grid.Column="1"
@@ -162,7 +162,7 @@
                                        Value="{Binding LookToScrollOverlayBoundsThickness, Mode=TwoWay}"
                     />
 
-                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOUR_LABEL}" 
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="{x:Static resx:Resources.LOOK_TO_SCROLL_OVERLAY_DEADZONE_COLOR_LABEL}" 
 							       VerticalAlignment="Center" Margin="5" 
 								    />
                     <ComboBox Grid.Row="11" Grid.Column="1"

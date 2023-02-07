@@ -2354,19 +2354,6 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Medium")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public LookToScrollSpeeds LookToScrollSpeed {
-            get {
-                return ((LookToScrollSpeeds)(this["LookToScrollSpeed"]));
-            }
-            set {
-                this["LookToScrollSpeed"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool LookToScrollCentreMouseWhenActivated {
@@ -2388,6 +2375,22 @@ namespace JuliusSweetland.OptiKey.Properties {
             }
             set {
                 this["LookToScrollBringWindowToFrontWhenActivated"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool LookToScrollBringWindowToFrontAfterChoosingScreenPoint
+        {
+            get
+            {
+                return ((bool)(this["LookToScrollBringWindowToFrontAfterChoosingScreenPoint"]));
+            }
+            set
+            {
+                this["LookToScrollBringWindowToFrontAfterChoosingScreenPoint"] = value;
             }
         }
 
@@ -2989,30 +2992,6 @@ namespace JuliusSweetland.OptiKey.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        {
-            get
-            {
-            }
-            set
-            {
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        {
-            get
-            {
-            }
-            set
-            {
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public double RightStickSensitivityX
@@ -3040,6 +3019,38 @@ namespace JuliusSweetland.OptiKey.Properties {
             set
             {
                 this["RightStickSensitivityY"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double MouseStickSensitivityX
+        {
+            get
+            {
+                return ((double)(this["MouseStickSensitivityX"]));
+            }
+            set
+            {
+                this["MouseStickSensitivityX"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public double MouseStickSensitivityY
+        {
+            get
+            {
+                return ((double)(this["MouseStickSensitivityY"]));
+            }
+            set
+            {
+                this["MouseStickSensitivityY"] = value;
             }
         }
 

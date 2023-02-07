@@ -829,7 +829,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             // the triggerKey is the controlling key, which may be pressed and/or locked down
             // for repeat actions. 
 
-            Action resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();            
+            //FIXME: reinstate Action resumeLookToScroll = SuspendLookToScrollWhileChoosingPointForMouse();            
             SetupFinalClickAction(finalPoint =>
             {
                 if (finalPoint != null)
@@ -852,7 +852,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
 
                 ResetAndCleanupAfterMouseAction();
-                resumeLookToScroll();
+                //resumeLookToScroll();
 
                 // Repeat if this key is locked (and no other locked key has replaced it)
                 // otherwise release the key
@@ -2971,8 +2971,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 {
                                     perKeyPauseHandlers.Add(singleKeyValue, new KeyPauseHandler(
                                         whenRequiresPausing,
-                                        new Action(() => { keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Release); }),
-                                        new Action(() => { keyboardOutputService.ProcessSingleKeyPress(keyCommand.KeyValue.String, KeyPressKeyValue.KeyPressType.Press); })
+                                        new Action(() => { keyboardOutputService.ProcessSingleKeyPress(keyCommand.Value, KeyPressKeyValue.KeyPressType.Release); }),
+                                        new Action(() => { keyboardOutputService.ProcessSingleKeyPress(keyCommand.Value, KeyPressKeyValue.KeyPressType.Press); })
                                         ));
                                 }                                
                                 perKeyPauseHandlers.GetValueOrDefault(singleKeyValue)?.AttachListener(inputService);                                

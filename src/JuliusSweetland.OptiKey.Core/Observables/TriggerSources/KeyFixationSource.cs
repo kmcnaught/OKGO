@@ -300,8 +300,17 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
         }
 
         #endregion
-        
+
         #region Methods
+
+        private TimeSpan ConvertTimeFromText(string timeString, string referenceInMilliseconds)
+        {
+            TimeSpan reference = TimeSpan.FromMilliseconds(double.Parse(referenceInMilliseconds));
+
+            // FIXME: We aren't catching any exceptions here which seems like a robustness regression
+            // Test latest parsing code on Optikey with typos.
+            return ConvertTimeFromText(timeString, referenceInMilliseconds);
+        }
 
         private TimeSpan ConvertTimeFromText(string timeString, TimeSpan reference)
         {
