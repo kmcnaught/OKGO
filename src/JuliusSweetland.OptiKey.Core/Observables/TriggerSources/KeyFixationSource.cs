@@ -309,7 +309,7 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 
             // FIXME: We aren't catching any exceptions here which seems like a robustness regression
             // Test latest parsing code on Optikey with typos.
-            return ConvertTimeFromText(timeString, referenceInMilliseconds);
+            return ConvertTimeFromText(timeString, reference);
         }
 
         private TimeSpan ConvertTimeFromText(string timeString, TimeSpan reference)
@@ -356,18 +356,19 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 			var completionTimes = hasOverride && timeSpanOverrides.CompletionTimes != null && timeSpanOverrides.CompletionTimes.Any()
                 ? timeSpanOverrides.CompletionTimes
                 : timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger).Split(',').ToList();
-            
+
+
             if (lastKeyValue == null || keyValue != lastKeyValue)
-            {
-                return ConvertTimeFromText(timeSpanOverrides.CompletionTimes.First(), timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger));
+            {                
+                return ConvertTimeFromText(completionTimes.First(), timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger));
             }
 
             if (completionTimes.Count > keystroke)
-            {
-                return ConvertTimeFromText(timeSpanOverrides.CompletionTimes[keystroke], timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger));                    
+            {                
+                return ConvertTimeFromText(completionTimes[keystroke], timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger));
             }
 
-            return ConvertTimeFromText(timeSpanOverrides.CompletionTimes.Last(), timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger));                
+            return ConvertTimeFromText(completionTimes.Last(), timeToCompleteTriggerByKey.GetValueOrDefault(keyValue, defaultTimeToCompleteTrigger));
 
         }
 

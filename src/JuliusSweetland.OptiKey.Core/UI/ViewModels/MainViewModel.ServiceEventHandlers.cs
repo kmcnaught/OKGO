@@ -2898,7 +2898,18 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     if (keyCommand.Name == KeyCommands.Function)
                     {
                         Log.InfoFormat("CommandList: Press function key: {0}", keyCommand.Value);
-                        if (Enum.TryParse(keyCommand.Value, out FunctionKeys fk))
+
+                        // Try to parse KeyValue's string as a functionkey, or get from KeyValue.                         
+                        FunctionKeys? fk = keyCommand.KeyValue?.FunctionKey;
+                        string payload = keyCommand.KeyValue?.String;
+                        if (!fk.HasValue) {
+                            if (Enum.TryParse(keyCommand.Value, out FunctionKeys fkFromValueString))
+                            {
+                                fk = fkFromValueString;
+                            }
+                        }
+                        
+                        if (fk.HasValue)
                         {
                             if (fk == FunctionKeys.MouseDrag
                                 || fk == FunctionKeys.MouseMoveTo
@@ -2914,10 +2925,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                             {
                                 suspendCommands = true;
                             }
-                            KeySelectionResult(new KeyValue(fk), multiKeySelection);
+                            KeySelectionResult(new KeyValue(fk.Value, payload), multiKeySelection);
                             while (suspendCommands)
                                 await Task.Delay(10);
                         }
+                        
                     }
                     else if (keyCommand.Name == KeyCommands.ChangeKeyboard)
                     {
