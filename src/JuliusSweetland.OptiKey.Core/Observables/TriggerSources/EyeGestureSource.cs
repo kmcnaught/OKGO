@@ -10,6 +10,7 @@ using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Observables.PointSources;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.Static;
+using log4net;
 
 namespace JuliusSweetland.OptiKey.Observables.TriggerSources
 {
@@ -19,6 +20,8 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
     public class EyeGestureSource : ITriggerSource
     {
         #region Fields
+
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private IPointSource pointSource;
         private IObservable<TriggerSignal> sequence;
@@ -62,12 +65,16 @@ namespace JuliusSweetland.OptiKey.Observables.TriggerSources
                         double moveDelta = 0;
 
                         // Load gestures
-                        try
+                        gestureList = null;
+                        if (!String.IsNullOrEmpty(Settings.Default.EyeGestureString))
                         {
-                            gestureList = XmlEyeGestures.ReadFromString(Settings.Default.EyeGestureString).GestureList.ToList();
-                        }
-                        catch {
-                            gestureList = null;
+                            try
+                            {                       
+                                gestureList = XmlEyeGestures.ReadFromString(Settings.Default.EyeGestureString).GestureList.ToList();
+                            }
+                            catch {
+                                Log.Error($"Cannot parse gesture string: { Settings.Default.EyeGestureString }");
+                            }
                         }
 
                         // Create subscription
