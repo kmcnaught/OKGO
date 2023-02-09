@@ -248,6 +248,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
 
                 mainViewModel.ResetAndCleanupAfterMouseAction();
+                mainViewModel.SelectionMode = SelectionModes.Keys;
                 callback(point.HasValue);
             }, suppressMagnification: true);
         }

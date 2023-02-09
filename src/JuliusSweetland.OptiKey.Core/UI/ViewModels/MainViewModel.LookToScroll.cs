@@ -99,6 +99,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             var currentKeyValue = GetHeldDownJoystickKeyValues().FirstOrDefault();
             if (currentKeyValue != null)
             {
+                SelectionMode = SelectionModes.SinglePoint;
                 // Re-start with "Enable", which will check for reset request
                 JoystickHandlers[currentKeyValue.FunctionKey.Value].Enable(currentKeyValue);
             }
