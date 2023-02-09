@@ -132,34 +132,45 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             // - Update this one appropriately
             // - Make sure any conflicting ones are disabled
 
+            var requestedKeyState = keyStateService.KeyDownStates[requestedKeyValue].Value;
+
+            // turn off all keys
             List<FunctionKeys> joystickKeys = JoystickHandlers.Keys.ToList();
-            foreach (var keyVal in keyStateService.KeyDownStates.Keys)
+
+            foreach (var keyValTop in keyStateService.KeyDownStates.Keys)
             {
-                if (keyVal.FunctionKey != null)
+                List<KeyValue> allKeyValues = new List<KeyValue> { keyValTop };
+                // Also consider nested command key values
+                if (keyValTop.Commands != null) 
+                    foreach (var nestedKeyVal in keyValTop.Commands)
+                        allKeyValues.Add(nestedKeyVal.KeyValue);
+
+                foreach (var keyValNested in allKeyValues)
                 {
-                    // If it's this one, toggle it and update the state??
-                    if (keyVal == requestedKeyValue)
+                    if (keyValNested?.FunctionKey != null)
                     {
-                        // Set joystick state according to button state
-                        if (keyStateService.KeyDownStates[requestedKeyValue].Value == KeyDownStates.Up)
-                            JoystickHandlers[requestedFunctionKey].Disable();
-                        else
-                            JoystickHandlers[requestedFunctionKey].Enable(requestedKeyValue);
-                    }
-                    else if (joystickKeys.Contains(keyVal.FunctionKey.Value))
-                    {
-                        // Any other key which should be mutually-exclusive. 
-                        // Disable button and joystick 
-                        if (keyStateService.KeyDownStates[keyVal].Value == KeyDownStates.Down ||
-                            keyStateService.KeyDownStates[keyVal].Value == KeyDownStates.LockedDown)
+                        // Turn off all relevant keys - we'll re-enable the requested one if appropriate
+                        if (joystickKeys.Contains(keyValNested.FunctionKey.Value))
                         {
-                            keyStateService.KeyDownStates[keyVal].Value = KeyDownStates.Up;
-                            if (keyVal.FunctionKey.Value != requestedFunctionKey)
-                                JoystickHandlers[keyVal.FunctionKey.Value].Disable();
+                            // Any other key which should be mutually-exclusive. 
+                            // Disable button and joystick 
+                            if (keyStateService.KeyDownStates[keyValTop].Value == KeyDownStates.Down ||
+                                keyStateService.KeyDownStates[keyValTop].Value == KeyDownStates.LockedDown)
+                            {
+                                keyStateService.KeyDownStates[keyValTop].Value = KeyDownStates.Up;
+                                JoystickHandlers[keyValNested.FunctionKey.Value].Disable();
+                            }
                         }
                     }
                 }
             }
+
+            // Now set joystick state on requested key according to button state
+            keyStateService.KeyDownStates[requestedKeyValue].Value = requestedKeyState; // turn back on if disabled by previous step
+            if (requestedKeyState == KeyDownStates.Up)
+                JoystickHandlers[requestedFunctionKey].Disable();
+            else
+                JoystickHandlers[requestedFunctionKey].Enable(requestedKeyValue);
         }
     }
 }
