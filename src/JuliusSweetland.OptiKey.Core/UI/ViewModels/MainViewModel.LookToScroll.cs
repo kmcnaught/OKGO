@@ -116,13 +116,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             List<FunctionKeys> joystickKeys = JoystickHandlers.Keys.ToList();
             foreach (var keyValTop in keyStateService.KeyDownStates.Keys)
             {
-                List<KeyValue> allKeyValues = new List<KeyValue> { keyValTop };
-                // Also consider nested command key values
-                if (keyValTop.Commands != null)
-                    foreach (var nestedKeyVal in keyValTop.Commands)
-                        allKeyValues.Add(nestedKeyVal.KeyValue);
-
-                foreach (var keyValNested in allKeyValues) {
+                foreach (var keyValNested in keyValTop.AllKeyValues) {
                     if (keyValNested?.FunctionKey != null)
                     {
                         if (joystickKeys.Contains(keyValNested.FunctionKey.Value))
@@ -154,13 +148,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             foreach (var keyValTop in keyStateService.KeyDownStates.Keys)
             {
-                List<KeyValue> allKeyValues = new List<KeyValue> { keyValTop };
-                // Also consider nested command key values
-                if (keyValTop.Commands != null) 
-                    foreach (var nestedKeyVal in keyValTop.Commands)
-                        allKeyValues.Add(nestedKeyVal.KeyValue);
-
-                foreach (var keyValNested in allKeyValues)
+                foreach (var keyValNested in keyValTop.AllKeyValues)
                 {
                     if (keyValNested?.FunctionKey != null)
                     {

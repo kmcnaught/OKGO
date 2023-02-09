@@ -44,6 +44,19 @@ namespace JuliusSweetland.OptiKey.Models
 
         public List<KeyCommand> Commands { get; set; }
 
+        public List<KeyValue> AllKeyValues // including those nested in commands
+        {
+            get
+            {
+                List<KeyValue> allKeyValues = new List<KeyValue> { this };
+                // Also consider nested command key values
+                if (this.Commands != null)
+                    foreach (var nestedKeyVal in this.Commands)
+                        allKeyValues.Add(nestedKeyVal.KeyValue);
+                return allKeyValues;
+            }
+        }
+
         public bool StringIsLetter
         {
             get { return String != null && String.Length == 1 && char.IsLetter(String, 0); }
