@@ -72,6 +72,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     else
                         Settings.Default.LegacyStickSensitivityY *= multiplier;
                     break;
+                case FunctionKeys.LegacyTriggerJoystick:
+                    if (axis == Axes.AxisX)
+                        Settings.Default.LegacyTriggerStickSensitivityX *= multiplier;
+                    else
+                        Settings.Default.LegacyTriggerStickSensitivityY *= multiplier;
+                    break;
                 default:
                     Log.ErrorFormat("Didn't recognise joystick {0} for adjustment", selectedJoyKey);
                     break;
