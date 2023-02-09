@@ -232,11 +232,11 @@ namespace JuliusSweetland.OptiKey.Crayta
 
                     // Special warning if controller install hasn't been completed
                     if (!publishService.SupportsController())
-                    {
-                        System.Diagnostics.Process.Start("https://github.com/ViGEm/ViGEmBus/releases");
-                       
-                        mainViewModel.RaiseToastNotification("Error setting up joysticks",
+                    {                                              
+                        mainViewModel.RaiseToastNotification("Error setting up joysticks - please install ViGem",
                             "Cannot find virtual controller driver.\n\nPlease install ViGemBus\n\nGamepad control keys will not work until ViGemBus is installed", NotificationTypes.Error, () => { });
+
+                        System.Diagnostics.Process.Start("https://github.com/ViGEm/ViGEmBus/releases");
                     }
                 };
 
