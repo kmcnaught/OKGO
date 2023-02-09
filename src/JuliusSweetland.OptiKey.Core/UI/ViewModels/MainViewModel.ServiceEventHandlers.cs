@@ -2602,30 +2602,76 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
                 case FunctionKeys.CopyJoystickSettings:
                 {
-                    // Copy for use in keyboards
+                    var selectedKeyValue = GetHeldDownJoystickKeyValues().FirstOrDefault();
+                    if (selectedKeyValue != null)
                     {
-                        string msg0 = "Use *one* of these in a dynamic key to replicate the settings you've chosen";
-                        string msg1 = $"<Action Payload=\"{Settings.Default.LeftStickSensitivityX}, {Settings.Default.LeftStickSensitivityY}\">LeftJoystick</Action>";
-                        string msg2 = $"<Action Payload=\"{Settings.Default.RightStickSensitivityX}, {Settings.Default.RightStickSensitivityY}\">RightJoystick</Action>";
-                        string msg3 = $"<Action Payload=\"{Settings.Default.LegacyStickSensitivityX}, {Settings.Default.LegacyStickSensitivityY}\">LegacyJoystick</Action>";
-                        string msg4 = $"<Action Payload=\"{Settings.Default.MouseStickSensitivityX}, {Settings.Default.MouseStickSensitivityY}\">MouseJoystick</Action>";
-                        string msg5 = $"<Action Payload=\"{Settings.Default.LegacyTriggerStickSensitivityX}, {Settings.Default.LegacyTriggerStickSensitivityY}\">LegacyTriggerJoystick</Action>";
-                        string combinedMsg = $"{msg0}\n{msg1}\n{msg2}\n{msg3}\n{msg4}\n{msg5}";
+                        // Only copy current stick sensitivity
+                        foreach (FunctionKeys key in JoystickHandlers.Keys.ToList())
+                        {
+                            if (selectedKeyValue.FunctionKey == key)
+                            {
+                                string s = key.ToString();
+                                string d2 = "";
+                                string sensitivity = "";
+                                if (key == FunctionKeys.LeftJoystick)
+                                    sensitivity = $"{Settings.Default.LeftStickSensitivityX}, {Settings.Default.LeftStickSensitivityY}";
+                                else if (key == FunctionKeys.RightJoystick)
+                                    sensitivity = $"{Settings.Default.RightStickSensitivityX}, {Settings.Default.RightStickSensitivityY}";
+                                else if (key == FunctionKeys.LegacyJoystick)
+                                    sensitivity = $"{Settings.Default.LegacyStickSensitivityX}, {Settings.Default.LegacyStickSensitivityY}";
+                                else if (key == FunctionKeys.MouseJoystick)
+                                    sensitivity = $"{Settings.Default.MouseStickSensitivityX}, {Settings.Default.MouseStickSensitivityY}";
+                                else if (key == FunctionKeys.LegacyTriggerJoystick)
+                                    sensitivity = $"{Settings.Default.LegacyTriggerStickSensitivityX}, {Settings.Default.LegacyTriggerStickSensitivityY}";
+                                else
+                                    Log.ErrorFormat($"Can't find sensitivity for joystick: {key}");
 
-                        Clipboard.SetText(combinedMsg);
-                    }
-                    // User facing message
-                    {
-                        string msg1 = $"Left Stick: ({Settings.Default.LeftStickSensitivityX}, {Settings.Default.LeftStickSensitivityY})";
-                        string msg2 = $"Right Stick: ({Settings.Default.RightStickSensitivityX}, {Settings.Default.RightStickSensitivityY})";
-                        string msg3 = $"Legacy Stick: ({Settings.Default.LegacyStickSensitivityX}, {Settings.Default.LegacyStickSensitivityY})";
-                        string msg4 = $"Mouse Stick: ({Settings.Default.MouseStickSensitivityX}, {Settings.Default.MouseStickSensitivityY})";
-                        string msg5 = $"Legacy trigger Stick: ({Settings.Default.LegacyTriggerStickSensitivityX}, {Settings.Default.LegacyTriggerStickSensitivityY})";
-                        string combinedMsg = $"{msg1}\n{msg2}\n{msg3}\n{msg4}\n{msg5}";
+                                if (!String.IsNullOrEmpty(sensitivity))
+                                {
+                                    string msg0 = "Use this dynamic key to replicate the settings you've chosen";
+                                    string msg1 = $"<DynamicKey>";
+                                    string msg2 = $"\t<Label>MyJoystick</Label>";
+                                    string msg3 = $"\t<Action Payload=\"{ sensitivity }\">{ key.ToString() }</Action>";
+                                    string msg4 = "</DynamicKey>";
+                                    string combinedMsgClip = $"{msg0}\n{msg1}\n{msg2}\n{msg3}\n{msg4}";
 
-                        RaiseToastNotification("Copied!", "Sensitivities copied to clipboard\n" + combinedMsg, NotificationTypes.Normal, () => { });
+                                    Clipboard.SetText(combinedMsgClip);
+
+                                    string msg5 = $"{key.ToString()} has sensitivity:";
+                                    string msg6 = $"({sensitivity})";
+                                    string msg7 = "Key copied to clipboard";
+                                    string combinedMsgUser = $"{msg5}\n{msg6}\n\n{msg7}";
+
+                                    RaiseToastNotification("Copied!", combinedMsgUser, NotificationTypes.Normal, () => { });
+                                }
+                            }
+                        }
                     }
-                        
+                    else { 
+                        // Copy all
+                        {
+                            string msg0 = "Use *one* of these in a dynamic key to replicate the settings you've chosen";
+                            string msg1 = $"<Action Payload=\"{Settings.Default.LeftStickSensitivityX}, {Settings.Default.LeftStickSensitivityY}\">LeftJoystick</Action>";
+                            string msg2 = $"<Action Payload=\"{Settings.Default.RightStickSensitivityX}, {Settings.Default.RightStickSensitivityY}\">RightJoystick</Action>";
+                            string msg3 = $"<Action Payload=\"{Settings.Default.LegacyStickSensitivityX}, {Settings.Default.LegacyStickSensitivityY}\">LegacyJoystick</Action>";
+                            string msg4 = $"<Action Payload=\"{Settings.Default.MouseStickSensitivityX}, {Settings.Default.MouseStickSensitivityY}\">MouseJoystick</Action>";
+                            string msg5 = $"<Action Payload=\"{Settings.Default.LegacyTriggerStickSensitivityX}, {Settings.Default.LegacyTriggerStickSensitivityY}\">LegacyTriggerJoystick</Action>";
+                            string combinedMsg = $"{msg0}\n{msg1}\n{msg2}\n{msg3}\n{msg4}\n{msg5}";
+
+                            Clipboard.SetText(combinedMsg);
+                        }
+                        // User facing message
+                        {
+                            string msg1 = $"Left Stick: ({Settings.Default.LeftStickSensitivityX}, {Settings.Default.LeftStickSensitivityY})";
+                            string msg2 = $"Right Stick: ({Settings.Default.RightStickSensitivityX}, {Settings.Default.RightStickSensitivityY})";
+                            string msg3 = $"Legacy Stick: ({Settings.Default.LegacyStickSensitivityX}, {Settings.Default.LegacyStickSensitivityY})";
+                            string msg4 = $"Mouse Stick: ({Settings.Default.MouseStickSensitivityX}, {Settings.Default.MouseStickSensitivityY})";
+                            string msg5 = $"Legacy trigger Stick: ({Settings.Default.LegacyTriggerStickSensitivityX}, {Settings.Default.LegacyTriggerStickSensitivityY})";
+                            string combinedMsg = $"{msg1}\n{msg2}\n{msg3}\n{msg4}\n{msg5}";
+
+                            RaiseToastNotification("Copied!", "Sensitivities copied to clipboard\n" + combinedMsg, NotificationTypes.Normal, () => { });
+                        }
+                    }
                     // FIXME: Resource
                     
                     break;
