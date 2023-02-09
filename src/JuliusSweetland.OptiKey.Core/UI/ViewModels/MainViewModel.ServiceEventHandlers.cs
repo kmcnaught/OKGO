@@ -21,6 +21,8 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards;
 using JuliusSweetland.OptiKey.UI.ViewModels.Keyboards.Base;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.Native;
+using JuliusSweetland.OptiKey.UI.Windows;
+using MahApps.Metro.Controls;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -61,8 +63,26 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
             };
 
-            Func<SelectionModes, TriggerTypes, KeyValue, bool> validEvent = (SelectionModes mode, TriggerTypes type, KeyValue keyValue) =>
+            Func<SelectionModes, TriggerTypes, PointAndKeyValue, bool> validEvent = (SelectionModes mode, TriggerTypes type, PointAndKeyValue pointAndKeyValue) =>
             {
+                KeyValue keyValue = pointAndKeyValue?.KeyValue;
+
+                // If management console is up, don't allow key selections inside management console window
+                foreach (Window w in Application.Current.Windows)
+                {
+                    // This is a bit hacky, relying on knowledge of management window classes in Optikey core and in OKGO library                    
+                    if (w is MetroWindow && pointAndKeyValue != null)
+                    {
+                        if (w.GetType().Name.Contains("ManagementWindow") && w.IsActive)
+                        {
+                            Point point = pointAndKeyValue.Point;
+                            Rect windowRect = new Rect(w.Left, w.Top, w.Width, w.Height);
+                            if (windowRect.Contains(point)) {
+                                return false;
+                            }
+                        }
+                    }
+                }
 
                 // If we are magnifying, we disable all key selections and allow point selections everywhere                
                 if (magnifyAtPoint != null)
@@ -117,7 +137,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 var pointAndKV = tuple.Item2;
                 var progress = tuple.Item3;
 
-                if (!validEvent(SelectionMode, type, pointAndKV?.KeyValue))
+                if (!validEvent(SelectionMode, type, pointAndKV))
                 {
                     return; // filter out certain illegal events depending on current state
                 }
@@ -148,7 +168,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 var point = value.Item2.Point;
                 var keyValue = value.Item2.KeyValue;
 
-                if (!validEvent(SelectionMode, type, keyValue))
+                if (!validEvent(SelectionMode, type, value.Item2))
                 {
                     return;
                 }
@@ -203,7 +223,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     var singleKeyValue = tuple.Item3;
                     var multiKeySelection = tuple.Item4;
 
-                    if (!validEvent(SelectionMode, type, singleKeyValue))
+                    if (!validEvent(SelectionMode, type, new PointAndKeyValue(points.ElementAtOrDefault(0), singleKeyValue)))
                     {
                         return;
                     }
