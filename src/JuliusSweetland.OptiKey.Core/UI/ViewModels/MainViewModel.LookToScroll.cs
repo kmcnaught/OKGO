@@ -1,6 +1,7 @@
 ﻿// Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Rights Reserved
 // based on GPL3 code Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All Rights Reserved
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,11 +9,13 @@ using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using System.Text.RegularExpressions;
 using JuliusSweetland.OptiKey.Enums;
+using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
 using JuliusSweetland.OptiKey.Native.Common.Enums;
 using JuliusSweetland.OptiKey.Native.Common.Static;
 using JuliusSweetland.OptiKey.Native.Common.Structs;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Static;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels
 {
@@ -127,6 +130,74 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     }
                 }
             }
+        }        
+
+        private void SetJoystickCentre(KeyValue requestedKeyValue)
+        {
+            //FunctionKeys? joystick = requestedKeyValue.FunctionKey;
+            string payload = requestedKeyValue.String.RemoveWhitespace();
+
+            if (!String.IsNullOrEmpty(payload))
+            {
+                try
+                {
+                    char[] delimColon = { ':' };
+                    char[] delimComma = { ',' };
+
+                    string[] parts = payload.Split(delimColon, StringSplitOptions.RemoveEmptyEntries);
+                    if (parts.Length == 2)
+                    {
+                        string joystickString = parts[0], pointString = parts[1];
+
+                        if (Enum.TryParse(joystickString, out FunctionKeys joystickKey))
+                        {
+                            //bool relative = pointString.EndsWith("%");
+
+                            string[] pointParts = pointString.Split(delimComma, StringSplitOptions.RemoveEmptyEntries);
+
+                            if (pointParts.Length == 2)
+                            {
+                                Func<string, double, int> parseNumberAsPosition = (string inputString, double scale) =>
+                                {
+                                // If ends in "%" parse as percentage
+                                if (inputString.EndsWith("%"))
+                                    {
+                                        inputString = inputString.Remove(inputString.Length - 1);
+                                        float amount = Convert.ToSingle(inputString);
+                                        return (int)(amount * scale / 100.0f);
+                                    }
+                                    else
+                                    {
+                                        float amount = Convert.ToSingle(inputString);
+                                    // If less than 1.0, parse as fraction
+                                    if (amount <= 1.0)
+                                        {
+                                            return (int)(amount * scale);
+                                        }
+                                        else
+                                        {
+                                        // Else parse as absoluate
+                                        return (int)amount;
+                                        }
+                                    }
+                                };
+
+                                int x = parseNumberAsPosition(pointParts[0], Graphics.PrimaryScreenWidthInPixels);
+                                int y = parseNumberAsPosition(pointParts[1], Graphics.PrimaryScreenHeightInPixels);
+
+                                Look2DInteractionHandler requestedHandler = JoystickHandlers[joystickKey];
+                                requestedHandler.SetJoystickCentre((int)x, (int)y);
+                                return;
+                            }
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    // Logged below
+                }
+            }
+            Log.Error($"Cannot parse string: \"{ payload }\" as screen point for joystick centre");                
         }
 
         private void ToggleJoystick(KeyValue requestedKeyValue)

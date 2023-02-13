@@ -230,6 +230,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             callback(true); // Always successful.
         }
 
+        public void SetJoystickCentre(int x, int y)
+        {
+            JoystickCentre = new Point(x, y);
+        }
+
         private void ChoosePointLookToScrollBoundsTarget(Action<bool> callback)
         {
             Log.Info("Choosing point on screen to use as the centre point for scrolling.");

@@ -801,6 +801,10 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.NoJoystick:
                     TurnOffJoysticks();
                 break;                    
+
+                case FunctionKeys.SetJoystickCentre:
+                    SetJoystickCentre(singleKeyValue);
+                    break;
             }
         }
         

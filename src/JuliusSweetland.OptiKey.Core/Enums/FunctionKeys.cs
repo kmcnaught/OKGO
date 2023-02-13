@@ -268,5 +268,6 @@ namespace JuliusSweetland.OptiKey.Enums
         CopyJoystickSettings,
         ResetAllJoystickSettings,
         NoJoystick,
+        SetJoystickCentre,
     }
 }
