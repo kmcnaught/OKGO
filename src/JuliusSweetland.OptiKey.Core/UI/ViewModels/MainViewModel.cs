@@ -456,10 +456,12 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     DirectoryInfo tempDir = Directory.CreateDirectory(extractionPath);
                     ZipFile.ExtractToDirectory(keyboardOverride, extractionPath);
 
-                    var xmlFileList = Directory.GetFiles(extractionPath, "*.xml", SearchOption.AllDirectories);
-                    if (xmlFileList.Length == 1)
-                    {   // single file
-                        keyboardOverride = xmlFileList[0];
+                    // Check if multiple files to show in a menu, or just one (with optional additional hidden files)
+                    var visibleKeyboards = new DynamicKeyboardFolder(extractionPath).VisibleKeyboards;
+
+                    if (visibleKeyboards.Count == 1)
+                    {   // single (visible) file
+                        keyboardOverride = visibleKeyboards[0].fullPath;
                         Log.Info($"Unzipped and found single file { keyboardOverride }");
                     }
                     else

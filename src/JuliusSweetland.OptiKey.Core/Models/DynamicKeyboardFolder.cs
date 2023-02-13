@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Properties;
 using JuliusSweetland.OptiKey.UI.Views.Keyboards.Common;
+using System.Linq;
 
 namespace JuliusSweetland.OptiKey.Models
 {
@@ -38,6 +39,14 @@ namespace JuliusSweetland.OptiKey.Models
         #endregion
 
         public List<KeyboardInfo> keyboards;
+        
+        public List<KeyboardInfo> VisibleKeyboards
+        {
+            get
+            {
+                return keyboards.FindAll(keyb => !keyb.isHidden);
+            }
+        }
 
         public DynamicKeyboardFolder(String filePath)
         {
