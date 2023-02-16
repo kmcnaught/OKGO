@@ -319,13 +319,22 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             AddRowsToGrid(4);
             AddColsToGrid(4);
 
-             // Top middle two cells are main error message
+            // Extract the "enabled key" style by creating a temporary one
+            // We'll use this for the labels to make them easier to read
+            var testKey = new Key
+            {
+                Text = "test",
+                Value = new KeyValue("test")
+            };
+            var enabledForegroundColour = testKey.Foreground;
+
+            // Top middle two cells are main error message
             {
                 var newKey = new Key {
                     Text = heading,
                 };
                 // Swap for default "not disabled" foreground colour for better visibility
-                newKey.DisabledForegroundColourOverride = newKey.Foreground;
+                //newKey.DisabledForegroundColourOverride = newKey.Foreground;
 
                 PlaceKeyInPosition(newKey, 0, 1, 1, 2);                
             }
@@ -336,8 +345,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     Text = content,
                 };
                 // Swap for default "not disabled" foreground colour for better visibility
-                newKey.DisabledForegroundColourOverride = newKey.Foreground;
-
+                newKey.DisabledForegroundColourOverride = enabledForegroundColour;
                 PlaceKeyInPosition(newKey, 1, 0, 2, 4);
             }
 
