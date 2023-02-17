@@ -505,54 +505,58 @@ namespace JuliusSweetland.OptiKey.Services
         {
             Log.InfoFormat("ProcessSingleKeyPress called for key [{0}] press type [{1}]", inKey, type);
 
-            // Special case for function keys
-            FunctionKeys funKey;
-            var virtualKeyCode = (Enum.TryParse(inKey, out funKey)) ? funKey.ToVirtualKeyCode() : null;
-            if (virtualKeyCode != null)
+            bool isDigits = inKey.All(char.IsDigit); // avoid interpreting numeric values as enums
+            if (!isDigits)
             {
-                if (type == KeyPressKeyValue.KeyPressType.Press)
-                    publishService.KeyDown(virtualKeyCode.Value);
-                else if (type == KeyPressKeyValue.KeyPressType.Release)
-                    publishService.KeyUp(virtualKeyCode.Value);
-                else
-                    publishService.KeyDownUp(virtualKeyCode.Value);
-                return;
-            }
-
-            // If not an Optikey FunctionKey, check if it matches a virtual key name
-            VirtualKeyCode vkCode;
-            if (Enum.TryParse(inKey, true, out vkCode)) // ignore case
-            {
-                if (type == KeyPressKeyValue.KeyPressType.Press)
-                    publishService.KeyDown(vkCode);
-                else if (type == KeyPressKeyValue.KeyPressType.Release)
-                    publishService.KeyUp(vkCode);
-                else
-                    publishService.KeyDownUp(vkCode);
-                return;
-            }
-
-            // Is it a controller thumbstick press?
-            if (publishService.TryXBoxThumbPress(inKey, type))
-            {
-                return;
-            }
-
-            // Is it another controller output?
-            XboxButtons button;
-            if (Enum.TryParse(inKey, true, out button))
-            {
-                if (type == KeyPressKeyValue.KeyPressType.Press)
-                    publishService.XBoxButtonDown(button);
-                else if (type == KeyPressKeyValue.KeyPressType.Release)
-                    publishService.XBoxButtonUp(button);
-                else
+                // Special case for function keys
+                FunctionKeys funKey;
+                var virtualKeyCode = (Enum.TryParse(inKey, out funKey)) ? funKey.ToVirtualKeyCode() : null;
+                if (virtualKeyCode != null)
                 {
-                    publishService.XBoxButtonDown(button);
-                    await Task.Delay(50);
-                    publishService.XBoxButtonUp(button);
+                    if (type == KeyPressKeyValue.KeyPressType.Press)
+                        publishService.KeyDown(virtualKeyCode.Value);
+                    else if (type == KeyPressKeyValue.KeyPressType.Release)
+                        publishService.KeyUp(virtualKeyCode.Value);
+                    else
+                        publishService.KeyDownUp(virtualKeyCode.Value);
+                    return;
                 }
-                return;
+
+                // If not an Optikey FunctionKey, check if it matches a virtual key name
+                VirtualKeyCode vkCode;
+                if (Enum.TryParse(inKey, true, out vkCode)) // ignore case
+                {
+                    if (type == KeyPressKeyValue.KeyPressType.Press)
+                        publishService.KeyDown(vkCode);
+                    else if (type == KeyPressKeyValue.KeyPressType.Release)
+                        publishService.KeyUp(vkCode);
+                    else
+                        publishService.KeyDownUp(vkCode);
+                    // return;
+                }
+
+                // Is it a controller thumbstick press?
+                if (publishService.TryXBoxThumbPress(inKey, type))
+                {
+                    return;
+                }
+
+                // Is it another controller output?
+                XboxButtons button;
+                if (Enum.TryParse(inKey, true, out button))
+                {
+                    if (type == KeyPressKeyValue.KeyPressType.Press)
+                        publishService.XBoxButtonDown(button);
+                    else if (type == KeyPressKeyValue.KeyPressType.Release)
+                        publishService.XBoxButtonUp(button);
+                    else
+                    {
+                        publishService.XBoxButtonDown(button);
+                        await Task.Delay(50);
+                        publishService.XBoxButtonUp(button);
+                    }
+                    return;
+                }
             }
 
             // Otherwise a vanilla key press
