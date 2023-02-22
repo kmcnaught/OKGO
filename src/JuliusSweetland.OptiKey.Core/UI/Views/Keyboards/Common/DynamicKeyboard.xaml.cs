@@ -319,33 +319,26 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             AddRowsToGrid(4);
             AddColsToGrid(4);
 
-            // Extract the "enabled key" style by creating a temporary one
-            // We'll use this for the labels to make them easier to read
-            var testKey = new Key
-            {
-                Text = "test",
-                Value = new KeyValue("test")
-            };
-            var enabledForegroundColour = testKey.Foreground;
+            // We hardcode black-on-white text for full visibility
 
             // Top middle two cells are main error message
             {
                 var newKey = new Key {
                     Text = heading,
+                    DisabledForegroundColourOverride = Brushes.Black,
+                    DisabledBackgroundColourOverride = Brushes.White
                 };
-                // Swap for default "not disabled" foreground colour for better visibility
-                //newKey.DisabledForegroundColourOverride = newKey.Foreground;
 
                 PlaceKeyInPosition(newKey, 0, 1, 1, 2);                
             }
             // Middle row is detailed error message
-            // FIXME: can this be "auto stretch"-ed ?
             {
                 var newKey = new Key {
                     Text = content,
+                    DisabledForegroundColourOverride = Brushes.Black,
+                    DisabledBackgroundColourOverride = Brushes.White
                 };
-                // Swap for default "not disabled" foreground colour for better visibility
-                newKey.DisabledForegroundColourOverride = enabledForegroundColour;
+
                 PlaceKeyInPosition(newKey, 1, 0, 2, 4);
             }
 
@@ -355,26 +348,40 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 {
                     SymbolGeometry = (Geometry)Application.Current.Resources["BackIcon"],
                     Text = Properties.Resources.BACK,
-                    Value = KeyValues.BackFromKeyboardKey
+                    Value = KeyValues.BackFromKeyboardKey,
+                    ForegroundColourOverride = Brushes.Black,
+                    BackgroundColourOverride = Brushes.White
                 };
                 PlaceKeyInPosition(newKey, 3, 3);
             }
 
             // Fill in empty keys
             {
-                var newKey = new Key();
+                var newKey = new Key {
+                    DisabledForegroundColourOverride = Brushes.Black,
+                    DisabledBackgroundColourOverride = Brushes.White
+                };
                 PlaceKeyInPosition(newKey, 0, 0, 1, 1);
             }
             {
-                var newKey = new Key();
+                var newKey = new Key { 
+                    DisabledForegroundColourOverride = Brushes.Black,
+                    DisabledBackgroundColourOverride = Brushes.White
+                };
                 PlaceKeyInPosition(newKey, 0, 3, 1, 1);
             }
             {
-                var newKey = new Key();
+                var newKey = new Key {
+                    DisabledForegroundColourOverride = Brushes.Black,
+                    DisabledBackgroundColourOverride = Brushes.White
+                };
                 PlaceKeyInPosition(newKey, 3, 0, 1, 1);
             }
             {
-                var newKey = new Key();
+                var newKey = new Key {
+                    DisabledForegroundColourOverride = Brushes.Black,
+                    DisabledBackgroundColourOverride = Brushes.White
+                };
                 PlaceKeyInPosition(newKey, 3, 1, 1, 2);
             }
 
