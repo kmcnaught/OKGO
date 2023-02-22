@@ -348,6 +348,15 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     keyboard = XmlKeyboard.ReadFromFile(keyValue.KeyboardFilename);
                     XmlKeyStates states = keyboard.InitialKeyStates;
 
+                    XmlKeys onEnter = keyboard.OnEnter;
+                    XmlKeys onExit = keyboard.OnExit;
+
+                    if ( (onEnter != null && onEnter.Count > 0) || 
+                         (onExit != null && onExit.Count > 0) )
+                    {
+                        int a = 23;
+                    }
+
                     if (states != null)
                     {
                         foreach (var item in states.GetKeyOverrides())

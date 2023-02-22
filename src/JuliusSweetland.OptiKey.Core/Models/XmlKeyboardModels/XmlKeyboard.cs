@@ -22,6 +22,12 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlElement("Keys")]
         public XmlKeys Keys
         { get; set; }
+        
+        public XmlKeys OnEnter
+        { get; set; }
+
+        public XmlKeys OnExit
+        { get; set; }
 
         [XmlElement("Content")]
         public XmlDynamicItem Content
