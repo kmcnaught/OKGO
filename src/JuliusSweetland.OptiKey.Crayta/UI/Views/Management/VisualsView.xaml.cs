@@ -70,7 +70,7 @@ namespace JuliusSweetland.OptiKey.Crayta.UI.Views.Management
                 try
                 {
                     // make a subdir 
-                    outputFolder = Path.Combine(outputFolder, "OptikeyGamingKeyboards");
+                    outputFolder = Path.Combine(outputFolder, "OKGameOnKeyboards");
                     if (!Directory.Exists(outputFolder))
                         Directory.CreateDirectory(outputFolder);
                 }
