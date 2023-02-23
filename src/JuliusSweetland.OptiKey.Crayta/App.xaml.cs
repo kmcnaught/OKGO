@@ -47,6 +47,7 @@ namespace JuliusSweetland.OptiKey.Crayta
     public partial class App : OptiKeyApp
     {
         private static SplashScreen splashScreen;
+        private static App application;        
 
         private ICommand managementWindowRequestCommand;
 
@@ -57,6 +58,7 @@ namespace JuliusSweetland.OptiKey.Crayta
 
         // Handle to management window whilst open
         private ManagementWindowEyeMine managementWindow;
+        private MainViewModel mainViewModel;
 
         private string startKeyboardOverride = null;        
 
@@ -74,7 +76,7 @@ namespace JuliusSweetland.OptiKey.Crayta
                 splashScreen = new SplashScreen("/Resources/Icons/OkGameOnSplash.png");
                 splashScreen.Show(false);
 
-                var application = new App(args);
+                application = new App(args);
                 application.InitializeComponent();
                 application.Run();
             };
@@ -85,8 +87,22 @@ namespace JuliusSweetland.OptiKey.Crayta
             }
             else
             {
-                using (_manager = SingleInstanceManager.Initialize(
-                    new SingleInstanceManagerSetup(appName)))
+                var setup = new SingleInstanceManagerSetup(appName)
+                {
+                    InstanceNotificationOption = InstanceNotificationOption.NotifyAnyway,
+                    ArgumentsHandler = (new_args) =>
+                    {
+                        // if user requests another keyboard opened, pass the request to this
+                        // existing app
+                        if (application != null)
+                        {
+                            application.ParseArgs(new_args);
+                            application.ResetKeyboard();
+                        }
+                    }
+                };                
+
+                using (_manager = SingleInstanceManager.Initialize(setup))
                 {
                     runApp();
                 }
@@ -96,11 +112,15 @@ namespace JuliusSweetland.OptiKey.Crayta
 
         #region Ctor
 
-        public App(string[] args)
+        public void ParseArgs(string[] args)
         {
-            // Parse command-line args, 
-            // Display the number of command line arguments.
-            Console.WriteLine(args.Length);
+            // depending on where we entered from, the first arg may be the exe name - if so, remove it
+            if (args.Length > 0)
+            {
+                string exeName = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                if (args[0] == exeName)
+                    args = args.Skip(1).ToArray(); // Remove first
+            }
 
             if (args.Length > 0)
             {
@@ -112,6 +132,18 @@ namespace JuliusSweetland.OptiKey.Crayta
 
                 startKeyboardOverride = args[0];
             }
+        }
+
+        public void ResetKeyboard()
+        {
+            Console.WriteLine(startKeyboardOverride);
+            mainViewModel.ResetKeyboard(startKeyboardOverride);
+        }
+
+        public App(string[] args)
+        {
+            // Parse command-line args 
+            ParseArgs(args);
 
             // Core setup for all OptiKey apps
             Initialise();
@@ -158,7 +190,7 @@ namespace JuliusSweetland.OptiKey.Crayta
 
                 //Define MainViewModel before services so I can setup a delegate to call into the MainViewModel
                 //This is to work around the fact that the MainViewModel is created after the services.
-                MainViewModel mainViewModel = null;
+                mainViewModel = null;
                 Action<KeyValue> fireKeySelectionEvent = kv =>
                 {
                     if (mainViewModel != null) //Access to modified closure is a good thing here, for once!

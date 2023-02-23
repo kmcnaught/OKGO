@@ -74,6 +74,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         #region Ctor
 
+        public void ResetKeyboard(string keyboardOverride)
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {   
+                InitialiseKeyboard(mainWindowManipulationService, keyboardOverride);
+            });
+        }
+
         public MainViewModel(
             IAudioService audioService,
             ICalibrationService calibrationService,
