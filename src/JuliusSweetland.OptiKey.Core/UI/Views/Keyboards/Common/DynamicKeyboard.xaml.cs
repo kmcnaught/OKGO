@@ -758,9 +758,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                         {
                             commandKeyValue = new KeyValue(dynamicKeyToggle.Value);
                             if (dynamicKeyToggle.PauseWhenLookingAtAnyKey)
-                                commandList.Add(new KeyCommand(KeyCommands.KeyTogglePauseOnAnyKey, commandKeyValue));
+                                commandList.Add(new KeyCommand(KeyCommands.KeyTogglePauseOnAnyKey, dynamicKeyToggle.Value));
                             else if (dynamicKeyToggle.PauseWhenLookingAtThisKey)
-                                commandList.Add(new KeyCommand(KeyCommands.KeyTogglePauseOnThisKey, commandKeyValue));
+                                commandList.Add(new KeyCommand(KeyCommands.KeyTogglePauseOnThisKey, dynamicKeyToggle.Value));
                             else
 	                            commandList.Add(new KeyCommand(KeyCommands.KeyToggle, dynamicKeyToggle.Value));
                             if (!keyFamily.Contains(new Tuple<KeyValue, KeyValue>(xmlKeyValue, commandKeyValue)))
