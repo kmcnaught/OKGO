@@ -2987,17 +2987,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     {
 
                          // What kind of pausing are we after?
-                         bool doPause = false;
+                         bool doPause = keyCommand.Name == KeyCommands.KeyTogglePauseOnThisKey ||
+                                        keyCommand.Name == KeyCommands.KeyTogglePauseOnAnyKey;
+
                          Func<Point, bool> whenRequiresPausing = null;
-                         if (keyCommand.Name == KeyCommands.KeyTogglePauseOnThisKey) {
-                             doPause = true;
+                         if (keyCommand.Name == KeyCommands.KeyTogglePauseOnThisKey)
                              whenRequiresPausing = (point) => this.IsPointInsideKey(point, singleKeyValue);
-                         }
                          else if (keyCommand.Name == KeyCommands.KeyTogglePauseOnAnyKey)
-                         {
-                             doPause = true;
                              whenRequiresPausing = (point) => this.IsPointInsideValidKey(point);
-                         }
 
                         // Key is released
                         if (keyStateService.KeyDownStates[new KeyValue(keyCommand.Value)].Value != KeyDownStates.Up)
