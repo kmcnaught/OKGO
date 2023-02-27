@@ -2482,4 +2482,7 @@ Magyar
   <data name="LOOK_TO_SCROLL_SHOW_OVERLAY_WINDOW_LABEL" xml:space="preserve">
     <value>Show overlay window (requires restart):</value>
   </data>
+  <data name="RELOAD_KEYBOARD" xml:space="preserve">
+    <value>Reload keyboard</value>
+  </data>
 </root>
