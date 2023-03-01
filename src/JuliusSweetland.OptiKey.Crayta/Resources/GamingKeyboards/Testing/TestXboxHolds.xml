@@ -48,12 +48,6 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
       <KeyGroup>HalfSpeed</KeyGroup>
       <ChangeKeyboard BackReturnsHere="False">TestXboxMore</ChangeKeyboard>
     </DynamicKey>
-
-    
-    <!-- <DynamicKey Col="7" Row="0">
-      <Label>Walk</Label>
-      <KeyToggle PauseWhenLookingAtAnyKey="true">XBoxLeftThumb|North|0.75</KeyToggle>
-    </DynamicKey> -->
     <DynamicKey Col="2" Row="6">      
       <Label>hold\nLB</Label>
       <KeyToggle>XboxLeftShoulder</KeyToggle>
@@ -82,13 +76,7 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
     <DynamicKey Col="9" Row="5">
       <Label>hold\nY</Label>  
       <KeyToggle>XboxY</KeyToggle>
-    </DynamicKey>
-   <!--  <DynamicKey Col="6" Row="6">
-      <Label>Pick\nup</Label>
-      <KeyDown>XboxX</KeyDown>
-      <Wait>100</Wait>
-      <KeyUp>XboxX</KeyUp>
-    </DynamicKey> -->
+    </DynamicKey>       
     <DynamicKey Col="7" Row="6">
         <Label>hold\nRB</Label>
       <KeyToggle>XboxRightShoulder</KeyToggle>
@@ -100,10 +88,6 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
     <DynamicKey Col="9" Row="6">
       <Symbol>BackIcon</Symbol>
       <Action>BackFromKeyboard</Action>
-    </DynamicKey>
-    <!-- <DynamicKey Col="0" Row="6">
-      <Label>Joystick\nSettings</Label>
-      <ChangeKeyboard BackReturnsHere="True">../joystick_settings</ChangeKeyboard>
-    </DynamicKey> -->
+    </DynamicKey>    
   </Content>
 </Keyboard>
