@@ -63,12 +63,12 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
       <KeyToggle>XboxLeftTrigger</KeyToggle>
     </DynamicKey>
     <DynamicKey Col="0" Row="4">
-      <Label>A</Label>      
-      <KeyPress>XboxA</KeyPress>
+      <Label>hold\nA</Label>      
+      <KeyToggle>XboxA</KeyToggle>
     </DynamicKey>
     <DynamicKey Col="0" Row="5">
       <Label>B</Label>      
-      <KeyPress>XboxB</KeyPress>
+      <KeyToggle>XboxB</KeyToggle>
     </DynamicKey>
     <DynamicKey Col="0" Row="6">      
       <Label>Holds</Label>
@@ -76,12 +76,12 @@ Copyright (c) K McNaught Consulting Ltd (UK company number 11297717) - All Right
       <ChangeKeyboard BackReturnsHere="False">TestXbox</ChangeKeyboard>
     </DynamicKey>
     <DynamicKey Col="9" Row="4">
-      <Label>X</Label>      
-      <KeyPress>XboxX</KeyPress>
+      <Label>hold\nX</Label>      
+      <KeyToggle>XboxX</KeyToggle>
     </DynamicKey>
     <DynamicKey Col="9" Row="5">
-      <Label>Y</Label>  
-      <KeyPress>XboxY</KeyPress>
+      <Label>hold\nY</Label>  
+      <KeyToggle>XboxY</KeyToggle>
     </DynamicKey>
    <!--  <DynamicKey Col="6" Row="6">
       <Label>Pick\nup</Label>
