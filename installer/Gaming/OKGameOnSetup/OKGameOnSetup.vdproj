@@ -447,6 +447,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_52C143789B1C5922E41C9F5A331CF723"
+        "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_52C143789B1C5922E41C9F5A331CF723"
+        "OwnerKey" = "8:_EC3FC012B43940DBD97BE8F74AF62305"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_54FC41CC9FB1ABDE5CEDCBC7A2661D4D"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
         "MsmSig" = "8:_UNDEFINED"
@@ -599,12 +611,6 @@
         {
         "MsmKey" = "8:_7736F3EDBF9520D5C89C335123DCEF45"
         "OwnerKey" = "8:_BE0CC707E8F34B5984F62D223E33A7FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_775D09113DA849D0B8197DC6AE1B5B01"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1271,6 +1277,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_161B2855148757A7DB204E060008781B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_52C143789B1C5922E41C9F5A331CF723"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -3207,6 +3219,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_52C143789B1C5922E41C9F5A331CF723"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Nefarius.ViGEm.Client, Version=1.16.150.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_52C143789B1C5922E41C9F5A331CF723"
+                    {
+                    "Name" = "8:Nefarius.ViGEm.Client.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Nefarius.ViGEm.Client.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_856941099282428A88C01A4645A86A6C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_54FC41CC9FB1ABDE5CEDCBC7A2661D4D"
             {
             "AssemblyRegister" = "3:1"
@@ -3741,26 +3784,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_775D09113DA849D0B8197DC6AE1B5B01"
-            {
-            "SourcePath" = "8:..\\..\\..\\src\\JuliusSweetland.OptiKey.Crayta\\Resources\\GamingKeyboards\\Testing\\WasdJoyExamples.xml"
-            "TargetName" = "8:WasdJoyExamples.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_588A3980EF9F4296929C2ECBAA623134"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_79D8EBE56B034B0C4A5D44312F8A45C6"
@@ -5464,7 +5487,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:OptiKey, Version=3.0.29.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_EC3FC012B43940DBD97BE8F74AF62305"
@@ -6000,7 +6023,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:OKGameOn"
         "ProductCode" = "8:{40A7F7F5-CC46-44BD-B94D-A19144E693E6}"
-        "PackageCode" = "8:{F6F8E73D-EEFD-4A36-AE23-77DCC3A6EBC1}"
+        "PackageCode" = "8:{3778437A-6BF4-4C83-9639-DB27AB5A49C9}"
         "UpgradeCode" = "8:{23C84922-0CE5-4706-B4C9-D617690BEEEF}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
