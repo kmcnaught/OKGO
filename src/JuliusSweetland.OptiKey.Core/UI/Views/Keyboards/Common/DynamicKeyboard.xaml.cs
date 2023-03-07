@@ -19,6 +19,7 @@ using JuliusSweetland.OptiKey.UI.Windows;
 using JuliusSweetland.OptiKey.Services;
 using JuliusSweetland.OptiKey.UI.ValueConverters;
 using JuliusSweetland.OptiKey.Properties;
+using MahApps.Metro.IconPacks;
 
 namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 {
@@ -179,6 +180,27 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             return xmlKey.Label ?? xmlKey.Symbol;
         }
 
+        private Geometry parseGeometryString(string geomString)
+        {
+            // First try in-built Optikey symbol
+            Geometry geom = (Geometry)Application.Current.Resources[geomString];
+
+            // Otherwise try mahApps icon by name
+            if (geom == null && System.Enum.TryParse(geomString, out PackIconMaterialDesignKind result))
+            {
+                var icon = new PackIconMaterialDesign();
+                icon.Kind = result;
+                geom = Geometry.Parse(icon.Data);
+                
+                // We need to flip icon (up <-> down) to match coordinate system
+                ScaleTransform transform = new ScaleTransform(1, -1);
+                PathGeometry geometryTransformed = Geometry.Combine(Geometry.Empty, geom, GeometryCombineMode.Union, transform);
+                geom = geometryTransformed;
+            }
+
+            return geom;
+        }
+
         private Key CreateKeyWithBasicProps(XmlKey xmlKey, int minKeyWidth, int minKeyHeight)
         {
             // Add the core properties from XML to a new key
@@ -215,7 +237,8 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
             if (xmlKey.Symbol != null)
             {
-                Geometry geom = (Geometry)Application.Current.Resources[xmlKey.Symbol];
+                Geometry geom = parseGeometryString(xmlKey.Symbol);
+                
                 if (geom != null)
                 {
                     newKey.SymbolGeometry = geom;
@@ -868,7 +891,8 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
 
             if (xmlKey.Symbol != null)
             {
-                Geometry geom = (Geometry)Application.Current.Resources[xmlKey.Symbol];
+                Geometry geom = parseGeometryString(xmlKey.Symbol);
+
                 if (geom != null)
                     newKey.SymbolGeometry = geom;
                 else
