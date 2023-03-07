@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstance.Wpf", "src\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliusSweetland.OptiKey.OptikeyGaming", "src\JuliusSweetland.OptiKey.Crayta\JuliusSweetland.OptiKey.OptikeyGaming.csproj", "{21A46990-29CA-40E5-B99B-A02722A469E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WikiDocs", "src\WikiDocs\WikiDocs.csproj", "{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -171,6 +173,22 @@ Global
 		{21A46990-29CA-40E5-B99B-A02722A469E1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{21A46990-29CA-40E5-B99B-A02722A469E1}.Release|x86.ActiveCfg = Release|Any CPU
 		{21A46990-29CA-40E5-B99B-A02722A469E1}.Release|x86.Build.0 = Release|Any CPU
+		{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}.All|Any CPU.Build.0 = Release|Any CPU
+		{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}.All|x86.ActiveCfg = Release|Any CPU
+		{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}.All|x86.Build.0 = Release|Any CPU
+		{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}.Debug|x86.Build.0 = Debug|Any CPU
+		{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}.DefaultBuild|Any CPU.ActiveCfg = Debug|Any CPU
+		{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
+		{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}.DefaultBuild|x86.ActiveCfg = Debug|Any CPU
+		{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}.DefaultBuild|x86.Build.0 = Debug|Any CPU
+		{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}.Release|x86.ActiveCfg = Release|Any CPU
+		{42061553-C986-4ACF-BE0E-8C3A9DB2BAC9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
