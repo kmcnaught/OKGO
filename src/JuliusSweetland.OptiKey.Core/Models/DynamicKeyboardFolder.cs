@@ -128,9 +128,14 @@ namespace JuliusSweetland.OptiKey.Models
             }
             catch (Exception e)
             {
-                // replace info with default (no contents)
-                info = new KeyboardInfo();
                 Log.Error(e.ToString());
+
+                // replace info with default (based on filename only - didn't manage to read contents)
+                // We keep these available so you can load a "broken" file and get an error message
+                info = new KeyboardInfo();
+                info.fullPath = keyboardPath;
+                info.keyboardName = Path.GetFileName(keyboardPath);
+                
             }
 
             return info;
