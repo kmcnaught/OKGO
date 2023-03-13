@@ -3118,8 +3118,6 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 KeyValue keyValParent = keyPair.Item1;
                 KeyValue keyValChildCommand = keyPair.Item2;  
                 
-                await keyboardOutputService.ProcessSingleKeyPress(keyValParent.String, KeyPressKeyValue.KeyPressType.Release);
-
                 keyStateService.KeyDownStates[keyValParent].Value = KeyDownStates.Up;
                 perKeyPauseHandlers.GetValueOrDefault(keyValParent)?.DetachListener(inputService);
             }
