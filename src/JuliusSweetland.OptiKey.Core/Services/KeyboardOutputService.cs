@@ -557,12 +557,9 @@ namespace JuliusSweetland.OptiKey.Services
                     }
                     return;
                 }
-            }
 
-            // Otherwise a vanilla key press
-            foreach (var chaKey in inKey)
-            {
-                this.PressKey(chaKey, type);
+                // Not recognised
+                throw new ArgumentException($"Function name \"{ inKey }\" not recognised");
             }
         }
 
