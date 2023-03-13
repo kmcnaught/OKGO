@@ -54,6 +54,7 @@ namespace JuliusSweetland.OptiKey.Enums
         EnglishCanada,
         EnglishUK,
         EnglishUS,
+        Enter,
         ExpandToBottom,
         ExpandToBottomAndLeft,
         ExpandToBottomAndRight,

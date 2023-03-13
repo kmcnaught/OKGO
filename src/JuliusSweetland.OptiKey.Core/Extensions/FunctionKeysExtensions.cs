@@ -44,6 +44,9 @@ namespace JuliusSweetland.OptiKey.Extensions
                 case FunctionKeys.LeftWin:
                     return VirtualKeyCode.LWIN;
 
+                case FunctionKeys.Enter: // Alias for common name 
+                    return VirtualKeyCode.RETURN;
+
                 case FunctionKeys.F1:
                     return VirtualKeyCode.F1;
 
