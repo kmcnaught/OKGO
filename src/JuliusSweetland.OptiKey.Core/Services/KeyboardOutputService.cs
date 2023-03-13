@@ -532,7 +532,7 @@ namespace JuliusSweetland.OptiKey.Services
                         publishService.KeyUp(vkCode);
                     else
                         publishService.KeyDownUp(vkCode);
-                    // return;
+                    return;
                 }
 
                 // Is it a controller thumbstick press?
