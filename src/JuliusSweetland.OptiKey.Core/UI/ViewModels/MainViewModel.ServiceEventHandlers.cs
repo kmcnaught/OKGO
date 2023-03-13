@@ -215,13 +215,14 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             inputServiceSelectionResultHandler = async (o, tuple) =>
             {
                 Log.Info("SelectionResult event received from InputService.");
+                
+                var type = tuple.Item1;
+                var points = tuple.Item2;
+                var singleKeyValue = tuple.Item3;
+                var multiKeySelection = tuple.Item4;
 
                 try
                 {
-                    var type = tuple.Item1;
-                    var points = tuple.Item2;
-                    var singleKeyValue = tuple.Item3;
-                    var multiKeySelection = tuple.Item4;
 
                     if (!validEvent(SelectionMode, type, new PointAndKeyValue(points.ElementAtOrDefault(0), singleKeyValue)))
                     {
@@ -262,10 +263,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     Log.Error("Exception caught by inputServiceSelectionResultHandler", ex);
                     inputService.RequestSuspend();
                     RaiseToastNotification(OptiKey.Properties.Resources.ERROR_TITLE,
-                        OptiKey.Properties.Resources.ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT,
+                        OptiKey.Properties.Resources.ERROR_HANDLING_INPUT_SERVICE_SELECTION_RESULT + "\n\n" + ex.Message,
                         NotificationTypes.Error, () => {
                             inputService.RequestResume();
                         });
+                    keyStateService.KeyDownStates[singleKeyValue].Value = KeyDownStates.Up;
                 }
             };
 
