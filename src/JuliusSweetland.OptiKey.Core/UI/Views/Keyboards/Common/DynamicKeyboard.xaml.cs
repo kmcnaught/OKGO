@@ -862,10 +862,13 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             //add this item's KeyValue to each KeyGroup referenced in its definition
             foreach (KeyGroup vKeyGroup in xmlKey.KeyGroups)
             {
-                if (!keyValueByGroup.ContainsKey(vKeyGroup.Value.ToUpper()))
-                    keyValueByGroup.Add(vKeyGroup.Value.ToUpper(), new List<KeyValue> { xmlKeyValue });
-                else if (!keyValueByGroup[vKeyGroup.Value.ToUpper()].Contains(xmlKeyValue))
-                    keyValueByGroup[vKeyGroup.Value.ToUpper()].Add(xmlKeyValue);
+                if (vKeyGroup.Value != null)
+                {
+                    if (!keyValueByGroup.ContainsKey(vKeyGroup.Value.ToUpper()))
+                        keyValueByGroup.Add(vKeyGroup.Value.ToUpper(), new List<KeyValue> { xmlKeyValue });
+                    else if (!keyValueByGroup[vKeyGroup.Value.ToUpper()].Contains(xmlKeyValue))
+                        keyValueByGroup[vKeyGroup.Value.ToUpper()].Add(xmlKeyValue);
+                }
             }
 
             if (xmlKey.Label != null)
