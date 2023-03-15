@@ -558,6 +558,13 @@ namespace JuliusSweetland.OptiKey.Services
                     return;
                 }
 
+                // Single character 
+                if (inKey.Length == 1)
+                {
+                    this.PressKey(inKey[0], type);
+                    return;
+                }
+
                 // Not recognised
                 throw new ArgumentException($"Function name \"{ inKey }\" not recognised");
             }
