@@ -97,8 +97,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 }
 
                 // Exclude ourselves
-                if (Static.Windows.GetWindowTitle(hWnd).Contains("CraytaAccess") ||
-                    Static.Windows.GetWindowClassName(hWnd).Contains("CraytaAccess"))
+                if (Static.Windows.GetWindowTitle(hWnd).Contains("OKGame") ||
+                    Static.Windows.GetWindowClassName(hWnd).Contains("OKGame"))
                 {
                     return false;
                 }

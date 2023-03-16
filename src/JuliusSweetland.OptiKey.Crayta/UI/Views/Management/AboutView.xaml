@@ -12,7 +12,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-        <GroupBox Header="About Crayta Access">
+        <GroupBox Header="About OK Game On">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn" />
