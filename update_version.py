@@ -51,8 +51,8 @@ def safeExit():
     print("git reset --hard head")
 #    safeProcess("git reset --hard head")
 
-def update_assembly_version(filename):
-    pattern = re.compile("\[assembly:\s*AssemblyVersion\(\"(\d*).(\d*).(\d*)\"\)\]")
+def update_assembly_version(filename, property_name):
+    pattern = re.compile("\[assembly:\s*" + property_name + "\(\"(\d*).(\d*).(\d*)\"\)\]")
     
     new_version = None
     for line in fileinput.input(filename, inplace=True):
@@ -71,7 +71,7 @@ def update_assembly_version(filename):
             elif version_level == "--revision":
                 revision += 1
             new_version =  "{}.{}.{}".format(major, minor, revision)
-            line = re.sub(pattern, "[assembly: AssemblyVersion(\"{}\")]".format(new_version), line);        
+            line = re.sub(pattern, "[assembly: " + property_name + "(\"{}\")]".format(new_version), line);        
         print(line.rstrip('\n'))
     if not new_version:
         raise Exception("Could not find version in file {}".format(filename))
@@ -90,10 +90,12 @@ if not safeProcess('git diff-index --quiet HEAD --'):
     
 # Update the source files that OptiKey uses
 version_file1 = 'src/JuliusSweetland.OptiKey.Core/Properties/AssemblyInfo.cs'
-new_version = update_assembly_version(version_file1)
+new_version = update_assembly_version(version_file1, "AssemblyVersion")
+update_assembly_version(version_file1, "AssemblyFileVersion")
 
 version_file2 = 'src/JuliusSweetland.OptiKey.Crayta/Properties/AssemblyInfo.cs'
-new_version = update_assembly_version(version_file2)
+new_version = update_assembly_version(version_file2, "AssemblyVersion")
+new_version = update_assembly_version(version_file2, "AssemblyFileVersion")
 
 # Update the SHA in the VisualsViewModel
 # in git bash this can be a one-liner: 
