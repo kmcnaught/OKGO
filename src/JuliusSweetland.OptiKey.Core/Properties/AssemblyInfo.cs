@@ -60,7 +60,7 @@ using System.Windows;
 //MINOR version when you add functionality in a backwards-compatible manner, and
 //PATCH version when you make backwards-compatible bug fixes (in the Version class this is the Build number).
 [assembly: AssemblyVersion("3.0.32")]
+[assembly: AssemblyFileVersion("3.0.32")]
 
 [assembly: InternalsVisibleTo("JuliusSweetland.OptiKey.UnitTests")]
 [assembly: InternalsVisibleTo("JuliusSweetland.OptiKey.AutoCompletePerformance")]
-[assembly: AssemblyFileVersion("3.0.28")]
