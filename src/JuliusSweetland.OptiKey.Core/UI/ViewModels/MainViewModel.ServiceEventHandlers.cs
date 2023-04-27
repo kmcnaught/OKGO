@@ -2406,6 +2406,13 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         () => { Keyboard = keyboardBeforeQuit; });
                     break;
 
+                case FunctionKeys.QuitWithoutConfirmation:
+                    Log.Info("QuitWithoutConfirmation key selected.");
+                    Settings.Default.CleanShutdown = true;
+                    Settings.Default.Save();
+                    Application.Current.Shutdown();
+                    break;
+
                 case FunctionKeys.RepeatLastMouseAction:
                     if (lastMouseActionStateManager.LastMouseAction != null)
                     {
