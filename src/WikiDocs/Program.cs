@@ -35,6 +35,7 @@ namespace GenerateSymbols
 
             SaveOptikeySymbols();
             SaveMaterialDesignSymbols();
+            SaveRPGAwesomeSymbols();
             SaveActions();
             SavePressableKeys();
 
@@ -140,6 +141,7 @@ namespace GenerateSymbols
             {
                 md_file.WriteLine(GetMarkdownPreamble());
                 int count = 0;
+
                 foreach (PackIconMaterialDesignKind key in Enum.GetValues(typeof(PackIconMaterialDesignKind)))
                 {
                     if (key == PackIconMaterialDesignKind.None)
@@ -149,6 +151,52 @@ namespace GenerateSymbols
 
                     // Extract geometry from icon
                     var icon = new PackIconMaterialDesign();
+                    icon.Kind = key;
+                    Geometry geometry = Geometry.Parse(icon.Data);
+
+                    // Flip icon (up <-> down) to match coordinate system                        
+                    ScaleTransform transform = new ScaleTransform(1, -1, 0, geometry.Bounds.Top + geometry.Bounds.Height / 2);
+                    PathGeometry geometryTransformed = Geometry.Combine(Geometry.Empty, geometry, GeometryCombineMode.Union, transform);
+
+                    string fileName = $"{images_dir}/{key}.png";
+                    SaveGeometry(geometryTransformed, fileName);
+
+                    // save the bitmap and label to markdown table
+                    if (count % md_table_cols == 0)
+                    {
+                        if (count > 0)
+                            md_file.WriteLine("</tr>");
+                        md_file.WriteLine("<tr>");
+                    }
+
+                    md_file.WriteLine(GetTableCell(fileName, key.ToString(), md_icon_height));
+
+                    count++;
+
+                }
+                md_file.WriteLine("</tr>");
+                md_file.WriteLine(GetMarkdownPostamble());
+            }
+        }
+
+        static void SaveRPGAwesomeSymbols()
+        {
+            // Save all the icons that come from RPG Awesome icon library
+            string md_fname = "RGP-Awesome-symbols.md";
+            using (StreamWriter md_file = new StreamWriter(md_fname))
+            {
+                md_file.WriteLine(GetMarkdownPreamble());
+                int count = 0;
+
+                foreach (PackIconRPGAwesomeKind key in Enum.GetValues(typeof(PackIconRPGAwesomeKind)))
+                {
+                    if (key == PackIconRPGAwesomeKind.None)
+                        continue;
+
+                    Console.WriteLine(key);
+
+                    // Extract geometry from icon
+                    var icon = new PackIconRPGAwesome();
                     icon.Kind = key;
                     Geometry geometry = Geometry.Parse(icon.Data);
 

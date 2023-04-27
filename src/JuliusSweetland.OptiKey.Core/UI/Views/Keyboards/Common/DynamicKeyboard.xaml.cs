@@ -180,22 +180,38 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             return xmlKey.Label ?? xmlKey.Symbol;
         }
 
+        private Geometry flipGeometry(Geometry geom)
+        {
+            // We need to flip icon (up <-> down) to match coordinate system
+
+            ScaleTransform transform = new ScaleTransform(1, -1);
+            PathGeometry geometryTransformed = Geometry.Combine(Geometry.Empty, geom, GeometryCombineMode.Union, transform);
+            return geometryTransformed;
+        }
+
         private Geometry parseGeometryString(string geomString)
         {
             // First try in-built Optikey symbol
             Geometry geom = (Geometry)Application.Current.Resources[geomString];
 
             // Otherwise try mahApps icon by name
-            if (geom == null && System.Enum.TryParse(geomString, out PackIconMaterialDesignKind result))
+            // Material Design
             {
-                var icon = new PackIconMaterialDesign();
-                icon.Kind = result;
-                geom = Geometry.Parse(icon.Data);
-                
-                // We need to flip icon (up <-> down) to match coordinate system
-                ScaleTransform transform = new ScaleTransform(1, -1);
-                PathGeometry geometryTransformed = Geometry.Combine(Geometry.Empty, geom, GeometryCombineMode.Union, transform);
-                geom = geometryTransformed;
+                if (geom == null && System.Enum.TryParse(geomString, out PackIconMaterialDesignKind result))
+                {
+                    var icon = new PackIconMaterialDesign();
+                    icon.Kind = result;
+                    geom = flipGeometry(Geometry.Parse(icon.Data));
+                }
+            }
+            // RPG Awesome
+            {
+                if (geom == null && System.Enum.TryParse(geomString, out PackIconRPGAwesomeKind result))
+                {
+                    var icon = new PackIconRPGAwesome();
+                    icon.Kind = result;
+                    geom = flipGeometry(Geometry.Parse(icon.Data));
+                }
             }
 
             return geom;
