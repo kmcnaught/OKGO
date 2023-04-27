@@ -23,7 +23,7 @@ namespace JuliusSweetland.OptiKey.Models
         
         public string Label { get; set; } //Either set this, the Symbol, or both. This value become the Text value on the created Key.
         public string ShiftDownLabel { get; set; } //Optional - only required to display an alternate Text value when the shift key is down.
-        public string Symbol { get; set; }
+        public XmlDynamicSymbol Symbol { get; set; }
         [XmlIgnore] public bool? AutoScaleToOneKeyWidth;
         [XmlIgnore] public bool? AutoScaleToOneKeyHeight;
         [XmlAttribute("AutoScaleToOneKeyWidth")]

@@ -9,6 +9,6 @@ namespace JuliusSweetland.OptiKey.Models
         int Width { get; }
         int Height { get; }
         string Label { get; }
-        string Symbol { get; }
+        XmlDynamicSymbol Symbol { get; }
     }
 }

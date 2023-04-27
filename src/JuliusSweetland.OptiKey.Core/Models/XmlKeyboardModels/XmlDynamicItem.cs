@@ -56,4 +56,32 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlText]
         public string Value { get; set; }
     }
+
+    public class XmlDynamicSymbol
+    {
+        [XmlText]
+        public string Value { get; set; }
+
+        [XmlIgnore]
+        public bool FlipLeftRight
+        { get; set; } = false;
+
+        [XmlAttribute("FlipLeftRight")]
+        public string FlipLeftRightString
+        {
+            get { return this.FlipLeftRight ? "True" : "False"; }
+            set { this.FlipLeftRight = XmlUtils.ConvertToBoolean(value); }
+        }
+
+        [XmlIgnore]
+        public bool FlipUpDown
+        { get; set; } = false;
+
+        [XmlAttribute("FlipUpDown")]
+        public string FlipUpDownString
+        {
+            get { return this.FlipUpDown ? "True" : "False"; }
+            set { this.FlipUpDown = XmlUtils.ConvertToBoolean(value); }
+        }
+    }
 }
