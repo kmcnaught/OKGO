@@ -2396,7 +2396,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                         () =>
                         {
                             Keyboard = new YesNoQuestion(Resources.QUIT_CONFIRMATION_MESSAGE,
-                                () => Application.Current.Shutdown(),
+                                () => {
+                                    Settings.Default.CleanShutdown = true;
+                                    Settings.Default.Save();
+                                    Application.Current.Shutdown();
+                                },
                                 () => { Keyboard = keyboardBeforeQuit; });
                         },
                         () => { Keyboard = keyboardBeforeQuit; });
