@@ -8,9 +8,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:resx="clr-namespace:JuliusSweetland.OptiKey.Properties;assembly=OptiKey"
+             xmlns:valueConverters="clr-namespace:JuliusSweetland.OptiKey.UI.ValueConverters;assembly=Optikey"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-
+    <UserControl.Resources>
+        <valueConverters:EnabledIfNotOverridden x:Key="EnabledIfNotOverridden" />
+    </UserControl.Resources>
     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
         <GroupBox Header="{x:Static resx:Resources.MISC}">
             <Grid>
@@ -19,6 +22,8 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -62,6 +67,18 @@
                 <CheckBox Grid.Row="6" Grid.Column="1" 
                           VerticalAlignment="Center"
                           IsChecked="{Binding Debug, Mode=TwoWay}" />
+
+
+
+                <TextBlock Grid.Row="7" Grid.Column="0" Text="{x:Static resx:Resources.ALLOW_MULTIPLE_INSTANCES}"
+                               IsEnabled="{Binding Source='AllowMultipleInstances', Converter={StaticResource EnabledIfNotOverridden}}"
+                               VerticalAlignment="Center" Margin="5" Visibility="Visible"/>
+                <CheckBox Grid.Row="7" Grid.Column="1"
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding AllowMultipleInstances, Mode=TwoWay}" 
+                              IsEnabled="{Binding Source='AllowMultipleInstances', Converter={StaticResource EnabledIfNotOverridden}}"/>
+
+
             </Grid>
         </GroupBox>
     </ScrollViewer>
