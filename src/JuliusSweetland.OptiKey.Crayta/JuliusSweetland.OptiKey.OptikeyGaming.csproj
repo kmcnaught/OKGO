@@ -201,6 +201,7 @@
     <Compile Include="UI\ViewModels\ManagementViewModelCrayta.cs" />
     <Compile Include="UI\ViewModels\Management\AboutViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\ControlsViewModel.cs" />
+    <Compile Include="UI\ViewModels\Management\FeaturesViewModel.cs" />
     <Compile Include="UI\ViewModels\Management\VisualsViewModelEyeMine.cs" />
     <Compile Include="UI\Views\ManagementView.xaml.cs">
       <DependentUpon>ManagementView.xaml</DependentUpon>
@@ -213,6 +214,9 @@
     </Compile>
     <Compile Include="UI\Views\Management\ControlsView.xaml.cs">
       <DependentUpon>ControlsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Views\Management\FeaturesView.xaml.cs">
+      <DependentUpon>FeaturesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Views\Management\OtherView.xaml.cs">
       <DependentUpon>OtherView.xaml</DependentUpon>
@@ -250,6 +254,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Views\Management\ControlsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Management\FeaturesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
