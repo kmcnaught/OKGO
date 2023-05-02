@@ -35,7 +35,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             PointingAndSelectingViewModel = new PointingAndSelectingViewModel();
             SoundsViewModel = new SoundsViewModel(audioService);
             VisualsViewModel = new VisualsViewModelEyeMine(windowManipulationService);
-            FeaturesViewModel = new FeaturesViewModel();
+            FeaturesViewModel = new PluginsViewModel();
             WordsViewModel = new WordsViewModel(dictionaryService);
             ControlsViewModel = new ControlsViewModel();
             AboutViewModel = new AboutViewModel();
@@ -71,7 +71,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
         public PointingAndSelectingViewModel PointingAndSelectingViewModel { get; private set; }
         public SoundsViewModel SoundsViewModel { get; private set; }
         public VisualsViewModelEyeMine VisualsViewModel { get; protected set; }
-        public FeaturesViewModel FeaturesViewModel { get; private set; }
+        public PluginsViewModel FeaturesViewModel { get; private set; }
         public WordsViewModel WordsViewModel { get; private set; }
         public ControlsViewModel ControlsViewModel { get; private set; }
         public AboutViewModel AboutViewModel { get; private set; }

@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 {
-    public class FeaturesViewModel : BindableBase
+    public class PluginsViewModel : BindableBase
     {
         #region Private Member Vars
 
@@ -23,7 +23,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels.Management
 
         #region Ctor
 
-        public FeaturesViewModel()
+        public PluginsViewModel()
         {
             Load();
         }

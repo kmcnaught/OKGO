@@ -43,7 +43,7 @@ based on code Copyright (c) 2020 OPTIKEY LTD (UK company number 11854839) - All 
                 <management:ControlsView DataContext="{Binding ControlsViewModel, Mode=OneWay}" />
             </TabItem>
             <TabItem Header="{x:Static resx:Resources.PLUGINS_LABEL}">
-                <management:FeaturesView DataContext="{Binding FeaturesViewModel, Mode=OneWay}" />
+                <management:PluginsView DataContext="{Binding FeaturesViewModel, Mode=OneWay}" />
             </TabItem>
             <TabItem Header="{x:Static resx:Resources.OTHER}">
                 <management:OtherView DataContext="{Binding OtherViewModel, Mode=OneWay}" />

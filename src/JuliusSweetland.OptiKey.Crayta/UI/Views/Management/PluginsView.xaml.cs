@@ -13,11 +13,11 @@ using JuliusSweetland.OptiKey.UI.ViewModels.Management;
 namespace JuliusSweetland.OptiKey.Crayta.UI.Views.Management
 {
     /// <summary>
-    /// Interaction logic for FeaturesView.xaml
+    /// Interaction logic for PluginsView.xaml
     /// </summary>
-    public partial class FeaturesView : System.Windows.Controls.UserControl
+    public partial class PluginsView : System.Windows.Controls.UserControl
     {
-        public FeaturesView()
+        public PluginsView()
         {
             InitializeComponent();
         }
