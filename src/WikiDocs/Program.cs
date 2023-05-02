@@ -15,6 +15,7 @@ namespace GenerateSymbols
     class Program
     {
         static string images_dir = "symbols";
+        static int image_width = 64;
 
         static int md_icon_height = 50;
         static int md_table_cols = 3;
@@ -67,7 +68,7 @@ namespace GenerateSymbols
                     {
                         string fileName = $"{images_dir}/{key}.png";
 
-                        SaveGeometry(geometry, fileName);
+                        SaveGeometry(geometry, fileName, image_width);
 
                         // save the bitmap and label to markdown table
                         if (count % md_table_cols == 0)
@@ -158,8 +159,8 @@ namespace GenerateSymbols
                     ScaleTransform transform = new ScaleTransform(1, -1, 0, geometry.Bounds.Top + geometry.Bounds.Height / 2);
                     PathGeometry geometryTransformed = Geometry.Combine(Geometry.Empty, geometry, GeometryCombineMode.Union, transform);
 
-                    string fileName = $"{images_dir}/{key}.png";
-                    SaveGeometry(geometryTransformed, fileName);
+                    string fileName = $"{images_dir}/MaterialDesign/{key}.png";
+                    SaveGeometry(geometryTransformed, fileName, image_width);
 
                     // save the bitmap and label to markdown table
                     if (count % md_table_cols == 0)
@@ -204,8 +205,8 @@ namespace GenerateSymbols
                     ScaleTransform transform = new ScaleTransform(1, -1, 0, geometry.Bounds.Top + geometry.Bounds.Height / 2);
                     PathGeometry geometryTransformed = Geometry.Combine(Geometry.Empty, geometry, GeometryCombineMode.Union, transform);
 
-                    string fileName = $"{images_dir}/{key}.png";
-                    SaveGeometry(geometryTransformed, fileName);
+                    string fileName = $"{images_dir}/RPGAwesome/{key}.png";
+                    SaveGeometry(geometryTransformed, fileName, image_width);
 
                     // save the bitmap and label to markdown table
                     if (count % md_table_cols == 0)
@@ -243,10 +244,21 @@ namespace GenerateSymbols
             return $"<td>{ label }<br/><img src=\"{ filename }\" alt=\"{ label }\" height=\"{ height }\"></td>";
         }
 
-        static void SaveGeometry(Geometry geometry, string filename)
+        static void SaveGeometry(Geometry geometry, string filename, int new_width)
         {
+            FileInfo f = new FileInfo(filename);
+            EnsureExists(f.DirectoryName);        
+
             var bounds = geometry.Bounds;
 
+            int orig_width = (int)(bounds.Left * 2 + bounds.Width);
+
+            double scale = (double)new_width / (double)orig_width;
+            ScaleTransform transform = new ScaleTransform(scale, scale);
+            geometry = Geometry.Combine(Geometry.Empty, geometry, GeometryCombineMode.Union, transform);
+
+            // get new dimensions
+            bounds = geometry.Bounds;
             int width = (int)(bounds.Left * 2 + bounds.Width);
             int height = (int)(bounds.Top * 2 + bounds.Height);
 
