@@ -2982,7 +2982,11 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                                 || fk == FunctionKeys.MouseMoveAndScrollToLeft
                                 || fk == FunctionKeys.MouseMoveAndScrollToRight
                                 || fk == FunctionKeys.MouseMoveAndScrollToTop
-                                || fk == FunctionKeys.MouseMoveAndMiddleClick)
+                                || fk == FunctionKeys.MouseMoveAndMiddleClick 
+                                || fk == FunctionKeys.ResetJoystick
+                                || fk == FunctionKeys.FocusAtPoint
+                                || fk == FunctionKeys.MouseDragLive
+                                )
                             {
                                 suspendCommands = true;
                             }
