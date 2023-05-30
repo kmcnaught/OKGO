@@ -22,7 +22,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         public Rect FindLargestGapBetweenScreenAndMainWindow()
         {
-            Rect screen = GetVirtualScreenBoundsInPixels();
+            Rect screen = GetPrimaryScreenBoundsInPixels();
             Rect window = GetMainWindowBoundsInPixels();
 
             var above = new Rect { X = screen.Left, Y = screen.Top, Width = screen.Width, Height = window.Top >= screen.Top ? window.Top - screen.Top : 0 };
@@ -39,8 +39,8 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             {
                 X = 0,
                 Y = 0,
-                Width = Graphics.VirtualScreenWidthInPixels,
-                Height = Graphics.VirtualScreenHeightInPixels,
+                Width = Graphics.PrimaryScreenWidthInPixels,
+                Height = Graphics.PrimaryScreenHeightInPixels,
             };
         }
 
