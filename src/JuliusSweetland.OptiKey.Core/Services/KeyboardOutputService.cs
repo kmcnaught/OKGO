@@ -503,6 +503,15 @@ namespace JuliusSweetland.OptiKey.Services
 
         public async Task ProcessSingleKeyPress(string inKey, KeyPressKeyValue.KeyPressType type)
         {
+            // Sometimes the keypress is a KeyGroup, 
+            // Sometimes the inKey is a key reference e.g. "R0-C1"
+            // In these cases, no action is required (any relevant actions are carried out upstream of here)       
+            if (keyStateService.KeyValueByGroup.ContainsKey(inKey.ToUpper()) ||
+                keyStateService.KeyFamily.Any(pair => pair.Item1.String == inKey)
+                ) {
+                return;
+            }
+
             Log.InfoFormat("ProcessSingleKeyPress called for key [{0}] press type [{1}]", inKey, type);
 
             bool isDigits = inKey.All(char.IsDigit); // avoid interpreting numeric values as enums
