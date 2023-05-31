@@ -326,6 +326,12 @@
                             </Style>
                         </controls:NumericUpDown.Style>
                     </controls:NumericUpDown>
+
+                    <TextBlock Grid.Row="19" Grid.Column="0" Text="{x:Static resx:Resources.ENABLE_RESIZE_WITH_MOUSE}" 
+                               VerticalAlignment="Center" Margin="5" />
+                    <CheckBox Grid.Row="19" Grid.Column="1" 
+                              VerticalAlignment="Center"
+                              IsChecked="{Binding EnableResizeWithMouse, Mode=TwoWay}" />
                 </Grid>
             </GroupBox>
 
