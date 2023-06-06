@@ -241,6 +241,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\Settings.cs" />
+    <Page Include="Resources\Icons\KeySymbolsEyeMine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Views\ManagementView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
