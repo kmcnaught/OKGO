@@ -662,10 +662,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     });
                     break;
 
-                case Enums.Keyboards.Mouse:
-                    // HACK for testing: force mouse keyboard docked at bottom
-                    mainWindowManipulationService.OverridePersistedState(false, "Floating", "Bottom", 
-                        DockSizes.Full.ToString(), "50%", "20%", "0", "0");
+                case Enums.Keyboards.Mouse:                    
                     Action backAction2 = () =>
                     {
                         mainWindowManipulationService.RestoreSavedState();
@@ -717,19 +714,16 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     break;
 
                 case Enums.Keyboards.Mouse:
-                    //windowManipulationService.Restore();
-                    // HACK for testing: force mouse keyboard docked at bottom
-                    mainWindowManipulationService.OverridePersistedState(false,
-                        WindowStates.Docked.ToString(), DockEdges.Bottom.ToString(),
-                        DockSizes.Collapsed.ToString(), "50%", "20%", "0", "0");
-                    /*if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full)
+                    windowManipulationService.Restore();
+                    
+                    if (Settings.Default.MouseKeyboardDockSize == DockSizes.Full)
                     {
                         windowManipulationService.ResizeDockToFull();
                     }
                     else
                     {
                         windowManipulationService.ResizeDockToCollapsed();
-                    }*/
+                    }
                     break;
 
                 default:
