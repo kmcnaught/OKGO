@@ -617,6 +617,20 @@ namespace JuliusSweetland.OptiKey.Services
             savePreviousWindowState(activeWindowState);
             saveWindowState(newWindowState);
             ApplySavedState();
+
+        }
+
+        public void SetOpacityOverride(string opacityString)
+        {
+            if (!String.IsNullOrEmpty(opacityString))
+            {
+                if (double.TryParse(opacityString, out double opacity))
+                {
+                    window.Opacity = opacity;
+                    return;
+                }
+            }
+            window.Opacity = getOpacity();
         }
 
         public void ResizeDockToCollapsed()

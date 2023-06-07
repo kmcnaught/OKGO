@@ -63,6 +63,9 @@ namespace JuliusSweetland.OptiKey.Models
             set { this.PersistNewState = XmlUtils.ConvertToBoolean(value); }
         }
 
+        public string Opacity
+        { get; set; }
+
         public string WindowState
         { get; set; }
 

@@ -141,6 +141,9 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                     keyboard.VerticalOffset);
             }
 
+            // Set opacity override (or reset, if none)
+            windowManipulationService.SetOpacityOverride(keyboard.Opacity);
+
             return true;
         }
 
@@ -462,7 +465,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             // This ensures the error message and keys are a reasonable size!            
             windowManipulationService.OverridePersistedState(false, "Floating",
                     "Top", "", "60%", "60%", "0", "0"); // Empty strings will allow defaults to be used instead
-            
+            windowManipulationService.SetOpacityOverride("1.0");
         }
 
         private bool SetupDynamicItems()
