@@ -223,6 +223,19 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 }
             }
 
+            // Arbitrary path definition
+            if (geom == null)
+            {
+                try
+                {
+                    geom = Geometry.Parse(geomString);
+                }
+                catch (System.Windows.Markup.XamlParseException ex)
+                {
+                    geom = null;
+                }
+            }
+
             // Apply transformations
             if (xmlGeometry.FlipLeftRight)
                 geom = flipLeftRight(geom);
