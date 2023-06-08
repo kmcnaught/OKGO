@@ -13,6 +13,7 @@ using JuliusSweetland.OptiKey.Native.Common.Enums;
 using JuliusSweetland.OptiKey.Native.Common.Structs;
 using JuliusSweetland.OptiKey.Static;
 using JuliusSweetland.OptiKey.Properties;
+using JuliusSweetland.OptiKey.Models;
 using log4net;
 using MahApps.Metro.Controls;
 using System.Collections.Generic;
@@ -538,6 +539,7 @@ namespace JuliusSweetland.OptiKey.Services
 
             WindowStates activeWindowState = getWindowState();
             WindowStates newWindowState = Enum.TryParse(inWindowState, out newWindowState) ? newWindowState : getWindowState();
+            
             DockEdges newDockPosition = Enum.TryParse(inPosition, out newDockPosition) ? newDockPosition : getDockPosition();
             DockSizes newDockSize = Enum.TryParse(inDockSize, out newDockSize) ? newDockSize : getDockSize();
 
@@ -547,37 +549,62 @@ namespace JuliusSweetland.OptiKey.Services
                 dockThicknessInPx = CalculateDockSizeAndPositionInPx(newDockPosition, newDockSize);
             }
             double validNumber;
-            // if no value from file, use default value
-            // if value from file is numeric, use it as is
-            // if value from file is numeric with % symbol, use it as percent
-            var newWidth = string.IsNullOrWhiteSpace(inWidth) || !double.TryParse(inWidth.Replace("%", ""), out validNumber) || validNumber < -9999 || validNumber > 9999
-                ? newWindowState == WindowStates.Floating
-                    ? getFloatingSizeAndPosition().Width
-                    : dockThicknessInPx.Width / Graphics.DipScalingFactorX //Scale to dp
-                : inWidth.Contains("%") && validNumber > 0
-                    ? (validNumber / 100d) * screenBoundsInDp.Width
-                    : inWidth.Contains("%")
-                        ? (validNumber / 100d + 1) * screenBoundsInDp.Width
-                        : validNumber > 0
-                            ? validNumber / Graphics.DipScalingFactorX
-                : validNumber / Graphics.DipScalingFactorX + screenBoundsInDp.Width;
 
-             newWidth = Math.Max(newWidth, .03 * screenBoundsInDp.Width);
+            var newWidthString = new RelativeNumberFromString(inWidth);
+            double newWidth;
+            if (!newWidthString.IsValid)
+            {
+                // Fall back to current values
+                if (newWindowState == WindowStates.Docked)
+                    newWidth = dockThicknessInPx.Width / Graphics.DipScalingFactorX;
+                else
+                    newWidth = getFloatingSizeAndPosition().Width;
+            }
+            else
+            {
+                if (newWidthString.IsRelative)
+                {   // relative requests like "50%" of screen
+                    newWidth = newWidthString.GetValue(screenBoundsInDp.Width);
+                }
+                else
+                {   // "absolute" requests are in pixels, we still need to scale to DiP
+                    newWidth = newWidthString.GetValue() / Graphics.DipScalingFactorX;
+                }
+                // allow negative, 
+                // e.g. -3% means 100-3%
+                //      "-100" means "width minus 100px"
+                if (newWidth < 0)
+                    newWidth += screenBoundsInDp.Width;
+            }
 
-            var newHeight = string.IsNullOrWhiteSpace(inHeight) || !double.TryParse(inHeight.Replace("%", ""), out validNumber) || validNumber < -9999 || validNumber > 9999
-                ? newWindowState == WindowStates.Floating
-                    ? getFloatingSizeAndPosition().Height
-                    : dockThicknessInPx.Height / Graphics.DipScalingFactorY //Scale to dp
-                : inHeight.Contains("%") && validNumber > 0
-                    ? (validNumber / 100d) * screenBoundsInDp.Height
-                    : inHeight.Contains("%")
-                        ? (validNumber / 100d + 1) * screenBoundsInDp.Height
-                        : validNumber > 0
-                            ? validNumber / Graphics.DipScalingFactorY
-                : validNumber / Graphics.DipScalingFactorY + screenBoundsInDp.Height;
-
-            newHeight = Math.Max(newHeight, .03 * screenBoundsInDp.Width);
-
+            var newHeightString = new RelativeNumberFromString(inHeight);
+            double newHeight;
+            if (!newHeightString.IsValid)
+            {
+                // Fall back to current values
+                if (newWindowState == WindowStates.Docked)
+                    newHeight = dockThicknessInPx.Height / Graphics.DipScalingFactorY; 
+                else
+                    newHeight = getFloatingSizeAndPosition().Height;
+            }
+            else
+            {
+                if (newHeightString.IsRelative)
+                {   // relative requests like "50%" of screen
+                    newHeight = newHeightString.GetValue(screenBoundsInDp.Height);
+                }
+                else
+                {   // "absolute" requests are in pixels, we still need to scale to DiP
+                    newHeight = newHeightString.GetValue() / Graphics.DipScalingFactorY; 
+                }
+                // allow negative, 
+                // e.g. -3% means 100-3%
+                //      "-100" means "width minus 100px"
+                if (newHeight < 0)
+                    newHeight += screenBoundsInDp.Height;
+            }
+            newHeight = newHeight.CoerceToLowerLimit(.03 * screenBoundsInDp.Height);
+            
             var newFullDockThicknessPercent = (newDockPosition == DockEdges.Top || newDockPosition == DockEdges.Bottom)
                 ? (100 * newHeight / screenBoundsInDp.Height) : (100 * newWidth / screenBoundsInDp.Width);
 
