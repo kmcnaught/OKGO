@@ -71,7 +71,7 @@ namespace JuliusSweetland.OptiKey.Crayta.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.6")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.7")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public new double MainWindowOpacity
         {

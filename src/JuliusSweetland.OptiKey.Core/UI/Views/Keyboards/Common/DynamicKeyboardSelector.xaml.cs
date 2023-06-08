@@ -61,6 +61,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 newKey.SymbolGeometry = (Geometry)this.Resources["QuitIcon"];
                 newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.QUIT;
                 newKey.Value = KeyValues.QuitKey;
+                newKey.SymbolMargin = 15;
                 this.AddKey(newKey, this.mRows - 1, this.mCols - 1);
             }
             else
@@ -70,16 +71,41 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 newKey.SymbolGeometry = (Geometry)this.Resources["BackIcon"];
                 newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.BACK;
                 newKey.Value = KeyValues.BackFromKeyboardKey;
+                newKey.SymbolMargin = 15;
                 this.AddKey(newKey, this.mRows - 1, this.mCols - 1);
+            }
+
+            // Sleep key, mid right
+            {
+                Key newKey = new Key();
+                newKey.SharedSizeGroup = "SingleKey";
+                newKey.SymbolGeometry = (Geometry)this.Resources["SleepIcon"];
+                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.SLEEP;
+                newKey.Value = KeyValues.SleepKey;
+                newKey.SymbolMargin = 15;
+                this.AddKey(newKey, this.mRows - 2, this.mCols - 1);
             }
 
             // Minimise key for bottom left
             {
                 Key newKey = new Key();
-                newKey.SymbolGeometry = (Geometry)this.Resources["MinimiseIcon"];                
+                newKey.SymbolGeometry = (Geometry)this.Resources["MinimiseIcon"];
+                newKey.SymbolMargin = 15;
+                newKey.SharedSizeGroup = "SingleKey";
                 newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.MINIMISE;
                 newKey.Value = KeyValues.MinimiseKey;
                 this.AddKey(newKey, this.mRows - 1, 0);
+            }
+
+            // Size/position key, mid left
+            {
+                Key newKey = new Key();
+                newKey.SymbolGeometry = (Geometry)this.Resources["SizeAndPositionIcon"];
+                newKey.Text = JuliusSweetland.OptiKey.Properties.Resources.SIZE_AND_POSITION_SPLIT_WITH_NEWLINE;
+                newKey.Value = KeyValues.SizeAndPositionKeyboardKey;
+                newKey.SharedSizeGroup = "SingleKey";
+                newKey.SymbolMargin = 15;
+                this.AddKey(newKey, this.mRows - 2, 0);
             }
 
             // Add keyboard keys, or blanks
@@ -152,7 +178,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 {
                     newKey.Value = KeyValues.DynamicKeyboardPrev;
                 }
-                this.AddKey(newKey, 0, 0, 2, 1);
+                this.AddKey(newKey, 0, 0, 1, 1);
             }
             {
                 Key newKey = new Key();
@@ -163,7 +189,7 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
                 {
                     newKey.Value = KeyValues.DynamicKeyboardNext;
                 }
-                this.AddKey(newKey, 0, this.mCols - 1, 2, 1);
+                this.AddKey(newKey, 0, this.mCols - 1, 1, 1);
             }
         }
 
@@ -182,6 +208,10 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
         {
             Key lKey = new Key();
             lKey.Value = new KeyValue(FunctionKeys.DynamicKeyboard, info.fullPath);
+            if (Settings.Default.Theme.Contains("Light"))
+                lKey.BackgroundColourOverride = new SolidColorBrush(Color.FromRgb(195, 195, 230));
+            else
+                lKey.BackgroundColourOverride = new SolidColorBrush(Color.FromRgb(20, 20, 40));
             lKey.Text = String.Format("[{0}]", new DirectoryInfo(info.fullPath).Name);
             lKey.SharedSizeGroup = "DirectoryKey";
 
@@ -194,6 +224,10 @@ namespace JuliusSweetland.OptiKey.UI.Views.Keyboards.Common
             lKey.Value = new ChangeKeyboardKeyValue(info.fullPath);
             lKey.SharedSizeGroup = "KeyboardKey";
             lKey.Text = info.keyboardName;
+            if (Settings.Default.Theme.Contains("Light"))
+                lKey.BackgroundColourOverride = new SolidColorBrush(Color.FromRgb(195, 230, 195));
+            else
+                lKey.BackgroundColourOverride = new SolidColorBrush(Color.FromRgb(20, 30, 20));
             if (info.symbolString != null)
             {
                 Geometry geom = (Geometry)this.Resources[info.symbolString];
