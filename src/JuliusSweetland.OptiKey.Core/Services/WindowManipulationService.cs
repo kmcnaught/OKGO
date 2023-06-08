@@ -540,7 +540,12 @@ namespace JuliusSweetland.OptiKey.Services
             WindowStates newWindowState = Enum.TryParse(inWindowState, out newWindowState) ? newWindowState : getWindowState();
             DockEdges newDockPosition = Enum.TryParse(inPosition, out newDockPosition) ? newDockPosition : getDockPosition();
             DockSizes newDockSize = Enum.TryParse(inDockSize, out newDockSize) ? newDockSize : getDockSize();
-            var dockThicknessInPx = CalculateDockSizeAndPositionInPx(newDockPosition, newDockSize);
+
+            Rect dockThicknessInPx = new Rect();
+            if (newWindowState == WindowStates.Docked)
+            {
+                dockThicknessInPx = CalculateDockSizeAndPositionInPx(newDockPosition, newDockSize);
+            }
             double validNumber;
             // if no value from file, use default value
             // if value from file is numeric, use it as is
