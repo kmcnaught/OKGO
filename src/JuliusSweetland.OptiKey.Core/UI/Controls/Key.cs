@@ -261,6 +261,16 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             set { SetValue(SymbolGeometryProperty, value); }
         }
 
+        public static readonly DependencyProperty SymbolImageSourceProperty =
+            DependencyProperty.Register("SymbolImageSourceProperty", typeof(ImageSource), typeof(Key),
+            new PropertyMetadata(default(ImageSource), OnSymbolGeometryOrTextChanged));
+
+        public ImageSource SymbolImage
+        {
+            get { return (ImageSource)GetValue(SymbolImageSourceProperty); }
+            set { SetValue(SymbolImageSourceProperty, value); }
+        }
+
         public static readonly DependencyProperty SymbolOrientationProperty =
             DependencyProperty.Register("SymbolOrientation", typeof(SymbolOrientations), typeof(Key), new PropertyMetadata(SymbolOrientations.Top));
 
@@ -350,7 +360,7 @@ namespace JuliusSweetland.OptiKey.UI.Controls
             }
         }
 
-        public bool HasSymbol { get { return SymbolGeometry != null; } }
+        public bool HasSymbol { get { return SymbolGeometry != null || SymbolImage != null; } }
         public bool HasText
         {
             get
