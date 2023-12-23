@@ -1,6 +1,6 @@
 # OK, Game On!
 
-OK, Game On! (working title) or “OKGO” is a Windows application offering eye control access to many games via keyboard, mouse and gamepad emulation. It is based on the excellent [Optikey](https://github.com/OptiKey/OptiKey/) and [EyeMine](https://github.com/SpecialEffect/EyeMine/) projects.
+OK, Game On! (working title) or “OKGO” is a Windows application offering eye control access to many games via keyboard, mouse and gamepad emulation. It is based on the excellent [Optikey](https://github.com/OptiKey/OptiKey/) and [EyeMine](https://github.com/SpecialEffect/EyeMine/) projects, developed by [Kirsty McNaught](https://kmcnaught.co.uk/)
 
 # Instructions for setup and use
 
