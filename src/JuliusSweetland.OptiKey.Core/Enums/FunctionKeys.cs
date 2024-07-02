@@ -261,6 +261,7 @@ namespace JuliusSweetland.OptiKey.Enums
         RightJoystick,
         LegacyJoystick,
         LegacyTriggerJoystick,
+        LegacyWasdMouseJoystick,
         ResetJoystick,
         MouseJoystick,
         WasdJoystick,

@@ -112,7 +112,7 @@ namespace JuliusSweetland.OptiKey.Models
         public bool PauseWhenLookingAtThisKey
         {
             get => pauseWhenLookingAtThisKey;
-            set => bool.TryParse(value.ToString(), out pauseWhenLookingAtThisKey);
+            set => bool.TryParse(value.ToString().ToLower(), out pauseWhenLookingAtThisKey);
         }
 
         private bool pauseWhenLookingAtAnyKey;
@@ -120,7 +120,7 @@ namespace JuliusSweetland.OptiKey.Models
         public bool PauseWhenLookingAtAnyKey
         {
             get => pauseWhenLookingAtAnyKey;
-            set => bool.TryParse(value.ToString(), out pauseWhenLookingAtAnyKey);
+            set => bool.TryParse(value.ToString().ToLower(), out pauseWhenLookingAtAnyKey);
         }
     }
 

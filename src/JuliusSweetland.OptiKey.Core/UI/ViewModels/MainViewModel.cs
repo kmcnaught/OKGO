@@ -226,7 +226,17 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             JoystickHandlers.Add(FunctionKeys.LegacyTriggerJoystick, new Look2DInteractionHandler(FunctionKeys.LegacyTriggerJoystick, legacyTriggerJoystickAction,
                                                             keyStateService, this));
             JoystickHandlers.Add(FunctionKeys.WasdJoystick, new Look2DKeyFeather(FunctionKeys.WasdJoystick,
-                                                            keyStateService, this));            
+                                                            keyStateService, this));
+
+            // Combine WASD for up/down and mouse joystick for left/right, i.e. legacy controls
+            var mouseWASD = new Look2DKeyFeather(FunctionKeys.WasdJoystick, keyStateService, this);
+            mouseWASD.ReplaceLeftRight((x) =>
+            {
+                Log.DebugFormat("mouseJoystickWASD, ({0})", x);
+                mouseOutputService.MoveBy(new Point(100.0 * Settings.Default.MouseStickSensitivityX * x, 0));
+            });
+            JoystickHandlers.Add(FunctionKeys.LegacyWasdMouseJoystick, mouseWASD);
+
         }
 
         #endregion
