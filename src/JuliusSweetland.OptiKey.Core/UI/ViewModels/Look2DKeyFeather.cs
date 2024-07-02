@@ -54,12 +54,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             
             keyboardOutputService = mainViewModel.KeyboardOutputService;
 
-            // TODO: Will support swapping out for arrows or ijkl etc
+            // Default WASD
+            ConfigureKeys(WindowsInput.Native.VirtualKeyCode.VK_W,
+                          WindowsInput.Native.VirtualKeyCode.VK_A,
+                          WindowsInput.Native.VirtualKeyCode.VK_S,
+                          WindowsInput.Native.VirtualKeyCode.VK_D);
+        }
+
+        void ConfigureKeys(VirtualKeyCode upKey,
+                           VirtualKeyCode leftKey,
+                           VirtualKeyCode downKey,
+                           VirtualKeyCode rightKey)
+        {
+
             keyMappings = new Dictionary<DirectionKeys, VirtualKeyCode>();
-            keyMappings.Add(DirectionKeys.Up, WindowsInput.Native.VirtualKeyCode.VK_W);
-            keyMappings.Add(DirectionKeys.Left, WindowsInput.Native.VirtualKeyCode.VK_A);
-            keyMappings.Add(DirectionKeys.Down, WindowsInput.Native.VirtualKeyCode.VK_S);
-            keyMappings.Add(DirectionKeys.Right, WindowsInput.Native.VirtualKeyCode.VK_D);
+            keyMappings.Add(DirectionKeys.Up, upKey);
+            keyMappings.Add(DirectionKeys.Left, leftKey);
+            keyMappings.Add(DirectionKeys.Down, downKey);
+            keyMappings.Add(DirectionKeys.Right, rightKey);
 
             keyDownStates = new Dictionary<DirectionKeys, bool>();
             keyDownStates.Add(DirectionKeys.Up, false);
