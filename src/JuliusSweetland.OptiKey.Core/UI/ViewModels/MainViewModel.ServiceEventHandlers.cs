@@ -759,6 +759,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.LegacyJoystick:
                 case FunctionKeys.WasdJoystick:
                 case FunctionKeys.LegacyTriggerJoystick:
+                case FunctionKeys.LegacyWasdMouseJoystick:
                     ToggleJoystick(singleKeyValue);
                     
                     break;
@@ -1459,6 +1460,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                 case FunctionKeys.LegacyJoystick:
                 case FunctionKeys.LegacyTriggerJoystick:
                 case FunctionKeys.WasdJoystick:
+                case FunctionKeys.LegacyWasdMouseJoystick:
                     // these all have optional payloads in the FunctionKey's string, so the logic
                     // is kept in HandleStringAndFunctionKeySelectionResult
                     KeyValue newValue = new KeyValue(singleKeyValue.FunctionKey, null);

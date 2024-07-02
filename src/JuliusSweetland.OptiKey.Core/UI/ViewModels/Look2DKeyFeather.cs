@@ -61,7 +61,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                           WindowsInput.Native.VirtualKeyCode.VK_D);
         }
 
-        void ConfigureKeys(VirtualKeyCode upKey,
+        public void ConfigureKeys(VirtualKeyCode upKey,
                            VirtualKeyCode leftKey,
                            VirtualKeyCode downKey,
                            VirtualKeyCode rightKey)
@@ -87,28 +87,44 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
         }
 
+        Action<float> alternativeUpDown = null;
+        Action<float> alternativeLeftRight = null;
+
+        public void ReplaceUpDown(Action<float> action)
+        {
+            alternativeUpDown = action;
+        }
+
+        public void ReplaceLeftRight(Action<float> action)
+        {
+            alternativeLeftRight = action;
+        }
+
         #endregion
         private void UpdateKey(DirectionKeys key, bool active)
         {
-            DateTime now = Time.HighResolutionUtcNow;
-            if (active)
+            if (keyDownUpTimes.ContainsKey(key))
             {
-                if (keyDownUpTimes[key] < now)
+                DateTime now = Time.HighResolutionUtcNow;
+                if (active)
                 {
-                    // already pressed, no-op
+                    if (keyDownUpTimes[key] < now)
+                    {
+                        // already pressed, no-op
+                    }
+                    else
+                    {
+                        keyboardOutputService.PressKey(keyMappings[key], KeyPressKeyValue.KeyPressType.Press);
+                        keyDownUpTimes[key] = now;
+                    }
                 }
                 else
                 {
-                    keyboardOutputService.PressKey(keyMappings[key], KeyPressKeyValue.KeyPressType.Press);
-                    keyDownUpTimes[key] = now;
-                }
-            }
-            else
-            {
-                if (keyDownUpTimes[key] < now) // was pressed
-                {
-                    keyboardOutputService.PressKey(keyMappings[key], KeyPressKeyValue.KeyPressType.Release);
-                    keyDownUpTimes[key] = DateTime.MaxValue;
+                    if (keyDownUpTimes[key] < now) // was pressed
+                    {
+                        keyboardOutputService.PressKey(keyMappings[key], KeyPressKeyValue.KeyPressType.Release);
+                        keyDownUpTimes[key] = DateTime.MaxValue;
+                    }
                 }
             }
         }
@@ -124,10 +140,24 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             bool keyUpActive = y < -eps;
             bool keyDownActive = y > eps;
 
-            UpdateKey(DirectionKeys.Left, keyLeftActive);
-            UpdateKey(DirectionKeys.Right, keyRightActive);
-            UpdateKey(DirectionKeys.Up, keyUpActive);
-            UpdateKey(DirectionKeys.Down, keyDownActive);            
+            if (alternativeLeftRight != null)
+            {
+                alternativeLeftRight(x);
+            }
+            else
+            {
+                UpdateKey(DirectionKeys.Left, keyLeftActive);
+                UpdateKey(DirectionKeys.Right, keyRightActive);
+            }
+            if (alternativeUpDown != null)
+            {
+                alternativeUpDown(y);
+            }
+            else
+            {
+                UpdateKey(DirectionKeys.Up, keyUpActive);
+                UpdateKey(DirectionKeys.Down, keyDownActive);
+            }
         }
 
     }
