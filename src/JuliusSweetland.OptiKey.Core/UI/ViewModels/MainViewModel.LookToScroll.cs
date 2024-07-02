@@ -8,9 +8,11 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using System.Text.RegularExpressions;
+using System.Windows;
 using JuliusSweetland.OptiKey.Enums;
 using JuliusSweetland.OptiKey.Extensions;
 using JuliusSweetland.OptiKey.Models;
+using JuliusSweetland.OptiKey.Native;
 using JuliusSweetland.OptiKey.Native.Common.Enums;
 using JuliusSweetland.OptiKey.Native.Common.Static;
 using JuliusSweetland.OptiKey.Native.Common.Structs;
@@ -132,10 +134,56 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             }
         }        
 
+        private enum RelativeTo
+        {
+            Screen,
+            ForegroundWindow,
+            FocusedWindow
+        }        
+
+        private double ComputePosition(string inputString, double start, double end) 
+        {
+            // string is e.g. "0.1" (relative to whole, <1.0)
+            //                "50%" (relative to whole)
+            //                "100" (absolute)
+            // all relative to the 1D bound defined by (start, end) 
+
+            // If ends in "%" parse as percentage
+            if (inputString.EndsWith("%"))
+            {
+                inputString = inputString.Remove(inputString.Length - 1);
+                float amount = Convert.ToSingle(inputString);
+                return (int) (start + amount*(end-start)/ 100.0f);
+            }
+            else
+            {
+                float amount = Convert.ToSingle(inputString);
+            // If less than 1.0, parse as fraction
+            if (amount <= 1.0)
+                {
+                    return (int) (start + amount*(end-start));
+                }
+                else
+                {
+                    // Else parse as absolute
+                    return (int) (start + amount);
+                }
+            }        
+        }
+
         private void SetJoystickCentre(KeyValue requestedKeyValue)
         {
             //FunctionKeys? joystick = requestedKeyValue.FunctionKey;
             string payload = requestedKeyValue.String.RemoveWhitespace();
+            // payload is:
+            // JoystickName:x,y or JoystickName:x%,y%
+            // e.g. MouseJoystick:0.5, 0.3 [relative screen positions (both numbers < 1.0)]
+            //      LegacyJoystick:50%, 30% [relative screen percentages]
+            //      LegacyJoystick:100, 200 [absolute screen position]
+            // 
+            // By default positions are relative to screen. We also accept "window" which targets
+            // the current active (focused) window, which we hope is the target game. Such as
+            //      MouseJoystick:0.5, 0.5:window
 
             if (!String.IsNullOrEmpty(payload))
             {
@@ -145,45 +193,32 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
                     char[] delimComma = { ',' };
 
                     string[] parts = payload.Split(delimColon, StringSplitOptions.RemoveEmptyEntries);
-                    if (parts.Length == 2)
+
+                    if (parts.Length >= 2)
                     {
                         string joystickString = parts[0], pointString = parts[1];
+                        string targetString = parts.Length > 2 ? parts[2] : "";
+
+                        RelativeTo relative = RelativeTo.Screen;
+                        Enum.TryParse(targetString, out relative);
 
                         if (Enum.TryParse(joystickString, out FunctionKeys joystickKey))
                         {
-                            //bool relative = pointString.EndsWith("%");
-
                             string[] pointParts = pointString.Split(delimComma, StringSplitOptions.RemoveEmptyEntries);
 
                             if (pointParts.Length == 2)
                             {
-                                Func<string, double, int> parseNumberAsPosition = (string inputString, double scale) =>
+                                Rect bounds = new Rect(0, 0, Graphics.PrimaryScreenWidthInPixels, Graphics.PrimaryScreenHeightInPixels);
+                                if (relative != RelativeTo.Screen)
                                 {
-                                // If ends in "%" parse as percentage
-                                if (inputString.EndsWith("%"))
-                                    {
-                                        inputString = inputString.Remove(inputString.Length - 1);
-                                        float amount = Convert.ToSingle(inputString);
-                                        return (int)(amount * scale / 100.0f);
-                                    }
-                                    else
-                                    {
-                                        float amount = Convert.ToSingle(inputString);
-                                    // If less than 1.0, parse as fraction
-                                    if (amount <= 1.0)
-                                        {
-                                            return (int)(amount * scale);
-                                        }
-                                        else
-                                        {
-                                        // Else parse as absoluate
-                                        return (int)amount;
-                                        }
-                                    }
-                                };
+                                    IntPtr hWnd = relative == RelativeTo.ForegroundWindow ? PInvoke.GetForegroundWindow() : PInvoke.GetFocus();
+                                    Rect? rect = GetWindowBounds(hWnd);
+                                    if (rect != null)
+                                        bounds = rect.Value;
+                                }
 
-                                int x = parseNumberAsPosition(pointParts[0], Graphics.PrimaryScreenWidthInPixels);
-                                int y = parseNumberAsPosition(pointParts[1], Graphics.PrimaryScreenHeightInPixels);
+                                double x = ComputePosition(pointParts[0], bounds.Left, bounds.Right);
+                                double y = ComputePosition(pointParts[1], bounds.Top, bounds.Bottom);
 
                                 Look2DInteractionHandler requestedHandler = JoystickHandlers[joystickKey];
                                 requestedHandler.SetJoystickCentre((int)x, (int)y);

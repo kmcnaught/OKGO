@@ -76,6 +76,9 @@ namespace JuliusSweetland.OptiKey.Native
         public static extern IntPtr GetForegroundWindow();
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+        public static extern IntPtr GetFocus();
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         public static extern int GetWindowThreadProcessId(IntPtr handleWindow, out int lpdwProcessID);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
