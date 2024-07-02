@@ -207,6 +207,14 @@ namespace JuliusSweetland.OptiKey.Services
 
         public WindowStates WindowState { get { return getWindowState(); } }
 
+        public DockEdges? DockEdge
+        {
+            get
+            {
+               return currentDockEdge;
+            }
+        }
+
         #endregion
 
         #region Public Methods

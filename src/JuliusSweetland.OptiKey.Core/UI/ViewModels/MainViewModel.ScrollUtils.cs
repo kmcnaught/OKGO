@@ -75,7 +75,43 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
             KeyValue pointKeyVal = point.ToKeyValue(pointToKeyValueMap);
             return (pointKeyVal != null &&
                     pointKeyVal == keyValue);
+        }
 
+        public bool IsPointInsideDockedAppbars(Point point, int padding = 0)
+        {
+            DockEdges? dockEdge = mainWindowManipulationService.DockEdge;            
+            if (dockEdge != null)
+            {                
+                Rect windowBounds = GetMainWindowBoundsInPixels();
+                if (windowBounds.Contains(point))
+                {
+                    return true;
+                }
+                else
+                {
+                    // check if point is "beyond" appbar 
+                    switch (dockEdge.GetValueOrDefault())
+                    {
+                        case DockEdges.Top:
+                            if (point.Y <= windowBounds.Top)
+                                return true;
+                            break;
+                        case DockEdges.Bottom:
+                            if (point.Y >= windowBounds.Bottom)
+                                return true;
+                            break;
+                        case DockEdges.Left:
+                            if (point.X < windowBounds.Left)
+                                return true;
+                            break;
+                        case DockEdges.Right:
+                            if (point.X > windowBounds.Right)
+                                return true;
+                            break;
+                    }
+                }
+            }
+            return false;
         }
 
         public bool IsMainWindowDocked()
