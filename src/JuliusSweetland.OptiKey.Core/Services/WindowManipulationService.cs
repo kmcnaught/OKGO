@@ -577,6 +577,14 @@ namespace JuliusSweetland.OptiKey.Services
                     newWidth += screenBoundsInDp.Width;
             }
 
+            newWidth = newWidth.CoerceToLowerLimit(.03 * screenBoundsInDp.Width);
+            if (newWindowState == WindowStates.Docked && (newDockPosition == DockEdges.Left || newDockPosition == DockEdges.Right) &&
+                newWidth > 0.8 * screenBoundsInDp.Width)
+            {
+                Log.Error($"Dynamic keyboard width requested {newWidth} but keyboard is Docked. Change keyboard to <WindowState>Floating</WindowState> for larger size.");
+                newWidth = newWidth.CoerceToUpperLimit(0.8 * screenBoundsInDp.Width);
+            }
+
             var newHeightString = new RelativeNumberFromString(inHeight);
             double newHeight;
             if (!newHeightString.IsValid)
@@ -603,8 +611,15 @@ namespace JuliusSweetland.OptiKey.Services
                 if (newHeight < 0)
                     newHeight += screenBoundsInDp.Height;
             }
+
+            // Apply limits
             newHeight = newHeight.CoerceToLowerLimit(.03 * screenBoundsInDp.Height);
-            
+            if (newWindowState == WindowStates.Docked && (newDockPosition == DockEdges.Top || newDockPosition == DockEdges.Bottom) &&
+                newHeight > 0.8* screenBoundsInDp.Height )
+            {
+                Log.Error($"Dynamic keyboard height requested {newHeight} but keyboard is Docked. Change keyboard to <WindowState>Floating</WindowState> for larger size.");
+                newHeight = newHeight.CoerceToUpperLimit(0.8 * screenBoundsInDp.Height);
+            }
             var newFullDockThicknessPercent = (newDockPosition == DockEdges.Top || newDockPosition == DockEdges.Bottom)
                 ? (100 * newHeight / screenBoundsInDp.Height) : (100 * newWidth / screenBoundsInDp.Width);
 
