@@ -107,11 +107,21 @@ namespace JuliusSweetland.OptiKey.Models
         [XmlText]
         public string Value { get; set; }
 
+        private bool pauseWhenLookingAtThisKey;
         [XmlAttribute] // Optional - pause the output when you're looking back at this key
-        public bool PauseWhenLookingAtThisKey { get; set; }
+        public bool PauseWhenLookingAtThisKey
+        {
+            get => pauseWhenLookingAtThisKey;
+            set => bool.TryParse(value.ToString(), out pauseWhenLookingAtThisKey);
+        }
 
+        private bool pauseWhenLookingAtAnyKey;
         [XmlAttribute] // Optional - pause the output when you're looking at any key in keyboard
-        public bool PauseWhenLookingAtAnyKey { get; set; }
+        public bool PauseWhenLookingAtAnyKey
+        {
+            get => pauseWhenLookingAtAnyKey;
+            set => bool.TryParse(value.ToString(), out pauseWhenLookingAtAnyKey);
+        }
     }
 
     public class DynamicLoop : XmlDynamicKey
