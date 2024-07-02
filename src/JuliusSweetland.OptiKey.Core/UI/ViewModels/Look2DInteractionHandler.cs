@@ -270,6 +270,7 @@ namespace JuliusSweetland.OptiKey.UI.ViewModels
 
             if (keyStateService.KeyDownStates[KeyValues.SleepKey].Value.IsDownOrLockedDown() ||
                 mainViewModel.IsPointInsideValidKey(position, keyPadding) ||
+                mainViewModel.IsPointInsideDockedAppbars(position) || // only relevant when docked
                 choosingBoundsTarget ||
                 !lastUpdate.HasValue)
             {

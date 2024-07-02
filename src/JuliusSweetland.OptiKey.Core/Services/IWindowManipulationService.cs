@@ -14,6 +14,7 @@ namespace JuliusSweetland.OptiKey.Services
         IntPtr WindowHandle { get; }
         Rect WindowBounds { get; }
         WindowStates WindowState { get; }
+        DockEdges? DockEdge { get; } 
 
         void ChangeState(WindowStates state, DockEdges dockPosition);
         void Expand(ExpandToDirections direction, double amountInPx);
