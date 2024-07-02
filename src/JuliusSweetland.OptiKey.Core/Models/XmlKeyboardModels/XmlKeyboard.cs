@@ -66,8 +66,12 @@ namespace JuliusSweetland.OptiKey.Models
         public string Opacity
         { get; set; }
 
+        private string _windowState;
         public string WindowState
-        { get; set; }
+        {
+            get { return _windowState ?? "Floating"; } // Default value 
+            set { _windowState = value; }
+        }
 
         public string Position
         { get; set; }
