@@ -40,7 +40,8 @@ namespace JuliusSweetland.OptiKey.Services
         private readonly Window window;
         private readonly IntPtr windowHandle;
         private Screen screen;
-        private Rect appBarBoundsInPx;
+        private DockEdges? currentDockEdge = null; //holds most recent dock edge - or null if not docked
+        private Rect appBarBoundsInPx; // holds most recent appbar position - can query this. 
         private Rect screenBoundsInPx;
         private Rect screenBoundsInDp;
         private Func<bool> getPersistedState;
@@ -1892,6 +1893,7 @@ namespace JuliusSweetland.OptiKey.Services
             //as WPF will send a resize after a new appbar is added. We need to apply the received size & position after this happens.
             //RECT values are in pixels so I need to scale back to DIPs for WPF.
             appBarBoundsInPx = new Rect(finalDockLeftInDp, finalDockTopInDp, finalDockWidthInDp, finalDockHeightInDp);
+            currentDockEdge = dockPosition;
             window.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle,
                 persist
                     ? new ApplySizeAndPositionDelegate(ApplyAndPersistSizeAndPosition)
@@ -1912,6 +1914,7 @@ namespace JuliusSweetland.OptiKey.Services
         private void UnRegisterAppBar()
         {
             Log.Info("UnRegisterAppBar called");
+            currentDockEdge = null;
 
             var abd = new APPBARDATA();
             abd.cbSize = Marshal.SizeOf(abd);
