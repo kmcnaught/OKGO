@@ -4,7 +4,6 @@ OK, Game On! (working title) or “OKGO” is a Windows application offering eye
 
 [![YouTube demo reel](https://github.com/SpecialEffect/EyeMine/wiki/resources/okgo_showreel2.png)](https://www.youtube.com/watch?v=50Eu3Ma32Xc "OKGO promo on youtube")
 
-https://www.youtube.com/watch?v=50Eu3Ma32Xc
 # Instructions for setup and use
 
 Read [the wiki](https://github.com/kmcnaught/OKGO/wiki/) for instructions on install and usage
