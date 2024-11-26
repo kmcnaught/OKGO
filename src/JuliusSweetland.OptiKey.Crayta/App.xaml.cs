@@ -38,6 +38,8 @@ using JuliusSweetland.OptiKey.Crayta.Enums;
 using JuliusSweetland.OptiKey.Crayta.UI.Windows;
 using Prism.Commands;
 using Application = System.Windows.Application;
+using EyeXFramework;
+using Microsoft.Expression.Interactivity.Core;
 
 namespace JuliusSweetland.OptiKey.Crayta
 {
@@ -210,6 +212,9 @@ namespace JuliusSweetland.OptiKey.Crayta
 
                 ValidateDynamicKeyboardLocationEyeMine();
 
+                // Check if we can safely default to Tobii
+                bool tobiiMissing = ValidateTobiiInstallMissing();
+
                 //Create services
                 var errorNotifyingServices = new List<INotifyErrors>();
                 audioService = new AudioService();
@@ -261,6 +266,12 @@ namespace JuliusSweetland.OptiKey.Crayta
                 {
                     mainViewModel.AttachErrorNotifyingServiceHandlers();
                     mainViewModel.AttachInputServiceEventHandlers();
+
+                    if (tobiiMissing)
+                    {
+                        mainViewModel.RaiseToastNotification("Tobii driver not found",
+                            "Cannot find Tobii drivers. Setting OKGO to use mouse input instead\n\n", NotificationTypes.Error, () => { });
+                    }
 
                     // Special warning if controller install hasn't been completed
                     if (!publishService.SupportsController())
@@ -483,6 +494,34 @@ namespace JuliusSweetland.OptiKey.Crayta
             }
 
             return applicationDataPath;
+        }
+
+        private bool ValidateTobiiInstallMissing()
+        {
+            if (Settings.Default.PointsSource == PointsSources.TobiiEyeTracker4C ||
+                Settings.Default.PointsSource == PointsSources.TobiiEyeTracker5 ||
+                Settings.Default.PointsSource == PointsSources.TobiiEyeX ||
+                Settings.Default.PointsSource == PointsSources.TobiiPcEye5 ||
+                Settings.Default.PointsSource == PointsSources.TobiiPcEyeGo ||
+                Settings.Default.PointsSource == PointsSources.TobiiPcEyeGoPlus ||
+                Settings.Default.PointsSource == PointsSources.TobiiPcEyeMini ||
+                Settings.Default.PointsSource == PointsSources.TobiiRex ||
+                Settings.Default.PointsSource == PointsSources.TobiiX2_30 ||
+                Settings.Default.PointsSource == PointsSources.TobiiX2_60)
+            {
+                // Catch an exception present if DLL completely absent, before querying availability
+                try
+                {
+                    var tmp = EyeXHost.EyeXAvailability;
+                }
+                catch (System.DllNotFoundException ex)
+                {
+                    Log.Info("No Tobii DLL found, switching to mouse position instead");
+                    Settings.Default.PointsSource = PointsSources.MousePosition;
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void ValidateDynamicKeyboardLocationEyeMine()
